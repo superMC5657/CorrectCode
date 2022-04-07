@@ -39,7 +39,7 @@ class MyDataset(data.Dataset):
     def __getitem__(self, index):
         fake_l = self.fake_list[index]
         label_l = self.label_list[index]
-        return torch.tensor(fake_l, dtype=torch.int32), torch.tensor(label_l, dtype=torch.long)
+        return torch.tensor(fake_l, dtype=torch.long), torch.tensor(label_l, dtype=torch.long)
 
     def __len__(self):
         return len(self.fake_list)
