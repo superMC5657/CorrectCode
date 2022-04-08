@@ -14,8 +14,8 @@ vocab_dict = {vocab_list[i]: i for i in range(len(vocab_list))}
 reversed_dict = {i: vocab_list[i] for i in range(len(vocab_list))}
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 seq2seq = Seq2Seq(input_size, output_size, device=device).to(device)
+seq2seq.load_state_dict(torch.load('./checkpoints/model_3.pth'))
 seq2seq.eval()
-
 
 
 def infer(s):
@@ -30,5 +30,6 @@ def infer(s):
 
 
 if __name__ == '__main__':
-    s = 'hello world'
-    print(infer(s))
+    with open('data/dataset/fake/5.txt', 'r', encoding='utf-8') as f:
+        content = f.read()
+    print(infer(content))

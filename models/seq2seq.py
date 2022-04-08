@@ -128,7 +128,7 @@ class Seq2Seq(nn.Module):
                 output, hidden, encoder_output)
             outputs[t] = output
             top1 = output.data.max(1)[1]
-            if top1 == vocab_size - 1:
+            if top1.item() == vocab_size - 1:
                 break
             predict.append(top1.item())
             output = Variable(top1).to(self.device)
