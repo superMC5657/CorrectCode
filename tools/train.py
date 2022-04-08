@@ -24,7 +24,7 @@ seq2seq = Seq2Seq(input_size, output_size, device=device).to(device)
 
 criterion = nn.CrossEntropyLoss(reduce=False)
 optimizer = optim.SGD(seq2seq.parameters(), lr=0.01, momentum=0.9)
-epochs = 5
+epochs = 100
 best_acc = 0.0
 for epoch in range(epochs):
     adjust_learning_rate(optimizer, epoch, lr=0.01)
