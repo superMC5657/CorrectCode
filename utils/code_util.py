@@ -3,6 +3,8 @@
 # !@fileName: code_util.py
 
 # 状态
+import os
+
 import javalang
 
 from config import VOCAB_WHITELIST
@@ -22,45 +24,50 @@ def trim_file(src_path, dst_path):
     fp_src = open(src_path, 'r', encoding='utf-8')
     fp_dst = open(dst_path, 'w', encoding='utf-8')
     state = S_INIT
-    for line in fp_src.readlines():
-        for c in line:
-            if state == S_INIT:
-                if c == '/':
-                    state = S_SLASH
-                elif c == '"''"':
+    try:
+        for line in fp_src.readlines():
+            for c in line:
+                if state == S_INIT:
+                    if c == '/':
+                        state = S_SLASH
+                    elif c == '"''"':
+                        state = S_STR
+                        fp_dst.write(c)
+                    else:
+                        fp_dst.write(c)
+                elif state == S_SLASH:
+                    if c == '*':
+                        state = S_BLOCK_COMMENT
+                    elif c == '/':
+                        state = S_LINE_COMMENT
+                    else:
+                        fp_dst.write('/')
+                        fp_dst.write(c)
+                elif state == S_BLOCK_COMMENT:
+                    if c == '*':
+                        state = S_BLOCK_COMMENT_DOT
+                elif state == S_BLOCK_COMMENT_DOT:
+                    if c == '/':
+                        state = S_INIT
+                    else:
+                        state = S_BLOCK_COMMENT
+                elif state == S_LINE_COMMENT:
+                    if c == '\n':
+                        state = S_INIT
+                elif state == S_STR:
+                    if c == '\\':
+                        state = S_STR_ESCAPE
+                    elif c == '"':
+                        state = S_INIT
+                    fp_dst.write(c)
+                elif state == S_STR_ESCAPE:
+                    # 这里未完全实现全部序列，如\oNNN \xHH \u1234 \U12345678，但没影响
                     state = S_STR
                     fp_dst.write(c)
-                else:
-                    fp_dst.write(c)
-            elif state == S_SLASH:
-                if c == '*':
-                    state = S_BLOCK_COMMENT
-                elif c == '/':
-                    state = S_LINE_COMMENT
-                else:
-                    fp_dst.write('/')
-                    fp_dst.write(c)
-            elif state == S_BLOCK_COMMENT:
-                if c == '*':
-                    state = S_BLOCK_COMMENT_DOT
-            elif state == S_BLOCK_COMMENT_DOT:
-                if c == '/':
-                    state = S_INIT
-                else:
-                    state = S_BLOCK_COMMENT
-            elif state == S_LINE_COMMENT:
-                if c == '\n':
-                    state = S_INIT
-            elif state == S_STR:
-                if c == '\\':
-                    state = S_STR_ESCAPE
-                elif c == '"':
-                    state = S_INIT
-                fp_dst.write(c)
-            elif state == S_STR_ESCAPE:
-                # 这里未完全实现全部序列，如\oNNN \xHH \u1234 \U12345678，但没影响
-                state = S_STR
-                fp_dst.write(c)
+    except:
+        fp_src.close()
+        fp_dst.close()
+        os.remove(dst_path)
     fp_src.close()
     fp_dst.close()
 
@@ -113,9 +120,9 @@ def transform_code(src_l):
 def remove_extra(content):
     parser = javalang.parser.Parser(content)
     l_list = parser.tokens.list
-    new_list = [l_list[0]]
-    tmp = l_list[0]
-    for x in l_list[1:]:
+    new_list = []
+    tmp = ""
+    for x in l_list:
         if x in VOCAB_WHITELIST:
             if x == '\n' or x == ' ':
                 if x == tmp:

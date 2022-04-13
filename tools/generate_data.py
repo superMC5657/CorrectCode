@@ -5,9 +5,9 @@
 import os
 import sys
 
+sys.path.append('./')
 from config import MAX_LEN
 
-sys.path.append('./')
 from utils.code_util import remove_extra, transform_code, trim_file
 
 download_dir = 'data/download'
@@ -26,12 +26,15 @@ if not os.path.exists(label_dir):
 if not os.path.exists(train_dir):
     os.mkdir(train_dir)
 
+index = 0
 for root, dir_list, file_list in os.walk(download_dir):
     for file_name in file_list:
         if file_name.endswith('.java'):
             file_path = os.path.join(root, file_name)
-            dst_path = os.path.join(deleteNote_dir, file_name)
+            dst_path = os.path.join(deleteNote_dir, str(index) + '.java')
+
             trim_file(file_path, dst_path)
+            index += 1
 
 vocab = set()
 index = 0
@@ -51,4 +54,4 @@ for root, dir_list, file_list in os.walk(deleteNote_dir):
             with open(dst_path_train, 'w', encoding='utf-8') as f:
                 f.write("".join(new_l))
             index += 1
-print(len(vocab))
+print(vocab)

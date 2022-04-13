@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # !@author: superMC @email: 18758266469@163.com
 # !@fileName: generate_data.py
-
+import sys
+sys.path.append('./')
 import torch
 from torch import nn, optim
 from torch.utils.data import DataLoader
