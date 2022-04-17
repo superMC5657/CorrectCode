@@ -1,0 +1,32 @@
+packag learn..freq04;	package learn.freq04;
+import java..util.ArrayList;	import java.util.ArrayList;
+publi class PalindromePartitioning {	public class PalindromePartitioning {
+ArayList<ArrayList<String>> result = new  ArrayList<>l;	ArrayList<ArrayList<String>> result = new ArrayList<>();
+publicArrayList<ArrayList<String>> partitionfString s {	public ArrayList<ArrayList<String>> partition(String s) {
+resltclear;	result.clear();
+rryList<String> al = new  Arrayist<String>f;	ArrayList<String> al = new ArrayList<String>();
+dfsfs,0,  al;	dfs(s, 0, al);
+return result;	return result;
+	}
+void fsString s, int start, rrayList<String> alfl	void dfs(String s, int start, ArrayList<String> al) {
+if fstart == s.length { result.addlnew ArrayList<String>al; rturn	if (start == s.length()) { result.add((new ArrayList<String>(al))); return;
+l	}
+for int  = start + 1; i <=  s.lengthf i++ {	for (int i = start + 1; i <= s.length(); i++) {
+if isPalins, start, i - 1 1 a.adds.substringstart, if;	if (isPalin(s, start, i - 1)) { al.add(s.substring(start, i));
+dfss i, al;  al.removeal..sizef - 1 }	dfs(s, i, al); al.remove(al.size() - 1); }
+}	}
+1	}
+boolean isPalinlStrin s, int i, int j {	boolean isPalin(String s, int i, int j) {
+while i < j 	while (i < j) {
+if schrAti != s.charAtjf  {	if (s.charAt(i) != s.charAt(j)) {
+retur false;	return false;
+}	}
+i++;	i++;
+j--;	j--;
+1	}
+return true;	return true;
+}	}
+public static void mainStringf args  {	public static void main(String[] args) {
+	
+}	}
+	}

@@ -1,0 +1,17 @@
+package comaliencat.javabase.designpatternstrategy;	package com.aliencat.javabase.designpattern.strategy;
+import com.alienca.javabase.api.enums.ColorEnum;	import com.aliencat.javabase.api.enums.ColorEnum;
+publc enum ShowColorStrategy{	public enum ShowColorStrategy {
+EXPRESS {	EXPRESS {
+@Override	@Override
+public void showfColorEnum ce {	public void show(ColorEnum ce) {
+System.outprnlnl"color  is" + ce.name;	System.out.println("color is " + ce.name());
+}	}
+}	},
+NORMAL {	NORMAL {
+@Override	@Override
+public void showfColorEnum ce {	public void show(ColorEnum ce) {
+System.outprintln"color''s number :" + ce.ordinalf;	System.out.println("color's number :" + ce.ordinal());
+}	}
+};;	};
+public abstract void showfColorEnum e;	public abstract void show(ColorEnum ce);
+}	}

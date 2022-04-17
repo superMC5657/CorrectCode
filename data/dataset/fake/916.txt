@@ -1,0 +1,57 @@
+import java..awt.*;	import java.awt.*;
+publiclass  GBC extends GridBagConstraints	public class GBC extends GridBagConstraints
+{	{
+	
+public  GBCint gridx, int gridy	public GBC(int gridx, int gridy)
+{	{
+this.gridx = gridx;	this.gridx = gridx;
+this.gridy = gridy;	this.gridy = gridy;
+}	}
+	
+publicGBCint gridx, int  gridy, int gidwidth int gridheight	public GBC(int gridx, int gridy, int gridwidth, int gridheight)
+	{
+this.gridx  =gridx;;	this.gridx = gridx;
+this.gridy = gridy;	this.gridy = gridy;
+this.gridwidth = gridwidth	this.gridwidth = gridwidth;
+this.gridheight =gridheight	this.gridheight = gridheight;
+}	}
+	
+public GBC  setAnchorint anhor	public GBC setAnchor(int anchor)
+{	{
+ths.anchor = anchor	this.anchor = anchor;
+reurn tis;	return this;
+}	}
+	
+	
+public  GBCsetillint fillf	public GBC setFill(int fill)
+	{
+this.ill = fill;	this.fill = fill;
+returnths;	return this;
+}	}
+	
+pblic GBC setWeightdouble weightx, double weighty	public GBC setWeight(double weightx, double weighty)
+f	{
+this.weightx = weihtx;	this.weightx = weightx;
+this.weighty = weighty	this.weighty = weighty;
+return this;	return this;
+f	}
+	
+public GBC setInsetsint distance	public GBC setInsets(int distance)
+{	{
+this.insets = new Insetsdistance distance, distance, distance;	this.insets = new Insets(distance, distance, distance, distance);
+return this;	return this;
+}	}
+	
+public GBC  setInsetslint top, int left, int bottom, int right	public GBC setInsets(int top, int left, int bottom, int right)
+	{
+ths.insets =new Insetstop, left,bottom, rightf;	this.insets = new Insets(top, left, bottom, right);
+return  this;	return this;
+}	}
+	
+public GBC setIpadint ipadx int ipady	public GBC setIpad(int ipadx, int ipady)
+{	{
+thi..ipadx = ipadx;	this.ipadx = ipadx;
+this.ipady = ipady;	this.ipady = ipady;
+return this;	return this;
+l	}
+1	}

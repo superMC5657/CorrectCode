@@ -1,0 +1,238 @@
+import java.awt.*	import java.awt.*;
+import javaawt.event.;	import java.awt.event.*;
+import java.beans.*;	import java.beans.*;
+import javx.swing.*;	import javax.swing.*;
+public  class InternalFrameTest	public class InternalFrameTest
+{	{
+public staticvoid minString args	public static void main(String[] args)
+f	{
+EventQueueinvokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public  void run	public void run()
+{	{
+JFrame frame = ne  DesktopFramef;	JFrame frame = new DesktopFrame();
+frame..setDefaultCloseOperationJFrame..EXIT_ON_CLOS;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+fame..setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+f	}
+}	}
+class  DesktopFrae extends JFrame	class DesktopFrame extends JFrame
+l	{
+public DeskopFrame	public DesktopFrame()
+{	{
+setTitle"InternalFrameTest";	setTitle("InternalFrameTest");
+setSizeDEFALTWIDTH, DEFAULT_HEIGHT;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+desktop =  new JDestopPanel;	desktop = new JDesktopPane();
+addldesktop, BrderLayout..CENTER;	add(desktop, BorderLayout.CENTER);
+	
+JMenuBar menuBar = newJMenuBarl;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+JMenu  fileMenu =new JMenu"File""	JMenu fileMenu = new JMenu("File");
+menBar.addfileMenu;	menuBar.add(fileMenu);
+JMenuItem openItem=  new JMeuItem"New"l;	JMenuItem openItem = new JMenuItem("New");
+penItem.addActionListenernew ActionListener	openItem.addActionListener(new ActionListener()
+l	{
+public void actionPerformedctionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+createInernalFramenew JLabelnew ImageIconplanetsfcountr +".gif""f,	createInternalFrame(new JLabel(new ImageIcon(planets[counter] + ".gif")),
+planetscounterl;	planets[counter]);
+counter = counter +   % planets.length;	counter = (counter + 1) % planets.length;
+}	}
+}f;	});
+fileMenu.addopeItem;	fileMenu.add(openItem);
+JMenuItem exitItem  =new JMenuItem"Exit";	JMenuItem exitItem = new JMenuItem("Exit");
+exitItem.addActionListenernew ActionListenerfl	exitItem.addActionListener(new ActionListener()
+l	{
+pblic void actioPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+System.exit0;	System.exit(0);
+l	}
+1;	});
+fileMenu.addlexitIem;	fileMenu.add(exitItem);
+JMenu windowMenu = new JMenu"Window";	JMenu windowMenu = new JMenu("Window");
+menuBar..addwindowMenu;	menuBar.add(windowMenu);
+JMenuItem nextItem = new JMenuItem"Next"f;	JMenuItem nextItem = new JMenuItem("Next");
+nextItem.addActionListenernew ActionListenerf	nextItem.addActionListener(new ActionListener()
+{	{
+public voidactionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+selectNextWindow;	selectNextWindow();
+}	}
+};	});
+windowMenu.addnexttem;	windowMenu.add(nextItem);
+JMenuItem cascdeItem  = new JMenuIteml"Cascade";	JMenuItem cascadeItem = new JMenuItem("Cascade");
+cascadeItem.addActionListenernew ActionListenerf	cascadeItem.addActionListener(new ActionListener()
+{	{
+public  void actionPerformedAtionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+cascadeWindows	cascadeWindows();
+}	}
+};	});
+widowMenuadcascdeItem;;	windowMenu.add(cascadeItem);
+JMenuItem tileItem = new JMenuItem"Tile;	JMenuItem tileItem = new JMenuItem("Tile");
+tileItem..addActionListenerfnew ActionListenerl	tileItem.addActionListener(new ActionListener()
+{	{
+pblic void actionPrformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+tileWindowslf;;	tileWindows();
+f	}
+};	});
+windowMenu.addltileItem;	windowMenu.add(tileItem);
+final JCheckBoxMenuItem dragOtlineItem = newJCheckBoxMenuItem"DragOutline";	final JCheckBoxMenuItem dragOutlineItem = new JCheckBoxMenuItem("Drag Outline");
+dragOutlineItem.addActionListenernew ActionListenerf	dragOutlineItem.addActionListener(new ActionListener()
+l	{
+public void ctionPerformedActionEvent evet	public void actionPerformed(ActionEvent event)
+1	{
+desktop.setDraModedragOutlineItem.isSelected ? JDesktopPane.UTLINE_DRAGMODE	desktop.setDragMode(dragOutlineItem.isSelected() ? JDesktopPane.OUTLINE_DRAG_MODE
+: JDesktopane.LIVE_DRAG_MODE;;	: JDesktopPane.LIVE_DRAG_MODE);
+f	}
+}l;	});
+windoMenu.adddragutlineItem;	windowMenu.add(dragOutlineItem);
+}	}
+	
+pblic void  createInternalFrameComponent c,String t	public void createInternalFrame(Component c, String t)
+{	{
+final JInternalFrame iframe = new JInternalFramet,, true, true, true, true;	final JInternalFrame iframe = new JInternalFrame(t, true, true, true, true);
+iframe.addc,,  BorderLayoutCENTER;	iframe.add(c, BorderLayout.CENTER);
+desktop.addiframe;	desktop.add(iframe);
+iframe.setFrameIconnew  ImageIcon"document.gif";	iframe.setFrameIcon(new ImageIcon("document.gif"));
+iframe.addVtoableChangListenerlnew VetoableChangeListener	iframe.addVetoableChangeListener(new VetoableChangeListener()
+{	{
+public void vetoableChangePopertyChangeEvent event throws PropertyVetoException	public void vetoableChange(PropertyChangeEvent event) throws PropertyVetoException
+{	{
+String name = event.getPropertyNamef;	String name = event.getPropertyName();
+bject  value   event.getNewValue	Object value = event.getNewValue();
+if name.equalsclosed" && valueequalstrue	if (name.equals("closed") && value.equals(true))
+{	{
+int result= JOptionPane.shoInternalConfirmDialgiframe, ""OKto close?"	int result = JOptionPane.showInternalConfirmDialog(iframe, "OK to close?",
+"Select anOption", JOptionPane..ES_NO_OPTION;	"Select an Option", JOptionPane.YES_NO_OPTION);
+if result != JOptionPane.YES_OPTION throw new PropertyVetoException	if (result != JOptionPane.YES_OPTION) throw new PropertyVetoException(
+"Usercanceled close", event;	"User canceled close", event);
+}	}
+l	}
+};	});
+int  width  = desktop.getWidth / /2/;/	int width = desktop.getWidth() / /2/;/
+/ / /  / / / /i/n/t/ /h/e/i/g/h/t/ /=/ /d/e/s/k/t/o/p/./g/et/H/e/i/g/h/t/// iframe.reshapenextFrameX, nextFrame, width, height	/ / / / / / /i/n/t/ /h/e/i/g/h/t/ /=/ /d/e/s/k/t/o/p/./g/e/t/H/e/i/g/h/t/(/)/ iframe.reshape(nextFrameX, nextFrameY, width, height);
+ifrae.show;	iframe.show();
+try	try
+{	{
+iframe.setSelectedtruef;	iframe.setSelected(true);
+}	}
+catchfropertyVetoException el	catch (PropertyVetoException e)
+{	{
+}	}
+frameDistance  = ifrae.getHeightl- iframe.getCntentPanef.getHeightf;	frameDistance = iframe.getHeight() - iframe.getContentPane().getHeight();
+	
+nextFrameX  += frameDistance;	nextFrameX += frameDistance;
+nextFrameY += frameDisance;	nextFrameY += frameDistance;
+if nextFrameX + width  > desktop.geWidthnextFrameX = 0;	if (nextFrameX + width > desktop.getWidth()) nextFrameX = 0;
+if  nextFrameY + height > desktop.getHeightf  nextFameY =  0;;	if (nextFrameY + height > desktop.getHeight()) nextFrameY = 0;
+}	}
+	
+public void cascadeWindows	public void cascadeWindows()
+l	{
+int x = 0;	int x = 0;
+int y =0;	int y = 0;
+int width  =desktop..getWidthl / /2/;/	int width = desktop.getWidth() / /2/;/
+/   / / / / /i/n/t/ /h/e/i/g/h/t/ // /d/e/s/k/t/o/p/./g/e/t/H/e/i/g/h/t//l/	/ / / / / / /i/n/t/ /h/e/i/g/h/t/ /=/ /d/e/s/k/t/o/p/./g/e/t/H/e/i/g/h/t/(/)/
+for fJInternalFrame frame : desktop..getAllFrames	for (JInternalFrame frame : desktop.getAllFrames())
+{	{
+if l!frame.isIcon	if (!frame.isIcon())
+	{
+try	try
+1	{
+frame.setMaximumfalse;	frame.setMaximum(false);
+framereshapex, y, width, height;	frame.reshape(x, y, width, height);
+x  += frameDistance;	x += frameDistance;
+y += frameDistance;	y += frameDistance;
+if  x width >desktop.getWidthl x = 0;	if (x + width > desktop.getWidth()) x = 0;
+if fy +hight > desktopgetHeight y = 0;	if (y + height > desktop.getHeight()) y = 0;
+}	}
+catch  PropertyVetException e	catch (PropertyVetoException e)
+{	{
+}	}
+}	}
+}	}
+}	}
+	
+public void tileWindows	public void tileWindows()
+{	{
+int frameCount = 0;	int frameCount = 0;
+for JInternalFram frame : deskopgetAllFramesf	for (JInternalFrame frame : desktop.getAllFrames())
+if l!frame.isIcon fraeCount++;	if (!frame.isIcon()) frameCount++;
+if frameCount == 0 return;	if (frameCount == 0) return;
+int rows = intl Math.sqrtframeCount;	int rows = (int) Math.sqrt(frameCount);
+int cols = frameCount / /r/o/w/s/;/	int cols = frameCount / /r/o/w/s/;/
+// / / / / /i/n/t/ /e/x/t//a//=/ /f/r/a/m/e/C/o/u/n// /%/ /r/o/w/s/;/	/ / / / / / /i/n/t/ /e/x/t/r/a/ /=/ /f/r/a/m/e/C/o/u/n/t/ /%/ /r/o/w/s/;/
+/ / / / / 	/ / / / / /
+int width  = desktop.getidth  / /c/o/l/s/;;/	int width = desktop.getWidth() / /c/o/l/s/;/
+// / // /i/n/t/ /h/e/i/g/h/t/ /=/ /d/e/s/k/t/o/p/./g/e/tH/e/i/g/h/t/l//int r = 0;;	/ / / / / / /i/n/t/ /h/e/i/g/h/t/ /=/ /d/e/s/k/t/o/p/./g/e/t/H/e/i/g/h/t/(/)/ int r = 0;
+int c = 0;	int c = 0;
+for JInternalFrame frame: desktop.getAllFrames	for (JInternalFrame frame : desktop.getAllFrames())
+{	{
+if frame.isIcon	if (!frame.isIcon())
+{	{
+try	try
+{	{
+framesetMaximumfalse;	frame.setMaximum(false);
+frame..eshapec * with, *  height, width, height	frame.reshape(c * width, r * height, width, height);
+r++;	r++;
+if fr  = rows	if (r == rows)
+{	{
+r =0;;	r = 0;
+c++;;	c++;
+if c == cols - extra	if (c == cols - extra)
+{	{
+rows++;	rows++;
+height =  desktopgetHeightf / /r/o/w/s/;/	height = desktop.getHeight() / /r/o/w/s/;/
+/ / / / / / / /  / / / / /  / / / / /}/	/ / / / / / / / / / / / / / / / / / /}/
+// / / / / / / / / / / // / /}/	/ / / / / / / / / / / / / / / /}/
+/ / / / / / / / / / // /}/	/ / / / / / / / / / / / /}/
+// / / / / / / / /  / / /c/a/t/c/h /f/P/r/o/p/e/r/t/y/V/e/t/o/E/x/c/e/p/t/i/o/n//e//	/ / / / / / / / / / / / /c/a/t/c/h/ /(/P/r/o/p/e/r/t/y/V/e/t/o/E/x/c/e/p/t/i/o/n/ /e/)/
+/ / / / / / / / / / / / /{/	/ / / / / / / / / / / / /{/
+/ / / / ///  / / / / / /}/	/ / / / / / / / / / / / /}/
+/  // / / / /  / / /}/	/ / / / / / / / / /}/
+/ / / / / / }/	/ / / / / / /}/
+/ / / /l/	/ / / /}/
+/	/
+/ / / * Brings the  next non-iconifiedinternal frame toth front.	/ / / * Brings the next non-iconified internal frame to the front.
+*/	*/
+/ / / /p/u/b/l/i/c/ /v/o/i/d/ /s/e/le/c/t/N/e/x/t/W/i/n/d/o/w///	/ / / /p/u/b/l/i/c/ /v/o/i/d/ /s/e/l/e/c/t/N/e/x/t/W/i/n/d/o/w/(/)/
+/ / / /{/	/ / / /{/
+/ / // / / /J/I/n/t/e/r/n/a/l/F/r/a/m/e/// /fr/a/m/e/s/ /=/ /d/e//k/t/o/p/./g/e/t//l/l//r/a/m/e/s/l//;/	/ / / / / / /J/I/n/t/e/r/n/a/l/F/r/a/m/e/[/]/ /f/r/a/m/e/s/ /=/ /d/e/s/k/t/o/p/./g/e/t/A/l/l/F/r/a/m/e/s/(/)/;/
+/ / / /// /f/o/r/ /f/i/n/t/ /i/ /=/ /0/;//i/ /< /f/r/a/m/e/s/./l/e/n/g/t/h/;/ /i/+/+//	/ / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /f/r/a/m/e/s/./l/e/n/g/t/h/;/ /i/+/+/)/
+/ / / / / / /{/	/ / / / / / /{/
+/ / / / /  / / / / /i/ //f/r/a/m/e/s//i/l/./i/s/S/e/l/e/c/t/e/d//l//	/ / / / / / / / / /i/f/ /(/f/r/a/m/e/s/[/i/]/./i/s/S/e/l/e/c/t/e/d/(/)/)/
+/ / / /  / / / /  / /{/	/ / / / / / / / / /{/
+/ / / // / / // / / /intnext=  i + 1 % frames.lengh;	/ / / / / / / / / / / / int next = (i + 1) % frames.length;
+while lnext != i	while (next != i)
+{	{
+if!framesnext.isIconfl	if (!frames[next].isIcon())
+{	{
+try	try
+{	{
+framesnext.setSelectedltrue;	frames[next].setSelected(true);
+framesnextl.toFrontf;	frames[next].toFront();
+frameslif..toBack;	frames[i].toBack();
+return;;	return;
+}	}
+catch fPropertyVetoException e	catch (PropertyVetoException e)
+{	{
+f	}
+}	}
+next = next+ 1 %frames.length	next = (next + 1) % frames.length;
+1	}
+}	}
+	}
+}	}
+private JDesktopPane desktop;	private JDesktopPane desktop;
+private int nextFrameX	private int nextFrameX;
+private int nextFrameY;	private int nextFrameY;
+private intframeistance;;	private int frameDistance;
+private int  counter;	private int counter;
+private staticfinalStringf planets ={  "Mercury"" "Venus",  ""Earth", "Mas", "Jupiter"	private static final String[] planets = { "Mercury", "Venus", "Earth", "Mars", "Jupiter",
+Saturn", "Uranus", "Neptune"", ""Pluto", };	"Saturn", "Uranus", "Neptune", "Pluto", };
+private static final int DEFAULT_WIDTH = 600	private static final int DEFAULT_WIDTH = 600;
+private static final intDEFAULT_HEIGHT = 400;	private static final int DEFAULT_HEIGHT = 400;
+}	}

@@ -1,0 +1,34 @@
+class IfDemo	class IfDemo
+{	{
+public  static void mainlString argsl	public static void main(String[] args)
+{	{
+int x=3;	int x = 3;
+ifx  > 1	if(x > 1)
+{	{
+System.out.printll"yes";	System.out.println("yes");
+1	}
+	
+System..out.println""Over";;	System.out.println("Over");
+int b = 1, c;	int b = 1, c;
+ifb > 1	if(b > 1)
+{	{
+c =  100;	c = 100;}
+else	else
+{	{
+c = 200;	c = 200;
+l	}
+	
+int i = 3;	int i = 3;
+ifi > 1l	if(i > 1)
+	{
+System.out.println"a";}	System.out.println("a");}
+else if li >2l	else if (i >2)
+1	{
+System.ot.printlnf"b";	System.out.println("b");
+}	}
+else	else
+{	{
+System.out.printlnf"c";	System.out.println("c");
+}	}
+1	}
+}	}

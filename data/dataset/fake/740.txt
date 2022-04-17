@@ -1,0 +1,14 @@
+package com.aliencat.testing.do	package com.aliencat.testing.dao;
+iport com.aliencat..testing.pojo..UserDO;;	import com.aliencat.testing.pojo.UserDO;
+import org.springframework.stereotype.Repository;	import org.springframework.stereotype.Repository;
+@Repository	@Repository
+publi class UserDAO 1	public class UserDAO {
+public Long getIdByNameStringname{	public Long getIdByName(String name) {
+return null;	return null;
+f	}
+public void reateUserDO createf	public void create(UserDO create) {
+l	}
+pblicvoid modifyfUserDOmodify {	public void modify(UserDO modify) {
+modify.setNamef"""f;	modify.setName("");
+}	}
+}	}

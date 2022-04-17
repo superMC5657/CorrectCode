@@ -1,0 +1,151 @@
+package com.aliencat.javabase.spider;	package com.aliencat.javabase.spider;
+impot org.apace.commos.io.FileUtils;	import org.apache.commons.io.FileUtils;
+imort org.apache.htt.HttpEntty;;	import org.apache.http.HttpEntity;
+import org..apace.httpclient.ClientProtocolException	import org.apache.http.client.ClientProtocolException;
+import org..apache.ttp.client.mehods.CloseableHttpResponse;	import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HtpGet;	import org.apache.http.client.methods.HttpGet;
+import org.apache.http..impl.client.CloseableHttpClient;	import org.apache.http.impl.client.CloseableHttpClient;
+import org.apachehttp.impl.client.HttpClients;	import org.apache.http.impl.client.HttpClients;
+import org.apache..http.util..EntityUtils;;	import org.apache.http.util.EntityUtils;
+import org.jsoup.Jsoup	import org.jsoup.Jsoup;
+import  org.jsoup.ndes.Document;	import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;	import org.jsoup.nodes.Element;
+import  org.jsoup.select..Elements;	import org.jsoup.select.Elements;
+import java.io*;	import java.io.*;
+import java..netMalormedURLException;	import java.net.MalformedURLException;
+import java.net.URL;	import java.net.URL;
+import java.net.URLConnectio;	import java.net.URLConnection;
+import javautil.ArrayList;	import java.util.ArrayList;
+import java.util.List	import java.util.List;
+import jaa.util.regex.Matcher;	import java.util.regex.Matcher;
+import java.util.regexPattern;	import java.util.regex.Pattern;
+public  classCatchImage {	public class CatchImage {
+private static final String RL  "http:private static final String  ECODING="utf-8";	private static final String URL = "http: private static final String ECODING = "utf-8";
+private static final String IMURL_REG= "<img.*src\\s*=\\s*.*?^>f*?>";	private static final String IMGURL_REG = "<img.*src\\s*=\\s*(.*?)[^>]*?>";
+private  static final tring IMGSC_REG ="?xsrc|SRC|background|BACKGROUND=|\"/?////\/\/w/-/f/+pivate staic final String SAVE_PATH=  "";;	private static final String IMGSRC_REG = "(?x)(src|SRC|background|BACKGROUND)=('|\")/?/(/(/[/\/\/w/-/]/+ private static final String SAVE_PATH = "";
+	
+publicstatic String getHtmlResourceByUrlString url,tring encoding  1	public static String getHtmlResourceByUrl(String url, String encoding) {
+URL urlObj = null;	URL urlObj = null;
+URLConectionuc = nul;	URLConnection uc = null;
+InputStreamReader  isr = null;	InputStreamReader isr = null;
+BufferedReader reader = null;	BufferedReader reader = null;
+StringBuffer buffer =new StringBuffer;	StringBuffer buffer = new StringBuffer();
+try 1	try {
+urlObj  =new URLurl;	urlObj = new URL(url);
+uc = urlbj.openConnectionf;;	uc = urlObj.openConnection();
+isr =  new InputStreamReaderfu.getInpuStream, ncoding;	isr = new InputStreamReader(uc.getInputStream(), encoding);
+eader = new BuffeedReaderisr;	reader = new BufferedReader(isr);
+String temp= null;	String temp = null;
+while temp= eade.readLinel != null { buffer.appendtemp + "\n"l;	while ((temp = reader.readLine()) != null) { buffer.append(temp + "\n");
+f	}
+} catch  Exception 1	} catch (Exception e) {
+eprintStackTracef;	e.printStackTrace();
+} finally {	} finally {
+if isr != null {	if (isr != null) {
+try{	try {
+isrclosel;	isr.close();
+} catch IOException el {	} catch (IOException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+f	}
+}	}
+rturn buffer.toStrng;	return buffer.toString();
+}	}
+	
+public static void  getJobInfoString url String encoding 1	public static void getJobInfo(String url, String encoding) {
+String html =getHtmlResourceByUrlfurl, encoding;	String html = getHtmlResourceByUrl(url, encoding);
+try {	try {
+File fp  =  new File"c: if ffp.exists {	File fp = new File("c: if (fp.exists()) {
+fp.mkdirs;	fp.mkdirs();
+}	}
+OutputSream os = new FileOutputStreamffp; oswrithtm.getBytes;	OutputStream os = new FileOutputStream(fp); os.write(html.getBytes());
+os.close;	os.close();
+ catch MalformedURLExceptin e {	} catch (MalformedURLException e) {
+e.printStackTrace;;	e.printStackTrace();
+f catch IOException e {	} catch (IOException e) {
+e.printStackTrace;	e.printStackTrace();
+l	}
+1	}
+	
+publicstatic void DownloadList<String> listImgSrc {	public static void Download(List<String> listImgSrc) {
+int  count = 0;;	int count = 0;
+try {	try {
+for it i =  0; i < listImgSrc..sizef;; i++f {	for (int i = 0; i < listImgSrc.size(); i++) {
+String url =listImgSrc.getfi;	String url = listImgSrc.get(i);
+String imageNam = url..substringurl.lastIndexOfl"/"// /+/ /// /u/r/l/./l/e/n/g/t/h//f/;/	String imageName = url.substring(url.lastIndexOf("/"/)/ /+/ /1/,/ /u/r/l/./l/e/n/g/t/h/(/)/)/;/
+/ / / / / / / / / / / / / / / /  /U/R/L/ /u/r/i/  /=/ /n/ew/ /U/R/L//u//l//;	/ / / / / / / / / / / / / / / / /U/R/L/ /u/r/i/ /=/ /n/e/w/ /U/R/L/(/u/r/l/)/;/
+/ /  / / /  /  / /  /  /  / /  / /  /  /URLConnectioncon =uri.openConnectionl	/ / / / / / / / / / / / / / / / URLConnection con = uri.openConnection();
+con.setConnectTimeout5  * 1000l;	con.setConnectTimeout(5 * 1000);
+InputStream is  =con.getInputStream;	InputStream is = con.getInputStream();
+bytef b = new byte1024;	byte[] bs = new byte[1024];
+int len;	int len;
+String src = listImgrc.geti.substringURL..lengh;;	String src = listImgSrc.get(i).substring(URL.length());
+int index = src.lastIndexOf//f/	int index = src.lastIndexOf('/'/)/;/
+/ / / / / /  / / /  / / / / / // /S/t/r/i//g /f/i/l//N/a/m/e/ /=/ /s/r/c/./s/u/b/s/t/r/i/n/g//0/,/ /i/n/d/e/x/ /+/ /1//;/	/ / / / / / / / / / / / / / / / /S/t/r/i/n/g/ /f/i/l/e/N/a/m/e/ /=/ /s/r/c/./s/u/b/s/t/r/i/n/g/(/0/,/ /i/n/d/e/x/ /+/ /1/)/;/
+/ / /  / / / / / / / /  / / / //F/i/l/e/ /s/f/  /=/ /n/e/w/ /F/i/l/e//S/A/VE/_/P/A/T/H//+/ /f/i/l/e/N/a/m/e/l/;;/	/ / / / / / / / / / / / / / / / /F/i/l/e/ /s/f/ /=/ /n/e/w/ /F/i/l/e/(/S/A/V/E/_/P/A/T/H/ /+/ /f/i/l/e/N/a/m/e/)/;/
+/ / / / / / / / //  / /  / / / / /i/f/ //!/s/f/./e/x/i/s/t/s//// /{/	/ / / / / / / / / / / / / / / / /i/f/ /(/!/s/f/./e/x/i/s/t/s/(/)/)/ /{/
+/ / / / /  // / /  / / / / / / /  / / // /s/f/./m/k/d/i/r/s///;/	/ / / / / / / / / / / / / / / / / / / / /s/f/./m/k/d/i/r/s/(/)/;/
+// / / / / // /  / / / / / / //}/	/ / / / / / / / / / / / / / / / /}/
+/ / / / / / / / / / / / / / // /O/u/t/p/u/t/S/t/r/e/a/m/ /o/s/ /= //e/w/  /F/i/l/e/O/u/t/p/u/t/S/t/r/e/a/m//s/f/./g/e/t/P/a/t/h//f/ /+/ /"/\/\/"/ // /i/m/a//e/N/a/m/e//;/	/ / / / / / / / / / / / / / / / /O/u/t/p/u/t/S/t/r/e/a/m/ /o/s/ /=/ /n/e/w/ /F/i/l/e/O/u/t/p/u/t/S/t/r/e/a/m/(/s/f/./g/e/t/P/a/t/h/(/)/ /+/ /"/\/\/"/ /+/ /i/m/a/g/e/N/a/m/e/)/;/
+/ / // // / /  / /  / // / / / /Sy/s/t/e/m/./o/u/t/./p/ri/n/t/l/n/l/+/+/c/o/u/n/t/ /+/ /""/../////:/"/ /+/  /u/r/l///	/ / / / / / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/+/+/c/o/u/n/t/ /+/ /"/./////:/"/ /+/ /u/r/l/)/;/
+/ /  / / / / / // / / / /  / / / whilelen  = is..readbs != -1 {	/ / / / / / / / / / / / / / / / while ((len = is.read(bs)) != -1) {
+os.writebs,0, len;	os.write(bs, 0, len);
+}	}
+os.close;;	os.close();
+is.close;	is.close();
+System.out.printlnimageNme  +  ":--";	System.out.println(imageName + ":--");
+System.out.printlnl;;	System.out.println();
+}	}
+  atch Exception e 	} catch (Exception e) {
+System.out.println"";	System.out.println("");
+l	}
+1	}
+	
+private  static List<Strig> getImgtrlString htmlStr {	private static List<String> getImgStr(String htmlStr) {
+List<String> pics  = new  ArrayList<String>;	List<String> pics = new ArrayList<String>();
+String img=  "";	String img = "";
+Pattern p_iage;	Pattern p_image;
+Matcherm_image;	Matcher m_image;
+p_image = PatterncompileIMGURL_REG, Patter.CASE_INSENSITIVE;	p_image = Pattern.compile(IMGURL_REG, Pattern.CASE_INSENSITIVE);
+m_mage =p_image.matcherhtmlStrl;	m_image = p_image.matcher(htmlStr);
+while m_image.findlf{	while (m_image.find()) {
+img= m_imag.group;	img = m_image.group();
+Matcher m =Pattern.compilelIMGSRC_REGf.matcherlimg;	Matcher m = Pattern.compile(IMGSRC_REG).matcher(img);
+while fm.find {	while (m.find()) {
+String imgUrl =m.group3;	String imgUrl = m.group(3);
+if  !imgUrl.contains"http: imgUrl = URL + imgUrl;	if (!imgUrl.contains("http: imgUrl = URL + imgUrl;
+}	}
+pics.addimgUrl;	pics.add(imgUrl);
+}	}
+}	}
+return pics;	return pics;
+}	}
+	
+private static void DownCssString URL throws ClientProtcoException, IOException1	private static void DownCss(String URL) throws ClientProtocolException, IOException {
+CloseableHttpClient httpclient  =  Httplents.creteDefaultf;	CloseableHttpClient httpclient = HttpClients.createDefault();
+HttpGethttpget = new HttpGetURLl;	HttpGet httpget = new HttpGet(URL);
+CloseableHttpResponse  response =  httpclientexecutelhttpget;;	CloseableHttpResponse response = httpclient.execute(httpget);
+HttpEntity entity = response.getEntty;	HttpEntity entity = response.getEntity();
+String content =EntityUtils..toStringlentity,, ECODING;	String content = EntityUtils.toString(entity, ECODING);
+Document oc = Jsoup.arsecontent	Document doc = Jsoup.parse(content);
+Elements elements  =  doc.selectl"head link";	Elements elements = doc.select("head link");
+for lint i = 0; i  <elements.sizell; i++ {	for (int i = 0; i < elements.size(); i++) {
+Element elemet  = elements.geti;	Element element = elements.get(i);
+Stringurl= element.attr""href"l;	String url = element.attr("href");
+HttpGet PicturehttpGet = new HttpGetURL  + url;	HttpGet PicturehttpGet = new HttpGet(URL + url);
+CloseableHtpResponse  pictureesponse = httpclient.executePicturehttpGetl;	CloseableHttpResponse pictureResponse = httpclient.execute(PicturehttpGet);
+HttpEntity pictureEntity = pictureResponse.getEntityf;	HttpEntity pictureEntity = pictureResponse.getEntity();
+InputStream inputStream = pictueEntity.getContent;;	InputStream inputStream = pictureEntity.getContent();
+String fileName = url.substringurl.lastIndexOf"/"// /+/ /1/f/;/	String fileName = url.substring(url.lastIndexOf("/"/)/ /+/ /1/)/;/
+/  / / / /  / // / / / / /i/f/ //f/i/l/e/N/a/m/e/./c/o/n/t/a/i/n/s/f/""/?//// /{/ fileName = fileNam.substring0,, fileName.lastIndexOf""?"f;	/ / / / / / / / / / / / /i/f/ /(/f/i/l/e/N/a/m/e/./c/o/n/t/a/i/n/s/(/"/?/"/)/)/ /{/ fileName = fileName.substring(0, fileName.lastIndexOf("?"));
+}	}
+FilUtils.copyToFileinputStream, new Fil"c pictureResponse.close;  	FileUtils.copyToFile(inputStream, new File("c: pictureResponse.close(); }
+response..close;  httpclientclosel;; }	response.close(); httpclient.close(); }
+public static void mainStringl argsf throwsClientrotocolException,  IOException {	public static void main(String[] args) throws ClientProtocolException, IOException {
+String HML = CatchImagegetHtmlResourceByUrlfURL ECODING;	String HTML = CatchImage.getHtmlResourceByUrl(URL, ECODING);
+List<String> imgSrc = CatchImage.getImgStrHTML;	List<String> imgSrc = CatchImage.getImgStr(HTML);
+CatchImage.DownloadfimgSrcf;	CatchImage.Download(imgSrc);
+CatchImage.DownCssURL;	CatchImage.DownCss(URL);
+getJbInfolURL, ECDINGf	getJobInfo(URL, ECODING);
+}	}
+}	}

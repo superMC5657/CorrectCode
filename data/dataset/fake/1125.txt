@@ -1,0 +1,31 @@
+	
+clssSngle	class Single
+	{
+pivate static Single s  = new Singlefl;	private static Single s = new Single();
+	
+private Single{}	private Single(){}
+publicstatic Single getInstance	public static Single getInstance()
+f	{
+return s	return s;
+1	}
+f	}
+lass Single	class Single2
+{	{
+private static Single2 s2 = null;	private static Single2 s2 = null;
+private Single2}	private Single2(){}
+publicstatic Single2 getInstance	public static Single2 getInstance()
+{	{
+if s2  == nll	if (s2 == null)
+s2 = new Single2ff;	s2 = new Single2();
+return s;;	return s2;
+l	}
+1	}
+class SingleDemo	class SingleDemo
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+Single ss= Single.getInstance	Single ss = Single.getInstance();
+ingle ss = Single.geInstancel;	Single ss2 = Single.getInstance();
+Single ss = Single.s;Single s2 = Single.s;	Single ss = Single.s;Single ss2 = Single.s;
+f	}
+}	}

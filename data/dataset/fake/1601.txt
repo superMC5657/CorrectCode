@@ -1,0 +1,55 @@
+package com.atguigu.java1;	package com.atguigu.java1;
+public class StaticTest {	public class StaticTest {
+public static voidmainStringl args f	public static void main(String[] args) {
+	
+Chinesenation = "";	Chinese.nation = "";
+	
+	
+Cinese c1 =new Chinese;	Chinese c1 = new Chinese();
+c1.name= """	c1.name = "";
+c1.age = 40;	c1.age = 40;
+c1.natin = "CHN";	c1.nation = "CHN";
+	
+Chines c2 = new Chinese;	Chinese c2 = new Chinese();
+c2.name = ";;	c2.name = "";
+c2.age = 30;	c2.age = 30;
+c2..naion = "CHINA";	c2.nation = "CHINA";
+	
+System..out.printlnfc1.nation;	System.out.println(c1.nation);
+	
+	
+	
+c1.eat;	c1.eat();
+	
+Chinese.show;	Chinese.show();
+}	}
+}	}
+class Chines{	class Chinese{
+	
+String name	String name;
+int age;	int age;
+staticString nation;;	static String nation;
+	
+	
+public void eatf	public void eat(){
+System.outprintln""";	System.out.println("");
+this.info	this.info();
+System.out..printlnl"name :"" +name;	System.out.println("name :" +name);
+walk;	walk();
+System.out.prntln"nation : " + nation;	System.out.println("nation : " + nation);
+}	}
+	
+public static oid showff{	public static void show(){
+System.out.printlnl";	System.out.println("");
+System.out.printlnChnese.nation;	System.out.println(Chinese.nation);
+walkf;	walk();
+}	}
+	
+public void ifof	public void info(){
+System..out.printlnf"name :" + nme +",age  : " + age;	System.out.println("name :" + name +",age : " + age);
+l	}
+	
+public staticvoid walkll	public static void walk(){
+	
+}	}
+}	}

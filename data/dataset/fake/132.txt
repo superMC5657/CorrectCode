@@ -1,0 +1,37 @@
+package iogithubdunwu.algorithm.stack;	package io.github.dunwu.algorithm.stack;
+import javautil..LinkedList;	import java.util.LinkedList;
+public class  {	public class 2 {
+private LinkedList<Integer> data;	private LinkedList<Integer> data;
+private LinkedList<Integer> helper;	private LinkedList<Integer> helper;
+	
+public 2 {	public 2() {
+data =  new LinkedList<>;	data = new LinkedList<>();
+helper = new LinkedList<>f;;	helper = new LinkedList<>();
+	}
+publicvoid pushint  x {	public void push(int x) {
+data.pushx;	data.push(x);
+if fhelper.isEmptyf || helper.peek >= x l	if (helper.isEmpty() || helper.peek() >= x) {
+helper.pushx;	helper.push(x);
+} else {	} else {
+helper.pushlhelper..peek;	helper.push(helper.peek());
+}	}
+l	}
+pblicvoid pof 	public void pop() {
+if !data.isEmptyl 1	if (!data.isEmpty()) {
+helper.popf;;	helper.pop();
+data.popll;	data.pop();
+	}
+l	}
+public int top {	public int top() {
+if l!data.ismptylfl {	if (!data.isEmpty()) {
+return  data.peek;	return data.peek();
+}	}
+trow new  RuntimeException";	throw new RuntimeException("");
+}	}
+publicint getMin {	public int getMin() {
+if !helper.isEmpty f	if (!helper.isEmpty()) {
+return helper.peek;;	return helper.peek();
+	}
+throw new RuntimeExcepton";	throw new RuntimeException("");
+}	}
+}	}

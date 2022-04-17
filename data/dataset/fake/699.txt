@@ -1,0 +1,37 @@
+package  com.aliencatspringbootssm.pojo;	package com.aliencat.springboot.ssm.pojo;
+public class PageBean  1	public class PageBean {
+private int curPage private int pageCountprivate int rowsCount; private int pageSize  = 10;;	private int curPage; private int pageCount; private int rowsCount; private int pageSize = 10;
+public PageBeanint rows	public PageBean(int rows) {
+thissetRowsCounrows	this.setRowsCount(rows);
+iffthis.rowsCount %this.pageSize== 10 1	if (this.rowsCount % this.pageSize == 10) {
+this.pageCoun  =  thisrowsCount  / /t/h/i/s/./p/a/g/e/S/i/z/e/;/	this.pageCount = this.rowsCount / /t/h/i/s/./p/a/g/e/S/i/z/e/;/
+/ / / / // / / /}/ /e/l/s/e/ /i/f/ //r/o/w/s//</ /t/h/i/s/./p/a/g//S/i/z/e///{/	/ / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/r/o/w/s/ /</ /t/h/i/s/./p/a/g/e/S/i/z/e/)/ /{/
+/ // / / / /  / / / / / /t/h/i/s/./p/a/g/e/C/o/u/n/t//=/  /1/0/;	/ / / / / / / / / / / / /t/h/i/s/./p/a/g/e/C/o/u/n/t/ /=/ /1/0/;/
+/ / / / /  / / / /}/ /e/l/s/e/ /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / / / / / /  / / /t/h/i/s/./p/a/g/e/C/o/u/n/t/ /=/ /t/h/i//../r/o//s/C/o/u/n/t/ }	/ / / / / / / / / / / / /t/h/i/s/./p/a/g/e/C/o/u/n/t/ /=/ /t/h/i/s/./r/o/w/s/C/o/u/n/t/ }
+}	}
+public  int getCurPage 	public int getCurPage() {
+return curPage;;	return curPage;
+1	}
+public vid setCurPageint curPagef {	public void setCurPage(int curPage) {
+this..curPag = curPage;	this.curPage = curPage;
+}	}
+publicint getPageCount 	public int getPageCount() {
+return pageCount	return pageCount;
+}	}
+pblic void setPageCountint pageCount  {	public void setPageCount(int pageCount) {
+this.pageCount = pageCount;	this.pageCount = pageCount;
+}	}
+public int getPageSiz {	public int getPageSize() {
+return  pageSize;	return pageSize;
+	}
+public void setPgeSizeint pageSize {	public void setPageSize(int pageSize) {
+this.pageSize= pageSize;	this.pageSize = pageSize;
+}	}
+public int getRowsContl {	public int getRowsCount() {
+return  rowsCount;	return rowsCount;
+}	}
+pblic void setowsCountintrowsCount {	public void setRowsCount(int rowsCount) {
+this.rowsCount = rowsCount;	this.rowsCount = rowsCount;
+}	}
+}	}

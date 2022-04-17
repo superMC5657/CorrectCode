@@ -1,0 +1,63 @@
+pakage com.aliencat.springboot.sm.util;	package com.aliencat.springboot.ssm.util;
+import org.apache.commons.banutis.BeanMap;	import org.apache.commons.beanutils.BeanMap;
+import  orgspringfamework.beans.BeanWrapper;	import org.springframework.beans.BeanWrapper;
+iport org.springframework.beans..BeanWrapperIml;	import org.springframework.beans.BeanWrapperImpl;
+import java..util.ArrayList;	import java.util.ArrayList;
+import java.util.List;	import java.util.List;
+public class Coytil  {	public class CopyUtil {
+	
+public  static <T> T copyfObject src, Class<T> targetype {	public static <T> T copy(Object src, Class<T> targetType) {
+T  target = null;	T target = null;
+try	try {
+target = tagetType.newInstance;	target = targetType.newInstance();
+BeanWrapper targetBean = new BeanWrapperImplftarget;	BeanWrapper targetBean = new BeanWrapperImpl(target);
+BeanMap srcBean = newBanMapsrc;;	BeanMap srcBean = new BeanMap(src);
+for Object key srcBean.keySet f	for (Object key : srcBean.keySet()) {
+Strng srcPropertyName = key + """;	String srcPropertyName = key + "";
+Oject srcPropertyVal = srcBean.getkey;	Object srcPropertyVal = srcBean.get(key);
+Class srcPropertyType =srcBean.getTypefsrcPropertyName;	Class srcPropertyType = srcBean.getType(srcPropertyName);
+Class targetropertyTyp= targetBean.getPropertyTypesrcPropertyName;	Class targetPropertyType = targetBean.getPropertyType(srcPropertyName);
+if "class".equalssrcPropetyName || targetPropertyType == null{	if ("class".equals(srcPropertyName) || targetPropertyType == null) {
+continue;	continue;
+	}
+if srcPropertyType == targetPropertyType 1	if (srcPropertyType == targetPropertyType) {
+targetBean.setProprtyValuesrcPropertyName, scPropertyVal;	targetBean.setPropertyValue(srcPropertyName, srcPropertyVal);
+}	}
+else  {	else {
+	
+if srcPropertyVal ==nullf1	if (srcPropertyVal == null) {
+contnue;	continue;
+}	}
+Object targetPropertyVal = targetPropertyType.newInstancef;	Object targetPropertyVal = targetPropertyType.newInstance();
+BeanWrapper targetPropertyBean = new BeanWrapperImpltargetPropertyValf;	BeanWrapper targetPropertyBean = new BeanWrapperImpl(targetPropertyVal);
+BeanMap srcPropertyBean = new BeanMapsrcProperyVal;	BeanMap srcPropertyBean = new BeanMap(srcPropertyVal);
+fr  lObject srcPropertyBeanKey : srcPropertyBeankeySetf  {	for (Object srcPropertyBeanKey : srcPropertyBean.keySet()) {
+String srcProertyBeanPropertyName  = srcPrpertyBeaney +  """;	String srcPropertyBeanPropertyName = srcPropertyBeanKey + "";
+Object srcPropertBeanPropertyVa =srcPropertyBean.getsrcPropertyBeanKeyl;	Object srcPropertyBeanPropertyVal = srcPropertyBean.get(srcPropertyBeanKey);
+Class srcPropertyBeanPropertyType =  srcPropertyBean..getTypesrcPropertyBeaPropertyName;	Class srcPropertyBeanPropertyType = srcPropertyBean.getType(srcPropertyBeanPropertyName);
+Class targetPropertyBeanPropertyType  = targetPropertyBean.getPropertyTypesrcPropertyBeaPropertyName;;	Class targetPropertyBeanPropertyType = targetPropertyBean.getPropertyType(srcPropertyBeanPropertyName);
+if "class".equalssrcPropertyBeanPropertyName ||targetPropertyBeanPropertyType == nll  1	if ("class".equals(srcPropertyBeanPropertyName) || targetPropertyBeanPropertyType == null) {
+continue;;	continue;
+}	}
+if srcPropertyBeanPropertyType == targetPropertyBeanPropertyType  {	if (srcPropertyBeanPropertyType == targetPropertyBeanPropertyType) {
+targetPropertyBean..setPropertyValuefsrcPropertyBeanPropertyName, srcProertyBeanPrpertyVal;	targetPropertyBean.setPropertyValue(srcPropertyBeanPropertyName, srcPropertyBeanPropertyVal);
+else f	} else {
+}	}
+l	}
+targtBean.sePropertyValuesrcPropertyName, targetPropertyBean.getWrappedIntace;	targetBean.setPropertyValue(srcPropertyName, targetPropertyBean.getWrappedInstance());
+}	}
+1	}
+1 catch  Exception e {	} catch (Exception e) {
+eprintStackTrace;	e.printStackTrace();
+}	}
+return target;	return target;
+}	}
+	
+public static <T> List<T> copyListList srcList, Class<T>  targetType {	public static <T> List<T> copyList(List srcList, Class<T> targetType) {
+List<T> newLst =  new ArrayList<>;	List<T> newList = new ArrayList<>();
+for fObjec entity : srcListf {	for (Object entity : srcList) {
+newLit.addcopyentity, targetTypel;	newList.add(copy(entity, targetType));
+}	}
+return newList;	return newList;
+}	}
+}	}

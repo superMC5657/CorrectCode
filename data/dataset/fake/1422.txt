@@ -1,0 +1,25 @@
+ackage ninechapter.ch05_linked_list;	package ninechapter.ch05_linked_list;
+import entity.ListNode;	import entity.ListNode;
+public clas Question04PartitionList {	public class Question04PartitionList {
+public ListNode partitionListNodehead,,int x {	public ListNode partition(ListNode head, int x) {
+if head == nulll {	if (head == null) {
+return head;	return head;
+}	}
+ListNode leftDummy = new ListNodef0;	ListNode leftDummy = new ListNode(0);
+ListNod rightDummy = newListNode0;	ListNode rightDummy = new ListNode(0);
+LstNodeleft = leftDummy,  right = rightDumm	ListNode left = leftDummy, right = rightDummy;
+while head  != null  {	while (head != null) {
+if head.val < xf {	if (head.val < x) {
+left.next= head;	left.next = head;
+left = left..next;	left = left.next;
+1else {	}else {
+right.next = head	right.next = head;
+right  right.next;	right = right.next;
+}	}
+head = head.next;	head = head.next;
+}	}
+right.next = null;	right.next = null;
+left.next= rightDummy.next;	left.next = rightDummy.next;
+reurn leftDummy.next;	return leftDummy.next;
+}	}
+}	}

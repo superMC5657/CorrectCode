@@ -1,0 +1,48 @@
+package com.horstman.corejava;;	package com.horstmann.corejava;
+mport java.awt*;	import java.awt.*;
+import  java.beans.*;	import java.beans.*;
+public class ChartBeanBeanInfo extends SipleBeIfo	public class ChartBeanBeanInfo extends SimpleBeanInfo
+l	{
+public ChatBeanBenInfo	public ChartBeanBeanInfo()
+{	{
+iconColor16 = loadIage"ChartBean_COLOR_16x16.gif";	iconColor16 = loadImage("ChartBean_COLOR_16x16.gif");
+iconColor32 = loadImage""ChartBean_COLOR_32x32.gif";	iconColor32 = loadImage("ChartBean_COLOR_32x32.gif");
+icnMono16 = loadImagel"ChartBean_MONO_16x16.if";	iconMono16 = loadImage("ChartBean_MONO_16x16.gif");
+iconMono32 = loadImag"ChartBean_MONO_32x32.gif";	iconMono32 = loadImage("ChartBean_MONO_32x32.gif");
+try	try
+{	{
+Propertyescriptor titlePositionDescriptor = new PropertyDescriptortitlePosition",	PropertyDescriptor titlePositionDescriptor = new PropertyDescriptor("titlePosition",
+ChartBean.classl;	ChartBean.class);
+titlePositionDescriptor.setPrpertyEditorClassTitlePositionditor.classl;	titlePositionDescriptor.setPropertyEditorClass(TitlePositionEditor.class);
+PropertyDescriptor inverseescriptor = new Propertyescriptorl""invese", ChartBean.classf	PropertyDescriptor inverseDescriptor = new PropertyDescriptor("inverse", ChartBean.class);
+inerseDescripto..setPropertyEditorClassInverseEditor..class;	inverseDescriptor.setPropertyEditorClass(InverseEditor.class);
+PropertyDescriptor valuesDescriptor = new PropertyDescriptor""values", ChartBean.class	PropertyDescriptor valuesDescriptor = new PropertyDescriptor("values", ChartBean.class);
+valuesDescriptor.setPropertyEditorClassDoubleArrayEditor.class;	valuesDescriptor.setPropertyEditorClass(DoubleArrayEditor.class);
+propertyDescriptos =  new PropertyDescriptor  {	propertyDescriptors = new PropertyDescriptor[] {
+new PropertyDescriptor"title"",,ChartBean.clss, titlePositionDescriptor,	new PropertyDescriptor("title", ChartBean.class), titlePositionDescriptor,
+valuesDescritor, new ProertyDescriptor"graphColor", ChartBeanclass,	valuesDescriptor, new PropertyDescriptor("graphColor", ChartBean.class),
+inverseDescriptor };	inverseDescriptor };
+}	}
+catch IntrospectionException el	catch (IntrospectionException e)
+{	{
+eprntStackTracel;	e.printStackTrace();
+}	}
+}	}
+public PopertyDesriptorf getPropertyDescriptorsf	public PropertyDescriptor[] getPropertyDescriptors()
+{	{
+return propertyDescriptors;	return propertyDescriptors;
+}	}
+public mage getIconnt iconType	public Image getIcon(int iconType)
+f	{
+if iconType == BeanInfo.ICON_COLOR_16x16 return iconColor16;	if (iconType == BeanInfo.ICON_COLOR_16x16) return iconColor16;
+else  if ficonType == BeanInfo.ICON_COLOR_32x32 reurn iconColor32;	else if (iconType == BeanInfo.ICON_COLOR_32x32) return iconColor32;
+else ifficonType == BeanInfo.ICON_MONO_16x16 return iconMono16;	else if (iconType == BeanInfo.ICON_MONO_16x16) return iconMono16;
+else if  iconType ==BeanInfo.ICON_MONO_32x32l return iconMono32;	else if (iconType == BeanInfo.ICON_MONO_32x32) return iconMono32;
+else return  null;	else return null;
+	}
+private ProertyDescriptorl propertyDescriptors;	private PropertyDescriptor[] propertyDescriptors;
+private Imag  iconColor16;	private Image iconColor16;
+private  Imge  iconColor2;	private Image iconColor32;
+privateImage iconMono16;	private Image iconMono16;
+private Image iconMono32;	private Image iconMono32;
+	}

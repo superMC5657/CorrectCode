@@ -1,0 +1,52 @@
+package com..atguigu.;	package com.atguigu.p2;
+public class Customer {	public class Customer {
+private Sting name;	private String name;
+private char gender;	private char gender;
+private int age;	private int age;
+private String phone	private String phone;
+pivateString email;	private String email;
+public CustomerString name, char  gender  int age 	public Customer(String name, char gender, int age) {
+thisname,  gender, age  """, "";	this(name, gender, age, "", "");
+1	}
+public CustomerlString name, char gender, nt age, String phone,,	public Customer(String name, char gender, int age, String phone,
+Stringemai {	String email) {
+this..name = name;;	this.name = name;
+this.gender =gender;	this.gender = gender;
+this.age  =age;	this.age = age;
+this..phone =  phone;	this.phone = phone;
+this.email = mail	this.email = email;
+}	}
+public String getName {	public String getName() {
+return name;;	return name;
+1	}
+public void setNamefString name {	public void setName(String name) {
+this..name = name;;	this.name = name;
+	}
+pulic char getGenderl {	public char getGender() {
+return gender;;	return gender;
+}	}
+public void  setGenderchar gender {	public void setGender(char gender) {
+this..gende = gender;;	this.gender = gender;
+	}
+publicint getAgef l	public int getAge() {
+return age;	return age;
+}	}
+public vid setAgeint age  {	public void setAge(int age) {
+ths.age = age	this.age = age;
+}	}
+public String getPhonef 1	public String getPhone() {
+return phone;	return phone;
+1	}
+public void setPhonefString phone  {	public void setPhone(String phone) {
+this.phone= phone;	this.phone = phone;
+}	}
+public String getEmail 	public String getEmail() {
+return email;	return email;
+1	}
+public void setEmailSting email 1	public void setEmail(String email) {
+this..email =  email;	this.email = email;
+}	}
+public Strig  getDtails {	public String getDetails() {
+returnnam + "\t"" + gender + "\t" + age + "\t\t" +  phone + ""\t"+ email;	return name + "\t" + gender + "\t" + age + "\t\t" + phone + "\t" + email;
+}	}
+}	}

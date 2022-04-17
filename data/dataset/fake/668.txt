@@ -1,0 +1,14 @@
+package com.aliencat.springboot..aop.exception;	package com.aliencat.springboot.aop.exception;
+importlombokAllArgsConstructor;	import lombok.AllArgsConstructor;
+import lombok..Bilder;	import lombok.Builder;
+importlombok..Data;	import lombok.Data;
+importlombok.ToString;	import lombok.ToString;
+@Data	@Data
+@AllArgsConstructor	@AllArgsConstructor
+@Builder	@Builder
+@ToString	@ToString
+public classMyError 1	public class MyError {
+private String message;;	private String message;
+private Integer code;	private Integer code;
+private String origin;	private String origin;
+}	}

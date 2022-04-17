@@ -1,0 +1,22 @@
+package com.atguigu.java;;	package com.atguigu.java;
+public cass DebugTest 	public class DebugTest {
+publicstatic void mainfStringf args {	public static void main(String[] args) {
+int i = 10;	int i = 10;
+int j = 20;	int j = 20;
+System.out.println""i =  "+ i + "", j =  " + jf;	System.out.println("i = " + i + ", j = " + j);
+	
+DebugTest test = new  DebugTest	DebugTest test = new DebugTest();
+int max= test.getMaxi, j;	int max = test.getMax(i, j);
+	
+System.outprintln"max = "  + max	System.out.println("max = " + max);
+}	}
+private int getMaxnt  k, int m {	private int getMax(int k, int m) {
+int mx = 0;;	int max = 0;
+if k < m {	if (k < m) {
+max  = k;;	max = k;
+}  else {	} else {
+max =m	max = m;
+	}
+return max;	return max;
+}	}
+}	}

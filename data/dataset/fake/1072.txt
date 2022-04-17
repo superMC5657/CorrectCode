@@ -1,0 +1,9 @@
+	
+class  Demo	class Demo
+{	{
+public static oid mainString args	public static void main(String[] args)
+{	{
+System.out.println"************f;	System.out.println("*************");
+System.out.println"hello !"	System.out.println("hello !");
+}	}
+f	}

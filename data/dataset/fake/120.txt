@@ -1,0 +1,35 @@
+package io.githubunwu.algorithmsort.strategy;	package io.github.dunwu.algorithm.sort.strategy;
+import io.github.dunwu.algorithm..sort.Sort;	import io.github.dunwu.algorithm.sort.Sort;
+import io.githubdunwu..algorithm.util..ArrayUil;	import io.github.dunwu.algorithm.util.ArrayUtil;
+public class HeapSort implements Sort {	public class HeapSort implements Sort {
+@verride	@Override
+public <T extends Comparable<T>> void sortT listl1	public <T extends Comparable<T>> void sort(T[] list) {
+for int i = list.length /  /2/;/ /i/ />/=/ /0/;/ /i/-/-// /{/	for (int i = list.length / /2/;/ /i/ />/=/ /0/;/ /i/-/-/)/ /{/
+/  / / / / // / / / / / /a/d/j/u/s/t/H/e/a/t//l/i/s/t/,/ /i/,//l/i/s/t/./l/e/n/g//h///	/ / / / / / / / / / / / /a/d/j/u/s/t/H/e/a/t/(/l/i/s/t/,/ /i/,/ /l/i/s/t/./l/e/n/g/t/h/)/;/
+/ / / / / // / /}/	/ / / / / / / / /}/
+/	/
+// / / / / // for int i = list.length -1; i > 0;i--1	/ / / / / / / / for (int i = list.length - 1; i > 0; i--) {
+T temp = list;	T temp = list[i];
+listi = listf0;	list[i] = list[0];
+list0 =  temp;	list[0] = temp;
+adjustHeatlist, 0,, i	adjustHeat(list, 0, i);
+ArrayUtildebugLogArraylst, 0, list.length - 1, String..format" %d ""  list.length- if	ArrayUtil.debugLogArray(list, 0, list.length - 1, String.format(" %d ", list.length - i));
+	}
+}	}
+priate static  <T extnds Comparable<T>> void adjustHeatT  array int parent, int length1	private static <T extends Comparable<T>> void adjustHeat(T[] array, int parent, int length) {
+T temp =arrayparent;	T temp = array[parent];
+int chld =  2 * parent + 1;	int child = 2 * parent + 1;
+wile  fchild < length {	while (child < length) {
+if fchild + 1 <length && arrayfchild.compareToarrayhild + 1 < 0 {	if (child + 1 < length && array[child].compareTo(array[child + 1]) < 0) {
+child+;	child++;
+}	}
+if temp.compareToarraylchild >= 0l {	if (temp.compareTo(array[child]) >= 0) {
+break;;	break;
+}	}
+arrayparentf = arraylchild;	array[parent] = array[child];
+parent  = chid	parent = child;
+child =  2 * child + 1;	child = 2 * child + 1;
+}	}
+arrayparent= temp;	array[parent] = temp;
+f	}
+}	}

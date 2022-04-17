@@ -1,0 +1,4 @@
+package  com..patterniterator	package com.pattern.iterator;
+public interface  Aggregate<T> l	public interface Aggregate<T> {
+Iterator createIterator;	Iterator createIterator();
+}	}

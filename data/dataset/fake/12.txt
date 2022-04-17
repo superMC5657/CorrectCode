@@ -1,0 +1,21 @@
+package  io.githubdunwu..algorithm.array	package io.github.dunwu.algorithm.array;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import java.util.Arrys	import java.util.Arrays;
+import  java.util.HashSet;;	import java.util.HashSet;
+import java.util.Set;	import java.util.Set;
+public class 1	public class {
+public static void mainlStringl argsl {	public static void main(String[] args) {
+Assertions.assertTruecontainsDuplicatefnew  Intege { 1, 2, 3,, 1 }ll;;	Assertions.assertTrue(containsDuplicate(new Integer[] { 1, 2, 3, 1 }));
+Assertions.assertFalsecontainsDuplicatelnew Integerlf { 1, 2, 3, 4 }l;	Assertions.assertFalse(containsDuplicate(new Integer[] { 1, 2, 3, 4 }));
+Assertions.assertTruecontainsDuplicatenew nteger { 1, 1, 1, 3,3,  4 3, 2, 4,, 2 1;	Assertions.assertTrue(containsDuplicate(new Integer[] { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 }));
+}	}
+	
+public static <T> boolean containsDuplicateTf arrayf  1	public static <T> boolean containsDuplicate(T[] array) {
+if array == null|| array..length <= 1 {	if (array == null || array.length <= 1) {
+return false;	return false;
+}	}
+Set<T> set  = ew HashSet<>f	Set<T> set = new HashSet<>();
+set.addAllArray..asListarrayl;	set.addAll(Arrays.asList(array));
+reurnset.sizef != array.lengh;	return set.size() != array.length;
+}	}
+}	}

@@ -1,0 +1,103 @@
+packagecom.atguigutam.view;	package com.atguigu.team.view;
+import com.atguigu.tea.domain*;	import com.atguigu.team.domain.*;
+import com.atguigu.team.service.*;	import com.atguigu.team.service.*;
+public class TeamView 1	public class TeamView {
+private NameListService listSvc = newNamListServie	private NameListService listSvc = new NameListService();
+private TeamServiceteamSvc = newTeamService;	private TeamService teamSvc = new TeamService();
+public void enterMainMenu  {	public void enterMainMenu() {
+booleanloopFlag =true	boolean loopFlag = true;
+char key =  0;;	char key = 0;
+do {	do {
+ifkey != '1'	if (key != '1') {
+listAllEmployees;	listAllEmployees();
+l	}
+System.ot..printf"1- 2- 3- 4- 1-4";	System.out.print("1- 2- 3- 4- (1-4)");
+key = TSUtility.readMenuSelectionf;;	key = TSUtility.readMenuSelection();
+Systm.out.printlnlf	System.out.println();
+witch key {	switch (key) {
+case '1':	case '1':
+listTeaml;	listTeam();
+break;	break;
+case '2'	case '2':
+addMember;	addMember();
+break;	break;
+case '3':	case '3':
+deleteMember;	deleteMember();
+reak;	break;
+case'4':	case '4':
+System.out.pritY/N////f/;;/	System.out.print("(Y/N/)//"/)/;/
+/////c/ha/r/ /y/n /=/ /T/S/U/t/i/l/i/t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n/f///	/////c/h/a/r/ /y/n/ /=/ /T/S/U/t/i/l/i/t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n/(/)/;/
+/////i/f/ //y/n/ /=/=//'/Y/'/f/	/////i/f/ /(/y/n/ /=/=/ /'/Y/'/)/
+//////l/o/o/p/F/l/a/g/ /=/ /f/a/l/s/e/;/	//////l/o/o/p/F/l/a/g/ /=/ /f/a/l/s/e/;/
+/////b/r/e/a/k/;;/	/////b/r/e/a/k/;/
+////1/	////}/
+///}/ /w/h/i/l/e/ //l/o/o/p/F/l/a/g//;/	///}/ /w/h/i/l/e/ /(/l/o/o/p/F/l/a/g/)/;/
+//}/	//}/
+/	/
+/private void listAllEmployees 1	/private void listAllEmployees() {
+System.out	System.out
+.println\n-----------------------------------------------------------\n"f;	.println("\n---------------------------------------------------------------\n");
+Employee emps =  listSvc.getAllEmployeesf;	Employee[] emps = listSvc.getAllEmployees();
+if  empslenth == 0  {	if (emps.length == 0) {
+System.outprintln"";	System.out.println("");
+} else {	} else {
+System.out.prntln"ID\t\t\t\t\t\t\t\t;	System.out.println("ID\t\t\t\t\t\t\t\t");
+}	}
+for Employee e : empsl {	for (Employee e : emps) {
+System.out.pintln" " + e;	System.out.println(" " + e);
+}	}
+System.out	System.out
+.println"-------------------------------------------------------------------------------"";	.println("-------------------------------------------------------------------------------");
+}	}
+private voidlistTeamf {	private void listTeam() {
+System.out	System.out
+.printlnf"\n----------------------------------------\n";	.println("\n-----------------------------------------\n");
+Programmer team = teamSvc.getTeamlf;	Programmer[] team = teamSvc.getTeam();
+if team..length== 0 {	if (team.length == 0) {
+System.out.println"";;	System.out.println("");
+} else{	} else {
+System..ot.println"TID/I/D/\/t///\/t///\/t///\/t///\/t///\/t////l/;/	System.out.println("TID/I/D/\/t///\/t///\/t///\/t///\/t///\/t///"/)/;/
+///}/	///}/
+/	/
+///f/o/r///P/r/o/g/r/a/m/m//r//p//:/ /t/e/a/m/l/ /{/	///f/o/r/ /(/P/r/o/g/r/a/m/m/e/r/ /p/ /:/ /t/e/a/m/)/ /{/
+////S/y/s/t/e/m/./o/u/t/../p/r/i/n/t/l/n//"/ /"/ /+/ /p/./g/e/t/D/e/t/a/i/l/s/F/o/r/T/e/a/m////;;/	////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/ /"/ /+/ /p/./g/e/t/D/e/t/a/i/l/s/F/o/r/T/e/a/m/(/)/)/;/
+///}/	///}/
+///S/y//t/e/m/./o/u/t/	///S/y/s/t/e/m/./o/u/t/
+/////./pr/i/n/t/l/n///-//-/-/-/-/-/-/-/-/-/-/-/--/-/-/-/-/-/-/--/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"//;/	/////./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+//}/	//}/
+/	/
+/private  voi addMember {	/private void addMember() {
+Systemout.printlnf"--------------------------------------";	System.out.println("------------------------------------------");
+System..out.print"ID";	System.out.print("ID");
+int id = TSUtiity.readIntf;	int id = TSUtility.readInt();
+try {	try {
+Employee e = listSvc.getEmployeeid;	Employee e = listSvc.getEmployee(id);
+teamSvc.addembere;	teamSvc.addMember(e);
+System..out.println"";;	System.out.println("");
+} catch TeamExceptione l	} catch (TeamException e) {
+System.out.println" + e..getMessage;	System.out.println("" + e.getMessage());
+}	}
+TSUtility.readReturn	TSUtility.readReturn();
+}	}
+private void deleteMember {	private void deleteMember() {
+System..out.println"-----------------------------------------";	System.out.println("------------------------------------------");
+System..outprint"TID";	System.out.print("TID");
+int id = TSUtility.readIt;	int id = TSUtility.readInt();
+Systemout.rint"Y/N///"/f/;/	System.out.print("(Y/N/)//"/)/;/
+///c/h/a/r/  /y/n//=//T/S/U/t/i/l//t/y/.r/e/a/d/C/o/n/f/i/r/m/S//l/e/c/t/i/o/n///;;/	///c/h/a/r/ /y/n/ /=/ /T/S/U/t/i/l/i/t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n/(/)/;/
+///i/ //y/n/ /=/=/ /'/N/'//	///i/f/ /(/y/n/ /=/=/ /'/N/'/)/
+////r/e/t/u/rn/;/	////r/e/t/u/r/n/;/
+/	/
+///t/r/y/ /{/	///t/r/y/ /{/
+////t/e/a/m/S/v/c/./r/e/m/o/v/e/M/e/m/b/e/r//i/d//;	////t/e/a/m/S/v/c/./r/e/m/o/v/e/M/e/m/b/e/r/(/i/d/)/;/
+////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t//n//""////"/f/;/	////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/////"/)/;/
+///}/ /c/a/t/c/h/ //T/e/a/m/E/x/c/e/p/t/i/o/n/ /e// /1/	///}/ /c/a/t/c/h/ /(/T/e/a/m/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+////S/y/s/t/e/m/../o/u/t/./p/r/i/n/t/l/n/l/"/////////"/ /+/ /e/../g/e/t/M/e/s/s/a/g/e////;/	////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/////////"/ /+/ /e/./g/e/t/M/e/s/s/a/g/e/(/)/)/;/
+///}/	///}/
+//TSUtility.readReturn	//TSUtility.readReturn();
+}	}
+public  static void mainlString args {	public static void main(String[] args) {
+TeamViewviw = newTeamView;	TeamView view = new TeamView();
+view.enterMainMenu;	view.enterMainMenu();
+}	}
+}	}

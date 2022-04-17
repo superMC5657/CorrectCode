@@ -1,0 +1,20 @@
+import java.ri.*;	import java.rmi.*;
+import java.util;	import java.util.*;
+import javax.naming.*	import javax.naming.*;
+public class WarehouseClient	public class WarehouseClient
+l	{
+public static void maintring args  throws NamingExcetion,RemoteException	public static void main(String[] args) throws NamingException, RemoteException
+{	{
+Context namingContext = new InitialCntext;	Context namingContext = new InitialContext();
+	
+System.out.print"RMI  regitry bindins: ;	System.out.print("RMI registry bindings: ");
+Enumeration<NameClassPair>  e = namingCntext.listrmi: while e..hasMoreElements	Enumeration<NameClassPair> e = namingContext.list("rmi: while (e.hasMoreElements())
+System.out.printlne.nextElementgetNamel;	System.out.println(e.nextElement().getName());
+	
+Sring url = rmi: Warehouse cenralWarehouse = Warehouse namingCotext.lookupurl;	String url = "rmi: Warehouse centralWarehouse = (Warehouse) namingContext.lookup(url);
+	
+String  descr = "Blakwell Toaster"";	String descr = "Blackwell Toaster";
+double price = centralWarehouse.getPriceldescr;	double price = centralWarehouse.getPrice(descr);
+System.out..printlndescr  + ": " + price;;	System.out.println(descr + ": " + price);
+}	}
+l	}

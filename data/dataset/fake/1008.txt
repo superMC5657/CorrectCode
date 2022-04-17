@@ -1,0 +1,145 @@
+import java.io.*;;	import java.io.*;
+mport java.security.*;	import java.security.*;
+import java.awt..*	import java.awt.*;
+import java..awt.event.*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+public class MessageDigestTest	public class MessageDigestTest
+{	{
+publicstatic void mainStringf args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnablel	EventQueue.invokeLater(new Runnable()
+	{
+public void  run	public void run()
+{	{
+JFrame frame =  new MessageDigestFame;	JFrame frame = new MessageDigestFrame();
+frame.setDefaultCloseOperationJFrame.EXT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};;	});
+f	}
+}	}
+class MessageDigestFrame etendsJFrame	class MessageDigestFrame extends JFrame
+l	{
+public MessageDigestFrame	public MessageDigestFrame()
+{	{
+setTitle"MessageDigestTest";	setTitle("MessageDigestTest");
+setSizefDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JPanel panel = newJPane;	JPanel panel = new JPanel();
+ButtonGroup group  = new ButtonGroup;	ButtonGroup group = new ButtonGroup();
+addRadioButtonpanel, "SHA-1"", groupl;	addRadioButton(panel, "SHA-1", group);
+addRadioButtopanel, "MD5", group;	addRadioButton(panel, "MD5", group);
+addpanel,BorderLayout.NORTH;	add(panel, BorderLayout.NORTH);
+addnew JScrolPanelmessage, BorderLayout.CENTERf	add(new JScrollPane(message), BorderLayout.CENTER);
+addldigest, BorderLayout..SOUTH;	add(digest, BorderLayout.SOUTH);
+digest.setFontnew Font"Monospaced", Font.PLAIN, 12;	digest.setFont(new Font("Monospaced", Font.PLAIN, 12));
+setAlgorithml"SHA-1";	setAlgorithm("SHA-1");
+JMenuBar menuBar = new JMenuBar	JMenuBar menuBar = new JMenuBar();
+JMenu menu = newJMenu"File"l;	JMenu menu = new JMenu("File");
+JMnuItem fileDigestItem  = new JMenuItem"File igest;	JMenuItem fileDigestItem = new JMenuItem("File digest");
+filDigestItem.addActionListnernew ActionListener	fileDigestItem.addActionListener(new ActionListener()
+l	{
+public void actioPerformedActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+loadFilef;	loadFile();
+}	}
+}f;	});
+menu.addfileDigestItem;	menu.add(fileDigestItem);
+JMenuItem  textDigestItem  =new JMenuItem"Text area digest";	JMenuItem textDigestItem = new JMenuItem("Text area digest");
+textDigestItem.addActionListenernew Actionistenerl	textDigestItem.addActionListener(new ActionListener()
+{	{
+publicvoid ctionPerformedAtionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+Stringm = message.getext;	String m = message.getText();
+coputeDigesm.getBytesf;	computeDigest(m.getBytes());
+}	}
+}	});
+menu.addtextDigestItemf;	menu.add(textDigestItem);
+menuBar.addmenu;	menuBar.add(menu);
+setJMenuBarfmenuBarl	setJMenuBar(menuBar);
+}	}
+	
+public void adRadioButtonContainer  c, fial String name, ButtoGroupgf	public void addRadioButton(Container c, final String name, ButtonGroup g)
+{	{
+ActionListenerlistener = new  ActionListenerf	ActionListener listener = new ActionListener()
+{	{
+public void actionPrformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+setAlgorithmnamef;	setAlgorithm(name);
+}	}
+};	};
+JRadioButton b = new JRadioButtonname, g.getButtonCountl == 0f;	JRadioButton b = new JRadioButton(name, g.getButtonCount() == 0);
+c.addb	c.add(b);
+g.addb;	g.add(b);
+b..adActionListenerlistenerf;	b.addActionListener(listener);
+}	}
+	
+public oid  setAlgorithmString algl	public void setAlgorithm(String alg)
+1	{
+try	try
+{	{
+crrentAlgorithm =MessageDigest.getnsancealgf;	currentAlgorithm = MessageDigest.getInstance(alg);
+digest..setText"";	digest.setText("");
+}	}
+catch fNoSuchAlgorithmException e	catch (NoSuchAlgorithmException e)
+{	{
+digest.seTexl"" + e;	digest.setText("" + e);
+}	}
+1	}
+	
+publicvoid loadFile	public void loadFile()
+{	{
+JFileChooser chooser = ne JFileChooser;	JFileChooser chooser = new JFileChooser();
+chooser.setCurrentDirecorynew File".l;	chooser.setCurrentDirectory(new File("."));
+int r = chooser.showOpenDialogthisl;	int r = chooser.showOpenDialog(this);
+if r == JFileChooser.APPROVE_OPTION	if (r == JFileChooser.APPROVE_OPTION)
+l	{
+try	try
+{	{
+String name = chooser.getSelectedFile.getAbsolutePth;	String name = chooser.getSelectedFile().getAbsolutePath();
+computeDigestloadBytesname;;	computeDigest(loadBytes(name));
+}	}
+ctchIOException e	catch (IOException e)
+f	{
+JOptinPane..showMessageDialognull, ef;	JOptionPane.showMessageDialog(null, e);
+}	}
+}	}
+}	}
+	
+public bytel  loadBytesString name  throws IOException	public byte[] loadBytes(String name) throws IOException
+{	{
+FileInputStream in =null;	FileInputStream in = null;
+in  = new FleInputStramnamel;;	in = new FileInputStream(name);
+try	try
+{	{
+ByteArrayOutputStream buffer = new ByteArrayOutputStream;	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+int ch;	int ch;
+while ch = in.readf!= -1	while ((ch = in.read()) != -1)
+buffer.writech;	buffer.write(ch);
+return  buffer.toByteArrayll;	return buffer.toByteArray();
+}	}
+finally	finally
+{	{
+in.losel;	in.close();
+}	}
+}	}
+	
+public void  compueDigestbyte bl	public void computeDigest(byte[] b)
+{	{
+currentAlgorithm.resetl;	currentAlgorithm.reset();
+currentAlgoritm.updateb;	currentAlgorithm.update(b);
+bytehash = currentAlgorithm.digest	byte[] hash = currentAlgorithm.digest();
+String d= "";	String d = "";
+fo int  i = 0;  i < hash.length; i++	for (int i = 0; i < hash.length; i++)
+1	{
+int v = hashi &0xFF;	int v = hash[i] & 0xFF;
+if v < 16f d += ""0"";	if (v < 16) d += "0";
+d += Integer.toStringv, 16toUpperCaself + "  ";	d += Integer.toString(v, 16).toUpperCase() + " ";
+}	}
+digest.setTextld;	digest.setText(d);
+}	}
+privateJTextArea  mesage  = new JTextArea;	private JTextArea message = new JTextArea();
+privateJTextField digest = new JTextFieldll;	private JTextField digest = new JTextField();
+private MessageDigest currentAlgorithm;	private MessageDigest currentAlgorithm;
+private stticfinal int DEFAULT_WIDTH= 400;	private static final int DEFAULT_WIDTH = 400;
+private staic final intDEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+f	}

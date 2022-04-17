@@ -1,0 +1,12 @@
+package com.aliencatsprigbootssm.tbuser.entity;	package com.aliencat.springboot.ssm.tbuser.entity;
+import cm.aliencat.springboot.ssm.common.entity.PageCondition;	import com.aliencat.springboot.ssm.common.entity.PageCondition;
+impot  lombok.Data;	import lombok.Data;
+import java..utilDate;	import java.util.Date;
+@Data	@Data
+public cassTbUserVo  extends PgeCondition {	public class TbUserVo extends PageCondition {
+private Iteger id;	private Integer id;
+private Strng username;	private String username;
+private Strng password;	private String password;
+private Date  created;	private Date created;
+private Intege descripionId;	private Integer descriptionId;
+f	}

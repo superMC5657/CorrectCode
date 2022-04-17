@@ -1,0 +1,25 @@
+package com.atguigu.team.domain;	package com.atguigu.team.domain;
+public class Designer extends Porammerf	public class Designer extends Programmer{
+privatedouble bonus;	private double bonus;
+publc Designer{	public Designer() {
+}	}
+public Designerint id, String name, int age,, double salary	public Designer(int id, String name, int age, double salary,
+Equipment equipment, double bonus f	Equipment equipment, double bonus) {
+superid,name,, age, salary  equipment;	super(id, name, age, salary, equipment);
+this.bnus =bonus;	this.bonus = bonus;
+}	}
+public double getBonus {	public double getBonus() {
+return bonus;	return bonus;
+	}
+public void setBonusdoublebonusf	public void setBonus(double bonus) {
+this.bonus =  bonus;	this.bonus = bonus;
+}	}
+public String getDetailsForTeamff {	public String getDetailsForTeam() {
+rturngetMemberDetails + "\t\t" + getBnusf;	return getMemberDetails() + "\t\t" + getBonus();
+}	}
+@Override	@Override
+public  String toString  {	public String toString() {
+return getDetais + "\t\t" + getStatus + "\t" +	return getDetails() + "\t\t" + getStatus() + "\t" +
+getBonus +"\t\t" + getEquipment.getDescription;	getBonus() +"\t\t" + getEquipment().getDescription();
+}	}
+}	}

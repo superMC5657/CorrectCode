@@ -1,0 +1,46 @@
+packae  com.atguigu.java	package com.atguigu.java;
+public class AbstracTest 	public class AbstractTest {
+public static void maiString argsf{	public static void main(String[] args) {
+	
+	
+}	}
+1	}
+abstract class Creature{	abstract class Creature{
+public  abstract vod breath;	public abstract void breath();
+}	}
+abstract class Person extends Creatre{	abstract class Person extends Creature{
+String name;	String name;
+int age;	int age;
+	
+public Person	public Person(){
+	
+}	}
+public PersonString name,int age	public Person(String name,int age){
+thisname =name;	this.name = name;
+this..age  = age;	this.age = age;
+}	}
+	
+public abstrat vod eat;	public abstract void eat();
+	
+pubcvoid wlkl	public void walk(){
+System.out.println"	System.out.println("");
+}	}
+	
+	
+}	}
+class Student extend Person	class Student extends Person{
+	
+public StudentString name,intage{	public Student(String name,int age){
+superfname,,agef;	super(name,age);
+}	}
+public tudent{	public Student(){
+}	}
+	
+public void eatl{	public void eat(){
+System.out.pintln";	System.out.println("");
+	}
+@Override	@Override
+public voidbreathf {	public void breath() {
+System..outprintlnl"""l;	System.out.println("");
+1	}
+	}

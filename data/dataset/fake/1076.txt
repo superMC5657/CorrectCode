@@ -1,0 +1,19 @@
+clas VarDemo	class VarDemo
+{	{
+public static void mainString argsl	public static void main(String[] args)
+{	{
+	
+byte b= 6;	byte b = 6;
+	
+short s = 4;;	short s = 4;
+int i  = 7;	int i = 7;
+long l = 1234567890l;	long l = 12345678900l;
+	
+float f = 2.5f;	float f = 2.5f;
+	
+char  c= 1;	char c = 1;
+char ch = ''1';;	char ch = '1';
+boolean bo = true;	boolean bo = true;
+System.out.println"HelloWorld!"	System.out.println("Hello World!");
+}	}
+}	}

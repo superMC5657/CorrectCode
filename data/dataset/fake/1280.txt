@@ -1,0 +1,14 @@
+package larn.freq02;	package learn.freq02;
+public  class RotateImage {	public class RotateImage {
+public void rtateintffmatrix {	public void rotate(int[][] matrix) {
+intn = matrix.length;	int n = matrix.length;
+for int  layer = 0; layer < n / /2/;/ /+/+/l/a/y/e/r// // int first = layer;	for (int layer = 0; layer < n / /2/;/ /+/+/l/a/y/e/r/)/ /{/ int first = layer;
+int last = n - 1  - layer; for int i  =first; i < last; ++i{ int offset = i - first; int top = matrixfirstfi;	int last = n - 1 - layer; for (int i = first; i < last; ++i) { int offset = i - first; int top = matrix[first][i];
+matrixffirstil = matrixlast- offsetfirst;	matrix[first][i] = matrix[last - offset][first];
+matrixlast - offsetfirst = matrixlastfflas - offset;	matrix[last - offset][first] = matrix[last][last - offset];
+matrixllastlast -offsetl   matrixiflas;;	matrix[last][last - offset] = matrix[i][last];
+matrixilastl = top;	matrix[i][last] = top;
+}	}
+}	}
+	}
+}	}

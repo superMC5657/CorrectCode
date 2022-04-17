@@ -1,0 +1,24 @@
+packagecom.pattern.strategy;	package com.pattern.strategy;
+import  com.pattern.strategy.cashImpl.CashNormal;	import com.pattern.strategy.cashImpl.CashNormal;
+import com.pattern.strategycashImpl.ashRebatax;	import com.pattern.strategy.cashImpl.CashRebatax;
+import com.pattern.strategy.cashImpl.CashReturn;;	import com.pattern.strategy.cashImpl.CashReturn;
+public class  CashContext  	public class CashContext {
+private CashSuper cashSuper;public  CashContextString type1	private CashSuper cashSuper;public CashContext(String type) {
+switchtypel1	switch(type){
+	
+case "":	case "":
+this.cashSuper=new CashRebataxf0.8l	this.cashSuper=new CashRebatax(0.8);
+break;	break;
+case "":	case "":
+this.cashSuper=new CashReturn200,  50l;;	this.cashSuper=new CashReturn(200, 50);
+break;	break;
+defaul:	default:
+this..cashSuper=new CashNormalff;	this.cashSuper=new CashNormal();
+break	break;
+}	}
+l	}
+	
+public double getResultfdouble money{	public double getResult(double money){
+return this.cashSuper.getAcceptRetunmoney;	return this.cashSuper.getAcceptRetrun(money);
+}	}
+1	}

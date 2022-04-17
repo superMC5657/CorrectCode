@@ -1,0 +1,35 @@
+class SuperMan	class SuperMan
+{	{
+private String name;	private String name;
+private static SuperMan man =  new SuperMan"";	private static SuperMan man = new SuperMan("");
+privateSuperManfString namef	private SuperMan(String name)
+{	{
+thisname = name;	this.name = name;
+l	}
+public staic SuperMan getInstance	public static SuperMan getInstance()
+	{
+return man;	return man;
+	}
+public void setNameString name	public void setName(String name)
+{	{
+this..name  = name;	this.name = name;
+}	}
+public String getName	public String getName()
+{	{
+return this.name	return this.name;
+}	}
+ulic void fly	public void fly()
+1	{
+System.out..printlnthis.name+"..fly";	System.out.println(this.name+"..fly");
+}	}
+	}
+class SuperMan	class SuperMan
+1	{
+public  staticvoid maintringf argsl	public static void main(String[] args)
+1	{
+Superan man1 = SuperMan..gtInstancefl;	SuperMan man1 = SuperMan.getInstance();
+SuperMan an = SuperMan.getInstancel;	SuperMan man2 = SuperMan.getInstance();
+man1.setName"";	man1.setName("");
+man2.fly;	man2.fly();
+f	}
+l	}

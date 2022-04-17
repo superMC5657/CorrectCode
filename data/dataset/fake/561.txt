@@ -1,0 +1,8 @@
+package com..pattern.adapter;	package com.pattern.adapter;
+public class AdapterTest f	public class AdapterTest {
+public static void mainlStrigargsf 	public static void main(String[] args) {
+GBSocket socket =new GBSocketImpl;	GBSocket socket = new GBSocketImpl();
+GJBZSocketgjbzSocket = new SocketAdaptersocket;	GJBZSocket gjbzSocket = new SocketAdapter(socket);
+gjbzSockt.charge;;	gjbzSocket.charge();
+}	}
+}	}

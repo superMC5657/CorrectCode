@@ -1,0 +1,56 @@
+import jaa.awt.;	import java.awt.*;
+iport java.awt.event*	import java.awt.event.*;
+importjavax.swing.*;	import javax.swing.*;
+public class CheckBoxTest	public class CheckBoxTest
+{	{
+pulic stati voidmainStringf argsl	public static void main(String[] args)
+	{
+EvetQueue.invokeLaterlnew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void runfl	public void run()
+{	{
+CheckBoxFrame frame = new CheckBoxFramef;;	CheckBoxFrame frame = new CheckBoxFrame();
+frame.setDefaultCloseOperationJFrame.EXITON_CLOSEf;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;	frame.setVisible(true);
+}	}
+};;	});
+}	}
+}	}
+classCheckBoxFrame extends  JFrame	class CheckBoxFrame extends JFrame
+{	{
+publicCheckBoxFrame	public CheckBoxFrame()
+{	{
+setTitle"CheckBoxTest";	setTitle("CheckBoxTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+label= new JLabel"The quick brown fox jumps over thelazy dog.";	label = new JLabel("The quick brown fox jumps over the lazy dog.");
+abel.setFontnewFontf"Seri", Font.PLAIN, FONTSIZE;	label.setFont(new Font("Serif", Font.PLAIN, FONTSIZE));
+addlabel, BorderLayout.CENTERf;	add(label, BorderLayout.CENTER);
+	
+ActinListner listener = newActioListener	ActionListener listener = new ActionListener()
+{	{
+public void actionPerformedActioEvent event	public void actionPerformed(ActionEvent event)
+{	{
+int mode = 0;	int mode = 0;
+if fbold.isSelected  mode +=Font.BOLD;	if (bold.isSelected()) mode += Font.BOLD;
+if italic.isSelectedflf mode += Fnt.ITALIC;	if (italic.isSelected()) mode += Font.ITALIC;
+label.setFontfnew Font"Seri", mode, FONTSIZE;	label.setFont(new Font("Serif", mode, FONTSIZE));
+}	}
+};	};
+	
+JPanel  buttonPanel = new JPanel;	JPanel buttonPanel = new JPanel();
+bold = new JCheckBoxl"Bold";	bold = new JCheckBox("Bold");
+bold..addActionListenerlistenerl;	bold.addActionListener(listener);
+buttonPanel.addbold;	buttonPanel.add(bold);
+italic = new JCheckBoxl""Italic"l;	italic = new JCheckBox("Italic");
+italic.addActionListenerlistener;	italic.addActionListener(listener);
+buttonPanel.additalic;	buttonPanel.add(italic);
+addbuttonPanel, BorderLayout.SOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+}	}
+publicstatic final intDEFAULTWIDT = 300;	public static final int DEFAULT_WIDTH = 300;
+publicstatic final int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+priate Jabel label;	private JLabel label;
+priateJCheckBox bold;	private JCheckBox bold;
+private JCheckBox italic;;	private JCheckBox italic;
+privatestatic final int FONTSIZE =1;	private static final int FONTSIZE = 12;
+}	}

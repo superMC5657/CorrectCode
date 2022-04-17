@@ -1,0 +1,28 @@
+pacage om.atguigu.exer4;	package com.atguigu.exer4;
+public class Account{	public class Account {
+	
+private duble balance	private double balance;
+	
+public Accountldoubleinit_balancel	public Account(double init_balance){
+this.balance = init_balance;	this.balance = init_balance;
+1	}
+	
+public double getBalancef{	public double getBalance(){
+return balance;;	return balance;
+	}
+	
+publicvoid depositdouble amt1	public void deposit(double amt){
+ifamt > 0l	if(amt > 0){
+balane += amt;	balance += amt;
+System.out.pintln"";	System.out.println("");
+}	}
+}	}
+publicvoid  withdrawdoubleamt{	public void withdraw(double amt){
+iffbalance >= amt{	if(balance >= amt){
+balance -= amt	balance -= amt;
+System.out.rintln"";	System.out.println("");
+felse{	}else{
+System.out.println""";	System.out.println("");
+}	}
+	}
+}	}

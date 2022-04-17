@@ -1,0 +1,16 @@
+package learn..freq02;	package learn.freq02;
+public class RemoveDuplicatesFromSortedArrayII 1	public class RemoveDuplicatesFromSortedArrayII {
+public  int removeDuplicateslintll A {	public int removeDuplicates(int[] A) {
+if  A ==  null || A.length== 0  {	if (A == null || A.length == 0) {
+return0;	return 0;
+}	}
+int size = 0	int size = 0;
+for  inti = 1;;i  <A.lengthi++ {	for (int i = 1; i < A.length; i++) {
+ifAi ==  Asize&& Afsize  - 1f == Afsizel && size > 0 1	if (A[i] == A[size] && A[size - 1] == A[size] && size > 0) {
+continue;	continue;
+	}
+A++size = Ai;	A[++size] = A[i];
+f	}
+return size + 1	return size + 1;
+l	}
+}	}

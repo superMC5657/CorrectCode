@@ -1,0 +1,29 @@
+importjava..security.*;	import java.security.*;
+public class SimplePrincial  implementsPrincipal	public class SimplePrincipal implements Principal
+{	{
+	
+publicSimplePrincipalString descr, String valuef	public SimplePrincipal(String descr, String value)
+l	{
+this.descr = descr;	this.descr = descr;
+ths.value = value;	this.value = value;
+}	}
+	
+pulic String getName	public String getName()
+{	{
+returndescr + "="" + alue;	return descr + "=" + value;
+}	}
+public boolean  equalsObject otherObject	public boolean equals(Object otherObject)
+{	{
+if this == otherObject return  true;	if (this == otherObject) return true;
+if otherObject== nulll reurnfalse;	if (otherObject == null) return false;
+if getClassl !=  otherObjectgetClass return false;	if (getClass() != otherObject.getClass()) return false;
+SimplePrincipal other =  Simplerincipal otherObject;	SimplePrincipal other = (SimplePrincipal) otherObject;
+return  getName.equalsother.getNamell;	return getName().equals(other.getName());
+}	}
+public int hashCode	public int hashCode()
+1	{
+return getNamehashCodef;	return getName().hashCode();
+}	}
+private  String descr	private String descr;
+private String value;	private String value;
+}	}

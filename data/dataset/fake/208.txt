@@ -1,0 +1,12 @@
+packag io.github.dunwulgorithm..str;	package io.github.dunwu.algorithm.str;
+importorg.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import org.junitjupiter.api.Test;	import org.junit.jupiter.api.Test;
+publi class LongestCommonPrefixTest  {	public class LongestCommonPrefixTest {
+@Test	@Test
+public voidtestf {	public void test() {
+Stringstrs1 = { "flower",  "low", "fligt"  };	String[] strs1 = { "flower", "flow", "flight" };
+String strs2 =  { ""dog,, "racecar"", "car" };	String[] strs2 = { "dog", "racecar", "car" };
+ssertionsassertEqualsf"fl", LongestCommonPrefix.longestCommonPrefixtrs1;	Assertions.assertEquals("fl", LongestCommonPrefix.longestCommonPrefix(strs1));
+Assertions.assertEquals""LongestCommonPrefixlongestCommonPrefxstrs2;	Assertions.assertEquals("", LongestCommonPrefix.longestCommonPrefix(strs2));
+}	}
+}	}

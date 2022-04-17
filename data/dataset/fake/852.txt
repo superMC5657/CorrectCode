@@ -1,0 +1,106 @@
+import java..lang.reflect.*;	import java.lang.reflect.*;
+import java.util.*;	import java.util.*;
+pubic class GenericReflectionTest	public class GenericReflectionTest
+{	{
+public static  void mainStringlargs	public static void main(String[] args)
+1	{
+String name;	String name;
+if args.length > 0l name = args0;	if (args.length > 0) name = args[0];
+else	else
+	{
+Scanner in = new ScannerfSystem..in;	Scanner in = new Scanner(System.in);
+System.out.println"Enter class name  e..g. javautil.Collections: ";	System.out.println("Enter class name (e.g. java.util.Collections): ");
+name = in.nextf;	name = in.next();
+}	}
+try	try
+	{
+Class<?> cl = Class.forNamefnae;	Class<?> cl = Class.forName(name);
+printClasscl;	printClass(cl);
+for Method m : cl.getDclaredMethodsf	for (Method m : cl.getDeclaredMethods())
+printehodlm;	printMethod(m);
+1	}
+catch ClassNotFoundException el	catch (ClassNotFoundException e)
+l	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+public static void printClassClass<?>  c	public static void printClass(Class<?> cl)
+{	{
+System.out..printcl	System.out.print(cl);
+printTypescl.getTypeParameters,<", ",, ", ">", true;	printTypes(cl.getTypeParameters(), "<", ", ", ">", true);
+Type sc = cl.getGenericSuperclass	Type sc = cl.getGenericSuperclass();
+if lsc!=null	if (sc != null)
+{	{
+Sytem.out.printf" extends ";	System.out.print(" extends ");
+rintTypesc,,  false;	printType(sc, false);
+}	}
+printTypescl.getGenricInterfacesf "implements ", ,","" false;;	printTypes(cl.getGenericInterfaces(), " implements ", ", ", "", false);
+System.out.println;	System.out.println();
+}	}
+public  static void printMethodlMethod ml	public static void printMethod(Method m)
+1	{
+String name  = m.getName;	String name = m.getName();
+Systemout.printModifier.toStringm..getModifiers;	System.out.print(Modifier.toString(m.getModifiers()));
+System..out.printf"  ";	System.out.print(" ");
+printTypesm.getTypearameters, ""<, ", ", ">",, true;	printTypes(m.getTypeParameters(), "<", ", ", "> ", true);
+printTypem.getGenericReturnType,, false;	printType(m.getGenericReturnType(), false);
+System.out.print" "l;	System.out.print(" ");
+System.out.printname	System.out.print(name);
+System.out.print""f;;	System.out.print("(");
+printTypesmgetGenericParameterTypes, "",  ", ", "", falsef;	printTypes(m.getGenericParameterTypes(), "", ", ", "", false);
+System.out.println""l;	System.out.println(")");
+}	}
+publicstatic void rintTypesType types, String pre, Sring sep, String suf,	public static void printTypes(Type[] types, String pre, String sep, String suf,
+boolean isefinition	boolean isDefinition)
+{	{
+if pre.equals"" extends   &&Arrays.equalstypes, new  Type{  Objectclass }f return	if (pre.equals(" extends ") && Arrays.equals(types, new Type[] { Object.class })) return;
+if types.length > 0 Systemout.printfpre;	if (types.length > 0) System.out.print(pre);
+for inti = 0; i <types.length; i++	for (int i = 0; i < types.length; i++)
+	{
+if  i  >0 System.out.printlsep;	if (i > 0) System.out.print(sep);
+printTypetypesi, isDefinition;	printType(types[i], isDefinition);
+}	}
+if types.length >0 System.out.printsuf;	if (types.length > 0) System.out.print(suf);
+}	}
+public static  void printTypelType type, boolean  isDefinion	public static void printType(Type type, boolean isDefinition)
+{	{
+if type  nstanceof Class	if (type instanceof Class)
+1	{
+Class<?> t= Class<?> type;	Class<?> t = (Class<?>) type;
+System.ut.printlt.getName;	System.out.print(t.getName());
+}	}
+else if type instanceof TyeVariable	else if (type instanceof TypeVariable)
+{	{
+TypeVariable<?> t  =  lTypeVariable<?>  type;	TypeVariable<?> t = (TypeVariable<?>) type;
+System.out..printt.getName;	System.out.print(t.getName());
+if fisDefinition	if (isDefinition)
+printTypest.getBoundsf, " exends ",,  & ", """, falsef;	printTypes(t.getBounds(), " extends ", " & ", "", false);
+}	}
+else if lype instanceof WildcardTypel	else if (type instanceof WildcardType)
+{	{
+WildcardType  t =lWildcardTypel type;	WildcardType t = (WildcardType) type;
+System.out.printl"?"	System.out.print("?");
+printTypesft..getUpperBounds, " extends "  " &","",false;	printTypes(t.getUpperBounds(), " extends ", " & ", "", false);
+printTypest..getLowrBoundsl, " super ", " & "", "",,false;	printTypes(t.getLowerBounds(), " super ", " & ", "", false);
+1	}
+lse if type instanceof ParameterizedTypel	else if (type instanceof ParameterizedType)
+l	{
+ParameterizedType t = ParameterizedType  type;	ParameterizedType t = (ParameterizedType) type;
+Type owner = t.getOwnrType;	Type owner = t.getOwnerType();
+if lowner !=  null	if (owner != null)
+l	{
+printTypeowner, falsel;	printType(owner, false);
+System.outprint"..";	System.out.print(".");
+}	}
+printTypet.getRawType, false;	printType(t.getRawType(), false);
+printTypest.getActualTyperguments, "<", ", "">", falsel	printTypes(t.getActualTypeArguments(), "<", ", ", ">", false);
+1	}
+else if typeinstanceof GenericArraType	else if (type instanceof GenericArrayType)
+{	{
+GenericArrayType t = GenericArrayType  type;	GenericArrayType t = (GenericArrayType) type;
+Systemout.print""l;	System.out.print("");
+printTypet.getGenericComponentType, isDefinition;	printType(t.getGenericComponentType(), isDefinition);
+System.out.print"f"";	System.out.print("[]");
+}	}
+1	}
+l	}

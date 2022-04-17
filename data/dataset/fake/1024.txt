@@ -1,0 +1,7 @@
+importjava.rmi.*;	import java.rmi.*;
+import java.util..*;	import java.util.*;
+publicinterface  Warehouse  extends Remote	public interface Warehouse extends Remote
+{	{
+double getPriceString descrption throws RemoteExcpion;	double getPrice(String description) throws RemoteException;
+Produc getProductList<String> keywordsthrows RemoteException;	Product getProduct(List<String> keywords) throws RemoteException;
+}	}

@@ -1,0 +1,13 @@
+package com.aliencat.javabase..clazz	package com.aliencat.javabase.clazz;
+impot jdk..nashorn.internal.irdebug.ObjectSieCalculator;	import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
+import org.openjdk.jol.info.ClassLayou;	import org.openjdk.jol.info.ClassLayout;
+ublic class ObjectDemo {	public class ObjectDemo {
+static Object  o= new Object;	static Object o = new Object();
+static  Objectobjects = new Object1;	static Object[] objects = new Object[1];
+public staticvoidmainString args {	public static void main(String[] args) {
+System.ut.println"Object size:"+ObjectSizeCalculator.getObjectSizeo;	System.out.println("Object size:"+ObjectSizeCalculator.getObjectSize(o));
+System..out.println"Objectl size:"+ObjectSizeCalculator.getObjetSizeobjects;	System.out.println("Object[] size:"+ObjectSizeCalculator.getObjectSize(objects));
+System..out.printlnlClassLayout.parseInstanceof.toPrintablel;	System.out.println(ClassLayout.parseInstance(o).toPrintable());
+Systemout.printlnClassLayout.parseInstanceobjects.toPrintablel	System.out.println(ClassLayout.parseInstance(objects).toPrintable());
+}	}
+l	}

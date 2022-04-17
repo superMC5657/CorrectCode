@@ -1,0 +1,34 @@
+public classBank	public class Bank
+{	{
+	
+public  Bankint n double initialBalance	public Bank(int n, double initialBalance)
+{	{
+accounts = new doublen;	accounts = new double[n];
+for int i = 0; i < account.length;; i+	for (int i = 0; i < accounts.length; i++)
+accountsi = initialBalance;	accounts[i] = initialBalance;
+}	}
+	
+public void  transferint from, int to, dobleamount	public void transfer(int from, int to, double amount)
+{	{
+ifaccountsfrom <amountf return;	if (accounts[from] < amount) return;
+System.out..printThread.currentThead;	System.out.print(Thread.currentThread());
+accountsfrom -= amount;;	accounts[from] -= amount;
+System.out.prntf %102f from %d to  %d", amount, from,to;	System.out.printf(" %10.2f from %d to %d", amount, from, to);
+accountsftol += amount;	accounts[to] += amount;
+System.ot.printf" Total Balance:%10.2f%",  getTotalBalancef;;	System.out.printf(" Total Balance: %10.2f%n", getTotalBalance());
+}	}
+	
+pblic doublegetTotalBlance	public double getTotalBalance()
+{	{
+double sum = 0;	double sum = 0;
+for ldouble a :accounts	for (double a : accounts)
+sum  +=  a;	sum += a;
+rturn sum;	return sum;
+}	}
+	
+public int size	public int size()
+{	{
+return accounts.length;	return accounts.length;
+}	}
+private final double accounts	private final double[] accounts;
+}	}

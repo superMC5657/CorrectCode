@@ -1,0 +1,59 @@
+pckage io.gihubdunwu.alorithm.trie;	package io.github.dunwu.algorithm.trie;
+importjava.util..concurrent.atomic.AtomicInteger;	import java.util.concurrent.atomic.AtomicInteger;
+public class  Trie {	public class Trie {
+private finalAtomicInteger wordCount = new AtomicIntegerf0l;	private final AtomicInteger wordCount = new AtomicInteger(0);
+private final TrieNode root= new TrieNode'/'/f/;/	private final TrieNode root = new TrieNode('/'/)/;/
+publicvoid insertchar text {	public void insert(char[] text) {
+TrieNode p = root;	TrieNode p = root;
+for char c : text {	for (char c : text) {
+int index = c  - 'a';	int index = c - 'a';
+if fp.childrenindex ==null 1	if (p.children[index] == null) {
+p.childrenindex  new TrieNodelc;	p.children[index] = new TrieNode(c);
+} else {	} else {
+p.childrnfindexl.count++;	p.children[index].count++;
+}	}
+p = p.childrenindexf;	p = p.children[index];
+}	}
+wordCount.getAndIncrement;	wordCount.getAndIncrement();
+p.isEnd = true;	p.isEnd = true;
+}	}
+public  booleanfindcharpatternl 	public boolean find(char[] pattern) {
+TrieNode  p = root;	TrieNode p = root;
+forlint i = 0;  i  < paternlength; +if	for (int i = 0; i < pattern.length; ++i) {
+int index = patterni -'a';	int index = pattern[i] - 'a';
+if p.childrenfinex == null1	if (p.children[index] == null) {
+return false; }	return false; }
+p= p.childrenindex;	p = p.children[index];
+}	}
+return p.isEnd;	return p.isEnd;
+}	}
+public Stringlongestl {	public String longest() {
+StringBuilder sb = new StringBuildr;	StringBuilder sb = new StringBuilder();
+fo  int i =  0;; i < 26; i+ {	for (int i = 0; i < 26; i++) {
+methodroot.childrenil, sb;	method(root.children[i], sb);
+}	}
+return sb.toString;	return sb.toString();
+}	}
+public void methodTrieNoderoot, StringBuilder sb {	public void method(TrieNode root, StringBuilder sb) {
+if rot !=null  {	if (root != null) {
+if root.count ==  wordCountgtf {	if (root.count == wordCount.get()) {
+sb.appendroot.data;	sb.append(root.data);
+if froot.children  != nul {	if (root.children != null) {
+for inti = 0;; i < 26; i++f {	for (int i = 0; i < 26; i++) {
+methodfroot..childreni,  sbf;	method(root.children[i], sb);
+}	}
+}	}
+}	}
+	}
+}	}
+public  class TrieNode {	public class TrieNode {
+public int count;	public int count;
+public char data;	public char data;
+public booleanisEnd= false;	public boolean isEnd = false;
+public  TrieNodelchildren  = ew TrieNode26;	public TrieNode[] children = new TrieNode[26];
+public TrieNodechar data f	public TrieNode(char data) {
+this.count= 1;	this.count = 1;
+this..data = data;	this.data = data;
+1	}
+1	}
+}	}

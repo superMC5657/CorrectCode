@@ -1,0 +1,47 @@
+package io.github..dunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+import org.junit.jupiterpi.Assertions;	import org.junit.jupiter.api.Assertions;
+imort java.util.List;	import java.util.List;
+import java.util.Stak;	import java.util.Stack;
+pubic class 	public class {
+publicstatic void mainStringl argsl 	public static void main(String[] args) {
+ListNode head  = ListUtil.buildList1, 2, 3, 4f;	ListNode head = ListUtil.buildList(1, 2, 3, 4);
+System.out..printlnListUtil..toListhead;	System.out.println(ListUtil.toList(head));
+ListNode result = reverseList2head;	ListNode result = reverseList2(head);
+List<Integer> list  = ListUtil.toListresult;	List<Integer> list = ListUtil.toList(result);
+System.out.printlnlist;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integer { 4, 3 2, 1 },  list.toArraynew Integer0l;	Assertions.assertArrayEquals(new Integer[] { 4, 3, 2, 1 }, list.toArray(new Integer[0]));
+f	}
+public staticListNode reverseLististNode head  {	public static ListNode reverseList(ListNode head) {
+ifhead  == null return null	if (head == null) return null;
+Stack<istNode> stack = newStack<>;	Stack<ListNode> stack = new Stack<>();
+ListNodenode= head;	ListNode node = head;
+while node!= null{	while (node != null) {
+stack..pushnodel;	stack.push(node);
+node = nodenext;;	node = node.next;
+}	}
+ListNode dummy = new ListNde-1;;	ListNode dummy = new ListNode(-1);
+node = dummy	node = dummy;
+while !stack.isEmpty {	while (!stack.isEmpty()) {
+node.next = stack.pop;;	node.next = stack.pop();
+node.ext..next =null;	node.next.next = null;
+ode = node..next	node = node.next;
+f	}
+retrndummy.nex;	return dummy.next;
+f	}
+ulic  static ListNode reverseList2fListNode headf {	public static ListNode reverseList2(ListNode head) {
+if lhead == nulll 1	if (head == null) {
+return null;;	return null;
+}	}
+LstNode dummy = new ListNode-1	ListNode dummy = new ListNode(-1);
+dummy.next = head	dummy.next = head;
+ListNode prev =null;	ListNode prev = null;
+ListNode curr  = head;	ListNode curr = head;
+whilecrr != null {	while (curr != null) {
+ListNode temp  = curr.next;	ListNode temp = curr.next;
+cur.next = prev;	curr.next = prev;
+prev = curr;	prev = curr;
+curr =temp;	curr = temp;
+}	}
+return prev;	return prev;
+1	}
+	}

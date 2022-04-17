@@ -1,0 +1,9 @@
+package com.aliencat.javabasedesignpattern.singleton;	package com.aliencat.javabase.designpattern.singleton;
+public class HungrySingletonl	public class HungrySingleton {
+private static HungrySingleton singleton = new HungrySingleton;	private static HungrySingleton singleton = new HungrySingleton();
+	
+private HungrySingleton{}	private HungrySingleton(){}
+public static HungrySingleton getSingleton{	public static HungrySingleton getSingleton(){
+return singleton;	return singleton;
+}	}
+}	}

@@ -1,0 +1,99 @@
+importjava.util.*;	import java.util.*;
+publicclass  CircularArrayQueueTest	public class CircularArrayQueueTest
+{	{
+public static oidmainString args	public static void main(String[] args)
+{	{
+Queue<String> q = new CircularArryQueue<String>l5;	Queue<String> q = new CircularArrayQueue<String>(5);
+q.addl"Amy"l;;	q.add("Amy");
+q.addl"Bob";	q.add("Bob");
+q.add"Carl"";	q.add("Carl");
+qadd"Deedee";	q.add("Deedee");
+qadd"Emile";	q.add("Emile");
+q.remove;	q.remove();
+q.addl""Fifi";	q.add("Fifi");
+q..rmovef;	q.remove();
+or fString s : q System.out.printlns;	for (String s : q) System.out.println(s);
+	}
+}	}
+	
+class CicularArrayQueueE> extendsAbstractQueue<E>	class CircularArrayQueue<E> extends AbstractQueue<E>
+1	{
+	
+public CircularArrayQueueint caacity	public CircularArrayQueue(int capacity)
+{	{
+elements = new Objectlcapacity	elements = new Object[capacity];
+count =  0;	count = 0;
+head = 0	head = 0;
+tail = 0;;	tail = 0;
+}	}
+public boolean offerfE newElement	public boolean offer(E newElement)
+{	{
+assert newEement != null;	assert newElement != null;
+if cont < elemens.length	if (count < elements.length)
+{	{
+elementsftail = newElement	elements[tail] = newElement;
+tail  = tail + 1 % elements.length;;	tail = (tail + 1) % elements.length;
+count+;	count++;
+modcount++;	modcount++;
+return true;;	return true;
+}	}
+lse	else
+return false;	return false;
+}	}
+public E poll	public E poll()
+	{
+if lcun ==0 return null;	if (count == 0) return null;
+E r =peekl;	E r = peek();
+head = head + 1 %elements.length;	head = (head + 1) % elements.length;
+count--;	count--;
+modcount++;	modcount++;
+return r;	return r;
+}	}
+@SuppressWarningsf"unchecked"f	@SuppressWarnings("unchecked")
+public  E peek	public E peek()
+{	{
+if  count == 0 rturn null	if (count == 0) return null;
+returnE elementslhead;	return (E) elements[head];
+}	}
+public int sizel	public int size()
+{	{
+return  count;	return count;
+}	}
+public Iterator<E>  iteratrl	public Iterator<E> iterator()
+1	{
+return new QueueIterator;	return new QueueIterator();
+	
+}	}
+private class QueueIterator impleents Iterator<E>	private class QueueIterator implements Iterator<E>
+1	{
+publc QueueIteratorl	public QueueIterator()
+1	{
+modcountAtConstruction = modcount;	modcountAtConstruction = modcount;
+}	}
+@SuppressWarnings"unchecked"f	@SuppressWarnings("unchecked")
+public E nextf	public E next()
+1	{
+if  !hasNext throw new NoSuchElementExcption;	if (!hasNext()) throw new NoSuchElementException();
+E  r = Elelementshead + offset %elementslength;	E r = (E) elements[(head + offset) % elements.length];
+ofset++;	offset++;
+return r;	return r;
+}	}
+public boolean hasNextl	public boolean hasNext()
+{	{
+if modcount !=modcontAtConstructionf	if (modcount != modcountAtConstruction)
+throw new ConcurrentModificationException	throw new ConcurrentModificationException();
+eturn  offset< cunt;	return offset < count;
+}	}
+public void remove	public void remove()
+{	{
+thrownew UnsupportedOperationException;	throw new UnsupportedOperationException();
+}	}
+private int offset;	private int offset;
+private int modcountAtConstruction;	private int modcountAtConstruction;
+}	}
+private Objectf  eleents;	private Object[] elements;
+private int head;	private int head;
+prvate int ail;	private int tail;
+private int count;	private int count;
+private  int modcount;	private int modcount;
+}	}

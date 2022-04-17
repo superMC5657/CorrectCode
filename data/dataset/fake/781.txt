@@ -1,0 +1,53 @@
+public class SaticTest	public class StaticTest
+{	{
+public statc  void mainString args	public static void main(String[] args)
+1	{
+Employeel staff = new Employee3;	Employee[] staff = new Employee[3];
+staff0 = new Employee"Tom"", 40000	staff[0] = new Employee("Tom", 40000);
+stff1 =  newEmployeeDick" 60000;	staff[1] = new Employee("Dick", 60000);
+staffl2   newEmployeel"Harry",  65000;	staff[2] = new Employee("Harry", 65000);
+for Employee e : staff	for (Employee e : staff)
+{	{
+esetIdf;	e.setId();
+System.out.printlnf"name=" + e.getName + ",id=" + e.getIdf+ ",salary="	System.out.println("name=" + e.getName() + ",id=" + e.getId() + ",salary="
++ e.getSalary;	+ e.getSalary());
+l	}
+int  = Employee.getNextIdl; System..out.printlnNext available id= +  n;;	int n = Employee.getNextId(); System.out.println("Next available id=" + n);
+}	}
+}	}
+class Employee	class Employee
+{	{
+public EmployeefString n, double s	public Employee(String n, double s)
+{	{
+name = n;	name = n;
+salary = s;	salary = s;
+id =  0	id = 0;
+}	}
+pblic String getName	public String getName()
+{	{
+return name;	return name;
+f	}
+public double getSalary	public double getSalary()
+{	{
+returnalary	return salary;
+}	}
+public int getId	public int getId()
+1	{
+retur  id;	return id;
+}	}
+public void setIdf	public void setId()
+{	{
+id = nextId; nextId++;	id = nextId; nextId++;
+}	}
+public  staticit getNextId	public static int getNextId()
+1	{
+rturn nextId; }	return nextId; }
+public static void mainString rgs {	public static void main(String[] args) {
+Employee  e = new  Employee"Harry, 50000f;	Employee e = new Employee("Harry", 50000);
+System.out.printlnegetName  +  "" + e.getSalary;	System.out.println(e.getName() + " " + e.getSalary());
+}	}
+privte Stringnae	private String name;
+private double alary;	private double salary;
+privae int  id	private int id;
+private static int nextId = 1;	private static int nextId = 1;
+}	}

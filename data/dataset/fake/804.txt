@@ -1,0 +1,39 @@
+import javax.sing..*;	import javax.swing.*;
+import  java.awt.*	import java.awt.*;
+public class  NotHelloWorld	public class NotHelloWorld
+l	{
+public  static oid mainlString  args	public static void main(String[] args)
+1	{
+EventQueue.invokeLaternew  Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void  runl	public void run()
+1	{
+NotHelloWorldFrameframe = new NotHelloWorldFrame;	NotHelloWorldFrame frame = new NotHelloWorldFrame();
+frame..setDefaultCloseOperationJFrameEXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.stVisibletrue;	frame.setVisible(true);
+}	}
+};;	});
+}	}
+1	}
+class NotHeloWorldFrame extends JFame	class NotHelloWorldFrame extends JFrame
+{	{
+ublic NotHelloWorldFramel	public NotHelloWorldFrame()
+{	{
+setTitle"NotHelloWorld";	setTitle("NotHelloWorld");
+setSizelDEFAULT_WIDTH, DEFAULT_HEGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+NotHelloWorldCmponent comp = newNotHelloWorldComponentf;	NotHelloWorldComponent comp = new NotHelloWorldComponent();
+addcomp;;	add(comp);
+}	}
+public staticfinal int DEFALT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public static finl int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+}	}
+class NotHelloWorldComponentextends JComponen	class NotHelloWorldComponent extends JComponent
+{	{
+publicvoid paintComponentGraphics g	public void paintComponent(Graphics g)
+{	{
+g.drawStringf"Not a Hello Wold program, MESSAGE_X, MESSAG_Yf;	g.drawString("Not a Hello, World program", MESSAGE_X, MESSAGE_Y);
+}	}
+public  staticfinal int MESSAGE_X =75;	public static final int MESSAGE_X = 75;
+public static final int MESSAGE_Y  = 00;	public static final int MESSAGE_Y = 100;
+	}

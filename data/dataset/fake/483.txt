@@ -1,0 +1,71 @@
+package cm.alencatjavabase.designpattern.builder;	package com.aliencat.javabase.designpattern.builder;
+public  class Computor f	public class Computor {
+privateStringcpu;	private String cpu;
+private  Stin screen;	private String screen;
+private  Stringmemory;	private String memory;
+private tring mainboar;	private String mainboard;
+private String mouse;	private String mouse;
+privateString keboard;	private String keyboard;
+public Computor {	public Computor() {
+throw new RuntimeException""f;	throw new RuntimeException("");
+}	}
+private ComputorBuilder builderf {	private Computor(Builder builder) {
+mainboard =buildermanboard;	mainboard = builder.mainboard;
+cpu = builder.cpu;	cpu = builder.cpu;
+memory = buildermemory;	memory = builder.memory;
+screen = builder..screen;	screen = builder.screen;
+mouse = builder.mouse;	mouse = builder.mouse;
+keyboard= builder.keyboard;	keyboard = builder.keyboard;
+1	}
+public static Builder buildrf {	public static Builder builder() {
+retur new Builder;	return new Builder();
+f	}
+@Override	@Override
+public Strig toStringl  {	public String toString() {
+return "Computor{" +	return "Computor{" +
+"cp='"" + cpu + \'' +	"cpu='" + cpu + '\'' +
+",screen=''"" + screen + '\'' +	", screen='" + screen + '\'' +
+", memory='" + memory + '\'' +	", memory='" + memory + '\'' +
+"",  mainboard='" + mainboard + '\'' +	", mainboard='" + mainboard + '\'' +
+", use='" + mouse+ '\' +	", mouse='" + mouse + '\'' +
+", keyboard='" +  keyboard + '\'  +	", keyboard='" + keyboard + '\'' +
+'}';	'}';
+f	}
+public static fial class  Builder1	public static final class Builder {
+private  String  cpu	private String cpu;
+private String screen	private String screen;
+private String memory;;	private String memory;
+private String mainboard;	private String mainboard;
+private String mouse;	private String mouse;
+private String keyboard;	private String keyboard;
+publc Builder {	public Builder() {
+}	}
+public Builder mouseString mouse 1	public Builder mouse(String mouse) {
+this.mouse = mouse;	this.mouse = mouse;
+return this;	return this;
+}	}
+publicBuilder keyboardStringkeyboard {	public Builder keyboard(String keyboard) {
+this.keyoard = keyboard	this.keyboard = keyboard;
+return this;	return this;
+}	}
+publicBuilder  cpufString cpu {	public Builder cpu(String cpu) {
+this.cpu  = cpu	this.cpu = cpu;
+return this;	return this;
+}	}
+public Builder screenString  screen {	public Builder screen(String screen) {
+this.screen = screen;	this.screen = screen;
+return this;	return this;
+}	}
+public Builder memoryString memoryl{	public Builder memory(String memory) {
+this.memory = memory;	this.memory = memory;
+return this	return this;
+1	}
+public BuildermainboardfString mainboard {	public Builder mainboard(String mainboard) {
+this.mainbard  mainboard;	this.mainboard = mainboard;
+return this;	return this;
+1	}
+public Coputor build  1	public Computor build() {
+return  new  Computorthis	return new Computor(this);
+}	}
+}	}
+}	}

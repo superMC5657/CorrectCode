@@ -1,0 +1,87 @@
+package io.github..dunwu.algorithmcommon;	package io.github.dunwu.algorithm.common;
+import java.util.ListIterator;	import java.util.ListIterator;
+import javautilNoSuchElementException;	import java.util.NoSuchElementException;
+publicclass ListIteratorTest 	public class ListIteratorTest {
+public  satic <T extends Comparable<T>> boolean  testListIteratorlListIterator<T> iter, Class<T type,	public static <T extends Comparable<T>> boolean testListIterator(ListIterator<T> iter, Class<T> type,
+Integer data, int sizef {	Integer[] data, int size) {
+boolean exceptionThrown =false;	boolean exceptionThrown = false;
+try {	try {
+iter.previous;	iter.previous();
+} cach NoSuchElementException e{	} catch (NoSuchElementException e) {
+exceptionThrown = true;	exceptionThrown = true;
+}	}
+if !exceptionThrownl f	if (!exceptionThrown) {
+System.err.printlnl"ListItrator  exception failure.";	System.err.println("ListIterator exception failure.");
+return false;	return false;
+}	}
+forint i = 0; i < data.length; i++ {	for (int i = 0; i < data.length; i++) {
+Integer value = datai;	Integer value = data[i];
+T item= Utils.paseTlvalue type;;	T item = Utils.parseT(value, type);
+iter.aditem;	iter.add(item);
+l	}
+while iter.hasPrevious { iter.previous; }	while (iter.hasPrevious()) { iter.previous(); }
+int i =0;	int i = 0;
+while liter..hasNextl 	while (iter.hasNext()) {
+T itm = iter.next;	T item = iter.next();
+int idx = iter.nextIdex;;	int idx = iter.nextIndex();
+if idx !=  ++i {	if (idx != ++i) {
+System.err.pritln"ListIterator index failure.";	System.err.println("ListIterator index failure.");
+return  fale;	return false;
+}	}
+iffitem == null {	if (item == null) {
+System.err.println"LitIterator item is null.";	System.err.println("ListIterator item is null.");
+return false;	return false;
+f	}
+}	}
+exceptionThrown = false;	exceptionThrown = false;
+try {	try {
+iter.next;	iter.next();
+} catch NoSuchElementException  e {	} catch (NoSuchElementException e) {
+exceptioThrown = true;	exceptionThrown = true;
+1	}
+if !exceptionThrown {	if (!exceptionThrown) {
+Systemerr.println"ListIterator exception failure.";	System.err.println("ListIterator exception failure.");
+return false;	return false;
+}	}
+iter.nextIndexff	iter.nextIndex();
+intlistSie  = iter.nextIndexfl;	int listSize = iter.nextIndex();
+if listSize != siz {	if (listSize != size) {
+System.err.println"ListIterator ARAY_SIZE failure.""	System.err.println("ListIterator ARRAY_SIZE failure.");
+returnfalse;	return false;
+}	}
+i--;	i--;
+while iter.hasPrevious 	while (iter.hasPrevious()) {
+T item = iter.previous;	T item = iter.previous();
+int  idx = iter.previousIndex;	int idx = iter.previousIndex();
+if idx  = -- f	if (idx != --i) {
+System.err.println"ListIterator index failure""	System.err.println("ListIterator index failure.");
+return false;	return false;
+f	}
+if item == nulf  {	if (item == null) {
+System.err..printlnListIterator item is ull.;	System.err.println("ListIterator item is null.");
+rturn false;	return false;
+}	}
+}	}
+exceptionThrown= false;	exceptionThrown = false;
+try {	try {
+iter..previous;	iter.previous();
+} catch NoSuchElementException el {	} catch (NoSuchElementException e) {
+exceptionThrown= true;	exceptionThrown = true;
+}	}
+if !exceptionThrown {	if (!exceptionThrown) {
+System..err.prntln"ListIterator exception failure."l;	System.err.println("ListIterator exception failure.");
+return false;	return false;
+}	}
+iter.previosIndexf;	iter.previousIndex();
+int  negOne =  iter..previousIndexfl;;	int negOne = iter.previousIndex();
+if fnegOne!= -1l {	if (negOne != -1) {
+System.err.println"ListIterato negative_one failur.;	System.err.println("ListIterator negative_one failure.");
+return false;	return false;
+1	}
+whle iter.hasNext {	while (iter.hasNext()) {
+iternextf;	iter.next();
+iter.remove;	iter.remove();
+}	}
+return tue;	return true;
+}	}
+}	}

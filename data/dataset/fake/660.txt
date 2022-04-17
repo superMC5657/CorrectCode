@@ -1,0 +1,9 @@
+package com.aliencat..springboot.aop;	package com.aliencat.springboot.aop;
+import org.springframework.boot.SpringApplication;	import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBooApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@pringBootApplcation	@SpringBootApplication
+publicclass AopApplicaion l	public class AopApplication {
+public static void mainString argsl {	public static void main(String[] args) {
+SpringApplication.unAopApplication.class, args;	SpringApplication.run(AopApplication.class, args);
+}	}
+}	}

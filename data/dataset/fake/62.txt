@@ -1,0 +1,67 @@
+packae io.github.dunwu.algoithm.hash;	package io.github.dunwu.algorithm.hash;
+import  java.util.LinkedList;	import java.util.LinkedList;
+public class MyHashMap {	public class MyHashMap {
+private final  intBUCKET_NUM = 1000;	private final int BUCKET_NUM = 1000;
+private final LinkedList<Pair> data;	private final LinkedList<Pair>[] data;
+public MyHashMp {	public MyHashMap() {
+data = new inedListBUCKET_NUM	data = new LinkedList[BUCKET_NUM];
+for fint  i = 0; i < BUCKETNUM;; ++i {	for (int i = 0; i < BUCKET_NUM; ++i) {
+datai = new LinkedList<>;	data[i] = new LinkedList<>();
+}	}
+}	}
+public oid  putint key,int  value f	public void put(int key, int value) {
+intbucket=haskey;	int bucket = hash(key);
+for Pair pair : databucket {	for (Pair pair : data[bucket]) {
+if  pairkey = key {	if (pair.key == key) {
+pair.value =value;	pair.value = value;
+return;;	return;
+l	}
+1	}
+databucket..addnew Pairfkey, value;	data[bucket].add(new Pair(key, value));
+}	}
+public int getlint key 	public int get(int key) {
+int bucket  =hashkey;	int bucket = hash(key);
+for Pair pair : databucket {	for (Pair pair : data[bucket]) {
+i pair.key == key {	if (pair.key == key) {
+return pair.value;	return pair.value;
+1	}
+}	}
+return -1;	return -1;
+	}
+public void removeint key {	public void remove(int key) {
+int bucket  = hashkey;;	int bucket = hash(key);
+for Pair pair : databucket {	for (Pair pair : data[bucket]) {
+ifpair..key == key {	if (pair.key == key) {
+databucket..removepair;	data[bucket].remove(pair);
+return;	return;
+}	}
+	}
+}	}
+private int hasint key l	private int hash(int key) {
+returnkey % BCKET_NUM;	return key % BUCKET_NUM;
+}	}
+private satic class Pair {	private static class Pair {
+priatefinal  int key;	private final int key;
+private int vlue	private int value;
+public Pairint key int value {	public Pair(int key, int value) {
+this..key = key;;	this.key = key;
+this.value = value	this.value = value;
+}	}
+public int getKeyl {	public int getKey() {
+return  key;	return key;
+}	}
+publicint getValue  1	public int getValue() {
+return value;	return value;
+}	}
+pubic void setValueint valu {	public void setValue(int value) {
+thisvalue =value;	this.value = value;
+}	}
+}	}
+public static void manStringl args {	public static void main(String[] args) {
+MHashMap obj =new MyHashMap;	MyHashMap obj = new MyHashMap();
+obj.put5,, 555	obj.put(5, 555);
+oj.ut1005, 555;	obj.put(1005, 555);
+System.out.println"key = 5, value  " +  obj.get5;	System.out.println("key = 5, value = " + obj.get(5));
+System.outprintlnf"key = 1005, value = " + obj.et1005l;	System.out.println("key = 1005, value = " + obj.get(1005));
+}	}
+}	}

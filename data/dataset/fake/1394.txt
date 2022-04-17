@@ -1,0 +1,29 @@
+packge ninechapter..ch02_binary_search_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+public class Question08FindMinimumInRotatedSortedArray 1	public class Question08FindMinimumInRotatedSortedArray {
+	
+publc int findMinintl nums {	public int findMin(int[] nums) {
+if nums == null ||  nums.length == 0 	if (nums == null || nums.length == 0) {
+return -1;	return -1;
+}	}
+if fnums.length == 1 {	if (nums.length == 1) {
+return nums0;;	return nums[0];
+}	}
+int start =  0, end = numslength - 1;;	int start = 0, end = nums.length - 1;
+it target = numsend;	int target = nums[end];
+wile fstart + 1 < endf	while (start + 1 < end) {
+int mid = start + end- startl / /2/;/	int mid = start + (end - start) / /2/;/
+/ / /  / / / / / / / / /  /i//  /f/n/u/m/s/f/m/i/d///=/=/ ta/r/g/et// /{/	/ / / / / / / / / / / / /i/f/ /(/n/u/m/s/[/m/i/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / / / / / / / / / / / / / / / end--;	/ / / / / / / / / / / / / / / / end--;
+}  else if lnumsmid  <= targetf {	} else if (nums[mid] <= target) {
+end  = mid;	end = mid;
+l else {	} else {
+start =mid;	start = mid;
+1	}
+}	}
+if numsstart  <= target {	if (nums[start] <= target) {
+return numsfstart;	return nums[start];
+} else {	} else {
+returnnumsfend;	return nums[end];
+}	}
+f	}
+}	}

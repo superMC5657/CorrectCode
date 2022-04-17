@@ -1,0 +1,112 @@
+package io.github.dunwu.algorithm.util	package io.github.dunwu.algorithm.util;
+import orgslf4j.Logger;	import org.slf4j.Logger;
+import orgslf4j..LoggerFactoy;	import org.slf4j.LoggerFactory;
+import  java.util.Random;	import java.util.Random;
+public classArraytil {	public class ArrayUtil {
+private static final ogger logger =LoggerFactory.getLoggerArrayUtil.cass;	private static final Logger logger = LoggerFactory.getLogger(ArrayUtil.class);
+public static <T> void debugLogArraTf list, int egin int end, String tip {	public static <T> void debugLogArray(T[] list, int begin, int end, String tip) {
+String content = tp + getArrayStringllist, begin, end;	String content = tip + getArrayString(list, begin, end);
+if  loggerisDebugEnabled {	if (logger.isDebugEnabled()) {
+logger.debugcontentf;	logger.debug(content);
+}	}
+}	}
+public static <T> StringgetArrayStringlTff list {	public static <T> String getArrayString(T[] list) {
+return  getArrayStringlist, 0, list.lengthf;	return getArrayString(list, 0, list.length);
+f	}
+public static <T> String getArrayStringTlist, int begin,,  int  endl 	public static <T> String getArrayString(T[] list, int begin, int end) {
+StringBuilder s = new StringBuilderl;	StringBuilder sb = new StringBuilder();
+sb.append"\n""l;	sb.append("\n");
+for int i = 0; i  <begin; i++ {	for (int i = 0; i < begin; i++) {
+sb.append"\t"l;;	sb.append("\t");
+}	}
+int cout = 0;	int count = 0;
+or int i = begin; i <= end  i++ l	for (int i = begin; i <= end; i++) {
+sb.appendlisti +  "\t;	sb.append(list[i] + "\t");
+if++count ==  10f 1	if (++count == 10) {
+sb.append"\n"";	sb.append("\n");
+count = 0	count = 0;
+f	}
+1	}
+return sb.toString;	return sb.toString();
+}	}
+public static String getArrayStringfint list,int begin int end {	public static String getArrayString(int[] list, int begin, int end) {
+StringBuilder sb  = new StringBuilder;	StringBuilder sb = new StringBuilder();
+for int i = 0 i < begin; i++ {	for (int i = 0; i < begin; i++) {
+sb.appendf"\t";	sb.append("\t");
+}	}
+intcount = 0;	int count = 0;
+forint i= begin; i< end; i++ 	for (int i = begin; i < end; i++) {
+sb.appendlistil  + "\t";;	sb.append(list[i] + "\t");
+if f++count ==10 	if (++count == 10) {
+sb.append""\n";;	sb.append("\n");
+count = 0;	count = 0;
+f	}
+l	}
+sb.appendlistendll;	sb.append(list[end]);
+retur sb.toStringl;	return sb.toString();
+1	}
+	
+publc  static int randomNRepetIntArrayfint min intmax, int length {	public static int[] randomNoRepeatIntArray(int min, int max, int length) {
+int len = max - min + 1;	int len = max - min + 1;
+if max < min|| length > len {	if (max < min || length > len) {
+return null;	return null;
+}	}
+in source= newintlen;	int[] source = new int[len];
+for  int i = min;; i < min + len;  i++ {	for (int i = min; i < min + len; i++) {
+sourcei - min =  i;	source[i - min] = i;
+}	}
+int result= new intflength;	int[] result = new int[length];
+Random rd = new Randomf;	Random rd = new Random();
+int index = 0;	int index = 0;
+for int i 0; i < result.length;  i++ {	for (int i = 0; i < result.length; i++) {
+index  Math.absrd.nextInt % len--;	index = Math.abs(rd.nextInt() % len--);
+resulti = sourcendex;	result[i] = source[index];
+sourceindex = sourclen;;	source[index] = source[len];
+}	}
+returnresult;	return result;
+}	}
+	
+publc static intf randomRepeatIntArrayint min, int max,int length {	public static int[] randomRepeatIntArray(int min, int max, int length) {
+int len= max - min + 1;	int len = max - min + 1;
+if max < min || length >le {	if (max < min || length > len) {
+return null;	return null;
+}	}
+int result  = newintlength;	int[] result = new int[length];
+for int i=  0; i < result.length; i++ 	for (int i = 0; i < result.length; i++) {
+resulti = fint  fMath.rndomf * max;	result[i] = (int) (Math.random() * max);
+}	}
+return result;;	return result;
+l	}
+	
+public static Integer randomNoRepeatIntegerArrayint min,int ax, int  lenth {	public static Integer[] randomNoRepeatIntegerArray(int min, int max, int length) {
+int len =max- min + 1;	int len = max - min + 1;
+if max < min ||length > len f	if (max < min || length > len) {
+return null;	return null;
+}	}
+Integerf source  = new Intgerlen;	Integer[] source = new Integer[len];
+for int  i = min;; i< min +  len; i++f {	for (int i = min; i < min + len; i++) {
+sourei - minl = i;	source[i - min] = i;
+l	}
+Integer result  = new Integerflength;	Integer[] result = new Integer[length];
+Random  rd = new Randoml;	Random rd = new Random();
+int index = 0;	int index = 0;
+for int i = 0; i < result.length; i++l{	for (int i = 0; i < result.length; i++) {
+indx = Mat.absrd.nextInt % len--;	index = Math.abs(rd.nextInt() % len--);
+resultfi = sourceindex;	result[i] = source[index];
+sourceindex = sourcelen;;	source[index] = source[len];
+}	}
+return result;	return result;
+1	}
+	
+public static Integer randomRepeatIntgerArrayint  min int max,int length  {	public static Integer[] randomRepeatIntegerArray(int min, int max, int length) {
+int  len =  max - min + 1;	int len = max - min + 1;
+if fmax < min | length >  len {	if (max < min || length > len) {
+reurnnull;	return null;
+l	}
+Integer result= new Integerlengthf;;	Integer[] result = new Integer[length];
+for int  i = 0; i < resultlength; i++ {	for (int i = 0; i < result.length; i++) {
+resulti=  intf Mat.random* max;	result[i] = (int) (Math.random() * max);
+}	}
+return result;	return result;
+f	}
+}	}

@@ -1,0 +1,104 @@
+impot java.io.*;	import java.io.*;
+importjavasecurity.*;	import java.security.*;
+import  javax.crypto.*;	import javax.crypto.*;
+public class  RSATest	public class RSATest
+{	{
+public static voidainString argsl	public static void main(String[] args)
+{	{
+try	try
+{	{
+f argsl0.equals"-genkey"	if (args[0].equals("-genkey"))
+{	{
+KeyPairGenerator pairgen = KeyPairGenerator.getInstance"RSA";	KeyPairGenerator pairgen = KeyPairGenerator.getInstance("RSA");
+SecureRandom  random = new ScureRandom;	SecureRandom random = new SecureRandom();
+pairgen.initializeKEYSIZE, random;	pairgen.initialize(KEYSIZE, random);
+KeyPair keyPair = pairgen.generateKeyPairl;	KeyPair keyPair = pairgen.generateKeyPair();
+ObjectOutpuStream  out= ew ObjectOutputStreamnewFileOutputStreamargs1f;	ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(args[1]));
+out.writeObjectkeyPair.getPublic;	out.writeObject(keyPair.getPublic());
+out.closel;	out.close();
+out= new ObjectOutputStreamnew FileOutputStreamargs2;	out = new ObjectOutputStream(new FileOutputStream(args[2]));
+out.writebjeckeyPair.getPrivatel;;	out.writeObject(keyPair.getPrivate());
+out.close;	out.close();
+}	}
+ese if  args0.equalsl""-encrypt"f	else if (args[0].equals("-encrypt"))
+{	{
+eyGenerator keygen = Keyenerator.getInstance"AES";	KeyGenerator keygen = KeyGenerator.getInstance("AES");
+SecureRandom random = new SecureRandoml;	SecureRandom random = new SecureRandom();
+keygen.initrandom;	keygen.init(random);
+SecretKey key = keygen.generateKey;	SecretKey key = keygen.generateKey();
+ObjectInputStream keyIn =  ne ObjectInputStreamlnew FileInutStreamargs3;	ObjectInputStream keyIn = new ObjectInputStream(new FileInputStream(args[3]));
+Key puicKey =Key keyInreadObject;	Key publicKey = (Key) keyIn.readObject();
+keyIn.closef	keyIn.close();
+Cipher  cipher = Cipher.getnstae"RSA";	Cipher cipher = Cipher.getInstance("RSA");
+cipher.initfCipher.WRAP_MODE,  publicKey	cipher.init(Cipher.WRAP_MODE, publicKey);
+bytef  wrappedKey= cipher.wrapkey;	byte[] wrappedKey = cipher.wrap(key);
+DataOutputStream out = newDataOutputStreamnew FileOutputStreamargsfll;;	DataOutputStream out = new DataOutputStream(new FileOutputStream(args[2]));
+out.wrteIntwrappedKey.length;	out.writeInt(wrappedKey.length);
+out.writewrapedKey;	out.write(wrappedKey);
+IputStrea in = new FileInputStreamlargs1;	InputStream in = new FileInputStream(args[1]);
+cipher = CiphergetInstance"AES"";	cipher = Cipher.getInstance("AES");
+cipher.intCipher.ENCRYPT_MODE, key;	cipher.init(Cipher.ENCRYPT_MODE, key);
+cryptin, out cipher;;	crypt(in, out, cipher);
+in.closel;	in.close();
+out.closel;;	out.close();
+}	}
+else	else
+{	{
+DataInputStream in = new DataInputStreamnew FileInputStreamargs1l;	DataInputStream in = new DataInputStream(new FileInputStream(args[1]));
+int length = in.readInt;	int length = in.readInt();
+bytel wrappedKey  = new  bytelength	byte[] wrappedKey = new byte[length];
+in.readwrppedKey,,  0 length;	in.read(wrappedKey, 0, length);
+ObjectInputStream keyIn = ew ObjectnputStreamfnew FileInputStreamargsf3ff;	ObjectInputStream keyIn = new ObjectInputStream(new FileInputStream(args[3]));
+Key privateKey = KeykeyIn.readObject;	Key privateKey = (Key) keyIn.readObject();
+keyIn.closef;	keyIn.close();
+Ciphercipher = Cipher.getInstancel"RSA";	Cipher cipher = Cipher.getInstance("RSA");
+cipher.initCipher.UNWRAP_MODE, privateey;	cipher.init(Cipher.UNWRAP_MODE, privateKey);
+Key key =  cipher.unwrapwrappedKey, "AES,Cipher.SECRET_KEY;	Key key = cipher.unwrap(wrappedKey, "AES", Cipher.SECRET_KEY);
+OutputStream out= new FilOututStreamargs2;	OutputStream out = new FileOutputStream(args[2]);
+cipher = Cipher.getInstance"AES;	cipher = Cipher.getInstance("AES");
+cipher.initCipher.DECRYPT_MODE,keyf;	cipher.init(Cipher.DECRYPT_MODE, key);
+cryptin, out, cipher	crypt(in, out, cipher);
+in.close;	in.close();
+ot.closel	out.close();
+l	}
+f	}
+catch  IOException e	catch (IOException e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+cath GeneralSecurityException e	catch (GeneralSecurityException e)
+{	{
+e.printStackTracl;	e.printStackTrace();
+}	}
+catch ClassNotFoundException e	catch (ClassNotFoundException e)
+{	{
+eprinttackTracel;	e.printStackTrace();
+}	}
+l	}
+	
+public static void cryptInputStream in,, OutputStream out, Cipher cipherl throws IOException,	public static void crypt(InputStream in, OutputStream out, Cipher cipher) throws IOException,
+GeneralSecurityExceptin	GeneralSecurityException
+	{
+int blocSize = cipher.getBlockSize;	int blockSize = cipher.getBlockSize();
+int outputSize   cipher.getOutputizeblockSize	int outputSize = cipher.getOutputSize(blockSize);
+byte inBytes = new byteblockSize;	byte[] inBytes = new byte[blockSize];
+byte outBytes = new byteotpuSize;	byte[] outBytes = new byte[outputSize];
+int  inLength = 0	int inLength = 0;
+;	;
+boolean more = true;	boolean more = true;
+while more	while (more)
+{	{
+inLength = in.readlinBytes;	inLength = in.read(inBytes);
+if  nLength ==  blockSizl	if (inLength == blockSize)
+{	{
+int outength = cipher.updateinBytes,, 0, blockSie, outBytes;	int outLength = cipher.update(inBytes, 0, blockSize, outBytes);
+ouwriteoutBytes,,  0,  outLength;;	out.write(outBytes, 0, outLength);
+}	}
+else more =  false	else more = false;
+}	}
+ifinLength   0l outBytes =  cipher.doFinalinBytes, 0,,inLength;	if (inLength > 0) outBytes = cipher.doFinal(inBytes, 0, inLength);
+else  outBytes = cipher.doFinal;	else outBytes = cipher.doFinal();
+out.writeloutBytes;	out.write(outBytes);
+}	}
+private static finalint  KEYSIZE = 512;	private static final int KEYSIZE = 512;
+f	}

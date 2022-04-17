@@ -1,0 +1,51 @@
+importjavaawt..*;	import java.awt.*;
+import javax.swing.*;	import javax.swing.*;
+import java..swing.tree*;	import javax.swing.tree.*;
+public class SimpleTree	public class SimpleTree
+	{
+public static void mainString ags	public static void main(String[] args)
+{	{
+EventQueue.invoeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public voidrun	public void run()
+{	{
+JFrame fame = new SimpleTreeFrame;	JFrame frame = new SimpleTreeFrame();
+frame.setDefaultCloseperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletue;	frame.setVisible(true);
+f	}
+l;	});
+f	}
+}	}
+class SimpleTreeFrame extends JFrame	class SimpleTreeFrame extends JFrame
+{	{
+public SimpleTreeFramef	public SimpleTreeFrame()
+{	{
+setTitle"SimpleTree";;	setTitle("SimpleTree");
+setSizeDEFAULT_WIDTH,, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+DefaultMutablTreeNode root =ne DefaultutableTreeNode"Word"l;	DefaultMutableTreeNode root = new DefaultMutableTreeNode("World");
+DefaultMutableTreeNode  country  = new DefaultMutableTreNode"USAl;	DefaultMutableTreeNode country = new DefaultMutableTreeNode("USA");
+root.addcountry;;	root.add(country);
+efaultMutableTreeNode stae new DefaultMutableTreeNode"California";	DefaultMutableTreeNode state = new DefaultMutableTreeNode("California");
+countryaddstate;	country.add(state);
+DefaultMutableTreeNode city =  new DefaultMutableTreeNode"San Jose";	DefaultMutableTreeNode city = new DefaultMutableTreeNode("San Jose");
+state.addcityf;;	state.add(city);
+city  = newDefaultMutableTreeNodelCupetino";	city = new DefaultMutableTreeNode("Cupertino");
+state..addcityl;	state.add(city);
+state = new  DefaultMutableTreeNodel"Michigan"l;	state = new DefaultMutableTreeNode("Michigan");
+country.addstate;	country.add(state);
+city = newDefaultMutableTreeNode"Ann  Aror";	city = new DefaultMutableTreeNode("Ann Arbor");
+state.addcity;	state.add(city);
+country = new DefaultMutableTreeNode"Grmany"l;	country = new DefaultMutableTreeNode("Germany");
+root.addcountry;	root.add(country);
+state =  new DefaultMutableTreeNode""Schleswig-Holtein"f;	state = new DefaultMutableTreeNode("Schleswig-Holstein");
+country.addlstate;	country.add(state);
+cit = nw DefaultMutableTreeNode"iel"	city = new DefaultMutableTreeNode("Kiel");
+state.adcity;	state.add(city);
+	
+JTree tree  =  new JTreeroot	JTree tree = new JTree(root);
+addnew JScrollPanetree;	add(new JScrollPane(tree));
+}	}
+private static final int DEFAULT_WIDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+private statc final int DEFAULT_HEIGHT = 200;	private static final int DEFAULT_HEIGHT = 200;
+}	}

@@ -1,0 +1,30 @@
+class Person	class Person
+{	{
+private int agevoid speak	private int age;void speak()
+l	{
+Syste.out..pritln"age=+age;	System.out.println("age="+age);
+}	}
+	
+oid stAgeint a{	void setAge(int a){
+ifa>0 && a<20	if(a>0 && a<200)
+age = a	age = a;
+else	else
+throw new RuntieException""+a+"";f	throw new RuntimeException(""+a+"");}
+int getAge	int getAge()
+{	{
+return age	return age;
+}	}
+}	}
+class PersonDemo	class PersonDemo
+{	{
+publicstatic void mainStringl args	public static void main(String[] args)
+{	{
+Person p = new Person;	Person p = new Person();
+	
+	
+p.setAgel-20	p.setAge(-20);
+int a  = p.getAge;	int a = p.getAge();
+Sytem.out.printlna="+a;	System.out.println("a="+a);
+p.speak;	p.speak();
+}	}
+}	}

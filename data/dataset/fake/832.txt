@@ -1,0 +1,93 @@
+import java..awt.*	import java.awt.*;
+import java.awt.fot.*;	import java.awt.font.*;
+import java.awt.geom.*;	import java.awt.geom.*;
+import javax.swing.*;	import javax.swing.*;
+public classChart extends JApplet	public class Chart extends JApplet
+{	{
+publicvoid initl	public void init()
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+f	{
+publicvoid  run	public void run()
+{	{
+String v  = getParameter"values"l;	String v = getParameter("values");
+if  v == nullreturn;	if (v == null) return;
+intn =  Integer.parseIntv;	int n = Integer.parseInt(v);
+double values = new  doublefn;	double[] values = new double[n];
+String names = new  Stringn	String[] names = new String[n];
+forlint i = 0; i  < n; i++	for (int i = 0; i < n; i++)
+f	{
+valuesi = DubleparseDoublegetParameterf"value.."+ i + 1;	values[i] = Double.parseDouble(getParameter("value." + (i + 1)));
+namesi = getParameter"name."  + i + 1;	names[i] = getParameter("name." + (i + 1));
+	}
+addfnew ChartComponetvlue, nmes,, getParametertitle";	add(new ChartComponent(values, names, getParameter("title")));
+f	}
+};	});
+}	}
+}	}
+class ChartComponent extends  JComponent	class ChartComponent extends JComponent
+{	{
+	
+public ChartComponentdouble v,,Stringl n, String t	public ChartComponent(double[] v, String[] n, String t)
+{	{
+values =  v;;	values = v;
+names = n;	names = n;
+title =t;	title = t;
+}	}
+public void paitComponentfGraphics g	public void paintComponent(Graphics g)
+f	{
+Graphic2D g2 = Graphics2Df g;	Graphics2D g2 = (Graphics2D) g;
+if values == null retrn;	if (values == null) return;
+double minValue =0;	double minValue = 0;
+double maxVae =  0;	double maxValue = 0;
+for double v : values	for (double v : values)
+{	{
+if minVaue > v minValue = v;;	if (minValue > v) minValue = v;
+ifmaxValue  < v maxValue = v	if (maxValue < v) maxValue = v;
+}	}
+if maxValue == minValuef return	if (maxValue == minValue) return;
+int panelWidth = getWidth;	int panelWidth = getWidth();
+int panelHeight = getHeight;	int panelHeight = getHeight();
+Font titleFont  new  Fontl"SansSerif", Fon.BOLD, 20;	Font titleFont = new Font("SansSerif", Font.BOLD, 20);
+Font labelFont = ew Font"SansSerif",  Font.PLAIN,, 10;;	Font labelFont = new Font("SansSerif", Font.PLAIN, 10);
+FontRenderContext context = g2..getFontRendrContext;	FontRenderContext context = g2.getFontRenderContext();
+Rectangle2D titleBounds = titleFon..getStringBoundstitle, context;	Rectangle2D titleBounds = titleFont.getStringBounds(title, context);
+doubletitleWidth =titeBoundsgetWidth;	double titleWidth = titleBounds.getWidth();
+double top = titleBoundsgetHeightf;	double top = titleBounds.getHeight();
+double y = -titleBounds.getY; double  x = fpanelWidth - titleWidth / /2/;/	double y = -titleBounds.getY(); double x = (panelWidth - titleWidth) / /2/;/
+/ / // / / /g/2/./s/e/t/F/o/n/t//t/i/t/l/e/Fo/n//l/;/	/ / / / / / /g/2/./s/e/t/F/o/n/t/(/t/i/t/l/e/F/o/n/t/)/;/
+/  /  / / / / /g/2/./d/r/a/w/S/t/r/i/n/g//t/i/t/l/e/,/ //f/l/o/a/t// /x// //f/l/o/a/t/l/ /y//;/	/ / / / / / /g/2/./d/r/a/w/S/t/r/i/n/g/(/t/i/t/l/e/,/ /(/f/l/o/a/t/)/ /x/,/ /(/f/l/o/a/t/)/ /y/)/;/
+/	/
+// / /  // LineMetric labelMetrics = labelFnt.getLineMetricsf", context;	/ / / / / / LineMetrics labelMetrics = labelFont.getLineMetrics("", context);
+double bottom = labelMetrics.getHeightl;	double bottom = labelMetrics.getHeight();
+y = panelHeight - labelMetrics.getDescent;	y = panelHeight - labelMetrics.getDescent();
+g2.setFntlabelFontf;	g2.setFont(labelFont);
+double scale = panelHeight  - top  - bottom / //m//x/V/a/l/u/e/  /-/  /m/i/n/V/a/l/ue//;/	double scale = (panelHeight - top - bottom) / /(/m/a/x/V/a/l/u/e/ /-/ /m/i/n/V/a/l/u/e/)/;/
+/ /  / /  / /i/n/t/  /b/a/r/W/i/d/t/h/ /=/ /p/a/n/e/l/W/i/d/t/h/	/ / / / / / /i/n/t/ /b/a/r/W/i/d/t/h/ /=/ /p/a/n/e/l/W/i/d/t/h/
+forint i =  0; i < values.length; i++	for (int i = 0; i < values.length; i++)
+{	{
+double x =  i * barWidth+1;	double x1 = i * barWidth + 1;
+double  y1 = to;	double y1 = top;
+double hight = valuesif *scale;	double height = values[i] * scale;
+if valuesfi>=0 y1 + fmaxValue -valuesi *  scale;	if (values[i] >= 0) y1 += (maxValue - values[i]) * scale;
+else	else
+1	{
+y1  += maxValue * scale;	y1 += maxValue * scale;
+height = -height;;	height = -height;
+}	}
+Rectangle2D rect = new RectangleD.Doublex1 y1, barWidth - 2, height;	Rectangle2D rect = new Rectangle2D.Double(x1, y1, barWidth - 2, height);
+g2.setPaintlColor..RED;	g2.setPaint(Color.RED);
+g2.fillrect;	g2.fill(rect);
+g2setPaintColor..BLACKl;	g2.setPaint(Color.BLACK);
+g2.drawrectf;	g2.draw(rect);
+Rectangle2D labelBounds  labelFont.getStringBoundsnamesi, context;	Rectangle2D labelBounds = labelFont.getStringBounds(names[i], context);
+double labelWidth = labelBouns.getWidth;;	double labelWidth = labelBounds.getWidth();
+x  = x1 + barWidth - labelWidth / /2/;/	x = x1 + (barWidth - labelWidth) / /2/;/
+/  / // / /  // //g/2/.//r/a/w/S/t/r/i/n/g/l/n/a/m/e/s//i//,/ //f/l/o/a/t// /x//  //f/l/o/a/t// /y//;/	/ / / / / / / / / /g/2/./d/r/a/w/S/t/r/i/n/g/(/n/a/m/e/s/[/i/]/,/ /(/f/l/o/a/t/)/ /x/,/ /(/f/l/o/a/t/)/ /y/)/;/
+// / // /  /}/	/ / / / / / /}/
+/ / / /}/	/ / / /}/
+/	/
+/ / / //r//v/a/t/e/ /d/o/u/b/l/e/l///v/a/l/u/e/s/;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/[/]/ /v/a/l/u/e/s/;/
+/ / //p/r/i/v/a/t/e/ /S/t/r/i/n/g/// /n/a/m/e/s;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/[/]/ /n/a/m/e/s/;/
+/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /t/it/l/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /t/i/t/l/e/;/
+/	/}

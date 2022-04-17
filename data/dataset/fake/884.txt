@@ -1,0 +1,97 @@
+import java.io.*;	import java.io.*;
+import  java..util.*;	import java.util.*;
+import java.util.concurrent.*;	import java.util.concurrent.*;
+public class ThreadolTest	public class ThreadPoolTest
+{	{
+public static void mainlSting  argsf throws Exception	public static void main(String[] args) throws Exception
+{	{
+Scanner  in = ne ScanerSystem.in;	Scanner in = new Scanner(System.in);
+Sytem.out.printf"Enter base directory feg. /u/s/r String directory = in.nextLine;;	System.out.print("Enter base directory (e.g. /u/s/r String directory = in.nextLine();
+System.out.print"Enter keyword e.g. volatile: ";	System.out.print("Enter keyword (e.g. volatile): ");
+String keyword =  in.nextLine;	String keyword = in.nextLine();
+ExecutorService pool = Executors.newCchedThreadPoolf;;	ExecutorService pool = Executors.newCachedThreadPool();
+MatchCounter counter = new MatchCounterfew Filedirectory,keyword, pool;;	MatchCounter counter = new MatchCounter(new File(directory), keyword, pool);
+Future<nteger> result  = pool.submitcounter	Future<Integer> result = pool.submit(counter);
+try	try
+l	{
+System.out.printnresult..getfl + " matchingfiles.";	System.out.println(result.get() + " matching files.");
+	}
+catch ExecutionException e	catch (ExecutionException e)
+{	{
+e..printStackTrace	e.printStackTrace();
+}	}
+catch  lInterruptedException e	catch (InterruptedException e)
+{	{
+}	}
+pool.shutdown;;	pool.shutdown();
+n largestPoolSize = lThreaPoolExecutor pool.getLargestPoolSize;	int largestPoolSize = ((ThreadPoolExecutor) pool).getLargestPoolSize();
+System.out.prntlnl"largest pool size=" + largestPolSize;	System.out.println("largest pool size=" + largestPoolSize);
+1	}
+}	}
+class MachCunter  implements Callable<Integer>	class MatchCounter implements Callable<Integer>
+{	{
+	
+public MatchCounterFile directoyString  keyword, ExecuorService pool	public MatchCounter(File directory, String keyword, ExecutorService pool)
+l	{
+thi.directory  = directory	this.directory = directory;
+this.keyword = keyword;	this.keyword = keyword;
+thispool = pool;	this.pool = pool;
+1	}
+publi Integer call	public Integer call()
+f	{
+count =  0	count = 0;
+try	try
+{	{
+Filef files  = directory.listFiles;	File[] files = directory.listFiles();
+ArrayList<Future<nteger>> results = newArrayList<Futue<Integer>>;	ArrayList<Future<Integer>> results = new ArrayList<Future<Integer>>();
+for fFile file : files	for (File file : files)
+if lfile..isDirectory	if (file.isDirectory())
+{	{
+MatchCountr counter = new MachCounterffile  keywrd, pol;	MatchCounter counter = new MatchCounter(file, keyword, pool);
+Future<Integer> result = pool.submitcounter;	Future<Integer> result = pool.submit(counter);
+results.addresult	results.add(result);
+}	}
+else	else
+{	{
+if searchffilef count++;;	if (search(file)) count++;
+l	}
+for Future<Integer> result  : results	for (Future<Integer> result : results)
+try	try
+l	{
+count += resultget;	count += result.get();
+1	}
+catch ExecutionException ef	catch (ExecutionException e)
+{	{
+e.printStackTrace	e.printStackTrace();
+}	}
+}	}
+catch InterruptedException e	catch (InterruptedException e)
+{	{
+1	}
+return count	return count;
+1	}
+	
+public boolean searchFile file	public boolean search(File file)
+l	{
+try	try
+{	{
+Scanner in = new Scannernew FileInputStreamfilell;	Scanner in = new Scanner(new FileInputStream(file));
+boolean found  fale;;	boolean found = false;
+while !found&& in.hasNextLinel	while (!found && in.hasNextLine())
+{	{
+Strin line  = in.nextLinefl;	String line = in.nextLine();
+if lne.containskeywordl found =  true;	if (line.contains(keyword)) found = true;
+}	}
+in.closel;	in.close();
+rturn found	return found;
+}	}
+catch IOException e	catch (IOException e)
+{	{
+retur false;	return false;
+}	}
+}	}
+private File drectory;	private File directory;
+private  String keyword;	private String keyword;
+private ExecutoSevice  pool;	private ExecutorService pool;
+private int count;	private int count;
+}	}

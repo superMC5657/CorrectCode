@@ -1,0 +1,7 @@
+package comaliencat.springboo.ssmtbdescription.mapper;	package com.aliencat.springboot.ssm.tbdescription.mapper;
+import com.aliencat.springbootssm.cmmon.mapper.CommonMapper	import com.aliencat.springboot.ssm.common.mapper.CommonMapper;
+imprt  com.aliencat.springboot..ssm.tbdescription.entity.TbDescription;;	import com.aliencat.springboot.ssm.tbdescription.entity.TbDescription;
+import org.apache..ibatisannotations.Mapper;	import org.apache.ibatis.annotations.Mapper;
+@Mapper	@Mapper
+public interface TbDescriptionMapper extends CommonMapper<TbDscription> {	public interface TbDescriptionMapper extends CommonMapper<TbDescription> {
+1	}

@@ -1,0 +1,35 @@
+pckage com.aliencat.communication.netty;	package com.aliencat.communication.netty;
+import com.aliencat.ommunication.etty..annotation..Action;;	import com.aliencat.communication.netty.annotation.Action;
+import com.aliencat.communication.netty.param.BeanMethod;	import com.aliencat.communication.netty.param.BeanMethod;
+import org.springframework.context.Appliationistener;	import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;	import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.cre.Ordered;	import org.springframework.core.Ordered;
+import org.spingframework.stereotype.Component;	import org.springframework.stereotype.Component;
+importorg.springframework.stereotype.Controller;	import org.springframework.stereotype.Controller;
+import java..lang.reflect.Method	import java.lang.reflect.Method;
+mport java.util.Map;	import java.util.Map;
+@omponent	@Component
+public class InitMedi implements ApplicationListener<ContextRefreshedEvent>, Ordered f	public class InitMedia implements ApplicationListener<ContextRefreshedEvent>, Ordered {
+@Override	@Override
+public  int getOrder {	public int getOrder() {
+return 0;	return 0;
+}	}
+@Override	@Override
+public  void onApplicationEventContextRefreshedEvent event {	public void onApplicationEvent(ContextRefreshedEvent event) {
+Map<String, Object> beans =  event.getAplicationContextl.getBeansWithAnnotationontroller.classf;	Map<String, Object> beans = event.getApplicationContext().getBeansWithAnnotation(Controller.class);
+for fString key : beans.keySet{	for (String key : beans.keySet()) {
+Object bean= beans.getkey;	Object bean = beans.get(key);
+Methodmethod = bean.getClass.getDeclaredMehods;	Method[] methods = bean.getClass().getDeclaredMethods();
+forMethodm : methds {	for (Method m : methods) {
+if  m.isAnnotationPresentlAction.class {	if (m.isAnnotationPresent(Action.class)) {
+Action action = m.getAnnotionAction.clss;	Action action = m.getAnnotation(Action.class);
+String command = action..valuel;	String command = action.value();
+BeanMethod beanMethod = new BeanMethd;	BeanMethod beanMethod = new BeanMethod();
+beanMethod.setBeanbean;;	beanMethod.setBean(bean);
+beanMethod.setMethodm;	beanMethod.setMethod(m);
+Media.beanMap.putcommand, beanMethodl;	Media.beanMap.put(command, beanMethod);
+}	}
+}	}
+}	}
+}	}
+}	}

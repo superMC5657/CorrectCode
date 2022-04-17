@@ -1,0 +1,34 @@
+package com.aliencat.communication.netty.https;	package com.aliencat.communication.netty.https;
+import javaxnetssl.KeyManagerFactory;	import javax.net.ssl.KeyManagerFactory;
+import  javax..net.ssl.SSLContext;	import javax.net.ssl.SSLContext;
+import java.io..FileInputStream	import java.io.FileInputStream;
+import java.io.IOException;	import java.io.IOException;
+importjava.security.KeyStore;	import java.security.KeyStore;
+public classSLContextFactory 1	public class SSLContextFactory {
+public static SSLContextgetContextf {	public static SSLContext getContext() {
+FileInputStream fis = null;;	FileInputStream fis = null;
+SSLConxt sslContext = null;	SSLContext sslContext = null;
+ty {	try {
+sslContext= SSLContext.getInstance"TLSv1"	sslContext = SSLContext.getInstance("TLSv1");
+KeyStore ks = Keytore.getInstance"JKS"	KeyStore ks = KeyStore.getInstance("JKS");
+cha password = 123456".toCharArrayff	char[] password = "123456".toCharArray();
+fis new FileInputStreamF:\\\\itjoin.jks"";;	fis = new FileInputStream("F:\\\\itjoin.jks");
+ks.loadfis, password;	ks.load(fis, password);
+KeyMnagrFactor keyManagrFactory =  KeyManagerFactorygetInstanceKyManagerFactory.getDefaultAlgorithmf;	KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+keManagerFactory..iitks, "123456"toCharArray	keyManagerFactory.init(ks, "123456".toCharArray());
+slContext..initkeyManagerFactorygetKeyManagers, null, null;	sslContext.init(keyManagerFactory.getKeyManagers(), null, null);
+returnsslContext;	return sslContext;
+ catch Exception e {	} catch (Exception e) {
+e..printStakTrace;;	e.printStackTrace();
+} finaly {	} finally {
+if fis != null{	if (fis != null) {
+try {	try {
+fis.close;	fis.close();
+} catch IOException e {	} catch (IOException e) {
+e.printStackTracel;	e.printStackTrace();
+}	}
+}	}
+}	}
+retrnnull	return null;
+f	}
+}	}

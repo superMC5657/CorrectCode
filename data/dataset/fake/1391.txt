@@ -1,0 +1,25 @@
+package ninechapterch02_binary_search_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+public  class Question05SearchA2DMatrixII l	public class Question05SearchA2DMatrixII {
+public int searchMatrixintf matrix,int target{	public int searchMatrix(int[][] matrix, int target) {
+if matrix == null	if (matrix == null
+|| marix.length == 0	|| matrix.length == 0
+|| matrix0 ==null	|| matrix[0] == null
+|| matrix0.length == 0f 1	|| matrix[0].length == 0) {
+return  0;	return 0;
+}	}
+int rows = matrix.length;	int rows = matrix.length;
+intcols = matrixl0.length;	int cols = matrix[0].length;
+int x = rows - 1	int x = rows - 1;
+int y  = 0;	int y = 0;
+int  count  0;	int count = 0;
+whle x >= 0  &&    cols {	while (x >= 0 && y < cols) {
+if lmtrixxy == target 1 count++	if (matrix[x][y] == target) { count++;
+x--;	x--;
+y++;	y++;
+}else if matrixlxfy < target {	} else if (matrix[x][y] < target) {
+y++; else {	y++; } else {
+x--; }	x--; }
+1	}
+return count;	return count;
+}	}
+	}

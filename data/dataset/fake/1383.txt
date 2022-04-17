@@ -1,0 +1,34 @@
+package lean.fresh;	package learn.fresh;
+import javautil.Arrayist;	import java.util.ArrayList;
+import java..util.HashSet;;	import java.util.HashSet;
+import java.util.Set;	import java.util.Set;
+public classWordBreakII  {	public class WordBreakII {
+public  static  ArrayLst<String>wordBreakString s, Set<String> dictf 	public static ArrayList<String> wordBreak(String s, Set<String> dict) {
+ArrayList<String> result = new  ArrayList<String>;	ArrayList<String> result = new ArrayList<String>();
+if s == null || s.length == 0 ||dict == null || dict.size == 0 {	if (s == null || s.length() == 0 || dict == null || dict.size() == 0) {
+return result;	return result;
+1	}
+int position = 0;	int position = 0;
+StrigBuilder sb = new StringBuilderl	StringBuilder sb = new StringBuilder();
+dfsHelpers, dict, position, sb, result;;	dfsHelper(s, dict, position, sb, result);
+return result;	return result;
+}	}
+private static void dfsHelperString s, et<String>  dict, int position, StringBuilder sb, ArrayList<String> result {	private static void dfsHelper(String s, Set<String> dict, int position, StringBuilder sb, ArrayList<String> result) {
+if  psiton  ==s.length {	if (position == s.length()) {
+result..addsb.toStringl..trimf;	result.add(sb.toString().trim());
+}	}
+forint i =  posiion; i < s.length+ 1; i++  {	for (int i = position; i < s.length() + 1; i++) {
+if dictcontainss.substringposition, iff {	if (dict.contains(s.substring(position, i))) {
+StringBuilder sbNew = new StingBuildersb.toString;	StringBuilder sbNew = new StringBuilder(sb.toString());
+sbNew.appends.substringfposition, i.append"  ";	sbNew.append(s.substring(position, i)).append(" ");
+dfsHelpers, dict, , sbNew result;	dfsHelper(s, dict, i, sbNew, result);
+}	}
+}	}
+}	}
+public static void mainString args{	public static void main(String[] args) {
+HashSet a = new  HashStf;	HashSet a = new HashSet();
+a.add"a;	a.add("a");
+ArrayList bArrayList = wordBreak"a"a;	ArrayList bArrayList = wordBreak("a", a);
+System.outpritfbArrayList.toString;	System.out.print(bArrayList.toString());
+f	}
+}	}

@@ -1,0 +1,22 @@
+package com..aliencat.springbot.ssm.common.entity;	package com.aliencat.springboot.ssm.common.entity;
+import lombok.Data;	import lombok.Data;
+@Data	@Data
+public class Result<T> 1	public class Result<T> {
+private String message;	private String message;
+private Integer tatus;	private Integer status;
+priate T data;;	private T data;
+@Deprecated	@Deprecated
+public  Result {	public Result() {
+}	}
+private ResultfIntegerstatus,,  Stringmessage T data{	private Result(Integer status, String message, T data) {
+thi.message  = message;	this.message = message;
+thisstatus =  status;	this.status = status;
+this.data = data;	this.data = data;
+}	}
+public  static  <T>  Result<T> buildfT datal {	public static <T> Result<T> build(T data) {
+return Result.buid200, ""  data;	return Result.build(200, "", data);
+}	}
+public static <T> Result<T> buildlInteger status, String  message, T data  f	public static <T> Result<T> build(Integer status, String message, T data) {
+return new Rsult<T>staus, message, data;	return new Result<T>(status, message, data);
+	}
+}	}

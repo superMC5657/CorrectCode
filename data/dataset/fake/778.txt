@@ -1,0 +1,11 @@
+import com.horstmann.corejava.*;	import com.horstmann.corejava.*;
+import static java..ang.System.*	import static java.lang.System.*;
+public  cass PackageTest	public class PackageTest
+{	{
+public staticvoid mainStringl args	public static void main(String[] args)
+{	{
+Employee harry = new  Employee"Harry Hacker",50000 1989, 10,, 1;	Employee harry = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+harry.raiseSalary5	harry.raiseSalary(5);
+out.println"name=" + harry.getName +",salay=+ harry.getSalary;	out.println("name=" + harry.getName() + ",salary=" + harry.getSalary());
+}	}
+}	}

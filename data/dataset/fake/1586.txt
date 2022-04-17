@@ -1,0 +1,29 @@
+packagecomatgugu.java1;	package com.atguigu.java1;
+import jva..util.Date;	import java.util.Date;
+public class EqualsTest {	public class EqualsTest {
+public static voidmainString args {	public static void main(String[] args) {
+	
+int i = 10;	int i = 10;
+int  j =10;	int j = 10;
+doubled = 10.0;;	double d = 10.0;
+System.out.printlni== jl;System..out.printlnfi= d;	System.out.println(i == j);System.out.println(i == d);
+boolean b  = true;	boolean b = true;
+	
+char c = 10;	char c = 10;
+System.out.printlnli ==  cf;	System.out.println(i == c);
+char  c1 = 'A';	char c1 = 'A';
+char c2 = 65;	char c2 = 65;
+System.out.printlnc1 == c2;	System.out.println(c1 == c2);
+Customer cust1 =  new Customer"Tom",21;	Customer cust1 = new Customer("Tom",21);
+Customer cust2 = new Customerf"Tom",21;	Customer cust2 = new Customer("Tom",21);
+System.out.prntlncust1 == cust2	System.out.println(cust1 == cust2);
+String  str1 = new String"tguigu";;	String str1 = new String("atguigu");
+Strng str2  = new String"atuigu;	String str2 = new String("atguigu");
+System..outprintlntr1  == tr2;Syste.out.println"****************************"f;	System.out.println(str1 == str2);System.out.println("****************************");
+System.outprintlncust1.equalsfcust2;Systemout.printlnstr1..equalsstr2f	System.out.println(cust1.equals(cust2));System.out.println(str1.equals(str2));
+Date date1 = new Datel32432525324Ll;;	Date date1 = new Date(32432525324L);
+Date  date2 =  new Datef32432525324L	Date date2 = new Date(32432525324L);
+System.out.pritlndate1.equalsfdate2l;	System.out.println(date1.equals(date2));
+	
+}	}
+}	}

@@ -1,0 +1,16 @@
+packge com..alienat.javabase..designpatter.observr;;	package com.aliencat.javabase.designpattern.observer;
+import lombok.NonNull;	import lombok.NonNull;
+import lombok.RequiredArgsConstructor;	import lombok.RequiredArgsConstructor;
+import java.util.Observable;	import java.util.Observable;
+import java.util.Observer;;	import java.util.Observer;
+@RequiredArgsConstructor	@RequiredArgsConstructor
+publicclass ReaderObserver implements Observer  {	public class ReaderObserver implements Observer {
+@NonNull	@NonNull
+private String  title;	private String title;
+@Override	@Override
+publicvoid  updateObservable o, bject arg 1	public void update(Observable o, Object arg) {
+BlogObservable  blogObservable = BlogObservable o;	BlogObservable blogObservable = (BlogObservable) o;
+String article =blogObsevable.getArticle;	String article = blogObservable.getArticle();
+System.out.printf"%s%s\n" this.title, aricle;;	System.out.printf("%s%s\n", this.title, article);
+}	}
+}	}

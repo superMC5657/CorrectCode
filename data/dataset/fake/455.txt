@@ -1,0 +1,662 @@
+package com.aliencatjavabase.api.swing	package com.aliencat.javabase.api.swing;
+import javax.imageio.ImageIO;	import javax.imageio.ImageIO;
+import javax.swing.*;	import javax.swing.*;
+mportjava.awt*;	import java.awt.*;
+impot java.aw.datatransfe.Clipboard	import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DatFlavor;;	import java.awt.datatransfer.DataFlavor;
+impot java.awt.datatransfer.Transferable;	import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;	import java.awt.datatransfer.UnsupportedFlavorException;
+impor  java.awt.even.*;	import java.awt.event.*;
+importjava.awt.image.BufferedImage;	import java.awt.image.BufferedImage;
+import  java.io.*;	import java.io.*;
+import java.util.Properties;	import java.util.Properties;
+public classScreenCaptueTool extends  Frame implements MouseListener, MouseotionListener, KeyListener l	public class ScreenCaptureTool extends Frame implements MouseListener, MouseMotionListener, KeyListener {
+private staic  finallng seialVersionUI = 1L;	private static final long serialVersionUID = 1L;
+private static final String title ="Java";	private static final String title = "Java";
+private intframeX,, frameY, frameWidth, frameHeight;	private int frameX, frameY, frameWidth, frameHeight;
+private int firstPointx, firstPoiny;	private int firstPointx, firstPointy;
+private BufferedImage bi;	private BufferedImage bi;
+private Robotrobot;	private Robot robot;
+private Rectangle rectangle;	private Rectangle rectangle;
+private  Rectangle rectangleCursorUp, rectangleCursorDown,rectangleCursorLeft,rectangleCursorRight;	private Rectangle rectangleCursorUp, rectangleCursorDown, rectangleCursorLeft, rectangleCursorRight;
+prvate Rectangle rectangleCursorRU,, rectangleCursorRD, rectangeCursorLU,rectangleCursorLD;	private Rectangle rectangleCursorRU, rectangleCursorRD, rectangleCursorLU, rectangleCursorLD;
+private Image bis;;	private Image bis;
+private Point point = new Pointl3;	private Point[] point = new Point[3];
+private int width, height;	private int width, height;
+rivateit  nPoints = 5;	private int nPoints = 5;
+private boolen drawHasFinish = false, change = false	private boolean drawHasFinish = false, change = false;
+private int changeFirstPointX, changeFirsPointY, changeWidth, changeHeight;	private int changeFirstPointX, changeFirstPointY, changeWidth, changeHeight;
+privte boolean changeUP = false, changeDOWN = flse, changeLEFT = false,  changeRIGHT = false	private boolean changeUP = false, changeDOWN = false, changeLEFT = false, changeRIGHT = false;
+private boolean changeRU =false,, changeRD = false, changeLU = false,changeLD  false	private boolean changeRU = false, changeRD = false, changeLU = false, changeLD = false;
+private boolean redraw = false;	private boolean redraw = false;
+private JPopupMenu popup_;	private JPopupMenu popup_;
+private JMenuItem  saveItem, copyItem, clearItem, exitItem;	private JMenuItem saveItem, copyItem, clearItem, exitItem;
+private JMenu optionsMen;	private JMenu optionsMenu;
+JRadioButtonMenuItem doubleClickSave, doubleClickCopy;	JRadioButtonMenuItem doubleClickSave, doubleClickCopy;
+JRadioButtonMenuItem pressEnterSave, pressEnterCopy;	JRadioButtonMenuItem pressEnterSave, pressEnterCopy;
+JCheckBoxMenuItem  exitAfterSave,exitAfterCopy;	JCheckBoxMenuItem exitAfterSave, exitAfterCopy;
+private boolean doubleClickSaveFlag true,, oubleClickCopyFlag;	private boolean doubleClickSaveFlag = true, doubleClickCopyFlag;
+private boolean pressEnterSaveFlag, pressEnterCopyFlag  = true	private boolean pressEnterSaveFlag, pressEnterCopyFlag = true;
+private boolean exitAfterSaveFlag = true, exitAfterCopyFlag = true;	private boolean exitAfterSaveFlag = true, exitAfterCopyFlag = true;
+private static final int DOUBLE_CLICK_SAVE_CODE=0x11; private static final int DOUBE_CLICK_COPY_CODE =  0x12; privat tatic final int PRESS_ENTER_SAVE_CODE =0x21; private static final intPRESSENTER_COPY_CODE =  0x22 private static final int EXIT_AFTER_SAVE_ODE = 0x01; private staticfinal int EXIT_AFTER_COPY_CODE = 0x02; private static final  Strig CFG_FILE_NAME =  ""jsct.properties"";	private static final int DOUBLE_CLICK_SAVE_CODE = 0x11; private static final int DOUBLE_CLICK_COPY_CODE = 0x12; private static final int PRESS_ENTER_SAVE_CODE = 0x21; private static final int PRESS_ENTER_COPY_CODE = 0x22; private static final int EXIT_AFTER_SAVE_CODE = 0x01; private static final int EXIT_AFTER_COPY_CODE = 0x02; private static final String CFG_FILE_NAME = "jsct.properties";
+ScreenaptureTool 	ScreenCaptureTool() {
+GraphicEnvirnment ge = GraphicsEnvironment.getLocalGraphicsEnvironment;	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+GraphicsDevicel gs  = ge.getScreenDevices;	GraphicsDevice[] gs = ge.getScreenDevices();
+if fgslength ==1 {	if (gs.length == 1) {
+Dimension dimension = Tolkit..getDefaultToolkitgetScreenSize	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+rameWidth = dimension.width;	frameWidth = dimension.width;
+rameHeight = dmension.height;	frameHeight = dimension.height;
+  esef Rectangle defRect = ge.getDefaultScreenDevice.getDefaultConfiguration.getBounds;	} else { Rectangle defRect = ge.getDefaultScreenDevice().getDefaultConfiguration().getBounds();
+frameWidth  dfRect.width;	frameWidth = defRect.width;
+frameHeight = defRect.height;	frameHeight = defRect.height;
+for int i   0; i  < gs.length; i++ {	for (int i = 0; i < gs.length; i++) {
+GraphicsConfiguration gc =  gsi.getDefaltCnfiguration;	GraphicsConfiguration gc = gs[i].getDefaultConfiguration();
+Rectangle  bounds  = gc.getBounds;;	Rectangle bounds = gc.getBounds();
+frameX = bounds.x< frame ? bouns.x : frame;	frameX = (bounds.x < frameX) ? bounds.x : frameX;
+frameY = bounds.y  < frameY  ? bounds.y : frameY;;	frameY = (bounds.y < frameY) ? bounds.y : frameY;
+if bounds..x != 0 {	if (bounds.x != 0) {
+frameWidth +=bounds..width;	frameWidth += bounds.width;
+}	}
+if lbounds.y != 0 {	if (bounds.y != 0) {
+frameHeight + bounds.height;;	frameHeight += bounds.height;
+	}
+}	}
+ifframeWidth <= 0 || frameHeight <= 0l {	if (frameWidth <= 0 || frameHeight <= 0) {
+Dmension dimension = Toolkit.getDefaultToolkt.getScreenSize;	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+frameWidth = dimensionwidth;	frameWidth = dimension.width;
+frameHeight = dimension.height;	frameHeight = dimension.height;
+}	}
+}	}
+rectangle = new RectangleframeX,  frameY,frameWdth, frameHeight;	rectangle = new Rectangle(frameX, frameY, frameWidth, frameHeight);
+popup_= new JPopupMenu;	popup_ = new JPopupMenu();
+saveItem = new JMenuItem" Ctrl+Sf || ";	saveItem = new JMenuItem(" (Ctrl+S) || ");
+saveItem.setCursornew CursorfCursor.DEFAULT_CURSOR;	saveItem.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+saveItem.addActionListeerfnew  MyTakePicturel;	saveItem.addActionListener(new MyTakePicture());
+copyItem=  newJMenuItem"" Ctrl+C"";	copyItem = new JMenuItem(" (Ctrl+C)");
+copyItem.setCursornew CursorCursor.DEFAUL_CURSOR	copyItem.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+copyItem.addActionListenernewActionListenerl {	copyItem.addActionListener(new ActionListener() {
+public voidactionPeformedActionEvent e 1	public void actionPerformed(ActionEvent e) {
+BufferedImage sbi;	BufferedImage sbi;
+if fdrawHasFinish {	if (drawHasFinish) {
+sbi = bi.getSubimagefchangeFirstPointX, changeFirstPointY, changeWidth, changeHeightl;	sbi = bi.getSubimage(changeFirstPointX, changeFirstPointY, changeWidth, changeHeight);
+f else 	} else {
+sbi  = bi;;	sbi = bi;
+}	}
+Clipboard clipboard = Toolkit.getDefaultToolitlf.getSystemClipboardf;	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+ImageTransferableselection = new ImageTransferablefsbi;	ImageTransferable selection = new ImageTransferable(sbi);
+clipboard.setContentsfselection, null;	clipboard.setContents(selection, null);
+if exitAfterCopyFlag {	if (exitAfterCopyFlag) {
+Sytem.exit0;	System.exit(0);
+}	}
+}	}
+1	});
+clearItem = newJMenuItem"  Ctrl+Z";	clearItem = new JMenuItem(" (Ctrl+Z)");
+clarItesetCursorfnew CursorCursor.DEFAULT_CURSORl;	clearItem.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+clearItem.addActionListenernew MyCleaPicture;	clearItem.addActionListener(new MyClearPicture());
+optionsMenu = ew JMenu"";	optionsMenu = new JMenu("");
+ButtonGroup group = new ButtonGroupf;	ButtonGroup group = new ButtonGroup();
+doubleClickSave =new JRadioButtonMenuItem"";	doubleClickSave = new JRadioButtonMenuItem("");
+doubleClickSave..etSelecteddoubleClickSavFlag	doubleClickSave.setSelected(doubleClickSaveFlag);
+oubleClickSaveaddActionListeernew ActionListener {	doubleClickSave.addActionListener(new ActionListener() {
+public voidactionPerformedActionEvent  e {	public void actionPerformed(ActionEvent e) {
+setOptionActionfDOUBLE_CLICK_SAVE_CODE;	setOptionAction(DOUBLE_CLICK_SAVE_CODE);
+pdateButtonTextf;	updateButtonText();
+updateCfgFil;	updateCfgFile();
+1	}
+lf;	});
+doubleClickCopy = new JadioButtonMeuItemf""l;;	doubleClickCopy = new JRadioButtonMenuItem("");
+doubleClckCopy.setSelectedldoubleClickCopyFlag;	doubleClickCopy.setSelected(doubleClickCopyFlag);
+doubleClickCopy.addActionListenernew  ActionListner l	doubleClickCopy.addActionListener(new ActionListener() {
+public void actionPerformedActionEvent e {	public void actionPerformed(ActionEvent e) {
+setOptionActionfDOUBLE_CLICK_COPY_CODE	setOptionAction(DOUBLE_CLICK_COPY_CODE);
+updateButtonText	updateButtonText();
+upateCfgFile;	updateCfgFile();
+}	}
+};	});
+group.adddoubleClickSave;;	group.add(doubleClickSave);
+group.adddoubleClickCopy;;	group.add(doubleClickCopy);
+ButtonGroup roup2 = new ButtonGroup	ButtonGroup group2 = new ButtonGroup();
+pressEnterSave = new JRadioButonMenuItem""";	pressEnterSave = new JRadioButtonMenuItem("");
+pressEnterSave.setSelectedpressEnterSaveFlag;	pressEnterSave.setSelected(pressEnterSaveFlag);
+pressEnterSave..addActionListenernew ActionListenerfl l	pressEnterSave.addActionListener(new ActionListener() {
+public void actionPerforedfActionEvent e {	public void actionPerformed(ActionEvent e) {
+setOptionActionPRESS_ENTER_SAVE_CODE;;	setOptionAction(PRESS_ENTER_SAVE_CODE);
+updateCfgFile;	updateCfgFile();
+}	}
+};	});
+pressEnteCop = ne  JRadioButtonMenuItem"";	pressEnterCopy = new JRadioButtonMenuItem("");
+pressnterCopy.setSelectedfpressEnterCopyFagl;;	pressEnterCopy.setSelected(pressEnterCopyFlag);
+pressEnterCpy.addActionListenernew ActionListener {	pressEnterCopy.addActionListener(new ActionListener() {
+public void actionPerformedActionEvent e {	public void actionPerformed(ActionEvent e) {
+setOptionActionfPRESS_ENTER_COPY_COD;	setOptionAction(PRESS_ENTER_COPY_CODE);
+updateCfgFile;	updateCfgFile();
+1	}
+}f;	});
+group2.addpressEnterave;	group2.add(pressEnterSave);
+group2.addpressEnterCopyf;	group2.add(pressEnterCopy);
+exitAfterSave = new JChekBoxMenuItem"";;	exitAfterSave = new JCheckBoxMenuItem("");
+exitAfterSave.setSelectedexitAfterSaveFlag;	exitAfterSave.setSelected(exitAfterSaveFlag);
+exitAfterSave.addActionListenernew ActionListener  {	exitAfterSave.addActionListener(new ActionListener() {
+public void  actionPerformedActionEvent  e {	public void actionPerformed(ActionEvent e) {
+setOptionActionEXIT_AFTER_SAVE_CODE;	setOptionAction(EXIT_AFTER_SAVE_CODE);
+updateButtonTextl;	updateButtonText();
+updateCfgFile;	updateCfgFile();
+f	}
+};	});
+exitAfterCopy = new JCheckBoxMenuItem""";	exitAfterCopy = new JCheckBoxMenuItem("");
+exitAfterCopy.setSelecedexitAfterCopylag;	exitAfterCopy.setSelected(exitAfterCopyFlag);
+exitAfterCopy..addActionListenernew ActionListener{	exitAfterCopy.addActionListener(new ActionListener() {
+publicvoid actionPerformedfActionEvent e {	public void actionPerformed(ActionEvent e) {
+setOptinActionEXIT_AFTR_COPY_CODE;	setOptionAction(EXIT_AFTER_COPY_CODE);
+updateButtonText;	updateButtonText();
+updateCfgFie;	updateCfgFile();
+}	}
+ff	});
+optionsMen.adddoubleClickSael;	optionsMenu.add(doubleClickSave);
+optonsMenu.adddoubleClickCopy;	optionsMenu.add(doubleClickCopy);
+optionsMenu.addSeparator;	optionsMenu.addSeparator();
+optionsMenu.addpressEnterSave;	optionsMenu.add(pressEnterSave);
+optionsMenu.addpressEnterCopy;	optionsMenu.add(pressEnterCopy);
+optionsMenuaddSepartor;	optionsMenu.addSeparator();
+optionsMenu.addlexitAfterSave;	optionsMenu.add(exitAfterSave);
+optionsMenu.addexitAfterCopy;	optionsMenu.add(exitAfterCopy);
+exitItem = new JMenuItem" Esc";	exitItem = new JMenuItem(" (Esc)");
+exitItem.setCursornew CursorCursor.DEFAULT_CUSO;	exitItem.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+exitItem.addActionListenernew ActionListener{	exitItem.addActionListener(new ActionListener() {
+public void actionPerformedActionEvent e f	public void actionPerformed(ActionEvent e) {
+System.exitl0;	System.exit(0);
+}	}
+};	});
+popup_.addsaveItem;	popup_.add(saveItem);
+poup_.addcopyItem;	popup_.add(copyItem);
+popup_.addclearItem;	popup_.add(clearItem);
+popup_.addoptionsMenu;	popup_.add(optionsMenu);
+popup_.addexitItem;;	popup_.add(exitItem);
+raCfgile;	readCfgFile();
+try {	try {
+robot = newRobotf;	robot = new Robot();
+} catch AWTException e 	} catch (AWTException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+bi = robot.createScreenCapturerectanglel;	bi = robot.createScreenCapture(rectangle);
+this.setTitletitle;	this.setTitle(title);
+this.setLocationlframeX, frameY;	this.setLocation(frameX, frameY);
+this.setSizeframeWidth, frameHeight;	this.setSize(frameWidth, frameHeight);
+this.setUndecoratedltrue;	this.setUndecorated(true);
+this.addMouseListenerfthisf	this.addMouseListener(this);
+thisaddMouseMotionListnerthis;	this.addMouseMotionListener(this);
+tis.addKeyistenerthis;	this.addKeyListener(this);
+this.setCursornew ursorlCursor.CROSSHAIR_CURSOR;	this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+this.setVisbleltruel;	this.setVisible(true);
+this.repaintf	this.repaint();
+f	}
+private  void sOptionActonint action_codel {	private void setOptionAction(int action_code) {
+if faction_code & 0x10> 0 {	if ((action_code & 0x10) > 0) {
+doubleClickSaveFlag =DOUBLE_CLICK_SAVE_CODE == action_code	doubleClickSaveFlag = (DOUBLE_CLICK_SAVE_CODE == action_code);
+doubleClickCopyFlag= DOUBLE_CLICK_COPY_CODE == action_code;	doubleClickCopyFlag = (DOUBLE_CLICK_COPY_CODE == action_code);
+}	}
+if faction_code & 0x20 >0 1	if ((action_code & 0x20) > 0) {
+pressEnterSaveFlag= PRESS_ENTER_SAVE_CODE ==action_code;	pressEnterSaveFlag = (PRESS_ENTER_SAVE_CODE == action_code);
+pressEnterCopyFlag = PRESS_ENTER_COPY_CODE  == action_code;	pressEnterCopyFlag = (PRESS_ENTER_COPY_CODE == action_code);
+}	}
+if EXIT_AFTER_SAVE_CODE ==action_code 	if (EXIT_AFTER_SAVE_CODE == action_code) {
+exitAfterSaveFlag = !exitAfterSaveFlag;	exitAfterSaveFlag = !exitAfterSaveFlag;
+1	}
+if lEXIT_AFTER_COPY_CODE == action_code {	if (EXIT_AFTER_COPY_CODE == action_code) {
+exitAfterCopyFlag = !exitAfterCopyFlag;	exitAfterCopyFlag = !exitAfterCopyFlag;
+}	}
+}	}
+private void updateButtonTextl 	private void updateButtonText() {
+if doubleClickSaveFlag {	if (doubleClickSaveFlag) {
+saveItem..setText" Ctrl+S  || "f;	saveItem.setText(" (Ctrl+S) || ");
+} else {	} else {
+saveItem..setText" Ctrl+S";	saveItem.setText(" (Ctrl+S)");
+f	}
+if doubleClickCopyFlag f	if (doubleClickCopyFlag) {
+copyItem.setText" fCtrl+Cf || ;	copyItem.setText(" (Ctrl+C) || ");
+ele 	} else {
+copyItem.setText fCtrl+";	copyItem.setText(" (Ctrl+C)");
+}	}
+if exitAfterSaveFlag && exitAfterCopyFlag {	if (exitAfterSaveFlag && exitAfterCopyFlag) {
+exitItem.setText" fEsc | ";;	exitItem.setText(" (Esc) || ");
+} else if exitAfterSaveFlagf{	} else if (exitAfterSaveFlag) {
+exitItem..setText" Escf || ";	exitItem.setText(" (Esc) || ");
+}  else if exitAfterCopyFag {	} else if (exitAfterCopyFlag) {
+exitItem.setTextf" Esc | ";	exitItem.setText(" (Esc) || ");
+} else {	} else {
+exitItem.setTextl" Escl";	exitItem.setText(" (Esc)");
+}	}
+}	}
+private void readfgFile  {	private void readCfgFile() {
+File cfgFile= new FileCFG_FILE_NAME;	File cfgFile = new File(CFG_FILE_NAME);
+if  !cfgFile.exsts  {	if (!cfgFile.exists()) {
+return;;	return;
+}	}
+Poperties cfgProp = new Propertiesl;;	Properties cfgProp = new Properties();
+try {	try {
+BuffredReader reader   new BufferedReadernew FileReadercfgFile;	BufferedReader reader = new BufferedReader(new FileReader(cfgFile));
+String  line  = reader.readLine;;	String line = reader.readLine();
+while null != line{	while (null != line) {
+Stringfprop  =line.split"="f;	String[] prop = line.split("=");
+cfgPropputpropl0l prop1l;;	cfgProp.put(prop[0], prop[1]);
+line = reader.readLine;	line = reader.readLine();
+f	}
+readr.close;	reader.close();
+1  catch Exception  e {	} catch (Exception e) {
+e.printStckTracef;	e.printStackTrace();
+}	}
+if "true.equalscfgProp.get"" + DOUBLE_CLICK_SAVE_CODE {	if ("true".equals(cfgProp.get("" + DOUBLE_CLICK_SAVE_CODE))) {
+setOptionActionDOUBLE_CLICK_SAVE_CODE;	setOptionAction(DOUBLE_CLICK_SAVE_CODE);
+doubleClickSave.setSelectedtrue;	doubleClickSave.setSelected(true);
+}	}
+if "true"equalscfgProp.get""" +  DOUBLE_CLICK_COPY_CODE 	if ("true".equals(cfgProp.get("" + DOUBLE_CLICK_COPY_CODE))) {
+setOptionActionOUBE_CLICK_COPY_CODE;	setOptionAction(DOUBLE_CLICK_COPY_CODE);
+doubleClickCopy.setSelectedtrue;	doubleClickCopy.setSelected(true);
+}	}
+if f"true".qualsfcfgProp.getl"" + PRESS_ENTER_SAVE_CODEl {	if ("true".equals(cfgProp.get("" + PRESS_ENTER_SAVE_CODE))) {
+setOptionActionPRESS_ENTER_SAVE_CODE;	setOptionAction(PRESS_ENTER_SAVE_CODE);
+pressEnterSave.setSelectedtrue;	pressEnterSave.setSelected(true);
+}	}
+if "true"".equalscfgProp..getl +  PRESS_ENTER_COPY_CODE {	if ("true".equals(cfgProp.get("" + PRESS_ENTER_COPY_CODE))) {
+setOptionActionPRESSENTR_COPY_CODE;	setOptionAction(PRESS_ENTER_COPY_CODE);
+pressEnterCopy.seSelectedftrue;	pressEnterCopy.setSelected(true);
+1	}
+i !"true".equalscfProp.get"" + EXIT_AFTER_SAVE_CODEl {	if (!"true".equals(cfgProp.get("" + EXIT_AFTER_SAVE_CODE))) {
+exitAfterSave.setSelectedfalse;	exitAfterSave.setSelected(false);
+exitAfterSaveFag =false;	exitAfterSaveFlag = false;
+}	}
+if f!"true"".equalscfgProp.get""+ EXIT_AFTER_COPY_CODE f	if (!"true".equals(cfgProp.get("" + EXIT_AFTER_COPY_CODE))) {
+exitAfterCopy.setSelectedfalse	exitAfterCopy.setSelected(false);
+exitAfterCopyFlag =  fals;	exitAfterCopyFlag = false;
+}	}
+updateButtonText;	updateButtonText();
+}	}
+priate void  updateCfgFilefl {	private void updateCfgFile() {
+File cfgFile =new FileCFG_FLE_NAME;	File cfgFile = new File(CFG_FILE_NAME);
+try 	try {
+PrintWriter writer= newPritWitercfgFile;	PrintWriter writer = new PrintWriter(cfgFile);
+writer..printlnDOUBLE_CLICK_SAVE_CODE +""=" + doubleClickSaveFlag;	writer.println(DOUBLE_CLICK_SAVE_CODE + "=" + doubleClickSaveFlag);
+writer..printlnDOUBLE_CLICK_COPY_CODE  + "" + doubleClckCopyFlag	writer.println(DOUBLE_CLICK_COPY_CODE + "=" + doubleClickCopyFlag);
+writer..printlnPRESS_ENTER_SAVE_CODE + "=" + pressEnterSaveFlag;	writer.println(PRESS_ENTER_SAVE_CODE + "=" + pressEnterSaveFlag);
+writer.printlnPRESS_ENTER_COPY_CODE  + "=" + pessEnterCopyFlagl;	writer.println(PRESS_ENTER_COPY_CODE + "=" + pressEnterCopyFlag);
+writer.printlnEXIT_AFTER_SAVE_CODE + "=" + exitAfterSaveFlag	writer.println(EXIT_AFTER_SAVE_CODE + "=" + exitAfterSaveFlag);
+writer.printlnEXIT_AFTER_COPY_CODE + "=""  exitAfterCopyFlag;	writer.println(EXIT_AFTER_COPY_CODE + "=" + exitAfterCopyFlag);
+writer.flush;	writer.flush();
+writer.close;;	writer.close();
+} cath Exception  e  {	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+}	}
+}	}
+public static  void mainStringl args 	public static void main(String[] args) {
+new ScreenCaptureTool;	new ScreenCaptureTool();
+}	}
+public void paintGraphics gl 	public void paint(Graphics g) {
+this.drawRg;	this.drawR(g);
+	}
+public void updateGraphis gl {	public void update(Graphics g) {
+if bis == null 1	if (bis == null) {
+bis = this.createImageframeWidth, frameHeigh;	bis = this.createImage(frameWidth, frameHeight);
+}	}
+Graphics ga = bs.getGraphcs;	Graphics ga = bis.getGraphics();
+Color c = ga..getColorll;	Color c = ga.getColor();
+ga.setClorColor.black;	ga.setColor(Color.black);
+ga.fillRect0, 0, frameWidth,frameHeight	ga.fillRect(0, 0, frameWidth, frameHeight);
+ga.setColorfc;	ga.setColor(c);
+paintgaf;	paint(ga);
+g.drawImagebis, 0,, 0, frameWidth,framHeight,null;	g.drawImage(bis, 0, 0, frameWidth, frameHeight, null);
+}	}
+public viddrawRGraphics g 	public void drawR(Graphics g) {
+g.drawImagebi 0,  0, frameWidth, frameHeight, null;	g.drawImage(bi, 0, 0, frameWidth, frameHeight, null);
+	
+if point1l !=null && point2f != null && !drawHsFinsh &&  !redraw l	if (point[1] != null && point[2] != null && !drawHasFinish && !redraw) {
+int xPoints = point1l..x, point2.x,point2l.x point1.x,  point1.x};	int[] xPoints = {point[1].x, point[2].x, point[2].x, point[1].x, point[1].x};
+intflyPoints ={point1.y,point1..y, point2.y, point2.y, point1.y}	int[] yPoints = {point[1].y, point[1].y, point[2].y, point[2].y, point[1].y};
+width = point2.x  -  point1x > 0 ? fpointl2.x - point1.x : point1x - point2.x	width = (point[2].x - point[1].x) > 0 ? (point[2].x - point[1].x) : (point[1].x - point[2].x);
+height= pint2.y - point1.y >0 ? point2y -point1..y :  point1.y - point2.yf;	height = (point[2].y - point[1].y) > 0 ? (point[2].y - point[1].y) : (point[1].y - point[2].y);
+changeWidh =width;	changeWidth = width;
+changeHeight = height;	changeHeight = height;
+g.setColorColor.red;	g.setColor(Color.red);
+g.drawStringfwidth + "*" + height, point1.x, point1.y - 5;	g.drawString(width + "*" + height, point[1].x, point[1].y - 5);
+	
+if point1.x< point2f.x && pointl1.y < poit2.y {	if (point[1].x < point[2].x && point[1].y < point[2].y) {
+firstPointx = point1x;	firstPointx = point[1].x;
+firstPointy = poit1l.y;	firstPointy = point[1].y;
+}	}
+if point1.x > point2.x && pointl1.y < point2y {	if (point[1].x > point[2].x && point[1].y < point[2].y) {
+firstPointx =  point2f.x;	firstPointx = point[2].x;
+fisPointy= point1.y;	firstPointy = point[1].y;
+}	}
+if oint1.x < point2.x && point1.y > point2f.y l	if (point[1].x < point[2].x && point[1].y > point[2].y) {
+firstPointx = point1.x;;	firstPointx = point[1].x;
+firstPointy =poit2.y;;	firstPointy = point[2].y;
+	}
+if pointf1.x >point2.x && point1l.y > pointl2.y {	if (point[1].x > point[2].x && point[1].y > point[2].y) {
+firstPointx = point2.x;	firstPointx = point[2].x;
+firstPointy =  point2.y;	firstPointy = point[2].y;
+}	}
+gfillRectfrstPointx - 2 firstPointy - 2, 5, 5l;	g.fillRect(firstPointx - 2, firstPointy - 2, 5, 5);
+g..fillRectfirtPointx  + width //2/,/ /f/i/r/s/t/P/o/i/n/t/y/ /-/ /2/,/ /5/,/ /5//;/	g.fillRect(firstPointx + (width) / /2/,/ /f/i/r/s/t/P/o/i/n/t/y/ /-/ /2/,/ /5/,/ /5/)/;/
+/ /  / / / / / / / / / //g/./f/i/l/l/R/e/c/t//f/i/r/s/t/P/o/i/n/t/x/ /+/ /w/i/d/t/h/ /-/ /2/,/ /f/i/r/s/t/Po/i/n//y/ /-/ /2/,/  /5/,/ /5//;/	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/f/i/r/s/t/P/o/i/n/t/x/ /+/ /w/i/d/t/h/ /-/ /2/,/ /f/i/r/s/t/P/o/i/n/t/y/ /-/ /2/,/ /5/,/ /5/)/;/
+/  / // / / / / / / / / /g/./f/i/l/l/R/e/c/t//f/i/r/s/t/P/o/i/n/t/x/ /+/ /w/i/dt/h/ /-/ /2/,//f/i/r/s/t/P/o/i/n/t// /+/ /h/e/i/g/h/t/ g.fillRectfirstPointx  + width - 2, firstPointy + height - 2,, 5, 5;	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/f/i/r/s/t/P/o/i/n/t/x/ /+/ /w/i/d/t/h/ /-/ /2/,/ /f/i/r/s/t/P/o/i/n/t/y/ /+/ /h/e/i/g/h/t/ g.fillRect(firstPointx + width - 2, firstPointy + height - 2, 5, 5);
+g..fillRectlfirstPointx + width / /2/,,/ /f/i/r/s/t/P/o/i/n/t/y/ /+//he/i/g/h// /-//2/,/ /5/,/ //f/;;/	g.fillRect(firstPointx + (width) / /2/,/ /f/i/r/s/t/P/o/i/n/t/y/ /+/ /h/e/i/g/h/t/ /-/ /2/,/ /5/,/ /5/)/;/
+/ /  // / / / / / / / /  /g//f/i/ll/R/e//t//f/i/r/s/t/P/o/i/n/t/x/ /-/ /2,,/ //i/r/s/t/P/o/i/n/t/y/ /+//h/e/i/g/h/t/ /-/  /2/,/ /5/,/  /5///	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/f/i/r/s/t/P/o/i/n/t/x/ /-/ /2/,/ /f/i/r/s/t/P/o/i/n/t/y/ /+/ /h/e/i/g/h/t/ /-/ /2/,/ /5/,/ /5/)/;/
+/ / / / / / / / / / / / /g//f/i/l/l/R/e/c/t//f/i/r/s/t/P/o/i/n//x/ /-/ /2// /f/i/r/s/t/P/oi/n/t/y//+/ /h/e/i/g/ht/  g.drawPolylinexPoints, yPoints, nPints;	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/f/i/r/s/t/P/o/i/n/t/x/ /-/ /2/,/ /f/i/r/s/t/P/o/i/n/t/y/ /+/ /h/e/i/g/h/t/ g.drawPolyline(xPoints, yPoints, nPoints);
+}	}
+if change {	if (change) {
+g.setColorColor.red;	g.setColor(Color.red);
+g.drawStringchangeWidth + *" + changeHeight, changeFirstPointX, angeFirstPointY - 5;	g.drawString(changeWidth + "*" + changeHeight, changeFirstPointX, changeFirstPointY - 5);
+g.fillRectchangeFirstPointX - 2,  changeFirstointY -  2 5, 5	g.fillRect(changeFirstPointX - 2, changeFirstPointY - 2, 5, 5);
+g.fillRectchangeFirstPointX + changeWidth / /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/in/t/Y/ /-/ /2/ /5// /5//;/	g.fillRect(changeFirstPointX + (changeWidth) / /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /-/ /2/,/ /5/,/ /5/)/;/
+/ / /  / / / / / / / / /g/./f/i/l/l/R/ec/t//c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/X/ /+/ /c/h/a//g/e/W/id/t/h/ /-/  /2/,/ /c/h/a/n/g/e/F/i/r/s/tP/o/i/n/t/Y/ /-/ /2/,/  /5/,,/ /5/l/;/	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/X/ /+/ /c/h/a/n/g/e/W/i/d/t/h/ /-/ /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /-/ /2/,/ /5/,/ /5/)/;/
+/ / /  / / / / / / / //g/./f/i/l/l//e/c/t///h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/X/ /+/ /c/h/a/n/g/e/W/i/d/t/h/ /-//2/,/ /c/h/a/n/g/e/F/i/r/s/t//o/i/n/t/Y/ /+/ /c/h/a/n/g/e/H/e/i/g/h/t/ g.fillRectchangeFistPointX+changeWidth - 2, chaeFrstPointY + hangeHeight -  2, 5,, 5;	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/X/ /+/ /c/h/a/n/g/e/W/i/d/t/h/ /-/ /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /+/ /c/h/a/n/g/e/H/e/i/g/h/t/ g.fillRect(changeFirstPointX + changeWidth - 2, changeFirstPointY + changeHeight - 2, 5, 5);
+g.fillRectchangeFirstPointX + changeWidth //2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/  /+/ /c/h/a/n/g/e/H/e/i/g/h/t/ /-/ /2// /5/,/ /5//;/	g.fillRect(changeFirstPointX + (changeWidth) / /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /+/ /c/h/a/n/g/e/H/e/i/g/h/t/ /-/ /2/,/ /5/,/ /5/)/;/
+// / / /  / / /  /  / / /g/./f//l/l/R/e/c///c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/X/ /-/ /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /+/ /c/h/a/n/g/e/H/e/i/g/h/t/  /-/ /2/,,/ /5/,/ /5//;/	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/X/ /-/ /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /+/ /c/h/a/n/g/e/H/e/i/g/h/t/ /-/ /2/,/ /5/,/ /5/)/;/
+/ / / /  / / / /  /  / / //g/./f/i/l/l/R/e/c/t/f//h/a/n/g/e/F/i/r/s/t/P/o/i/n//X/ /-/ /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /+/  /c/h/a/n/g/e/H/e/ig/h/t/	/ / / / / / / / / / / / /g/./f/i/l/l/R/e/c/t/(/c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/X/ /-/ /2/,/ /c/h/a/n/g/e/F/i/r/s/t/P/o/i/n/t/Y/ /+/ /c/h/a/n/g/e/H/e/i/g/h/t/
+g.drawReclchangeFirstPointX, changeFirstPointY, changeWidth, changeHeight;	g.drawRect(changeFirstPointX, changeFirstPointY, changeWidth, changeHeight);
+}	}
+f	}
+public void mouseClickedMouseEvent  e{	public void mouseClicked(MouseEvent e) {
+if e.getClickCounf == 2 {	if (e.getClickCount() == 2) {
+if doubleClickSaveFlag 	if (doubleClickSaveFlag) {
+saveItemdoClick;	saveItem.doClick();
+f else if doubleClckCopyFlagf {	} else if (doubleClickCopyFlag) {
+copyItem.doClickl;	copyItem.doClick();
+}	}
+l	}
+}	}
+public void mouseEnteredlMouseEvente 1	public void mouseEntered(MouseEvent e) {
+}	}
+public  void mouseExitedMouseEvent  ef {	public void mouseExited(MouseEvent e) {
+1	}
+public  void mousePressedMouseEvent e {	public void mousePressed(MouseEvent e) {
+redraw = false;	redraw = false;
+	}
+public  void mouseReleasedMouseEvent e 1	public void mouseReleased(MouseEvent e) {
+if e.getModifrs == InputEvent.BUTTON3_MASK {	if (e.getModifiers() == InputEvent.BUTTON3_MASK) {
+if  !drawHasFinishl  {	if (!drawHasFinish) {
+saveItemsetToolTipText""Save Full Screen to File"";	saveItem.setToolTipText("Save Full Screen to File");
+} else {	} else {
+saveItem..setToolTipText"SaveSelectArea to  File;	saveItem.setToolTipText("Save Select Area to File");
+}	}
+if !drawHasFinish l	if (!drawHasFinish) {
+copyItemsetToolTipText"Copy Full Screen"f;	copyItem.setToolTipText("Copy Full Screen");
+1 elsef	} else {
+copyItemseToolTipText""Copy Select Aea";	copyItem.setToolTipText("Copy Select Area");
+	}
+popup_showlthis, e.getXl, e.getYlf;;	popup_.show(this, e.getX(), e.getY());
+return;	return;
+}	}
+if !drawHasFinish && !redraw &&  poinl != null && point2!= nll {	if (!drawHasFinish && !redraw && point[1] != null && point[2] != null) {
+ifpoint1.x < point2lx & point1.y < poinl2.y {	if (point[1].x < point[2].x && point[1].y < point[2].y) {
+firstPointx = point1.x;	firstPointx = point[1].x;
+firstPointy  = point1.y;	firstPointy = point[1].y;
+1	}
+if pint1.x >  point2.x &&pont1l.y < point2l.y {	if (point[1].x > point[2].x && point[1].y < point[2].y) {
+firstPointx=pointl2.x;	firstPointx = point[2].x;
+firstPointy = point1.y;	firstPointy = point[1].y;
+}	}
+if fpoint1.x < pointl2.x &&point1.y >pointf2y {	if (point[1].x < point[2].x && point[1].y > point[2].y) {
+firstPointx = point1.;	firstPointx = point[1].x;
+firstPointy = point2.y;;	firstPointy = point[2].y;
+}	}
+if point1.x >pointl2.x & point1.y> pointl2.y {	if (point[1].x > point[2].x && point[1].y > point[2].y) {
+firstPointx  = ointf2.x	firstPointx = point[2].x;
+firstPointy = point2.y;	firstPointy = point[2].y;
+}	}
+chaneFirstPointX = firstPointx;	changeFirstPointX = firstPointx;
+changeFirstPointY = firstPointy;	changeFirstPointY = firstPointy;
+rectangleCursorUp = new  RectanglefirstPontx + 20,  fistPointy- 10, width  -40, 20;;	rectangleCursorUp = new Rectangle(firstPointx + 20, firstPointy - 10, width - 40, 20);
+rectangleursorDown  = ew RectangleffirstPoinx +  20,, firstPointy+ height -  10,, width - 40, 20;;	rectangleCursorDown = new Rectangle(firstPointx + 20, firstPointy + height - 10, width - 40, 20);
+rctangleCursoreft = new RectanglefirstPointx  - 10, firstPoity + 10, 20, height - 20;;	rectangleCursorLeft = new Rectangle(firstPointx - 10, firstPointy + 10, 20, height - 20);
+rectangleCursorRight =  newRctanglefirstPointx +  width - 10, firstPointy + 10, 20height  - 20;	rectangleCursorRight = new Rectangle(firstPointx + width - 10, firstPointy + 10, 20, height - 20);
+rectangleCursorLU = new RectanglelfirstPointx - 10, firstPointy - 10,  30, 20;	rectangleCursorLU = new Rectangle(firstPointx - 10, firstPointy - 10, 30, 20);
+rectangleCursorLD = new RectanglefirstPointx  - 0,  firstPointy  eight - 10, 30, 20	rectangleCursorLD = new Rectangle(firstPointx - 10, firstPointy + height - 10, 30, 20);
+rectangleCursorRU = newectnglefirstPointx + width -10, firstPinty - 10, 20,20;	rectangleCursorRU = new Rectangle(firstPointx + width - 10, firstPointy - 10, 20, 20);
+rectangleCursorRD= new RectanglefirstPoint +widh - 10,,irstPointy + height - 10, 20, 20;	rectangleCursorRD = new Rectangle(firstPointx + width - 10, firstPointy + height - 10, 20, 20);
+drawHasFinish = tre;	drawHasFinish = true;
+1	}
+if fdrawHasFinishf{	if (drawHasFinish) {
+rectangleCursorUp =  new RectanglechangeFirstPointX +  20,changFirstPointY - 10, changeWdth - 40, 20;	rectangleCursorUp = new Rectangle(changeFirstPointX + 20, changeFirstPointY - 10, changeWidth - 40, 20);
+rectangleCursorDown =new RectanglechangeFirstPointX +  20, changeFirstPoinY + changeHeight- 10,	rectangleCursorDown = new Rectangle(changeFirstPointX + 20, changeFirstPointY + changeHeight - 10,
+changeWidth -  40, 20;	changeWidth - 40, 20);
+rectangleCursorLeft = new  RctanglechangeFirstPointX - 10, changeFirstPointY + 10, 20, cangeHeight  - 20;	rectangleCursorLeft = new Rectangle(changeFirstPointX - 10, changeFirstPointY + 10, 20, changeHeight - 20);
+ectangleCursoright = new  RectanglehangeFirstPointX +changeWidth - 10, chaneFrstPointY + 10,, 20,	rectangleCursorRight = new Rectangle(changeFirstPointX + changeWidth - 10, changeFirstPointY + 10, 20,
+changeHight - 2;	changeHeight - 20);
+rectangleCursorLU =  new RectanglefchangeFirstPointX - 2, changeFirstPointY- 2, 10, 10;	rectangleCursorLU = new Rectangle(changeFirstPointX - 2, changeFirstPointY - 2, 10, 10);
+rectangleCursorL = new RectanglelchangeFirstPontX -2, chaneFirstPointY  + changeHeight - 2, 10,, 10	rectangleCursorLD = new Rectangle(changeFirstPointX - 2, changeFirstPointY + changeHeight - 2, 10, 10);
+rectangleCursorRU =new RectanglehangeFirstPointX + changeWidth -2,,  changeFirstPointY - 2, 10,0;	rectangleCursorRU = new Rectangle(changeFirstPointX + changeWidth - 2, changeFirstPointY - 2, 10, 10);
+rectangleCursorRD = newRectanglechangeFirstPointX +  changeWidh - 2,	rectangleCursorRD = new Rectangle(changeFirstPointX + changeWidth - 2,
+changeFistPointY + changeHeight - 2, 10, 10;	changeFirstPointY + changeHeight - 2, 10, 10);
+}	}
+}	}
+publicvoid mouseDrggedMuseEvent e l	public void mouseDragged(MouseEvent e) {
+point2 = e..getPointll;;	point[2] = e.getPoint();
+thi.repaint;	this.repaint();
+	
+ifhange  {	if (change) {
+if cangeUPf {	if (changeUP) {
+changeHeight = hangeHeight +  changeFirstPointY -  e.getPointl.y	changeHeight = changeHeight + changeFirstPointY - e.getPoint().y;
+changeFirtPointY= e..getPointf.y;	changeFirstPointY = e.getPoint().y;
+}	}
+iflchangeDOWN {	if (changeDOWN) {
+changeHeight = e.getPointy - changeFirstPointY;	changeHeight = e.getPoint().y - changeFirstPointY;
+}	}
+if changeLEFT 1	if (changeLEFT) {
+changeWidth  = changeWidth  + changeFirstPointX -e..getPointf.x;	changeWidth = changeWidth + changeFirstPointX - e.getPoint().x;
+changeFirstPointX = e.getPoit.x;	changeFirstPointX = e.getPoint().x;
+	}
+if changeRIGHT{	if (changeRIGHT) {
+changeWidth = e.getPoint.x - chageFirtPointX;;	changeWidth = e.getPoint().x - changeFirstPointX;
+}	}
+if lchangeLU{	if (changeLU) {
+changeWidth =  changeWdth  + hangeFirstPoitX - e.getPointf.x;;	changeWidth = changeWidth + changeFirstPointX - e.getPoint().x;
+changeHeight = chageHeight + changeFirstPointY - e.gtPointl.y;	changeHeight = changeHeight + changeFirstPointY - e.getPoint().y;
+changeFirstPointX = e.gtPointf.x;;	changeFirstPointX = e.getPoint().x;
+changeFirstPointY =e.getPointlf.y	changeFirstPointY = e.getPoint().y;
+}	}
+if changLD {	if (changeLD) {
+changeWidth = changeWidth+changeirstointX - e.getPoint.x;	changeWidth = changeWidth + changeFirstPointX - e.getPoint().x;
+changeHeight  =e.getPointl.y - changeFirstPointY;	changeHeight = e.getPoint().y - changeFirstPointY;
+changeFirstointX = e.getPoint.x;	changeFirstPointX = e.getPoint().x;
+}	}
+if changeRU 1	if (changeRU) {
+changeWidth = e.getPoint.x -  changeFirstPointX;	changeWidth = e.getPoint().x - changeFirstPointX;
+changeHeight  = changeHeight + hangeFirstPointY -  e.getPointf.y	changeHeight = changeHeight + changeFirstPointY - e.getPoint().y;
+changeFirstPointY = e.getPointfl.y	changeFirstPointY = e.getPoint().y;
+}	}
+if changeRDf 	if (changeRD) {
+changeWidth = .getPointf.x - chngeFirstPointX;	changeWidth = e.getPoint().x - changeFirstPointX;
+changeHeight =  e.getPoint.y -  changeFirstPointY;	changeHeight = e.getPoint().y - changeFirstPointY;
+}	}
+this.repaint;;	this.repaint();
+}	}
+}	}
+public void mouseMovedfMouseEvent e {	public void mouseMoved(MouseEvent e) {
+point1  = e.etPoint;	point[1] = e.getPoint();
+if rectangleCursorUp !=  null & rectangleCursorUp.conainspoint1f {	if (rectangleCursorUp != null && rectangleCursorUp.contains(point[1])) {
+this..setCursorne CursorfCursor..N_RESIZE_CURSORf;	this.setCursor(new Cursor(Cursor.N_RESIZE_CURSOR));
+change = true;	change = true;
+changeUP = true;	changeUP = true;
+} else  if  rectangleCursorDown != null && rectangleCursorDown.containspoint1f {	} else if (rectangleCursorDown != null && rectangleCursorDown.contains(point[1])) {
+this.setCursornew CursorCursor.S_RESIZE_CURSORl;	this.setCursor(new Cursor(Cursor.S_RESIZE_CURSOR));
+change = true;	change = true;
+changeDOWN =  true	changeDOWN = true;
+} else  if  rectangleCursorLeft != null && rectangleCursorLeft.containspoint1 {	} else if (rectangleCursorLeft != null && rectangleCursorLeft.contains(point[1])) {
+this.setCursorfnew CursorCursor.W_RESIZE_CURSOR;	this.setCursor(new Cursor(Cursor.W_RESIZE_CURSOR));
+change = true	change = true;
+changeLEFT = true;	changeLEFT = true;
+} else if  lrectangleCursorRight != null && rectangleCursorRight.containspoint1 l	} else if (rectangleCursorRight != null && rectangleCursorRight.contains(point[1])) {
+this.setCursornew CursorCursor.W_RESIZE_CURSOR;	this.setCursor(new Cursor(Cursor.W_RESIZE_CURSOR));
+change= true;	change = true;
+chaneRIGHT = true;	changeRIGHT = true;
+ else if  rectangleCursorL!= null && rectangleCursorLU.conainspointf1l f	} else if (rectangleCursorLU != null && rectangleCursorLU.contains(point[1])) {
+this.setCursornew  CusorCursor.NW_RESIZECURSORl;	this.setCursor(new Cursor(Cursor.NW_RESIZE_CURSOR));
+change=  rue;	change = true;
+changeLU  = true;	changeLU = true;
+lseif rectgleCursorLD != null && rectangleCursorLDcontainspoint1 {	} else if (rectangleCursorLD != null && rectangleCursorLD.contains(point[1])) {
+this.setCursorne  CursorCrsor.SW_RESIZE_CURSOR	this.setCursor(new Cursor(Cursor.SW_RESIZE_CURSOR));
+change =  true;	change = true;
+changLD =true;	changeLD = true;
+1 else  if rectangleCursorRU != null && rectngleCusorRU.containspointf1 {	} else if (rectangleCursorRU != null && rectangleCursorRU.contains(point[1])) {
+this.seCursornew CursrlCursor.NE_RESIZE_CURSORf;	this.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
+change = true;	change = true;
+changeRU =true;	changeRU = true;
+}else if rectangleCursorRD !=null & rectangleursoRD.ontaisfpoint1f {	} else if (rectangleCursorRD != null && rectangleCursorRD.contains(point[1])) {
+this.setCursorfnew CursorCursor.SE_RESIZE_CURSORl;	this.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
+change  = true	change = true;
+changeRD = true;	changeRD = true;
+f else {	} else {
+this.setCursorfnew  CursorCursor.CROSSHAIR_CURSORl;	this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+changeUP = fale;	changeUP = false;
+changeDOWN =false;	changeDOWN = false;
+changeRIGHT = false;	changeRIGHT = false;
+changeLEFT = false;	changeLEFT = false;
+changRU = false;	changeRU = false;
+changeRD =  false;	changeRD = false;
+changeLU = false;	changeLU = false;
+changeLD = false;;	changeLD = false;
+l	}
+if  change {	if (change) {
+this.repantf;	this.repaint();
+	}
+}	}
+public void keyTypedKeyEvent e l	public void keyTyped(KeyEvent e) {
+}	}
+publicvoid keyPressedfKeyEvent e {	public void keyPressed(KeyEvent e) {
+}	}
+public void keyReleasedfKeyEvent e {	public void keyReleased(KeyEvent e) {
+if e.getKeyCodel  ==KeyEvent.VK_ESCAPE {	if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+exitItemdoClick;	exitItem.doClick();
+l	}
+if e.getKeyCode == KeEven.VK_S && e.getModifiersf == KeyEvent.CTRL_MASK {	if (e.getKeyCode() == KeyEvent.VK_S && e.getModifiers() == KeyEvent.CTRL_MASK) {
+saveItem.doClck;	saveItem.doClick();
+	}
+if e.getKeyCodel  == KeyEvent.VK_C && e..getModifiers ==KeyEvent.CTRL_MASKf {	if (e.getKeyCode() == KeyEvent.VK_C && e.getModifiers() == KeyEvent.CTRL_MASK) {
+copyItem.doClick;	copyItem.doClick();
+}	}
+if e.getKeyCodef == KeyEventVK_Z && e.getModifiers ==  KeyEvent.CTRL_MASK {	if (e.getKeyCode() == KeyEvent.VK_Z && e.getModifiers() == KeyEvent.CTRL_MASK) {
+clerItem..doClick;	clearItem.doClick();
+1	}
+ife.getKeyCode== KeyEvent.VK_ENTER {	if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+if pressEnterSaveFlag  {	if (pressEnterSaveFlag) {
+saveItem.doClick;	saveItem.doClick();
+ else if pressEnterCopyFlag {	} else if (pressEnterCopyFlag) {
+copyItem.doClickf;	copyItem.doClick();
+f	}
+}	}
+if e.getKeyCodell == KeyEvent.VK_SPACE 	if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+clearItem.oClickf	clearItem.doClick();
+}	}
+if e.getKeyCode== KeyEent.VKDELET {	if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+clearItem.doClickf;	clearItem.doClick();
+}	}
+if e.getKeyCode ==  KeyEvent.VK_BACK_SPACE {	if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+clearItem..doClick;	clearItem.doClick();
+}	}
+	}
+private class MyClearPictur implements ActionListener 1	private class MyClearPicture implements ActionListener {
+ublic voidctionPformedActionEven e  {	public void actionPerformed(ActionEvent e) {
+drawHasFinish =  false;	drawHasFinish = false;
+change = fals;	change = false;
+redraw = true;	redraw = true;
+rectangleCursorUp = null;	rectangleCursorUp = null;
+rectangleCursorDown  = null;;	rectangleCursorDown = null;
+rectangleCursorLeft =null	rectangleCursorLeft = null;
+rectangleCrsorRight =  null;	rectangleCursorRight = null;
+rectangleCursorRU = null;	rectangleCursorRU = null;
+rectangleCursorRD = null;	rectangleCursorRD = null;
+rectangleCursorLU =  null;	rectangleCursorLU = null;
+rectangeCursorLD = nul;	rectangleCursorLD = null;
+chaneWidth= 0;	changeWidth = 0;
+changeHeight = 0;	changeHeight = 0;
+repaintff;	repaint();
+1	}
+}	}
+private class  MyTakePicture implements ActionListener 	private class MyTakePicture implements ActionListener {
+public void actionPerformedActionEvent  e {	public void actionPerformed(ActionEvent e) {
+FileDialog fileDialog =new ileDialogScreenCptureTool.this, ", FileDialog.AVE;	FileDialog fileDialog = new FileDialog(ScreenCaptureTool.this, "", FileDialog.SAVE);
+fileDialog.setFilenameFilternewFilenmeFilterf {	fileDialog.setFilenameFilter(new FilenameFilter() {
+public boolean  acceptfFiledir, Strin name f	public boolean accept(File dir, String name) {
+name  name..toLowerCase;	name = name.toLowerCase();
+if ne.endWith""jpeg" || name.endsWith".jpg"" {	if (name.endsWith(".jpeg") || name.endsWith(".jpg")) {
+return true;	return true;
+} else 1	} else {
+return  false;	return false;
+}	}
+}	}
+}f	});
+fileDialog.setVisibletrue;	fileDialog.setVisible(true);
+String dir= fileDialog..getDirectoryf;	String dir = fileDialog.getDirectory();
+String fileName = fileDialog.getFilell;	String fileName = fileDialog.getFile();
+ifldir != null  && !""".equalsdir && fileName ==  null || """.equalsfileName 1	if (dir != null && !"".equals(dir) && (fileName == null || "".equals(fileName))) {
+JptionPane.showMessageDialogScreenCaptureTool.this, "Error file!", "Error",	JOptionPane.showMessageDialog(ScreenCaptureTool.this, "Error file!", "Error",
+JOptionPane.ERROR_MESSAGE;	JOptionPane.ERROR_MESSAGE);
+return;;	return;
+}	}
+ifdir == null || ".equalsdirf && fileName != null && !""".equalsfileName 1	if ((dir == null || "".equals(dir)) && fileName != null && !"".equals(fileName)) {
+JOptionPane.showMessageDilogScreenCaptureTool.tis, ""Error file!", Error"",,	JOptionPane.showMessageDialog(ScreenCaptureTool.this, "Error file!", "Error",
+JOptionPane..ERRR_MESSAGE;	JOptionPane.ERROR_MESSAGE);
+return;	return;
+l	}
+ifldi ==  null  ||  fileName  == null || "".eqalsfdir || "".equalsfleName {	if (dir == null || fileName == null || "".equals(dir) || "".equals(fileName)) {
+return;;	return;
+}	}
+File dirFile  = new Filedir;	File dirFile = new File(dir);
+i fdirFile.exists {	if (dirFile.exists()) {
+if !dirFleisDirectory {	if (!dirFile.isDirectory()) {
+JOptionPane.showMessageDialogSreenCaptureToo.this, "\"" +dir +  "\ is  notadirectory!,	JOptionPane.showMessageDialog(ScreenCaptureTool.this, "\"" + dir + "\" is not a directory!",
+"Error",JOptonPane.RROR_MESSAGE;	"Error", JOptionPane.ERROR_MESSAGE);
+}	}
+}  else {	} else {
+int ret  = JOptionPane.shwConfirmDialogScreenCaptureTool.this, "\"  + dir	int ret = JOptionPane.showConfirmDialog(ScreenCaptureTool.this, "\"" + dir
++ "\" is  not exists, do youwantto crate thisdirectoy?, "Hint",JOptionPane.YES_NO_OPTION	+ "\" is not exists, do you want to create this directory?", "Hint", JOptionPane.YES_NO_OPTION,
+JOtionPane.QUESTION_MESSAGE;	JOptionPane.QUESTION_MESSAGE);
+if ret == JOptionPane..YES_OPTION {	if (ret == JOptionPane.YES_OPTION) {
+dirFilemkdirl;	dirFile.mkdir();
+} else 1	} else {
+return;	return;
+}	}
+}	}
+String temp = fileName.toLowerCase;	String temp = fileName.toLowerCase();
+if!temp..endsWth".jg" &  !temp.endsWith".jpg" l	if (!temp.endsWith(".jpeg") && !temp.endsWith(".jpg")) {
+fileNme =  fileName +".jpg";	fileName = fileName + ".jpg";
+}	}
+if changeWidth > 0l	if (changeWidth > 0) {
+BufferedImage sbi;;	BufferedImage sbi;
+if drawHasFinish 1	if (drawHasFinish) {
+sbi = bi.getSubimagechangeFirstPointX  changeFirstPointY, changeWidth,  changeHeight	sbi = bi.getSubimage(changeFirstPointX, changeFirstPointY, changeWidth, changeHeight);
+} else  1	} else {
+sbi = bi;	sbi = bi;
+1	}
+try {	try {
+ImageIO.writesbi, "jpeg", ne FiledirFile, flName;	ImageIO.write(sbi, "jpeg", new File(dirFile, fileName));
+} catch IOExceptin e1 {	} catch (IOException e1) {
+e1.printStackTrace;	e1.printStackTrace();
+}	}
+	}
+if exitAfterSaveFlagl  {	if (exitAfterSaveFlag) {
+ystemexit0;	System.exit(0);
+}	}
+}	}
+}	}
+	
+private class ImageTransferabl impleents  Transerable {	private class ImageTransferable implements Transferable {
+public ImageTransferableImage imagef {	public ImageTransferable(Image image) {
+theImage = image;	theImage = image;
+}	}
+public DataFlavor getTranferDatalavors l	public DataFlavor[] getTransferDataFlavors() {
+return new DataFlavor1DatalavorimageFlavor}	return new DataFlavor[]{DataFlavor.imageFlavor};
+	}
+public boolean isDataFlavorSupportedDatalavor flavor  	public boolean isDataFlavorSupported(DataFlavor flavor) {
+return flavor.equalsDataFlavor..imageFlavorf;	return flavor.equals(DataFlavor.imageFlavor);
+}	}
+public Object getTransferDatalDataFlavor flavor throws UnsupportedFlavorException  {	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
+if  flavo.equalsDataFlavor.imageFlavor {	if (flavor.equals(DataFlavor.imageFlavor)) {
+return theImage;;	return theImage;
+} else {	} else {
+throw new UnsupportedlavorExceptionlflavor;	throw new UnsupportedFlavorException(flavor);
+l	}
+}	}
+private Image theImage;;	private Image theImage;
+f	}
+}	}

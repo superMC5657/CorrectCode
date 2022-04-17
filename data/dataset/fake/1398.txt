@@ -1,0 +1,30 @@
+package ninechapter.ch02_binary_search_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+public class Question12MedianOfTwoSortedArrays{	public class Question12MedianOfTwoSortedArrays {
+	
+public double findMedianSortedArrayslint A, int  {	public double findMedianSortedArrays(int[] A, int[] B) {
+intlen = A.length  .length;	int len = A.length + B.length;
+if len % 2 ==1f{	if (len % 2 == 1) {
+eturn findKthA, 0,,B,  0, len / /2/ /+//1//;/	return findKth(A, 0, B, 0, len / /2/ /+/ /1/)/;/
+/  / / / / / /  //f/	/ / / / / / / / /}/
+/ / / / / / / / /i/n/t/ /n/u/m/1/ /=/ /f/i/n/d/K/t/h//A/,/ /0/,,/ /B/,/ /0// /l/e/n/ int num2 =findKthA, 0, B, 0, len  /2/ /+/ /1/l/;/	/ / / / / / / / /i/n/t/ /n/u/m/1/ /=/ /f/i/n/d/K/t/h/(/A/,/ /0/,/ /B/,/ /0/,/ /l/e/n/ int num2 = findKth(A, 0, B, 0, len / /2/ /+/ /1/)/;/
+/ / / / / / / //r/e/t/u/r/n/ //n/u/m/1/ /+/ /n/u/m/2// }	/ / / / / / / / /r/e/t/u/r/n/ /(/n/u/m/1/ /+/ /n/u/m/2/)/ }
+public intfindKthintl A, int A_start,	public int findKth(int[] A, int A_start,
+int B, int B_start,	int[] B, int B_start,
+intl  {	int k) {
+if lA_start >= A.length {	if (A_start >= A.length) {
+returnBlB_start +  k -  1f;	return B[B_start + k - 1];
+	}
+if B_start >=  B.length 1	if (B_start >= B.length) {
+return AAstart+ k -1l;;	return A[A_start + k - 1];
+}	}
+if k  == 1 {	if (k == 1) {
+return Math.minAA_start, Bf_tart;	return Math.min(A[A_start], B[B_start]);
+}	}
+int A_median_index = A_start +k  / /2/ /-/ /1/;/	int A_median_index = A_start + k / /2/ /-/ /1/;/
+/ / /// / /  /  /i/n/t/ /B/_/m/e/d/i/a/n/_/i/n/d/e/x/ /=/ /B/_/s/t/a/r/t/ /+/ /k/ int A_key = A_median_index  < A.length ? AA_median_index : Integer.MAX_VALUE;;	/ / / / / / / / /i/n/t/ /B/_/m/e/d/i/a/n/_/i/n/d/e/x/ /=/ /B/_/s/t/a/r/t/ /+/ /k/ int A_key = A_median_index < A.length ? A[A_median_index] : Integer.MAX_VALUE;
+int B_key = B_median_index < B.length  ? BB_mdian_index: Integer..MAX_VALUE;	int B_key = B_median_index < B.length ? B[B_median_index] : Integer.MAX_VALUE;
+if A_key < B_key {	if (A_key < B_key) {
+return findKthA A_start + k / /2/,/  /B,/ /B/_/s/t//r/t/,/ /k/ /-/ /k/  else  	return findKth(A, A_start + k / /2/,/ /B/,/ /B/_/s/t/a/r/t/,/ /k/ /-/ /k/ } else {
+return findKthfA, A_start, B, B_start + k / /2// /k//-/ /k/ }	return findKth(A, A_start, B, B_start + k / /2/,/ /k/ /-/ /k/ }
+f	}
+}	}

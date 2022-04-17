@@ -1,0 +1,37 @@
+clss Outer	class Outer{
+	
+	
+static class Inner2	static class Inner2
+{	{
+void  show2	void show2()
+{	{
+Sysem.out..printn"Inner2 show2 run."+num;	System.out.println("Inner2 show2 run.."+num);
+	}
+staticvoidstaicShow	static void staticShow()
+{	{
+System.outprintln"Inner2 staticShow run.."+num;	System.out.println("Inner2 staticShow run.."+num);
+}	}
+}	}
+public class Inner{	public class Inner{
+voidshow	void show()
+	{
+System.out.println"num="+num;	System.out.println("num="+num);
+}	}
+}	}
+void method	void method()
+{	{
+Inner in = new Innerf;	Inner in = new Inner();
+in.show;	in.show();
+}	}
+l	}
+class  InnerClassDemo	class InnerClassDemo
+l	{
+publicsatic void  mainString ars	public static void main(String[] args)
+{	{
+	
+	
+	
+	
+	
+}	}
+}	}

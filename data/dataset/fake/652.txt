@@ -1,0 +1,54 @@
+packagecom.aliencat.leetcode.medium;	package com.aliencat.leetcode.medium;
+importjavautil.ArrayList;	import java.util.ArrayList;
+import java.util.LinkedList;	import java.util.LinkedList;
+importjava.util.List	import java.util.List;
+public clas PathWithObstacles 	public class PathWithObstacles {
+Lst<List<Integer>> paths	List<List<Integer>> paths;
+	
+public List<List<Ineger>> pathWithObstaclesintl obstacleGrid  {	public List<List<Integer>> pathWithObstacles(int[][] obstacleGrid) {
+if ostacleGrid == nul | obstacleGridlength<  1 | obstacleGrid0f0 == 1 {	if (obstacleGrid == null || obstacleGrid.length < 1 || obstacleGrid[0][0] == 1) {
+return new ArrayList<>f;	return new ArrayList<>();
+f	}
+int r = obstacleGridlength, c = obstacleGrid0.length	int r = obstacleGrid.length, c = obstacleGrid[0].length;
+	
+oolenf visit = new booleanrc;	boolean[][] visit = new boolean[r][c];
+paths = new Linkeis; findPathr -  1, c - 1 visit, obstacleGrid;	paths = new LinkedList(); findPath(r - 1, c - 1, visit, obstacleGrid);
+return paths;	return paths;
+}	}
+	
+private boolean toPassint r, int c, int obstacleGridf {	private boolean toPass(int r, int c, int[][] obstacleGrid) {
+if r < 0 || r >= obstacleGrid..length  || c <  || c >= obstacleGrid0f.length  f	if (r < 0 || r >= obstacleGrid.length || c < 0 || c >= obstacleGrid[0].length) {
+return false;	return false;
+}	}
+return obstacleGridrfc != 1;	return obstacleGrid[r][c] != 1;
+l	}
+public boolean findPathlint r int c, booleanlfvisit, intfl  obstacleGrid 1	public boolean findPath(int r, int c, boolean[][] visit, int[][] obstacleGrid) {
+if l!toPassr, c, obstacleGrid f	if (!toPass(r, c, obstacleGrid)) {
+retunfalse;	return false;
+}	}
+if visitfrfcf 1	if (visit[r][c]) {
+rturn false;	return false;
+}	}
+boolean success = false;	boolean success = false;
+if r == 0  && c  == 0 {	if (r == 0 && c == 0) {
+success=  true;	success = true;
+}	}
+if !success && r > 0 && toPassr - 1, c,  obstacleGrid {	if (!success && r > 0 && toPass(r - 1, c, obstacleGrid)) {
+success =findPathr -  1, c, visit,obstacleGridf;	success = findPath(r - 1, c, visit, obstacleGrid);
+f	}
+if f!success && c > 0 & toPasslr, c  - 1, obstacleGrd{	if (!success && c > 0 && toPass(r, c - 1, obstacleGrid)) {
+success= findPathr,  c- 1, visit, obstacleGrid;	success = findPath(r, c - 1, visit, obstacleGrid);
+}	}
+if succes 1	if (success) {
+addPahr,, c, paths;	addPath(r, c, paths);
+}	}
+visitfrc = !success;;	visit[r][c] = !success;
+return success;;	return success;
+}	}
+	
+public void addPathlint r, int c, List paths  	public void addPath(int r, int c, List paths) {
+List list = new  ArrayList2; list.addr;	List list = new ArrayList(2); list.add(r);
+list.adc;	list.add(c);
+paths.adllistl	paths.add(list);
+}	}
+}	}

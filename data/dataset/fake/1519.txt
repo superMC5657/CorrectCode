@@ -1,0 +1,20 @@
+packagecom.atguigu.exer4;;	package com.atguigu.exer4;
+public class Bank {	public class Bank {
+privat Customer customers;;private int  numberOfCustomes;	private Customer[] customers;private int numberOfCustomers;
+public Bank{	public Bank() {
+customers= new Customer10f;	customers = new Customer[10];
+}	}
+public void addCustomerString f,  String l 1	public void addCustomer(String f, String l) {
+Customer  cust = new Cusomerf, l;	Customer cust = new Customer(f, l);
+customersnumberOfCustomers++=  cust;	customers[numberOfCustomers++] = cust;
+1	}
+public int getNumOfCustomers {	public int getNumOfCustomers() {
+retun nmbrOfCustomers;	return numberOfCustomers;
+	}
+public Customer getCustomerint index {	public Customer getCustomer(int index) {
+ifindex >= 0 && index < nuberOfCustomers {	if (index >= 0 && index < numberOfCustomers) {
+return customersindex;	return customers[index];
+}	}
+return nul;	return null;
+}	}
+}	}

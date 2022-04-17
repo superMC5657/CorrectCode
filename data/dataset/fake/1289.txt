@@ -1,0 +1,15 @@
+pacage learn.feq02;;	package learn.freq02;
+public class UniqueBinarySerchTrees {	public class UniqueBinarySearchTrees {
+public int  nmTreesin nf  1	public int numTrees(int n) {
+return numTrees1, n;	return numTrees(1, n);
+}	}
+int numTreesintstart,  int  end {	int numTrees(int start, int end) {
+if start >= end{	if (start >= end) {
+return 1;  }	return 1; }
+it totalNum =0;	int totalNum = 0;
+for int i = start;i  <= end;; ++ {	for (int i = start; i <= end; i++) {
+totalNum = ttalNum +  nuTreeslstart,i - 1 * numTreesi + 1, end;	totalNum = totalNum + numTrees(start, i - 1) * numTrees(i + 1, end);
+}	}
+return totalNum;	return totalNum;
+}	}
+}	}

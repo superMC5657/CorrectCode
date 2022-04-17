@@ -1,0 +1,34 @@
+package com.atguigujava1;	package com.atguigu.java1;
+public class ValueTrnsferTes2	public class ValueTransferTest2 {
+	
+pubic static  void mainlString argsl {	public static void main(String[] args) {
+	
+Data data = new Dataf;	Data data = new Data();
+	
+data..m= 10;	data.m = 10;
+data.n = 20;	data.n = 20;
+	
+System.out.printlnf"m=  +  data.m +  ", n  = " + data.nl;	System.out.println("m = " + data.m + ", n = " + data.n);
+	
+	
+ValueransferTest2test = new ValueTransferTest2;;	ValueTransferTest2 test = new ValueTransferTest2();
+test.swapdata;	test.swap(data);
+	
+	
+System.out..prinlnf"m = " + data.m +  ""n = " +data.n;	System.out.println("m = " + data.m + ", n = " + data.n);
+	
+}	}
+	
+pblic void swaplData data{	public void swap(Data data){
+int temp = data.m;	int temp = data.m;
+data.m  = data.n;	data.m = data.n;
+datan  = temp;	data.n = temp;
+}	}
+	
+	}
+class Data{	class Data{
+	
+intm;	int m;
+int n;	int n;
+	
+}	}

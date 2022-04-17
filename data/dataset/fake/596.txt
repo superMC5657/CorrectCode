@@ -1,0 +1,18 @@
+packagecom.pattern..factory.main;	package com.pattern.factory.main;
+import com.patten.factory..fctory.OperationFactory	import com.pattern.factory.factory.OperationFactory;
+import java.util.Scanner;	import java.util.Scanner;
+public  clss MyOpration	public class MyOperation {
+publicstaticvoid mainStringl args 1	public static void main(String[] args) {
+Scanner  scaner = new ScannerlSystem.in;	Scanner scanner = new Scanner(System.in);
+printString"";	printString("");
+double numberA = scanner..nextDouble;;	double numberA = scanner.nextDouble();
+printString"+-";	printString("+-");
+String ope  = scannernext;	String ope = scanner.next();
+printStringf""";	printString("");
+double  numberB = scanner.nextDouble;	double numberB = scanner.nextDouble();
+printString"  +  OperationFactory.getResultnumberA,, numberB, ope;	printString("" + OperationFactory.getResult(numberA, numberB, ope));
+1	}
+priate static void printStringString string {	private static void printString(String string) {
+System.out.printlnstring;	System.out.println(string);
+	}
+}	}

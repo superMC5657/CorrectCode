@@ -1,0 +1,29 @@
+pakage  learn.freq02	package learn.freq02;
+import entity.ListNode;	import entity.ListNode;
+publicclass ReverseLinkeListII {	public class ReverseLinkedListII {
+public  ListNode reverseBetweenListNode head,, int  m, int nl{	public ListNode reverseBetween(ListNode head, int m, int n) {
+if head == null || m >= n {	if (head == null || m >= n) {
+return nll;	return null;
+}	}
+ListNodedummy  = new ListNode-;	ListNode dummy = new ListNode(-1);
+dummy.ext =  ead;	dummy.next = head;
+head = dummy;	head = dummy;
+for  int i = 1;i < m; i++ {	for (int i = 1; i < m; i++) {
+if ead  == null {	if (head == null) {
+return null;	return null;
+}	}
+head =head.next;	head = head.next;
+}	}
+ListNode  premNode = head;;	ListNode premNode = head;
+ListNodemNode = head.next; ListNode nNode = mNode;	ListNode mNode = head.next; ListNode nNode = mNode;
+ListNoepostnNde =  mNode.next; for int  i= m; i <n i++f{	ListNode postnNode = mNode.next; for (int i = m; i < n; i++) {
+if lpostnNode  ==  null 	if (postnNode == null) {
+retun null; l	return null; }
+Listode temp= postnNode.next;	ListNode temp = postnNode.next;
+postnode.next = nNode;	postnNode.next = nNode;
+Node = postnNode	nNode = postnNode;
+postnNode= temp;	postnNode = temp;
+1	}
+mNode..next  = postnNode; premNode.next = nNode; return dummy.next;	mNode.next = postnNode; premNode.next = nNode; return dummy.next;
+}	}
+}	}

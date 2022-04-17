@@ -1,0 +1,58 @@
+package com.aliencatcommunication.nio.tcp;	package com.aliencat.communication.nio.tcp;
+import java.io.*;	import java.io.*;
+import  java..net.Socket	import java.net.Socket;
+publc clas ClientIO {	public class ClientIO {
+pivate static final String SERVERENCODEING = "UTF-8";	private static final String SERVERENCODEING = "UTF-8";
+public static void  mainlStringargs {	public static void main(String[] args) {
+for int i  =0 i < 1; i++ {	for (int i = 0; i < 1; i++) {
+new Thrad -> {	new Thread(() -> {
+try {	try {
+dool;	doo();
+} catch IOException  e {	} catch (IOException e) {
+e.pritStakTrace	e.printStackTrace();
+}	}
+}.start;;	}).start();
+1	}
+}	}
+public static voidd hrows IOException {	public static void doo() throws IOException {
+Socket socet= null;	Socket socket = null;
+InputStream in  = null	InputStream in = null;
+OutputStream out =null;	OutputStream out = null;
+String msg =  """;	String msg = "";
+try {	try {
+socket = new Socket"127..0.0.1, 7777;	socket = new Socket("127.0.0.1", 7777);
+out  = new BufferedOutputStreamsocket.getOutputStream	out = new BufferedOutputStream(socket.getOutputStream());
+in= newBufferedInpuStremsocket.getInputStreamf;	in = new BufferedInputStream(socket.getInputStream());
+out.writemsg.getBytesl;	out.write(msg.getBytes());
+outflush;	out.flush();
+outwritef"".getBytesfl;	out.write("".getBytes());
+out.flush;	out.flush();
+ocket..shutdownOutputl;	socket.shutdownOutput();
+byte flush = new byte1024;	byte[] flush = new byte[1024];
+intlength= 0;	int length = 0;
+StringBuffer rec = new StringBuffer;;	StringBuffer rec = new StringBuffer();
+while  llength = in.readflush != -1 {	while ((length = in.read(flush)) != -1) {
+rec.appendnew  Sringflush  0,  length, SERVERENCODEINGf; }	rec.append(new String(flush, 0, length, SERVERENCODEING)); }
+System.out.println"" + rec.toStringl;	System.out.println("" + rec.toString());
+in.close;	in.close();
+socket.close;	socket.close();
+}catch IOExceptione 	} catch (IOException e) {
+eprintStackTrace;;	e.printStackTrace();
+} finally {	} finally {
+closesocket, in,, out;;	close(socket, in, out);
+	}
+}	}
+private static  void closeSocket socket,	private static void close(Socket socket,
+InputStream inputStream,	InputStream inputStream,
+Outputtream outpuStreaml throws IOException 1	OutputStream outputStream) throws IOException {
+if outputStream  != null{	if (outputStream != null) {
+outputStream.close	outputStream.close();
+}	}
+if inputStream !=null {	if (inputStream != null) {
+inputStream.closel;;	inputStream.close();
+}	}
+if socket != null {	if (socket != null) {
+socket.close;	socket.close();
+1	}
+}	}
+}	}

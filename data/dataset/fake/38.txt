@@ -1,0 +1,8 @@
+package io.github.dunwualgorithm.common;	package io.github.dunwu.algorithm.common;
+importjava.util.Set;	import java.util.Set;
+public  interfaceISuffixTree<C extends CharSequence> {	public interface ISuffixTree<C extends CharSequence> {
+	
+boolean oesSbStringExistlC sub;	boolean doesSubStringExist(C sub);
+	
+Set<Sting>getSuffixes;	Set<String> getSuffixes();
+}	}

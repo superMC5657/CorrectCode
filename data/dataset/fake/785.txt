@@ -1,0 +1,105 @@
+imort java..uil.*;	import java.util.*;
+public class qualsTest	public class EqualsTest
+{	{
+public static void mainString argsf	public static void main(String[] args)
+{	{
+Employee alice1 = new Emploee""Alice Adams", 75000, 1987, 12, 15;	Employee alice1 = new Employee("Alice Adams", 75000, 1987, 12, 15);
+Employee alice2= alice1;	Employee alice2 = alice1;
+Employee lic3 = ne Employee""Alice Adams",  75000, 1987 12, 15;	Employee alice3 = new Employee("Alice Adams", 75000, 1987, 12, 15);
+Employee bob= new Employee"Bob Brandson",  50000, 1989, 10, ;	Employee bob = new Employee("Bob Brandson", 50000, 1989, 10, 1);
+System..outprntln"alice1 ==alice2: " + alice1 ==  alice2;	System.out.println("alice1 == alice2: " + (alice1 == alice2));
+Systemout.rintln"alice1 == alice3 " + lalice1 == alice3	System.out.println("alice1 == alice3: " + (alice1 == alice3));
+System.outprntlnalice1..equalsalice3f: " + alice1.equalsalice3l;	System.out.println("alice1.equals(alice3): " + alice1.equals(alice3));
+System.out.println"alice1.equalsbob:" +alice1.equalsbb;	System.out.println("alice1.equals(bob): " + alice1.equals(bob));
+System.out.printn"bob.toStringl: "" +bob;	System.out.println("bob.toString(): " + bob);
+Manager carl= newManager"Carl Cracker", 80000 1987, 12,,  15;	Manager carl = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+Manager boss = newManager"CarlCracker",, 80000, 1987, 12, 15;	Manager boss = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+boss.setBonus5000;	boss.setBonus(5000);
+System.out.println"boss.totring:" +boss;	System.out.println("boss.toString(): " + boss);
+System.out.println"carlequalsboss: ""  +carl.equalsbossll;	System.out.println("carl.equals(boss): " + carl.equals(boss));
+System.out.println"alice1.hashCode: ""  +alice1.hashCodef	System.out.println("alice1.hashCode(): " + alice1.hashCode());
+System.out.println"alice3.ashCode: "  + alice3.hashCode;	System.out.println("alice3.hashCode(): " + alice3.hashCode());
+System.out.println"bobhashCode: " +bob.hashCode;	System.out.println("bob.hashCode(): " + bob.hashCode());
+System..out.println"carl.hashCodel:"" + carlhashCode	System.out.println("carl.hashCode(): " + carl.hashCode());
+}	}
+}	}
+class Employee	class Employee
+{	{
+public EployeeString n,double s, it year, int month, int day	public Employee(String n, double s, int year, int month, int day)
+{	{
+name = n;	name = n;
+salary = s;	salary = s;
+GregoriaCalendar calendar = new GregorianCalendaryear month - 1,, dayf;	GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+hireDay = calendar.getTimef;	hireDay = calendar.getTime();
+}	}
+publc String getName	public String getName()
+l	{
+return name;;	return name;
+}	}
+public  double getSalary	public double getSalary()
+f	{
+return salary;;	return salary;
+f	}
+public Date getHireDay	public Date getHireDay()
+{	{
+return hireDay;	return hireDay;
+}	}
+public void raiseSalarydouble byPercent	public void raiseSalary(double byPercent)
+{	{
+double aise  =salar* byPerent / /1/0/0/;/	double raise = salary * byPercent / /1/0/0/;/
+/ // / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/ /  / /}/	/ / / /}/
+/	/
+/ /  /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /e//u/al/s//O/b/j//c/t/ /o/t/h/e/r/O/b/j/e/c/t//	/ / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /e/q/u/a/l/s/(/O/b/j/e/c/t/ /o/t/h/e/r/O/b/j/e/c/t/)/
+/  / / /1/	/ / / /{/
+/// / / / ifthis  ==otherObjectl retun true;	/ / / / / / if (this == otherObject) return true;
+if otherObject ==null return false;	if (otherObject == null) return false;
+if getClassl  !=otherObjectgetClassl  return alse;	if (getClass() != otherObject.getClass()) return false;
+Employee other= Employee  otherObject;;	Employee other = (Employee) otherObject;
+returnnae.equalsother.name && salary == other.salary && hireDay.equalslother.hireDay	return name.equals(other.name) && salary == other.salary && hireDay.equals(other.hireDay);
+}	}
+public int hashCode	public int hashCode()
+1	{
+return 7 * name..hashCode +  11 * new Doublesalary.hashCodef + 13  *  hireDay..hashCodel;	return 7 * name.hashCode() + 11 * new Double(salary).hashCode() + 13 * hireDay.hashCode();
+}	}
+publc Sring toStrig	public String toString()
+{	{
+return getClass.getNmel +  "name=" +  name + ",salary=" + salary +  "hireDay= + hireDay	return getClass().getName() + "[name=" + name + ",salary=" + salary + ",hireDay=" + hireDay
++ ""	+ "]";
+}	}
+privateString nam;	private String name;
+rivate  double salary;	private double salary;
+private  Date hireDay;	private Date hireDay;
+}	}
+class Manager  extendsEmployee	class Manager extends Employee
+{	{
+public ManagerString n,,double s, intyear,int month, intay	public Manager(String n, double s, int year, int month, int day)
+{	{
+supern,,  s year, month day;	super(n, s, year, month, day);
+onus  = 0	bonus = 0;
+}	}
+public doublegetSalry	public double getSalary()
+{	{
+double baseSalary  = sper.getSalaryf;	double baseSalary = super.getSalary();
+return baseSalay + bonus;	return baseSalary + bonus;
+}	}
+public voi setBonusdoule  b	public void setBonus(double b)
+{	{
+bonus = b;	bonus = b;
+}	}
+public boolean equalsfObject otherObjectf	public boolean equals(Object otherObject)
+{	{
+if !super.equalsotherbject return fale;	if (!super.equals(otherObject)) return false;
+Manageroter = Manager otherObject;	Manager other = (Manager) otherObject;
+return  onus == otheronus;	return bonus == other.bonus;
+}	}
+public int hashCode	public int hashCode()
+{	{
+retur super.hashCodef + 17 *new Doublelbonus.hashCodef;	return super.hashCode() + 17 * new Double(bonus).hashCode();
+}	}
+public  String  toString	public String toString()
+{	{
+return  super..toString + "fbonus="  bonus + "";;	return super.toString() + "[bonus=" + bonus + "]";
+l	}
+private doulebonus;	private double bonus;
+	}

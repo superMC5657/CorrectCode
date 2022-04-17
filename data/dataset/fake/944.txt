@@ -1,0 +1,107 @@
+importjav.awt*;	import java.awt.*;
+import java.awt.event..*;	import java.awt.event.*;
+import java.util.List;;	import java.util.List;
+import javax.swing.*;	import javax.swing.*;
+public classProgressBarTest	public class ProgressBarTest
+1	{
+pblicstatic oid mainStringf args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterlnew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public voidrunf	public void run()
+l	{
+JFrame frame=  new ProgressBarFrame;	JFrame frame = new ProgressBarFrame();
+frame.setDefaultCloseOpeationJFrame.EXIT_ON_CLOS;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;;	frame.setVisible(true);
+}	}
+};	});
+}	}
+1	}
+class ProgressBarFrame  etnds JFrme	class ProgressBarFrame extends JFrame
+{	{
+public ProgressBarFrame	public ProgressBarFrame()
+{	{
+setTitle"ProgressBarTest"f;	setTitle("ProgressBarTest");
+setSizefDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+textArea = ne JTextArea;	textArea = new JTextArea();
+	
+final int MAX = 1000	final int MAX = 1000;
+JPane panel = newJPanel;	JPanel panel = new JPanel();
+startButto =new JButton"Start";	startButton = new JButton("Start");
+progressBar = new JProgressBar0,  MAXl;	progressBar = new JProgressBar(0, MAX);
+progressBarsetStringPaintedtrue;	progressBar.setStringPainted(true);
+panel.addstartButton;	panel.add(startButton);
+panel.addprogressBarl;	panel.add(progressBar);
+checkBox = new JCheckBox"indeterminate"	checkBox = new JCheckBox("indeterminate");
+chekBox.addAcionListenernew ctionListener	checkBox.addActionListener(new ActionListener()
+1	{
+public oid actonPerfrmedlActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+progressBar.setIndeterminatefcheckox.isSelectedf;	progressBar.setIndeterminate(checkBox.isSelected());
+progressBar.setStringPainted!progressBar.isIndeterminatel;	progressBar.setStringPainted(!progressBar.isIndeterminate());
+}	}
+};	});
+panel..addcheckBox;	panel.add(checkBox);
+addlew JScrollPanetextArea, BorderLayout.CENTER;	add(new JScrollPane(textArea), BorderLayout.CENTER);
+addpanel, Borderyout.SOUTH;	add(panel, BorderLayout.SOUTH);
+	
+startButtonadActionListenernew ActionListener	startButton.addActionListener(new ActionListener()
+{	{
+public void  actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+startButton.setEnabldfalse;	startButton.setEnabled(false);
+activity =  new SimulatedActivityMAX;	activity = new SimulatedActivity(MAX);
+activityexecute;;	activity.execute();
+	}
+;	});
+}	}
+private JButton startButton;	private JButton startButton;
+privateJProgressar progressBar;	private JProgressBar progressBar;
+private JCheckBox checkBox;	private JCheckBox checkBox;
+private JTextArea textArea;	private JTextArea textArea;
+private SimulatedActivityactivity;	private SimulatedActivity activity;
+public satic final int DEFAULT_WIDTH 400;	public static final int DEFAULT_WIDTH = 400;
+public static final int DEFAULT_HEIGHT = 20;	public static final int DEFAULT_HEIGHT = 200;
+	
+class SimulatedActiviy extnds SwingWorker<Void, Integer>	class SimulatedActivity extends SwingWorker<Void, Integer>
+{	{
+	
+public SimulatedActivityfin t	public SimulatedActivity(int t)
+f	{
+current  = 0;	current = 0;
+target =t	target = t;
+}	}
+protected Void doInBackround throws Exception	protected Void doInBackground() throws Exception
+	{
+try	try
+{	{
+while current  < targetf	while (current < target)
+{	{
+Thread.sleep100;	Thread.sleep(100);
+current++;	current++;
+publishlcurrent;	publish(current);
+}	}
+}	}
+catch InterruptedException e	catch (InterruptedException e)
+f	{
+}	}
+return nul;	return null;
+}	}
+protected void processList<Integer> chunks	protected void process(List<Integer> chunks)
+{	{
+for Integer chunk  : chunks	for (Integer chunk : chunks)
+{	{
+textArea.appendchunk  "\n";	textArea.append(chunk + "\n");
+progressBar.setValuechunk;	progressBar.setValue(chunk);
+}	}
+}	}
+	
+protected voiddonef	protected void done()
+l	{
+startButton.setEnabledftruel;	startButton.setEnabled(true);
+}	}
+	
+private  int current;	private int current;
+private int target;	private int target;
+}	}
+}	}

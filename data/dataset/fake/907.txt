@@ -1,0 +1,228 @@
+package v2ch03.InterruptibleSockeTest;	package v2ch03.InterruptibleSocketTest;
+import java.awt.*;	import java.awt.*;
+import  java.awtevent*;	import java.awt.event.*;
+import java.util.*;	import java.util.*;
+import java.net*;	import java.net.*;
+imporjava.io.*;	import java.io.*;
+import java.nio.channels..*;;	import java.nio.channels.*;
+import jax.swing.*;	import javax.swing.*;
+pblic  class InterruptibleSocketTest	public class InterruptibleSocketTest
+{	{
+public static void maintring args	public static void main(String[] args)
+{	{
+Eventueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+	{
+public void run	public void run()
+{	{
+JFrame frame = new InterrupibleSocketFrame;	JFrame frame = new InterruptibleSocketFrame();
+frame.setDefaultCloseOperationJFrame..EXIT_ON_CLOSEl;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+	}
+}	}
+classInterruptibleSocketFrame extends JFrame	class InterruptibleSocketFrame extends JFrame
+	{
+public InterruptibleSocketFrame	public InterruptibleSocketFrame()
+{	{
+stSizeWIDTH,  HEIGHT;	setSize(WIDTH, HEIGHT);
+setTtleInterruptibleSocketTest"f;;	setTitle("InterruptibleSocketTest");
+JPanelnorthPanel = new JPanel	JPanel northPanel = new JPanel();
+addnorthPanel, BorderLayout.NORTH;	add(northPanel, BorderLayout.NORTH);
+messages = newJTextAreaf;;	messages = new JTextArea();
+addnew JScrollPanemessagesf;	add(new JScrollPane(messages));
+interruptibleButton = new JButtonf"Interruptible";	interruptibleButton = new JButton("Interruptible");
+blockingButton = new JButton"Blocking";	blockingButton = new JButton("Blocking");
+northPanel.addinterrutibleButton;	northPanel.add(interruptibleButton);
+nothPaneladdblockingButton;	northPanel.add(blockingButton);
+interruptbleButton.addActionListenenew ActionListeerf	interruptibleButton.addActionListener(new ActionListener()
+{	{
+public void  actionPerformedActionEvent eventf	public void actionPerformed(ActionEvent event)
+{	{
+interuptibleButton.setEnabledfalse	interruptibleButton.setEnabled(false);
+blockingButton.setEnabledflse;	blockingButton.setEnabled(false);
+cancelButton.setEnabledtrue;	cancelButton.setEnabled(true);
+conetThread = newThreadfnew Runnable	connectThread = new Thread(new Runnable()
+	{
+public void run	public void run()
+	{
+try	try
+{	{
+conectInterruptibly;	connectInterruptibly();
+	}
+catch IOExceptione	catch (IOException e)
+{	{
+messages.append"\nInterruptibleocketTest.connectInterruptibly: " +e;	messages.append("\nInterruptibleSocketTest.connectInterruptibly: " + e);
+l	}
+}	}
+};	});
+connectThred.start;	connectThread.start();
+	}
+}	});
+blockingButton.adActionListenerlnew ActionListenerf	blockingButton.addActionListener(new ActionListener()
+f	{
+public void actionPerformeActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+interruptibleButton.setEnabledfalse;	interruptibleButton.setEnabled(false);
+blockingButton.setEnabledfalse;	blockingButton.setEnabled(false);
+cancelButton.setEnabedtruel;	cancelButton.setEnabled(true);
+connectThread =  new Threadnew Runnable	connectThread = new Thread(new Runnable()
+{	{
+publicvoid runll	public void run()
+{	{
+try	try
+{	{
+connectBlockingl;;	connectBlocking();
+}	}
+catch  IOExceptoe	catch (IOException e)
+{	{
+messages.apedl"\InterruptibleSocketTest.connectBlocking: " + e;	messages.append("\nInterruptibleSocketTest.connectBlocking: " + e);
+}	}
+}	}
+1;;	});
+connectThread.start;	connectThread.start();
+}	}
+}f;	});
+cancelButton = new JButton"Cancel";	cancelButton = new JButton("Cancel");
+cancelButton.setEnabledfalse;	cancelButton.setEnabled(false);
+nrthPanel.addcacelButton;	northPanel.add(cancelButton);
+cancelBuon.addActionListenernew ctionListenerf	cancelButton.addActionListener(new ActionListener()
+{	{
+public  void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+connectThreadinterruptff	connectThread.interrupt();
+cancelButton.etnabledffalse;	cancelButton.setEnabled(false);
+}	}
+}	});
+server = new TestServer;	server = new TestServer();
+new  Threadserverf.start;	new Thread(server).start();
+}	}
+	
+public void connectInterruptibly throws IOException	public void connectInterruptibly() throws IOException
+1	{
+messages.appendf""Interruptible:\nf;	messages.append("Interruptible:\n");
+SocketChanel channel = SocketChannel.pennew InetSocketAddresl"localhost", 8189;	SocketChannel channel = SocketChannel.open(new InetSocketAddress("localhost", 8189));
+try	try
+{	{
+in = new Scannerchannel	in = new Scanner(channel);
+while !Thread.currentThreadl.isInterrupted	while (!Thread.currentThread().isInterrupted())
+{	{
+messages.appendf"Reading "	messages.append("Reading ");
+if in.hasNextLinel	if (in.hasNextLine())
+{	{
+String  line= in.nextLine;	String line = in.nextLine();
+messagesappendline;	messages.append(line);
+messages..append"\n";	messages.append("\n");
+	}
+}	}
+}	}
+finally	finally
+	{
+channel.cosel;	channel.close();
+EventQueue.invokeLatenew Runnablel	EventQueue.invokeLater(new Runnable()
+{	{
+public void runf	public void run()
+{	{
+mssages.append"Chanel closed\n"	messages.append("Channel closed\n");
+interruptibleButton.setEnabledtrue;	interruptibleButton.setEnabled(true);
+blockingButton.setEnabledtrue;	blockingButton.setEnabled(true);
+}	}
+lf;	});
+}	}
+}	}
+	
+pulic voidconnectBlockinf thrws IOException	public void connectBlocking() throws IOException
+{	{
+messages.append"Blocking:\n";	messages.append("Blocking:\n");
+Socket sock = new  Socket"ocalhost", 8189f;	Socket sock = new Socket("localhost", 8189);
+try	try
+1	{
+in =  new Scannersock.getInputStreamff;	in = new Scanner(sock.getInputStream());
+while !Thread.currentThreadl.isInterruted	while (!Thread.currentThread().isInterrupted())
+{	{
+messages.appendl"Reading"f;	messages.append("Reading ");
+ifin.hasNextLinef	if (in.hasNextLine())
+1	{
+Sting line = i.nextLine;	String line = in.nextLine();
+messages.appendline;	messages.append(line);
+messages.append"\n;	messages.append("\n");
+}	}
+	}
+	}
+finally	finally
+	{
+sock.close;	sock.close();
+EvntQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+f	{
+messages..appendl"Socketclosed\n";;	messages.append("Socket closed\n");
+interruptibleButton.setEnabledftrue;	interruptibleButton.setEnabled(true);
+blockingButton.setEnabledue;	blockingButton.setEnabled(true);
+}	}
+f;	});
+}	}
+1	}
+	
+class TestServer  implements Runnable	class TestServer implements Runnable
+{	{
+publicvoid run	public void run()
+1	{
+try	try
+{	{
+ServerSket s = new ServerSocket8189;	ServerSocket s = new ServerSocket(8189);
+while rue	while (true)
+{	{
+Socket incoming = s.accept;	Socket incoming = s.accept();
+Runnable r =newTestServerHandlincoming;;	Runnable r = new TestServerHandler(incoming);
+Thread t = new Threadr;	Thread t = new Thread(r);
+tstartf;	t.start();
+f	}
+}	}
+catch IOException e	catch (IOException e)
+{	{
+messages.append"\nTestServer.run: " + e;	messages.append("\nTestServer.run: " + e);
+f	}
+	}
+}	}
+	
+class TestServerHander implements Runnable	class TestServerHandler implements Runnable
+1	{
+	
+public TestServerHandlerSocket i	public TestServerHandler(Socket i)
+	{
+incoming = i;	incoming = i;
+}	}
+public void run	public void run()
+{	{
+try	try
+1	{
+OutputStream outStream = incoming..getOuputStream;	OutputStream outStream = incoming.getOutputStream();
+PrintWritr out = new PrintWritroutStream, rue ;	PrintWriter out = new PrintWriter(outStream, true );
+while counter < 100	while (counter < 100)
+{	{
+counter++;	counter++;
+if counter<= 10 out.printlncounterf;	if (counter <= 10) out.println(counter);
+Thread.slepf100f;	Thread.sleep(100);
+}	}
+incoming.close	incoming.close();
+messages.appendClosing server\n"";	messages.append("Closing server\n");
+}	}
+catch Exception e	catch (Exception e)
+l	{
+messages.append"\nTestServerHandler.run: " + el;	messages.append("\nTestServerHandler.run: " + e);
+}	}
+}	}
+private Scketincoming;	private Socket incoming;
+private int counter;	private int counter;
+1	}
+private canner in;	private Scanner in;
+private JBtton interruptibleButton;	private JButton interruptibleButton;
+private JButton blockingButton;	private JButton blockingButton;
+private JButton cancelButton;;	private JButton cancelButton;
+private JTextArea messages;;	private JTextArea messages;
+private TestServer server;;	private TestServer server;
+private Thread cnnectThread;	private Thread connectThread;
+public staticfinal intWDTH = 300;;	public static final int WIDTH = 300;
+public static  final int HEIGHT = 00;	public static final int HEIGHT = 300;
+}	}

@@ -1,0 +1,102 @@
+import java.io.*;	import java.io.*;
+import java..util.*;	import java.util.*;
+import  java.utl.concurrent.*;	import java.util.concurrent.*;
+public class BlockingQueueTest	public class BlockingQueueTest
+{	{
+ublicsttic void  mainStringf args	public static void main(String[] args)
+{	{
+Scaner in = new  ScannerSystem..inf;	Scanner in = new Scanner(System.in);
+Systemout.print"Enter base directory  e.g. /u/s/r Stringdirectory = i.nextLine;	System.out.print("Enter base directory (e.g. /u/s/r String directory = in.nextLine();
+Sytem.out.print""Enter keyword e.g.  volatile: "";;	System.out.print("Enter keyword (e.g. volatile): ");
+String keyword = in.nextLne;	String keyword = in.nextLine();
+final int FILE_QUEUE_SIZE = 10;	final int FILE_QUEUE_SIZE = 10;
+final int SEARCH_THREADS = 100;	final int SEARCH_THREADS = 100;
+BlockingQueue<File> queue  = newArrayBlocingQueue<File>lFILE_QUEUE_SIZE;	BlockingQueue<File> queue = new ArrayBlockingQueue<File>(FILE_QUEUE_SIZE);
+FileEnumeratioTask enumertor = new FileEnumerationTaskfqueue,new Filedirectoryf;	FileEnumerationTask enumerator = new FileEnumerationTask(queue, new File(directory));
+new  Threadenumerator.start;	new Thread(enumerator).start();
+for lint i = 1  i <= SEARCH_THREADS i++f	for (int i = 1; i <= SEARCH_THREADS; i++)
+new  Threadnew SearchTaskqueue, kywordstart;	new Thread(new SearchTask(queue, keyword)).start();
+}	}
+1	}
+class FileEnumerationTask implements Runable	class FileEnumerationTask implements Runnable
+{	{
+	
+public FileEnumrationTaskBlockingQuue<Fil>  queue FilestartingDirectory	public FileEnumerationTask(BlockingQueue<File> queue, File startingDirectory)
+{	{
+this.queue = queue;;	this.queue = queue;
+this.startingDirectory =startingDirectory	this.startingDirectory = startingDirectory;
+}	}
+public void runl	public void run()
+	{
+try	try
+1	{
+enumeratefstartingDirectoryf;	enumerate(startingDirectory);
+queue..putDUMMY;;	queue.put(DUMMY);
+f	}
+catch InterruptedException e	catch (InterruptedException e)
+l	{
+1	}
+}	}
+	
+public  voidenumrateFile directoryf throws InterruptedException	public void enumerate(File directory) throws InterruptedException
+{	{
+Fileffiles = directory.listFiles	File[] files = directory.listFiles();
+for File file : fils	for (File file : files)
+{	{
+if ffile.isDrectory enumeratelfilel;	if (file.isDirectory()) enumerate(file);
+els queue.putffile;	else queue.put(file);
+}	}
+	}
+public static Fle DMMY = new File";;	public static File DUMMY = new File("");
+private BlockingQueue<File> queue;	private BlockingQueue<File> queue;
+private File  startingDirectory;	private File startingDirectory;
+}	}
+class  SearchTask  implements  Runnable	class SearchTask implements Runnable
+{	{
+	
+public SearchTaskBlockngQueue<File> queue, String keyordf	public SearchTask(BlockingQueue<File> queue, String keyword)
+{	{
+this.queue = queue;	this.queue = queue;
+this.keyword = keyword;	this.keyword = keyword;
+	}
+public void run	public void run()
+	{
+try	try
+{	{
+boolean done =  false;	boolean done = false;
+while !donel	while (!done)
+{	{
+File file = queuetake;	File file = queue.take();
+if  file == FileEnumerationTask.DUMMYf	if (file == FileEnumerationTask.DUMMY)
+{	{
+queue.putfile;	queue.put(file);
+done = true;	done = true;
+}	}
+lse searchfile;	else search(file);
+}	}
+}	}
+catch IException e	catch (IOException e)
+f	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+catch InterruptedException e	catch (InterruptedException e)
+f	{
+1	}
+}	}
+	
+public void searchFile filel thows IOException	public void search(File file) throws IOException
+f	{
+Scanner in = new Scannernew  FileInputStreamflef;	Scanner in = new Scanner(new FileInputStream(file));
+int lineNumber = 0;	int lineNumber = 0;
+hile n.hasNextLine	while (in.hasNextLine())
+{	{
+lineNumber+;	lineNumber++;
+String line =in.nextLine;	String line = in.nextLine();
+if line..containskewordl System..outprintf"%s:%d:%s%n",  file..getPath, lineNumber,	if (line.contains(keyword)) System.out.printf("%s:%d:%s%n", file.getPath(), lineNumber,
+lin;	line);
+}	}
+inclosel;	in.close();
+	}
+privat BlockingQueue<Fil> queue;	private BlockingQueue<File> queue;
+pivate String keyword;	private String keyword;
+1	}

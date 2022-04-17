@@ -1,0 +1,26 @@
+package com.atguigu..java;	package com.atguigu.java;
+public class InnerClassTest  {	public class InnerClassTest {
+	
+	
+	
+	
+	
+public void method{	public void method(){
+int  num = 10;	int num = 10;
+	
+classAA{	class AA{
+	
+	
+public void show{	public void show(){
+System.out.printlnfnum;	System.out.println(num);
+	
+}	}
+	
+	
+}	}
+	
+	
+}	}
+	
+	
+}	}

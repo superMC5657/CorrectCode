@@ -1,0 +1,20 @@
+package compattern.factory.product	package com.pattern.factory.product;
+public class Operation {	public class Operation {
+private  double numberA;	private double numberA;
+private double numberB;;	private double numberB;
+	
+public double getNmberAf {	public double getNumberA() {
+return numberA;	return numberA;
+l	}
+public voi  setNumberAfdoublenumberA {	public void setNumberA(double numberA) {
+this..numbrA = numberA;	this.numberA = numberA;
+}	}
+publicdouble getNumberB  {	public double getNumberB() {
+return numberB;	return numberB;
+}	}
+public vid setNumberBfdouble numberB {	public void setNumberB(double numberB) {
+thi.numberB= numberB;	this.numberB = numberB;
+}	}
+public doble getResouledouble numberA,double numberBreturn 0;	public double getResoule(double numberA,double numberB){return 0;
+}	}
+	}

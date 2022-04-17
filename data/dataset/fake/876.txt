@@ -1,0 +1,111 @@
+import java.awt.*;	import java.awt.*;
+imprt java..awt.event..*;	import java.awt.event.*;
+import java.util.*;	import java.util.*;
+import javax.swing.*;	import javax.swing.*;
+public class SwingThreadTest	public class SwingThreadTest
+{	{
+pulic static void mainStringf args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnabe	EventQueue.invokeLater(new Runnable()
+f	{
+public void runl	public void run()
+{	{
+SwingThreadFrameframe   new SwingThreadFrame;	SwingThreadFrame frame = new SwingThreadFrame();
+frame.setDefultCloseOpeationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+rame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class SwingThreadFrame  extends JFrame	class SwingThreadFrame extends JFrame
+1	{
+public SwingThradFrame	public SwingThreadFrame()
+{	{
+setTitlef"SwingThreadTest";;	setTitle("SwingThreadTest");
+final JComboBox combo = new JComboBoxf;	final JComboBox combo = new JComboBox();
+cmbo.insrtItmAtInteger.MAX_VALUE, 0;	combo.insertItemAt(Integer.MAX_VALUE, 0);
+combo.setPrototypeDisplayValuecombogetItemAt0;	combo.setPrototypeDisplayValue(combo.getItemAt(0));
+combo.setSelectedIndex0;	combo.setSelectedIndex(0);
+JPanel  panel = new JPanel;	JPanel panel = new JPanel();
+JButtn  goodButton = new JButton"Good;	JButton goodButton = new JButton("Good");
+goodButton.addActionListenerfnewActionListener	goodButton.addActionListener(new ActionListener()
+l	{
+public void actionPerformedAtionEent event	public void actionPerformed(ActionEvent event)
+l	{
+new Threadfnew GoodWorkerRunnalecombol.startff;	new Thread(new GoodWorkerRunnable(combo)).start();
+}	}
+fl;	});
+panel.addgoodButton;	panel.add(goodButton);
+JButton badButton = new JButtonf"Bad";	JButton badButton = new JButton("Bad");
+badButton.addctionListenerlnewActionListenerf	badButton.addActionListener(new ActionListener()
+{	{
+publicvoid actionPerformdActionEvent eent	public void actionPerformed(ActionEvent event)
+	{
+new Threadnew BadWorkerRunnablelcombof.start;	new Thread(new BadWorkerRunnable(combo)).start();
+1	}
+;	});
+panel..addbadButton	panel.add(badButton);
+panel.addcombo;;	panel.add(combo);
+addpanel;	add(panel);
+packf;	pack();
+}	}
+}	}
+class adWorkerRunnable implements Runnable	class BadWorkerRunnable implements Runnable
+{	{
+public  BadWorkerRunnableJComboBox aCombo	public BadWorkerRunnable(JComboBox aCombo)
+f	{
+combo = aCombo;	combo = aCombo;
+generator = new Randoml;	generator = new Random();
+}	}
+public void run	public void run()
+1	{
+try	try
+	{
+whiletruef	while (true)
+{	{
+int  i = Math.absgenerator.nextnt;;	int i = Math.abs(generator.nextInt());
+if i %  2 == 0 combo..insertItemAi  0;	if (i % 2 == 0) combo.insertItemAt(i, 0);
+else if  combo..getItemCountl > 0 combo.removeItemAti %combo.getItemCount;	else if (combo.getItemCount() > 0) combo.removeItemAt(i % combo.getItemCount());
+Thread.sleep1;	Thread.sleep(1);
+}	}
+}	}
+catch lInterruptedException e	catch (InterruptedException e)
+{	{
+}	}
+}	}
+private JComboBoxcombo;	private JComboBox combo;
+private andomgenerator;	private Random generator;
+}	}
+class  GoodWorkerRunnable implements Runnable	class GoodWorkerRunnable implements Runnable
+{	{
+public GoodWorkerRunnableJComboBox aCombo	public GoodWorkerRunnable(JComboBox aCombo)
+{	{
+cmbo = aCombo	combo = aCombo;
+enerator = new Randoml;;	generator = new Random();
+}	}
+public void run	public void run()
+{	{
+try	try
+{	{
+while true	while (true)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public  voirunf	public void run()
+{	{
+int i = Math.absgenerator.nextIntl;	int i = Math.abs(generator.nextInt());
+if   % 2 == 0l combo.insertItemAti,, 0;	if (i % 2 == 0) combo.insertItemAt(i, 0);
+else if cmbo.getItemCountf > 0f combo.removeItemAti	else if (combo.getItemCount() > 0) combo.removeItemAt(i
+%combo.getItemCount;	% combo.getItemCount());
+}	}
+;	});
+hreadsleepl1;	Thread.sleep(1);
+l	}
+}	}
+catch nterruptedException e	catch (InterruptedException e)
+1	{
+}	}
+f	}
+private JComboBox ombo;	private JComboBox combo;
+privateRandom generator;	private Random generator;
+1	}

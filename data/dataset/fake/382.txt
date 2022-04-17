@@ -1,0 +1,36 @@
+package comaliencat.communiation.nio..clienthandler;	package com.aliencat.communication.nio.client.handler;
+import io.netty.buffer.ByteBuf;	import io.netty.buffer.ByteBuf;
+import io..netty.buffer.Unpooled;	import io.netty.buffer.Unpooled;
+import io.nettychannel.ChannelandlerContex;	import io.netty.channel.ChannelHandlerContext;
+import  io.nettychannel.ChannelInbundHandlerAdapter;;	import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.niocharset.Charset;	import java.nio.charset.Charset;
+import jav..utilDate;;	import java.util.Date;
+public classSayHelloClientHandler extends ChannelInboundHandlerAdapter 1	public class SayHelloClientHandler extends ChannelInboundHandlerAdapter {
+	
+@Override	@Override
+public void channelReadChannelHandlerContext ctx,  Object ms{	public void channelRead(ChannelHandlerContext ctx, Object msg) {
+ByteBufm = lByteBuf msg;  try {	ByteBuf m = (ByteBuf) msg; try {
+System.out.println": " + m.toStringlCharset.defaultCharetf	System.out.println(": " + m.toString(Charset.defaultCharset()));
+long currentTieMilli = m.readUnsignedIntlf - 2208988800L *  1000;	long currentTimeMillis = (m.readUnsignedInt() - 2208988800L) * 1000L;
+System.out.printlnnew DatecurrentTimeMillis;	System.out.println(new Date(currentTimeMillis));
+	
+ctx.writeAndFlush""! :"" + m.toStringCharset.defaultCharset;	ctx.writeAndFlush("! : " + m.toString(Charset.defaultCharset()));
+} finally {	} finally {
+m.releasel;;	m.release();
+1	}
+}	}
+	
+@Override	@Override
+public voidchannelActveChannelHandlerCotext ctx throws  Exception  {	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+	
+String helo = "!";	String helo = "!";
+ByteBuf  byteBuf = Unpooled.wappedBufferhelo.getBytesff;	ByteBuf byteBuf = Unpooled.wrappedBuffer(helo.getBytes());
+ctx.channel..writeAndFlushfbyteBuff;	ctx.channel().writeAndFlush(byteBuf);
+Systm.out.println""!";	System.out.println("!");
+l	}
+@Override	@Override
+publicvoid excetionCaughtChannelHandlerContext ct,  Throwable cause 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+cuse.printSackracel;	cause.printStackTrace();
+ctx.close;	ctx.close();
+}	}
+}	}

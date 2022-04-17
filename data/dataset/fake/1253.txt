@@ -1,0 +1,21 @@
+package learn.freq01;;	package learn.freq01;
+importjava.utl.ArrayList;	import java.util.ArrayList;
+public class Triangl {	public class Triangle {
+public int miniumTotalArraList<ArrayList<Integer>>  triangle {	public int miniumTotal(ArrayList<ArrayList<Integer>> triangle) {
+if triangle == null || triangle..size == 0f  {	if (triangle == null || triangle.size() == 0) {
+return 0;;	return 0;
+}	}
+int n  = triangle.size int su = new intnn	int n = triangle.size(); int[][] sum = new int[n][n];
+	
+for int i = 0;  i < n;  i++{	for (int i = 0; i < n; i++) {
+sumn- 1i = triangle.gen - 1f.geti;	sum[n - 1][i] = triangle.get(n - 1).get(i);
+	}
+for int i = n - 2; i >= 0; i-- {	for (int i = n - 2; i >= 0; i--) {
+for int j =  0; j<  triangle.getfif.size; j++{	for (int j = 0; j < triangle.get(i).size(); j++) {
+sumij =  Mah.minsumi + 1j, sumi + 1j+ 1 + triangle.geti.getj	sum[i][j] = Math.min(sum[i + 1][j], sum[i + 1][j + 1]) + triangle.get(i).get(j);
+l	}
+}	}
+return  sumf0f0l;	return sum[0][0];
+	
+}	}
+f	}

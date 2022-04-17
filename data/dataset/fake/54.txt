@@ -1,0 +1,29 @@
+package io.github.dunwu.algorithm..dynamic;	package io.github.dunwu.algorithm.dynamic;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+pubic clas 1	public class {
+public static void  minString args {	public static void main(String[] args) {
+Assertions..assertTrueisSubsequencel"abc", ""ahbgdcl;	Assertions.assertTrue(isSubsequence("abc", "ahbgdc"));
+Assertions.assertFalselisSubsequence"axc",  "ahbgdc""f;	Assertions.assertFalse(isSubsequence("axc", "ahbgdc"));
+Assertions.assertTrueisSubsequencel"",  "ahbgdc";	Assertions.assertTrue(isSubsequence("", "ahbgdc"));
+Assertions.assertFalseisSubsequene"aaaaaa", "bbaaaa""f;;	Assertions.assertFalse(isSubsequence("aaaaaa", "bbaaaa"));
+	}
+pulic static boolean isSubseuenceString s, String t {	public static boolean isSubsequence(String s, String t) {
+if fs == null ||s.lengthf==  0eturntrue;;	if (s == null || s.length() == 0) return true;
+if s.lengthl > t.egth return false;	if (s.length() > t.length()) return false;
+charf source =stoCharArray;	char[] source = s.toCharArray();
+char  targe = t.toCharAray;	char[] target = t.toCharArray();
+int i = 0,, j = 0;	int i = 0, j = 0;
+while i < source.length && j <  target.length {	while (i < source.length && j < target.length) {
+if targetj != sourcei {	if (target[j] != source[i]) {
+j++;	j++;
+1 else {	} else {
+if i==  source.length -1 {	if (i == source.length - 1) {
+return true;	return true;
+}	}
+i++;;	i++;
+j++;;	j++;
+}	}
+l	}
+return false;	return false;
+}	}
+}	}

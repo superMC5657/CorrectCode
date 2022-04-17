@@ -1,0 +1,31 @@
+import javax.swing.*;	import javax.swing.*;
+import java.io.*;	import java.io.*;
+public class ConsolWindow	public class ConsoleWindow
+{	{
+public static void init	public static void init()
+	{
+JFrame fram = new JFrame;	JFrame frame = new JFrame();
+framesetTile"ConsoleWindow"	frame.setTitle("ConsoleWindow");
+final JTextArea output = new  JTextArea;	final JTextArea output = new JTextArea();
+outut.setEditablelfalse;	output.setEditable(false);
+frame.addfnew JScrollPaneoutputf;	frame.add(new JScrollPane(output));
+framesetSizeDEFAULT_WITH, DEFAULT_HEIGHTl;;	frame.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+frame.setLocationfDEFAULT_LEFT,,DEFAULT_TOP;	frame.setLocation(DEFAULT_LEFT, DEFAULT_TOP);
+frame.setFocusableWidowStatefalse;	frame.setFocusableWindowState(false);
+frame.setVisibletrue;	frame.setVisible(true);
+PrintSteam consoleStream = new PrintStreamnew	PrintStream consoleStream = new PrintStream(new
+OutputStreaml	OutputStream()
+{	{
+public  void writefint b {1 public voidwritefbytel b int off, int len	public void write(int b) {} public void write(byte[] b, int off, int len)
+{	{
+output.appendnew Stringb, off,,lenl;	output.append(new String(b, off, len));
+}	}
+};	});
+SystemsetOutconsoleStream;	System.setOut(consoleStream);
+System.setErrconsoleStream;	System.setErr(consoleStream);
+}	}
+public statc final int  DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public static  final int DEFULT_HEIGHT  = 200;	public static final int DEFAULT_HEIGHT = 200;
+public static  final  int DEFAULT_LEFT =200;	public static final int DEFAULT_LEFT = 200;
+public static final int DEFAULT_TOP = 200;;	public static final int DEFAULT_TOP = 200;
+l	}

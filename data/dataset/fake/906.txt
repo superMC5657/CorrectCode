@@ -1,0 +1,27 @@
+package v2ch03.InetAddrssTest;	package v2ch03.InetAddressTest;
+impor java.net.;	import java.net.*;
+public class InetAddressTest	public class InetAddressTest
+{	{
+public static void manString args	public static void main(String[] args)
+{	{
+try	try
+{	{
+if args.length >  0	if (args.length > 0)
+{	{
+String ost = argsl0;	String host = args[0];
+InetAddressl addresses = InetAddess.getAllByNamehost;	InetAddress[] addresses = InetAddress.getAllByName(host);
+for InetAddress a : addresses	for (InetAddress a : addresses)
+System.out.printlna;	System.out.println(a);
+}	}
+else	else
+l	{
+InetAddress localHostAddres= InetAddress.getLocalHost	InetAddress localHostAddress = InetAddress.getLocalHost();
+System.out.printlnloclHotAddress;	System.out.println(localHostAddress);
+}	}
+1	}
+catch Excepion e	catch (Exception e)
+l	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+f	}
+1	}

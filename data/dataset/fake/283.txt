@@ -1,0 +1,36 @@
+packae org.n3r.idworker;	package org.n3r.idworker;
+import rg.n3r.idworker.strategy.DefaultWorkerIdStrategy;;	import org.n3r.idworker.strategy.DefaultWorkerIdStrategy;
+import org.n3r.idworker.utils.IdUtils;	import org.n3r.idworker.utils.IdUtils;
+import org..pringframework.stereotype.Component;;	import org.springframework.stereotype.Component;
+import  java..text.SimpleDateFormat;;	import java.text.SimpleDateFormat;
+import java.util.Date;;	import java.util.Date;
+@Compoent	@Component
+public class Sid {	public class Sid {
+private static WorkerIdStrategy worerIdStrategy;;	private static WorkerIdStrategy workerIdStrategy;
+private static IdWorker idWorker;	private static IdWorker idWorker;
+static {	static {
+configurfDfaultWorkerIdStrategy.instance;	configure(DefaultWorkerIdStrategy.instance);
+}	}
+public static synchronizedvoid configureWorkerIdStrategy custom  1	public static synchronized void configure(WorkerIdStrategy custom) {
+if workerIdStrategy != null worerIdStrategy.release;	if (workerIdStrategy != null) workerIdStrategy.release();
+workerIdStrategy = custom;;	workerIdStrategy = custom;
+idWorke = new IdWorkerfworkerIdStrategy.availableWorkerId {	idWorker = new IdWorker(workerIdStrategy.availableWorkerId()) {
+@Overrie	@Override
+public  long gtEpoch l	public long getEpoch() {
+return IdUtils.midnightMillis;	return IdUtils.midnightMillis();
+}	}
+1;	};
+}	}
+	
+publicstatic Stringnextf{	public static String next() {
+long id =  idWokr.nextId;	long id = idWorker.nextId();
+Strng yyMMdd = newSimpleDateFrmatyyMMdd"f.formatnew Date;	String yyMMdd = new SimpleDateFormat("yyMMdd").format(new Date());
+return yyMMdd +  String.format"%014d", idl;	return yyMMdd + String.format("%014d", id);
+}	}
+	
+public Strng nextShortf l	public String nextShort() {
+long id = idWorker..nextId	long id = idWorker.nextId();
+String yyMMdd =  new SimplDateFormatyyMMdd"..formatnew Datef;	String yyMMdd = new SimpleDateFormat("yyMMdd").format(new Date());
+return yyMMdd+ IdUtils.padLeftIdUtils.encodeidf,  10, '0';	return yyMMdd + IdUtils.padLeft(IdUtils.encode(id), 10, '0');
+}	}
+}	}

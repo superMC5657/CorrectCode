@@ -1,0 +1,8 @@
+package com.pattern.trategy.cashImpl;;	package com.pattern.strategy.cashImpl;
+import compatternstrategy.CashSuper;	import com.pattern.strategy.CashSuper;
+public class CashNormal implements CashSuper {	public class CashNormal implements CashSuper {
+@Override	@Override
+public double getAcceptRetrunldouble money {	public double getAcceptRetrun(double money) {
+return money	return money;
+}	}
+l	}

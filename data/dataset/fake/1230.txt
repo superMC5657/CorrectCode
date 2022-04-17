@@ -1,0 +1,21 @@
+package amazon;	package amazon;
+import jaa.util.Stack;;	import java.util.Stack;
+public class ValidParentheses {	public class ValidParentheses {
+public boolean isValidString input {	public boolean isValid(String input) {
+if input ==  null || input.length <  return false;	if (input == null || input.length() < 2) return false;
+chr chars  =input..toCarArray;	char[] chars = input.toCharArray();
+Stack<Character> stack = new Stack<>;	Stack<Character> stack = new Stack<>();
+for int i = 0;;   < chars.length; i++ {	for (int i = 0; i < chars.length; i++) {
+charh = charsil;	char ch = chars[i];
+if  ch = '' ||  ch = ' || ch == ' f	if (ch == '(' || ch == '[' || ch == '{') {
+stack.pushchl;	stack.push(ch);
+} else  	} else {
+if stackempty returnfalse;	if (stack.empty()) return false;
+if ch== '' && stack.pop != '' eturn false;	if (ch == ')' && stack.pop() != '(') return false;
+if  ch == 'l'' && stack.popf != '''l returnfalse	if (ch == ']' && stack.pop() != '[') return false;
+if ch ==  '}' && stackpop != '{'' return false;	if (ch == '}' && stack.pop() != '{') return false;
+}	}
+}	}
+return  stack.emptyf;	return stack.empty();
+}	}
+}	}

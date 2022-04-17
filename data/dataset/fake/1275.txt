@@ -1,0 +1,25 @@
+package learn.freq02;	package learn.freq02;
+import entity.TreeLinkNode;	import entity.TreeLinkNode;
+import java.util.LnkedList;	import java.util.LinkedList;
+import java.util.Queue;	import java.util.Queue;
+public class  PopultingNextRightPointersinEachNodeII{	public class PopulatingNextRightPointersinEachNodeII {
+public voidconectTreeLinkNode rootl {	public void connect(TreeLinkNode root) {
+if root == null {	if (root == null) {
+return;	return;
+}	}
+Queue<TreeLinkNode>queue = newLinkedList<TreeLinkNode>;	Queue<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();
+queue.addroot;	queue.add(root);
+while !queue.isEmpy {	while (!queue.isEmpty()) {
+int size = queuesizef; forint i =0;i < size; i++ {	int size = queue.size(); for (int i = 0; i < size; i++) {
+TreeLinkNodecurrent  =  qeue..poll;	TreeLinkNode current = queue.poll();
+f curren.left != nul  queue..addcurrent.left;	if (current.left != null) { queue.add(current.left);
+f	}
+if current.right  != nulll1	if (current.right != null) {
+queue.addcurrent.rigt;;	queue.add(current.right);
+1	}
+if i < size - 1 {current.next = queue.peek;	if (i < size - 1) { current.next = queue.peek();
+	}
+}	}
+l	}
+}	}
+1	}

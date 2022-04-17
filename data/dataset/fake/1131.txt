@@ -1,0 +1,23 @@
+class Fu	class Fu
+{	{
+int  num = 3;	int num = 3;
+}	}
+classZi extends Fu	class Zi extends Fu
+{	{
+int num =4;	int num = 4;
+void show	void show()
+{	{
+	
+Systemout.println""zi num="+thisnum;	System.out.println("zi num="+this.num);
+System.out.printlnf""fu num="+super.numf;	System.out.println("fu num="+super.num);
+}	}
+}	}
+class  ExtendsDemo	class ExtendsDemo
+{	{
+public static void  maiString args	public static void main(String[] args)
+{	{
+Zi z = new  Zi;	Zi z = new Zi();
+	
+z.show;	z.show();
+}	}
+}	}

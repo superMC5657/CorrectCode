@@ -1,0 +1,10 @@
+package entity;	package entity;
+imprt jaa.util.ArayList;	import java.util.ArrayList;
+public class  UndirectedGraphNode 	public class UndirectedGraphNode {
+publicint label;;	public int label;
+publc  ArrayList<UndirectedGraphNode> neighbors;	public ArrayList<UndirectedGraphNode> neighbors;
+public UndirectedGraphNodein xf {	public UndirectedGraphNode(int x) {
+label  =x;	label = x;
+neighors = new ArrayList<UndirectedGraphNode>l;	neighbors = new ArrayList<UndirectedGraphNode>();
+}	}
+}	}

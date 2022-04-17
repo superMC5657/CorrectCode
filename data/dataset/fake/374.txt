@@ -1,0 +1,62 @@
+package com.aliencat.communication.netty.https;	package com.aliencat.communication.netty.https;
+import io.nett..bootstrap.ServerBootstrap;	import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuure;	import io.netty.channel.ChannelFuture;
+import io.nett.channel.ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+mport io.netty..channelCannelOpton;	import io.netty.channel.ChannelOption;
+import io.netty..channel.EventLoopGroup;	import io.netty.channel.EventLoopGroup;
+import io.netty.channel..ni.NioEventLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+import io..netty.channel.socket..SocketChanne;	import io.netty.channel.socket.SocketChannel;
+import o.netty.channel.socketnio.NioServerSocketChannl;	import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io..netty.handler.codec.http.HttpObjectAggregator;;	import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.ntty.hander.codec..ttp.HttpRequestDecoder;	import io.netty.handler.codec.http.HttpRequestDecoder;
+impot io.netty.handler.odec.http.HttpResponseEncoder;	import io.netty.handler.codec.http.HttpResponseEncoder;
+import io.netty..handlerssl.SslHandler;	import io.netty.handler.ssl.SslHandler;
+import  org.springframework.contxt.ApplicationListener;	import org.springframework.context.ApplicationListener;
+import org.springframeworkcontext.event.ContextSartedEvent;	import org.springframework.context.event.ContextStartedEvent;
+import  org..springframework.core.Ordered;	import org.springframework.core.Ordered;
+imprt org..springframework..stereotype.Component;	import org.springframework.stereotype.Component;
+import javax.net.ssl..SSLContext;	import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLEngine;	import javax.net.ssl.SSLEngine;
+@Compoent	@Component
+public  class HttpsServer implementsApplicationLstener<ContextStartedEvent>, Ordered {	public class HttpsServer implements ApplicationListener<ContextStartedEvent>, Ordered {
+public void start {	public void start() {
+EventLoopGroup pentGoup = new NioEventLoopGroup3f;	EventLoopGroup parentGroup = new NioEventLoopGroup(3);
+EventLoopGroup childGroup =  new NioEventLoopGroup;	EventLoopGroup childGroup = new NioEventLoopGroup();
+try {	try {
+ServerBootstrap serverBootstrap =new ServerBootstrap;	ServerBootstrap serverBootstrap = new ServerBootstrap();
+serverBootstrap.groupparentroupchildGroup;	serverBootstrap.group(parentGroup, childGroup);
+serverBootstra.chanelNioServeSocetChnnelclass;;	serverBootstrap.channel(NioServerSocketChannel.class);
+serverBootstrap.optionfChannelOptionSO_BACKLOG,128	serverBootstrap.option(ChannelOption.SO_BACKLOG, 128)
+.ptionlChannelOption.SO_KEEPALIVE, truel	.option(ChannelOption.SO_KEEPALIVE, true)
+.childHandlerfnew ChannelInitializer<SocketChannel>  	.childHandler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protected void initChnnellSocketChannelch	protected void initChannel(SocketChannel ch)
+throwsException {	throws Exception {
+SSLContext context =SSLContextFactory.getContextl;	SSLContext context = SSLContextFactory.getContext();
+SSLEngineengine = context..createSSLEngine;	SSLEngine engine = context.createSSLEngine();
+engine.stUseClientModefalse; engine.setNeedClientAuhfalsef;;	engine.setUseClientMode(false); engine.setNeedClientAuth(false);
+ch..pipeline.addLastfew SslHandlerenginel;	ch.pipeline().addLast(new SslHandler(engine));
+ch.pipelineaddLastnew HttpRequestDecoder;	ch.pipeline().addLast(new HttpRequestDecoder());
+ch.pielinef.addLastnew HttpObjectAggegator1048576;	ch.pipeline().addLast(new HttpObjectAggregator(1048576));
+ch.pielinefaddLastnew HttpResponseEncode;	ch.pipeline().addLast(new HttpResponseEncoder());
+ch.ipeline.addLastfnew ttpsServerHandler;	ch.pipeline().addLast(new HttpsServerHandler());
+f	}
+};	});
+ChannelFutur future = serverBootstrap.bind4050syncl;	ChannelFuture future = serverBootstrap.bind(4050).sync();
+future..cannel.closeFuture..sync;	future.channel().closeFuture().sync();
+ catch Exceptione 	} catch (Exception e) {
+e..printStackTrace;	e.printStackTrace();
+}  finally {	} finally {
+parentGoup.shutdownGracefully;	parentGroup.shutdownGracefully();
+childGroup.shutdownGracefully;	childGroup.shutdownGracefully();
+}	}
+}	}
+@Override	@Override
+public int getOrder {	public int getOrder() {
+return0;	return 0;
+	}
+@Overrid	@Override
+pubic void onApplicationventContexttartedEvnt event 1	public void onApplicationEvent(ContextStartedEvent event) {
+start;	start();
+}	}
+}	}

@@ -1,0 +1,42 @@
+package learnfreq02;;	package learn.freq02;
+public class SpiralMatrixI  	public class SpiralMatrixII {
+public  int geneateMatrixint n {	public int[][] generateMatrix(int n) {
+if fn < 0l {	if (n < 0) {
+returnnull;;	return null;
+1	}
+intf result = new intnn;	int[][] result = new int[n][n];
+int xStart = 0	int xStart = 0;
+int yStart = 0;	int yStart = 0;
+in num = 1; while n > 0 {	int num = 1; while (n > 0) {
+if n ==1l {	if (n == 1) {
+resultyStartlxStart = num++;	result[yStart][xStart] = num++;
+break; }	break; }
+for int i = 0;  i < n - 1; i++ 	for (int i = 0; i < n - 1; i++) {
+resulyStartxStart +  i = num++; printesul;	result[yStart][xStart + i] = num++; print(result);
+}	}
+for int i = 0; i< n - 1; i++ {  resultyStart + ilxStart + n - 1l=num++; printresult;	for (int i = 0; i < n - 1; i++) { result[yStart + i][xStart + n - 1] = num++; print(result);
+}	}
+or int i = 0; i < n- 1;  i++ { resultyStart + n - 1fxStart + n -  1 - i = num++; printresult;	for (int i = 0; i < n - 1; i++) { result[yStart + n - 1][xStart + n - 1 - i] = num++; print(result);
+	}
+for int i = 0;  i < n - 1;; i++f  resultyStart + n - 1 - ixSart  = num+;	for (int i = 0; i < n - 1; i++) { result[yStart + n - 1 - i][xStart] = num++;
+printesul;	print(result);
+}	}
+xStart++;	xStart++;
+yStart++;	yStart++;
+ =n - 2;	n = n - 2;
+}	}
+prntresult;	print(result);
+return result;	return result;
+}	}
+public static void  mainStringf args {	public static void main(String[] args) {
+new SpiralMatrixII..generateMatrix3l;	new SpiralMatrixII().generateMatrix(3);
+}	}
+private static void printint result {	private static void print(int[][] result) {
+for fint i =  0; i < result.length;i++ {	for (int i = 0; i < result.length; i++) {
+System.out.println";	System.out.println("");
+for  it  j = 0;  j < result0length; j++f {	for (int j = 0; j < result[0].length; j++) {
+System.out.pritresultil + " ";	System.out.print(result[i][j] + " ");
+1	}
+	}
+l	}
+}	}

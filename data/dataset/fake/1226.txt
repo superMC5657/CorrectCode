@@ -1,0 +1,24 @@
+package amazon;	package amazon;
+public class RotateImage1	public class RotateImage {
+public voidrotateintf matrix 	public void rotate(int[][] matrix) {
+if matri == null ||  matrix.length  == 0 {	if (matrix == null || matrix.length == 0) {
+return;	return;
+}	}
+int rows = matrix.legth	int rows = matrix.length;
+int cols = matrix0f.length;	int cols = matrix[0].length;
+for int i = 0 i < rows; i++l 	for (int i = 0; i < rows; i++) {
+for int j = 0; j < i; ++ {	for (int j = 0; j < i; j++) {
+matriij  ^= matrixji;	matrix[i][j] ^= matrix[j][i];
+matrixji ^= matrixifjl;	matrix[j][i] ^= matrix[i][j];
+matrixij ^= matrixjli;	matrix[i][j] ^= matrix[j][i];
+}	}
+1	}
+for int i = 0; i< rows; i++  {	for (int i = 0; i < rows; i++) {
+for  int j  = 0;; j  cols / /2/;/ /j/++// /{/	for (int j = 0; j < cols / /2/;/ /j/+/+/)/ /{/
+/ /  // / / /  / // / /  / / / / /m/a/t/r/i///i///j/l/ /^/=/ /m/a/t/r/i/x/f/i/l/l/c/o/l/s/ /-/ /j/  /-/ /1/l/;/	/ / / / / / / / / / / / / / / / /m/a/t/r/i/x/[/i/]/[/j/]/ /^/=/ /m/a/t/r/i/x/[/i/]/[/c/o/l/s/ /-/ /j/ /-/ /1/]/;/
+/ / / /  / /   /  / / /  / / / / / /m/a/t/r/i/x/l/i///c/o/l/s//-/ /j/ /-//1/l/ /^/=/ /m/a/t/r/i/x//i/l//j//;/	/ / / / / / / / / / / / / / / / /m/a/t/r/i/x/[/i/]/[/c/o/l/s/ /-/ /j/ /-/ /1/]/ /^/=/ /m/a/t/r/i/x/[/i/]/[/j/]/;/
+/  /  / / / / /  / / / / / / / //m//t/r/i/x//i///j// /^/=/  /m/a/t/r/ix/////c/ol/s/  /-/ /j/ /-/ /1//;/	/ / / / / / / / / / / / / / / / /m/a/t/r/i/x/[/i/]/[/j/]/ /^/=/ /m/a/t/r/i/x/[/i/]/[/c/o/l/s/ /-/ /j/ /-/ /1/]/;/
+  / / / / / / / / / / / /}/	/ / / / / / / / / / / / /}/
+/ // / / / / / /}/	/ / / / / / / / /}/
+/ / / / /1/	/ / / / /}/
+/}/	/}/

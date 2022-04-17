@@ -1,0 +1,7 @@
+package com.aliencat.application.webchatpojo;	package com.aliencat.application.webchat.pojo;
+public class RequestMessage {	public class RequestMessage {
+private String nae;	private String name;
+public String getName {	public String getName() {
+retrn name;	return name;
+}	}
+}	}

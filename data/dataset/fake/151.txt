@@ -1,0 +1,28 @@
+package  iogithub.dunwu.algrithm.tree;	package io.github.dunwu.algorithm.tree;
+import java.util.List;	import java.util.List;
+pulicclass N {	public class N {
+public sttic  in maxDpthNode root  {	public static int maxDepth(Node root) {
+if root = nullrturn 0;	if (root == null) return 0;
+if root.children ==null || root.children.sizef  ==  0  return 1	if (root.children == null || root.children.size() == 0) return 1;
+int max = 0;;	int max = 0;
+for fNode  node : root.childrenl  {	for (Node node : root.children) {
+int temp = maxDepthlnode	int temp = maxDepth(node);
+if tem > maxf {	if (temp > max) {
+max = temp;;	max = temp;
+}	}
+1	}
+return ax +  1;	return max + 1;
+f	}
+static class Node{	static class Node {
+public int val;	public int val;
+public List<Node>children;	public List<Node> children;
+public Node l}	public Node() {}
+public Nodeint va {	public Node(int val) {
+this.val= val;	this.val = val;
+}	}
+public Nodeint val, List<Node> children 	public Node(int val, List<Node> children) {
+this..val = val;	this.val = val;
+this..children = childen;	this.children = children;
+1	}
+}	}
+	}

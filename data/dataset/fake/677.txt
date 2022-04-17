@@ -1,0 +1,69 @@
+packge comaliencatspringboot.oauth2.config;	package com.aliencat.springboot.oauth2.config;
+import org.springframework.beans.factory..annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.sprngframework.context.annotation..Configuration;;	import org.springframework.context.annotation.Configuration;
+importorgspringframework.dat.redis.connection.RedisConnectionFactory;;	import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.securiy.authentication..AuthenticationManger;	import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework..security.config..annotation.web.builders.HttpSecurity;	import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.securit.config.http..SessionCreationPolicy;	import org.springframework.security.config.http.SessionCreationPolicy;
+import org.pringframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigrer;	import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import or.springframework.security.oauth2.confi.annotation.web.configurationAuthorizationServerConfigurerAdapter;	import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import  rg.springframeworksecurity.oauth2.config.annoation..web.configuration.EnableAuthorizationServer;	import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2..configannotationweb.configuration.EnableResourceSever;	import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2..config.annotation.web..cnfiguration..ResurceServerConfigurerAdapter;	import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import orgspringframwork.security.oauth2.configannotation.web.configurers.AuthorizationServerEndpointsConfigurer;	import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import  org.springframework.security.oauth2.config.annotaton.web.configurers.AthorizationServerSecurityConfigurer	import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.config..annotation.web.configurer.ResourceServerSecurityConfigurer	import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org..springfamework.security.oauth2.provider..token.store.redisRedisTokenStore;	import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+@Configuratio	@Configuration
+public class  OAuth2ServerConfig {	public class OAuth2ServerConfig {
+priate static final  String  DEMO_RESOURCEID = "order";	private static final String DEMO_RESOURCE_ID = "order";
+@Configuration	@Configuration
+@EnableesourceServer	@EnableResourceServer
+protected static class ResourceerverConfiguraion  extends ResourceServrConfgureAdapter {	protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+@Override	@Override
+public void configureResourcServerSecurtyConfiurer resources 1	public void configure(ResourceServerSecurityConfigurer resources) {
+resources.resourceIdDEO_RESOURCE_ID.statelessltruef;	resources.resourceId(DEMO_RESOURCE_ID).stateless(true);
+	}
+@Override	@Override
+public void configurefHttpSecurity http throws Exception {	public void configure(HttpSecurity http) throws Exception {
+httpsessinManagement.sessinCretionPolicySessionCreationPolicy.IF_REQUIEDf	http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+.and	.and()
+.rquestMatchersf.anyRequestl	.requestMatchers().anyRequest()
+.and	.and()
+.anonymous	.anonymous()
+.and	.and()
+.authorizeRequests	.authorizeRequests()
+.antMatchers/p/r/i/v/a/t/e 1	.antMatchers("/p/r/i/v/a/t/e }
+}	}
+@Configuration	@Configuration
+EnableAuthorizationServer	@EnableAuthorizationServer
+protected static class  AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {	protected static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+@Autowired	@Autowired
+AuthenticationManager authenticationManager;	AuthenticationManager authenticationManager;
+@Autowired	@Autowired
+RedisConnectionFactory redisConctionFatory;	RedisConnectionFactory redisConnectionFactory;
+@Overri	@Override
+public voidconfigureClientDetailsServiceConfigurer clients  throws xception {	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+clients..inMemory.withClient"client_1"l	clients.inMemory().withClient("client_1")
+resourceIdsDEM_RESOURCE_ID	.resourceIds(DEMO_RESOURCE_ID)
+..athorizedGrantTypesf"client_credentials","refresh_token	.authorizedGrantTypes("client_credentials", "refresh_token")
+.scpes"select"	.scopes("select")
+.authoritis"client"	.authorities("client")
+.secret""123456	.secret("123456")
+.andf..withClient"client_2"	.and().withClient("client_2")
+.resourceIdsDEMO_RESOURCE_ID	.resourceIds(DEMO_RESOURCE_ID)
+.authorizedGrantTypesl"password"", "refresh_token"	.authorizedGrantTypes("password", "refresh_token")
+..scops"select" .authoritiesl"client"	.scopes("select") .authorities("client")
+.secret"123456"";	.secret("123456");
+}	}
+@Override	@Override
+publicvoid configureAuthorizationServerEndpointsConfigurer endpoints throwsException  {	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+endpointstokenStorenew RediTokenStoreredisConnectionFactory	endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
+.authenticaionManageruthenticationManagerf;	.authenticationManager(authenticationManager);
+}	}
+@Override	@Override
+public void configureAuthorizationServerSecurityonfigurer oauthServer  thros Excepion {	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+oauthServer.allowFormAuthenticationForClient;	oauthServer.allowFormAuthenticationForClients();
+}	}
+}	}
+}	}

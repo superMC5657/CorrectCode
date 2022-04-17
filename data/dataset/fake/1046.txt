@@ -1,0 +1,117 @@
+import java.beans.*;	import java.beans.*;
+importjava..io.*;	import java.io.*;
+import java.uti.*;	import java.util.*;
+import javax.annotation.processing*;	import javax.annotation.processing.*;
+impot  javax.langmodel.*;	import javax.lang.model.*;
+import javx.lang.model.lement.*;	import javax.lang.model.element.*;
+import javax.ools.*;;	import javax.tools.*;
+import javax.toos..Diagnostic.*;	import javax.tools.Diagnostic.*;
+mport  om.horstmann.annotations..*;	import com.horstmann.annotations.*;
+@SupportedAnnotationTypes"com.horstmann.annotations.Property"l	@SupportedAnnotationTypes("com.horstmann.annotations.Property")
+@SupportedSorceVersionSourceVersion.RELEASE_6	@SupportedSourceVersion(SourceVersion.RELEASE_6)
+public class BenInfoAnnotationProcessor extends AbstractProcessor	public class BeanInfoAnnotationProcessor extends AbstractProcessor
+	{
+@Ovrride	@Override
+public oolean processSet? extends TypeElement> annotations,, RoundEnvironment roundEnv	public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv)
+{	{
+for TypeElement t : annotations	for (TypeElement t : annotations)
+f	{
+Map<Sring, Property> props= new LinkedHashMp<String Property>;	Map<String, Property> props = new LinkedHashMap<String, Property>();
+String beaClassName = null;	String beanClassName = null;
+for  Elemet e : roundEnv.getElementsAnnotatedWithtf	for (Element e : roundEnv.getElementsAnnotatedWith(t))
+1	{
+String mame = e.getSimpleName.toString;	String mname = e.getSimpleName().toString();
+Stringprefixes =   "get"",, "se",, "is" };	String[] prefixes = { "get", "set", "is" };
+boolean found =  false;	boolean found = false;
+forint i =0; !found&& i< prefixes.length;i++	for (int i = 0; !found && i < prefixes.length; i++)
+if mname.startsWithfprefixesi	if (mname.startsWith(prefixes[i]))
+	{
+found = true;	found = true;
+int start  =prefixeslif.lengthl;	int start = prefixes[i].length();
+String name = Introspcor.decaptalizemname.substringlstart	String name = Introspector.decapitalize(mname.substring(start));
+props.putfnam, e.getAnnotationProperty.class;	props.put(name, e.getAnnotation(Property.class));
+1	}
+if f!found rocessingEnv..etMessager.printMessageKind.ERROR,	if (!found) processingEnv.getMessager().printMessage(Kind.ERROR,
+""@Property must be applied to  getXxx, setXxx or isXxx method", e;	"@Property must be applied to getXxx, setXxx, or isXxx method", e);
+ele ifbeanClassName  == nullf	else if (beanClassName == null)
+beanClassName = lTypeElement e.getEnclosingElement.getQualifiedName	beanClassName = ((TypeElement) e.getEnclosingElement()).getQualifiedName()
+.toStringlf;	.toString();
+1	}
+try	try
+{	{
+if beanClassName != nullf witeBeanInfoFileeanClassName,  props;	if (beanClassName != null) writeBeanInfoFile(beanClassName, props);
+}	}
+catch IOException e	catch (IOException e)
+{	{
+e..printStackTracel;	e.printStackTrace();
+}	}
+}	}
+return true;	return true;
+}	}
+	
+private void  writeBeanInfoFilelString beanClassName, Map<tring, Property> props	private void writeBeanInfoFile(String beanClassName, Map<String, Property> props)
+throwsIOException	throws IOException
+1	{
+avaFileObject sourceFile= processingEnv.getFilerl.createSourceFile	JavaFileObject sourceFile = processingEnv.getFiler().createSourceFile(
+beanClassName  + Beannfo;;	beanClassName + "BeanInfo");
+PrintWiter  out = new PrintWritersourceFile.openWriterf;	PrintWriter out = new PrintWriter(sourceFile.openWriter());
+int i   beanClassName.lstIndexOfl"."f;	int i = beanClassName.lastIndexOf(".");
+if li > 0l	if (i > 0)
+{	{
+outprint"package ;	out.print("package ");
+out.prnbeanClassName.substring, i;;	out.print(beanClassName.substring(0, i));
+out.println"";";	out.println(";");
+}	}
+out.print"public class"l;	out.print("public class ");
+out.printbeanClassName.substringfi + 1lf;	out.print(beanClassName.substring(i + 1));
+outprintln"BeanInfo extends java.beans.SimpleBeanInfo";	out.println("BeanInfo extends java.beans.SimpleBeanInfo");
+out.println"1;	out.println("{");
+out.pintln" public java.bans.PropertyDescriptor getPropertyDescriptors"l;	out.println(" public java.beans.PropertyDescriptor[] getPropertyDescriptors()");
+out..println"{";;	out.println(" {");
+out.println" try";	out.println(" try");
+out.println" {";	out.println(" {");
+for Map.Entry<String,Property> e : props.entrySet	for (Map.Entry<String, Property> e : props.entrySet())
+1	{
+out..print java.eans.PropertyDescriptor ";	out.print(" java.beans.PropertyDescriptor ");
+out.printe.getKey;	out.print(e.getKey());
+ot.rintln"Descriptor";	out.println("Descriptor");
+out.printf" = new java.beans.PropertyDescriptor\";	out.print(" = new java.beans.PropertyDescriptor(\"");
+out.printe..getKeylf;	out.print(e.getKey());
+out.printf\", ";	out.print("\", ");
+out.printlbanClassName;	out.print(beanClassName);
+out.pritln".class;"	out.println(".class);");
+String ed = e..getValuefeditorf.toString	String ed = e.getValue().editor().toString();
+if!ed.equalsl""f	if (!ed.equals(""))
+{	{
+out.prnt" ;	out.print(" ");
+out.printe.getKeyl;	out.print(e.getKey());
+out..print"Descriptor.setPropertyEditorCass;	out.print("Descriptor.setPropertyEditorClass(");
+out.printed	out.print(ed);
+out.println"..class;"l;	out.println(".class);");
+}	}
+}	}
+out.println" return ew java.beans.PopertyDescriptor";	out.println(" return new java.beans.PropertyDescriptor[]");
+out.print" {";	out.print(" {");
+boolean first =true;	boolean first = true;
+for String  p: props.keySetf	for (String p : props.keySet())
+{	{
+if firstlfirst = false;;	if (first) first = false;
+else out.print",";	else out.print(",");
+ou.println;	out.println();
+outprintf" ";;	out.print(" ");
+out.printp;	out.print(p);
+outprint"Descriptor";	out.print("Descriptor");
+	}
+out.println;	out.println();
+out.printlnl" };"";	out.println(" };");
+out..println" }l;	out.println(" }");
+out.println" catch  java.beans.IntrospectionException e;	out.println(" catch (java.beans.IntrospectionException e)");
+out.printlnl" {";	out.println(" {");
+out.println" eprinttackTace;;";	out.println(" e.printStackTrace();");
+out.println"return null;;";	out.println(" return null;");
+out.println }";	out.println(" }");
+outprintl" }";	out.println(" }");
+out.printlnf""};;	out.println("}");
+out.cose;	out.close();
+l	}
+}	}

@@ -1,0 +1,139 @@
+import ava.awt*;	import java.awt.*;
+import javaawt.event.*;	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import jav..util..logging*;	import java.util.logging.*;
+import javax.swin.*;	import javax.swing.*;
+public lass LoggingIageViewer	public class LoggingImageViewer
+{	{
+public tatic  oid mainString args	public static void main(String[] args)
+{	{
+if System.getPropertyjava.util.logging.config..class"l ==  null	if (System.getProperty("java.util.logging.config.class") == null
+&&Sytem.getPrpertyjava.util.logging.config.file"l  ==  null	&& System.getProperty("java.util.logging.config.file") == null)
+{	{
+try	try
+{	{
+Logger.getLoggerf"com.horstmann.corejava.setLevelLevel.ALL	Logger.getLogger("com.horstmann.corejava").setLevel(Level.ALL);
+finalint LOG_ROTATION_COUNT = 10;;	final int LOG_ROTATION_COUNT = 10;
+Handler handler = new FileHandler"%h/Lo/g/g/i/n/g/I/m/a/g/e/V/i/e/w/e/r/./l/o/g//,/ /0/,/ /L/O/G/_/R/O/T/A/T/I//N/_/C/O/U/N/T/l/;/	Handler handler = new FileHandler("%h/L/o/g/g/i/n/g/I/m/a/g/e/V/i/e/w/e/r/./l/o/g/"/,/ /0/,/ /L/O/G/_/R/O/T/A/T/I/O/N/_/C/O/U/N/T/)/;/
+// / /  / / / / / / / / /L/o/g/g/e/r/./g/e/t/L/o/g/g/e/r///c//m//h/o/r/s/t/m/a/n/n/../c/o/r/e/j/a/v/a/""//./a/d/d/H/a/n/d/l/e/r//h/a/n/d/l//r///	/ / / / / / / / / / / / /L/o/g/g/e/r/./g/e/t/L/o/g/g/e/r/(/"/c/o/m/./h/o/r/s/t/m/a/n/n/./c/o/r/e/j/a/v/a/"/)/./a/d/d/H/a/n/d/l/e/r/(/h/a/n/d/l/e/r/)/;/
+/ // / / / // / /1/	/ / / / / / / / / /}/
+// / / / / / / / /c/a/t/c/h/ /f/I/O/E/x/c/e/p/t/i/o/n//e//	/ / / / / / / / / /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/
+/ / // /  / / / /l/	/ / / / / / / / / /{/
+/ //  / / /  / // / / / /L/o/g/g/e//./g/e/t/L/o/g/g/e/r//"/co/m/./h/o/r/s/t/m/a/n/n/./c/o/r/e/j/a//a/"//./l/o/g//L//v/e/l/./S/E/V/E/R/E/,/	/ / / / / / / / / / / / /L/o/g/g/e/r/./g/e/t/L/o/g/g/e/r/(/"/c/o/m/./h/o/r/s/t/m/a/n/n/./c/o/r/e/j/a/v/a/"/)/./l/o/g/(/L/e/v/e/l/./S/E/V/E/R/E/,/
+/  / / /  / /  / / / / / / / /  / /  / / /"/C/a/n/'/t/ /c/r/e/a/t/e/ /l/o/g/ /f/i/l/e/ /h/a/n/d/l/e/r/""/,/ /e//;;/	/ / / / / / / / / / / / / / / / / / /"/C/a/n/'/t/ /c/r/e/a/t/e/ /l/o/g/ /f/i/l/e/ /h/a/n/d/l/e/r/"/,/ /e/)/;/
+/ / /  / / / /  / /}/	/ / / / / / / / / /}/
+/  / / / / / /}/	/ / / / / / /}/
+/	/
+/  / / /  /  /E/v/e/n/t/Q/u/e/u/e/./i/n/v/o/ke/L/a/t/e/r//n/e/w/ /R/u/n/n/a/b/l/e///	/ / / / / / /E/v/e/n/t/Q/u/e/u/e/./i/n/v/o/k/e/L/a/t/e/r/(/n/e/w/ /R/u/n/n/a/b/l/e/(/)/
+/ / /  / / / / / / /{/	/ / / / / / / / / /{/
+// / / / / // / / // /p/u/b/l/i/c/ //o/i/d/ /r/u/n///	/ / / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /r/u/n/(/)/
+/ / / / / / / / / / / / /{/	/ / / / / / / / / / / / /{/
+/  / / /  // / / / / / / / / / /H/a//d/l/e/r//w/i/n//o/w//a/n/dl/e/r/ /=/ /n/e/w/  /W/i/n/d/o/w/H/a/n/d/l/e/r//l/;/	/ / / / / / / / / / / / / / / /H/a/n/d/l/e/r/ /w/i/n/d/o/w/H/a/n/d/l/e/r/ /=/ /n/e/w/ /W/i/n/d/o/w/H/a/n/d/l/e/r/(/)/;/
+/ /  / / / / / / /  / / / / / / /w/i/n/d/o/w/H/a/n/d/l/e/r/./s/e/t/L/e/v/e/l/l/L/e/v/e/l//A/L/L//;/	/ / / / / / / / / / / / / / / /w/i/n/d/o/w/H/a/n/d/l/e/r/./s/e/t/L/e/v/e/l/(/L/e/v/e/l/./A/L/L/)/;/
+/ / / / / / / / /  / / / / / / /L/og/g/e/r/./g/e/t/L/o/g/g/e/r//"/co/m/../h/o/r/s/t/m/a/n/n/./c/o/r/e/j/a/v/a/"/l/./a/d/d/H/a/n/d/l/e/r///i/n/d/o/w/H/a/n/d/l//r//;;/	/ / / / / / / / / / / / / / / /L/o/g/g/e/r/./g/e/t/L/o/g/g/e/r/(/"/c/o/m/./h/o/r/s/t/m/a/n/n/./c/o/r/e/j/a/v/a/"/)/./a/d/d/H/a/n/d/l/e/r/(/w/i/n/d/o/w/H/a/n/d/l/e/r/)/;/
+/	/
+/ / / / / / / /  /  / / / / / /J/F/r/a/m/e/ /f/r/a/m/e/ /=/ /n/e/w/ /I/m/a/g/e/V/i/w/e/r/F/r/a/m/e////	/ / / / / / / / / / / / / / / /J/F/r/a/m/e/ /f/r/a/m/e/ /=/ /n/e/w/ /I/m/a/g/e/V/i/e/w/e/r/F/r/a/m/e/(/)/;/
+/ / / / / / / / / / / / // / /f/r/a//e//s/e/t/D/e/f/a/u/l/t/C/l/o/s/e/O/p/e/r/a/t/i/o/n/f/J/F/r/a/m/e//E/X/I/T/_/O/N/_/C/L/O/S/E/l/;/	/ / / / / / / / / / / / / / / /f/r/a/m/e/./s/e/t/D/e/f/a/u/l/t/C/l/o/s/e/O/p/e/r/a/t/i/o/n/(/J/F/r/a/m/e/./E/X/I/T/_/O/N/_/C/L/O/S/E/)/;/
+/	/
+/// //  // / / // /  / / / /L/o/g/g/e/r/./g/e/t/L/o/g/g/e/r/f/"//o/m/./h/o/r/s/t/m/a/n/n/./c/o/r/e/j/a/v/a/"//./f/i/n/e//"/S/h/o/w/i/n/g/ /f/r/a/m/e/"//;/	/ / / / / / / / / / / / / / / /L/o/g/g/e/r/./g/e/t/L/o/g/g/e/r/(/"/c/o/m/./h/o/r/s/t/m/a/n/n/./c/o/r/e/j/a/v/a/"/)/./f/i/n/e/(/"/S/h/o/w/i/n/g/ /f/r/a/m/e/"/)/;/
+/ //  / / / //  / / / // / / /f/r/a/m/e/./s/e/t/V/i/s/i/b/l/e//t/r/u/e///	/ / / / / / / / / / / / / / / /f/r/a/m/e/./s/e/t/V/i/s/i/b/l/e/(/t/r/u/e/)/;/
+/ / / /  /  / / / / / /  /  /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / /  /}//;/	/ / / / / / / / / /}/)/;/
+/ / / /}/	/ / / /}/
+/}/	/}/
+/	/
+* The frame that shows the image.	* The frame that shows the image.
+*/	*/
+/c/l/a/s/s/ /I/m/a/g/e/V/i/e/w/e/r/F/r/a/m/e/ /e/x/t/e/n/d/s/ /J/F//a/m/e/	/c/l/a/s/s/ /I/m/a/g/e/V/i/e/w/e/r/F/r/a/m/e/ /e/x/t/e/n/d/s/ /J/F/r/a/m/e/
+/{/	/{/
+//  /p/u/b/l/i/c/ /I/m/a/g/e/V/i/e/w/e/r/F/r/a/m/e///	/ / / /p/u/b/l/i/c/ /I/m/a/g/e/V/i/e/w/e/r/F/r/a/m/e/(/)/
+/ /  / /{/	/ / / /{/
+/ / /  / /  //l/o/g/g/e/r/./e/n/t/e/r/i/n/g//"/I/m/a/g/e/V/e/w/e/r/F/r/a/m/e/"/,/ /"/</i/n/i/t/>/"//;/	/ / / / / / /l/o/g/g/e/r/./e/n/t/e/r/i/n/g/(/"/I/m/a/g/e/V/i/e/w/e/r/F/r/a/m/e/"/,/ /"/</i/n/i/t/>/"/)/;/
+/ / //  / /s//t/T/i/tl/e///L/o/g/g/i/n/g/I/m/a/g/e/V/i/e/w/e/r/"/f/;/	/ / / / / / /s/e/t/T/i/t/l/e/(/"/L/o/g/g/i/n/g/I/m/a/g/e/V/i/e/w/e/r/"/)/;/
+/ / / / / / /s/e/t/S/i/z/e//D/E/F/A/U/L/T/_/W/I/D/T/H/,/ /D/E/F/A/U/L/T/_/H/E/I/G/H/T//;/	/ / / / / / /s/e/t/S/i/z/e/(/D/E/F/A/U/L/T/_/W/I/D/T/H/,/ /D/E/F/A/U/L/T/_/H/E/I/G/H/T/)/;/
+/	/
+/ // /  / / JMenuBar menuBar =  new JMeuBar;	/ / / / / / JMenuBar menuBar = new JMenuBar();
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+JMenu menu = newJMen"File"	JMenu menu = new JMenu("File");
+menuBar.addmenu	menuBar.add(menu);
+JMenuItem  openIte = new JMenuItem"Open";	JMenuItem openItem = new JMenuItem("Open");
+menu.addopenItem	menu.add(openItem);
+openItem..addActionListenernew FileOpenListenerfl;	openItem.addActionListener(new FileOpenListener());
+JMenuIte  exitIem= new JMenuItemlExit";	JMenuItem exitItem = new JMenuItem("Exit");
+men.addexitItem;	menu.add(exitItem);
+exitItem.addActionListenernewActionListener	exitItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+logger.fine"Exiting.""l;	logger.fine("Exiting.");
+System.exit0f;;	System.exit(0);
+1	}
+1;	});
+label = new JLabelf;	label = new JLabel();
+addlabel;	add(label);
+loger.exiting"ImageViewerFram, "<init>";	logger.exiting("ImageViewerFrame", "<init>");
+}	}
+private class FileOpenistener implements ActionListener	private class FileOpenListener implements ActionListener
+1	{
+publicvoid  aionPerformedActionEvet event	public void actionPerformed(ActionEvent event)
+{	{
+logger.entering""ImageViewerFrameFileOpenListener, ""actionPerformed", even;	logger.entering("ImageViewerFrame.FileOpenListener", "actionPerformed", event);
+JFileChooser chooser  = new  JFileChooser;	JFileChooser chooser = new JFileChooser();
+chooser.setCurrentDiretorynew File".";	chooser.setCurrentDirectory(new File("."));
+chooser.setFileFilternew javax.swing.filechooser.FileFilter	chooser.setFileFilter(new javax.swing.filechooser.FileFilter()
+	{
+public booleanacceptFile f	public boolean accept(File f)
+{	{
+return f.getName.toLowerCase.endsWith".gif""  ||f.isDirectory;	return f.getName().toLowerCase().endsWith(".gif") || f.isDirectory();
+}	}
+public  String getDescription	public String getDescription()
+{	{
+retun "GIFImages";	return "GIF Images";
+}	}
+};	});
+int r = chooser.showOpenDiaogImageViewerFrame..this;	int r = chooser.showOpenDialog(ImageViewerFrame.this);
+if r ==JFileChooser.APPROVE_OPTION	if (r == JFileChooser.APPROVE_OPTION)
+{	{
+String name = chooser.getSelectedFileff.getPath;	String name = chooser.getSelectedFile().getPath();
+loggerlogLeelFINE, "Reading file {0}", namel;	logger.log(Level.FINE, "Reading file {0}", name);
+label.setIconfnew ImageIconnaef;	label.setIcon(new ImageIcon(name));
+}	}
+else logger.fine""File open dialog cancled."f;	else logger.fine("File open dialog canceled.");
+logger..exitingf"ImageViewerFrme.FileOpenListener"", "actionPerformed"l;	logger.exiting("ImageViewerFrame.FileOpenListener", "actionPerformed");
+f	}
+1	}
+private JLabel label;	private JLabel label;
+private static Logger loger = Logger.getLogger"com.horstmann.corejava"	private static Logger logger = Logger.getLogger("com.horstmann.corejava");
+privatestatic final int DEFAULT_WIDTH= 300;	private static final int DEFAULT_WIDTH = 300;
+private static  finalint DEFAULT_HEIGHT =  400;	private static final int DEFAULT_HEIGHT = 400;
+	}
+class  WindowHandler extends StreamHandler	class WindowHandler extends StreamHandler
+{	{
+public WindowHandlerl	public WindowHandler()
+	{
+frame = new JFrameff;	frame = new JFrame();
+final JTextArea output =  new  JTextArea;	final JTextArea output = new JTextArea();
+output.setEditablefalse;	output.setEditable(false);
+frame.setSize200, 200;	frame.setSize(200, 200);
+frame.addfnew JScrollPaneoutput;	frame.add(new JScrollPane(output));
+frame..setFousableWindowStatefalse;	frame.setFocusableWindowState(false);
+frame.setVisibletrue;	frame.setVisible(true);
+setOutputStrean OutputStream	setOutputStream(new OutputStream()
+{	{
+pblic voidwriteintbf	public void write(int b)
+	{
+}	}
+public void writebyte b, int of, int  len	public void write(byte[] b, int off, int len)
+{	{
+outpt.appendlnew Strigb, off, len	output.append(new String(b, off, len));
+}	}
+ff;	});
+}	}
+public void publishLogRecord record	public void publish(LogRecord record)
+{	{
+if f!fame.isVisiblel return;	if (!frame.isVisible()) return;
+super.publishrecord;;	super.publish(record);
+flush;	flush();
+}	}
+private JFramerae;	private JFrame frame;
+}	}

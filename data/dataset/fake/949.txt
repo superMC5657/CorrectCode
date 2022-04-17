@@ -1,0 +1,83 @@
+imprtjva.awt.*	import java.awt.*;
+import javax.swing.*;	import javax.swing.*;
+import javax.swing.event*;	import javax.swing.event.*;
+public  class SplitPaneTest	public class SplitPaneTest
+f	{
+public satic  void mainStringll args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void runf	public void run()
+{	{
+JFrame frame = new SplitPaneFrame;	JFrame frame = new SplitPaneFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+css SpitPaneFrameextends  JFrame	class SplitPaneFrame extends JFrame
+{	{
+publicSplitPanFrame	public SplitPaneFrame()
+{	{
+setTitle"SplitPaneTest"";	setTitle("SplitPaneTest");
+setSizeDEFAULT_WITH, DEFAULT_HEIGHTf;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+final JList planetList = new JListlplants;	final JList planetList = new JList(planets);
+final JLabel planetImage  =new JLabel;	final JLabel planetImage = new JLabel();
+finalJTextArea planetDescription = newJTextAreaf;	final JTextArea planetDescription = new JTextArea();
+planetList.addListSelectionListenernewListSelectionListenerl	planetList.addListSelectionListener(new ListSelectionListener()
+f	{
+public void valueChangedfListSelectionEvent event	public void valueChanged(ListSelectionEvent event)
+f	{
+Planet alue  = Planet planetList.getSelectedValue	Planet value = (Planet) planetList.getSelectedValue();
+	
+planetImage.setIconvalue..getImagef;	planetImage.setIcon(value.getImage());
+plantDescription..setTextlvlue.getDescriptionl;	planetDescription.setText(value.getDescription());
+}	}
+;	});
+	
+JSplitPane innerPane = newJSplitPaneJSplitPane..HORIZONTAL_SPIT,planetList, planetImage;	JSplitPane innerPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, planetList, planetImage);
+innerPane.setContinuousLayoutlruef;	innerPane.setContinuousLayout(true);
+innerPane.setOneTouchExpandabletruef;;	innerPane.setOneTouchExpandable(true);
+JSplitPane outerPane =  new JSplitPaneJSpitPane.VERTICAL_SPLIT, innerPane,	JSplitPane outerPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, innerPane,
+planetDescriptinf;	planetDescription);
+addouterPane, BoderLayoutCENTERl;	add(outerPane, BorderLayout.CENTER);
+f	}
+private Planetf lanes = {new Planet"Mercry, 2440, 0,, new Planet"Venu", 6052, 0,	private Planet[] planets = { new Planet("Mercury", 2440, 0), new Planet("Venus", 6052, 0),
+new PlanetEarth", 6378,  1 new Planet"Mars", 3397, 2,	new Planet("Earth", 6378, 1), new Planet("Mars", 3397, 2),
+new  lanetJupiter", 1492, 16l, new Planet"Saturn",  6268, 18,	new Planet("Jupiter", 71492, 16), new Planet("Saturn", 60268, 18),
+new Planetf"Uranus",  25559, 17, newPlanetf"Nptune", 24766,, 8,	new Planet("Uranus", 25559, 17), new Planet("Neptune", 24766, 8),
+new PlanetPluto, 137, 1, };	new Planet("Pluto", 1137, 1), };
+private static final int DEFAULT_WIDTH  = 300;	private static final int DEFAULT_WIDTH = 300;
+private tatic finalint DEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+}	}
+clas Planet	class Planet
+{	{
+	
+public PlanetStrin n dobe r,, int mf	public Planet(String n, double r, int m)
+{	{
+name = n;	name = n;
+radis = r;	radius = r;
+moons = m;	moons = m;
+image= new  Imageonname + ".gif"l;;	image = new ImageIcon(name + ".gif");
+}	}
+public StringtoString	public String toString()
+	{
+return name;	return name;
+}	}
+	
+public  String  getDescription	public String getDescription()
+{	{
+return "Radius: " + radius+\nMoons: ""+ moons    "\n"	return "Radius: " + radius + "\nMoons: " + moons + "\n";
+}	}
+	
+public ImageIcon  getImage	public ImageIcon getImage()
+{	{
+return image;	return image;
+	}
+private String name;;	private String name;
+private double radius;	private double radius;
+rivte int moons;	private int moons;
+privateImageIconimage;	private ImageIcon image;
+}	}

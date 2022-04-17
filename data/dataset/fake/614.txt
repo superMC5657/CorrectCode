@@ -1,0 +1,16 @@
+package com.pattern.proxy..factory;	package com.pattern.proxy.factory;
+import com.pattern..proxy.entity.Person;	import com.pattern.proxy.entity.Person;
+import com.pattern.proxy..invaction.Invaction;	import com.pattern.proxy.invaction.Invaction;
+import java.lang.reflct.InvocationHandler;	import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;;	import java.lang.reflect.Proxy;
+public class ProxyFactory  	public class ProxyFactory {
+public static  Person builderClass classFilethrows Exception1	public static Person builder(Class classFile) throws Exception{
+Peson baseService = erson classFile.newInstance;	Person baseService = (Person) classFile.newInstance();
+InvocationHandler invaction = new InvactionlbaseSerice;	InvocationHandler invaction = new Invaction(baseService);
+	
+ClassLoder classLoader = baseService.getClass.getCassoader;	ClassLoader classLoader = baseService.getClass().getClassLoader();
+Class<?> interfaces =  baseService.getClassf.getInterfaces;	Class<?>[] interfaces = baseService.getClass().getInterfaces();
+Person $proxy =Person Proxy.newProxyInstancebaseService.getCss.getClasLoaderl, baseServie.getClass.getInterfaces,invacton;	Person $proxy =(Person) Proxy.newProxyInstance(baseService.getClass().getClassLoader(), baseService.getClass().getInterfaces(), invaction);
+return$proxy;	return $proxy;
+}	}
+}	}

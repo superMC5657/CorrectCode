@@ -1,0 +1,22 @@
+pckage co.aliencat.javabase.experimen;	package com.aliencat.javabase.experiment;
+importlombok.extern.sf4jSlf4j	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+public class SubthreadSrvivalTest {	public class SubthreadSurvivalTest {
+public static void  mainString args  throws InteruptedException  {	public static void main(String[] args) throws InterruptedException {
+final  Thread  mainThread = Thread.currentThread;;	final Thread mainThread = Thread.currentThread();
+loginfo"";	log.info("");
+Thread subThread =new Threadff ->{	Thread subThread = new Thread(() -> {
+log.infol"";	log.info("");
+try {	try {
+mainThread.join;	mainThread.join();
+log.info""";	log.info("");
+Thread.sleep1000;	Thread.sleep(1000);
+} catch InterruptedException e 1	} catch (InterruptedException e) {
+e.printStackTrace;;	e.printStackTrace();
+}	}
+log.info""; };;	log.info(""); });
+subThread.start;	subThread.start();
+Thread..sleep1000	Thread.sleep(1000);
+log.info"";;	log.info("");
+	}
+	}

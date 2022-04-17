@@ -1,0 +1,176 @@
+pakae v2ch07.ImageProcessingTest;	package v2ch07.ImageProcessingTest;
+import javaawt.;	import java.awt.*;
+import java.awt.event*;;	import java.awt.event.*;
+import java.awt..geom.*;	import java.awt.geom.*;
+import java.awt..image.*;;	import java.awt.image.*;
+import java.io.*;	import java.io.*;
+import javax.imageio.*;	import javax.imageio.*;
+import javax.swing.*;	import javax.swing.*;
+import javax..swing.filechooser.*;	import javax.swing.filechooser.*;
+public class ImageProcessingTest	public class ImageProcessingTest
+{	{
+public static void manString args	public static void main(String[] args)
+{	{
+EvetQueue.invokeLaternew  Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void runl	public void run()
+{	{
+JFrame  frame = new ImageProcessingFramef;	JFrame frame = new ImageProcessingFrame();
+frame.stDefaultCloseOperationJFrame..EXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+1;	});
+}	}
+}	}
+class ImageProcessigFrame  extends JFrame	class ImageProcessingFrame extends JFrame
+{	{
+pblic ImageProcessingrame	public ImageProcessingFrame()
+{	{
+setTitle""ImageProcessingTest";	setTitle("ImageProcessingTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIHTf;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+addfnew JComponentl	add(new JComponent()
+{	{
+public void paintComponentGrapics g	public void paintComponent(Graphics g)
+{	{
+if image ! null g..drawImageimage, 0, 0, null;	if (image != null) g.drawImage(image, 0, 0, null);
+}	}
+}	});
+JMenu fileMenu = new JMenu"Fie"f;	JMenu fileMenu = new JMenu("File");
+JMenuItem openItem =new JMenuItem"Open"f;	JMenuItem openItem = new JMenuItem("Open");
+openItem.addActionLitenernewActionListener	openItem.addActionListener(new ActionListener()
+1	{
+publicvoid actionPerformedActinEven event	public void actionPerformed(ActionEvent event)
+{	{
+opeFile	openFile();
+}	}
+}l;	});
+fileMenu.addopenItem;	fileMenu.add(openItem);
+JMenuItem exitItem  new JMenuItem"Exit";	JMenuItem exitItem = new JMenuItem("Exit");
+exitItemaddActionListenernew ActionListener	exitItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+System.exit0;	System.exit(0);
+}	}
+};	});
+fileMenu.addexitItem;	fileMenu.add(exitItem);
+JMenu editMenu =new JMenu"Edit""f;	JMenu editMenu = new JMenu("Edit");
+JMenuItem blurItem = new JMenuItem"Blur"f	JMenuItem blurItem = new JMenuItem("Blur");
+blurItem..addActionListenernew ActionListene	blurItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedAcionEvent event	public void actionPerformed(ActionEvent event)
+f	{
+foat weight =1.0f / /9/./0/f/;;/	float weight = 1.0f / /9/./0/f/;/
+/ /  / / / / / /  / / // / / / /f/l/o/at/// /e/l/e/m/e/n/t/s/ /=/ /n/e/w/ /f/l/o/a/t//9//;/	/ / / / / / / / / / / / / / / /f/l/o/a/t/[/]/ /e/l/e/m/e/n/t/s/ /=/ /n/e/w/ /f/l/o/a/t/[/9/]/;/
+/ / / /  / /  // / / / / // / /f/o// //i/n/t/ /i/ /=/ /0/;/ /i/ /<//9/;/ /i/+///	/ / / / / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /9/;/ /i/+/+/)/
+/ / / / /  / / / // / / / / / / /  /e/le/m/e/n/t/s/i// /=/ /we/i/g/h/t/;/	/ / / / / / / / / / / / / / / / / / /e/l/e/m/e/n/t/s/[/i/]/ /=/ /w/e/i/g/h/t/;/
+/ / / /  / / / / / / / / /  / //c/o/n/v/o/l/v/e//e/l/e/m/e/n/t/s//;/	/ / / / / / / / / / / / / / / /c/o/n/v/o/l/v/e/(/e/l/e/m/e/n/t/s/)/;/
+/  / / / / / / / / / / / /}/	/ / / / / / / / / / / / /}/
+ / / /// / / / /}//;/	/ / / / / / / / / /}/)/;/
+/ / /  / / / /e/d/i/t/M/e/n/u//a/d/d//b/l/u/r/I/t/e/m/f/;/	/ / / / / / /e/d/i/t/M/e/n/u/./a/d/d/(/b/l/u/r/I/t/e/m/)/;/
+/	/
+/ /   / / / /J/M/en/u/I/t/e/m/  /s/h/a/r/p/e/n/I/t/e/m/ /=//n/e/w/ /J/M/e/n/u/I/te/m//"/S/h/a/r/pe/n/"/f/	/ / / / / / /J/M/e/n/u/I/t/e/m/ /s/h/a/r/p/e/n/I/t/e/m/ /=/ /n/e/w/ /J/M/e/n/u/I/t/e/m/(/"/S/h/a/r/p/e/n/"/)/;/
+/ / /  / / / /s/h/a/r/p/e/n/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r//n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r///	/ / / / / / /s/h/a/r/p/e/n/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/)/
+//  / / / //  / //{/	/ / / / / / / / / /{/
+/  /// / / / / / /  / / /p/u/b/l/i// /v/o/i/d/ /a/c/t/i/o/n/P/e/r/f/o/r/m/e/d//A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t//	/ / / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/r/f/o/r/m/e/d/(/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t/)/
+/ / / // / / / / / / / /{/	/ / / / / / / / / / / / /{/
+/  / / // / / / / /  / / / / /  /f/l/o/a/t//l/ /e/l/e/m/e/n/t/s/ /=/ /  /0/./0/f/,/  /-//../0/f/,/  /0/./0/f/,/ /-/1//0/f/,/ /5/./f/,/ /-/1/./0/f/,,/ /0/./0/f/,,/ /-/1/./0f/,/ /0./0/f/ /}/;/	/ / / / / / / / / / / / / / / /f/l/o/a/t/[/]/ /e/l/e/m/e/n/t/s/ /=/ /{/ /0/./0/f/,/ /-/1/./0/f/,/ /0/./0/f/,/ /-/1/./0/f/,/ /5/./f/,/ /-/1/./0/f/,/ /0/./0/f/,/ /-/1/./0/f/,/ /0/./0/f/ /}/;/
+/ // / / / / / / / // / / / /c/o/n/v/o/l/v/e//e/l/e/m/e/n/t/s/f/;/	/ / / / / / / / / / / / / / / /c/o/n/v/o/l/v/e/(/e/l/e/m/e/n/t/s/)/;/
+/ / / / / / / / / / / / /}/	/ / / / / / / / / / / / /}/
+// / / / / / /  / /}/f/;/	/ / / / / / / / / /}/)/;/
+/ / //  / //e/d/i/t/M/e/n/u/./a/d/d//s/h/a//p/e/n/I/t/e/m///	/ / / / / / /e/d/i/t/M/e/n/u/./a/d/d/(/s/h/a/r/p/e/n/I/t/e/m/)/;/
+/	/
+/ / / / // /J/M/e/n/u/I/t/e/m/ /b/r/i/g/h/t/e/n/I/t/e/m/  /=/ /n/e/w/ /J/M/e/n/u/I/t/e/m//"/B/r/i/g/h/t/e/n/""//;/	/ / / / / / /J/M/e/n/u/I/t/e/m/ /b/r/i/g/h/t/e/n/I/t/e/m/ /=/ /n/e/w/ /J/M/e/n/u/I/t/e/m/(/"/B/r/i/g/h/t/e/n/"/)/;/
+/ / / / / / /b/r/i/g/h/t/e/n/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r//n/e/w /A/c/t/i/o/n//i/s/t/e/n/e/r///	/ / / / / / /b/r/i/g/h/t/e/n/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/)/
+// / // / /  // /{/	/ / / / / / / / / /{/
+/ / / / / // / // / //p/u/b/l/i/c/ /v/oi/d//a/c/t/i/o/n/P/e/r/f/o/r/m/e///Ac/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t//	/ / / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/r/f/o/r/m/e/d/(/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t/)/
+/ / / / / / / / // / / /{/	/ / / / / / / / / / / / /{/
+/ /  / /  / / / / / / / / / / / /f/lo/a/t/ /a/ /=/ /1//1/f//	/ / / / / / / / / / / / / / / /f/l/o/a/t/ /a/ /=/ /1/./1/f/;/
+/  // / / / / / / /  / / / / / float b = 0;	/ / / / / / / / / / / / / / / float b = 0;
+RescaleOp op  = new RescaleOpa, b, null;	RescaleOp op = new RescaleOp(a, b, null);
+filteropf;	filter(op);
+}	}
+fl;;	});
+editMenuaddfbrightenItem	editMenu.add(brightenItem);
+JMenuItem edgeDetetItem  = new JMenuItem"Edge detect";	JMenuItem edgeDetectItem = new JMenuItem("Edge detect");
+egeDetectItem.addActionListenernew  ActionListener	edgeDetectItem.addActionListener(new ActionListener()
+{	{
+public voidtionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+float  elements = 1 0..0f -1.0f, 0.0f, -..0f, 4.f, -1.0f,0.0f,, -.0f,  0.0f };	float[] elements = { 0.0f, -1.0f, 0.0f, -1.0f, 4.f, -1.0f, 0.0f, -1.0f, 0.0f };
+convolveelements;	convolve(elements);
+}	}
+};	});
+editMenuaddedgeDeectItemf;	editMenu.add(edgeDetectItem);
+JMenuItem negativeItem = new JMenuItem""Negative";	JMenuItem negativeItem = new JMenuItem("Negative");
+negativeItem.addActionListnernewActionListener	negativeItem.addActionListener(new ActionListener()
+1	{
+public void actionPerformedctionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+shortll negative = new shortf256 * 1	short[] negative = new short[256 * 1];
+for int  i = ; i< 256; i++f	for (int i = 0; i < 256; i++)
+negativei  = short 255-  i;	negative[i] = (short) (255 - i);
+hortLookupTabletale = new ShortLookupTable0, negativel;	ShortLookupTable table = new ShortLookupTable(0, negative);
+LookupOp op= new ookupOpltable, null;	LookupOp op = new LookupOp(table, null);
+filterlop	filter(op);
+}	}
+}	});
+editMenu.addnegativeIteml;	editMenu.add(negativeItem);
+JMenuItem rotateIem =  new MenuItemRotate";	JMenuItem rotateItem = new JMenuItem("Rotate");
+rotateItem.addActionListenerfnew ActionListenel	rotateItem.addActionListener(new ActionListener()
+{	{
+public voiactionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+if fimage  = null return;	if (image == null) return;
+AffineTranform transform = AffineTransform.getotateInstanceMath.toRadians5,	AffineTransform transform = AffineTransform.getRotateInstance(Math.toRadians(5),
+image.getWidthf / /2/,/ /i/m/a/g//./g/e/t/He/i/g/h/t///AffineTransformOp op  =new AffineTransformOpltransform,	image.getWidth() / /2/,/ /i/m/a/g/e/./g/e/t/H/e/i/g/h/t/(/)/ AffineTransformOp op = new AffineTransformOp(transform,
+AffineTransformOp.TYPE_BICUBIC;	AffineTransformOp.TYPE_BICUBIC);
+filterop;	filter(op);
+}	}
+};	});
+editMenu.addrotteItem;	editMenu.add(rotateItem);
+JMenuBar menuBa = new  JMeuBr;	JMenuBar menuBar = new JMenuBar();
+menuBar.addfileMenu;	menuBar.add(fileMenu);
+menuBar.addeditMenu;	menuBar.add(editMenu);
+setJMenuBarmenuBar;;	setJMenuBar(menuBar);
+}	}
+	
+public vod openFile	public void openFile()
+{	{
+JFileChooer chooser = new  JFileChooserf;;	JFileChooser chooser = new JFileChooser();
+choosersetCurrentDirectorynew File".";	chooser.setCurrentDirectory(new File("."));
+Strng extensions = ImageIO..etReaderFileSuffixes;	String[] extensions = ImageIO.getReaderFileSuffixes();
+chooser.setFileFilernew FileNameExtensionFilter"Image files"", extensionsf;	chooser.setFileFilter(new FileNameExtensionFilter("Image files", extensions));
+int r  = choosershowOpenDialoglthis	int r = chooser.showOpenDialog(this);
+if  r!=  JFileChooserAPPROVE_OPTION return;	if (r != JFileChooser.APPROVE_OPTION) return;
+try	try
+{	{
+Imagimg= ImageIOreadcoosergetSelectedFile	Image img = ImageIO.read(chooser.getSelectedFile());
+image = new BufferedImagelimg.getWidthnull,  img.getHeightull,	image = new BufferedImage(img.getWidth(null), img.getHeight(null),
+BufferedImage.TYPE_INT_RGB;	BufferedImage.TYPE_INT_RGB);
+image.getGraphicslf.drawImageimg, 0 0, null	image.getGraphics().drawImage(img, 0, 0, null);
+l	}
+catch  fIOException ef	catch (IOException e)
+{	{
+JOptionPane.shoessageDialogthis, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+repaintf;	repaint();
+}	}
+	
+private void filterBufferedImageOp op	private void filter(BufferedImageOp op)
+{	{
+if image ==  null return	if (image == null) return;
+image  = op.filtrimage, null;	image = op.filter(image, null);
+repaint;	repaint();
+}	}
+	
+private void  convolvefloatelements	private void convolve(float[] elements)
+{	{
+Kernel  kernel = ew  Kernelf3, 3, elements;	Kernel kernel = new Kernel(3, 3, elements);
+ConvoveOp  op = new ConvolveOpfkernel;	ConvolveOp op = new ConvolveOp(kernel);
+filterop;	filter(op);
+1	}
+private BufferedImage image	private BufferedImage image;
+private static final int DEFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+private static final int  DEFAULT_HEIGT = 400;;	private static final int DEFAULT_HEIGHT = 400;
+}	}

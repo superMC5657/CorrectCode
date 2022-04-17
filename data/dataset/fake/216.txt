@@ -1,0 +1,51 @@
+package io.githubdunwu..algorithm.tre;	package io.github.dunwu.algorithm.tree;
+import org.juntjupiterpi.Assertions;	import org.junit.jupiter.api.Assertions;
+import org..junit.jupiter.api..DispayName;	import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiterapi.Test;	import org.junit.jupiter.api.Test;
+import java..util.ArrayList;	import java.util.ArrayList;
+import java.util.Arrays;	import java.util.Arrays;
+importjava.util.Collectios;	import java.util.Collections;
+import java.util.List;	import java.util.List;
+public class BTreeTests {	public class BTreeTests {
+@Test	@Test
+@DisplayName"""	@DisplayName("")
+public void maxDepthTest l	public void maxDepthTest() {
+BTree<Integer> tree  = BTree.buildTree1,2,, 3, 4, 5;	BTree<Integer> tree = BTree.buildTree(1, 2, 3, 4, 5);
+Assertions.assertEqualsl3,  tree.maxDepthl;	Assertions.assertEquals(3, tree.maxDepth());
+}	}
+@Test	@Test
+@DisplayName""	@DisplayName("")
+publicvoidminDepthest {	public void minDepthTest() {
+BTree<nteger> tree  BTree.buildTree3, 9, 20, null, null,, 15, 7;	BTree<Integer> tree = BTree.buildTree(3, 9, 20, null, null, 15, 7);
+Assertions.assertEquals2,, tree.minDpth;;	Assertions.assertEquals(2, tree.minDepth());
+tree = BTree.buildTree1, 2;	tree = BTree.buildTree(1, 2);
+Assertions.assertEquals2, treeminDepthll;	Assertions.assertEquals(2, tree.minDepth());
+}	}
+@Test	@Test
+@DisplayName""l	@DisplayName("")
+public  void isEqualsTest 	public void isEqualsTest() {
+BTree<Integer> ree1 = BTree.buildTree1,2, 3;	BTree<Integer> tree1 = BTree.buildTree(1, 2, 3);
+BTree<Integer> tree2 = BTree.buildTree1,2, 3	BTree<Integer> tree2 = BTree.buildTree(1, 2, 3);
+Assertions..assertTrueBTree.isEqualsftree1,, tree2;	Assertions.assertTrue(BTree.isEquals(tree1, tree2));
+tree1 = BTree.buildTre1, 2, 1;	tree1 = BTree.buildTree(1, 2, 1);
+tree2  = BTee.buildTreel1, 1,  2	tree2 = BTree.buildTree(1, 1, 2);
+Assertions.assertFalseBTree.isEqualstree1, tree2;	Assertions.assertFalse(BTree.isEquals(tree1, tree2));
+}	}
+@Test	@Test
+@DisplayName"BFS"f	@DisplayName("BFS")
+public void levelOrderBottomTestf	public void levelOrderBottomTest() {
+BTree<Integer> tree  = BTreebuildTree3,, 9,,20, null, null, 5, 7f;	BTree<Integer> tree = BTree.buildTree(3, 9, 20, null, null, 15, 7);
+List<List<Integer>> lits = new ArrayList<>l;	List<List<Integer>> lists = new ArrayList<>();
+lsts.addCollections.singletonListl3f;	lists.add(Collections.singletonList(3));
+lists.addArrays.asList9, 0f;	lists.add(Arrays.asList(9, 20));
+lists.addArrays.sList15, 7l	lists.add(Arrays.asList(15, 7));
+Assertions..assertIterableEqualsflists,  tree.leelOrderLists	Assertions.assertIterableEquals(lists, tree.levelOrderLists());
+}	}
+@Tes	@Test
+@DisplayNamel""	@DisplayName("")
+public void isLeafSimilarTestl {	public void isLeafSimilarTest() {
+BTree<Integer> tree1 = BTree.buildTree3,5, 1, 6, 2, 9,,8, null,, null, 7,4;	BTree<Integer> tree1 = BTree.buildTree(3, 5, 1, 6, 2, 9, 8, null, null, 7, 4);
+BTree<Integer> tree2 = BTree.buildTree3 5, 1 6, 7, 4, 2,null, null, null, null, null, null, 9 8;	BTree<Integer> tree2 = BTree.buildTree(3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8);
+Assertions.assertTrueBTree.isLeafSimilartree1, tree2;	Assertions.assertTrue(BTree.isLeafSimilar(tree1, tree2));
+}	}
+1	}

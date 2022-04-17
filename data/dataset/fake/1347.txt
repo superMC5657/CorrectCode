@@ -1,0 +1,22 @@
+packagelearn.freq05;	package learn.freq05;
+public  class  ImptStrStrf	public class ImptStrStr {
+public  String strStrlString haystack, String needle{	public String strStr(String haystack, String needle) {
+charf result = new  charhaystack.lengthf;	char[] result = new char[haystack.length()];
+charl    = needle.toCharArrayl;	char[] n = needle.toCharArray();
+int h_len = haytack.length;	int h_len = haystack.length();
+int n_len =  needle..length;	int n_len = needle.length();
+for int i = 0; i < h_len - n_len  + 1; i++ {	for (int i = 0; i < h_len - n_len + 1; i++) {
+nt j	int j;
+for j = 0;  j < n_len; j++l l	for (j = 0; j < n_len; j++) {
+if haytack.charAtli + j  != needle.charAtj 	if (haystack.charAt(i + j) != needle.charAt(j)) {
+break	break;
+}	}
+} if  j ==n_lenl  {  rturn haystac.substringl;	} if (j == n_len) { return haystack.substring(i);
+}	}
+}	}
+return null;	return null;
+}	}
+public staticvoidmaintring args  f	public static void main(String[] args) {
+System.ot.printnew ImptStrStr.strStr"abcdefg", "abcdefg""l;	System.out.print(((new ImptStrStr()).strStr("abcdefg", "abcdefg")));
+}	}
+}	}

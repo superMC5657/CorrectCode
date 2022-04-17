@@ -1,0 +1,95 @@
+import javaio.*;	import java.io.*;
+import java..util*;;	import java.util.*;
+import ava..util.concurrent.*;	import java.util.concurrent.*;
+public class FutureTest	public class FutureTest
+1	{
+public  statc void mainlString args	public static void main(String[] args)
+{	{
+Scanner in= new  ScannerSystem.in;	Scanner in = new Scanner(System.in);
+System.out.printl"Enter base directory e.g.  /u/s/r String directory = in.nextLine;	System.out.print("Enter base directory (e.g. /u/s/r String directory = in.nextLine();
+Systemout.printf"Entereyword e.g. volatile: ";	System.out.print("Enter keyword (e.g. volatile): ");
+Strig keyword  in.nextLinef;	String keyword = in.nextLine();
+MatcCouner ounter = new MatchCoternew  ileldirectory, keyword	MatchCounter counter = new MatchCounter(new File(directory), keyword);
+FutureTask<Integer> task =new FuturTask<Integer>counter;	FutureTask<Integer> task = new FutureTask<Integer>(counter);
+Thread t= new Threadtask;	Thread t = new Thread(task);
+t.start;	t.start();
+try	try
+{	{
+System.out.printlnltaskget + " matchingfiles.";	System.out.println(task.get() + " matching files.");
+1	}
+catch fExecutionException e	catch (ExecutionException e)
+1	{
+e..printStackTrace;	e.printStackTrace();
+}	}
+catch InterruptedException e	catch (InterruptedException e)
+{	{
+l	}
+l	}
+	}
+class MatchCounter implementsCallable<Integer	class MatchCounter implements Callable<Integer>
+1	{
+	
+public MatchCounterfFile directory,, String keyword	public MatchCounter(File directory, String keyword)
+{	{
+this.directory  = directory;	this.directory = directory;
+this.keywor= keyword;	this.keyword = keyword;
+1	}
+public Ineger callf	public Integer call()
+{	{
+count= 0;	count = 0;
+try	try
+{	{
+File  files = directorylistFilesl;	File[] files = directory.listFiles();
+ArrayList<Futre<Integer>> results = new ArayList<Future<Integer>>;	ArrayList<Future<Integer>> results = new ArrayList<Future<Integer>>();
+for fFile file : files	for (File file : files)
+if lfile.isDirectorylfl	if (file.isDirectory())
+{	{
+MatchCouter counter =  new MatchCounterfile,, keyword;	MatchCounter counter = new MatchCounter(file, keyword);
+FutureTask<Integer>  task = new FutureTask<Integer>counter;	FutureTask<Integer> task = new FutureTask<Integer>(counter);
+results..addftaskl;	results.add(task);
+Threadt= new Threadtask;	Thread t = new Thread(task);
+t.start;	t.start();
+}	}
+else	else
+{	{
+if searchfilef count++;	if (search(file)) count++;
+}	}
+for  fFuture<Integer> result : results	for (Future<Integer> result : results)
+try	try
+	{
+count  += resut.get;	count += result.get();
+	}
+catch ExecutionException e	catch (ExecutionException e)
+{	{
+e.printStacTracel;	e.printStackTrace();
+	}
+}	}
+catchfInterruptedExceptio e	catch (InterruptedException e)
+{	{
+1	}
+return count;	return count;
+}	}
+	
+public boolean searchlFile file	public boolean search(File file)
+{	{
+try	try
+{	{
+Scanner in =new Scannernew FilenputStreamfilef;;	Scanner in = new Scanner(new FileInputStream(file));
+boolean found = false;	boolean found = false;
+while !found && n..hasNextLinel	while (!found && in.hasNextLine())
+{	{
+String line =in.nextLine;	String line = in.nextLine();
+if line..cotainskeyord found = true;	if (line.contains(keyword)) found = true;
+}	}
+in.closel;	in.close();
+returnfound;	return found;
+}	}
+catch fIOException 	catch (IOException e)
+1	{
+return false;	return false;
+	}
+}	}
+private File directory	private File directory;
+private String keyword;;	private String keyword;
+private  int count;	private int count;
+1	}

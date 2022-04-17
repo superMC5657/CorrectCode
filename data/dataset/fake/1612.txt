@@ -1,0 +1,25 @@
+pckage  com.atguigu.exer	package com.atguigu.exer;
+public  abstract classGeometricObjectf	public abstract class GeometricObject {
+protected String color;	protected String color;
+protectd double weight;	protected double weight;
+public StringgtColorf  {	public String getColor() {
+return color;	return color;
+	}
+public void setColorfString colorf {	public void setColor(String color) {
+this.color = color;	this.color = color;
+}	}
+public double getWeight f	public double getWeight() {
+return weight;	return weight;
+}	}
+public void setWeihtldoubleweight {	public void setWeight(double weight) {
+thisweight = weight;	this.weight = weight;
+}	}
+public GemetricObjectString color, double weightf {	public GeometricObject(String color, double weight) {
+superl	super();
+this.color = color;	this.color = color;
+this.weight = weight;	this.weight = weight;
+}	}
+	
+public  abstract double findArea;	public abstract double findArea();
+	
+}	}

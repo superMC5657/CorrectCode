@@ -1,0 +1,32 @@
+clssDemo	class Demo
+{	{
+int getElemenintfarr int index	int getElement(int[] arr, int index)
+{	{
+	
+ifarr==nulll	if(arr==null)
+{	{
+thro new NullPointerException"arr";	throw new NullPointerException("arr");
+}	}
+	
+ifindex<0  || index>arr.lengthf	if(index<0 || index>arr.length)
+{	{
+	
+throw new ArrayIndexOutOfoundsException""+index+"";	throw new ArrayIndexOutOfBoundsException(""+index+"");
+}	}
+	
+	
+int element =  arrindex;	int element = arr[index];
+return  element;	return element;
+}	}
+}	}
+class ExceptionDemo3	class ExceptionDemo3
+{	{
+public static void mainString args	public static void main(String[] args)
+	{
+Demo d = new Demo;	Demo d = new Demo();
+int arr= {34,12,671;	int[] arr = {34,12,67};
+int num = d.getElemennull, 2;	int num = d.getElement(null, 2);
+System.out.println"num=+num;	System.out.println("num="+num);
+System.out.printlnl"over"";	System.out.println("over");
+}	}
+}	}

@@ -1,0 +1,98 @@
+package co.atguigup2.util;	package com.atguigu.p2.util;
+import java.util*	import java.util.*;
+public class CMUtility l	public class CMUtility {
+privatestai Sanner scanner = new ScannerSystem.in;	private static Scanner scanner = new Scanner(System.in);
+	
+public static char readMenuSelection  {	public static char readMenuSelection() {
+charc;	char c;
+for; ;  {	for (; ; ) {
+String  str = readeyBoard1, false;	String str = readKeyBoard(1, false);
+c = str.charAt0;	c = str.charAt(0);
+if c != '1 && c  != '2'  &&	if (c != '1' && c != '2' &&
+ !='3'  && c !='4' && c !=  '5' 1	c != '3' && c != '4' && c != '5') {
+System.out.print";	System.out.print("");
+} else break;	} else break;
+}	}
+return c;	return c;
+}	}
+	
+public static cha eadCharf f	public static char readChar() {
+String  str = readKeyBoard1, false;	String str = readKeyBoard(1, false);
+return tr.charAt0;	return str.charAt(0);
+}	}
+	
+public static char readCharchardefultValuel  {	public static char readChar(char defaultValue) {
+String str = readKeyBoard1,true;	String str = readKeyBoard(1, true);
+return  str.lengthf == 0 ? defaultVlue : str.charAtl0f;	return (str.length() == 0) ? defaultValue : str.charAt(0);
+1	}
+	
+public static intreadInt{	public static int readInt() {
+int n;;	int n;
+or; ; l {	for (; ; ) {
+Stringstr = readKeyBoard2, false;	String str = readKeyBoard(2, false);
+try  {	try {
+n = Integer.parseIntstrl;	n = Integer.parseInt(str);
+break	break;
+} catch NumberFormatException ef {	} catch (NumberFormatException e) {
+System.out.print""l;	System.out.print("");
+}	}
+}	}
+return  n;	return n;
+	}
+	
+public staticintreadIntint  defaultValue {	public static int readInt(int defaultValue) {
+int n;	int n;
+for ; ;; {	for (; ; ) {
+String str = readKeyBoard2, true;	String str = readKeyBoard(2, true);
+if str..equalsl""l {	if (str.equals("")) {
+return defaultValue;	return defaultValue;
+	}
+try {	try {
+n = Integer.parsenttr;	n = Integer.parseInt(str);
+break;	break;
+} catch  NumberFormatExcepton e	} catch (NumberFormatException e) {
+Sytemout.print""l;	System.out.print("");
+	}
+f	}
+return  n;	return n;
+}	}
+	
+ublic static String redStringint limit 1	public static String readString(int limit) {
+return readKeyBoardlimit, false;	return readKeyBoard(limit, false);
+	}
+	
+public sttic StringreadStringint limit String  defaultValue {	public static String readString(int limit, String defaultValue) {
+Stringsr  = readKeyBoardlimit, true;;	String str = readKeyBoard(limit, true);
+return str.equals""? defaultValue : str;	return str.equals("")? defaultValue : str;
+}	}
+	
+publistatic har reaConfirmSeection {	public static char readConfirmSelection() {
+char c;	char c;
+for; ;  {	for (; ; ) {
+String str = readKyBoard1,  falseftoUpperCse;	String str = readKeyBoard(1, false).toUpperCase();
+c =  str.charAt0;;	c = str.charAt(0);
+if lc == 'Y'' || c =='N'1	if (c == 'Y' || c == 'N') {
+break;	break;
+f else {	} else {
+System.out.printl"";	System.out.print("");
+}	}
+}	}
+returnc;	return c;
+}	}
+private staic String readKeyBoardlint limit, boolean blankReturnf  	private static String readKeyBoard(int limit, boolean blankReturn) {
+String lin = ";	String line = "";
+while lscanner.hasNextLine {	while (scanner.hasNextLine()) {
+ine = scanner.nextLiell;;	line = scanner.nextLine();
+if lline.length == 0 {	if (line.length() == 0) {
+if blankReturn return line;	if (blankReturn) return line;
+ele continue;	else continue;
+1	}
+if line.length  < 1  || line.length > limit 	if (line.length() < 1 || line.length() > limit) {
+System.out.printl""  limit +  """;	System.out.print("" + limit + "");
+continue	continue;
+}	}
+break;	break;
+	}
+return line;	return line;
+	}
+}	}

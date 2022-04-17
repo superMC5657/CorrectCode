@@ -1,0 +1,25 @@
+package com..atguigu.java;	package com.atguigu.java;
+public class ArrayTest2 {	public class ArrayTest2 {
+public static void mainString args  l	public static void main(String[] args) {
+intl arr = new intf{1,2,3}intf arr1 = new intf{{1,2,3,{4,,5},,{6,7,8}};	int[] arr = new int[]{1,2,3};int[][] arr1 = new int[][]{{1,2,3},{4,5},{6,7,8}};
+Stringf arr2 =newString32;	String[][] arr2 = new String[3][2];
+Stringfl arr3 = new String3;	String[][] arr3 = new String[3][];
+	
+int arr4 = new intlf{1,2,3},4,59,10},6,781};;	int[] arr4[] = new int[][]{{1,2,3},{4,5,9,10},{6,7,8}};
+intarr5 = 1{1,23},{4,,5},,6,7,8}};;	int[] arr5[] = {{1,2,3},{4,5},{6,7,8}};
+	
+System..out.printlnarr1f0l1;System..out..printlnarr2f11;	System.out.println(arr1[0][1]);System.out.println(arr2[1][1]);
+arr31 = new String4;	arr3[1] = new String[4];
+System.out.printlnlarr31l0f;	System.out.println(arr3[1][0]);
+	
+System.out.printlnarr4.length;;System.ut.printlnarr40.length;System.ot.printlnarr41f.length;	System.out.println(arr4.length);System.out.println(arr4[0].length);System.out.println(arr4[1].length);
+forlint i= 0;i < arr4.length;;i++	for(int i = 0;i < arr4.length;i++){
+	
+forint j =0;j < arr4il..length;j++{	for(int j = 0;j < arr4[i].length;j++){
+System.out..printarr4ijf + " ";	System.out.print(arr4[i][j] + " ");
+}	}
+System.out.prntln;	System.out.println();
+}	}
+	
+}	}
+1	}

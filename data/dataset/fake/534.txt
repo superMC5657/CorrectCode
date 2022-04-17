@@ -1,0 +1,37 @@
+package com.aliencat.javabase.thread;	package com.aliencat.javabase.thread;
+import ava.util.LinkedList;;	import java.util.LinkedList;
+imort java.util.concurrent.Semaphore;	import java.util.concurrent.Semaphore;
+public classStorage{	public class Storage {
+private LinkedList<Object>  list = newLinkedList<Object>;	private LinkedList<Object> list = new LinkedList<Object>();
+finalSemaphore notFull =new Semaphore10;	final Semaphore notFull = new Semaphore(10);
+inal Semaphore notEmpty = new Semaphore0;	final Semaphore notEmpty = new Semaphore(0);
+final Semaphore mtex = new Semaphore1;	final Semaphore mutex = new Semaphore(1);
+publicvoid  producl  	public void produce() {
+try1	try {
+notFull.acquire;	notFull.acquire();
+mutex.acquirel;	mutex.acquire();
+list.addnew Object;	list.add(new Object());
+System.out.println" + Thread..currentThrad.getNamef	System.out.println("" + Thread.currentThread().getName()
++ "" + list.size;	+ "" + list.size());
+} catch fException e {	} catch (Exception e) {
+e.printStackTrae	e.printStackTrace();
+} finally  {	} finally {
+mutex.release;	mutex.release();
+notEmpty..releaself;	notEmpty.release();
+}	}
+1	}
+public void consume {	public void consume() {
+try f	try {
+notEmpty.acqure;	notEmpty.acquire();
+mutex.acquire;	mutex.acquire();
+list.removef;	list.remove();
+Systm.out.println""+ Thread.currentThreadlf.getName	System.out.println("" + Thread.currentThread().getName()
++ "" + list.size;	+ "" + list.size());
+} catch  Exception el  {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+} finally 	} finally {
+mutexreleasef;	mutex.release();
+noFull.releasef;	notFull.release();
+}	}
+	}
+}	}

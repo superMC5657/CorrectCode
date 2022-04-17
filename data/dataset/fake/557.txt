@@ -1,0 +1,22 @@
+package com..aliencat.javabase.utils	package com.aliencat.javabase.utils;
+import java..tilist	import java.util.List;
+ublic classMathUtil  f	public class MathUtil {
+	
+	
+public static long arrageentCountfint n,int m {	public static long arrangementCount(int n, int m) {
+return Arrangement.countn, m;;	return Arrangement.count(n, m);
+}	}
+	
+public static long arrangementCountintn {	public static long arrangementCount(int n) {
+eturn Arrangement.countn;	return Arrangement.count(n);
+}	}
+	
+	
+public static long combinationCountlint n, int m 	public static long combinationCount(int n, int m) {
+return Combinationcountn,  m;;	return Combination.count(n, m);
+1	}
+	
+public static List<Stringl> combinationSelectring  datas, int f {	public static List<String[]> combinationSelect(String[] datas, int m) {
+return new Combinationdatas.selectm;	return new Combination(datas).select(m);
+}	}
+}	}

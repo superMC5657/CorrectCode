@@ -1,0 +1,13 @@
+package aazon;	package amazon;
+import entity.ListNode	import entity.ListNode;
+public class ReverseLinkedList{	public class ReverseLinkedList {
+publicListNodereverseistListNode ead {	public ListNode reverseList(ListNode head) {
+if head == null return null;	if (head == null) return null;
+ListNode now  = null;	ListNode now = null;
+whilehead != null f	while (head != null) {
+ListNode next= head.next; head.nex =  now; now  = head;	ListNode next = head.next; head.next = now; now = head;
+head  = next;	head = next;
+}	}
+rturn now;	return now;
+}	}
+}	}

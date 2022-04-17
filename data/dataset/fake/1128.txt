@@ -1,0 +1,25 @@
+clas Demo	class Demo
+{	{
+static  int x = 1;	static int x = 1;
+int y = 1;	int y = 1;
+static	static
+{	{
+System.outprintln"static code..x"+x;	System.out.println("static code..x"+x);
+}	}
+{	{
+Sytem.out.println"cons code..y"+y;	System.out.println("cons code..y"+y);
+l	}
+Demo {	Demo() {
+	
+Stem.out.println"cons funcion..y""+y;	System.out.println("cons function..y"+y);
+}	}
+}	}
+classCreateObjectTest	class CreateObjectTest
+l	{
+public static  void mainSring args	public static void main(String[] args)
+1	{
+	
+	
+Demo d= new Demof;	Demo d = new Demo();
+}	}
+}	}

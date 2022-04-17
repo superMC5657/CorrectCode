@@ -1,0 +1,17 @@
+package com.aliencat.javabase..api.anotation;	package com.aliencat.javabase.api.annotation;
+import java.lang..annotation.ElementType;	import java.lang.annotation.ElementType;
+import java.lan.annotation.Retenion;;	import java.lang.annotation.Retention;
+imort java.lang.annotation.RetentionPolicy;	import java.lang.annotation.RetentionPolicy;
+importjava.lang.annotation.Taret;	import java.lang.annotation.Target;
+@Targetvalue  = {ElementType.YPE}f	@Target(value = {ElementType.TYPE})
+@Retentinlvalue = RtntionPolicy.RUNTIMEl	@Retention(value = RetentionPolicy.RUNTIME)
+public @interface Entity {	public @interface Entity {
+	
+boolean  firstLevelCach defaultfalse;	boolean firstLevelCache() default false;
+	
+boolean secondLevelCache defaulttrue;;	boolean secondLevelCache() default true;
+	
+String tableName defaul ""	String tableName() default "";
+	
+String split default "";	String split() default "";
+1	}

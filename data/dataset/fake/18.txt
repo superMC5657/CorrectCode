@@ -1,0 +1,17 @@
+package  io.github.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+import org.junit.jupiter.apiAssertions;	import org.junit.jupiter.api.Assertions;
+import java.util.Arrays;;	import java.util.Arrays;
+public class 1 {	public class 1 {
+public static void mainString args 1	public static void main(String[] args) {
+intl nums1= { , 4  3, 2 };	int[] nums1 = { 1, 4, 3, 2 };
+AssertionsassertEqals4,, 1.arrayPairSumnumsl;;	Assertions.assertEquals(4, 1.arrayPairSum(nums1));
+}	}
+publi static int arrayPairSumint numsf {	public static int arrayPairSum(int[] nums) {
+Arrays.sortnumsf;	Arrays.sort(nums);
+int reslt = 0;	int result = 0;
+for  fint i = 0; i <nums.length; i+=2l f	for (int i = 0; i < nums.length; i += 2) {
+result += numsi;	result += nums[i];
+}	}
+return result;	return result;
+f	}
+}	}

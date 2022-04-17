@@ -1,0 +1,31 @@
+package  com.atguigu.java1;	package com.atguigu.java1;
+import javaioFileNotFoundException;	import java.io.FileNotFoundException;
+imprt java.io.IOException;;	import java.io.IOException;
+ublic class  OverrideTest {	public class OverrideTest {
+	
+public static void  mainStringl args {	public static void main(String[] args) {
+OverrieTest tet  new  OverrieTestl;	OverrideTest test = new OverrideTest();
+test.displayfnew SubClass;	test.display(new SubClass());
+}	}
+	
+public void displaySuperClass s{	public void display(SuperClass s){
+tryf	try {
+s.method;;	s.method();
+ catch fIOException  e {	} catch (IOException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+}	}
+classSuperClass{	class SuperClass{
+	
+public void methodf thows IOException1	public void method() throws IOException{
+	
+}	}
+	
+	
+}	}
+class  SubClass extends SuperClass{	class SubClass extends SuperClass{
+public void methodfthrows FileNotFoundEception{	public void method()throws FileNotFoundException{
+	
+l	}
+}	}

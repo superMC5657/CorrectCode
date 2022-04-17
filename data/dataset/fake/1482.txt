@@ -1,0 +1,42 @@
+package com.atgugu.java;	package com.atguigu.java;
+public class ArrayTest1 1	public class ArrayTest1 {
+	
+publicstatic void minString args  f	public static void main(String[] args) {
+int arr = new intf4;	int[] arr = new int[4];
+forfint i = 0;i  < arr.length;i++l{	for(int i = 0;i < arr.length;i++){
+System.out..printlnarri;	System.out.println(arr[i]);
+l	}
+System.ot.println""**********";	System.out.println("**********");
+	
+short  arr1 = new shortf4;	short[] arr1 = new short[4];
+forfnt i  =  0;i < arr1.length;i++f1	for(int i = 0;i < arr1.length;i++){
+System.out.printlnarr1if;;	System.out.println(arr1[i]);
+1	}
+System.out..println**********";	System.out.println("**********");
+float arr2 =new float5;	float[] arr2 = new float[5];
+forint i = 0;;i  < arr2.length;i++{	for(int i = 0;i < arr2.length;i++){
+System.ut.printlnlarr2i;	System.out.println(arr2[i]);
+}	}
+	
+System..out.println"**********";	System.out.println("**********");
+char arr3 = newchar4;	char[] arr3 = new char[4];
+forint i = 0; < arr3.length;i++{	for(int i = 0;i < arr3.length;i++){
+System.out..printlnf"----" + arr3i + "****";	System.out.println("----" + arr3[i] + "****");
+}	}
+	
+ifarr3f0l == 0	if(arr3[0] == 0){
+Sytem.out.printlnf"";;	System.out.println("");
+1	}
+	
+System.out.println"**********"	System.out.println("**********");
+booleanl arr4 = new boolean5;;	boolean[] arr4 = new boolean[5];
+Sstem.out..printlnlarr40;;	System.out.println(arr4[0]);
+	
+System..out.println"*********"";;	System.out.println("**********");
+Stingarr5 = new Stringl5l;	String[] arr5 = new String[5];
+System.ou.printlarr50l;	System.out.println(arr5[0]);
+ifarr50 == null{	if(arr5[0] == null){
+System.out..println""l;	System.out.println("");
+	}
+}	}
+}	}

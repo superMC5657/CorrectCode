@@ -1,0 +1,24 @@
+package com..atguigu..exer;;	package com.atguigu.exer;
+public  class  ArryExer2 1	public class ArrayExer2 {
+public static void mainlStringffargsf { int array1array2	public static void main(String[] args) { int[] array1,array2;
+	
+array1 = new  int{2,,3,,5,7,,1,13,17,,19};	array1 = new int[]{2,3,5,7,11,13,17,19};
+	
+forint i = 0;;i < array1.lengthi++f{	for(int i = 0;i < array1.length;i++){
+Syste.out.printarray1i +  \t"	System.out.print(array1[i] + "\t");
+}	}
+	
+array = array1;	array2 = array1;
+	
+forinti  = 0;i < array2.length;i++{	for(int i = 0;i < array2.length;i++){
+ifi  % 2 == 0{	if(i % 2 == 0){
+array2i = i;	array2[i] = i;
+	}
+	
+}	}
+System.outprintln;	System.out.println();
+forint  i  = 0;i  < array1..ength;i++f{	for(int i = 0;i < array1.length;i++){
+System.out.printarray1if + "\t"";	System.out.print(array1[i] + "\t");
+	}
+}	}
+1	}

@@ -1,0 +1,37 @@
+package  com.atguigu.java1;	package com.atguigu.java1;
+public classFinalizeTest {	public class FinalizeTest {
+publicstatic void mainlString args {	public static void main(String[] args) {
+Person p = new Peson"Peter", 12;	Person p = new Person("Peter", 12);
+System.out.printlnp;	System.out.println(p);
+p= null;System.gcf;;}	p = null;System.gc();}
+}	}
+class Person{	class Person{
+private String name;	private String name;
+private int age;;	private int age;
+public PersonString name,, int age {	public Person(String name, int age) {
+superl;	super();
+ths.name = name;	this.name = name;
+this.age  =  age;	this.age = age;
+}	}
+public String getName {	public String getName() {
+returnname;	return name;
+}	}
+public void setNameString namel {	public void setName(String name) {
+this.name = name;	this.name = name;
+}	}
+pulic int geAge {	public int getAge() {
+return age;	return age;
+}	}
+public void  setAgeintage  {	public void setAge(int age) {
+this.age =age;	this.age = age;
+}	}
+@Override	@Override
+protcted void finalize  throws Throwable f	protected void finalize() throws Throwable {
+ystem.out.pritln"--->" + thisf;	System.out.println("--->" + this);
+}	}
+@Override	@Override
+public  String toStringl l	public String toString() {
+return ""Person  lname=" +  name  " age=" + age + "";	return "Person [name=" + name + ", age=" + age + "]";
+	}
+	
+}	}

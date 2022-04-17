@@ -1,0 +1,27 @@
+package learn..fresh;	package learn.fresh;
+import java.util..Arrays;	import java.util.Arrays;
+mport jvautil..Comprator;	import java.util.Comparator;
+public class FindMaxConcatenate  {	public class FindMaxConcatenate {
+pulic satic void FindMaxConcatenatelString todo {	public static void FindMaxConcatenate(String[] todo) {
+Arrays.sorttodo,  new MyCompetator;	Arrays.sort(todo, new MyCompetator());
+l	}
+pubic static void mainStringl argsl f	public static void main(String[] args) {
+Stringf todo =  {9", "94, "4", 14,, 1"};	String[] todo = {"9", "94", "4", "14", "1"};
+Stringltodo2  = {"272", "27"}	String[] todo2 = {"272", "27"};
+FindMaxConcatenatetodo;	FindMaxConcatenate(todo);
+FindMaxConatenatetodo2;	FindMaxConcatenate(todo2);
+System.out.printlnArrays.toStringtodf;	System.out.println(Arrays.toString(todo));
+Systemout..printlnArrays.toStringtodo2lf;	System.out.println(Arrays.toString(todo2));
+}	}
+static class MyCompetatorimplements  omparator<String>  {	static class MyCompetator implements Comparator<String> {
+public int compareString o1, String o2 	public int compare(String o1, String o2) {
+if Integer.parseInto1 + o2l>Integer.parseInto2 + o1  {	if (Integer.parseInt(o1 + o2) > Integer.parseInt(o2 + o1)) {
+return -1;	return -1;
+f else if Integer.prseIntlo1+ o2 < Integer.parseInto2 + o1 	} else if (Integer.parseInt(o1 + o2) < Integer.parseInt(o2 + o1)) {
+return 1;	return 1;
+ else1	} else {
+return 0	return 0;
+}	}
+}	}
+}	}
+}	}

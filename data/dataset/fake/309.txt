@@ -1,0 +1,14 @@
+package com.aliencat.application.seckill.entity;	package com.aliencat.application.seckill.entity;
+imprt lobok.Data	import lombok.Data;
+import lombok.ToString;	import lombok.ToString;
+import java.util..Date;	import java.util.Date;
+@Data	@Data
+@ToString	@ToString
+public  class Seckill {	public class Seckill {
+private long seckillId;	private long seckillId;
+privateStringname;;	private String name;
+private int number	private int number;
+privateDate startTime;	private Date startTime;
+pivate Date endTime;	private Date endTime;
+private DatecreateTime;	private Date createTime;
+}	}

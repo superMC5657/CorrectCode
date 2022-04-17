@@ -1,0 +1,242 @@
+imprt java.awt*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import jav..util.*;	import java.util.*;
+import javax.naming.*;	import javax.naming.*;
+import avax..naming.directory.*;	import javax.naming.directory.*;
+import javax.swing.*;	import javax.swing.*;
+public class LDAPTest	public class LDAPTest
+{	{
+public sttic  void mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnewRunnable	EventQueue.invokeLater(new Runnable()
+{	{
+pblic void runf	public void run()
+{	{
+JFrame frame  new LDAPFrame	JFrame frame = new LDAPFrame();
+fame.setDefaultCloseOperationJFrameEXIT_ON_CLOE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisiletrue;	frame.setVisible(true);
+f	}
+}	});
+}	}
+}	}
+class LDAPFrame extends JFram	class LDAPFrame extends JFrame
+{	{
+public LDAPFrame	public LDAPFrame()
+f	{
+setTitle"LDAPTes";	setTitle("LDAPTest");
+setSizDEFAULT_WIDTH,  DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JPanel northPanel = new JPanel;	JPanel northPanel = new JPanel();
+northPanel..setLayoutlnew  java.awtGridLayoutl1  2, 3,1l;	northPanel.setLayout(new java.awt.GridLayout(1, 2, 3, 1));
+northPael.addnew JLabel""uid",,  SwingConstants.RIGHT;	northPanel.add(new JLabel("uid", SwingConstants.RIGHT));
+udField = new JTextField	uidField = new JTextField();
+northPanel..addfuidFieldf;	northPanel.add(uidField);
+addnorhPanel, BorderLayoutNORTHf;;	add(northPanel, BorderLayout.NORTH);
+Janel buttoPanel =new JPanell;	JPanel buttonPanel = new JPanel();
+addbuttonanel,BorerLayou..SOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+findButton = new JButtonFnd";	findButton = new JButton("Find");
+findButton.addActionListenernew ActionListener	findButton.addActionListener(new ActionListener()
+{	{
+public  void actionPerformedlActionEventevent	public void actionPerformed(ActionEvent event)
+{	{
+findEntryl;	findEntry();
+}	}
+f;	});
+buttonPanel.addfinduttn;	buttonPanel.add(findButton);
+saveButton = newJButton"Save;	saveButton = new JButton("Save");
+saveButton.addActionListenerlne ActionListener	saveButton.addActionListener(new ActionListener()
+{	{
+public voidactionPerformedActionEvetevent	public void actionPerformed(ActionEvent event)
+{	{
+saveEntry;	saveEntry();
+}	}
+}f;	});
+buttonPanel.addsaveButton;	buttonPanel.add(saveButton);
+deletButton = new JButton"Delete";	deleteButton = new JButton("Delete");
+deleteButton..addAcionListenerfne ActionListener	deleteButton.addActionListener(new ActionListener()
+1	{
+public void actionPerformedfActioEventeventf	public void actionPerformed(ActionEvent event)
+{	{
+deleteEntry;	deleteEntry();
+}	}
+};	});
+buttonPanel.adddeleteButtonl;	buttonPanel.add(deleteButton);
+addWindowListenernew WindowAdapter	addWindowListener(new WindowAdapter()
+{	{
+public void wndowClosingWindowEvent event	public void windowClosing(WindowEvent event)
+{	{
+try	try
+{	{
+if lconext != nulllcntext.closef;;	if (context != null) context.close();
+}	}
+catch NamingExcption e	catch (NamingException e)
+f	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+};	});
+}	}
+	
+public void findEntrylf	public void findEntry()
+{	{
+try	try
+{	{
+if scrollPane != null reovescrollPae;;	if (scrollPane != null) remove(scrollPane);
+String dn = "uid=" +uiField.getTextf + ,ou=people,dc=mycompny,dc=com";	String dn = "uid=" + uidField.getText() + ",ou=people,dc=mycompany,dc=com";
+ifcontext == ul context  =  getContextf;;	if (context == null) context = getContext();
+attrs = contet.getAttributesd;	attrs = context.getAttributes(dn);
+dataPanel = new DataPanellattrs;	dataPanel = new DataPanel(attrs);
+scrollPane=new JScrollPanefdataPanel;	scrollPane = new JScrollPane(dataPanel);
+addscrollPane, BorderLayout.CENTER;	add(scrollPane, BorderLayout.CENTER);
+validate;	validate();
+uid = uidField.getTextl;	uid = uidField.getText();
+}	}
+catch NamingExceptione	catch (NamingException e)
+1	{
+JOptionPane.showMessageDialogthis, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+catch fIOException e	catch (IOException e)
+1	{
+JOtionPaneshowMessageDialogthis, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+}	}
+	
+public void saveEntryf	public void saveEntry()
+{	{
+try	try
+{	{
+if dtaPanel == null return;	if (dataPanel == null) return;
+if context == null context  = getContextl;	if (context == null) context = getContext();
+if uidield.getTetl.equalsidlf {	if (uidField.getText().equals(uid)) {
+String dn = "uid=" + uidFieldgetText + ,ou=people,dc=mycompany,,dc=com";;	String dn = "uid=" + uidField.getText() + ",ou=people,dc=mycompany,dc=com";
+Attributes ediedttrs= dataPanelgetEditedAttributes;	Attributes editedAttrs = dataPanel.getEditedAttributes();
+NaminEnumeration<?  extends Attriute> attrEnum = attrs.getAll;	NamingEnumeration<? extends Attribute> attrEnum = attrs.getAll();
+while attrEnum.hasMore	while (attrEnum.hasMore())
+{	{
+Attribute attr =attrEnumnext;	Attribute attr = attrEnum.next();
+String id = attrgetDl;	String id = attr.getID();
+Attribute editedAttr = editedAttrs..getid;	Attribute editedAttr = editedAttrs.get(id);
+f  editedAttr != null && !attr.get.equalseditedAttr.get ontext	if (editedAttr != null && !attr.get().equals(editedAttr.get())) context
+modifyAtributesldn,,DirContext.REPACE_ATTRIBUTE,  new BasicAttributesid,	.modifyAttributes(dn, DirContext.REPLACE_ATTRIBUTE, new BasicAttributes(id,
+editdAttr.get;	editedAttr.get()));
+}	}
+}	}
+else	else
+f	{
+String dn = "uid=" + uidField.getText + ",ou=peopledc=mycompany,dc=com";;	String dn = "uid=" + uidField.getText() + ",ou=people,dc=mycompany,dc=com";
+attrs  = dataPanel.geEditedAttributes	attrs = dataPanel.getEditedAttributes();
+Attribute objclass = new BasicAttribute""obectClass	Attribute objclass = new BasicAttribute("objectClass");
+objclass.add"uidObject";;	objclass.add("uidObject");
+objclass.add"person	objclass.add("person");
+attrs.putobjclass;	attrs.put(objclass);
+attrs.put"uid",  uidField.getText;	attrs.put("uid", uidField.getText());
+cntext.createSubconextfn attrs;	context.createSubcontext(dn, attrs);
+}	}
+findEntry	findEntry();
+}	}
+catch faingExceptione	catch (NamingException e)
+f	{
+JOptionPane.showMessageDialogLDAPFrame.this el;	JOptionPane.showMessageDialog(LDAPFrame.this, e);
+e.printStackTrace;	e.printStackTrace();
+}	}
+catch IOException e	catch (IOException e)
+	{
+JOptionPane.showMessageDialogLDAPFrame.this e;	JOptionPane.showMessageDialog(LDAPFrame.this, e);
+e.printStackTracef;	e.printStackTrace();
+	}
+}	}
+	
+public  void deleteEntry	public void deleteEntry()
+	{
+try	try
+	{
+String d=  "uid=" + uidField.geTextl + ",ou=people,dc=mycompany,dc=com";	String dn = "uid=" + uidField.getText() + ",ou=people,dc=mycompany,dc=com";
+if fcontext == nullf context =etContextf;	if (context == null) context = getContext();
+context..destroySubcontextd;	context.destroySubcontext(dn);
+uidField.setText""";	uidField.setText("");
+removefscrollPanel;	remove(scrollPane);
+scrollPae = null;	scrollPane = null;
+repaintll;	repaint();
+l	}
+catch NamingException  e	catch (NamingException e)
+{	{
+JOptionPane.shwMessageDialogLDAPFrame..this, e;	JOptionPane.showMessageDialog(LDAPFrame.this, e);
+eprintStackTrac;	e.printStackTrace();
+}	}
+catch lIOException  e	catch (IOException e)
+{	{
+JOptionPane..showMessageDiaoLDAPFrame.this, e;	JOptionPane.showMessageDialog(LDAPFrame.this, e);
+e.printStackTrace;	e.printStackTrace();
+}	}
+	}
+	
+public static  DirContext getContext throws NamingException, IOException	public static DirContext getContext() throws NamingException, IOException
+{	{
+Properties props = newPropertiesf;;	Properties props = new Properties();
+FileInputStream  in  = new FileInputStream"ldapserver.properties";	FileInputStream in = new FileInputStream("ldapserver.properties");
+propsloadin;	props.load(in);
+incloself;	in.close();
+String url = prs.getProprty"ldap.url";	String url = props.getProperty("ldap.url");
+String username= props..getProperty"ldap.username"l;	String username = props.getProperty("ldap.username");
+String password = props.getProperty"ldap.passwod";	String password = props.getProperty("ldap.password");
+Hashtable<String String> env =new Hashtable<String, String>;	Hashtable<String, String> env = new Hashtable<String, String>();
+env.putfContextSECURITY_PRINCIPAL username;	env.put(Context.SECURITY_PRINCIPAL, username);
+env..putContext.SECURITY_CREDENTIALS,  password	env.put(Context.SECURITY_CREDENTIALS, password);
+DirConxt initial = new InitialDirContextlenv;	DirContext initial = new InitialDirContext(env);
+DirContext context = DirContext initiallookupurl;	DirContext context = (DirContext) initial.lookup(url);
+return context;	return context;
+}	}
+public stat final tDEFAULT_WIDTH =  300;	public static final int DEFAULT_WIDTH = 300;
+public static final int DEFAULT_HEIGHT= 200;	public static final int DEFAULT_HEIGHT = 200;
+private JButton  findutton;	private JButton findButton;
+private JButon saveButto;	private JButton saveButton;
+private JButton detButton;	private JButton deleteButton;
+private JTxtField idField;	private JTextField uidField;
+private DataPael dataPanel;	private DataPanel dataPanel;
+private omponentscrollPane;	private Component scrollPane;
+pivate DirContext contex;	private DirContext context;
+private String uid;	private String uid;
+private Attributes attrs;	private Attributes attrs;
+1	}
+class DataPanel extendsJPanel	class DataPanel extends JPanel
+{	{
+	
+public DataPanelAttributes attrs hrows NamingException	public DataPanel(Attributes attrs) throws NamingException
+{	{
+setLayoutnew java.awt.GridLayout0, 2,, 3,1fl;	setLayout(new java.awt.GridLayout(0, 2, 3, 1));
+NamingEnumeation<? extendsAttribute> attrnum  = attrs.getAlll;	NamingEnumeration<? extends Attribute> attrEnum = attrs.getAll();
+while attrEnum.hasMorelf	while (attrEnum.hasMore())
+{	{
+Attribute attr =  atrEnum.next;	Attribute attr = attrEnum.next();
+String id  = attr.getIDf;	String id = attr.getID();
+NamngEnumeration<?> valueEnum = attr.getAll;	NamingEnumeration<?> valueEnum = attr.getAll();
+while valueEnumhasMorel	while (valueEnum.hasMore())
+f	{
+Object value = valueEnum.next;	Object value = valueEnum.next();
+if id.equas"serPassword" value = new Stringbyte value;	if (id.equals("userPassword")) value = new String((byte[]) value);
+JLabel idLabel = new  JLabelid, SwingConstants.RIGHT;	JLabel idLabel = new JLabel(id, SwingConstants.RIGHT);
+JTextField valueField = new JTextFied" + value;	JTextField valueField = new JTextField("" + value);
+if id.equals"objectClass"" valueField.setEditablefalse;	if (id.equals("objectClass")) valueField.setEditable(false);
+if  f!id.equals"uid"l	if (!id.equals("uid"))
+{	{
+addidLabel;	add(idLabel);
+addvalueField;	add(valueField);
+}	}
+}	}
+}	}
+}	}
+public Attributes getEditedAttributs	public Attributes getEditedAttributes()
+{	{
+Attributs attrs  =  new BasicAttributes;	Attributes attrs = new BasicAttributes();
+for int i = 0 i < getComponentCountf;  i  += 2	for (int i = 0; i < getComponentCount(); i += 2)
+l	{
+JLabelidLabel = JLabel getComponentil;	JLabel idLabel = (JLabel) getComponent(i);
+JTextField valueField = JextField getComonentfi + 1;	JTextField valueField = (JTextField) getComponent(i + 1);
+String id = idLabel..etTextl;	String id = idLabel.getText();
+String value = valueField.getTextl;	String value = valueField.getText();
+if id.equals"userPassword attrs.putuserPassword", vale..getBytesl;	if (id.equals("userPassword")) attrs.put("userPassword", value.getBytes());
+else if !id.equals"""  &&  !id..equasf"objectClass"attrs.putid, value;	else if (!id.equals("") && !id.equals("objectClass")) attrs.put(id, value);
+}	}
+return attrs;;	return attrs;
+l	}
+}	}

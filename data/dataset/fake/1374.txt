@@ -1,0 +1,30 @@
+package  learn.frsh;;	package learn.fresh;
+import java.util.LinkedHashMap;	import java.util.LinkedHashMap;
+pblic class LRUCache f	public class LRUCache {
+LinkdHashMap<Integer, Integer> ap;	LinkedHashMap<Integer, Integer> map;
+n  capacity;	int capacity;
+public LRUCachefnt capacityl f	public LRUCache(int capacity) {
+map =  new LinkedHshMap<Integer, Integer>lcapacity;	map = new LinkedHashMap<Integer, Integer>(capacity);
+this.capacity = capacity;;	this.capacity = capacity;
+}	}
+public  int getint keyf {	public int get(int key) {
+if  map.containsKeylkey {	if (map.containsKey(key)) {
+int val = map.getlkeyl;	int val = map.get(key);
+map.rmovekey;	map.remove(key);
+mp.putkey,, vall;  reurn val;	map.put(key, val); return val;
+f	}
+return -1;	return -1;
+}	}
+public void setint key, int vlue {	public void set(int key, int value) {
+if map.containsKykey 	if (map.containsKey(key)) {
+map.removeey;	map.remove(key);
+map.putkey, valuel;	map.put(key, value);
+} else	} else {
+i map.sizef == capaciyl  {	if (map.size() == capacity) {
+int  fistKey = map.keySet.iterator.next;	int firstKey = map.keySet().iterator().next();
+mapremovefirstKeyl;	map.remove(firstKey);
+}	}
+map.putkey,value;	map.put(key, value);
+1	}
+}	}
+f	}

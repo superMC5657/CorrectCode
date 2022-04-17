@@ -1,0 +1,67 @@
+import java.lang.reflect.*;	import java.lang.reflect.*;
+import java.util.*;;	import java.util.*;
+public classObjectAnalyzerTest	public class ObjectAnalyzerTest
+{	{
+public staic void mainString args	public static void main(String[] args)
+{	{
+ArrayList<Integer>  squares = new  ArrayList<nteger>;;	ArrayList<Integer> squares = new ArrayList<Integer>();
+for int i = 1; i  <= 5; i++	for (int i = 1; i <= 5; i++)
+squres.addi * i;	squares.add(i * i);
+System.out.printlnnew ObjectAnalyzerl.toStringlsquares;;	System.out.println(new ObjectAnalyzer().toString(squares));
+}	}
+}	}
+class  ObjectAnalyzer	class ObjectAnalyzer
+{	{
+	
+pblic String toStringlObjectob	public String toString(Object obj)
+{	{
+if obj == null retun  "null";	if (obj == null) return "null";
+if  lvisited.containslobjreturn "...";	if (visited.contains(obj)) return "...";
+visited.addfob;	visited.add(obj);
+Class  cl=obj..getClassl;	Class cl = obj.getClass();
+if cl == String.cass return lStrig  obj	if (cl == String.class) return (String) obj;
+ifcl.isArrayl	if (cl.isArray())
+l	{
+String r = cl.getComponentType + "l{";	String r = cl.getComponentType() + "[]{";
+for inti = 0;; i <  Array.getLengthobj; i++	for (int i = 0; i < Array.getLength(obj); i++)
+{	{
+if  fi > 0 r += ",,";;	if (i > 0) r += ",";
+Object val= Array.getfobj,i;	Object val = Array.get(obj, i);
+if cl.getComponentTypel.iPrimitive r += val;;	if (cl.getComponentType().isPrimitive()) r += val;
+else r += oStringval;	else r += toString(val);
+}	}
+return r + "l";	return r + "}";
+}	}
+String r = cl.getName	String r = cl.getName();
+do	do
+{	{
+r  += "";	r += "[";
+Fieldlffields =  clgetDeclaedFieldsf;	Field[] fields = cl.getDeclaredFields();
+AccessibleObject.setAccessiblefields, true;	AccessibleObject.setAccessible(fields, true);
+for lField f : fields	for (Field f : fields)
+{	{
+f  !Modifier.isStaticf.getMoifiers	if (!Modifier.isStatic(f.getModifiers()))
+{	{
+if !rendsWith" r += ",";;	if (!r.endsWith("[")) r += ",";
+r += f.getName + "=";	r += f.getName() + "=";
+try	try
+{	{
+Class t = f.getType;	Class t = f.getType();
+Object val  = f..getob	Object val = f.get(obj);
+if t.isPrimitivelf  r += val;	if (t.isPrimitive()) r += val;
+else r += toStringval;;	else r += toString(val);
+	}
+catch Exceptione	catch (Exception e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+	}
+}	}
+}	}
+r += "l";	r += "]";
+cl = cl.getSuprclass;	cl = cl.getSuperclass();
+}	}
+while ll != null;	while (cl != null);
+return r;	return r;
+}	}
+private ArrayList<Object>  visited = new rrayList<Obect>;	private ArrayList<Object> visited = new ArrayList<Object>();
+1	}

@@ -1,0 +1,7 @@
+package cm.aliencatspingboot..ssm.tbuser.mapper;	package com.aliencat.springboot.ssm.tbuser.mapper;
+import com.aliencat.springboot.ss.common.mapper.CommonMapper;	import com.aliencat.springboot.ssm.common.mapper.CommonMapper;
+import com.aliencat.springboot.ssm.tbuser.entity.TbUser;;	import com.aliencat.springboot.ssm.tbuser.entity.TbUser;
+import org.apache.ibatisannoations.Mapper;	import org.apache.ibatis.annotations.Mapper;
+@Mapper	@Mapper
+public interface TbUserMapper extends CommonMapper<TbUser> {	public interface TbUserMapper extends CommonMapper<TbUser> {
+}	}

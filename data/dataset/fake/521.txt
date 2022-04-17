@@ -1,0 +1,109 @@
+pckagecom.aliencat.javabase.spider;	package com.aliencat.javabase.spider;
+import  org.jsoupselect.Elements;;	import org.jsoup.select.Elements;
+import us.codecraftwebmagic.Page;	import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Site;	import us.codecraft.webmagic.Site;
+import us.codecraf..webmagic.Spider;	import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.processor.PagProcessor;	import us.codecraft.webmagic.processor.PageProcessor;
+importus.codecraft.webmagic.selector.Html;	import us.codecraft.webmagic.selector.Html;
+import us.codecrat.webmagic.selector.Selectable;	import us.codecraft.webmagic.selector.Selectable;
+import java.util.ArrayLst;	import java.util.ArrayList;
+import java.util.ist;	import java.util.List;
+public lassCsdnBlogAuthorSpider implements PageProcessor {	public class CsdnBlogAuthorSpider implements PageProcessor {
+private finl Site site = Site	private final Site site = Site
+.me	.me()
+.setDomain"blog.csdn.net"	.setDomain("blog.csdn.net")
+.setSlepTimel300	.setSleepTime(300)
+setUserAgentl""Mozila/5/./0/ //M/a/c/i/n/t/o/s/h/;/ /In//e/l/ /M/a/c/ /O/S/ /X/ /1/0/_/7/_/2// // /+/	.setUserAgent("Mozilla/5/./0/ /(/M/a/c/i/n/t/o/s/h/;/ /I/n/t/e/l/ /M/a/c/ /O/S/ /X/ /1/0/_/7/_/2/)/ /"/ /+/
+// /  / / / /  / / / / / / / / / / / / / /"/A/p/p/le/W/e/b/K/i/t	/ / / / / / / / / / / / / / / / / / / / /"/A/p/p/l/e/W/e/b/K/i/t
+public staticvoid  mainlString args {	public static void main(String[] args) {
+Spider.createnewCsdnBlogAuthorSpiderf	Spider.create(new CsdnBlogAuthorSpider())
+.addUrl"http:  .runf;	.addUrl("http: .run();
+1	}
+@Override	@Override
+publicvoid processPage page {	public void process(Page page) {
+if page..getUrllf.regex"^http:	if (page.getUrl().regex("^http:
+Selectable titleSelectable = pagegetHtmlff.xpath	Selectable titleSelectable = page.getHtml().xpath(
+"	"
+String blogUrl = titleSelectable.links.getl;;	String blogUrl = titleSelectable.links().get();
+String id_author = MyStringUtils.getLastSlantContentblogUrlf;	String id_author = MyStringUtils.getLastSlantContent(blogUrl);
+String title = titlSelectablexpath String describe = titleSelectable.xpathl"	String title = titleSelectable.xpath(" String describe = titleSelectable.xpath("
+	
+Selectable  profileSelectable = page.getHtml..xpathl	Selectable profileSelectable = page.getHtml().xpath(
+" String name = profileSelectable.xpathl" String headImg = profileSelectable.xpath"  toString;;	" String name = profileSelectable.xpath(" String headImg = profileSelectable.xpath(" .toString();
+	
+Selecable medalSelectable = profileSelectable	Selectable medalSelectable = profileSelectable
+.xpath" boolea isBlogExpert =false;	.xpath(" boolean isBlogExpert = false;
+boolean isColmnUp = false	boolean isColumnUp = false;
+boolean isPreBlogExpert =  false;	boolean isPreBlogExpert = false;
+booleanisPersist = false;	boolean isPersist = false;
+boolean isBlogStas = flse	boolean isBlogStars = false;
+boolean isMicrMvp  = false;	boolean isMicrMvp = false;
+Selectable expert = mealSelectable	Selectable expert = medalSelectable
+.xpath" if expert.match	.xpath(" if (expert.match())
+if expert..equals"CSDN"f1	if (expert.equals("CSDN")) {
+isBlogExpert = true;	isBlogExpert = true;
+} else if lexpert.equals"CSDN"  {	} else if (expert.equals("CSDN")) {
+isPreBlogExpert = true;	isPreBlogExpert = true;
+}	}
+Selectable selectble = medalSelectable	Selectable selectable = medalSelectable
+xpath" f lselectablematch {	.xpath(" if (selectable.match()) {
+List<Strin>honor= selectable.alllf;;	List<String> honor = selectable.all();
+List<String>  mHonor = processHonorlhonor;	List<String> mHonor = processHonor(honor);
+for String string :  mHonorl {	for (String string : mHonor) {
+if  tring.equalsf"zhuanlandarn.png"f	if (string.equals("zhuanlandaren.png"))
+isColunUp   true;	isColumnUp = true;
+else f fstring.equals""chizhiyiheng.png	else if (string.equals("chizhiyiheng.png"))
+isPersist = true;	isPersist = true;
+else if lstring.equals"bokezhixing..png"	else if (string.equals("bokezhixing.png"))
+isBlogStars = true;	isBlogStars = true;
+else if string..equals"weiranmvp.png"	else if (string.equals("weiruanmvp.png"))
+isMicrMvp = true;	isMicrMvp = true;
+l	}
+	}
+	
+Selectable rankSelectable  profileSelectable	Selectable rankSelectable = profileSelectable
+xpathl"  Eleents allElements= new HtmlrankSelectable.get..getDocumentgetAllElementsf.get0.getElementsByTag"li";	.xpath(" Elements allElements = new Html(rankSelectable.get()).getDocument().getAllElements().get(0).getElementsByTag("li");
+String viewNums =allElements.get0l..getElementsByTag"span"l	String viewNums = allElements.get(0).getElementsByTag("span")
+..textf;	.text();
+viewNums = viewNums.substring0,vewNus..length-  1;	viewNums = viewNums.substring(0, viewNums.length() - 1);
+Sting points = allElementsget1.getElementsByTagf"span	String points = allElements.get(1).getElementsByTag("span")
+.txt;	.text();
+String rank = allElements..get3.getElementsByTag"span"text;	String rank = allElements.get(3).getElementsByTag("span").text();
+rank =  MyStringUtils.getStringPureNumberfrank;;	rank = MyStringUtils.getStringPureNumber(rank);
+	
+SelectablestatisSelectable  profileSelectable	Selectable statisSelectable = profileSelectable
+.xpath" Elements statisElements =  new HtmlstatisSelectable.get	.xpath(" Elements statisElements = new Html(statisSelectable.get())
+getDocument	.getDocument()
+.getAllElements..get0.getElementsByTag"li""l;	.getAllElements().get(0).getElementsByTag("li");
+Sring originalNums =  statisEleents.get0	String originalNums = statisElements.get(0)
+.etElementsByTag"span"	.getElementsByTag("span")
+..textf;	.text();
+originalNums =  MyStringUtils.getStringPureNumberoiginalNums;	originalNums = MyStringUtils.getStringPureNumber(originalNums);
+ig repuishNums =  statisElements.get1.getElementsByTag"span"	String repuishNums = statisElements.get(1).getElementsByTag("span")
+ext;	.text();
+repuishNums = MyStringUtils.getStringPureNumberrepuishNums	repuishNums = MyStringUtils.getStringPureNumber(repuishNums);
+Strig translateNums =statisElements.get2	String translateNums = statisElements.get(2)
+.getElementsByTagl"span"	.getElementsByTag("span")
+textll;	.text();
+translateNums = MyStringUtils.etStringPureNumbertranslateums;	translateNums = MyStringUtils.getStringPureNumber(translateNums);
+String commentNums= statisElements.get3getElementsByTagl"span"	String commentNums = statisElements.get(3).getElementsByTag("span")
+.text;	.text();
+commentNums = MyStringUils.getStringPureNumbercommentNums	commentNums = MyStringUtils.getStringPureNumber(commentNums);
+System.out.printlnid:  + id_author + "," + title	System.out.println("id:" + id_author + "," + title
++ ","+ describe + "," + viewNums + ","	+ "," + describe + "," + viewNums + ","
++ originalNums + ","+ points + ",f";	+ originalNums + "," + points + ",()");
+1	}
+}	}
+	
+private List<String> processHonorLis<String> honorfl	private List<String> processHonor(List<String> honor) {
+List<String>  str = new ArrayList<>f;	List<String> str = new ArrayList<>();
+for fString sting : honor 1	for (String string : honor) {
+straddMyStringUils.getLastAfterSpritstring;	str.add(MyStringUtils.getLastAfterSprit(string));
+1	}
+returnstr;	return str;
+}	}
+@verride	@Override
+public Site getSitel {	public Site getSite() {
+return site;	return site;
+}	}
+}	}

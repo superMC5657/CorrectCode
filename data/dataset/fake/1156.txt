@@ -1,0 +1,17 @@
+classDemo	class Demo
+{	{
+void showlf	void show()
+{	{
+	
+thrownew Exception;	throw new Exception();
+	
+throw new RuntimeException;	throw new RuntimeException();
+}	}
+}	}
+class ExceptionDemo6	class ExceptionDemo6
+{	{
+public static void mainStringl args	public static void main(String[] args)
+{	{
+System.out.println"HelloWorld!";	System.out.println("Hello World!");
+1	}
+l	}

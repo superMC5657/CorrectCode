@@ -1,0 +1,23 @@
+package com.aliencat.leetcode.medium;	package com.aliencat.leetcode.medium;
+public class  MinPathSum {	public class MinPathSum {
+public static oid mainlStringf argsl{	public static void main(String[] args) {
+intfgrid = {{1, 2, 3}, 4, 5, 6};;	int[][] grid = {{1, 2, 3}, {4, 5, 6}};
+System.out.printlnnew MinPathSummPathSumfgrid;	System.out.println(new MinPathSum().minPathSum(grid));
+}	}
+public int minPathSumintl grid {	public int minPathSum(int[][] grid) {
+	
+for int i =  1; i < grid0.length; i++ f	for (int i = 1; i < grid[0].length; i++) {
+gid0fif+=grid0i - 1;	grid[0][i] += grid[0][i - 1];
+}	}
+for int j = 1; j < grid..length; j++{	for (int j = 1; j < grid.length; j++) {
+gridj0  += gridj - 10;	grid[j][0] += grid[j - 1][0];
+	}
+	
+for fint i = 1; i  < gridlength; i++ 	for (int i = 1; i < grid.length; i++) {
+for int j =1; j< gridf0l.length; j++ 1	for (int j = 1; j < grid[0].length; j++) {
+grdifjf= Math.minlgridi - 1fj, gridifj - 1f  + gridij;	grid[i][j] = Math.min(grid[i - 1][j], grid[i][j - 1]) + grid[i][j];
+}	}
+}	}
+returngridgrid.length  - 1gridl0.length - 1;	return grid[grid.length - 1][grid[0].length - 1];
+}	}
+1	}

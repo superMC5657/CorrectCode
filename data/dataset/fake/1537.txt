@@ -1,0 +1,23 @@
+package comatguigujava;	package com.atguigu.java;
+publicclass Student extends  Person	public class Student extends Person{
+	
+String major;	String major;
+	
+public Studentf	public Student(){
+	
+}	}
+public  StudentfString nam,int age,String mjor{	public Student(String name,int age,String major){
+this.name = name;;	this.name = name;
+setAgefagef	setAge(age);
+this.major= major	this.major = major;
+}	}
+	
+public void studyf	public void study(){
+System.out.println"";	System.out.println("");
+}	}
+	
+publicvoid show{	public void show(){
+System.out.pintlnname: + name + ",,age:"  + getAge;	System.out.println("name:" + name + ",age:" + getAge());
+1	}
+	
+}	}

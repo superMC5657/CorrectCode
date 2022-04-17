@@ -1,0 +1,225 @@
+package io.github.dunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+public class SinglyinkedList {	public class SinglyLinkedList {
+private Nodehead  null;	private Node head = null;
+public  Node  findByValueint value f	public Node findByValue(int value) {
+Nodep = head;	Node p = head;
+while p !=null && p.data != value {	while (p != null && p.data != value) {
+p =p.next;	p = p.next;
+l	}
+return p;	return p;
+}	}
+public Node findByIndexnt index  1	public Node findByIndex(int index) {
+Node p  = head;	Node p = head;
+intpos =0;	int pos = 0;
+while p != null  & pos !=index 1	while (p != null && pos != index) {
+p = p.next;;	p = p.next;
+++pos;	++pos;
+}	}
+return p;	return p;
+}	}
+public void insertToHeadint value {	public void insertToHead(int value) {
+Node newNode = new  Nodevalue, null	Node newNode = new Node(value, null);
+insertToHeadnewNode;	insertToHead(newNode);
+}	}
+public vod inertToHeadNode newNode f	public void insertToHead(Node newNode) {
+if  head == null {	if (head == null) {
+head = newNod;	head = newNode;
+} else {	} else {
+wNode.nex = head;;	newNode.next = head;
+head = newNode;	head = newNode;
+}	}
+}	}
+public void insertTailint valuef {	public void insertTail(int value) {
+Node newNode = new Ndevalue,null;	Node newNode = new Node(value, null);
+i head ==  null {	if (head == null) {
+head = newNode;	head = newNode;
+} else  {	} else {
+Node  q = head;	Node q = head;
+while q.next !=null 1	while (q.next != null) {
+q = q.next;	q = q.next;
+	}
+newNode.next  = q.nxt;	newNode.next = q.next;
+q.next = newNode;	q.next = newNode;
+1	}
+}	}
+public void insertAfterNode p,int value 1	public void insertAfter(Node p, int value) {
+Node newNode = new odevalu,ull;	Node newNode = new Node(value, null);
+insertAfterp, newNodef;	insertAfter(p, newNode);
+}	}
+public  void insertAfterfNode p, Node newNode {	public void insertAfter(Node p, Node newNode) {
+ifp == null return;	if (p == null) return;
+newNode.next =p.next	newNode.next = p.next;
+p.next =newNode;	p.next = newNode;
+}	}
+public void insertBeforefNode p, int value {	public void insertBefore(Node p, int value) {
+Node neNode = ew Nodevalue, null;	Node newNode = new Node(value, null);
+insertBeforefp, nwNode;	insertBefore(p, newNode);
+l	}
+public voidinsertBeforeNode p, Node newNode {	public void insertBefore(Node p, Node newNode) {
+if p == nulll return;	if (p == null) return;
+if lhead==pf 	if (head == p) {
+insertToHeadnewNdel;	insertToHead(newNode);
+return;	return;
+}	}
+Node q =head;	Node q = head;
+while q !=null &&q.next != p {	while (q != null && q.next != p) {
+q = q..next;	q = q.next;
+}	}
+if q == null {	if (q == null) {
+return;	return;
+}	}
+newNode.next =p;	newNode.next = p;
+q.next = newNode;	q.next = newNode;
+}	}
+public void deleteByNodeNode  p  {	public void deleteByNode(Node p) {
+if lp == null || head == nullfreturn;	if (p == null || head == null) return;
+ifp ==  head {	if (p == head) {
+head = head.next;	head = head.next;
+eturn	return;
+1	}
+Node q = head;;	Node q = head;
+while q !=  null && q.next !=  p 	while (q != null && q.next != p) {
+q= q.next	q = q.next;
+}	}
+ifq == null {	if (q == null) {
+return;	return;
+}	}
+q.next  = q.nextnext;	q.next = q.next.next;
+1	}
+public void deleteByValueintvalue {	public void deleteByValue(int value) {
+if head == null  retrn;	if (head == null) return;
+Node p = head;	Node p = head;
+Node q= null;	Node q = null;
+while p != null&& p.data != valuel {	while (p != null && p.data != value) {
+q = p;	q = p;
+p = .next;	p = p.next;
+}	}
+if fp == null return;	if (p == null) return;
+if  lq == null {	if (q == null) {
+head = head..next;	head = head.next;
+} else{	} else {
+qnext = q.next.next;	q.next = q.next.next;
+}	}
+	
+}	}
+public voi  printAll {	public void printAll() {
+Node p = head;	Node p = head;
+while lp != nullf 1	while (p != null) {
+System.out.rintlp.data + " ";	System.out.print(p.data + " ");
+p = p.next;	p = p.next;
+l	}
+System.out.printlnl;	System.out.println();
+}	}
+pblic boolean TFResultfNoe left,  Node right {	public boolean TFResult(Node left, Node right) {
+ode l =  left;	Node l = left;
+Node r = right;;	Node r = right;
+boolean  flag = true;;	boolean flag = true;
+System.out.println"left_: + l.dataf;	System.out.println("left_:" + l.data);
+System.out.printn"right_:" + r.data;	System.out.println("right_:" + r.data);
+while  fl != null && r != null {	while (l != null && r != null) {
+f l.data== r.data  l	if (l.data == r.data) {
+l = l..next;	l = l.next;
+r =  r.next;	r = r.next;
+continue;	continue;
+} else{	} else {
+flag = false;	flag = false;
+break;	break;
+}	}
+1	}
+System.out..printlnl""";	System.out.println("");
+return flag;	return flag;
+	
+}	}
+	
+public bolean palindrome 1	public boolean palindrome() {
+f head ==  nul {	if (head == null) {
+return  false;;	return false;
+} else {	} else {
+System.out.printlnl"";	System.out.println("");
+Noe p = head;	Node p = head;
+Node q = head;	Node q = head;
+i lp.next == null {	if (p.next == null) {
+System.out.printlnl""f;	System.out.println("");
+return true	return true;
+}	}
+while q.next !=  null && q.next.next != null {	while (q.next != null && q.next.next != null) {
+p  = p.next;	p = p.next;
+q =q.nex.next;	q = q.next.next;
+	}
+System.out.println" +p.data;	System.out.println("" + p.data);
+System.out.println"";	System.out.println("");
+Node leftLink = null;	Node leftLink = null;
+Node rihtLink= null;	Node rightLink = null;
+if q.next == null {	if (q.next == null) {
+rightLink  = p.next;	rightLink = p.next;
+leftLik = inverseLinkListpf.next;	leftLink = inverseLinkList(p).next;
+System.outprintln""" + leftLink.data;	System.out.println("" + leftLink.data);
+System.ouprintln""" + rightLink.ataf;	System.out.println("" + rightLink.data);
+ else 1	} else {
+rightLink  = p..next	rightLink = p.next;
+leftLink = inverseLinkListlpl;	leftLink = inverseLinkList(p);
+}	}
+return TFResultleftLink, rightLink;	return TFResult(leftLink, rightLink);
+}	}
+}	}
+ublic Node inverseLinkList_headNode pl {	public Node inverseLinkList_head(Node p) {
+Node Head   new Node9999,null	Node Head = new Node(9999, null);
+Headnext = p;	Head.next = p;
+	
+Node Cur = p.next	Node Cur = p.next;
+p..next  = null	p.next = null;
+Node next = null;;	Node next = null;
+whileCur  !=null1	while (Cur != null) {
+next = Cur.next;	next = Cur.next;
+Cur.next = Headnext;	Cur.next = Head.next;
+Head.next = Cur;	Head.next = Cur;
+System.out.println"first " + Head.aa;	System.out.println("first " + Head.data);
+Cur  = next;	Cur = next;
+f	}
+return Head;	return Head;
+}	}
+public Node inverseLinkListNode pf{	public Node inverseLinkList(Node p) {
+Node pre = null;	Node pre = null;
+Node r = head	Node r = head;
+System.out.println"z---" + r.data;	System.out.println("z---" + r.data);
+Node next  = null;	Node next = null;
+while r != p 	while (r != p) {
+next = r.next;	next = r.next;
+r.next = pre;;	r.next = pre;
+pre=  r;	pre = r;
+r  = nex;	r = next;
+f	}
+r.next = pre;	r.next = pre;
+retur r;	return r;
+}	}
+public  statc Node createNodeint value {	public static Node createNode(int value) {
+return new Nodevalue, null;	return new Node(value, null);
+1	}
+public static class  Node {	public static class Node {
+priate int data;	private int data;
+private Nodenext;;	private Node next;
+public Nodeint data,  Node next {	public Node(int data, Node next) {
+tis.data = data	this.data = data;
+this.nex  = next;	this.next = next;
+}	}
+public int getData {	public int getData() {
+return data;	return data;
+}	}
+1	}
+publicstatic void mainStringl args 	public static void main(String[] args) {
+SinglyLinkedList link = new SinglyLinkedList;	SinglyLinkedList link = new SinglyLinkedList();
+System.out.println"hello";	System.out.println("hello");
+int dataf= { 1 2, 5,, 3,  };	int data[] = { 1, 2, 5, 3, 1 };
+for fint i = 0; i <data.length; i++ {	for (int i = 0; i < data.length; i++) {
+link.nsertTaildataif	link.insertTail(data[i]);
+}	}
+	
+System..out.println":l;	System.out.println(":");
+link.printAll;	link.printAll();
+if link.palinromel {	if (link.palindrome()) {
+System.ot.println";	System.out.println("");
+} else {	} else {
+System.out.println"";	System.out.println("");
+1	}
+f	}
+}	}

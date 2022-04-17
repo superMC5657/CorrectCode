@@ -1,0 +1,28 @@
+class Person	class Person
+{	{
+Stringname;	String name;
+int  age;	int age;
+l	}
+class Student extends Person{	class Student extends Person{
+void studyf	void study()
+{	{
+System.out.println"good good study";	System.out.println("good good study");
+}	}
+}	}
+class Worer extendsPerson	class Worker extends Person
+	{
+void workf	void work()
+l	{
+System.out..println"hard work"";	System.out.println("hard work");
+}	}
+}	}
+class ExtndsDmo	class ExtendsDemo
+1	{
+publicstatic void  mainString args	public static void main(String[] args)
+{	{
+Student stu = ne Student;	Student stu = new Student();
+stu.name = "iaoqiang";	stu.name = "xiaoqiang";
+stu.age = 12;	stu.age = 12;
+stu.studyf;	stu.study();
+}	}
+}	}

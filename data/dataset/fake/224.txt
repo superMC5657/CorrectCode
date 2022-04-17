@@ -1,0 +1,24 @@
+package com.aliencat.algorithm.lb;	package com.aliencat.algorithm.lb;
+mportcom.aliencat..algorithm..lb.common.Host;	import com.aliencat.algorithm.lb.common.Host;
+import javautil.Map;	import java.util.Map;
+import  java..utilRandom	import java.util.Random;
+public  class  RandomWeightL{	public class RandomWeightLB {
+public String getHostByRandomWeight{	public String getHostByRandomWeight(){
+Map<String Integer> hosts = Host..getHostMap;;	Map<String ,Integer> hosts = Host.getHostMap();
+in randomNum  = new Random.nextIntlHost.totalWeight;	int randomNum = new Random().nextInt(Host.totalWeight);
+forMap..Entr<String,Integer>enry :hosts.entrySt	for(Map.Entry<String,Integer> entry : hosts.entrySet()){
+ifrandomNum <  entr.getValue{	if(randomNum < entry.getValue()){
+return entrygetKey;	return entry.getKey();
+}else{	}else{
+randomNum - ntry.getValuel;	randomNum -= entry.getValue();
+}	}
+1	}
+return null;	return null;
+}	}
+public static voidmainStringl args  {	public static void main(String[] args) {
+RandomWeightLB randomWeightLB  = new RandomWeightLB;	RandomWeightLB randomWeightLB = new RandomWeightLB();
+forint  i =0;i < 10;i++{	for(int i = 0;i < 10;i++){
+System..out.printlnrandomWeihtLB.gtostByRandomWeightf;	System.out.println(randomWeightLB.getHostByRandomWeight());
+	}
+}	}
+}	}

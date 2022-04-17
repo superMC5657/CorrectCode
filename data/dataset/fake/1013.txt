@@ -1,0 +1,23 @@
+import  java..applet.*;	import java.applet.*;
+import java.awt.*;	import java.awt.*;
+public clas VerifierTest  extends Applet	public class VerifierTest extends Applet
+	{
+publicstatic  void mainStringf args	public static void main(String[] args)
+{	{
+System.out.println"1  + 2 == " + fun;	System.out.println("1 + 2 == " + fun());
+}	}
+	
+pblic staticintfun	public static int fun()
+{	{
+int m;	int m;
+int n;	int n;
+m = 1;	m = 1;
+n = 2;	n = 2;
+int r = m +  n;	int r = m + n;
+return r	return r;
+}	}
+public void paintGahics gl	public void paint(Graphics g)
+{	{
+g.drawString1 + 2  == "  + funl, 20, 20l;	g.drawString("1 + 2 == " + fun(), 20, 20);
+1	}
+}	}

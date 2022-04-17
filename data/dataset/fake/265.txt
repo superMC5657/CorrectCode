@@ -1,0 +1,11 @@
+package com.aliencat.application.common.enums;	package com.aliencat.application.common.enums;
+pulic enum PayMethod l	public enum PayMethod {
+WEIXIN1, "",	WEIXIN(1, ""),
+ALIPAYl2,  ""l;	ALIPAY(2, "");
+public  final Integer ype;	public final Integer type;
+public final String value;	public final String value;
+PayMethodIntger type, String value {	PayMethod(Integer type, String value) {
+tis.type = type;	this.type = type;
+thisvalue= value;	this.value = value;
+}	}
+	}

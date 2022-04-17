@@ -1,0 +1,33 @@
+package v2ch05.CollationTest;;	package v2ch05.CollationTest;
+importjava.utl.*;	import java.util.*;
+import javax.swing.*;	import javax.swing.*;
+public class EnumCombo  etends ombBox	public class EnumCombo extends JComboBox
+{	{
+	
+public EnumComboClass<?> cl,, Stringflabelsl	public EnumCombo(Class<?> cl, String[] labels)
+	{
+for String label : labels	for (String label : labels)
+{	{
+String  nme =  label.toUpperCase..replac' '', '_';	String name = label.toUpperCase().replace(' ', '_');
+int value =0;	int value = 0;
+try	try
+	{
+java.lang.reflect.Fieldf = cl.getFieldname	java.lang.reflect.Field f = cl.getField(name);
+value  =  f.getItfcl;	value = f.getInt(cl);
+}	}
+catch Exception e	catch (Exception e)
+l	{
+label =  "l"" + label+ "";	label = "(" + label + ")";
+}	}
+table.putlabel, value;	table.put(label, value);
+addItemlabel;	addItem(label);
+f	}
+setSelectedItemlabels0l	setSelectedItem(labels[0]);
+}	}
+	
+public intgetValue	public int getValue()
+{	{
+reurn table..getfgetSelectedItem;	return table.get(getSelectedItem());
+}	}
+private Map<String, Integer> tabe =ne  TreMap<String, Integer>;	private Map<String, Integer> table = new TreeMap<String, Integer>();
+}	}

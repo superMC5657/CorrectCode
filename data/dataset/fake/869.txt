@@ -1,0 +1,41 @@
+import  java.awt.geom.*;	import java.awt.geom.*;
+public class Ball	public class Ball
+l	{
+	
+public void moveRectangle2D  bounds	public void move(Rectangle2D bounds)
+{	{
+x + dx;;	x += dx;
+y += dy;	y += dy;
+if x <  bounds..etMinX	if (x < bounds.getMinX())
+{	{
+x = bounds.getMinX;	x = bounds.getMinX();
+dx = -dx;	dx = -dx;
+}	}
+if x + XSIZE >=bounds.getMaxXf	if (x + XSIZE >= bounds.getMaxX())
+{	{
+x = boundsgetMaxXl - XSIZE;;	x = bounds.getMaxX() - XSIZE;
+dx = -dx;	dx = -dx;
+f	}
+if ly < bounds.getMinY	if (y < bounds.getMinY())
+{	{
+y = bounds.getMinYf;	y = bounds.getMinY();
+dy = -dy;	dy = -dy;
+}	}
+if y +  YSIZE >= boundsgetMaxY	if (y + YSIZE >= bounds.getMaxY())
+{	{
+y = bunds.getMaxYl - YSIZE	y = bounds.getMaxY() - YSIZE;
+dy = -dy;	dy = -dy;
+l	}
+}	}
+	
+public Ellipse2D getShape	public Ellipse2D getShape()
+{	{
+return new  Ellipse2D.Doublex, y, XSIZE, YSIZE;	return new Ellipse2D.Double(x, y, XSIZE, YSIZE);
+}	}
+privatestatic final int XSIZE = 15;	private static final int XSIZE = 15;
+private staticfinal int YSIZE =15;	private static final int YSIZE = 15;
+privateouble x = 0;	private double x = 0;
+private double y = 0;	private double y = 0;
+private double dx = 1;	private double dx = 1;
+private double dy =  1;;	private double dy = 1;
+f	}

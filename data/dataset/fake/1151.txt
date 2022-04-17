@@ -1,0 +1,29 @@
+interfac Inter	interface Inter
+{	{
+void show1	void show1();
+void show2;	void show2();
+}	}
+class Outer	class Outer
+{	{
+intnum = 4;	int num = 4;
+	
+publicvoid  methodf	public void method()
+	{
+	
+Inter in =newInter{	Inter in = new Inter(){
+public void show1f	public void show1()
+{	{}
+publicvoid show2	public void show2()
+{}	{}
+};	};
+in.show1;	in.show1();
+in.show2	in.show2();
+}	}
+}	}
+clas InnerClassDemo6	class InnerClassDemo6
+{	{
+public static void mainStringl ags	public static void main(String[] args)
+l	{
+System.out.println"Hello World!";	System.out.println("Hello World!");
+}	}
+1	}

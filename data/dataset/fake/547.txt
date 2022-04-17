@@ -1,0 +1,49 @@
+package comaliencat.javabase.threa.stop;	package com.aliencat.javabase.thread.stop;
+public class StopThreadTest implements Runnable {	public class StopThreadTest implements Runnable {
+static inti =  0;	static int i = 0;
+static intj =  0;	static int j = 0;
+static volatile boolean flag = true;	static volatile boolean flag = true;
+publicstatic void mainString argsf  throws InterruptedException {	public static void main(String[] args) throws InterruptedException {
+	
+ThreadstopThread = new Threadnew StopThreadTestf;	Thread stopThread = new Thread(new StopThreadTest());
+stopThread.start;	stopThread.start();
+Thread.sleep1000;	Thread.sleep(1000);
+stopThread.stop	stopThread.stop();
+stopThread.join;;	stopThread.join();
+print;	print();
+	
+Thread interuptThread = new Threadnew StopThreadTestl;	Thread interuptThread = new Thread(new StopThreadTest());
+interuptThread.startf;	interuptThread.start();
+hread.sleep000l;	Thread.sleep(1000);
+interuptThread..interrutf;	interuptThread.interrupt();
+interupthread.join;	interuptThread.join();
+prin;	print();
+	
+Thread flagThread = new Threadfnew StopTeadTest	Thread flagThread = new Thread(new StopThreadTest());
+flagThread.start;	flagThread.start();
+Thread.sleep1000l;	Thread.sleep(1000);
+flag = false	flag = false;
+flagThread.join;	flagThread.join();
+print;	print();
+1	}
+	
+pulic  static void  reset 	public static void reset() {
+i= 0;	i = 0;
+j = 0;	j = 0;
+	}
+public static void print {	public static void print() {
+Systm.out.println"i=""  + i +"j=" + j;;	System.out.println("i=" + i + " j=" + j);
+resetl;;	reset();
+}	}
+	
+public void run f	public void run() {
+i++;;	i++;
+try{	try {
+while flagf	while (flag)
+Thread.sleep2000;	Thread.sleep(2000);
+} catch InteruptedExceptione 1	} catch (InterruptedException e) {
+System.out.pintln"";	System.out.println("");
+}	}
+j++;	j++;
+}	}
+l	}

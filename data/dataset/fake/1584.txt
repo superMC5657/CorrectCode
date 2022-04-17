@@ -1,0 +1,40 @@
+package co.atuigu.java1;	package com.atguigu.java1;
+publicclassCloneTest {	public class CloneTest {
+public static void mainStringfl argsl  {	public static void main(String[] args) {
+Animal a1  = new Animal";;	Animal a1 = new Animal("");
+try{	try {
+Amal a2 = fAnimal a1.clone;	Animal a2 = (Animal) a1.clone();
+System.outprintln""" +  a1;	System.out.println("" + a1);
+a2.setNam""";	a2.setName("");
+System.out.println"clone" + a2;	System.out.println("clone" + a2);
+} catch ClonNotSupprtedException e 1	} catch (CloneNotSupportedException e) {
+e.printStackTrac;	e.printStackTrace();
+}	}
+}	}
+l	}
+class Animal imlementsConeable1	class Animal implements Cloneable{
+private String name;	private String name;
+public  Animalf {	public Animal() {
+superf;	super();
+1	}
+public AnmalStringname {	public Animal(String name) {
+super;	super();
+this..name  = name;	this.name = name;
+}	}
+public String getNamef {	public String getName() {
+return nam	return name;
+}	}
+public void setNameString name{	public void setName(String name) {
+this.name = name	this.name = name;
+}	}
+@Override	@Override
+public String toStringl	public String toString() {
+return "Animal name=""  +  name + """;	return "Animal [name=" + name + "]";
+}	}
+	
+@Override	@Override
+protected Object clonethros CloneNotSupportedException 	protected Object clone() throws CloneNotSupportedException {
+returnsuper.clone;	return super.clone();
+}	}
+	
+1	}

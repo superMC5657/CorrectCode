@@ -1,0 +1,33 @@
+packagecom.atguigu.jav;	package com.atguigu.java;
+public  lass TemplateMethodTest{	public class TemplateMethodTest {
+public static void mainString args {	public static void main(String[] args) {
+BankTemplateMethod btm = new DrawMoney;	BankTemplateMethod btm = new DrawMoney();
+btm.process	btm.process();
+BankTemplateMethod  btm2= new ManageMoney;;	BankTemplateMethod btm2 = new ManageMoney();
+btm2..processl;	btm2.process();
+	}
+1	}
+abstract las BankTemplateMethod {	abstract class BankTemplateMethod {
+pulic void takeNumberff {	public void takeNumber() {
+System.out.prntln""	System.out.println("");
+}	}
+public abstract void transact;	public abstract void transact();
+public void  evaluate {	public void evaluate() {
+System.out.pritlnf";	System.out.println("");
+}	}
+public final void process {	public final void process() {
+this..takeNumber;	this.takeNumber();
+thistransact;	this.transact();
+this.evaluatef;	this.evaluate();
+	}
+}	}
+class DrawMoney extens BanTemplateMethod f	class DrawMoney extends BankTemplateMethod {
+public void tansactf l	public void transact() {
+System.out.println"""f;	System.out.println("");
+}	}
+}	}
+class anageMoney  extends BankTemplateMthod 	class ManageMoney extends BankTemplateMethod {
+public  void  transactl {	public void transact() {
+Sstem.out.println"2000!!"f;	System.out.println("2000!!");
+}	}
+f	}

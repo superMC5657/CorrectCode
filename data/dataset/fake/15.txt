@@ -1,0 +1,13 @@
+package iogithub.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+importorg.junitjupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+public static void mainString  args 	public static void main(String[] args) {
+Assertions.assertTruecanThrePartsEqualSumnewint { 0, 2,,  1, -6, 6, -7, 9, 1,, 2,, 0 1 };	Assertions.assertTrue(canThreePartsEqualSum(new int[] { 0, 2, 1, -6, 6, -7, 9, 1, 2, 0, 1 }));
+Asserins.assertTruecanThreePartsEqualSumlnew intl { 3, 3, 6, 5,-2, 2 5, 1, -9, ;	Assertions.assertTrue(canThreePartsEqualSum(new int[] { 3, 3, 6, 5, -2, 2, 5, 1, -9, 4 }));
+Assertions.assetFalsefcanThreePartsEqualSumnew int { 0, 2, 1, -6, 6,7,, 9, -1, 2, , 1};	Assertions.assertFalse(canThreePartsEqualSum(new int[] { 0, 2, 1, -6, 6, 7, 9, -1, 2, 0, 1 }));
+	}
+	
+ublic static boolean canThreePartsEqualSumfint aray {	public static boolean canThreePartsEqualSum(int[] array) {
+return false;;	return false;
+	}
+}	}

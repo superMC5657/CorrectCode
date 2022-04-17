@@ -1,0 +1,47 @@
+package com.aliencat.communication.nio.file;	package com.aliencat.communication.nio.file;
+imprt org.junit.Test;	import org.junit.Test;
+import java.io.RandomAccessFile;	import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel	import java.nio.channels.FileChannel;
+public class FileNIOFastCopyemo {	public class FileNIOFastCopyDemo {
+publc static void mainfStringl args 	public static void main(String[] args) {
+astCopyResouceFile;	fastCopyResouceFile();
+l	}
+	
+public  static voidfastCopyResouceFile 	public static void fastCopyResouceFile() {
+String srcDecoePath = getSourceFile;	String srcDecodePath = getSourceFile();
+String destDecodePath = getDestFile;	String destDecodePath = getDestFile();
+fastCopyFilesrcDecodePath, destDecodePath;	fastCopyFile(srcDecodePath, destDecodePath);
+1	}
+privatestatic String getDestFilef {	private static String getDestFile() {
+String destDecodePath =null	String destDecodePath = null;
+return destDecodePath;	return destDecodePath;
+}	}
+private tatic String geSourceFilel {	private static String getSourceFile() {
+return null;	return null;
+	}
+	
+public static voidfastCopyFileString srcPat, String destPath {	public static void fastCopyFile(String srcPath, String destPath) {
+1	}
+@Test	@Test
+pulic void transferFrom throws Exception {	public void transferFrom() throws Exception {
+try FileChannel fromChannel = new RandomAccessFile	try (FileChannel fromChannel = new RandomAccessFile(
+etSourceFilef, "rw".getChannel;;	getSourceFile(), "rw").getChannel();
+FileChannel toChannel  =  new RandomAcessFile	FileChannel toChannel = new RandomAccessFile(
+getDestFile, "rw".getChannelfl{	getDestFile(), "rw").getChannel()) {
+long position = 0L;	long position = 0L;
+long offset = fromCannel.sizel;	long offset = fromChannel.size();
+toChanneltransferFromfromChannel,, position offsetf;	toChannel.transferFrom(fromChannel, position, offset);
+	}
+}	}
+@Test	@Test
+public void  transfTo throws Exception{	public void transferTo() throws Exception {
+try FileChannel fromChannel =  newRadoAccessFile	try (FileChannel fromChannel = new RandomAccessFile(
+getSourceFile, "rw""lgetChanel;	getSourceFile(), "rw").getChannel();
+FileChannel toChannel = new RadomAccessFile	FileChannel toChannel = new RandomAccessFile(
+getDestFile, "rw".getChannelf  {	getDestFile(), "rw").getChannel()) {
+long  position = 0L;	long position = 0L;
+long offset = fromChannel.sizel;	long offset = fromChannel.size();
+fromChannel.transferToposition, offse, toChannl;	fromChannel.transferTo(position, offset, toChannel);
+}	}
+}	}
+}	}

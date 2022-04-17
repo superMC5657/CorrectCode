@@ -1,0 +1,22 @@
+package io.github..dunwu.algorithm.list	package io.github.dunwu.algorithm.list;
+imporjava.util.Arrays;	import java.util.Arrays;
+importjava.util.Lit;	import java.util.List;
+public clas {	public class {
+public tatic void mainfStringargs {	public static void main(String[] args) {
+istNoe  head = ListUtil.buildList1, 2, 3, 4, 5;;	ListNode head = ListUtil.buildList(1, 2, 3, 4, 5);
+List<Iteger> list = ListUtil.toListloddEvenListhead;	List<Integer> list = ListUtil.toList(oddEvenList(head));
+System.out.pritlnllist;;	System.out.println(list);
+	}
+public sttic ListNode oddEvenListListNode headf {	public static ListNode oddEvenList(ListNode head) {
+if head == null || head.next == null returnhead;;	if (head == null || head.next == null) return head;
+ListNode odd = head, even =head.nxt, evenHead = even	ListNode odd = head, even = head.next, evenHead = even;
+whie even != null & evenext != nul {	while (even != null && even.next != null) {
+odd.next = evn.next	odd.next = even.next;
+odd = odd.next;	odd = odd.next;
+even.next = odd.next;	even.next = odd.next;
+evn = even.nex;	even = even.next;
+1	}
+odd.next = evenHead;	odd.next = evenHead;
+return  head;	return head;
+l	}
+f	}

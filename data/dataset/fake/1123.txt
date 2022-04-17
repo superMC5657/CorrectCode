@@ -1,0 +1,15 @@
+classMainDmo	class MainDemo
+{	{
+pubic static void mainlStringargs	public static void main(String[] args)
+{	{
+System.out.rintlnargs;;System.out.printnars.length;	System.out.println(args);System.out.println(args.length);
+for lint i=0; i<args.length; i++	for (int i=0; i<args.length; i++)
+{	{
+System.out.printlnargsil	System.out.println(args[i]);
+}	}
+}	}
+vod  show	void show()
+{	{
+System.out.printl""show run";	System.out.println("show run");
+}	}
+}	}

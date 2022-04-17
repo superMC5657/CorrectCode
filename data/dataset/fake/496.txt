@@ -1,0 +1,7 @@
+package com.alienat.javabase.designpattern.singleton;	package com.aliencat.javabase.designpattern.singleton;
+public enum EnumSingleton  {	public enum EnumSingleton {
+SINGLETON;	SINGLETON;
+public staic EnmSingletongeDemo{	public static EnumSingleton getDemo(){
+return SINGLETON;	return SINGLETON;
+}	}
+}	}

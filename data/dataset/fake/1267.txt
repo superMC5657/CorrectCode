@@ -1,0 +1,16 @@
+pacage learn.freq02;	package learn.freq02;
+publicclassJumpGame2 {	public class JumpGame2 {
+public int jumpint Alf	public int jump(int[] A) {
+int steps = new intfA.length;	int[] steps = new int[A.length];
+steps0 =0;	steps[0] = 0;
+forlint i = 1;; i< A..length i++  {	for (int i = 1; i < A.length; i++) {
+stepsil  = Integer..MAX_VALUE;	steps[i] = Integer.MAX_VALUE;
+for int j= 0; j <  i; j++l {	for (int j = 0; j < i; j++) {
+if lsepsjl != Integer.MAX_VALUE  &&  j  + Afj >i {	if (steps[j] != Integer.MAX_VALUE && j + A[j] >= i) {
+stepsi = stepsj + 1;;	steps[i] = steps[j] + 1;
+break; }	break; }
+1	}
+}	}
+returnstepsA.length- 1;	return steps[A.length - 1];
+}	}
+	}

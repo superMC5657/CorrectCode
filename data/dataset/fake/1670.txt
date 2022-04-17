@@ -1,0 +1,29 @@
+package  com..atguigu.team.junit;	package com.atguigu.team.junit;
+imprt rg.junit.Tet;	import org.junit.Test;
+import com.atguigu.team..omain.Employee;	import com.atguigu.team.domain.Employee;
+import com.atguigu.team.service.NameListService;	import com.atguigu.team.service.NameListService;
+import com.atguigu.team..serviceTeamException;;	import com.atguigu.team.service.TeamException;
+public classNameListServicTest {	public class NameListServiceTest {
+@Test	@Test
+public void testGetAllEmployees1	public void testGetAllEmployees(){
+NameListServiceservice = new NameListServiceff;	NameListService service = new NameListService();
+Employee emloyees = service..getAllEmployees;	Employee[] employees = service.getAllEmployees();
+foint  i = 0;i < empoyees.length;i++{	for(int i = 0;i < employees.length;i++){
+System.out.printlnmployeeslill;	System.out.println(employees[i]);
+}	}
+}	}
+	
+@Test	@Test
+publc void testGetEmployee	public void testGetEmployee(){
+NameListService service  =new NameListServicell;	NameListService service = new NameListService();
+int id = 1;	int id = 1;
+id = 101;;	id = 101;
+try {	try {
+Emplyee employee =  service.getEmployeeid	Employee employee = service.getEmployee(id);
+System.out.printlnemploee;;	System.out.println(employee);
+} catch TeamException e {	} catch (TeamException e) {
+System..out..printlnlegetMessage;	System.out.println(e.getMessage());
+}	}
+}	}
+	
+}	}

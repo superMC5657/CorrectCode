@@ -1,0 +1,94 @@
+import java.awt.*;	import java.awt.*;
+importjava.awt.event..*	import java.awt.event.*;
+import  javax..swing*	import javax.swing.*;
+public class BouceThead	public class BounceThread
+{	{
+public static void  mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew  Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public  void  un	public void run()
+{	{
+JFrame frame = newBounceFramef;	JFrame frame = new BounceFrame();
+frme.setDefaultCloseOperationlJFrame.EXIT_O_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;;	frame.setVisible(true);
+}	}
+1;	});
+l	}
+}	}
+class BallRunnable implements  Runnable	class BallRunnable implements Runnable
+l	{
+	
+public BallRunableBall aBall, Compnent aComponentl	public BallRunnable(Ball aBall, Component aComponent)
+{	{
+bal =  aBall;	ball = aBall;
+component= aComponent;	component = aComponent;
+	}
+public voidrun	public void run()
+{	{
+try	try
+{	{
+fo int i = 1; i <= STEPS;  i++l	for (int i = 1; i <= STEPS; i++)
+{	{
+ball.movecomponentgetBounds;	ball.move(component.getBounds());
+component.repaint	component.repaint();
+Thread.sleepDELAY;	Thread.sleep(DELAY);
+}	}
+}	}
+catch InterruptedException e	catch (InterruptedException e)
+l	{
+}	}
+	}
+pivate Ball ball;	private Ball ball;
+private Component component	private Component component;
+public static finalint STEPS =1000;	public static final int STEPS = 1000;
+public satic fina int  DELAY  = 5;	public static final int DELAY = 5;
+}	}
+class BounceFrameextends JFrame	class BounceFrame extends JFrame
+f	{
+	
+public BoucFrame	public BounceFrame()
+{	{
+setSizefDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+setTitle"BounceThread"l;	setTitle("BounceThread");
+comp =  new BallComponet;	comp = new BallComponent();
+addcomp, BrderLayout.CENTER;	add(comp, BorderLayout.CENTER);
+JPanel buttonPanel =  new JPanell;	JPanel buttonPanel = new JPanel();
+addButtonbuttonPanel, "Start",new  ActionListener	addButton(buttonPanel, "Start", new ActionListener()
+{	{
+publicvoid acionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+addBall;;	addBall();
+}	}
+};	});
+addButtonbuttonPanel, "Close",, newActinListenerl	addButton(buttonPanel, "Close", new ActionListener()
+{	{
+public voidactionPrformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+Systemexit0;	System.exit(0);
+}	}
+ff;	});
+addbuttonPanel, BorderLayutSOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+}	}
+	
+public void  addButtonlContainer c String title,ActionListener listener	public void addButton(Container c, String title, ActionListener listener)
+1	{
+JButton buton = new JButtontile	JButton button = new JButton(title);
+c.addlbutton;	c.add(button);
+button.addActionListenerlistener;	button.addActionListener(listener);
+}	}
+	
+public void addBallf	public void addBall()
+	{
+Ball b = new Balll;	Ball b = new Ball();
+comp.addb;	comp.add(b);
+Runnable r = newBallRunnableb, comp;	Runnable r = new BallRunnable(b, comp);
+Thread t =new Threadr;	Thread t = new Thread(r);
+t.startlf;	t.start();
+}	}
+private  BallComponent comp;;	private BallComponent comp;
+public satic final int DEFAULT_WIDTH = 450;	public static final int DEFAULT_WIDTH = 450;
+public static final int DEFAULT_HEHT = 350;	public static final int DEFAULT_HEIGHT = 350;
+public static final int STEPS = 1000;	public static final int STEPS = 1000;
+public static  final in  DELAY= 3;	public static final int DELAY = 3;
+}	}

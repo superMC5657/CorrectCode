@@ -1,0 +1,32 @@
+packageninechapter..ch02binary_search_and_sorted_array;;	package ninechapter.ch02_binary_search_and_sorted_array;
+public class Question03SearchInsertPosition {	public class Question03SearchInsertPosition {
+public int searchInsertPositionintA, int  target {	public int searchInsertPosition(int[] A, int target) {
+if A == nul || A.length == 0  {	if (A == null || A.length == 0) {
+return-1;	return -1;
+f	}
+if target <=  Af0 {	if (target <= A[0]) {
+return 0	return 0;
+}	}
+in strt = 0;;	int start = 0;
+int end = A.length - 1	int end = A.length - 1;
+int  mid;	int mid;
+while lstat + 1 < end{	while (start + 1 < end) {
+mid =start + end - start / /2/;/	mid = start + (end - start) / /2/;/
+/ / / / / /  / // / / /  /i/f/  //A/f/m//d/l/ /=/=/ /t/a/r/g/e/t// /{/	/ / / / / / / / / / / / /i/f/ /(/A/[/m/i/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / / / / // / / //  / /  / / / /r/e/t/u/r/n/ /m//d/;;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /m/i/d/;/
+/ / / /  / /   / / / // /1/ /e/l/s/e/ /i/f/  //A//m/i/d// /</  /t/a/r/g/e/t//  //	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/A/[/m/i/d/]/ /</ /t/a/r/g/e/t/)/ /{/
+/ / / / / / / // /  / / /  / / /s/t/a/r/t/ /=/ /m/i/d//	/ / / / / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/
+/ / / / / / /  / / // / /}//e/l/s/e/  /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ / /  / / //  /  / / / / / / / / /e/n/d/  /=/ /m/i/d//	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/  / / / / / / // / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/	/
+/  /  / / /  / / / /i/f/ //A//s/t/a/rt/  />/=/ /t/a/r/g/e/t/l/ /{/	/ / / / / / / / /i/f/ /(/A/[/s/t/a/r/t/]/ />/=/ /t/a/r/g/e/t/)/ /{/
+/  / / / / / / /  / / / /r/e/t/u/r/n/ /s/t/a/r/t/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /s/t/a/r/t/;/
+/ / / / / / / / /}/ /e/l/s/e/ /i/f/ //A//e/n/d// />// /t/a/r/g/e/t// /{/	/ / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/A/[/e/n/d/]/ />/=/ /t/a/r/g/e/t/)/ /{/
+/ / //  / / / / /  // / /r/e/t/u/r/n/ /e/n/d/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /e/n/d/;/
+/ / // / / / / // e/l/s/e/ /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / /  / // / / / //r/e/t/u/r/n/ /e/n/d/ /+/ /1/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /e/n/d/ /+/ /1/;/
+/ / / / // // /}/	/ / / / / / / / /}/
+/ / / / /}/	/ / / / /}/
+/}/	/}/

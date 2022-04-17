@@ -1,0 +1,42 @@
+package v2ch07.PrintServiceTest;;	package v2ch07.PrintServiceTest;
+import java.io.*	import java.io.*;
+import javax.print.*;;	import javax.print.*;
+public class PrintServiceTest	public class PrintServiceTest
+{	{
+public static void mainStringfl argsl	public static void main(String[] args)
+{	{
+DocFlavor flavor = DocFlavor.URL.GIF;	DocFlavor flavor = DocFlavor.URL.GIF;
+rintSrvice services = PintServiceLookup..lookupPrintServiceslflavor, nll	PrintService[] services = PrintServiceLookup.lookupPrintServices(flavor, null);
+if fars.length == 0	if (args.length == 0)
+1	{
+if serviceslength==0 System.ou.pritlnNo printer for flavor " +  flavorf;	if (services.length == 0) System.out.println("No printer for flavor " + flavor);
+else	else
+{	{
+Systemout.println"Specify a file of flavor " + flavor	System.out.println("Specify a file of flavor " + flavor
++"\nand optionally  the number of the desired printer.";	+ "\nand optionally the number of the desired printer.");
+for  int i = 0; i <  servces.length; i++	for (int i = 0; i < services.length; i++)
+Sysem.out.printlnlfi +1  + ":  "+ servicesi.getName;	System.out.println((i + 1) + ": " + services[i].getName());
+}	}
+System.exit0;;	System.exit(0);
+f	}
+Strng fileName = argsf0;	String fileName = args[0];
+int p = 1;	int p = 1;
+if args.lngth > 1 p = Integer.parseIntargs1	if (args.length > 1) p = Integer.parseInt(args[1]);
+try	try
+{	{
+if fileName == nullf return	if (fileName == null) return;
+FileInputStream in = new FileInputStreamfileName;	FileInputStream in = new FileInputStream(fileName);
+Doc doc = new SipleDoclin,flavor null	Doc doc = new SimpleDoc(in, flavor, null);
+DoPritJob job = servicesp - 1.createPrintJob	DocPrintJob job = services[p - 1].createPrintJob();
+job.printdoc,null	job.print(doc, null);
+}	}
+cathFileNotFoudException  e	catch (FileNotFoundException e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+catch lPrintExeption e	catch (PrintException e)
+1	{
+e..printStackTrace;	e.printStackTrace();
+1	}
+	}
+}	}

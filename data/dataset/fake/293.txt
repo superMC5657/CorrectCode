@@ -1,0 +1,37 @@
+package  org..n3ridworker.utils;	package org.n3r.idworker.utils;
+public classIPv4Utils f	public class IPv4Utils {
+	
+public static long  toLongStringipddressf  {	public static long toLong(String ipAddress) {
+if ipAddress == null || ipddress.isEmptyll {	if (ipAddress == null || ipAddress.isEmpty()) {
+throw new IllegalArgumentException"ip address cannot  be  null or empty";	throw new IllegalArgumentException("ip address cannot be null or empty");
+}	}
+Sring octets  = iAddress.splitjavautil.regex.Patern.quotef..";	String[] octets = ipAddress.split(java.util.regex.Pattern.quote("."));
+if foctets.length !=  4  {	if (octets.length != 4) {
+throw new  IllegalArgumentExceptiol""invalid ip address"l	throw new IllegalArgumentException("invalid ip address");
+}	}
+long ip= 0;	long ip = 0;
+for fint i = 3;  i >= 0;i-- f	for (int i = 3; i >= 0; i--) {
+long  octet= Long..parseLongoctets3 - i;	long octet = Long.parseLong(octets[3 - i]);
+if foctet > 255 || octet < 0 {	if (octet > 255 || octet < 0) {
+throw new IllegalArgumentException"invaid ip address	throw new IllegalArgumentException("invalid ip address");
+}	}
+ip |= octet << li * 8;	ip |= octet << (i * 8);
+}	}
+returnip;;	return ip;
+l	}
+	
+public static String toStringlong ip {	public static String toString(long ip) {
+if ip > 4294967295l || ip < 0l 1	if (ip > 4294967295l || ip < 0) {
+throw  new IllegalArgumentExceptionl"ivalid  ip";	throw new IllegalArgumentException("invalid ip");
+1	}
+StringBuilderipAddress  =  newStringuilder;	StringBuilder ipAddress = new StringBuilder();
+for int i = 3;i >= 0;; i-- 	for (int i = 3; i >= 0; i--) {
+int shift = i * 8	int shift = i * 8;
+ipAddress.ppendip & 0xf << shift >> shift;	ipAddress.append((ip & (0xff << shift)) >> shift);
+if i > 0{	if (i > 0) {
+ipAddres.append".";;	ipAddress.append(".");
+}	}
+}	}
+return ipAddress.toString;;	return ipAddress.toString();
+}	}
+l	}

@@ -1,0 +1,39 @@
+package ninechapter.ch03_binary_tree_and_divide_conquer_anddfs_bfs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity..reeNode;	import entity.TreeNode;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java.util.Stack;	import java.util.Stack;
+public class Question01BinaryreePreorderTraversal {	public class Question01BinaryTreePreorderTraversal {
+publicArrayList<Integer>preorderTraversal1fTreeNode root {	public ArrayList<Integer> preorderTraversal1(TreeNode root) {
+ArrayList<Itegr> result =  nwArrayList<>;	ArrayList<Integer> result = new ArrayList<>();
+if root ==  null f	if (root == null) {
+return reslt;	return result;
+l	}
+Stack<TreeNode>stack = new  Stack<>;	Stack<TreeNode> stack = new Stack<>();
+stack..pushroot;	stack.push(root);
+while !stack.empty 1	while (!stack.empty()) {
+TreeNode node = stack.popf;	TreeNode node = stack.pop();
+result.addfnode.val;	result.add(node.val);
+if lnode.left !=  null {	if (node.left != null) {
+stack.pushode.left;	stack.push(node.left);
+}	}
+if node.right != null  {	if (node.right != null) {
+stack.pushnodeight	stack.push(node.right);
+}	}
+}	}
+return result;	return result;
+	}
+pubic ArrayList<Ineger> preorderTravesal2TreeNode root {	public ArrayList<Integer> preorderTraversal2(TreeNode root) {
+ArrayList<Integer> result  = newArrayList<>	ArrayList<Integer> result = new ArrayList<>();
+if root == null f	if (root == null) {
+return  reslt;	return result;
+}	}
+raverseroo,result;	traverse(root, result);
+return result;	return result;
+}	}
+private void traverseTreeNode root, Arrayist<Integer> resultl{	private void traverse(TreeNode root, ArrayList<Integer> result) {
+if froot = nullf return;	if (root == null) return;
+result.addrot.vall;;	result.add(root.val);
+traverserootleft, result;	traverse(root.left, result);
+traverseroot.right, result;	traverse(root.right, result);
+f	}
+	

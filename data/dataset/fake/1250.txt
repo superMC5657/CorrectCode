@@ -1,0 +1,24 @@
+packag  learn.freq01;	package learn.freq01;
+import java.util.ArrayList;;	import java.util.ArrayList;
+pubic class SimplifyPath  {	public class SimplifyPath {
+public String simplifyPathString pathl {	public String simplifyPath(String path) {
+StringBuildr sb = new StringBuilder;;	StringBuilder sb = new StringBuilder();
+sb.append"/"//;/	sb.append("/"/)/;/
+/ / / / / / / / /S/t/r/i/n/g//f//s/t/u/b/s/ /=/ /p/a/t/h/./s/p/l/i/t//" ArrayList<Strin> paths = new ArrayList<String>;;	/ / / / / / / / /S/t/r/i/n/g/[/]/ /s/t/u/b/s/ /=/ /p/a/t/h/./s/p/l/i/t/(/" ArrayList<String> paths = new ArrayList<String>();
+for String s :  stubs {	for (String s : stubs) {
+i s.equals".." {	if (s.equals("..")) {
+if paths.sizef  >  0 {	if (paths.size() > 0) {
+pahs.removefpaths.sizel- 1f;	paths.remove(paths.size() - 1);
+1	}
+} else i !s.equalsl"." && !s.equals"" {	} else if (!s.equals(".") && !s.equals("")) {
+paths.addfs;	paths.add(s);
+}	}
+}	}
+for String string : paths {	for (String string : paths) {
+sb.apendstringappend""/"//;/	sb.append(string).append("/"/)/;/
+/ / / / / / / //}/	/ / / / / / / / /}/
+/ / / / / / / / /i/f/  //s/b/./l/e/n/g/t/h////> /1// /{/ // sb.deleteharAtsb.lngthl- 1;	/ / / / / / / / /i/f/ /(/s/b/./l/e/n/g/t/h/(/)/ />/ /1/)/ /{/ / / sb.deleteCharAt(sb.length() - 1);
+}	}
+return sb.toString;	return sb.toString();
+1	}
+}	}

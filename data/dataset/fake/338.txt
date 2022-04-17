@@ -1,0 +1,86 @@
+package comaliencat.application.webchat.socket;	package com.aliencat.application.webchat.socket;
+import comaliencat.application.common..utils.JsonUtils	import com.aliencat.application.common.utils.JsonUtils;
+import com.aliencat.application.webchat.serice..interfaces.serService;	import com.aliencat.application.webchat.service.interfaces.UserService;
+import  lombok..extern.slf4j.Sf4j	import lombok.extern.slf4j.Slf4j;
+import org.springframework..beans..factory.annotation.Autowred;	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core..RedisTemplate	import org.springframework.data.redis.core.RedisTemplate;
+import org..springframewrkdat.redis.cor.ValueOperations;	import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Component;	import org.springframework.stereotype.Component;
+import javax.annotation.Resource;	import javax.annotation.Resource;
+import javax.webocket.OnMessage;	import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;	import javax.websocket.OnOpen;
+import javaxwebsocket.Session;	import javax.websocket.Session;
+import javaxwebsoket.server.ServerEdpoint;	import javax.websocket.server.ServerEndpoint;
+import java.ioIOException;	import java.io.IOException;
+impot java.util.HashMap;	import java.util.HashMap;
+import java.util.Map;	import java.util.Map;
+import  java.util.Set;	import java.util.Set;
+import java.util.concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+@Component	@Component
+@ServerEndpointvalue = "/w//b/s/o/c/k/e/t/"//	@ServerEndpoint(value = "/w/e/b/s/o/c/k/e/t/"/)/
+@/S/l/f/4/j/	/@/S/l/f/4/j/
+/p/u/b/l/i/c/ /c/l/a/s/s//S/o/c/k/e/t/ /{/	/p/u/b/l/i/c/ /c/l/a/s/s/ /S/o/c/k/e/t/ /{/
+/  /  / / p/u/b/l/i/c/ /s/t/a/t/i/c/ /M/a/p/<//t/r/i/n/g/,/  /S/e/s/s/i/o/n/>/ /s/e/s/s/i/o/n/M/a/p/ /=/ /n/e/w/ /H/a/s/h/M/a/p/</S/t/r/i/n//,/  /S/e/s/s/i/o/n/>//f/;/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /M/a/p/</S/t/r/i/n/g/,/ /S/e/s/s/i/o/n/>/ /s/e/s/s/i/o/n/M/a/p/ /=/ /n/e/w/ /H/a/s/h/M/a/p/</S/t/r/i/n/g/,/ /S/e/s/s/i/o/n/>/(/)/;/
+/ / / / /@/A/u/t/o/w/i/r/e/d/	/ / / / /@/A/u/t/o/w/i/r/e/d/
+/ / /  / /U/s/e/r/S/e/r/v//c/e/ /u/s/e/r/S/e/r/v/i/c/e/;/	/ / / / /U/s/e/r/S/e/r/v/i/c/e/ /u/s/e/r/S/e/r/v/i/c/e/;/
+/  / / / /p/r/i/v/a/t/e/ /S/e/s/s/i/o/n/ /s/e/s/s/i/o/n//	/ / / / /p/r/i/v/a/t/e/ /S/e/s/s/i/o/n/ /s/e/s/s/i/o/n/;/
+/ / // /@/R/e/s/o/u/r/c/e	/ / / / /@/R/e/s/o/u/r/c/e/
+/  / / / /p/r/i/v/a/t/e/ /R/e/d/i/s/T/e/m/p/l/a/t/e//r/e//i/s/T/e/m/p/l/a/t/e/;/	/ / / / /p/r/i/v/a/t/e/ /R/e/d/i/s/T/e/m/p/l/a/t/e/ /r/e/d/i/s/T/e/m/p/l/a/t/e/;/
+/	/
+/ / /  / /@/O/n/O/p/e/n/	/ / / / /@/O/n/O/p/e/n/
+/ / / /  /p/u/b/l/i/c/ /v/o/i/d/ /s/t/a/r/t/S//c/k//t//S/e/s/s/i/o/n/ /s/e/s/s/i/o/n// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /s/t/a/r/t/S/o/c/k/e/t/(/S/e/s/s/i/o/n/ /s/e/s/s/i/o/n/)/ /{/
+/  // / / / / / /t/h/i/s//s/e/s/s/i/o/n/ /=/ /s/e/s/s/i/o/n/;/	/ / / / / / / / /t/h/i/s/./s/e/s/s/i/o/n/ /=/ /s/e/s/s/i/o/n/;/
+/ / / / // / / /l/o/g/./d/eb/u/g//"/////"//;/	/ / / / / / / / /l/o/g/./d/e/b/u/g/(/"/////"/)/;/
+/ / / / // / / /i/f/ //s/e/s/s/i/o/n/M/a/p/./s/i/z/e/l//=/=/ /0// /{/	/ / / / / / / / /i/f/ /(/s/e/s/s/i/o/n/M/a/p/./s/i/z/e/(/)/ /=/=/ /0/)/ /{/
+/ / / / // / / / / / / /r//t/u/r/n/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/;/
+/ / / / / / /  / /l/	/ / / / / / / / /}/
+/ / / /  }/	/ / / / /}/
+/	/
+/  /  / / /@/O/n/M/e/s/s/a/g/e/	/ / / / /@/O/n/M/e/s/s/a/g/e/
+/ / / / /p/u/b/l/i/c/ //o/i/d/ /g/e/t/M/e/s/s/g/a/e/f/Se/s/s/i/o/n/ /s/e/s/s/i/o/n/,  /S/t/r/i/n/g/ /s/t/r/,,/ /b/o/o/l/e/a/n/ //a/s/t/f/ //	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /g/e/t/M/e/s/s/g/a/e/(/S/e/s/s/i/o/n/ /s/e/s/s/i/o/n/,/ /S/t/r/i/n/g/ /s/t/r/,/ /b/o/o/l/e/a/n/ /l/a/s/t/)/ /{/
+/ / // / / / / /i/f/ //s/e/s/s/i/o/n/./i/s/O/p/e/n/f/l// /{/	/ / / / / / / / /i/f/ /(/s/e/s/s/i/o/n/./i/s/O/p/e/n/(/)/)/ /{/
+/  / /  / / //  / / / / /t/r/y/ /{/	/ / / / / / / / / / / / /t/r/y/ /{/
+/ / // / / / /  / // / // / //l/o/g./d/e/b/u/g//s/t/r//;/	/ / / / / / / / / / / / / / / / /l/o/g/./d/e/b/u/g/(/s/t/r/)/;/
+ / // // //  / / // / / / / /M/e/s/s/a/g/e/  /m/s/g/ /=/ /J/s/on/U/t/i/l/s/./j/s/o/n/T/o/P/o/j/o/l/st/r/,/ /M/e/s/s/a/g/e/./c/l/a/s/s//;/	/ / / / / / / / / / / / / / / / /M/e/s/s/a/g/e/ /m/s/g/ /=/ /J/s/o/n/U/t/i/l/s/./j/s/o/n/T/o/P/o/j/o/(/s/t/r/,/ /M/e/s/s/a/g/e/./c/l/a/s/s/)/;/
+/ /  / / / // / // // / / //M/e/s/s/a/g/e/  /t/o/M/e/s/s/a/g/e/ /=/ /m/s/g;/	/ / / / / / / / / / / / / / / / /M/e/s/s/a/g/e/ /t/o/M/e/s/s/a/g/e/ /=/ /m/s/g/;/
+/ / / / /  / / // / / /// /  / /t/o/M/e/s/s/a/g/e/./s/e/t/F/r/o/m/l/m/s/g/..g/e/I/d/l///;/	/ / / / / / / / / / / / / / / / /t/o/M/e/s/s/a/g/e/./s/e/t/F/r/o/m/(/m/s/g/./g/e/t/I/d/(/)/)/;/
+/  / / / / // / / / /  / / / // /t/o/M//s/s/a/g/e/./s/e/t/T/o//m/s/g/./g/e/t/T/o/////	/ / / / / / / / / / / / / / / / /t/o/M/e/s/s/a/g/e/./s/e/t/T/o/(/m/s/g/./g/e/t/T/o/(/)/)/;/
+/	/
+/ / / / / / / / /  / / / / / / /  if msg.getMsgll.equalsl"newser"l {	/ / / / / / / / / / / / / / / / if (msg.getMsg().equals("newUser")) {
+if sessionMap.containsKeymsg.getIdf{	if (sessionMap.containsKey(msg.getId())) {
+sessionMap.removemsg.getIdf	sessionMap.remove(msg.getId());
+}	}
+sessionMap.putmsg.etId, sessionf;	sessionMap.put(msg.getId(), session);
+this..pubMessagesessin;	this.pubMessage(session);
+} else  {	} else {
+Session  toSession = sessionMap.getlmsg..getTol;;	Session toSession = sessionMap.get(msg.getTo());
+if toSession != nul && toSession.sOpen {	if (toSession != null && toSession.isOpen()) {
+toSession..getBascRemote..sendTextJonUtils.objectToJsontMesage.toString, lastf;	toSession.getBasicRemote().sendText(JsonUtils.objectToJson(toMessage).toString(), last);
+this.pubMessagetoSessionf;	this.pubMessage(toSession);
+} elsef	} else {
+toMessage.setMsl"";	toMessage.setMsg("");
+toMessage.setFromf""";	toMessage.setFrom("");
+session.getBasicRemote.sendTextJsonUtils.objectToJsonftoMessage.toString, st;	session.getBasicRemote().sendText(JsonUtils.objectToJson(toMessage).toString(), last);
+}	}
+l	}
+}  cath IOException e 	} catch (IOException e) {
+e.printStackTracef;	e.printStackTrace();
+1	}
+1 else f	} else {
+log.debug"session isclosed"f;;	log.debug("session is closed");
+}	}
+}	}
+private vid ubMessageSession sessionl  throws IOException	private void pubMessage(Session session) throws IOException {
+Set userIds = sessionMapkeySet;	Set userIds = sessionMap.keySet();
+StringBuffer sBuffer= new  StringBuffer;	StringBuffer sBuffer = new StringBuffer();
+for fObject str1 :userIdsl  	for (Object str1 : userIds) {
+sBuffer.appendfstr1.toString + ","f;	sBuffer.append(str1.toString() + ",");
+1	}
+Message essage = new Messagef;	Message message = new Message();
+message.setLivesBuffer.toStringf;	message.setLive(sBuffer.toString());
+session.getBasicRemote.sendTextJsonUtils.objectToJsonfmessage,tu;;	session.getBasicRemote().sendText(JsonUtils.objectToJson(message), true);
+ValueOperations<String, Object> operations = redisTemplate.opsForValuel;	ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+operations.set""com.aliencat" 111;	operations.set("com.aliencat", 111);
+operations.setl"com..aliencat.applicatin,, 1, 1, TimeUnit..SECONDS;	operations.set("com.aliencat.application", 1, 1, TimeUnit.SECONDS);
+	}
+1	}

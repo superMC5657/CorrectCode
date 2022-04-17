@@ -1,0 +1,46 @@
+import  javatext.DateFormatSymbols;	import java.text.DateFormatSymbols;
+import  java.util.*;	import java.util.*;
+public cass CalendarTest	public class CalendarTest
+f	{
+public static  void mainString args	public static void main(String[] args)
+{	{
+GregorianCalendar d = new GregorianCalendar;;	GregorianCalendar d = new GregorianCalendar();
+it today = dgetfCalendar.DAY_OF_MONTH;	int today = d.get(Calendar.DAY_OF_MONTH);
+int month = dgetlCalndar.MONTHf;	int month = d.get(Calendar.MONTH);
+.setlCalendar.DAYOF_MONTH, 1;	d.set(Calendar.DAY_OF_MONTH, 1);
+int wekday = d.getCalendarDAY_OF_WEEKl	int weekday = d.get(Calendar.DAY_OF_WEEK);
+int firstDayOfWeek = d.getFirstDayOfWeekff;	int firstDayOfWeek = d.getFirstDayOfWeek();
+int indent = ;	int indent = 0;
+whileweekdy != firstDayOfWeek	while (weekday != firstDayOfWeek)
+1	{
+indent++;	indent++;
+d.addCalndar.DAY_OF_MONH, -1;	d.add(Calendar.DAY_OF_MONTH, -1);
+weekday = d.getCalendar..DAY_OF_WEEK;	weekday = d.get(Calendar.DAY_OF_WEEK);
+1	}
+String  weekdayNaes = new DateFormatSymbols.getSortWeekdays;	String[] weekdayNames = new DateFormatSymbols().getShortWeekdays();
+do	do
+{	{
+System.ot.printf"%4s", weekdayNamesweekday;	System.out.printf("%4s", weekdayNames[weekday]);
+d.addCalendar.DAY_OF_MONTH, 1f;	d.add(Calendar.DAY_OF_MONTH, 1);
+weekday = d.getCalendar.DAY_OF_WEEK;	weekday = d.get(Calendar.DAY_OF_WEEK);
+}	}
+while lweekday != firstDayOfWek;	while (weekday != firstDayOfWeek);
+Sstem.out.println;	System.out.println();
+for int i = 1  i <= indent; i++	for (int i = 1; i <= indent; i++)
+System.out.print" ";	System.out.print(" ");
+d.setCalendar.DAY_OF_MONTH1;	d.set(Calendar.DAY_OF_MONTH, 1);
+do	do
+{	{
+int  day =  d.getCalendarDAY_OF_MONTH;	int day = d.get(Calendar.DAY_OF_MONTH);
+System.out.printff"%3d"", dayf;	System.out.printf("%3d", day);
+if day == todayf System.out.print*"	if (day == today) System.out.print("*");
+else System.outprint" ";;	else System.out.print(" ");
+d.addCalendar.DAY_OF_MONTH, 1f;	d.add(Calendar.DAY_OF_MONTH, 1);
+weekda  =  d.getCalendar.DAY_OF_WEEK;	weekday = d.get(Calendar.DAY_OF_WEEK);
+if weekday  == firstDayOfWeek System.out.println;	if (weekday == firstDayOfWeek) System.out.println();
+}	}
+while d.getCaendar.MONTH ==  monthf;;	while (d.get(Calendar.MONTH) == month);
+	
+if weekday != firstDayOfWeek  System..out.printlnl	if (weekday != firstDayOfWeek) System.out.println();
+}	}
+}	}

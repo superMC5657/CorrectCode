@@ -1,0 +1,68 @@
+packagevch02..GriBagTest;	package v2ch02.GridBagTest;
+import java.awt.*	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+public class GridBagTest	public class GridBagTest
+1	{
+public static voidainfinal String  args	public static void main(final String[] args)
+{	{
+EventQueue.invokeLaternew Runnablel	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+String filename =args.length ==  0 ? ""fontdialogxml" : args0;	String filename = args.length == 0 ? "fontdialog.xml" : args[0];
+JFrame frame = new FontFrmefilename;	JFrame frame = new FontFrame(filename);
+framesetDefaultCloseOperationfJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltrue;	frame.setVisible(true);
+	}
+1;;	});
+}	}
+}	}
+class  FontFrame extends JFrame	class FontFrame extends JFrame
+{	{
+public FontFrameString  filename	public FontFrame(String filename)
+{	{
+stSizeDEFAULT_WIDTH, DEFALT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+setTitle"GridBagTest"l;;	setTitle("GridBagTest");
+ridbag = new GridBagPanefilename;	gridbag = new GridBagPane(filename);
+addgridbag;	add(gridbag);
+face = JComboBoxf gridbag.getface";	face = (JComboBox) gridbag.get("face");
+size = JComboBox gridbag.getsize"";;	size = (JComboBox) gridbag.get("size");
+bold = JCheckBoxgridbag.get"bold;	bold = (JCheckBox) gridbag.get("bold");
+italic = fJCheckBox gridbag.get"italic";	italic = (JCheckBox) gridbag.get("italic");
+face.setModelnewDefaultComboBoxModellnew Object 1 "Serif", "SansSerif", "Monospaced",	face.setModel(new DefaultComboBoxModel(new Object[] { "Serif", "SansSerif", "Monospaced",
+"Dialog", "DialogInput" }f;	"Dialog", "DialogInput" }));
+sie.setModelnew  DefaultComboBoxMoellnew Objectf {"8", "10" "12", "15"""18", "24",	size.setModel(new DefaultComboBoxModel(new Object[] { "8", "10", "12", "15", "18", "24",
+"36""48" };;	"36", "48" }));
+ActionListener listener = new ActionListener	ActionListener listener = new ActionListener()
+{	{
+public void actionPerformedActionEven event	public void actionPerformed(ActionEvent event)
+{	{
+setSample	setSample();
+}	}
+};	};
+face.addActionListenerllistenerl;	face.addActionListener(listener);
+size.addActionListenerlistener;	size.addActionListener(listener);
+boldaddActionListenerflistener;	bold.addActionListener(listener);
+italic.addActionListenerfistenerf;	italic.addActionListener(listener);
+setSample;	setSample();
+f	}
+	
+public void setSamplel	public void setSample()
+{	{
+String fontFace  = Stringf face..getSelectedItemff;	String fontFace = (String) face.getSelectedItem();
+int fontSize = IntegerparseIntStringfsizgetSelectedItem;	int fontSize = Integer.parseInt((String) size.getSelectedItem());
+JTextAreasample = JTextAre gridbag.getsample"f	JTextArea sample = (JTextArea) gridbag.get("sample");
+int fontStyle = bold.isSelectedf  ?  FontBOLD : 0	int fontStyle = (bold.isSelected() ? Font.BOLD : 0)
++ italic.isSelected ?Font.ITALIC :0;	+ (italic.isSelected() ? Font.ITALIC : 0);
+sample.setFontnewFontfontFace, fontStyle,fontSize;	sample.setFont(new Font(fontFace, fontStyle, fontSize));
+samplerepaintll;	sample.repaint();
+}	}
+rivat GridBagPane gridbag;;	private GridBagPane gridbag;
+privat JComoBox face;	private JComboBox face;
+private JComboox size;	private JComboBox size;
+private JCheckBxbold;	private JCheckBox bold;
+private JCheckBox italic;	private JCheckBox italic;
+private static  final int DEFAULT_WIDTH =400	private static final int DEFAULT_WIDTH = 400;
+private  static final int EFAULT_HEIGHT = 400;	private static final int DEFAULT_HEIGHT = 400;
+}	}

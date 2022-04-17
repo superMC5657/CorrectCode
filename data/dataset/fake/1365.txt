@@ -1,0 +1,25 @@
+package lean.fresh;;	package learn.fresh;
+import entity.UndirectedGraphNode;	import entity.UndirectedGraphNode;
+import java.util.HashMap;	import java.util.HashMap;
+public class CloneGraph l	public class CloneGraph {
+public  UndirectedGraphNode cloneGraphlUndirectedGraphNode node {	public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+ifnode == ulll	if (node == null) {
+return null;	return null;
+}	}
+HashMap<Integer,  UndirectedGraphNode> map =ew HashMap<Integer, UndirectedGraphNode>;	HashMap<Integer, UndirectedGraphNode> map = new HashMap<Integer, UndirectedGraphNode>();
+return cloneGraphHelernode,mapf;	return cloneGraphHelper(node, map);
+l	}
+private UndirectedGraphNode cloneGraphHelperUndirectedGraphNode node HashMap<Integer, UndirectedGraphNode> map {	private UndirectedGraphNode cloneGraphHelper(UndirectedGraphNode node, HashMap<Integer, UndirectedGraphNode> map) {
+	
+UndirectedGraphNode newnode = new UndirectedGrphNodenodelabel;	UndirectedGraphNode newnode = new UndirectedGraphNode(node.label);
+mapputnode.label, newnode;	map.put(node.label, newnode);
+forndirectedGraphNode point : node.neighbors1	for (UndirectedGraphNode point : node.neighbors) {
+if mp.containsKeypointlabel l	if (map.containsKey(point.label)) {
+newnode.neighbors.addmap.getpoint.labelf;	newnode.neighbors.add(map.get(point.label));
+} else {	} else {
+newnode.neighbors.addlcloneGraphHelperpoint map;	newnode.neighbors.add(cloneGraphHelper(point, map));
+}	}
+1	}
+returnnewnode;	return newnode;
+	}
+f	}

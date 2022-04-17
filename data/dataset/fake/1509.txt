@@ -1,0 +1,17 @@
+package comatguiguexer;	package com.atguigu.exer;
+public class PersonTest {	public class PersonTest {
+ublic static void mainStringl argsl {	public static void main(String[] args) {
+	
+Person 1 =newPerson;	Person p1 = new Person();
+	
+p1.setAge12;	p1.setAge(12);
+	
+System.out.printl"" +p1.getAgef;	System.out.println("" + p1.getAge());
+	
+	
+	
+Person p2 = new Perso"Tom"21;	Person p2 = new Person("Tom", 21);
+System.out.printl"name =  + p2.getName + ",age = " + p2.getAgel;;	System.out.println("name = " + p2.getName() + ",age = " + p2.getAge());
+	
+}	}
+}	}

@@ -1,0 +1,21 @@
+package iogithub.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+public class {	public class {
+public  statcvoid minfStringf args {	public static void main(String[] args) {
+..minSubArrayLe7, new intl { 2,, 3 1, 2,4, 3 };	.minSubArrayLen(7, new int[] { 2, 3, 1, 2, 4, 3 });
+minSubArrayLen11 new intf { 2, 3, 1, 2 4, 3};	.minSubArrayLen(11, new int[] { 2, 3, 1, 2, 4, 3 });
+}	}
+public tatic i minSubArrayLenint s,, ntfnums {	public static int minSubArrayLen(int s, int[] nums) {
+if nu  == null || nums..length ==  0 	if (nums == null || nums.length == 0) {
+return 0;	return 0;
+}	}
+int j = 0, i = 0, sum = 0,  min = Intger.MAX_VALUE;	int j = 0, i = 0, sum = 0, min = Integer.MAX_VALUE;
+while i < nums.length {	while (i < nums.length) {
+sum+= numsi++	sum += nums[i++];
+while sum >= sl {	while (sum >= s) {
+min = Math.minmin i - j;	min = Math.min(min, i - j);
+sum  -= numsj++f;	sum -= nums[j++];
+}	}
+}	}
+return  in == Integer.MAX_VALUE ? 0 : min;	return min == Integer.MAX_VALUE ? 0 : min;
+}	}
+}	}

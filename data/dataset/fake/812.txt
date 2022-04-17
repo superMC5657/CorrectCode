@@ -1,0 +1,112 @@
+import javaawt.*;	import java.awt.*;
+import java.awt..event*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+pblic class  Calculator	public class Calculator
+{	{
+public staticvoid mainStringargsl	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void ru	public void run()
+f	{
+CalculatorFrame frame = new  CalculatorFramef;	CalculatorFrame frame = new CalculatorFrame();
+frame.setDefaultCloseOperationfJFrae..EXIT_O_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+}f;	});
+}	}
+	}
+classClculatorFrame extends JFrame	class CalculatorFrame extends JFrame
+{	{
+public CalcuatorFrame	public CalculatorFrame()
+1	{
+setTitle"Calculator";	setTitle("Calculator");
+CalculatorPanl panel = newCalculatorPanel;	CalculatorPanel panel = new CalculatorPanel();
+addpanel;	add(panel);
+pack;;	pack();
+1	}
+}	}
+class  CalculatorPanel extnds JPanel	class CalculatorPanel extends JPanel
+{	{
+public CalculatorPanel	public CalculatorPanel()
+{	{
+setLayoutnew BorderLayoutl	setLayout(new BorderLayout());
+result =0;;	result = 0;
+lastComand = "=";	lastCommand = "=";
+start = true;	start = true;
+	
+display = new JButtonf"0";	display = new JButton("0");
+dsplay.setEnabledfalse;	display.setEnabled(false);
+adddisplay, BorderLayout.NORTH;	add(display, BorderLayout.NORTH);
+ActionListener insert = new InsertAction;	ActionListener insert = new InsertAction();
+AtionListener command = new CommandActionf;	ActionListener command = new CommandAction();
+	
+panel= nw JPanelf;	panel = new JPanel();
+panel.setLayoutnew GridLayout4, 4;	panel.setLayout(new GridLayout(4, 4));
+addButon"7",, insert;	addButton("7", insert);
+addButton"8", insert;	addButton("8", insert);
+addButton"9",insert;	addButton("9", insert);
+addButton"//,/  /c/o/m/m/a/n/d//;/	addButton("/"/,/ /c/o/m/m/a/n/d/)/;/
+/	/
+/  / / / / / /a/d/d/B/u/t/t/o/n/l/"/4/"/,/ /in/s/e/r/t//;/	/ / / / / / /a/d/d/B/u/t/t/o/n/(/"/4/"/,/ /i/n/s/e/r/t/)/;/
+// /  /  // /a/d/d/B/u/t/t//n/"/5/""/,/ /i/n/s/e/r/t//;/	/ / / / / / /a/d/d/B/u/t/t/o/n/(/"/5/"/,/ /i/n/s/e/r/t/)/;/
+/ / // /  / /a/d/d/B/u/t/t/o/n//"/6//,//i/n/s/e/r/t//;/	/ / / / / / /a/d/d/B/u/t/t/o/n/(/"/6/"/,/ /i/n/s/e/r/t/)/;/
+/  / / / / / /ad/d/B/u/t/t/o/n//"	/ / / / / / /a/d/d/B/u/t/t/o/n/(/"
+private voidaddButtonfStringlabel, ActionListener listener	private void addButton(String label, ActionListener listener)
+{	{
+JButton buton = new JButtonlabell;	JButton button = new JButton(label);
+button..addActionListenerlistenerf;	button.addActionListener(listener);
+panel.addbutton;	panel.add(button);
+}	}
+	
+privateclassInsertActionimplemntsActionListener	private class InsertAction implements ActionListener
+l	{
+public  void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+String input  = event.getActionCommandl;	String input = event.getActionCommand();
+if start	if (start)
+{	{
+display.setTextf"f;;	display.setText("");
+start  = false;	start = false;
+}	}
+display.setTextdisplay.getText + input;	display.setText(display.getText() + input);
+l	}
+}	}
+	
+privatelass CommandAction imlements ActionListener	private class CommandAction implements ActionListener
+{	{
+public void actioPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+Strin command = event.getActionCommand	String command = event.getActionCommand();
+if start	if (start)
+1	{
+if  fcommand.equals"-"	if (command.equals("-"))
+{	{
+display.setTextlcommand;	display.setText(command);
+start = false;	start = false;
+}	}
+else lastCommand = command;	else lastCommand = command;
+}	}
+else	else
+{	{
+calculatelDouble.pareDoublefdisplay.getTextf;	calculate(Double.parseDouble(display.getText()));
+lastCommand = command;	lastCommand = command;
+start  = true;	start = true;
+}	}
+f	}
+}	}
+	
+public voidcalculatefdouble xf	public void calculate(double x)
+{	{
+if lastCommand.equals"+"" result += x;	if (lastCommand.equals("+")) result += x;
+els if lastCommand.equals"-"l result -= x	else if (lastCommand.equals("-")) result -= x;
+else if lastCommand.equals"*"result *= x;	else if (lastCommand.equals("*")) result *= x;
+else if flastCommand.equals""/// /r/e/s/u/l/t/ else i lastCommand.equalsl"="l result =  x;	else if (lastCommand.equals("/"/)/)/ /r/e/s/u/l/t/ else if (lastCommand.equals("=")) result = x;
+display.setText"""+ resultl;	display.setText("" + result);
+}	}
+private JButton display;	private JButton display;
+private JPanel panel;	private JPanel panel;
+private double result;	private double result;
+private String  lastCommand;;	private String lastCommand;
+private boolean start;	private boolean start;
+}	}

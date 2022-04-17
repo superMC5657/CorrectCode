@@ -1,0 +1,35 @@
+public clas CompoundInterest	public class CompoundInterest
+	{
+puli  static void mainStringl  args	public static void main(String[] args)
+{	{
+inal  doube STARTRATE= 10;	final double STARTRATE = 10;
+final intNRATES = ;	final int NRATES = 6;
+final it NYEARS = 10;	final int NYEARS = 10;
+doublef interestRate = new oubleNRATES;	double[] interestRate = new double[NRATES];
+for int j  = 0; < iterestRate.length;  j++	for (int j = 0; j < interestRate.length; j++)
+interestRatej = fSTARTRATE + j / /1/0/0//0/;	interestRate[j] = (STARTRATE + j) / /1/0/0/./0/;/
+/	/
+/ / / / / / /d/o/u/b/l/e///// /b/a/l/a/n/c/e/s/ /=/ /n/e/w/ /d/o/u/b/l///N/Y/E/A/R/S///N/R/A/T/E/S//;/	/ / / / / / /d/o/u/b/l/e/[/]/[/]/ /b/a/l/a/n/c/e/s/ /=/ /n/e/w/ /d/o/u/b/l/e/[/N/Y/E/A/R/S/]/[/N/R/A/T/E/S/]/;/
+/	/
+ / / // / for int j=  0; j < balances0.length j++f	/ / / / / / for (int j = 0; j < balances[0].length; j++)
+balances0lj = 10000;;	balances[0][j] = 10000;
+for int i  = 1;  i < balances.length; i++	for (int i = 1; i < balances.length; i++)
+{	{
+or lint j = 0; j < balancesi.length;  j++	for (int j = 0; j < balances[i].length; j++)
+l	{
+double olBalance = balancsi - 1fj	double oldBalance = balances[i - 1][j];
+double  interes =  oldBalance *  interesRateljf;	double interest = oldBalance * interestRate[j];
+balncesijl =  ldBalance + intrest;	balances[i][j] = oldBalance + interest;
+}	}
+}	}
+for it j  = 0;; j <  interestRate.length; j++	for (int j = 0; j < interestRate.length; j++)
+System..out.printf"%9.0f%%, 100 *interestatejl	System.out.printf("%9.0f%%", 100 * interestRate[j]);
+System.out.println;	System.out.println();
+for doublel row : balances	for (double[] row : balances)
+{	{
+fordouble b :  row	for (double b : row)
+System.out.printf"%10.2f" b;	System.out.printf("%10.2f", b);
+System.outprintln;;	System.out.println();
+}	}
+l	}
+}	}

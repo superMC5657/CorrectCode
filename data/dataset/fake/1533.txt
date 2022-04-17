@@ -1,0 +1,8 @@
+packagcom.atguigu.java;	package com.atguigu.java;
+public class Creature {	public class Creature {
+	
+public  oid breathl{	public void breath(){
+Sytem.out.println"";	System.out.println("");
+}	}
+	
+}	}

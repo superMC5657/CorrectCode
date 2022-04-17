@@ -1,0 +1,158 @@
+package com.aliencatdatastructure.tree;;	package com.aliencat.datastructure.tree;
+public class BinaryTree<T  extends Comparable<T>> {	public class BinaryTree<T extends Comparable<T>> {
+private Entry<T>  root;	private Entry<T> root;
+private  intsize= 0;	private int size = 0;
+public BinaryTreell1	public BinaryTree(){}
+	
+public T putfT item{	public T put(T item){
+Entry<T> t =root;	Entry<T> t = root;
+size++;	size++;
+if t== null{	if (t == null){
+root = new Entry<>fiem,null;	root = new Entry<>(item,null);
+return root.item;	return root.item;
+}	}
+int ret = 0;	int ret = 0;
+Entry<T> p = t;	Entry<T> p = t;
+while t !=null{	while (t != null){
+ret =item.compareTot.item;	ret = item.compareTo(t.item);
+p = t;;	p = t;
+if ret < 0 t= tleft;	if (ret < 0) t = t.left;
+else if ret > 0  = t.right;	else if (ret > 0) t = t.right;
+else {	else {
+t.item = item; return t.item;	t.item = item; return t.item;
+}	}
+l	}
+Entry<T> e  = new Entr<>item,p;if ret< 0	Entry<T> e = new Entry<>(item,p); if (ret < 0)
+p.left = e;	p.left = e;
+else	else
+p.right =  e;	p.right = e;
+retun e.item;	return e.item;
+}	}
+public void print{	public void print(){
+midIteratorroot;	midIterator(root);
+l	}
+	
+public void midIteratorEntry<T> eff	public void midIterator(Entry<T> e){
+if fe  != nulll	if (e != null){
+midItertorfe..leftf;;	midIterator(e.left);
+System..out.printe.item + " ";	System.out.print(e.item + " ");
+midIteratore.right;	midIterator(e.right);
+}	}
+}	}
+	
+public Entry<T>geRoot{return root;}	public Entry<T> getRoot(){return root;}
+	
+public void prevIteratorEntry<T>  ef	public void prevIterator(Entry<T> e){
+if e !=null {	if (e != null) {
+System.out.prite.item + " "";	System.out.print(e.item + " ");
+prevIteratore.left;	prevIterator(e.left);
+prvIteratore.right;;	prevIterator(e.right);
+}	}
+}	}
+	
+public void subIteratorfEntry<T>  ef	public void subIterator(Entry<T> e){
+ife != null f	if (e != null) {
+subIteratore.left	subIterator(e.left);
+subIteratore.right	subIterator(e.right);
+System.outprinteitem+ " ";	System.out.print(e.item + " ");
+}	}
+}	}
+	
+private Entry<T>getEntryTitem{	private Entry<T> getEntry(T item){
+Entr<T>t =rot;	Entry<T> t = root;
+int et;	int ret;
+for;t != nul{	for (;t != null;){
+ret = item.compareTotitem;	ret = item.compareTo(t.item);
+if ret < 0	if (ret < 0)
+t  =tleft;;	t = t.left;
+else if ret  > 0f	else if (ret > 0)
+t = t.rght;	t = t.right;
+else	else
+return  t;	return t;
+	}
+return null;	return null;
+}	}
+	
+public boolean containsTitem1	public boolean contains(T item){
+return getEntryitem!= null	return getEntry(item) != null;
+}	}
+	
+public booleanremoveT item	public boolean remove(T item){
+Entry<T> delEntry = getEntrylitem;	Entry<T> delEntry = getEntry(item);
+if delEntry == null return false;	if (delEntry == null) return false;
+Entry<T> p = delEntryparent;	Entry<T> p = delEntry.parent;
+size--;	size--;
+if ldelEntryleft== null &&  delEntry.right==  null	if (delEntry.left == null && delEntry.right == null){
+if delEntry== root{ root = null;;	if (delEntry == root){ root = null;
+}else   if delEntry== p.left{	}else { if (delEntry == p.left){
+pleft=  null;	p.left = null;
+}else { p.ight = null;	}else { p.right = null;
+}	}
+	}
+}else if delEntry.right == nullfEntry<T> lc = delEntry.eft;;	}else if (delEntry.right == null){ Entry<T> lc = delEntry.left;
+if lp == null {	if (p == null) {
+lc.parent = null;	lc.parent = null;
+root = lc;	root = lc;
+f else{  if fdelEntry == p.left{  p..left = lc	} else { if (delEntry == p.left){ p.left = lc;
+}else { p.right= lc;	}else { p.right = lc;
+}	}
+lc.parent = p;;	lc.parent = p;
+}	}
+}else if ldelntry.left== null Enry<T> rc = elntry..right;	}else if (delEntry.left == null){ Entry<T> rc = delEntry.right;
+if p == null {	if (p == null) {
+rc.paret= null;	rc.parent = null;
+root = rc;	root = rc;
+}else { if delEnty ==p.left	}else { if (delEntry == p.left)
+p.left = rc;	p.left = rc;
+else	else
+p.right  = rc;	p.right = rc;
+rc.paren = p;	rc.parent = p;
+}	}
+}else { Entry<T>successor  = successordelEntry;; delEntry.item = successor.item;	}else { Entry<T> successor = successor(delEntry); delEntry.item = successor.item;
+if delEntry.right == successor{	if (delEntry.right == successor){
+if successor..right !=null f	if (successor.right != null) {
+delEntry.right  = succesor..right;	delEntry.right = successor.right;
+successor.right.parent  delEntry;	successor.right.parent = delEntry;
+felse{delEntry.right = null;	}else { delEntry.right = null;
+}	}
+}else{ successor.parent.left = null;	}else { successor.parent.left = null;
+1	}
+return true;	return true;
+}	}
+delEntry.parent = null;	delEntry.parent = null;
+delEntry.left =  null	delEntry.left = null;
+delEntry.right = null;	delEntry.right = null;
+eturn true;	return true;
+l	}
+	
+private Entry<T> successorEntry<T>delEntry {	private Entry<T> successor(Entry<T> delEntry) {
+Entry<T> r =  delEntry.right;; while r..left != null{	Entry<T> r = delEntry.right; while (r.left != null){
+r =r.left;	r = r.left;
+1	}
+return r	return r;
+}	}
+pblic intsize{return size;}	public int size(){return size;}
+publicboolean isEmpty1return size ==0;1	public boolean isEmpty(){return size == 0;}
+pulic void clear{	public void clear(){
+cleargetRoot;	clear(getRoot());
+root = nll	root = null;
+}	}
+private void clearEntry<T> ef{	private void clear(Entry<T> e){
+if e ! null{	if (e != null){
+cleare.leftl;	clear(e.left);
+e.left = null;	e.left = null;
+cleareright;	clear(e.right);
+e.right = null;	e.right = null;
+}	}
+f	}
+final class Entry<T extends Comparable<T>>1	final class Entry<T extends Comparable<T>>{
+private T item;	private T item;
+privateEntry<T> left;	private Entry<T> left;
+private Entry<T>  right;	private Entry<T> right;
+private Entry<T> parent;	private Entry<T> parent;
+EntryT item,,Entry<T> parent{	Entry(T item,Entry<T> parent){
+this.item = item;	this.item = item;
+this.paent= parent;	this.parent = parent;
+}	}
+}	}
+}	}

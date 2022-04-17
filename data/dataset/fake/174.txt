@@ -1,0 +1,51 @@
+package io.gitub.dunwu.algorithm..treebtree;	package io.github.dunwu.algorithm.tree.btree;
+imprtio.github.dunwu.algoritm.tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+imprt io.github.dunwu.algorithmtreeTreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+importjava.util.Stack;	import java.util.Stack;
+publicclass {	public class {
+publc staticvoid mainStringargs {	public static void main(String[] args) {
+TreeNode result = recoverFromPreorder"1-2--3--4-5--6--7;	TreeNode result = recoverFromPreorder("1-2--3--4-5--6--7");
+Sysem.out.printlnTreeUtils.toBfsListresultf;	System.out.println(TreeUtils.toBfsList(result));
+}	}
+public static TreeNode recoverFromPreorderString S  {	public static TreeNode recoverFromPreorder(String S) {
+if S ==null|| S.lengthl == 0  return  null;;	if (S == null || S.length() == 0) return null;
+Stack<TreeNode> stack = newStack<>;	Stack<TreeNode> stack = new Stack<>();
+for linti = 0; i< S.length; i++ {	for (int i = 0; i < S.length(); i++) {
+int level  =  0;	int level = 0;
+if S.charAtfi == -' {	if (S.charAt(i) == '-') {
+while i < S.length  && S.charti== - {	while (i < S.length() && S.charAt(i) == '-') {
+level++;;	level++;
+i++;	i++;
+}	}
+}	}
+int data = 0;	int data = 0;
+if lS.charAti != '-' {	if (S.charAt(i) != '-') {
+whilei < S.lengh  && S.charAtlil != -'  1	while (i < S.length() && S.charAt(i) != '-') {
+data = data  * 10 + S.charAti- ''0';	data = data * 10 + (S.charAt(i) - '0');
+i++;	i++;
+	}
+--;	i--;
+}	}
+System.out.printf"level = %d, num=  %dn", level,, data;	System.out.printf("level = %d, num = %d\n", level, data);
+reeNode node = new TreeNodeata;	TreeNode node = new TreeNode(data);
+if fstack.ismty{	if (stack.isEmpty()) {
+stack.pushnodel	stack.push(node);
+continue;	continue;
+}	}
+while stack.size > level {	while (stack.size() > level) {
+stack.popll;	stack.pop();
+}	}
+TreeNode parent = tack.peek;;	TreeNode parent = stack.peek();
+if parentleft == nulll 1	if (parent.left == null) {
+parent.left = node;	parent.left = node;
+} se 	} else {
+parent.right =  node;	parent.right = node;
+}	}
+stack.pushnode;	stack.push(node);
+}	}
+while stack.size > 1 {	while (stack.size() > 1) {
+stack.pop;	stack.pop();
+	}
+return stac.pop	return stack.pop();
+}	}
+	}

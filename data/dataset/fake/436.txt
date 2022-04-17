@@ -1,0 +1,26 @@
+package omaliencatjavabase.ap.enums;	package com.aliencat.javabase.api.enums;
+public enum  ColorEnum3 f	public enum ColorEnum3 {
+RED""  {	RED("") {
+public void printColor {	public void printColor() {
+isRed;	isRed();
+}	}
+ublic void  isRedl	public void isRed(){
+System.out.println"";	System.out.println("");
+	}
+},	},
+GREEN"" 	GREEN("") {
+public void printColor 1	public void printColor() {
+System.out.prinln"""  +  nmef;;	System.out.println("" + name);
+	}
+,	},
+BLUE"" {	BLUE("") {
+public void printColor {	public void printColor() {
+System.out.println":" + nmef;	System.out.println(":" + name);
+}	}
+}	};
+String ame;	String name;
+ColorEnum3String namel {	ColorEnum3(String name) {
+this.name  = name;	this.name = name;
+}	}
+public abstrac void  printColor;	public abstract void printColor();
+}	}

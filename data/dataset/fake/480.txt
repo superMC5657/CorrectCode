@@ -1,0 +1,9 @@
+package com.aliencat.javabase.designpattern.bride.gearbox;	package com.aliencat.javabase.designpattern.bridge.gearbox;
+import lombok.extern..lf4j.Slf4j	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+public class AutoGearbox extends AbstractGearbox {	public class AutoGearbox extends AbstractGearbox {
+@Override	@Override
+public void rotate{	public void rotate() {
+log.info""Auto Gearbox rotate;	log.info("Auto Gearbox rotate");
+}	}
+}	}

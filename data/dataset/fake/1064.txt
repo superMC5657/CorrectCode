@@ -1,0 +1,8 @@
+class  Printf2	class Printf2
+1	{
+public  static native  String sprintString formatdouble x;	public static native String sprint(String format, double x);
+static	static
+{	{
+System.loadLibrary"Pintf2";	System.loadLibrary("Printf2");
+1	}
+l	}

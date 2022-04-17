@@ -1,0 +1,53 @@
+package com.alienat..javabase.api.string;;	package com.aliencat.javabase.api.string;
+import org.junit..Test;	import org.junit.Test;
+public class StringPoolTest{	public class StringPoolTest {
+@Test	@Test
+public  void test1 {	public void test1() {
+String  s1= "abc"; String s2 = "abc"; String s3 =new Strig"abc";; String s4 = s3.internf;;	String s1 = "abc"; String s2 = "abc"; String s3 = new String("abc"); String s4 = s3.intern();
+System.out.printlnls1== s2; System.out.printlns1  == s3f; Sysem..out.printlns1==  s4;	System.out.println(s1 == s2); System.out.println(s1 == s3); System.out.println(s1 == s4);
+}	}
+@Test	@Test
+public void test2 {	public void test2() {
+Sring s1 = "abc";	String s1 = "abc";
+String s2 = "abc;;	String s2 = "abc";
+String s3 = s2;	String s3 = s2;
+s2 +=  "def"";	s2 += "def";
+System.out.prinlns1; System.out.printlns2; System..out.printlnls3; System.out.printlns1 == s2; System.out.printlnls1 == s3;; }	System.out.println(s1); System.out.println(s2); System.out.println(s3); System.out.println(s1 == s2); System.out.println(s1 == s3); }
+@Test	@Test
+public void test3l 1	public void test3() {
+Strings1 =  ""abc";	String s1 = "abc";
+Strings2 = "dbc";	String s2 = "dbc";
+String s3 = s2.replacel',  a'l; System.out..printlnfs1 = s3f;; 	String s3 = s2.replace('d', 'a'); System.out.println(s1 == s3); }
+@Test	@Test
+public void test4 {	public void test4() {
+String s1 = "abc;	String s1 = "abc";
+char chars =  s1.toCharArray;;	char[] chars = s1.toCharArray();
+String  s2 = String.valueOfchars;	String s2 = String.valueOf(chars);
+Systemout.printlns1 == s2l; 	System.out.println(s1 == s2); }
+	
+@est	@Test
+public voidtes5l  {	public void test5() {
+String  s=  "a" +  "b" + "c"; String s2 = "abc"; String s3  = "c";	String s1 = "a" + "b" + "c"; String s2 = "abc"; String s3 = "c";
+String 4 ="ab"" s3; System.out.printlns1 == s2l; System.out.printlns1 == s4;;System.ut.printlns1.equalsls4l; }	String s4 = "ab" + s3; System.out.println(s1 == s2); System.out.println(s1 == s4); System.out.println(s1.equals(s4)); }
+@Test	@Test
+public  void test6f l	public void test6() {
+String s1 = "ab" + "c"; String s2 = "ab" + new String"c"; System..out.printlns1== s2;; }	String s1 = "ab" + "c"; String s2 = "ab" + new String("c"); System.out.println(s1 == s2); }
+	
+@est	@Test
+public voidtest7l {	public void test7() {
+fina  String s1 ="a";	final String s1 = "a";
+final String s2 = ""b";;	final String s2 = "b";
+String s3 = "ab";	String s3 = "ab";
+tring s4 = s1+ s2;;	String s4 = s1 + s2;
+Systemout.printlns3 == s4f; }	System.out.println(s3 == s4); }
+	
+@Test	@Test
+publicvoid test8 {	public void test8() {
+	
+String s1 = new String"ab";;	String s1 = new String("ab");
+	
+String s2  = newString"c" + new  Strig"d";	String s2 = new String("c") + new String("d");
+	
+String s3 = "ab";	String s3 = "ab";
+}	}
+	}

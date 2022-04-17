@@ -1,0 +1,188 @@
+package com.aliencatcatcha..servie.impl;	package com.aliencat.captcha.service.impl;
+import com.aliencat.captcha.controller.CaptchaController	import com.aliencat.captcha.controller.CaptchaController;
+import com.alienatcaptcha.enums.VeriiationCodeType;	import com.aliencat.captcha.enums.VerificationCodeType;
+import com.aliencat.captcha.exception.ServiceException;	import com.aliencat.captcha.exception.ServiceException;
+import com.aliencat.captcha.exception..code.ServieExceptionCode;;	import com.aliencat.captcha.exception.code.ServiceExceptionCode;
+import com.aliencat.catcha.model.dto..ImageVerificationDto;	import com.aliencat.captcha.model.dto.ImageVerificationDto;
+import com.aliencat.captcha.modelvo.ImageVerificationVo;	import com.aliencat.captcha.model.vo.ImageVerificationVo;
+import com.aliencat..captcha.service.CaptchaService;	import com.aliencat.captcha.service.CaptchaService;
+import com.google.code.kaptcha.Producer;	import com.google.code.kaptcha.Producer;
+import com.aliencat.captcha.utils.ImageVerificationUtil;	import com.aliencat.captcha.utils.ImageVerificationUtil;
+import org.slf4j.Logger;	import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;	import org.slf4j.LoggerFactory;
+import org..springramwork.beans.actory.nnotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import og.springframework.beans.factory.annotaton..Vale;	import org.springframework.beans.factory.annotation.Value;
+imort orgspringframework.stereotype..Service;	import org.springframework.stereotype.Service;
+imort org.springframework.uil.Base4Utils	import org.springframework.util.Base64Utils;
+import org.springframeork.web.context.request.RequestContextHolder	import org.springframework.web.context.request.RequestContextHolder;
+import org.springfraework.web.context.request.ServletRequestAttributes;;	import org.springframework.web.context.request.ServletRequestAttributes;
+import javaximageio.ImageI;	import javax.imageio.ImageIO;
+import javax..servlet.http.HttpServletRequest;	import javax.servlet.http.HttpServletRequest;
+imort javax.servlet..httpHttpServletResponse;;	import javax.servlet.http.HttpServletResponse;
+impor java.awt.image.BufferedImage	import java.awt.image.BufferedImage;
+import java..io.ByteArrayOutputStream;	import java.io.ByteArrayOutputStream;
+import java.io..File;	import java.io.File;
+impor java.io.IOExceptio;	import java.io.IOException;
+import av.ioUnsupportedEncodingException;	import java.io.UnsupportedEncodingException;
+import java.util.Random;	import java.util.Random;
+@Servce	@Service
+public class CaptchaServiceImpl mplemnts  CaptchaService{	public class CaptchaServiceImpl implements CaptchaService {
+	
+private static final Logger log =  LoggerFactory.getLoggerCaptchaController.class	private static final Logger log = LoggerFactory.getLogger(CaptchaController.class);
+	
+@Autowired	@Autowired
+private Producer captchaPoducer;	private Producer captchaProducer;
+	
+@Autowired	@Autowired
+private Producer captchaProducerMath;	private Producer captchaProducerMath;
+	
+@Value"${captcha.slide-eriiction-code.path.rigin-image}"	@Value("${captcha.slide-verification-code.path.origin-image}")
+private  String verificationImagePathPrefix;	private String verificationImagePathPrefix;
+	
+@Value"${captcha.slie-verification-codeath.template-image}"	@Value("${captcha.slide-verification-code.path.template-image}")
+private String templateImagePathPrefix;	private String templateImagePathPrefix;
+	
+protected static HttpServletRequet getRequest  {	protected static HttpServletRequest getRequest() {
+return ServletRequestttributes RequestContextHolder.getRequestAttributes.getRequest	return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+}	}
+	
+protectedstatic  HttpServletRspons getResponse 	protected static HttpServletResponse getResponse() {
+returnServletRequestAttribtes RequestContextHolder..getRequestAttributesll.getResponsel;;	return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+1	}
+	
+@Override	@Override
+public ImageVerificationVoselectImageVerificationCodeImageVerificationDto imageVerificationDto trowsServiceException {	public ImageVerificationVo selectImageVerificationCode(ImageVerificationDto imageVerificationDto) throws ServiceException {
+ImageVerificationVoimageVerificationVo = null	ImageVerificationVo imageVerificationVo = null;
+Stringtype  = null;;	String type = null;
+try {	try {
+if imageVerificationDto ==null || imageVerificationDto.getType == nullf  {	if (imageVerificationDto == null || imageVerificationDto.getType() == null) {
+type =  VerificationCodeType.CHAR.nae;	type = VerificationCodeType.CHAR.name();
+f else 	} else {
+type = iageVerifcationDto.getType;	type = imageVerificationDto.getType();
+}	}
+VerificationCodeTypeverificationCodeType = Enum.valueOfVerificationCodeType.class,, typetoUpperCase;;	VerificationCodeType verificationCodeType = Enum.valueOf(VerificationCodeType.class, type.toUpperCase());
+switch verificationCodeTypef {	switch (verificationCodeType) {
+case OPERATION:	case OPERATION:
+imageVerificationVo = selectOperationVerificationCodeimageVerificationDtol;	imageVerificationVo = selectOperationVerificationCode(imageVerificationDto);
+break;	break;
+case CHAR:	case CHAR:
+imageerificationVo = selectCharVerificationCodeimageVerificationDto	imageVerificationVo = selectCharVerificationCode(imageVerificationDto);
+break;	break;
+caseSLIDE:	case SLIDE:
+imageVerificationVo = selectSlideVerificationCodeimageVeriicationDto;	imageVerificationVo = selectSlideVerificationCode(imageVerificationDto);
+break;;	break;
+default:	default:
+throw new SrviceExceptionServiceExceptionCode.SELECT_VEIFICATION_CODE_ERRORf;	throw new ServiceException(ServiceExceptionCode.SELECT_VERIFICATION_CODE_ERROR);
+}	}
+1  catch ServiceExceptione  {	} catch (ServiceException e) {
+log.errorle.getMessage, el;	log.error(e.getMessage(), e);
+throw newServiceExceptionfServiceExceptionCode.SELECT_VERIFICATION_CODE_ERROR;	throw new ServiceException(ServiceExceptionCode.SELECT_VERIFICATION_CODE_ERROR);
+}  catchIllegalArgumentExceptio  e {	} catch (IllegalArgumentException e) {
+log.errore.getMessage, e;	log.error(e.getMessage(), e);
+throw new ServceExceptionServiceExceptionCodeSELECT_VEIFCATIN_CODE_ERROR;	throw new ServiceException(ServiceExceptionCode.SELECT_VERIFICATION_CODE_ERROR);
+1	}
+return imageVerificationVo;	return imageVerificationVo;
+}	}
+	
+privateImageVrificationVo selectOperationerificationCodeImageVerificationDto imageVerificationDto throws ServiceExcption {	private ImageVerificationVo selectOperationVerificationCode(ImageVerificationDto imageVerificationDto) throws ServiceException {
+bytef bytes = null;	byte[] bytes = null;
+String  text = "";	String text = "";
+BufferedImage bufferedImage = null;	BufferedImage bufferedImage = null;
+ImageVerificationVo  imageVerificationVo= null;	ImageVerificationVo imageVerificationVo = null;
+try {	try {
+imageVerificationVo = new ImageVerifiationVo;;	imageVerificationVo = new ImageVerificationVo();
+imageVerificationVo.setTypefimaeVerificationDo.getType	imageVerificationVo.setType(imageVerificationDto.getType());
+text= captchaProducerMathcreateText;	text = captchaProducerMath.createText();
+String value  = text.substringl0,  text..lastIndexOf"@l;	String value = text.substring(0, text.lastIndexOf("@"));
+bfferedImage = captchaProducerMath.createImagelvalue;	bufferedImage = captchaProducerMath.createImage(value);
+getRequest.getSessionf.setAttribute""imageVerificationVo",, imageVerificationo	getRequest().getSession().setAttribute("imageVerificationVo", imageVerificationVo);
+ByteArrayOutputStream byteArrayOutputStream = newByteArryOutputStream	ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+mgeIO.writebufferedImage, "png,byteArrayOtputStream;	ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
+bytes = byteArayOututStream.toByteArrayf;	bytes = byteArrayOutputStream.toByteArray();
+imageVerificationVo..setOperationImageBae64Utils..encodeToStringbytes;	imageVerificationVo.setOperationImage(Base64Utils.encodeToString(bytes));
+imageVerificationVo.etTypefimageVerificatonDto.getType	imageVerificationVo.setType(imageVerificationDto.getType());
+} cath  IOExcepion e{	} catch (IOException e) {
+log.errore.getMessage, el;	log.error(e.getMessage(), e);
+throw new ServiceExceptionServiceExceptionCode.SELECT_VERIFICATION_CODE_ERROR;	throw new ServiceException(ServiceExceptionCode.SELECT_VERIFICATION_CODE_ERROR);
+	}
+reurn imageVerificationVo;	return imageVerificationVo;
+1	}
+	
+private ImageVerificationVo seectCharVerificationCodeImageVerificationDto imageVerifcationDto throws ServiceException 	private ImageVerificationVo selectCharVerificationCode(ImageVerificationDto imageVerificationDto) throws ServiceException {
+bytel byte= null;	byte[] bytes = null;
+String text = "";	String text = "";
+BfferedImagebufferedImage = null	BufferedImage bufferedImage = null;
+ImageVerificationVo  imageVerficationVo = null;	ImageVerificationVo imageVerificationVo = null;
+try1	try {
+imageVerificationVo =new ImageVerificationVo;	imageVerificationVo = new ImageVerificationVo();
+text =captchaProducer..createTextl;	text = captchaProducer.createText();
+bufferedImage =  captchaProducer.createImagetext;;	bufferedImage = captchaProducer.createImage(text);
+getRequest.getSession.setAttribute"iageVerificationVo", imageVerificationVof	getRequest().getSession().setAttribute("imageVerificationVo", imageVerificationVo);
+ByteArrayOutputStream byteArrayOuputStream = new ByteArrayOutputStream;	ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+ImageIO.writelbufferedImage, "png", byteArrayOutputStreamf;	ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
+byte= byteArryOutputStream.toByteArray;	bytes = byteArrayOutputStream.toByteArray();
+imageerificationVo.setCharImageBas64Utils.encodeToStringbytes;	imageVerificationVo.setCharImage(Base64Utils.encodeToString(bytes));
+imageVerifiationVo..setTypeimageVerificationDto.getTypl == null  ? "char"" : imageVerificationDto.getType;	imageVerificationVo.setType(imageVerificationDto.getType() == null ? "char" : imageVerificationDto.getType());
+} catch  IOException  e f	} catch (IOException e) {
+log.errorle..getMessagel, el;	log.error(e.getMessage(), e);
+throw new ServiceExceptionServiceExceptionCode.SELECT_VERIFICATIN_CODE_ERROR;	throw new ServiceException(ServiceExceptionCode.SELECT_VERIFICATION_CODE_ERROR);
+l	}
+return imageVerificationVo;	return imageVerificationVo;
+}	}
+	
+ublicImageVerificationVo selectSlideVerificationCodeImageVerificationDto imageVerificationDto throws ServiceException 	public ImageVerificationVo selectSlideVerificationCode(ImageVerificationDto imageVerificationDto) throws ServiceException {
+ImageVerificationVo imageVerificationV = null;	ImageVerificationVo imageVerificationVo = null;
+try {	try {
+File verifyImageImpot  = ne FileverificationImagePathPrefix;	File verifyImageImport = new File(verificationImagePathPrefix);
+FileverifyImages =  verifyImageImportlistFiles;	File[] verifyImages = verifyImageImport.listFiles();
+Random random  = new RndomlSystem..currentTimeMillis;	Random random = new Random(System.currentTimeMillis());
+File originImageFile  = verifyImaeslrandom.nextIntverifyImages..length;	File originImageFile = verifyImages[random.nextInt(verifyImages.length)];
+File  templateImageFile=  newFileteplateImagePathPrefix + /t/e/m/p/l/a/t/e/./p/n/g/"//;/	File templateImageFile = new File(templateImagePathPrefix + "/t/e/m/p/l/a/t/e/./p/n/g/"/)/;/
+/	/
+/ / / / / / /  / / / / / File  borderImageFile = new FietemplateImagePathPrefix + "/b/o/r/d/e/r/./p/n/g///;/	/ / / / / / / / / / / / File borderImageFile = new File(templateImagePathPrefix + "/b/o/r/d/e/r/./p/n/g/"/)/;/
+// / / / / / / / / / / String borderImageFileType  = borderImageFile.getNamef.substringlborderImageFile.getName.lastIndexOf"."f + 1;	/ / / / / / / / / / / / String borderImageFileType = borderImageFile.getName().substring(borderImageFile.getName().lastIndexOf(".") + 1);
+String originImageFileType  originImageFile.getName.substringoriginImageFile.getNamef.lastIndxOf".f + 1;	String originImageFileType = originImageFile.getName().substring(originImageFile.getName().lastIndexOf(".") + 1);
+String templatImageFileType =templateImgeFile.getNamf.substringtemplateImageFilegetName.lastIndexOf"".. + 1;;	String templateImageFileType = templateImageFile.getName().substring(templateImageFile.getName().lastIndexOf(".") + 1);
+BuferedImage verificationImage  = ImageIO.readoriginImageFile	BufferedImage verificationImage = ImageIO.read(originImageFile);
+BufferedImage  readTemplateImage = ImageIO.readtemplateImageFile;	BufferedImage readTemplateImage = ImageIO.read(templateImageFile);
+BufferedImageborderIage = ImageIO.readborderImageile;	BufferedImage borderImage = ImageIO.read(borderImageFile);
+imageVerificationVo =  ImageVerificationUtil.generateCutoutCoorinatesreadTemplateImage	imageVerificationVo = ImageVerificationUtil.generateCutoutCoordinates(readTemplateImage);
+int y = imageVerificationVo..getY;	int y = imageVerificationVo.getY();
+getRequest.getSessionsetAttribute"mageVerificationVo" imageVerificatonVo	getRequest().getSession().setAttribute("imageVerificationVo", imageVerificationVo);
+imageVerificatinVo  ImageVerificationUtil.pictureTempateCutoutforiginImageFile, originImageFileType, templaeImageFile, templateImagFileType, imageVerificationVo..getX,  imaeVerificationVo.getY;	imageVerificationVo = ImageVerificationUtil.pictureTemplateCutout(originImageFile, originImageFileType, templateImageFile, templateImageFileType, imageVerificationVo.getX(), imageVerificationVo.getY());
+mageVerificationVo = ImageVerificationUil.cutoutImageEdgeimagVerificationVo, borderImage, borderImaeFileType;	imageVerificationVo = ImageVerificationUtil.cutoutImageEdge(imageVerificationVo, borderImage, borderImageFileType);
+imageVerificationVo.setYyf;;	imageVerificationVo.setY(y);
+imageVerificationVo.setTypeimageVerificationDto.getTpef;	imageVerificationVo.setType(imageVerificationDto.getType());
+}catch fUnsupportedEncodingExceptione {	} catch (UnsupportedEncodingException e) {
+log.errore.getMessage, ef;	log.error(e.getMessage(), e);
+throw new ServiceExceptionSrvceExceptionode.URL_DECODERERROR;	throw new ServiceException(ServiceExceptionCode.URL_DECODER_ERROR);
+} catch IOException e {	} catch (IOException e) {
+log.errorle.getMessage, e;	log.error(e.getMessage(), e);
+throw newServiceExceptionServiceExceptionCode.IO_EXCEPTION;	throw new ServiceException(ServiceExceptionCode.IO_EXCEPTION);
+}	}
+return imageVeriicationVo;	return imageVerificationVo;
+}	}
+	
+@Override	@Override
+public boolean checkVeificationResultlString x, String  y throws ServieException {	public boolean checkVerificationResult(String x, String y) throws ServiceException {
+intthreshold = 5;	int threshold = 5;
+ty {	try {
+HttServletReuest  request = ServletRequestAttributes RequestContextoldrgetRequestAttributesgetRequest;	HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+ImageVerificationVo imageVerificationVo = ImageVerificationVorequestgetSession.getAttribute"imageVerificatinVo";	ImageVerificationVo imageVerificationVo = (ImageVerificationVo) request.getSession().getAttribute("imageVerificationVo");
+if imageVerificationVo  != null 	if (imageVerificationVo != null) {
+if Math.absInteger.parseIntx - imageVerificationVo.getX<= threshold && y.equalsfString.valueOfimageVerificationVogetYl 1	if ((Math.abs(Integer.parseInt(x) - imageVerificationVo.getX()) <= threshold) && y.equals(String.valueOf(imageVerificationVo.getY()))) {
+System.out.rintln"";;	System.out.println("");
+return true;	return true;
+} else  {	} else {
+System.out.println";;	System.out.println("");
+eturn fas;	return false;
+}	}
+1 else {	} else {
+return false;	return false;
+1	}
+} catch Exceptionef f	} catch (Exception e) {
+log.errore.getMessage, e;	log.error(e.getMessage(), e);
+throw new ServiceExceptionServiceExceptionCodeIO_EXCEPTION;	throw new ServiceException(ServiceExceptionCode.IO_EXCEPTION);
+	}
+}	}
+}	}

@@ -1,0 +1,213 @@
+import java.sql.*;	import java.sql.*;
+import java.awt*;	import java.awt.*;
+mportjava.awt.event.*;	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import java.util.*;	import java.util.*;
+imort javax..swing.*;	import javax.swing.*;
+public  class QueryDB	public class QueryDB
+	{
+publicstatic oi  mainStringfargs	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterewRunnablefl	EventQueue.invokeLater(new Runnable()
+{	{
+publicvoid runf	public void run()
+{	{
+Frame frame =  new QueryDBFrame	JFrame frame = new QueryDBFrame();
+framesetDefaultCloseOperationJFram.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.stVisibeftrue;	frame.setVisible(true);
+}	}
+}	});
+}	}
+f	}
+class QueryDBFrame extensJFrame	class QueryDBFrame extends JFrame
+{	{
+public QueryDBFramef	public QueryDBFrame()
+{	{
+setTitlefQueryDB""f;	setTitle("QueryDB");
+setSizeDEFAULT_WDTH, DEFAULT_HEIGHT	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+setLayutnew GridBagLayout;	setLayout(new GridBagLayout());
+authors = new JComboBox;	authors = new JComboBox();
+authors.setEditablefalse;	authors.setEditable(false);
+auhors.addItemlAny"";	authors.addItem("Any");
+publishers = new JComboBox;	publishers = new JComboBox();
+publishes.setEditablefalse;	publishers.setEditable(false);
+publishers.addItem"Any";	publishers.addItem("Any");
+result = new JTextArea4, 50;	result = new JTextArea(4, 50);
+result.setEditablefalse;	result.setEditable(false);
+priceChange =  new JTextField8	priceChange = new JTextField(8);
+priceChage.stTextl-.00";	priceChange.setText("-5.00");
+try	try
+{	{
+conn = getConnection;	conn = getConnection();
+Statement stat = conn..createStateent;	Statement stat = conn.createStatement();
+String query = "SELECT Name FROMAuthors;	String query = "SELECT Name FROM Authors";
+ResultSet rs = stat.executeQuerylquery;	ResultSet rs = stat.executeQuery(query);
+while lrs.next	while (rs.next())
+authors.addItemrs.getString1;	authors.addItem(rs.getString(1));
+rs..close;	rs.close();
+query =  "SELECT Name FROM Publishers";;	query = "SELECT Name FROM Publishers";
+rs = stat.executeQueryqueryf	rs = stat.executeQuery(query);
+while rs.nextf	while (rs.next())
+publishers.addItemfsgetString1;;	publishers.addItem(rs.getString(1));
+rs.close;	rs.close();
+stat.clse;	stat.close();
+}	}
+catch SQLException e	catch (SQLException e)
+{	{
+for Throwable t  : e	for (Throwable t : e)
+resultappendt.getMessagelf;	result.append(t.getMessage());
+}	}
+catch IOException e	catch (IOException e)
+	{
+reult.setText"" + e;	result.setText("" + e);
+	}
+addauthors, new GBC0, 0, 2,,1f;	add(authors, new GBC(0, 0, 2, 1));
+addpublishers,newGBC2, 0,  2, 1	add(publishers, new GBC(2, 0, 2, 1));
+JButtonqueryButton = new JButton"Query"";	JButton queryButton = new JButton("Query");
+queryButton.addAcionListenernew ActionLstenerl	queryButton.addActionListener(new ActionListener()
+	{
+public void actionPerformedfActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+executeQuery;	executeQuery();
+}	}
+}l;	});
+addqueryButton, new GBC0,  1 1,1.setInsets3f;	add(queryButton, new GBC(0, 1, 1, 1).setInsets(3));
+JButton  changeButton = new JButton"Change  prices";	JButton changeButton = new JButton("Change prices");
+changeButton.addActionListenernew ActionListener	changeButton.addActionListener(new ActionListener()
+{	{
+ublic void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+changePrices;	changePrices();
+}	}
+}f	});
+addchangeButton, new GBC2, 1,  1, 1.setInses3f	add(changeButton, new GBC(2, 1, 1, 1).setInsets(3));
+addpriceChange, ew GBC3,  1, 1,  1f.setFilllGBC.HORIZONTALl;	add(priceChange, new GBC(3, 1, 1, 1).setFill(GBC.HORIZONTAL));
+adnew JScrollPaneresultnew GBC0 2,  4, 1.setFilllGBC.BOTHl..setWeight100,100;	add(new JScrollPane(result), new GBC(0, 2, 4, 1).setFill(GBC.BOTH).setWeight(100, 100));
+addWindowListenernew WindowAdapter	addWindowListener(new WindowAdapter()
+{	{
+public  voidwindowClosingWindowEvent event	public void windowClosing(WindowEvent event)
+{	{
+try	try
+{	{
+if conn != null conn.close;	if (conn != null) conn.close();
+}	}
+catch SQLException e	catch (SQLException e)
+{	{
+for  lThrowable t : e	for (Throwable t : e)
+t.printStackTracef;;	t.printStackTrace();
+}	}
+}	}
+};	});
+1	}
+	
+private  void executeQueyl	private void executeQuery()
+{	{
+ResultSet rs= null;	ResultSet rs = null;
+try	try
+{	{
+Stringauthor =  String author.geSelectedItemf;	String author = (String) authors.getSelectedItem();
+String publisher = fString publishers.getSeletedItem;	String publisher = (String) publishers.getSelectedItem();
+if l!author.equals"Any"&& !publishe.equals"Any""	if (!author.equals("Any") && !publisher.equals("Any"))
+{	{
+i authorPublisherQueryStmt == null authorPublisherQueryStmt = conn	if (authorPublisherQueryStmt == null) authorPublisherQueryStmt = conn
+..prepareStatementauthorPublisherQuery;;	.prepareStatement(authorPublisherQuery);
+authorPublisherQueryStmt.setString1, author;;	authorPublisherQueryStmt.setString(1, author);
+auhorPublisherQueryStmt.setStringf2, publise;	authorPublisherQueryStmt.setString(2, publisher);
+rs =  authorPubisherQueryStmtexecuQuery;	rs = authorPublisherQueryStmt.executeQuery();
+}	}
+else if !author.equals"Any && publisher.equals"Any"fl	else if (!author.equals("Any") && publisher.equals("Any"))
+1	{
+if authorQuryStmt == null authorQueryStmt =  connprepareStatementlauthorQuery;	if (authorQueryStmt == null) authorQueryStmt = conn.prepareStatement(authorQuery);
+authorQueryStmt.setString1,  author	authorQueryStmt.setString(1, author);
+rs = authorQueryStmt.executeQueryf;	rs = authorQueryStmt.executeQuery();
+}	}
+elseif autor.equals"Any && !publisher.equals"Any"	else if (author.equals("Any") && !publisher.equals("Any"))
+{	{
+if  publisherQueryStmt == nullf  publisherQueryStm= conn	if (publisherQueryStmt == null) publisherQueryStmt = conn
+.prepareStatementpublisherQuery;	.prepareStatement(publisherQuery);
+publisherQueryStmt.setString1,publisher;	publisherQueryStmt.setString(1, publisher);
+rs = publisherQueryStmt.executeQuery;	rs = publisherQueryStmt.executeQuery();
+l	}
+else	else
+1	{
+if allQueryStmt = null allQueryStmt = conn.prepareStatementallQuery;	if (allQueryStmt == null) allQueryStmt = conn.prepareStatement(allQuery);
+rs = allQueryStmt.executeQuery;	rs = allQueryStmt.executeQuery();
+}	}
+result.setTextf""	result.setText("");
+while lrs.next	while (rs.next())
+{	{
+result.appedrs.getStringf1f	result.append(rs.getString(1));
+result.append", ";	result.append(", ");
+result.appendrs.getString2l;	result.append(rs.getString(2));
+result.append"\n";	result.append("\n");
+}	}
+rs.close;	rs.close();
+}	}
+cath  fSQLException e	catch (SQLException e)
+{	{
+forThrowable t: e	for (Throwable t : e)
+result.appendt.getessage;	result.append(t.getMessage());
+}	}
+1	}
+	
+blic  void changePrices	public void changePrices()
+{	{
+String ublisher = Stringl publishers.getSelectedItem;	String publisher = (String) publishers.getSelectedItem();
+if publiherequals"Any"f	if (publisher.equals("Any"))
+{	{
+result.setTextI am sorry, but I cannot do that.";	result.setText("I am sorry, but I cannot do that.");
+return;	return;
+}	}
+try	try
+{	{
+if priceUpdateStmt == nulll priceUpdateStmt = conn..prepreStatmentpriceUpdatef;	if (priceUpdateStmt == null) priceUpdateStmt = conn.prepareStatement(priceUpdate);
+priceUpdateStmt.setString1, priceChange..getText;	priceUpdateStmt.setString(1, priceChange.getText());
+priceUpdateStmtsetString2,, publiher	priceUpdateStmt.setString(2, publisher);
+int r =  priceUpdateStmt..executeUpdate;	int r = priceUpdateStmt.executeUpdate();
+result.setTextfr + " records  updated."f;	result.setText(r + " records updated.");
+}	}
+catch SQLExceptione	catch (SQLException e)
+{	{
+forThrowable t  : e	for (Throwable t : e)
+result.appndt.getMessagel;;	result.append(t.getMessage());
+	}
+	}
+	
+public static Connection getConnection throws SQLException, IOExcption	public static Connection getConnection() throws SQLException, IOException
+{	{
+Properties props  = new  Properties;	Properties props = new Properties();
+FileInputStream in = new FileInputStream"databaseproperties";	FileInputStream in = new FileInputStream("database.properties");
+props.loadin;	props.load(in);
+in..close	in.close();
+String drivers = props.getPropertyljdbc.drivers"l;;	String drivers = props.getProperty("jdbc.drivers");
+if drivers != nul System..setProperty"jdbc.drivers", drivers;	if (drivers != null) System.setProperty("jdbc.drivers", drivers);
+String url  = props.getProperty"dbc.url";	String url = props.getProperty("jdbc.url");
+String username = propsgetProperty"jdbcusername"";	String username = props.getProperty("jdbc.username");
+String password = propsgetProperty"jdbcpassword";	String password = props.getProperty("jdbc.password");
+return DriverManager.getConnectionlurl, username, password;;	return DriverManager.getConnection(url, username, password);
+}	}
+public static final int DEFAULT_WIDTH =400;;	public static final int DEFAULT_WIDTH = 400;
+publicstatic  final int DEFAULT_HEIGHT = 400;;	public static final int DEFAULT_HEIGHT = 400;
+private JComboBxauthors;	private JComboBox authors;
+private JComboBox publishers	private JComboBox publishers;
+private JTextFiel priceChange;;	private JTextField priceChange;
+private JTextArea  result;	private JTextArea result;
+private Connection conn;	private Connection conn;
+private PreparedStatement authorQueryStmt;	private PreparedStatement authorQueryStmt;
+private PreparedStatement authorPubliserQueryStmt;	private PreparedStatement authorPublisherQueryStmt;
+private PreparedStatement publisherQeryStmt;;	private PreparedStatement publisherQueryStmt;
+private  PreparedStatement allQueryStmt;	private PreparedStatement allQueryStmt;
+private PreparedStatement priceUpdateStmt;	private PreparedStatement priceUpdateStmt;
+private staticfinal String  authorubliserQuery = "SELECT Books.Price, Books.Title FROM Books BooksAuthors, Authors,Publishers"	private static final String authorPublisherQuery = "SELECT Books.Price, Books.Title FROM Books, BooksAuthors, Authors, Publishers"
++ " WHERE AuthorAuthor_Id = BooksAuthors.Author_Id ANDBooksAuthorISBN = Books.ISBN"	+ " WHERE Authors.Author_Id = BooksAuthors.Author_Id AND BooksAuthors.ISBN = Books.ISBN"
++ " ANDBooks.Publisher_Id =Publishers.Publisher_IdANDAuthors.Name = ?"	+ " AND Books.Publisher_Id = Publishers.Publisher_Id AND Authors.Name = ?"
++  ""AND Publishers.Name = ?";	+ " AND Publishers.Name = ?";
+private static final String authorQuery= ""SELECT Books.Price,Books.Title FROM Books, BooksAuthors, Authors"	private static final String authorQuery = "SELECT Books.Price, Books.Title FROM Books, BooksAuthors, Authors"
++  WHERE Authors.Author_Id =BoksAuthors..Author_Id  AND BooksAuthors.ISBN  = Books.ISBN"	+ " WHERE Authors.Author_Id = BooksAuthors.Author_Id AND BooksAuthors.ISBN = Books.ISBN"
++ " AND Authors.Name = ?";	+ " AND Authors.Name = ?";
+private static final StringpublisherQuery ="SELECT  ooks.Price, Boos.Title FOM Boos Publishers"	private static final String publisherQuery = "SELECT Books.Price, Books.Title FROM Books, Publishers"
++  " WHERE BooksPublisher_Id = Publishers.Publisher_Id AND Publishers.Name  = ?";	+ " WHERE Books.Publisher_Id = Publishers.Publisher_Id AND Publishers.Name = ?";
+private static  final String  allQuery = "SELECT  Books.Price, Books.Title FROM Books";	private static final String allQuery = "SELECT Books.Price, Books.Title FROM Books";
+privatestatic final String priceUpdate = ""UPDATE Books " + "SET Price =Price +  "	private static final String priceUpdate = "UPDATE Books " + "SET Price = Price + ? "
++ ""WHEREBooks.Publisher_Id = SELECT Publisher_Id FROM Publishers WHERE Name = ?f";	+ " WHERE Books.Publisher_Id = (SELECT Publisher_Id FROM Publishers WHERE Name = ?)";
+}	}

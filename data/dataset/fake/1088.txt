@@ -1,0 +1,14 @@
+class OperateTest	class OperateTest
+{	{
+public static void mainfString args	public static void main(String[] args)
+1	{
+	
+System.out.printn2<<3;	System.out.println(2<<3);
+it  a =3, b = 7;	int a = 3, b = 7;
+	
+	
+	
+a = a ^ b;b = a ^ b;a = a^ b;	a = a ^ b;b = a ^ b;a = a ^ b;
+System.out.println"a=+a+"",b=+b;	System.out.println("a="+a+",b="+b);
+}	}
+}	}

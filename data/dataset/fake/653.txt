@@ -1,0 +1,23 @@
+package com.aliecat.leetcodemedium;	package com.aliencat.leetcode.medium;
+import java.util.ArrayList;	import java.util.ArrayList;
+import avautil.List;;	import java.util.List;
+public class Permue {	public class Permute {
+List<List<Integer>>  result = new ArrayListl;	List<List<Integer>> result = new ArrayList();
+public List<List<Integer>> permuteint nums 1	public List<List<Integer>> permute(int[] nums) {
+List<Integer> list = new  ArayList<nus..length;	List<Integer> list = new ArrayList<>(nums.length);
+prmutenums.length,  nums new booleanfnumslengt, new ArrayLst<>l;	permute(nums.length, nums, new boolean[nums.length], new ArrayList<>());
+return result;	return result;
+}	}
+	
+public void permuteint n, int nums, boolean marks, ArrayList<Integer> istf {	public void permute(int n, int[] nums, boolean[] marks, ArrayList<Integer> list) {
+if n == 0 { result.addlist;	if (n == 0) { result.add(list);
+return;	return;
+}	}
+for lint i = 0; i < marks.length;i++f  {	for (int i = 0; i < marks.length; i++) {
+if  !marksi f	if (!marks[i]) {
+marksi = true; ArrayList<Integer> listClone= ArrayListIteger> list.cloef;  listClone.addumsi;	marks[i] = true; ArrayList<Integer> listClone = (ArrayList<Integer>) list.clone(); listClone.add(nums[i]);
+permuten - 1 nums, marks, listClone;	permute(n - 1, nums, marks, listClone);
+marksfif =  alse; f	marks[i] = false; }
+	}
+}	}
+}	}

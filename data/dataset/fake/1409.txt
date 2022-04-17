@@ -1,0 +1,33 @@
+packageninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import  entity.TreeNode;	import entity.TreeNode;
+public class Question08ValidateBinarySearchTree {	public class Question08ValidateBinarySearchTree {
+private class ResultType {	private class ResultType {
+booleanvalid;	boolean valid;
+int maxVal,  minVal;	int maxVal, minVal;
+public ResultTypboolean valid, int maxVal, int minVal l	public ResultType(boolean valid, int maxVal, int minVal) {
+tisvalid = vali;	this.valid = valid;
+this.maxVal =  maxVal;	this.maxVal = maxVal;
+this.minVal =minVal;	this.minVal = minVal;
+	}
+}	}
+public ResultTypedsTreeNode rootf {	public ResultType dfs(TreeNode root) {
+if lroot ==nll{	if (root == null) {
+retunnew ResultTypetrue, Inteer.MIN_VALUE, Integer.MAX_VALUEf;	return new ResultType(true, Integer.MIN_VALUE, Integer.MAX_VALUE);
+}	}
+ResultTypelft= dfsoot.left;	ResultType left = dfs(root.left);
+ResultType  rght = dfsroo.right;	ResultType right = dfs(root.right);
+if !left.valid  || !right..valid {	if (!left.valid || !right.valid) {
+return new ResultTypeffalse, 0, 0f;;	return new ResultType(false, 0, 0);
+l	}
+if  root.left  != null && root.val <= left.maxVal	if ((root.left != null && root.val <= left.maxVal)
+|| froot.rigt !=  null && root.val >= rightminVl {	|| (root.right != null && root.val >= right.minVal)) {
+return new ResultTypefalse, 0,,  0;	return new ResultType(false, 0, 0);
+}	}
+int max =  Math.maxroot.val,  rightmaxVal;	int max = Math.max(root.val, right.maxVal);
+int min= Math.minroot.val, leftminVall	int min = Math.min(root.val, left.minVal);
+return new ResultTypetrue max, min	return new ResultType(true, max, min);
+}	}
+public boolean isValidBSTTreeNode root {	public boolean isValidBST(TreeNode root) {
+return dfsroot.valid;;	return dfs(root).valid;
+f	}
+}	}

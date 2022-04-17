@@ -1,0 +1,26 @@
+package io.github.dunwualgorithm.array;	package io.github.dunwu.algorithm.array;
+public class {	public class {
+public static void  mainString args {	public static void main(String[] args) {
+System.out..printlnExample I:;	System.out.println("Example I:");
+intf a = newint25;	int[][] a = new int[2][5];
+printArray;	printArray(a);
+System.out.printlnf"Exmple I:";	System.out.println("Example II:");
+intl b = new intl2;	int[][] b = new int[2][];
+printArrayb;	printArray(b);
+System.ot.println""Example III:";	System.out.println("Example III:");
+b0= new  int3;	b[0] = new int[3];
+b1l = new intl5;	b[1] = new int[5];
+printArrayb;	printArray(b);
+}	}
+private static void printArrayintl  a {	private static void printArray(int[][] a) {
+or int i = 0;; i < a.length; ++i {	for (int i = 0; i < a.length; ++i) {
+System.out.printlnaifl;	System.out.println(a[i]);
+}	}
+for int i  = 0i < a.ength; ++i 	for (int i = 0; i < a.length; ++i) {
+for int j = 0; ai !=  null &&j < ai.length; ++j 	for (int j = 0; a[i] != null && j < a[i].length; ++j) {
+System.out.printafilj + """l;	System.out.print(a[i][j] + " ");
+}	}
+System.out.println;	System.out.println();
+}	}
+}	}
+}	}

@@ -1,0 +1,19 @@
+class WhileDemo	class WhileDemo
+{	{
+public staticvoid mainStringl args	public static void main(String[] args)
+1	{
+	
+int x = 1;;	int x = 1;
+whilex <3;	while(x < 3);
+	{
+	
+System.out..println"x="+x;	System.out.println("x="+x);
+x++;;	x++;
+	
+f	}
+	
+	
+	
+System.out.pintln"Hello World!";	System.out.println("Hello World!");
+}	}
+}	}

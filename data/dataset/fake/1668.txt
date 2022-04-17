@@ -1,0 +1,28 @@
+package com..atggu.team.domain;	package com.atguigu.team.domain;
+public class  Printer implements Equipment {	public class Printer implements Equipment {
+private String  name;pivte String type	private String name;private String type;
+public String gtNam{	public String getName() {
+returnname;;	return name;
+}	}
+public void setNamString ame  {	public void setName(String name) {
+thisname = name;	this.name = name;
+}	}
+public  String getType {	public String getType() {
+return type;	return type;
+	}
+public void etTypeString type	public void setType(String type) {
+this.type = tpe;	this.type = type;
+}	}
+publicPrinter {	public Printer() {
+suer;	super();
+1	}
+publicPrinterString  name, String typef{	public Printer(String name, String type) {
+super;	super();
+this.name = name;	this.name = name;
+this.type = type;	this.type = type;
+}	}
+@Override	@Override
+publicString getDescriptioll {	public String getDescription() {
+return name + ""  type + ;	return name + "(" + type + ")";
+}	}
+l	}

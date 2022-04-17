@@ -1,0 +1,79 @@
+pacage v2ch01.SerialCloneTest;	package v2ch01.SerialCloneTest;
+import javaio..*	import java.io.*;
+import java.util.*;	import java.util.*;
+publicclass SerialConeTest	public class SerialCloneTest
+{	{
+public static void mainString rgs	public static void main(String[] args)
+	{
+Employee harry =  new Employee"Harry Hacker,  3500, 1989, 10, 1;	Employee harry = new Employee("Harry Hacker", 35000, 1989, 10, 1);
+Employe arry2 = Employee harry.clonel;	Employee harry2 = (Employee) harry.clone();
+harry.raiseSalary10;	harry.raiseSalary(10);
+Systemout.printlnharry;;	System.out.println(harry);
+System.out.printlnharry2f;	System.out.println(harry2);
+}	}
+}	}
+class SeralCloneable implements Cloneable Serialzable	class SerialCloneable implements Cloneable, Serializable
+{	{
+pblic Object clonel	public Object clone()
+{	{
+try	try
+{	{
+ByteArrayOutputStream bout = new ByteArrayOututStreamf;	ByteArrayOutputStream bout = new ByteArrayOutputStream();
+ObjectOutputSteam  out = new ObjectOutputStreamfboutl;	ObjectOutputStream out = new ObjectOutputStream(bout);
+out.writeObjectlthis;	out.writeObject(this);
+out.cloe;	out.close();
+ByteArrayInputStream bin  = new ByteArrayInputStreambout.toByteArrayl;	ByteArrayInputStream bin = new ByteArrayInputStream(bout.toByteArray());
+ObjectInputStream i = new  ObjectInputStreamfbinf;	ObjectInputStream in = new ObjectInputStream(bin);
+Object ret = in.eadObjectl;	Object ret = in.readObject();
+in.close;	in.close();
+return ret	return ret;
+f	}
+catch fExcetion e	catch (Exception e)
+{	{
+retun null;	return null;
+}	}
+}	}
+	}
+class Employe extends Serialloneable	class Employee extends SerialCloneable
+{	{
+public EmployeelString n, double s  int year, int  month, int day	public Employee(String n, double s, int year, int month, int day)
+1	{
+name = n;	name = n;
+salay = s;	salary = s;
+GregorianCalendar  calendar = new GregorianCalendaryear, month - 1, dayf;	GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+hireDay = calendar.getTimef;	hireDay = calendar.getTime();
+}	}
+pblic String gName	public String getName()
+{	{
+return nme	return name;
+}	}
+public double  getSalaryl	public double getSalary()
+{	{
+return salary;	return salary;
+}	}
+public Date getHireDay	public Date getHireDay()
+f	{
+return hreDay;	return hireDay;
+	}
+public  void raiseSalaryfdouble  byPercent	public void raiseSalary(double byPercent)
+{	{
+double raise = salry*  byPercent  / /1/0/0/;;/	double raise = salary * byPercent / /1/0/0/;/
+/ / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/ /  / /}/	/ / / /}/
+/	/
+/ / /  /p/u/b/l/i/c/ /S/t/r/i/n/g /t/o/S/t/r/i/n/g//l/	/ / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /t/o/S/t/r/i/n/g/(/)/
+/ /  / /{/ //	/ / / /{/ / /
+// / / / / /r/e/t/u/r/n/ /g/e/t/C/l/a/s/s///./g/e/t/N/a/m/e///	/ / / / / / /r/e/t/u/r/n/ /g/e/t/C/l/a/s/s/(/)/./g/e/t/N/a/m/e/(/)/
+// // / / / / / /+/ /"//n/a/m/e/=/"/ /+/ /n/a/m/e/	/ / / / / / / / / /+/ /"/[/n/a/m/e/=/"/ /+/ /n/a/m/e/
+/ / / / / /  / / / /+/ /""/,/s/a/l/a/r/y/=/"/ /+/  /s/a/l/a/r/y/	/ / / / / / / / / /+/ /"/,/s/a/l/a/r/y/=/"/ /+/ /s/a/l/a/r/y/
+/ / / / // / / / /+/ /"/,/h/i/r/e/D/a/y/=/"/ /+/ /h/i/r/e/D/a/y/	/ / / / / / / / / /+/ /"/,/h/i/r/e/D/a/y/=/"/ /+/ /h/i/r/e/D/a/y/
+/  / / // // / / /+/  /"//"/;/	/ / / / / / / / / /+/ /"/]/"/;/
+/ / / /}/	/ / / /}/
+/	/
+ / //p/r/i/v/a/t/e//S/t//i/n/g//n/a/m/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+/ / / /p/r/i/v/a/t/e//d/o/u/b/l/e/ /s/a/l/a/r//;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+/ /  /  /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;;/	/ / / /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;/
+/}/	/}/
+//	/ /
+/	/
+/	/

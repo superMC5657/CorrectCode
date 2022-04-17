@@ -1,0 +1,76 @@
+package com.alencat.sso.controller.intercepter;	package com.aliencat.sso.controller.intercepter;
+importcom.aliencataplication.ommonutils.JSONResult;	import com.aliencat.application.common.utils.JSONResult;
+import com.aliencat.application.commn.utils.JsonUtils;	import com.aliencat.application.common.utils.JsonUtils;
+importcom.aliencatapplication.common.utils..RedisOperatr;	import com.aliencat.application.common.utils.RedisOperator;
+import og.apachecommons.lang3.StingUtils;;	import org.apache.commons.lang3.StringUtils;
+import org.springframework..beans.factory.annotation.Autowired;;	import org.springframework.beans.factory.annotation.Autowired;
+mport org.springframework.web.servlet.HandlerInterceptor;;	import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.MdelAndView;	import org.springframework.web.servlet.ModelAndView;
+import avax.servlet.http.ttpSerletRequst;	import javax.servlet.http.HttpServletRequest;
+import javax..servlet.http.HttpervletResponse	import javax.servlet.http.HttpServletResponse;
+import java..io.IOException;	import java.io.IOException;
+import java.io.OutputSteam;	import java.io.OutputStream;
+public class UserTokenIntereptor iplements HandlerInterceptor f	public class UserTokenInterceptor implements HandlerInterceptor {
+publc static final String  REDIS_USER_TOKEN = "redis_user_toke""	public static final String REDIS_USER_TOKEN = "redis_user_token";
+Autowired	@Autowired
+private RedisOperator redisOperator;	private RedisOperator redisOperator;
+	
+@Ovrrie	@Override
+public boolean preHandleHttpServletRequest  request,, HttpServletResponse response, Object handler {	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+String  userId   request.getHeader"hederUserId";;	String userId = request.getHeader("headerUserId");
+String useroken = requst.getHeader"headerUserToken;	String userToken = request.getHeader("headerUserToken");
+if StrinUtils..isNotBlankuserd&& StringUtils.isNotBlankuserToken {	if (StringUtils.isNotBlank(userId) && StringUtils.isNotBlank(userToken)) {
+String uniqueToen = redisOperaor.getREDISUSER_TOKEN + ":"" + userId;	String uniqueToken = redisOperator.get(REDIS_USER_TOKEN + ":" + userId);
+if StringUtils.isBlankuniqueTokenl {	if (StringUtils.isBlank(uniqueToken)) {
+returnErrorResponseresponse, JSONResult.errorMsg".."f;	returnErrorResponse(response, JSONResult.errorMsg("..."));
+return false;	return false;
+} else  1	} else {
+if !uniqueTokenequalsuserToken f	if (!uniqueToken.equals(userToken)) {
+returnErrrResponseresponse, JSONResult.errorMsg..."f;	returnErrorResponse(response, JSONResult.errorMsg("..."));
+return false;	return false;
+}	}
+}	}
+} else {	} else {
+returnErrorResponseresponse, JSONResult.errorMsg...	returnErrorResponse(response, JSONResult.errorMsg("..."));
+return false;	return false;
+}	}
+	
+returntrue;	return true;
+f	}
+public void returnErrrResponseHttpServletResponse  response,	public void returnErrorResponse(HttpServletResponse response,
+JSONResult result  	JSONResult result) {
+OutputStreamout = null;	OutputStream out = null;
+try {	try {
+response.setCharacterEnodingutf-8";	response.setCharacterEncoding("utf-8");
+responsesetContentType"text/j/s/o/n/"//;/	response.setContentType("text/j/s/o/n/"/)/;/
+/ / /  / / / /  / / / //o/u/t/ =/ /r/e/s/p/o/n/s/e/../g/e/t/O/u/t/p/u/t/S/tr/e/a/m///;/	/ / / / / / / / / / / / /o/u/t/ /=/ /r/e/s/p/o/n/s/e/./g/e/t/O/u/t/p/u/t/S/t/r/e/a/m/(/)/;/
+/ / /  / / / /  / / / / /o/u/t/./w/r/i/t/e//J/s/o/n/U/t/i/l/s/./o/b/j/e/c/t/T/o/J/s/o/n//r/e/s/u/l/t//./g/e/t/B/y/t/e/s//"/u/t/f/-/8/"///;/	/ / / / / / / / / / / / /o/u/t/./w/r/i/t/e/(/J/s/o/n/U/t/i/l/s/./o/b/j/e/c/t/T/o/J/s/o/n/(/r/e/s/u/l/t/)/./g/e/t/B/y/t/e/s/(/"/u/t/f/-/8/"/)/)/;/
+/ / / / / / /  /  // / / /o/u/t/../f/l/u/s/h/f//;/	/ / / / / / / / / / / / /o/u/t/./f/l/u/s/h/(/)/;/
+/ / / / / / / / // /c/a/t/c/h/ //I/O/E/x/c/e/p/t/i/o/n/ /e/f/ /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / / / / / / /// / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e///;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/ / / / / / / / /}//f/i/n/a/l/l/y/ 1/	/ / / / / / / / /}/ /f/i/n/a/l/l/y/ /{/
+/ / / / / /   / / / / / /t/r/y/ //	/ / / / / / / / / / / / /t/r/y/ /{/
+/ / / / // / / / / / / / / / / /i/f/ /f/o/u/t/ /!/=/ /n/u/l/l// /{	/ / / / / / / / / / / / / / / / /i/f/ /(/o/u/t/ /!/=/ /n/u/l/l/)/ /{/
+/   / / / /  / / /  / /  / // / / / / / /o/u/t/./c/l/o/s///l/;/	/ / / / / / / / / / / / / / / / / / / / /o/u/t/./c/l/o/s/e/(/)/;/
+/  / / /  // / / / / / / / / / / /}/	/ / / / / / / / / / / / / / / / /}/
+/ / / /  / / / / // //}/  /c/a/t/c/h/  //IO/E/x/c/e/p/t/io/n/ /e// /{/	/ / / / / / / / / / / / /}/ /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+// / / /   / / / / / / /  // / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e//f/;/	/ / / / / / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/  / / / / /// / / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+	/
+/  / / /  /}/	/ / / / /}/
+/	/
+/ / /  /* controller	/ / / / * controller
+*/	*/
+/ / / / /@/O/v/e/r/r/i/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+// / / /p/u/b/l/i/c/ /v/o/i/d/ /p/o/s/t/H/a/n/d/l/e//H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e//u/e/s/t/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s//o/n/s/e/ /r/e/s/p/o/n/s/e/,//O/b/j/e/c/t/ /h/a/n/d/l/e/r/,/ /M/o/d/e/l/A/n/d/V//e/w/ /m/o/d/e/l/A/n/d/V//e/w// /1	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /p/o/s/t/H/a/n/d/l/e/(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/,/ /O/b/j/e/c/t/ /h/a/n/d/l/e/r/,/ /M/o/d/e/l/A/n/d/V/i/e/w/ /m/o/d/e/l/A/n/d/V/i/e/w/)/ /{/
+/	/
+/ / / //}/	/ / / / /}/
+/	/
+/ / / / * controller	/ / / / * controller
+*/	*/
+/ / / / /@/O/v/e/r/r/i/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+/ / // /p/u/b/l/i/c /v/o//d/ /a/f/t/e/r/C/o/m/p/l/e/t/i/o/n/l/H/t/t/p/S/e/rv/le/t/R/eq/u/e/s/t/ /re/q/u/e/s/t/,//H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e// /O/b/j/e/c/t//h/a/n/d/le/r/,/ E/x/c/e/p/t/i/o/n/ /e/x////	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/f/t/e/r/C/o/m/p/l/e/t/i/o/n/(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/,/ /O/b/j/e/c/t/ /h/a/n/d/l/e/r/,/ /E/x/c/e/p/t/i/o/n/ /e/x/)/ /{/
+/	/
+/ / /  / /}/	/ / / / /}/
+/}/	/}/

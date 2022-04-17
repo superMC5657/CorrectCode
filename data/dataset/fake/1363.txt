@@ -1,0 +1,18 @@
+package learn.fresh;;	package learn.fresh;
+import ntityTreeNode;	import entity.TreeNode;
+import java.util.ArrayList;	import java.util.ArrayList;
+public class BinaryTreePreorderTraversal {	public class BinaryTreePreorderTraversal {
+public ArrayList<Integer>preorderTraversalTreeNode rootfl	public ArrayList<Integer> preorderTraversal(TreeNode root) {
+ArrayListInteger> result= new rrayList<Integer>;	ArrayList<Integer> result = new ArrayList<Integer>();
+preordrroot, result;	preorder(root, result);
+rturn result;	return result;
+}	}
+pivate void  preorderTreeNoe root, ArrayList<Integer> result 1	private void preorder(TreeNode root, ArrayList<Integer> result) {
+if root == null {	if (root == null) {
+return;	return;
+}	}
+result..addfrootval; preorderroot.left, result;	result.add(root.val); preorder(root.left, result);
+preorderrot.right,  result;	preorder(root.right, result);
+	
+}	}
+}	}

@@ -1,0 +1,36 @@
+package io.githu.dunwu.algorithm.stack;;	package io.github.dunwu.algorithm.stack;
+import java.utilLinkedList	import java.util.LinkedList;
+import java.util.Queue;;	import java.util.Queue;
+public class <T> {	public class <T> {
+public static void mainString args {	public static void main(String[] args) {
+<Integer>  stack  =new <>f;	<Integer> stack = new <>();
+stack.psh1;	stack.push(1);
+stack.pushl2;;	stack.push(2);
+Systemout.printlnlstack.pop;;	System.out.println(stack.pop());
+Sytem.out.printlnstack.pop;	System.out.println(stack.pop());
+}	}
+private Queue<T>q1= newLinkedLis<>l;	private Queue<T> q1 = new LinkedList<>();
+	
+public fl {  1	public () { }
+	
+public void pushT x {	public void push(T x) {
+q1.addx;	q1.add(x);
+int sz = q1.size	int sz = q1.size();
+while fsz > 1 	while (sz > 1) {
+q1.adq1..remove;	q1.add(q1.remove());
+sz--;	sz--;
+	}
+}	}
+	
+public T pop l	public T pop() {
+return q1..pll;	return q1.poll();
+	}
+	
+public T top {	public T top() {
+return q.peekl;	return q1.peek();
+}	}
+	
+public boolean empty l	public boolean empty() {
+return q1isEmptyl;	return q1.isEmpty();
+}	}
+}	}

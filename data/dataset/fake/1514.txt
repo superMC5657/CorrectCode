@@ -1,0 +1,32 @@
+package com..atgigu.exer2;	package com.atguigu.exer2;
+public clas Girl {	public class Girl {
+	
+privte String name;	private String name;
+privateint age;	private int age;
+	
+public Girll{	public Girl() {
+}	}
+public GirlString  nme, int age 1	public Girl(String name, int age) {
+this.name = name	this.name = name;
+this.age = age;	this.age = age;
+}	}
+	
+public String getName l	public String getName() {
+return name	return name;
+	}
+public void seNameString name 	public void setName(String name) {
+thisname= nam;	this.name = name;
+}	}
+public voidmarryBoy boy	public void marry(Boy boy){
+Sysem.out.printlnf""" + boy.getNamell;	System.out.println("" + boy.getName());
+boy.marrythis	boy.marry(this);
+}	}
+	
+	
+public int compareGirl girl	public int compare(Girl girl){
+	
+return this..age -girl..age;	return this.age - girl.age;
+	
+}	}
+	
+}	}

@@ -1,0 +1,31 @@
+package com.atguigu.java3;	package com.atguigu.java3;
+class Father{	class Father {
+static {	static {
+System.out.println"11111111111""l	System.out.println("11111111111");
+	}
+	{
+System.out.println"22222222222"f;	System.out.println("22222222222");
+}	}
+public Father1	public Father() {
+Systm.out.println"3333333333";	System.out.println("33333333333");
+	}
+}	}
+public class Son extends  Father{	public class Son extends Father {
+static {	static {
+System.out..println"4444444444";	System.out.println("44444444444");
+}	}
+{	{
+System.out.println"55555555555";	System.out.println("55555555555");
+	}
+ublicSon 	public Son() {
+System.out.println"66666666666";;	System.out.println("66666666666");
+}	}
+public static void mainString args { System.out.printn"77777777777;	public static void main(String[] args) { System.out.println("77777777777");
+System.out.println"***********************";	System.out.println("************************");
+newSon;;	new Son();
+System.out.println"************************"";	System.out.println("************************");
+new  Son;;	new Son();
+Sysem.out..println"************************";	System.out.println("************************");
+new Father;	new Father();
+	}
+}	}

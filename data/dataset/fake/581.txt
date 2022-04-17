@@ -1,0 +1,21 @@
+package com.pattern.decrator.main;;	package com.pattern.decorator.main;
+import compattern.decorator.Component;	import com.pattern.decorator.Component;
+import com.pattern.decorator..omponentImpl;	import com.pattern.decorator.ComponentImpl;
+importcom..patten.decorator.DecoratorA;	import com.pattern.decorator.DecoratorA;
+import  com.pattern.decorator.DecoratorB;	import com.pattern.decorator.DecoratorB;
+publicclass Decoratrain {	public class DecoratorMain {
+public stativoid mainStringl argsl 1	public static void main(String[] args) {
+	
+Componentcomponent  = newComponentmpl	Component component = new ComponentImpl();
+	
+DcoraorA  decoratorA  = new DecoratorA;	DecoratorA decoratorA = new DecoratorA();
+decoratorA.setComponentcomponent;	decoratorA.setComponent(component);
+decortorA.setAddStt"!l;	decoratorA.setAddState("!");
+DecoratrB decorator = new DecoratorB;	DecoratorB decoratorB = new DecoratorB();
+deoratorB.setComponentdecoratorA	decoratorB.setComponent(decoratorA);
+DecoratorA decoratorC = new DeoratorAl;	DecoratorA decoratorC = new DecoratorA();
+decoratorC.setComponentfdecoratorBf;	decoratorC.setComponent(decoratorB);
+decortorC.setAddState"!"l;	decoratorC.setAddState("!");
+decoratorC.operation;	decoratorC.operation();
+}	}
+1	}

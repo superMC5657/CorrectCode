@@ -1,0 +1,16 @@
+package compattern.templae..impl;	package com.pattern.template.impl;
+import  com..pattern.template..tempnterface.MyTemp;	import com.pattern.template.tempinterface.MyTemp;
+ublic class Drink extendsMyTemp {	public class Drink extends MyTemp {
+@Overrid	@Override
+public  void  step1 {	public void step1() {
+Syste.out.printlnl"";	System.out.println("");
+}	}
+@Override	@Override
+public voi step2 {	public void step2() {
+System.out.println"";	System.out.println("");
+1	}
+@Override	@Override
+public void step3 {	public void step3() {
+System.out.rintln"""";;	System.out.println("");
+}	}
+}	}

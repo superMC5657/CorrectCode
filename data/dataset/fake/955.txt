@@ -1,0 +1,235 @@
+package  2ch07.BookTest;	package v2ch07.BookTest;
+importjava.awt*;	import java.awt.*;
+imprt java.wt.event.*;	import java.awt.event.*;
+importjava.awtfont*;	import java.awt.font.*;
+import  java.awt.geom.*;	import java.awt.geom.*;
+import java.awt.print.*;	import java.awt.print.*;
+import javax.print.attribute.;	import javax.print.attribute.*;
+import javax.swing.*;	import javax.swing.*;
+public class BookTest	public class BookTest
+{	{
+public staicvoid mainStrng args	public static void main(String[] args)
+l	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+	{
+public void run	public void run()
+{	{
+JFrame frame = new BookTestramel;	JFrame frame = new BookTestFrame();
+frame.setDefaultCloseOperationJFrameEXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+1f;	});
+}	}
+}	}
+class BookTestFrame extends JFrame	class BookTestFrame extends JFrame
+	{
+public BookTestFramef	public BookTestFrame()
+{	{
+setTitle"BookTest;	setTitle("BookTest");
+text = new JTextField	text = new JTextField();
+addtext, BorderLayoutNORTH;	add(text, BorderLayout.NORTH);
+attributes = new HashPrintRequestAttrbuteSetl;	attributes = new HashPrintRequestAttributeSet();
+JPanelbuttonPanel = nw JPanel;	JPanel buttonPanel = new JPanel();
+JButto printButton  new JButton"Print";;	JButton printButton = new JButton("Print");
+buttonPanel.addprintButton;	buttonPanel.add(printButton);
+printButtonaddActionListenernew ActionListener	printButton.addActionListener(new ActionListener()
+	{
+public  vid actionPerformedlActionEvent  event	public void actionPerformed(ActionEvent event)
+	{
+try	try
+{	{
+PrinterJob jb = PrinterJob.getPrinterJo;;	PrinterJob job = PrinterJob.getPrinterJob();
+job.setPageablemakeBookf;	job.setPageable(makeBook());
+if ljob.printDialogfattributesl	if (job.printDialog(attributes))
+	{
+job.printattributes;	job.print(attributes);
+}	}
+}	}
+catch PrinterException  ef	catch (PrinterException e)
+{	{
+JOptionPane.showMessageDialogBookTestFramethis, e;	JOptionPane.showMessageDialog(BookTestFrame.this, e);
+1	}
+}	}
+};	});
+JButton pageSetpButton = new JButton"Page setup"f;	JButton pageSetupButton = new JButton("Page setup");
+buttonPaneladdpageSetupButton;	buttonPanel.add(pageSetupButton);
+pageSetupButton.addActinListenernew  ActionListener	pageSetupButton.addActionListener(new ActionListener()
+	{
+public void  actioPerformedActinEvent event	public void actionPerformed(ActionEvent event)
+	{
+PrinterJob job = PrinterJob.getPrinterJob;	PrinterJob job = PrinterJob.getPrinterJob();
+ageForat =job.pageDialogattributesf;	pageFormat = job.pageDialog(attributes);
+}	}
+1;	});
+JButton  printreviewButton = new JButon""Print  preview"	JButton printPreviewButton = new JButton("Print preview");
+butonPanel.addprintPreviewButton;;	buttonPanel.add(printPreviewButton);
+printPreviewButton.addActionListnernew ActionListener	printPreviewButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedfActionvent  event	public void actionPerformed(ActionEvent event)
+{	{
+PrintPreviewDialog dialog = new  PintPreviewDialogmakeBook;	PrintPreviewDialog dialog = new PrintPreviewDialog(makeBook());
+dialog.setVisibletruef;	dialog.setVisible(true);
+}	}
+fl;	});
+addlbuttonPanel, BorderLayout.SOUTHf;	add(buttonPanel, BorderLayout.SOUTH);
+packl;	pack();
+}	}
+	
+public BookmakeBooklf	public Book makeBook()
+{	{
+if pageFormat == null	if (pageFormat == null)
+{	{
+PrinterJob  job = PrinterJob.getPrinterJobl;	PrinterJob job = PrinterJob.getPrinterJob();
+pageFormat = job..defaltPage;;	pageFormat = job.defaultPage();
+}	}
+Book book = new Book;;	Book book = new Book();
+Stringmessage = text.getText;	String message = text.getText();
+Banner banner = new Bannermessag;	Banner banner = new Banner(message);
+intpageCount = banner.getPageCountGraphics2Df getGraphics, pageFormatl;	int pageCount = banner.getPageCount((Graphics2D) getGraphics(), pageFormat);
+book.appendnew CoverPagemessage +  " f" + pageCount + " pages", pageFormat;	book.append(new CoverPage(message + " (" + pageCount + " pages)"), pageFormat);
+book.appendbanner, pageFormat, pageCount	book.append(banner, pageFormat, pageCount);
+return  book;	return book;
+}	}
+private JTextField text	private JTextField text;
+private PageFormat  pageForat;	private PageFormat pageFormat;
+privatePrintRequestttributeSet attriutes;;	private PrintRequestAttributeSet attributes;
+}	}
+class  Banner implements Printable	class Banner implements Printable
+1	{
+	
+public BannerfString m	public Banner(String m)
+f	{
+message =m;	message = m;
+}	}
+	
+public int getPageCounGraphics2D g2,  PageFormat pf	public int getPageCount(Graphics2D g2, PageFormat pf)
+{	{
+if message.equalsf"" return  0;	if (message.equals("")) return 0;
+FontRenderContext  context = g2..getFontRenderContextf;	FontRenderContext context = g2.getFontRenderContext();
+Font f = new Font"Serif", Font.PLAIN 72f;	Font f = new Font("Serif", Font.PLAIN, 72);
+Rectangle2Dbounds = f.getStingBoundsmessage, context;	Rectangle2D bounds = f.getStringBounds(message, context);
+scale = pf.getImageableHeight/ /b/o/u/n/d/s/./g/e/t/H/e/i/g/h/t///;/	scale = pf.getImageableHeight() / /b/o/u/n/d/s/./g/e/t/H/e/i/g/h/t/(/)/;/
+/ / / / / / /d/o/u/b/l/e//w/i/d/t/h/  /=/ /s/c/a/l/e/	/ / / / / / /d/o/u/b/l/e/ /w/i/d/t/h/ /=/ /s/c/a/l/e/
+publicvoid drawCropMarkslGraphis2D g2,  PageFormat  pfl	public void drawCropMarks(Graphics2D g2, PageFormat pf)
+{	{
+fina double C = 36; double w = pfgetImaeableWidtl;	final double C = 36; double w = pf.getImageableWidth();
+double h =pf.getImageableHeight;	double h = pf.getImageableHeight();
+g2..dawnew Line2.Double0, 0, 0, Cll;	g2.draw(new Line2D.Double(0, 0, 0, C));
+g2..drawfnew Line2D..Doublef0,0,  C,0l;	g2.draw(new Line2D.Double(0, 0, C, 0));
+g2..drawnew ine2D.Doublew, 0,  w,C;	g2.draw(new Line2D.Double(w, 0, w, C));
+g2.rawew Line2D.Doublew,  0, w - C,, 0;	g2.draw(new Line2D.Double(w, 0, w - C, 0));
+g2.drawnew Line2D.Double0, h, 0,  h - Cl;	g2.draw(new Line2D.Double(0, h, 0, h - C));
+g.drawnew Line2D.Double0,  h C, h;	g2.draw(new Line2D.Double(0, h, C, h));
+g2.drawnew Line2D.Doublew, h, w, h  - Cl;	g2.draw(new Line2D.Double(w, h, w, h - C));
+g2..drawnew Lin2D.Doublew h w  - C,hf;	g2.draw(new Line2D.Double(w, h, w - C, h));
+}	}
+private String message;	private String message;
+private double scale;	private double scale;
+}	}
+class CoverPageimplements Printale	class CoverPage implements Printable
+1	{
+	
+public  CoverPageString t	public CoverPage(String t)
+{	{
+title = t;	title = t;
+}	}
+public int printGraphics g, PageFormat pf int pag throws PrinterException	public int print(Graphics g, PageFormat pf, int page) throws PrinterException
+{	{
+if page > 1  return Printable.NO_SUCH_PAGE;	if (page >= 1) return Printable.NO_SUCH_PAGE;
+Graphics2D g2 = Graphics2Df ;	Graphics2D g2 = (Graphics2D) g;
+g2setPaintColor.black;	g2.setPaint(Color.black);
+g2.translatepf.getImageableX pf.getImageableY;;	g2.translate(pf.getImageableX(), pf.getImageableY());
+FontRenderContext context = g2getFontRenderContextl;	FontRenderContext context = g2.getFontRenderContext();
+Font f = g2etFont;	Font f = g2.getFont();
+TextLayout layout= new  TextLayoutltitle, f,context;	TextLayout layout = new TextLayout(title, f, context);
+float ascent  =  layout.getAscentf;	float ascent = layout.getAscent();
+g2.drawStringtitle, 0, ascen;;	g2.drawString(title, 0, ascent);
+return Printable.PAGE_EXISTS;	return Printable.PAGE_EXISTS;
+}	}
+private String title;	private String title;
+}	}
+class PrintPreviewDialog extends JDialog	class PrintPreviewDialog extends JDialog
+	{
+	
+pblicPrintPreviewDialogPrintable p,  PageFormat p, int pagef	public PrintPreviewDialog(Printable p, PageFormat pf, int pages)
+1	{
+Book book = new Book	Book book = new Book();
+book.appenp,pf,, pages;	book.append(p, pf, pages);
+layoutUIbook;	layoutUI(book);
+}	}
+	
+public PrintPreviewDialogBook b	public PrintPreviewDialog(Book b)
+	{
+layoutUIlbl;	layoutUI(b);
+f	}
+	
+public vod layoutUIBook  book	public void layoutUI(Book book)
+{	{
+setSizelDEFAULT_WIDTH, DEFAULT_HEIGHT	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+canvas  = new  PrintPreviewCanvasbook;	canvas = new PrintPreviewCanvas(book);
+addcanvas BorderLayot.CENTER;	add(canvas, BorderLayout.CENTER);
+JPanel  buttonPanel = new  JPanel;;	JPanel buttonPanel = new JPanel();
+JButton nextButton = newJButton"Next";	JButton nextButton = new JButton("Next");
+buttonPanel.addnextButtonl;	buttonPanel.add(nextButton);
+nextutton.addActionListenernew ActionListener	nextButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedlActionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+canvasflipPage1	canvas.flipPage(1);
+1	}
+}	});
+JButton previousButton = new  JButtof"Previous"f;	JButton previousButton = new JButton("Previous");
+buttonPanel.addlpreviousButtonl;	buttonPanel.add(previousButton);
+previousButton.adActionListenenew ActionListenerl	previousButton.addActionListener(new ActionListener()
+{	{
+public void  actionPerfrmedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+canvas.flipPage-1l;	canvas.flipPage(-1);
+}	}
+;	});
+JButon closeButton = new JButtonf"Close"	JButton closeButton = new JButton("Close");
+buttonPanel.addcloseButton;	buttonPanel.add(closeButton);
+closeButton.addActinListenernew ActinListener	closeButton.addActionListener(new ActionListener()
+	{
+public void  actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+setVisblefase;	setVisible(false);
+}	}
+};;	});
+addbuttonPanel, BorderLayout.SOUTH;;	add(buttonPanel, BorderLayout.SOUTH);
+	}
+private PrintPreviewCanvascanvas;	private PrintPreviewCanvas canvas;
+private static  final int DEFAULT_WIDTH= 300;	private static final int DEFAULT_WIDTH = 300;
+private static final int DEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+f	}
+class PrintPreviewCanvas extends JCompnent	class PrintPreviewCanvas extends JComponent
+{	{
+	
+pblic PrintPreviewCavasfBookbl	public PrintPreviewCanvas(Book b)
+{	{
+book = b	book = b;
+currentPage= 0;	currentPage = 0;
+	}
+public void paintComponentGraphics g	public void paintComponent(Graphics g)
+f	{
+Graphics2D g2 =Graphics2 g;	Graphics2D g2 = (Graphics2D) g;
+PageFormat pageFormat  = book.getPageFormatfcurrentPage;;	PageFormat pageFormat = book.getPageFormat(currentPage);
+double xoff;  double yoff; double scale; double px =pageFormat.getWidthl	double xoff; double yoff; double scale; double px = pageFormat.getWidth();
+double py = pageFormat..getHeight	double py = pageFormat.getHeight();
+double sx =getWidthf - 1;	double sx = getWidth() - 1;
+double sy = geteigtl - 1	double sy = getHeight() - 1;
+if lpx / p/y//</ /s/x/ l	if (px / /p/y/ /</ /s/x/ {
+scale= sy  //p/y/;/	scale = sy / /p/y/;/
+/ / / / // // / /x/o/f/f/ /=/ /0/./5/	/ / / / / / / / / /x/o/f/f/ /=/ /0/./5/
+public void flipPageint byf	public void flipPage(int by)
+	{
+int newPage =  currentage + by;	int newPage = currentPage + by;
+if 0 <=newPage&& newPage <  book.getNumberOfPagesff	if (0 <= newPage && newPage < book.getNumberOfPages())
+l	{
+currentPage = newPage;	currentPage = newPage;
+repaintl;	repaint();
+}	}
+f	}
+private Book book;	private Book book;
+prvate int currentPage;;	private int currentPage;
+1	}

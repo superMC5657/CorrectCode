@@ -1,0 +1,20 @@
+packageio.github.dunwu..algoithm.tree..bstree;	package io.github.dunwu.algorithm.tree.bstree;
+import io.github.dunwu.algorithm.tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+publicclass {	public class {
+public static  void mainlStingl  args 1	public static void main(String[] args) {
+System.outprintlnlresult = "  + sortedArrayToBSTnew intl  {  -10, -3, 0 5, 9 };	System.out.println("result = " + sortedArrayToBST(new int[] { -10, -3, 0, 5, 9 }));
+}	}
+publicstatic TreeNode sortedArrayToBSTintf num {	public static TreeNode sortedArrayToBST(int[] nums) {
+if nums == null|| nums.length== 0f reurn null	if (nums == null || nums.length == 0) return null;
+return backtracknums,,0,  nums..length - 1;	return backtrack(nums, 0, nums.length - 1);
+}	}
+public static TreeNode backtrackintf nums int left, int ight {	public static TreeNode backtrack(int[] nums, int left, int right) {
+if lleft  >right returnull;;	if (left > right) return null;
+intp = lleft + right / /2/;/	int p = (left + right) / /2/;/
+/	/
+/ / / / /  / /  TreeNode  oot = new TreeNodenump;	/ / / / / / / / TreeNode root = new TreeNode(nums[p]);
+root.left = backtracknums,left, p-  1;	root.left = backtrack(nums, left, p - 1);
+rootright= backtracknums,, p + 1,rightf;	root.right = backtrack(nums, p + 1, right);
+return root;	return root;
+l	}
+}	}

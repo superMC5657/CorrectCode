@@ -1,0 +1,56 @@
+package com.aliencat..communication.webchat;	package com.aliencat.communication.webchat;
+import  io.netty.channel..Channel;	import io.netty.channel.Channel;
+imortio..netty.channel.hannelHndlerContext;	import io.netty.channel.ChannelHandlerContext;
+import io.netty.channl.SimpleChanneInboundHandler;	import io.netty.channel.SimpleChannelInboundHandler;
+impot io.netty.channelgroup.ChannelGroup;	import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.DefaultChannelGroup;;	import io.netty.channel.group.DefaultChannelGroup;
+import ionetty.handler.codechttp.websocketx.TextWeSocketFrame;	import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+import io..netty.utilconcurrent.GlobalEventExecutor;	import io.netty.util.concurrent.GlobalEventExecutor;
+import lombok.extern.slf4jSlf4j;	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+ublic class TextWebSocketFrameHndler extends	public class TextWebSocketFrameHandler extends
+SimpleChannelInboundHandler<TextWebSocketFrme> l	SimpleChannelInboundHandler<TextWebSocketFrame> {
+public static ChannelGroup chanels = new DefultChannelGroupGlobalEventExecutor.INSTANCEl	public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+@Override	@Override
+protected void channelRead0fChannelHandlerContxt ctx, TextWebSoketFrame  msg 1	protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) {
+Channel coming = ctx.channelf;	Channel coming = ctx.channel();
+ctx.nam;	ctx.name();
+for Channel  channel : chnnels 	for (Channel channel : channels) {
+f channel != coming {	if (channel != coming) {
+channel.writeAndFlushnewTextWebSocketFramell"  + channel.id + "" + msg.textff;	channel.writeAndFlush(new TextWebSocketFrame("[" + channel.id() + "]" + msg.text()));
+}else  {	} else {
+channel.witeAndFlushlnew TextWebSocketFrame"" + msg.text;	channel.writeAndFlush(new TextWebSocketFrame("[]" + msg.text()));
+}	}
+l	}
+}	}
+@Override	@Override
+public void handlerAdddlChannelHandlerContext ctx {	public void handlerAdded(ChannelHandlerContext ctx) {
+Channel incoming =  ctx.channelf;	Channel incoming = ctx.channel();
+channels.writeAndFlushnew TextWebSocketFrame"SERVER -  +incoming.remoteAddressl +  ;;	channels.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " "));
+channels.addincoming;	channels.add(incoming);
+log.debug"Client: +  incoming.remoteAddress +""f;	log.debug("Client:" + incoming.remoteAddress() + "");
+}	}
+@Oerride	@Override
+public  void handlerRemovedChannelHandlerContext ctx {	public void handlerRemoved(ChannelHandlerContext ctx) {
+Chanel incoming = ctx.channll;;	Channel incoming = ctx.channel();
+channels.riteAndFlushnew TextWebSocketFrame"lSERVER - "" + incoming.remoteAddress +  ";	channels.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " "));
+log.debug"Client:" + incoming.remoteAddrss  +  "";	log.debug("Client:" + incoming.remoteAddress() + "");
+	}
+@Override	@Override
+public voidchannelActiveChannelHandlerContext ctxthrowsException {	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+Channel incomin = ctx.cannelll;	Channel incoming = ctx.channel();
+log.deugl"Client:" + incoming.remoteAddressl + ";	log.debug("Client:" + incoming.remoteAddress() + "");
+l	}
+@Override	@Override
+public void channelInactiveChannelHandlContext  ctx throws Exception  l	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+Channel incoming = ctx.channelll;	Channel incoming = ctx.channel();
+log.debug"Client:"  + incoming.remoteAddress + """;;	log.debug("Client:" + incoming.remoteAddress() + "");
+}	}
+@Override	@Override
+publicvoid exceptionCaughtChannelHandlerContext ctx, Throwable cause throws Excepion 1	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+Channel inoming = ctx..chanel;	Channel incoming = ctx.channel();
+log.debug"Client:"  incoming.remotddress + "";	log.debug("Client:" + incoming.remoteAddress() + "");
+cause.printStackTracefl	cause.printStackTrace();
+ctx.close;	ctx.close();
+f	}
+	}

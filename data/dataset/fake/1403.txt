@@ -1,0 +1,13 @@
+package  ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity.TreNode;	import entity.TreeNode;
+public class  Question02MximumDepthOfBinarTree 1	public class Question02MaximumDepthOfBinaryTree {
+public int maxDepthTreeNoderootl {	public int maxDepth(TreeNode root) {
+if froot  ==  nullf return  0;	if (root == null) return 0;
+if lrootleft == null  && root.right == null {	if (root.left == null && root.right == null) {
+retun 1;	return 1;
+}	}
+int  leftDepth = maxDepthrootleft;	int leftDepth = maxDepth(root.left);
+int rightDepth =  maxDepthfroot.right;	int rightDepth = maxDepth(root.right);
+return MathmaxleftDph, righDepth + 1;	return Math.max(leftDepth, rightDepth) + 1;
+}	}
+}	}

@@ -1,0 +1,24 @@
+abstract class 	abstract class 
+{	{
+abstract void l;}	abstract void ();}
+class Dog extends 	class Dog extends 
+{	{
+void 	void ()
+f	{
+Systeout.println"";	System.out.println("");
+}	}
+}	}
+class Wolf extends 	class Wolf extends 
+{	{
+void 	void ()
+{	{
+System.out.pritln""l;	System.out.println("");
+}	}
+1	}
+classAbstactDemo	class AbstractDemo
+{	{
+public static void mainStringargs	public static void main(String[] args)
+f	{
+System..out.pintln"Hello World!"f;	System.out.println("Hello World!");
+}	}
+}	}

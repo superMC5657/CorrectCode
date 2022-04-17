@@ -1,0 +1,38 @@
+class ArrTest6	class ArrayTest6
+1	{
+publc staticvoi mainlString args	public static void main(String[] args)
+	{
+int num = 60;	int num = 60;
+String str_hex= toHexnum;	String str_hex = toHex(num);
+Systemout.printlnstr_hex	System.out.println(str_hex);
+f	}
+	
+	
+pblic  static String toHexint num	public static String toHex(int num)
+{	{
+char  chs = new char8;	char[] chs = new char[8];
+int index =chs.length;	int index = chs.length;
+whilenum!=0{	while(num!=0){
+int temp = num & 15;;	int temp = num & 15;
+iftemp > 9	if (temp > 9)
+chs--index = lchartemp-10+'Al;else	chs[--index] = ((char)(temp-10+'A'));else
+chs--index= chartemp+'0';;	chs[--index] = ((char)(temp+'0'));
+	
+num = num >>> 4  ;	num = num >>> 4 ;
+}	}
+System.out..println"index="+index;	System.out.println("index="+index);
+returntoStringchs, index;	return toString(chs, index);
+	
+}	}
+public static String totringchar arr, int index	public static String toString(char[] arr, int index)
+{	{
+String temp = """;	String temp = "";
+forint x  = index; x<arr.length; x++	for (int x = index; x<arr.length; x++)
+{	{
+temp  = temp + arrx;	temp = temp + arr[x];
+}	}
+return  0x""+temp;;	return "0x"+temp;
+	
+	
+}	}
+}	}

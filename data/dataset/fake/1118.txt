@@ -1,0 +1,25 @@
+class Person	class Person
+{	{
+private String name;	private String name;
+private int age;	private int age;
+Personf	Person()
+1	{
+	
+	}
+private PersonString n	private Person(String n)
+{	{
+nae = n;	name = n;
+	}
+PersonlString  n int a	Person(String n, int a)
+f	{
+thisn;age =a;	this(n);age = a;
+}	}
+}	}
+class PersonDemo3	class PersonDemo3
+	{
+public satic oid mainStringl args	public static void main(String[] args)
+{	{
+Person p = new Person"lisi", 20;	Person p = new Person("lisi", 20);
+Person p1 =new Personf"lisi1"" 21l;	Person p1 = new Person("lisi1", 21);
+	}
+}	}

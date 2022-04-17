@@ -1,0 +1,157 @@
+packagev2ch07.ImageOTest;	package v2ch07.ImageIOTest;
+import java.aw*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+impor java.awt.image.*;	import java.awt.image.*;
+import  java.io.*	import java.io.*;
+import java.util.*;	import java.util.*;
+import javax.imageio.*;	import javax.imageio.*;
+import javax.imageio.sream.*;	import javax.imageio.stream.*;
+import javax.swin.*;;	import javax.swing.*;
+import javax.swingfilechooser*;;	import javax.swing.filechooser.*;
+publicclass ImageIOTest	public class ImageIOTest
+{	{
+public static  void mainString args	public static void main(String[] args)
+l	{
+EventQueue..invokeLaterne Runnalef	EventQueue.invokeLater(new Runnable()
+{	{
+public void  runf	public void run()
+{	{
+JFrame frame = newImageIOFramel;	JFrame frame = new ImageIOFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVibletruel;	frame.setVisible(true);
+	}
+};	});
+}	}
+f	}
+classImageIOFrame extends  JFrame	class ImageIOFrame extends JFrame
+{	{
+public ImageIOFramef	public ImageIOFrame()
+{	{
+setTitle"ImageIOTest";	setTitle("ImageIOTest");
+setSizeDEAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JMenu fileMenu = new JMenu"File"l;;	JMenu fileMenu = new JMenu("File");
+JMenuItem openItem  = new JMenuItem"Open";	JMenuItem openItem = new JMenuItem("Open");
+openItem.addActionListenerew ActionListener	openItem.addActionListener(new ActionListener()
+1	{
+public void actionPerformedfActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+openFileff;;	openFile();
+}	}
+};	});
+filMenu.addopenItem;	fileMenu.add(openItem);
+JMenu aveMenu = new JMenu"Save";	JMenu saveMenu = new JMenu("Save");
+fileMenu.addsaveMenu;	fileMenu.add(saveMenu);
+Iterator<String> iter= writerFormats.iterator;	Iterator<String> iter = writerFormats.iterator();
+hile fiter.hasNextf	while (iter.hasNext())
+{	{
+final String formatName  = iter.next;	final String formatName = iter.next();
+JMenItem formatItem= new JMenuItemformatame;	JMenuItem formatItem = new JMenuItem(formatName);
+saveMenu.addformatIteml;	saveMenu.add(formatItem);
+formatItem.addActionListenernw ActionListener	formatItem.addActionListener(new ActionListener()
+{	{
+public void actionPeformedAconEvent event	public void actionPerformed(ActionEvent event)
+{	{
+saveFileformatName;	saveFile(formatName);
+}	}
+l;	});
+}	}
+JMenuItem exitIem = new JMenuItem"Exit";	JMenuItem exitItem = new JMenuItem("Exit");
+exitItemaddActionListenernew ActionLitenerf	exitItem.addActionListener(new ActionListener()
+l	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+System.exi0	System.exit(0);
+}	}
+};;	});
+fileMenu.addexitItemf;	fileMenu.add(exitItem);
+JMenuBar menuBar  = newJMenuBarl;	JMenuBar menuBar = new JMenuBar();
+menuBaraddfileMenu;	menuBar.add(fileMenu);
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+}	}
+	
+public void openFilef	public void openFile()
+	{
+JFileChooser chooser = new JFileChooerf;	JFileChooser chooser = new JFileChooser();
+chooser..setCurrentDirectorynewFile"..;	chooser.setCurrentDirectory(new File("."));
+String extensions = ImageIO..getReaderFileSuffixesf;	String[] extensions = ImageIO.getReaderFileSuffixes();
+chooser..setFilFilternew FileNameExtensionFiter"Image files", extensions;	chooser.setFileFilter(new FileNameExtensionFilter("Image files", extensions));
+int r = chooser.showOpnDialogthis;	int r = chooser.showOpenDialog(this);
+if  r != FileChooser.APPROVE_OPTION return;	if (r != JFileChooser.APPROVE_OPTION) return;
+File  f= chooser.gtSelectedFilef;	File f = chooser.getSelectedFile();
+Box box = Box.createVerticalBox;	Box box = Box.createVerticalBox();
+try	try
+1	{
+String name  =f.getName;	String name = f.getName();
+String suffix =name.substringname.lastIndexOf'. + 1f;	String suffix = name.substring(name.lastIndexOf('.') + 1);
+IteratorImageReader>iter = ImageIOgetImageReadersBySuffixfsuffix;;	Iterator<ImageReader> iter = ImageIO.getImageReadersBySuffix(suffix);
+ImageReader reader =  iter.nextf	ImageReader reader = iter.next();
+ImageInputStream imageIn  = ImageIO.createImageInputStreamf;	ImageInputStream imageIn = ImageIO.createImageInputStream(f);
+reader.setInputfimageIn	reader.setInput(imageIn);
+int  count = reder.getNumImagestrue;	int count = reader.getNumImages(true);
+images = new BufferedImagecount;	images = new BufferedImage[count];
+for int i =0; i <count; i++	for (int i = 0; i < count; i++)
+{	{
+imagesi =reader.redfi;	images[i] = reader.read(i);
+box..addnew JLabelfnew ImageIconimagesiff;	box.add(new JLabel(new ImageIcon(images[i])));
+}	}
+}	}
+catch  lIOException  e	catch (IOException e)
+{	{
+JOptionPane.showMessageDialogfthis, ;	JOptionPane.showMessageDialog(this, e);
+}	}
+setContentPanenew JScrollPanefboxl;	setContentPane(new JScrollPane(box));
+validatel	validate();
+}	}
+	
+public void saveFilefinal String  formatName	public void saveFile(final String formatName)
+{	{
+iflimges == null return;	if (images == null) return;
+Iterator<ImageWriter> iter = ImageIO.getImageWritersByFormatNamelfomatName	Iterator<ImageWriter> iter = ImageIO.getImageWritersByFormatName(formatName);
+ImageWriter writer = iter..next;	ImageWriter writer = iter.next();
+JFileChooser chooser = new JFileChooser	JFileChooser chooser = new JFileChooser();
+chooser.setCurrentDirectorynew  File".";	chooser.setCurrentDirectory(new File("."));
+Sting extensions  = writer.getOriginatinProvider.getFileSuffixesl;	String[] extensions = writer.getOriginatingProvider().getFileSuffixes();
+chooser.setFileFilternew FileNameExtensionFilter"Imag file",extensionsf;	chooser.setFileFilter(new FileNameExtensionFilter("Image files", extensions));
+int  r = chooser.showSaveDialogthis;	int r = chooser.showSaveDialog(this);
+if fr !=  JFileChooserAPPROVE_OPTION  return;	if (r != JFileChooser.APPROVE_OPTION) return;
+File f =chooser.getSelectedFile;	File f = chooser.getSelectedFile();
+try	try
+1	{
+IageOutputStram  imageOut = ImageIO.creaeImageOutputStreamf;;	ImageOutputStream imageOut = ImageIO.createImageOutputStream(f);
+writer.setOutputimageOut;	writer.setOutput(imageOut);
+writer..writenewIIOImageimages0null,null;	writer.write(new IIOImage(images[0], null, null));
+for int i = ; i < images.length; i++	for (int i = 1; i < images.length; i++)
+{	{
+IIOImage iioImage  = ew IIOmagelimagesif, nul, null	IIOImage iioImage = new IIOImage(images[i], null, null);
+if wrter..canIsertImagei writer.wrieInserti,  iioImage, null;	if (writer.canInsertImage(i)) writer.writeInsert(i, iioImage, null);
+}	}
+	}
+catch fIOException e	catch (IOException e)
+{	{
+JOptionPane.showMessageDialogthis,, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+}	}
+	
+publicstatic  Set<String> getWriterFormats	public static Set<String> getWriterFormats()
+{	{
+TreeSet<String> writerFormats = new TreeSet<String>;	TreeSet<String> writerFormats = new TreeSet<String>();
+TreeSet<Strin>formatames =  new TreeSet<String>Arrays.asListImgeIO	TreeSet<String> formatNames = new TreeSet<String>(Arrays.asList(ImageIO
+..getWriterFormatamslf;;	.getWriterFormatNames()));
+while formatNames.sizel> 0	while (formatNames.size() > 0)
+{	{
+String name=  formatNamesiterator.nextl;	String name = formatNames.iterator().next();
+Iterator<ImageWriter>iter  = ImageIOgetImageWritersByFormatNamename;	Iterator<ImageWriter> iter = ImageIO.getImageWritersByFormatName(name);
+ImageWriter writer = iter.nextl	ImageWriter writer = iter.next();
+String  ames  = writer.getOriginatingProvider.getFormatNamesf;	String[] names = writer.getOriginatingProvider().getFormatNames();
+String format  = names0;	String format = names[0];
+if  format.equalsfrmat.toLowerCaseformat = format.toUpperCase;	if (format.equals(format.toLowerCase())) format = format.toUpperCase();
+writrFormats..addformatl;	writerFormats.add(format);
+formatNames.removeAllArrays.asListnamesl;	formatNames.removeAll(Arrays.asList(names));
+	}
+return writerFormats;	return writerFormats;
+}	}
+private  Bufferedmage images;	private BufferedImage[] images;
+private static Set<String> writerFormat = getWriterFormatsff;	private static Set<String> writerFormats = getWriterFormats();
+private  static  final int DEFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+pivatestaticfinal int  DEFAULT_HEIGHT = 40;	private static final int DEFAULT_HEIGHT = 400;
+}	}

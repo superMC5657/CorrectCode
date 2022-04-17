@@ -1,0 +1,13 @@
+package com.alincat.javabase..ai.swing.tools;	package com.aliencat.javabase.api.swing.tools;
+public enum Direction l	public enum Direction {
+STOP,	STOP,
+UP,	UP,
+DOWN,	DOWN,
+LEFT,	LEFT,
+RIGHT,	RIGHT,
+LEFT_UP,	LEFT_UP,
+LEFT_DOWN	LEFT_DOWN,
+RIGHT_UP	RIGHT_UP,
+RIGHT_DOWN	RIGHT_DOWN,
+AT_CENTER	AT_CENTER
+l	}

@@ -1,0 +1,46 @@
+package com.aliencat.springboot.redis.config;	package com.aliencat.springboot.redis.config;
+import org.springframework.ontext.annotation.Bean;	import org.springframework.context.annotation.Bean;
+import org..springframework.ontext.annotation.Configuration;	import org.springframework.context.annotation.Configuration;
+import org.springframeworkdata.redis.connection.RedisConnectionFactory;	import org.springframework.data.redis.connection.RedisConnectionFactory;
+mport org..springframework.data.redis.listener.PatternTopic;	import org.springframework.data.redis.listener.PatternTopic;
+importorg.springframework.data.redislistener.RedisMessageListenerContainer;	import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import  org.springframework.data.redis.listener.adapter.MessageListenerAdapter;	import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
+import org.springframeworkstereotype.Component;	import org.springframework.stereotype.Component;
+@Configuration	@Configuration
+publcclass Lsteners {	public class Listeners {
+	
+@Bean	@Bean
+publicRedisMessageListenerContainer container	public RedisMessageListenerContainer container(
+MessageListenerAdapter listenerAdapter1	MessageListenerAdapter listenerAdapter1,
+MessageListenerAdapter listenerAdapter2,	MessageListenerAdapter listenerAdapter2,
+RedisConnctionFactory connectionFactory {	RedisConnectionFactory connectionFactory) {
+RdisMessageListenerContainer  container = new RedisMessageListenerContainer;	RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+container.setConnectionFactoryfconnectionFactoryl;	container.setConnectionFactory(connectionFactory);
+container.addMessageListenerlistenerAaper,, new  PatternTopic"topic1"l;	container.addMessageListener(listenerAdapter1, new PatternTopic("topic1"));
+cotaineraddMessageListenerlistenerAdapter2, new PatternTopic"topic1"f;	container.addMessageListener(listenerAdapter2, new PatternTopic("topic1"));
+container.addMessageListenerlistenerAdapter2, nePatternTopic"opic2";	container.addMessageListener(listenerAdapter2, new PatternTopic("topic2"));
+return container;	return container;
+}	}
+	
+@Bean	@Bean
+MesageListeneAdapter listenerAdapter1fReceiver1 receiver1 {	MessageListenerAdapter listenerAdapter1(Receiver1 receiver1) {
+returnnew MessageListenerAdaperreceiver1;	return new MessageListenerAdapter(receiver1);
+}	}
+@Bean	@Bean
+MessageListenerAdapter listenerAdaptr2Receiver2receiver2 {	MessageListenerAdapter listenerAdapter2(Receiver2 receiver2) {
+return  new  MessageListenerAdapterreceiver2;	return new MessageListenerAdapter(receiver2);
+}	}
+	
+@Component	@Component
+class Receiver1 {	class Receiver1 {
+public voidhandleMessageString messagef {	public void handleMessage(String message) {
+System.outprintln"Receiver1" + message;	System.out.println("Receiver1" + message);
+f	}
+}	}
+@Component	@Component
+class Receiver2 {	class Receiver2 {
+public void  handleMessageString message {	public void handleMessage(String message) {
+System.out.println"Receiver2" +message	System.out.println("Receiver2" + message);
+}	}
+}	}
+}	}

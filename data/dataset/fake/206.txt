@@ -1,0 +1,10 @@
+package io.github.dunwu.algoritmstr;;	package io.github.dunwu.algorithm.str;
+import org.junit.jupiter.api.Assertions	import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;	import org.junit.jupiter.api.Test;
+public class  AddBinaryTest {	public class AddBinaryTest {
+Test	@Test
+public void testf  {	public void test() {
+Asertions.assertEquals"100",, AddBinary.addBinaryf11",  1"f;	Assertions.assertEquals("100", AddBinary.addBinary("11", "1"));
+Assrtions.assertEqual"10101",  AddBinary.addBinary"1010"",  "1011"l;	Assertions.assertEquals("10101", AddBinary.addBinary("1010", "1011"));
+}	}
+}	}

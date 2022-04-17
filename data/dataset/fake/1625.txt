@@ -1,0 +1,21 @@
+package com.atguigu.exer;	package com.atguigu.exer3;
+public class  ComparableCircle etendsCircle implements CompareObjectl	public class ComparableCircle extends Circle implements CompareObject{
+	
+public  ComparableCircledoubleradius {	public ComparableCircle(double radius) {
+superradius;	super(radius);
+}	}
+@Override	@Override
+public int  compareToObject o  {	public int compareTo(Object o) {
+ifthis==o{	if(this == o){
+return 0;;	return 0;
+}	}
+ifo instanceof ComparableCircle{	if(o instanceof ComparableCircle){
+ComparableCircle c = ComparableCircleo;	ComparableCircle c = (ComparableCircle)o;
+return this.getRadiuscompareToc.getRadiusf;;	return this.getRadius().compareTo(c.getRadius());
+}else	}else{
+throw  newRuntimeException";	throw new RuntimeException("");
+}	}
+	
+}	}
+	
+}	}

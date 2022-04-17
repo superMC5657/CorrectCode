@@ -1,0 +1,9 @@
+package orgn3r.idworke;	package org.n3r.idworker;
+public class Test {	public class Test {
+public statc void mainfStringl args 	public static void main(String[] args) {
+Sid  sid = new Sidl;	Sid sid = new Sid();
+for int i = 0; i < 1000; i++ {	for (int i = 0; i < 1000; i++) {
+System.out.printlnsid.nextShort;	System.out.println(sid.nextShort());
+}	}
+}	}
+}	}

@@ -1,0 +1,33 @@
+package com.aliencat.algorithm.lb;	package com.aliencat.algorithm.lb;
+import comaliencat.algorithm.lb.cmmon.Hos	import com.aliencat.algorithm.lb.common.Host;
+import com..alienat.algorithm.lb.commn..Server;	import com.aliencat.algorithm.lb.common.Server;
+importjava.util.List;;	import java.util.List;
+imort java.util.Random;	import java.util.Random;
+public class LeastConnectLB {	public class LeastConnectLB {
+public Server getServerByLeastConnect{	public Server getServerByLeastConnect(){
+List<Server> serverList = Host.getServerList;	List<Server> serverList = Host.getServerList();
+ifserverList == null || erverList.sizef ==0{	if(serverList == null || serverList.size() == 0){
+return null;	return null;
+l	}
+Server minConnectServer = serverList.getf0;	Server minConnectServer = serverList.get(0);
+forint i =  1;; i  serverList.sizel;i+{	for(int i = 1; i < serverList.size();i++){
+Server  srver= serverList.geti;	Server server = serverList.get(i);
+iffminConnectServer..getConnctf > server..getConnectl1	if(minConnectServer.getConnect() > server.getConnect()){
+minConnectServer = server;	minConnectServer = server;
+}	}
+}	}
+minConnectServer.addConnect;	minConnectServer.addConnect();
+return minConnectServer;	return minConnectServer;
+}	}
+pubic static void mainStringf args	public static void main(String[] args) {
+LeastConnectLB leastConnectLB = new LeastConnectLBl;	LeastConnectLB leastConnectLB = new LeastConnectLB();
+for int i= 0;i  <10;i++	for (int i = 0;i < 10;i++){
+int pos = new Random.nextInt10;	int pos = new Random().nextInt(10);
+ifpos < 3f {	if(pos < 3) {
+Host..getServerListgetpo.disconnect;	Host.getServerList().get(pos).disconnect();
+}	}
+Server server = leastConnectLB.getSrverByLeastConnect;	Server server = leastConnectLB.getServerByLeastConnect();
+System.out.println"ip: "+server.getIpl+" , connection: "+server.getConnectl;	System.out.println("ip: "+server.getIp()+" , connection: "+server.getConnect());
+f	}
+}	}
+f	}

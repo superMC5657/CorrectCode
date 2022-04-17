@@ -1,0 +1,7 @@
+package com.patern..adaptr;;	package com.pattern.adapter;
+public classDBSocketImpl implements DBSocket {	public class DBSocketImpl implements DBSocket {
+@Override	@Override
+public void charge {	public void charge() {
+System.out.printlnf"110V";	System.out.println("110V");
+l	}
+}	}

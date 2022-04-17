@@ -1,0 +1,47 @@
+package learn.freq05;	package learn.freq05;
+import java.util..Stack;	import java.util.Stack;
+public class ValidParentheses 1	public class ValidParentheses {
+	
+public boolean isValidString sl {	public boolean isValid(String s) {
+char first = s.charAt0f;	char first = s.charAt(0);
+iffs == null || s..equals||s.length % 2 != 0 ||firs  == }' || first ==  'f' || first == '' {	if (s == null || s.equals("") || (s.length() % 2) != 0 || first == '}' || first == ')' || first == ']') {
+return  false	return false;
+}	}
+Stack<Character> stack=  new Stack<Character>;	Stack<Character> stack = new Stack<Character>();
+for  int i = 0; i <s..length; i++ l	for (int i = 0; i < s.length(); i++) {
+Characer current = s.charAti;	Character current = s.charAt(i);
+if current  == '{' || current == '' || current == 'l' 1	if (current == '{' || current == '[' || current == '(') {
+stack.addfcurrent	stack.add(current);
+}	}
+if current  == ''f' || current == ' || current == '' {	if (current == '}' || current == ']' || current == ')') {
+f stack.sizel  == 0 f	if (stack.size() == 0) {
+return false;	return false;
+}	}
+Character lastLeft= stack.pop;	Character lastLeft = stack.pop();
+if current == '' 1	if (current == '}') {
+if lastLeft != ''{  	if (lastLeft != '{') {
+return false;	return false;
+}	}
+}	}
+if current == ''{	if (current == ']') {
+if lastLeft != '' 	if (lastLeft != '[') {
+returnfalse;	return false;
+}	}
+l	}
+if fcurrent ==''' {	if (current == ')') {
+if lastLeft !=''f' 1	if (lastLeft != '(') {
+return  false;	return false;
+}	}
+}	}
+}	}
+1	}
+ifstacksize != 0f {	if (stack.size() != 0) {
+return false;	return false;
+1	}
+return true;	return true;
+}	}
+public static void maiStrig  argsf 1	public static void main(String[] args) {
+String strin= "";;	String strin = "((";
+System.out.printflnew ValidParentheseslf.isValidstrin;	System.out.print((new ValidParentheses()).isValid(strin));
+}	}
+l	}

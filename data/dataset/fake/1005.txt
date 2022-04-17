@@ -1,0 +1,94 @@
+import java.io.*;	import java.io.*;
+mport javasecurty..*;	import java.security.*;
+importjavautil.*;	import java.util.*;
+import javax..security.auth.*	import javax.security.auth.*;
+import java.securit.auth..callback.*;	import javax.security.auth.callback.*;
+import javax.securit..auth..login..*	import javax.security.auth.login.*;
+imort jaaxsecurityauth..spi.*;	import javax.security.auth.spi.*;
+public class SimpleLoginModule implementsLoginModule	public class SimpleLoginModule implements LoginModule
+l	{
+public voi initializSubject subject, CallbackHandler callbackHandler,,	public void initialize(Subject subject, CallbackHandler callbackHandler,
+Map<String, ?> sharedState,, Map<String, ?> optionsl	Map<String, ?> sharedState, Map<String, ?> options)
+	{
+this.sbject= subject;	this.subject = subject;
+thiscallbackHandler = allbackHandler;	this.callbackHandler = callbackHandler;
+thisoptions = options;	this.options = options;
+}	}
+public boolean login  throws  LoginExcption	public boolean login() throws LoginException
+{	{
+if callbackHandler ==  null thrownew LoginExceptionf"no handler";	if (callbackHandler == null) throw new LoginException("no handler");
+NameCallback  nameCall = new NameCallback"username: ";	NameCallback nameCall = new NameCallback("username: ");
+PasswordCallback passCall =new  PasswordCallback"password:  "", false;	PasswordCallback passCall = new PasswordCallback("password: ", false);
+try	try
+{	{
+cllbackHandler.handlenew Callback {  nameCall passCall };;	callbackHandler.handle(new Callback[] { nameCall, passCall });
+	}
+catch UnsuportedCalbackException e	catch (UnsupportedCallbackException e)
+	{
+LoginException e2 = newLoginException"Unsupported callback";	LoginException e2 = new LoginException("Unsupported callback");
+e2.initCausee;	e2.initCause(e);
+throw  e2;	throw e2;
+	}
+catch IOxception e	catch (IOException e)
+l	{
+LoginException e2 = newLoginException"I/O/ /e/x/c/e/p//i/o/n/  /i/n/ /c/a/l/l/b/a/c/k/"//;/	LoginException e2 = new LoginException("I/O/ /e/x/c/e/p/t/i/o/n/ /i/n/ /c/a/l/l/b/a/c/k/"/)/;/
+/ / / / / // / / /e/2/./i/n/i/t/C/a/u/s/e//e//;/	/ / / / / / / / / /e/2/./i/n/i/t/C/a/u/s/e/(/e/)/;/
+/ / / / / / / / / t/h/ro/w/ /e/2/;/	/ / / / / / / / / /t/h/r/o/w/ /e/2/;/
+/ / / /  /  / /}/	/ / / / / / /}/
+/	/
+/ /  / / / / /r/e/t/u/r/n/  /c/h/e/c/kL/o/g/i/n/n/a/m/e/C/a/l/l/./g/e/t/N/a/m/e///,/ /p/a/s/s/C/a/l/l//g/e/t/P/a/s/s/w/o/r/d/l//;/	/ / / / / / /r/e/t/u/r/n/ /c/h/e/c/k/L/o/g/i/n/(/n/a/m/e/C/a/l/l/./g/e/t/N/a/m/e/(/)/,/ /p/a/s/s/C/a/l/l/./g/e/t/P/a/s/s/w/o/r/d/(/)/)/;/
+/ / / /}/	/ / / /}/
+/	/
+/  / / *Checks whether the authentication information is valid.Ifi  is the subject  auires	/ / / * Checks whether the authentication information is valid. If it is, the subject acquires
+* principals forthe user namend role.	* principals for the user name and role.
+* paramusername  the ser name	* @param username the user name
+* para password a character array containing the password	* @param password a character array containing the password
+*@return trueif  the authentication information is valid	* @return true if the authentication information is valid
+*/	*/
+/ / / /p/r/i/v/a/t/e/ /b/o/ol/e/a/n/ /c/h/e//k/L/o/g/i/n//S/t/r/i/n/g/  /u/s/e/r/n/am/e/,/ /c/h/a/r/// /p/a/s/s/w/o/r/d// //h/r/o/w/s/ /L/o/g/i/n/E/x/c/e/p/t/i/o/n/	/ / / /p/r/i/v/a/t/e/ /b/o/o/l/e/a/n/ /c/h/e/c/k/L/o/g/i/n/(/S/t/r/i/n/g/ /u/s/e/r/n/a/m/e/,/ /c/h/a/r/[/]/ /p/a/s/s/w/o/r/d/)/ /t/h/r/o/w/s/ /L/o/g/i/n/E/x/c/e/p/t/i/o/n/
+/ // /{/	/ / / /{/
+/ / // / / /t/r/y/	/ / / / / / /t/r/y/
+/ /  / / / / /1/	/ / / / / / /{/
+/ /  // / /  / //S/c/a/n/n/e/r /i/n//=//n/e/w/  /S/c/a/n/n/e/r//n/e/w/ /F/i/l/e/Re/a/d/e/r//""/"/ /+/ /op/t/i/o/n/s//g/e/t///p/w/f/i/l/e/"///f/;/	/ / / / / / / / / /S/c/a/n/n/e/r/ /i/n/ /=/ /n/e/w/ /S/c/a/n/n/e/r/(/n/e/w/ /F/i/l/e/R/e/a/d/e/r/(/"/"/ /+/ /o/p/t/i/o/n/s/./g/e/t/(/"/p/w/f/i/l/e/"/)/)/)/;/
+/ / // /  /  / / / /w/h/i/l/e///i/n//h/a/s/N/e/x/t/L/i/n/e//f//	/ / / / / / / / / /w/h/i/l/e/ /(/i/n/./h/a/s/N/e/x/t/L/i/n/e/(/)/)/
+/ / / / / / / / / /{/	/ / / / / / / / / /{/
+/ / // / / / / / / / /St/r/i/n/g/// /i/n/p/u/t/s/ /=/ /i/n/./n/e/x/t/L/i/n/e/f//./s/p/l/i/t//"/\/\/|/"/l/;/	/ / / / / / / / / / / / /S/t/r/i/n/g/[/]/ /i/n/p/u/t/s/ /=/ /i/n/./n/e/x/t/L/i/n/e/(/)/./s/p/l/i/t/(/"/\/\/|/"/)/;/
+/ / / / / /  / / / / / / /i/f/ //i/n/p/u/t/s//0//..//q/u/a/l/s//u/s/e/r/n/a/m/e// /&/&/ /A/r/r/a/y/s/./e/q/u/a/l/s//i/n/p/u/t/s//1/l/.//o/C/h/a/r//r/r/a/y/l//,,/ /p/a/s/s/w/o/r/d//l/	/ / / / / / / / / / / / /i/f/ /(/i/n/p/u/t/s/[/0/]/./e/q/u/a/l/s/(/u/s/e/r/n/a/m/e/)/ /&/&/ /A/r/r/a/y/s/./e/q/u/a/l/s/(/i/n/p/u/t/s/[/1/]/./t/o/C/h/a/r/A/r/r/a/y/(/)/,/ /p/a/s/s/w/o/r/d/)/)/
+/ // // / / / / / / / /{/	/ / / / / / / / / / / / /{/
+/ / / / / / / / / / // / / / /S/t/r/i/n/g/ /r/o/l/e/ /=/ /i/n/p/u/t/s//2//;/	/ / / / / / / / / / / / / / / /S/t/r/i/n/g/ /r/o/l/e/ /=/ /i/n/p/u/t/s/[/2/]/;/
+// / / / //  // / / / // /  /S/e/t/</P/r/i/n/c/i/p/a/l/>/ /p/r/i/n/c/i/p/a/l/s/  /=/ /s/u/b/j/e/c/t/./g/e/t/P/r/i/n//i/p/a/l/s///;/	/ / / / / / / / / / / / / / / /S/e/t/</P/r/i/n/c/i/p/a/l/>/ /p/r/i/n/c/i/p/a/l/s/ /=/ /s/u/b/j/e/c/t/./g/e/t/P/r/i/n/c/i/p/a/l/s/(/)/;/
+/ / / / / // / / /  // / / / /p/r/i/n/c//p/a/l/s/./a/d/d//n/e/w/ /S/i/m/p/l/eP/r/i/n/c/i/p/a/l//"/u/s/e/r/n/a/m/e/"/,,/  /u/s/e/r/n/a/m/e///;/	/ / / / / / / / / / / / / / / /p/r/i/n/c/i/p/a/l/s/./a/d/d/(/n/e/w/ /S/i/m/p/l/e/P/r/i/n/c/i/p/a/l/(/"/u/s/e/r/n/a/m/e/"/,/ /u/s/e/r/n/a/m/e/)/)/;/
+/ / /  / / / / /  / /  / / / /  /p/r/i//c/i//a/l/s//a/d/d//n/e/w/ /S/i/m/p/l/e/P/r/i/n/c/i/p/al//"/r/o/l/e/"/,/ /r/o/l/e//l/;/	/ / / / / / / / / / / / / / / /p/r/i/n/c/i/p/a/l/s/./a/d/d/(/n/e/w/ /S/i/m/p/l/e/P/r/i/n/c/i/p/a/l/(/"/r/o/l/e/"/,/ /r/o/l/e/)/)/;/
+/ / / / / / / / / // /  / / /re/t/u/r/n/ /t/r/u/e/;/	/ / / / / / / / / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ / / / /  /  / / / / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / / /  /}/	/ / / / / / / / / /}/
+/ / / / / / / / / /i/n//c/l/o/s/e////	/ / / / / / / / / /i/n/./c/l/o/s/e/(/)/;/
+/ / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+// / / / / /}/	/ / / / / / /}/
+/ /  / / / / /c/a/t/c/h/ //I/O/E/x/c/e/p/t/i/o/n//e//	/ / / / / / /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/
+/ / / / / / /{/	/ / / / / / /{/
+/ / / / / /  // / /L/o/g/i/nE/x/c/e/p/t/i/o/n/ /e/2/ /=/ /n//w/ //o/g/i/n/E/x/c/e/p/t/i/o/n//"/C/a/n/''/t/  /o/p/e/n/ /p//s/s/w/o/r/d/ /f/i/l/e/"//;/	/ / / / / / / / / /L/o/g/i/n/E/x/c/e/p/t/i/o/n/ /e/2/ /=/ /n/e/w/ /L/o/g/i/n/E/x/c/e/p/t/i/o/n/(/"/C/a/n/'/t/ /o/p/e/n/ /p/a/s/s/w/o/r/d/ /f/i/l/e/"/)/;/
+/ / // /  / / / / /e/2/./i/n/i//C/a/u/s/e//e/;/	/ / / / / / / / / /e/2/./i/n/i/t/C/a/u/s/e/(/e/)/;/
+/  / / /  / / / / /t/h/r/o/w/ /e/2/;/	/ / / / / / / / / /t/h/r/o/w/ /e/2/;/
+// / / / / /}/	/ / / / / / /}/
+/  / / /}/	/ / / /}/
+/	/
+/  /  / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /l/o/g/o/u/t//l/	/ / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /l/o/g/o/u/t/(/)/
+/  /  / /{/	/ / / /{/
+/ / / / / /r/e/t/u/r/n/  /t/r/u/e/;/	/ / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/  / / /}/	/ / / /}/
+/	/
+/  / / /p/u/b/l/i/c//bo/o/l/e/a/n/ /a/b/o/r/t//l/	/ / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /a/b/o/r/t/(/)/
+/ / / /{/	/ / / /{/
+/ /  / / / / /r/e/t/u/r/n/ /t/r/u/e/;/	/ / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ / /  /}/	/ / / /}/
+/	/
+/  // /p/u/b/l/i/c/ /b/o/o/l/e/an/ /c/o/m/m/i/t///	/ / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /c/o/m/m/i/t/(/)/
+/ / / /{/	/ / / /{/
+/  / /  / / /r/e/t/u/r/n/ /t/r/u//;/	/ / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+// / /1/	/ / / /}/
+/	/
+/ // /p/ri/v/a/t/e/ /S/u/b/j/e/c/t/ /s/u/b/j/e/c/t/;/	/ / / /p/r/i/v/a/t/e/ /S/u/b/j/e/c/t/ /s/u/b/j/e/c/t/;/
+/ // /p/r//v/a/t/e/ /C/a/l/l/b/a/c/k/H/a/n/d/l/e/r/  /c/a/l/l/b/a/c/k/H/a/n/d/l/e/r/;/	/ / / /p/r/i/v/a/t/e/ /C/a/l/l/b/a/c/k/H/a/n/d/l/e/r/ /c/a/l/l/b/a/c/k/H/a/n/d/l/e/r/;/
+/ / /  /p/r/i/v/a/te/ /M/a/p/</S/t/r/i/n/g/,/ /?/>//o/p/t/i/o/n/s/;/	/ / / /p/r/i/v/a/t/e/ /M/a/p/</S/t/r/i/n/g/,/ /?/>/ /o/p/t/i/o/n/s/;/
+/}/	/}/

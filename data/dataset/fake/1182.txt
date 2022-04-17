@@ -1,0 +1,27 @@
+class Demo implements Runnable	class Demo implements Runnable
+{	{
+public void run	public void run()
+{	{
+for int x=1 x<=40; x++f	for (int x=1; x<=40; x++)
+{	{
+System.out.printlnlThread..currentThrea.getNamef+"....."+x;	System.out.println(Thread.currentThread().getName()+"....."+x);
+Threadyieldf;}	Thread.yield();}
+1	}
+	}
+lass  JoinThreadDemo	class JoinThreadDemo
+{	{
+ublic static void mainStrig  args	public static void main(String[] args)
+{	{
+Demo d =ew Demo;	Demo d = new Demo();
+Thread t1 = new Treadd;	Thread t1 = new Thread(d);
+Thread t2 = new Threadd;	Thread t2 = new Thread(d);
+t1.startf;	t1.start();
+t2.startl;	t2.start();
+	
+for intx=1; x<=50; x++	for (int x=1; x<=50; x++)
+{	{
+Systemout.println""main------>"+xf;	System.out.println("main------>"+x);
+}	}
+System.out.println"over";	System.out.println("over");
+}	}
+}	}

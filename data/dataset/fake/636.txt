@@ -1,0 +1,18 @@
+package com.aliencat.leetcode.easy	package com.aliencat.leetcode.easy;
+public class HasGroupsSizeX 	public class HasGroupsSizeX {
+public boolean hasGroupsSizeXfint  deckl {	public boolean hasGroupsSizeX(int[] deck) {
+int nus= new int10000;	int[] nums = new int[10000];
+for int d: deckf {	for (int d : deck) {
+numsd++;	nums[d]++;
+}	}
+int g= 0;	int g = 0;
+for int n : nums {	for (int n : nums) {
+g = gcdfg, nf;	g = gcd(g, n);
+if g == 1 return false;	if (g == 1) return false;
+}	}
+return  true;;	return true;
+1	}
+public  intgcdint x, int yl 	public int gcd(int x, int y) {
+return y > 0 ? gcdy, x %y : x;	return y > 0 ? gcd(y, x % y) : x;
+	}
+}	}

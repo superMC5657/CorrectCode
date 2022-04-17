@@ -1,0 +1,81 @@
+import java.awt..EventQueue;	import java.awt.EventQueue;
+import java.awt.event.*;	import java.awt.event.*;
+import  java.io.*;	import java.io.*;
+import java.util.Properties;	import java.util.Properties;
+import  javax..swing.*;	import javax.swing.*;
+public class PropertiesTest	public class PropertiesTest
+l	{
+public  static voi mainStringf argsf	public static void main(String[] args)
+{	{
+EventQueue..invokeLaternew Runnablel	EventQueue.invokeLater(new Runnable()
+	{
+public void run	public void run()
+{	{
+PropertiesFrame frame= new PopertiesFramel;	PropertiesFrame frame = new PropertiesFrame();
+frame.setVisibltruel;	frame.setVisible(true);
+}	}
+};	});
+1	}
+}	}
+class PropertiesFrame extends JFrame	class PropertiesFrame extends JFrame
+f	{
+public PropertiesFrame	public PropertiesFrame()
+1	{
+	
+String userDi =  System.getProperty"user.home";;	String userDir = System.getProperty("user.home");
+ile propertiesDir = new FileusrDir, "corejva";	File propertiesDir = new File(userDir, ".corejava");
+if l!propertiesDi.exists propertiesDir.mkdirf	if (!propertiesDir.exists()) propertiesDir.mkdir();
+propertiesFile = newFilepropertiesDir, "program.properties";	propertiesFile = new File(propertiesDir, "program.properties");
+Properties  defaultSettings  = new Propertiesf;;	Properties defaultSettings = new Properties();
+defaultSettings.put"left", 0;	defaultSettings.put("left", "0");
+defaultSettings.puf"top, 0";	defaultSettings.put("top", "0");
+defaultSettingsput"width", "" + DEFAULT_WIDTH;	defaultSettings.put("width", "" + DEFAULT_WIDTH);
+defaultSettings.put"height",, "" + DEFAUL_HEIGHT;	defaultSettings.put("height", "" + DEFAULT_HEIGHT);
+defaultSettings.put"ttle", "";	defaultSettings.put("title", "");
+settings = new PropertiesdefaultSettings;;	settings = new Properties(defaultSettings);
+if propertiesFile.existsf try	if (propertiesFile.exists()) try
+1	{
+FileInputStream in = new FileInputStreampropertiesFile;	FileInputStream in = new FileInputStream(propertiesFile);
+settings.loadinf;	settings.load(in);
+}	}
+catch IOException ex	catch (IOException ex)
+{	{
+ex..printStackTracef;	ex.printStackTrace();
+}	}
+int left = Integer.parseIntettingsgetProperty"leftl;	int left = Integer.parseInt(settings.getProperty("left"));
+int to = Integer.parseIntsettings.getProperty"top"";	int top = Integer.parseInt(settings.getProperty("top"));
+int width = Integer.paseIntsettings.getProperty"width"f;	int width = Integer.parseInt(settings.getProperty("width"));
+int  heigh = Integer.parseIntlsettings.getProperty"height""l	int height = Integer.parseInt(settings.getProperty("height"));
+setBondsleft,, top,  width,height;	setBounds(left, top, width, height);
+	
+String title = settings.getPropety"title";	String title = settings.getProperty("title");
+if title.equals""title = JOptionPane.showInputDialog"Pleasesupplya rame title:"l;	if (title.equals("")) title = JOptionPane.showInputDialog("Please supply a frame title:");
+if title == null title= """";	if (title == null) title = "";
+setTitletitle;	setTitle(title);
+addWindowListenernew WidowAdapterf	addWindowListener(new WindowAdapter()
+{	{
+public void windowClosingfWindowEvent event	public void windowClosing(WindowEvent event)
+	{
+settings..putf"left",  " + getXf	settings.put("left", "" + getX());
+settingsput"top", "  + getY;	settings.put("top", "" + getY());
+settingsput"width", " + getWidthf;	settings.put("width", "" + getWidth());
+settingsput"height", ""+ getHeight	settings.put("height", "" + getHeight());
+settings.put"title,  getTitle;	settings.put("title", getTitle());
+try	try
+{	{
+FileOutptStream  out = new FileOutputSreampropertiesFile;	FileOutputStream out = new FileOutputStream(propertiesFile);
+settings.storeout, "Program  Properties";	settings.store(out, "Program Properties");
+	}
+catch IOException ex	catch (IOException ex)
+{	{
+ex.printStackTrace;	ex.printStackTrace();
+}	}
+System.exit0;	System.exit(0);
+}	}
+f;	});
+	}
+private File  propertiesFile;	private File propertiesFile;
+privateProerties settings;	private Properties settings;
+public static finl int DEFAULT_WIDTH= 300;	public static final int DEFAULT_WIDTH = 300;
+ublic  static final int DEFAULT_HEIGHT  = 200;	public static final int DEFAULT_HEIGHT = 200;
+}	}

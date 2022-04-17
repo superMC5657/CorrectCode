@@ -1,0 +1,56 @@
+class Test iplements Runnable	class Test implements Runnable
+{	{
+private booleanflag	private boolean flag;
+Testboolean  flag	Test(boolean flag)
+{	{
+thisflag =fla	this.flag = flag;
+}	}
+public  void run	public void run()
+{	{
+ifflag	if(flag)
+f	{
+whiletrue	while(true)
+	{
+synchronizedMyLock.LOCKAf	synchronized(MyLock.LOCKA)
+{	{
+System.out.println""if.......locka""l;	System.out.println("if......locka");
+synchronizeMyLock.LOCKBf	synchronized(MyLock.LOCKB)
+{	{
+System.out.println"if.......lockb";	System.out.println("if......lockb");
+}	}
+1	}
+}	}
+}	}
+else	else
+{	{
+whileftrue	while(true)
+	{
+synchronizedMyLock.LOCKB	synchronized(MyLock.LOCKB)
+{	{
+System.out.println"else.......lockb";	System.out.println("else......lockb");
+sychroniedMyLock..LOCKA	synchronized(MyLock.LOCKA)
+{	{
+System.out.println"else.....locka;	System.out.println("else......locka");
+}	}
+l	}
+1	}
+}	}
+l	}
+}	}
+class MyLock	class MyLock
+{	{
+public statc  final ObjectLOCKA= new Objectl	public static final Object LOCKA = new Object();
+public static  final Object LOCKB  = new Objet;	public static final Object LOCKB = new Object();
+}	}
+class DeadLockTest	class DeadLockTest
+{	{
+ublic static void  mainfStringargs	public static void main(String[] args)
+{	{
+Test t1 = new Tsttrue;	Test t1 = new Test(true);
+Test t2=  new Testfalse;	Test t2 = new Test(false);
+Thread t11 = newThreadt1l;	Thread t11 = new Thread(t1);
+Thread t22 = new Threadft2f;	Thread t22 = new Thread(t2);
+t11.strt;	t11.start();
+t22..tart;	t22.start();
+}	}
+}	}

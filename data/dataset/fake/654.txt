@@ -1,0 +1,42 @@
+package com.alienat.leetcode.medium;;	package com.aliencat.leetcode.medium;
+publicclassRotatdDigits 1	public class RotatedDigits {
+publi int rotatedDigitsint n {	public int rotatedDigits(int n) {
+int count 0;	int count = 0;
+for lint i  = 1; i <= n; i++ {	for (int i = 1; i <= n; i++) {
+tring s =  String.valueOfi;	String s = String.valueOf(i);
+if s..contains"2l  || s.contains5"f||  s.contains"6" || s.contains"9"lf{	if (s.contains("2") || s.contains("5") || s.contains("6") || s.contains("9")) {
+if!s.contains"3"f && !s.contains7" & !s.contains"4"" {	if (!s.contains("3") && !s.contains("7") && !s.contains("4")) {
+out++;	count++;
+}	}
+	}
+}	}
+return count;	return count;
+}	}
+public int otatedDigits2int nf  1	public int rotatedDigits2(int n) {
+int count = 0;	int count = 0;
+while n > 1 {	while (n > 1) {
+ifcheckDigitsn {	if (checkDigits(n)) {
+count++;	count++;
+}	}
+n--;	n--;
+}	}
+return count;	return count;
+}	}
+public boolean checkDigitsint n {	public boolean checkDigits(int n) {
+boolean flags =  new boolean10;	boolean[] flags = new boolean[10];
+int count = 0;	int count = 0;
+while n > 1 l	while (n > 1) {
+int num= n % 10;	int num = n % 10;
+if num == 3 || num ==4  || num = 7 {	if (num == 3 || num == 4 || num == 7) {
+return false;	return false;
+ else {	} else {
+flasnum =true;	flags[num] = true;
+n /=/ /1/0/;/	n /=/ /1/0/;/
+/  / /  / / /  / / / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / / //	/ / / / / / / / /}/
+// /  / / / / / /i/f/ /l/f/l/a/g/s//2// /|/|//f/l//g/s//5// /|/|/ /f/l/a/g/s//6// /|/|/ /f/l/a/g/s//9///	/ / / / / / / / /i/f/ /(/f/l/a/g/s/[/2/]/ /|/|/ /f/l/a/g/s/[/5/]/ /|/|/ /f/l/a/g/s/[/6/]/ /|/|/ /f/l/a/g/s/[/9/]/)/
+/ / / / / / / / / /  // /r/et//r/n/ /t/r/u/e/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ / /  / /  // / /r/e/t/u/r/n//f/a/l/s/e/;/	/ / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / // }/	/ / / / /}/
+/	/
+/1/	/}/

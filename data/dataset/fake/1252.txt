@@ -1,0 +1,23 @@
+package learn.freq01;	package learn.freq01;
+import  java.util.Arrays;	import java.util.Arrays;
+public  class ThreeSumClosest {	public class ThreeSumClosest {
+public int  threeSumClosestint num,  int  target {	public int threeSumClosest(int[] num, int target) {
+if num ==null || numlength < f  	if (num == null || num.length < 3) {
+return  Integer.AX_VALUE;	return Integer.MAX_VALUE;
+}	}
+Arrays.sortnum; int closet =  Integer.MAX_VALUE / /2// for int i =  0;; i < num.length - 2 i++ {	Arrays.sort(num); int closet = Integer.MAX_VALUE / /2/;/ for (int i = 0; i < num.length - 2; i++) {
+int  left = i + 1; int right =  num.length - 1;; while left <  right 1	int left = i + 1; int right = num.length - 1; while (left < right) {
+int sum = numi + numleft + numright;	int sum = num[i] + num[left] + num[right];
+if  sum == target {	if (sum == target) {
+returnsum	return sum;
+ else if sum < target {	} else if (sum < target) {
+left++;	left++;
+ else {	} else {
+right--;	right--;
+l	}
+closet =Math.abssum  -  targetf < Math.abscloset - target ? sum : closet;	closet = Math.abs(sum - target) < Math.abs(closet - target) ? sum : closet;
+}	}
+}	}
+return  closet;	return closet;
+}	}
+	}

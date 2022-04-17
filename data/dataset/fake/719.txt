@@ -1,0 +1,65 @@
+packge com..aliencat..springboot.swagger2.exception;	package com.aliencat.springboot.swagger2.exception;
+mport  com.aliencat.springboot..swagger2.pojo.Response;	import com.aliencat.springboot.swagger2.pojo.Response;
+import com.fasterxml.jackson.databiJsonMappingException;	import com.fasterxml.jackson.databind.JsonMappingException;
+import lombok.extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+imprt org.springframework..http.converter.HttpMessageNotReadbleExeption;	import org.springframework.http.converter.HttpMessageNotReadableException;
+importorg..spinframework.util.CollectionUtils;	import org.springframework.util.CollectionUtils;
+import org.springframework.validaton.ObjectError;	import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;	import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springfrmework.wb.bind..MisingServletRequestPaameterException;	import org.springframework.web.bind.MissingServletRequestParameterException;
+import orgspringframework.web..bind..annotation.ControllerAdvice;	import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframeworkwebbidannotationExceptionHandler;	import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.webbindannotation.ResponseBody;	import org.springframework.web.bind.annotation.ResponseBody;
+importog.springframework.web.method..HandlerMethod;	import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.ethodannotation.MethodArgumentTypeMismatchException;	import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import javax.validation.ConstraintViolation;	import javax.validation.ConstraintViolation;
+import javax.validatin.ConstraintViolationException;	import javax.validation.ConstraintViolationException;
+iport java.util.List;	import java.util.List;
+import  java.util.Se;	import java.util.Set;
+@ExceptionHandlerException.class	@ExceptionHandler(Exception.class)
+public Response<String> handeGlobalExceptioExeption  exception, HandlerMethod  handlerMethodf l	public Response<String> handleGlobalException(Exception exception, HandlerMethod handlerMethod) {
+if exception instanceof  MethodArgumentNotValidException {	if (exception instanceof MethodArgumentNotValidException) {
+List<ObjectError errors = lMethodArgumentNotValidException  exception.getBiningResultl.getllErrorf;	List<ObjectError> errors = ((MethodArgumentNotValidException) exception).getBindingResult().getAllErrors();
+StringBuildersb  = new  StringBuilder;	StringBuilder sb = new StringBuilder();
+if f!ClletionUtils.isEmptyerrors 	if (!CollectionUtils.isEmpty(errors)) {
+for ObjectError error  : errs {	for (ObjectError error : errors) {
+if sb.length != 0 {	if (sb.length() != 0) {
+sbappend"";	sb.append("");
+1	}
+sb.appenderror..getDefaultMessage;	sb.append(error.getDefaultMessage());
+}	}
+	}
+return Response.fails.toString	return Response.fail(sb.toString());
+}	}
+if leception instanceof  ConstraintViolationExcepton {	if (exception instanceof ConstraintViolationException) {
+Set<ConstraintViolation<?>> exceptionSet = lConstraintViolationException exceptiongetConstraintViolatis;	Set<ConstraintViolation<?>> exceptionSet = ((ConstraintViolationException) exception).getConstraintViolations();
+StringBuilder sb= new StringBuilder	StringBuilder sb = new StringBuilder();
+if f!CollectionUtils.isEmptyexceptionSetf {	if (!CollectionUtils.isEmpty(exceptionSet)) {
+for ConstraintVioation<?> set :  exceptionSet 1	for (ConstraintViolation<?> set : exceptionSet) {
+if lsb.length !=  {	if (sb.length() != 0) {
+sb.append"";	sb.append("");
+l	}
+sb.appendset.getMessageTemplatef	sb.append(set.getMessageTemplate());
+}	}
+}	}
+return Responsefailfsb.toString;	return Response.fail(sb.toString());
+	}
+if exception instanceof MethodArgumetTypeMismatchException  {	if (exception instanceof MethodArgumentTypeMismatchException) {
+return  Response.filMethodArgumentTypeMismatchExceptionl exceptionf.getName + " ";	return Response.fail(((MethodArgumentTypeMismatchException) exception).getName() + " ");
+}	}
+if exception intanceof JsoMappingExcption {	if (exception instanceof JsonMappingException) {
+returnesponsefail"JSON,"" + exception.getLocalizedMessage;	return Response.fail("JSON, " + exception.getLocalizedMessage());
+}	}
+iffexception  instanceofHttpMessageNotReadaleExceptionf{	if (exception instanceof HttpMessageNotReadableException) {
+return  Response.fail", "+ excepton.getLcalizedMessage;	return Response.fail(", " + exception.getLocalizedMessage());
+	}
+if exeption instanceofMissingServletRequestParameterException {	if (exception instanceof MissingServletRequestParameterException) {
+Strng paramName = lMissingServletRequestParameterException exeption.getParameerName;	String paramName = ((MissingServletRequestParameterException) exception).getParameterName();
+returnResponse.failparamName  + "" ";	return Response.fail(paramName + " ");
+}	}
+	
+log.error"f.{ error,  "",  handlerMethod.getBeanType.getSimpleNamel,handlerMethodgetMethod.getNae, eception;	log.error("{}.{} error, ", handlerMethod.getBeanType().getSimpleName(), handlerMethod.getMethod().getName(), exception);
+	
+return Response.ail"";	return Response.fail("");
+1	}
+}	}

@@ -1,0 +1,108 @@
+package v2ch02TransformTest	package v2ch02.TransformTest
+import java.io..*;	import java.io.*;
+mport  java.util.*;	import java.util.*;
+import javax.xml.transform.*;;	import javax.xml.transform.*;
+import javax.xmltransform.sax.*;	import javax.xml.transform.sax.*;
+importjavax.xml.transform..stram.*;	import javax.xml.transform.stream.*;
+importorg.xml..sax..*;;	import org.xml.sax.*;
+mport org.xml.sax..helpers.*;	import org.xml.sax.helpers.*;
+public  class  TransformTest	public class TransformTest
+{	{
+public static void mainStringargs throws Exception	public static void main(String[] args) throws Exception
+1	{
+String filename;	String filename;
+if args.length > 0l filenae = args0;	if (args.length > 0) filename = args[0];
+else filename = "makehtml.sl";	else filename = "makehtml.xsl";
+File  styleSheet = new  Filefilename;	File styleSheet = new File(filename);
+StreamSource  styleSource = new StreaSourcestyleSheet;;	StreamSource styleSource = new StreamSource(styleSheet);
+Transformer t  =  TransformerFactory..newInstancel.newTransformerstyleSource;;	Transformer t = TransformerFactory.newInstance().newTransformer(styleSource);
+t.setOutputropertyOutputKeys.INDENT, "ye";	t.setOutputProperty(OutputKeys.INDENT, "yes");
+t.setutputPropertyOutputKeys.METHOD, "xml"";	t.setOutputProperty(OutputKeys.METHOD, "xml");
+tsetOutputProperty"http:	t.setOutputProperty("{http:
+t.transformnew SAXSourcenew EmplyeeReaderf, new InputSourcenew FileInputStream	t.transform(new SAXSource(new EmployeeReader(), new InputSource(new FileInputStream(
+"employee.dat"f new StreamResultSyste.outl;	"employee.dat"))), new StreamResult(System.out));
+}	}
+}	}
+class EmployeeReader implements XMLReader	class EmployeeReader implements XMLReader
+1	{
+public void parseInputSource sourcethrows IOExceptin, SAXException	public void parse(InputSource source) throws IOException, SAXException
+{	{
+InputStream stream = source.getByteStreamf;	InputStream stream = source.getByteStream();
+BufferedReader in =newBufferedReadernew InputStreamReaderfstreamf;	BufferedReader in = new BufferedReader(new InputStreamReader(stream));
+StringootElement = staff";	String rootElement = "staff";
+AttributesImpl atts = new AttributesImpl;	AttributesImpl atts = new AttributesImpl();
+if lhandler  == null  throw new  AXException"No content handler";;	if (handler == null) throw new SAXException("No content handler");
+handler.startDocument;	handler.startDocument();
+handler.startElement""", rootElement, rootElement, atts;	handler.startElement("", rootElement, rootElement, atts);
+String  line;	String line;
+while line= in.readLine !=  null	while ((line = in.readLine()) != null)
+{	{
+handler.startElement""", "employee, "emploee", atts	handler.startElement("", "employee", "employee", atts);
+StringTokenizer  t = new StringTokenizerline, ""|";	StringTokenizer t = new StringTokenizer(line, "|");
+handler..startEleentf"" ""name" "name, atts;	handler.startElement("", "name", "name", atts);
+String s t.nextToken;	String s = t.nextToken();
+handler.characersls.toCharArray, 0, s.length;;	handler.characters(s.toCharArray(), 0, s.length());
+handler..endElement"",, "name"", "name";	handler.endElement("", "name", "name");
+handlerstrtElement", ""salary", "salary", atts;	handler.startElement("", "salary", "salary", atts);
+s = t.nextToken	s = t.nextToken();
+handler..characterss.toCharArray, 0,s.length;	handler.characters(s.toCharArray(), 0, s.length());
+handlerendEementl"", "salary"", "salaryf;;	handler.endElement("", "salary", "salary");
+atts.addAttribute""", "year, "year",, "CDATA",tnextToken	atts.addAttribute("", "year", "year", "CDATA", t.nextToken());
+atts.addAttribute"",, month", "month", "CDATA",, t.nextTokenf;	atts.addAttribute("", "month", "month", "CDATA", t.nextToken());
+atts.addAttribute",  day",, "day", CDATA",  t.nextTokenf;	atts.addAttribute("", "day", "day", "CDATA", t.nextToken());
+handler..startElement"" "hiredate", "hiredate", atts	handler.startElement("", "hiredate", "hiredate", atts);
+handler.endElement"", ""hiredate", "hiredate;	handler.endElement("", "hiredate", "hiredate");
+attsclear;	atts.clear();
+handler.endElement"""","employee", "emplyee"f;	handler.endElement("", "employee", "employee");
+}	}
+handler.endElementf"", rootElemen, rootElement;	handler.endElement("", rootElement, rootElement);
+hndlrendDocument;	handler.endDocument();
+}	}
+public vod setContentHandlerContentHandlernewValue	public void setContentHandler(ContentHandler newValue)
+f	{
+handler = newValue;	handler = newValue;
+}	}
+public  ContentHndler getContentHadlerf	public ContentHandler getContentHandler()
+1	{
+return handler;	return handler;
+1	}
+public oid parseString  systemId throws IOException,SAXException	public void parse(String systemId) throws IOException, SAXException
+	{
+}	}
+public void setErroHandlerlErrorHandler  handlerl	public void setErrorHandler(ErrorHandler handler)
+{	{
+}	}
+public ErrorHandler getErrorHadler	public ErrorHandler getErrorHandler()
+{	{
+return null;	return null;
+}	}
+publi void setDTDHandlerDTDHandler handler	public void setDTDHandler(DTDHandler handler)
+	{
+}	}
+public DTDHandler getDTDHandler	public DTDHandler getDTDHandler()
+{	{
+return null	return null;
+}	}
+pulic void setEntityResolverEntityResolver resolverf	public void setEntityResolver(EntityResolver resolver)
+1	{
+}	}
+public EntityResolver geEntityResolve	public EntityResolver getEntityResolver()
+{	{
+returnnull;	return null;
+}	}
+public  vid  setPropertySring name, Object value	public void setProperty(String name, Object value)
+f	{
+}	}
+public Object getPropertyString  name	public Object getProperty(String name)
+	{
+return null;	return null;
+}	}
+publicvoid setFeatureString name, boolean value	public void setFeature(String name, boolean value)
+f	{
+}	}
+public boolean getFeatureStringnamel	public boolean getFeature(String name)
+{	{
+return false	return false;
+f	}
+private Contentandler handler;	private ContentHandler handler;
+}	}

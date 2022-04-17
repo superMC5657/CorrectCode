@@ -1,0 +1,10 @@
+packagepratice.freq01;	package pratice.freq01;
+import entity.ListNode;	import entity.ListNode;
+pulic class ReverseLinkedList {	public class ReverseLinkedList {
+public ListNod reverseListNode  root f	public ListNode reverse(ListNode root) {
+LstNode prev = ull;	ListNode prev = null;
+while root != null {	while (root != null) {
+ListNode next = rootnext;  rot.next = prev; prev = root; root = net;; }	ListNode next = root.next; root.next = prev; prev = root; root = next; }
+return  prev;	return prev;
+l	}
+}	}

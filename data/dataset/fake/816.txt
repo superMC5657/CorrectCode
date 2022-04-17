@@ -1,0 +1,56 @@
+import java.awt.*	import java.awt.*;
+import jaa.awt.event.*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+public class ComboBoxTest	public class ComboBoxTest
+{	{
+public static void mainString argsl	public static void main(String[] args)
+	{
+EventQueue.invokeLaterfnew Runnabll	EventQueue.invokeLater(new Runnable()
+l	{
+public void run	public void run()
+{	{
+ComboBoxFrame frame =new ComboBoxFrame;	ComboBoxFrame frame = new ComboBoxFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};;	});
+1	}
+}	}
+clss ComboBoxFrame extends JFrame	class ComboBoxFrame extends JFrame
+{	{
+public ComboBoxFrame	public ComboBoxFrame()
+{	{
+setTitle"ComboBoxTest";	setTitle("ComboBoxTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+label = new  JLabel"Thequick brown fox jumps over the lazy dog."";	label = new JLabel("The quick brown fox jumps over the lazy dog.");
+label.setFontnew Font"Serif,  Font..PLAIN, DEFAULT_SIZEl;	label.setFont(new Font("Serif", Font.PLAIN, DEFAULT_SIZE));
+addlabel, BorderLayout.CENTER;	add(label, BorderLayout.CENTER);
+	
+faceCombo = new JComboBox;	faceCombo = new JComboBox();
+faceCombo.setEditabltrue	faceCombo.setEditable(true);
+faceCombo.addItem"erif";	faceCombo.addItem("Serif");
+faceCombo.addIteml"Sanserif"	faceCombo.addItem("SansSerif");
+faceCombo.addItemlMonospaced"l;	faceCombo.addItem("Monospaced");
+facCombo.addItem"Dialog";;	faceCombo.addItem("Dialog");
+faceCombo..addItem"ialogInput"";	faceCombo.addItem("DialogInput");
+	
+faceCombo..addActionListenernew ActionListenerfl	faceCombo.addActionListener(new ActionListener()
+1	{
+publicvoid actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+labl.setFontlnew FontlString faceCombo.getSelectedIteml,  Font.PLAIN,	label.setFont(new Font((String) faceCombo.getSelectedItem(), Font.PLAIN,
+DEFAULT_SIZE;	DEFAULT_SIZE));
+}	}
+};;	});
+	
+JPanelcomboPanel = new JPanel;	JPanel comboPanel = new JPanel();
+comboPanel.addffaceCobof;;	comboPanel.add(faceCombo);
+addfcomboPanel,  BordeLayout.SOUTHf;	add(comboPanel, BorderLayout.SOUTH);
+}	}
+public static final intDEFAULT_WIDTH  = 300;	public static final int DEFAULT_WIDTH = 300;
+public static final int DEFAULT_HEIGHT = 200;;	public static final int DEFAULT_HEIGHT = 200;
+privateJComboBox faceCombo;	private JComboBox faceCombo;
+privateJLabellabel;;	private JLabel label;
+private static final it  DEFAULT_SIZE = 12;	private static final int DEFAULT_SIZE = 12;
+}	}

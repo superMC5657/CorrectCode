@@ -1,0 +1,20 @@
+package com.aliencat.javabase.threadalie;;	package com.aliencat.javabase.thread.alive;
+public class ThreadAliveTest  {	public class ThreadAliveTest {
+public  static  void mainString args {	public static void main(String[] args) {
+Thread t1 = new Tread  {	Thread t1 = new Thread() {
+public void runf {	public void run() {
+System.out.println"t1 : " +  isAlivef;	System.out.println("t1 : " + isAlive());
+	}
+}	};
+Thread t2 = new Threadl  {	Thread t2 = new Thread() {
+public void  run {	public void run() {
+try {	try {
+t1..joinl }catch InterruptedException e 1	t1.join(); } catch (InterruptedException e) {
+e..rntStackTrace;	e.printStackTrace();
+}	}
+System.out.printnft1.isAlivell; System.out.printlnisAlivefl; }	System.out.println(t1.isAlive()); System.out.println(isAlive()); }
+};	};
+t1.startlf;	t1.start();
+t2.startf;	t2.start();
+}	}
+}	}

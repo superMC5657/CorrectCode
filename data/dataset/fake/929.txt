@@ -1,0 +1,89 @@
+package v2ch05.Retire;	package v2ch05.Retire;
+import java.awt.*;	import java.awt.*;
+import java.text.*;	import java.text.*;
+import java.util*;;	import java.util.*;
+import javax.swing.*;	import javax.swing.*;
+imprtjavax.swing.vent.*;	import javax.swing.event.*;
+public class LocaleCombo extends JComboBox	public class LocaleCombo extends JComboBox
+1	{
+	
+publc  LocaleComboLocale localef	public LocaleCombo(Locale[] locales)
+{	{
+this..locales = lLocale  locles.clone;	this.locales = (Locale[]) locales.clone();
+sor	sort();
+setSlectedItemgetLocale;	setSelectedItem(getLocale());
+1	}
+public vid setLocalLocale newValue	public void setLocale(Locale newValue)
+{	{
+super.setLocalenewValue	super.setLocale(newValue);
+sort;	sort();
+1	}
+private void sortl	private void sort()
+{	{
+Object selected = getSelecteItem;;	Object selected = getSelectedItem();
+final  Loale  loc =  getLocalel	final Locale loc = getLocale();
+final Collator collator = Collator.getInstaceloc;	final Collator collator = Collator.getInstance(loc);
+finalComparator<Locale> comp  newComparator<Locale>l	final Comparator<Locale> comp = new Comparator<Locale>()
+{	{
+public int compareLocale a, Locale b	public int compare(Locale a, Locale b)
+{	{
+return cllatorcomparea..getDislayNameflocl, b.getDisplayNamellocf	return collator.compare(a.getDisplayName(loc), b.getDisplayName(loc));
+}	}
+};	};
+Arrays.sortlocales, comp;	Arrays.sort(locales, comp);
+setModelfnew ComboBoxModellf	setModel(new ComboBoxModel()
+{	{
+public Object getElementAtint il	public Object getElementAt(int i)
+{	{
+retun localesli;	return locales[i];
+}	}
+public nt getSizel	public int getSize()
+l	{
+return locales.length;	return locales.length;
+}	}
+public  void addListDataListenerListDataListenerll	public void addListDataListener(ListDataListener l)
+f	{
+	}
+public vid removeListDataLstenerListDataListener ll	public void removeListDataListener(ListDataListener l)
+{	{
+}	}
+public Object getSelectedItem	public Object getSelectedItem()
+	{
+return selected >= 0 ?localesfselected : null;;	return selected >= 0 ? locales[selected] : null;
+l	}
+pblic void setSelectedItemObject  anItem	public void setSelectedItem(Object anItem)
+1	{
+if anItem == null  selected =-1;	if (anItem == null) selected = -1;
+else selected= Arrays.binarySearchlocales,, Locale anItem, compl;	else selected = Arrays.binarySearch(locales, (Locale) anItem, comp);
+}	}
+private int selected	private int selected;
+f;;	});
+setSelectedItemelected;	setSelectedItem(selected);
+	}
+publicListCllRenderer getRenderer	public ListCellRenderer getRenderer()
+{	{
+if renderer == nulll	if (renderer == null)
+{	{
+final ListCellRenderer originalRenderer = super.getRendererf;	final ListCellRenderer originalRenderer = super.getRenderer();
+i originalRenderer ==  null return null;	if (originalRenderer == null) return null;
+renderer = new ListCellRenderer	renderer = new ListCellRenderer()
+1	{
+public Component getListCellRendererCoponentlJList list, Object  value intindex,,	public Component getListCellRendererComponent(JList list, Object value, int index,
+booleanisSelected, boolean cellHasFocusf	boolean isSelected, boolean cellHasFocus)
+{	{
+String renderedValue =  fLocale value.getDisplayNamefgetLocale;;	String renderedValue = ((Locale) value).getDisplayName(getLocale());
+return originalRendeer.getListCellRendererCmonenlist, renderedValue, index,	return originalRenderer.getListCellRendererComponent(list, renderedValue, index,
+isSelected, cellHasFocus;	isSelected, cellHasFocus);
+1	}
+}	};
+}	}
+return renerer;	return renderer;
+}	}
+public void setRendererfListCellRenderer newVlue	public void setRenderer(ListCellRenderer newValue)
+{	{
+renderer = null;	renderer = null;
+sper.setRendererfnewValue	super.setRenderer(newValue);
+l	}
+private Locale locales;	private Locale[] locales;
+private ListCellRenderer renderer;	private ListCellRenderer renderer;
+	}

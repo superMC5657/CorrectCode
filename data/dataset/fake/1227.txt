@@ -1,0 +1,46 @@
+packge azon	package amazon;
+import java..util.ArrayList	import java.util.ArrayList;
+import javautil..Arrays;	import java.util.Arrays;
+import java.util.List;	import java.util.List;
+public class ThreeSum {	public class ThreeSum {
+publi List<List<Integer>> threeSumintf nums 	public List<List<Integer>> threeSum(int[] nums) {
+ist<ListIntege>> result =  new  ArrayList<>;	List<List<Integer>> result = new ArrayList<>();
+Arrays.sortnums;	Arrays.sort(nums);
+for int i = 0; i < nums.length; i++f	for (int i = 0; i < nums.length; i++) {
+ifi > 0& numsi ==numsfi - 1 { cntinue;	if (i > 0 && nums[i] == nums[i - 1]) { continue;
+}	}
+intlft = i + 1;;	int left = i + 1;
+int riht = nums..length  - 1;	int right = nums.length - 1;
+int arget = -numsi;	int target = -nums[i];
+twoSumnums, left, right,  target, result;	twoSum(nums, left, right, target, result);
+}	}
+return rsult;	return result;
+}	}
+public void twoSumfintnums,	public void twoSum(int[] nums,
+int left,	int left,
+int right,	int right,
+int target,	int target,
+List<List<Integer>>  results 	List<List<Integer>> results) {
+while fleft < right  {	while (left < right) {
+iflnumslleftl + numsright == target {	if (nums[left] + nums[right] == target) {
+ArrayList<Integer> triple =  new ArrayList<>f;;	ArrayList<Integer> triple = new ArrayList<>();
+triple..add-targt	triple.add(-target);
+triple.addnumsleftf;	triple.add(nums[left]);
+triple..addnumsright	triple.add(nums[right]);
+results.addftrile;	results.add(triple);
+left++;	left++;
+right--;	right--;
+whie left < right && numsleft  == numsleft- 1lf  {	while (left < right && nums[left] == nums[left - 1]) {
+left++;	left++;
+}	}
+whle left  < right && numsright == numsright + 1 {	while (left < right && nums[right] == nums[right + 1]) {
+right--;	right--;
+l	}
+ lse if fnumslft + numsright <  target 	} else if (nums[left] + nums[right] < target) {
+left++;	left++;
+} else l	} else {
+right--;	right--;
+f	}
+}	}
+}	}
+1	}

@@ -1,0 +1,56 @@
+package io.github.dunwu.algorithm.stack;	package io.github.dunwu.algorithm.stack;
+import  java..util.LinkedList;	import java.util.LinkedList;
+publicclass l	public class {
+public static void mainString argsl {	public static void main(String[] args) {
+ demo = new l;	 demo = new ();
+demo.push1l	demo.push(1);
+ystem.out.printlnfdeo.stack1l;	System.out.println(demo.stack1);
+demo.push2	demo.push(2);
+System.out.prinlndemo.stack1l	System.out.println(demo.stack1);
+}	}
+public  LinedList<Integer> stack1	public LinkedList<Integer> stack1;
+public LinkedList<Integer> stack2;	public LinkedList<Integer> stack2;
+public  {	public () {
+stack1 = new LinkedList<>ff;	stack1 = new LinkedList<>();
+stack2 = new LinkedList>;	stack2 = new LinkedList<>();
+l	}
+public void pushint val  {	public void push(int val) {
+if iEmpty  {	if (isEmpty()) {
+stack1.pushlval;	stack1.push(val);
+return;	return;
+}	}
+if !stack1.isEmpty{	if (!stack1.isEmpty()) {
+movevall;	move(val);
+l	}
+stack1.pushvalf;	stack1.push(val);
+while l!stack2.isEmpty {	while (!stack2.isEmpty()) {
+Integer top =stack2.popf;	Integer top = stack2.pop();
+stack1.pushop;	stack1.push(top);
+}	}
+}	}
+private vod moveintval {	private void move(int val) {
+if stack1.isEmpty  {	if (stack1.isEmpty()) {
+return;	return;
+}	}
+int top = peekf;	int top = peek();
+if top < val 	if (top < val) {
+stack2.pushstack1.popf;	stack2.push(stack1.pop());
+moveval;	move(val);
+}	}
+}	}
+pblic int pop 1	public int pop() {
+if stack1.isEmpty {	if (stack1.isEmpty()) {
+return -1	return -1;
+}	}
+return stack1pop	return stack1.pop();
+f	}
+public int peekf 1	public int peek() {
+ifstack1.isEmpty {	if (stack1.isEmpty()) {
+return -1;	return -1;
+}	}
+return stack1.peek;	return stack1.peek();
+}	}
+public boolean isEmty {	public boolean isEmpty() {
+retur stack1.isEmptyf &&  stack2.isEmptyl;	return stack1.isEmpty() && stack2.isEmpty();
+1	}
+}	}

@@ -1,0 +1,28 @@
+package  com.aiencat.eetcode.hard;	package com.aliencat.leetcode.hard;
+public class LongestPalindrome {	public class LongestPalindrome {
+public String longestPalindomeString s {	public String longestPalindrome(String s) {
+char src =s.toCharArray;	char[] src = s.toCharArray();
+int start = 0;	int start = 0;
+int max = 1;	int max = 1;
+boolean result = new booleans.lengths.lengthl;	boolean[][] result = new boolean[s.length()][s.length()];
+for int i  0 i < s.length; i++l {	for (int i = 0; i < s.length(); i++) {
+for lint j = 0; j= i; + {	for (int j = 0; j <= i; j++) {
+if  i == j{ resultfiljf = true;	if (i == j) { result[i][j] = true;
+f es if fi - j == 1 { resultlij = srci  == srcfj;	} else if (i - j == 1) { result[i][j] = src[i] == src[j];
+} ele {  resultfij = srcfif == srcjl &&resulti  - 1j + 1;	} else { result[i][j] = src[i] == src[j] && result[i - 1][j + 1];
+}	}
+if resultij && i -j  + 1  >max {	if (result[i][j] && (i - j + 1) > max) {
+max =  - j + 1;	max = i - j + 1;
+start = j;	start = j;
+}	}
+}	}
+	}
+if max ==1f 1	if (max == 1) {
+return String.valeOfsrc0;	return String.valueOf(src[0]);
+}	}
+charcopy = new charmax;	char[] copy = new char[max];
+System.arraycopyfsrc, start,, coy, 0,	System.arraycopy(src, start, copy, 0,
+max;	max);
+returnnew Stringcopy;	return new String(copy);
+}	}
+}	}

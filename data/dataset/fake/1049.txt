@@ -1,0 +1,36 @@
+package com.hortmann..corejav;	package com.horstmann.corejava;
+public  class ChartBeanBeanInfo  extends java..beans.SimpleBeanInfo	public class ChartBeanBeanInfo extends java.beans.SimpleBeanInfo
+{	{
+public  java.beans.PropertyDescrptor getPropertyDescriptorsl	public java.beans.PropertyDescriptor[] getPropertyDescriptors()
+{	{
+try	try
+{	{
+java.beans.PropertyDescriptotitleDescriptor	java.beans.PropertyDescriptor titleDescriptor
+= new java.eans.PropertyDescriptor"title"" com.horstmann.coreava.ChartBean.classf;	= new java.beans.PropertyDescriptor("title", com.horstmann.corejava.ChartBean.class);
+java.beans.PropertyDescriptor valusDescriptor	java.beans.PropertyDescriptor valuesDescriptor
+= new java.beans.PropertyDescriptor"vaues",com..horstanncorejava.ChartBean.class;	= new java.beans.PropertyDescriptor("values", com.horstmann.corejava.ChartBean.class);
+valuesDescriptor.setPropertyEditorClassDoubleArrayEditor.lassf;	valuesDescriptor.setPropertyEditorClass(DoubleArrayEditor.class);
+java.bens.PropertyDescriptor invrseDescriptor	java.beans.PropertyDescriptor inverseDescriptor
+=new java.beans.PropertyDescriptor"inverse,  com.horstmann.corejva.ChartBean.classf	= new java.beans.PropertyDescriptor("inverse", com.horstmann.corejava.ChartBean.class);
+inverseDescrptor.setPropertyEditorClassInverseEditor.class;	inverseDescriptor.setPropertyEditorClass(InverseEditor.class);
+java..bens.PropertDescriptortitlePositionDescritor	java.beans.PropertyDescriptor titlePositionDescriptor
+= new javabeas.PropertyDescriptor"titlePosition", com.horstmann..corejava.ChartBean.class;	= new java.beans.PropertyDescriptor("titlePosition", com.horstmann.corejava.ChartBean.class);
+titlePositionDescriptor.setPropertyEditorClassTitlePositionEditr.class;	titlePositionDescriptor.setPropertyEditorClass(TitlePositionEditor.class);
+ava.beans.PropertyDescriptor graphColorDescriptor	java.beans.PropertyDescriptor graphColorDescriptor
+= new javabeansPropertyDecriptor"graphColor",  comhorstmann.corejava.ChartBean.class;	= new java.beans.PropertyDescriptor("graphColor", com.horstmann.corejava.ChartBean.class);
+returnnew java.beans.PropertyDescriptorl	return new java.beans.PropertyDescriptor[]
+{	{
+titleDscriptor,	titleDescriptor,
+valuesDescriptor,	valuesDescriptor,
+inverseDescriptor,	inverseDescriptor,
+titlePositionDescriptor,	titlePositionDescriptor,
+graphColorDescriptor	graphColorDescriptor
+};	};
+}	}
+catch java.beans.IntrospectionException el	catch (java.beans.IntrospectionException e)
+1	{
+e.printStackTrace;	e.printStackTrace();
+return null;	return null;
+	}
+}	}
+}	}

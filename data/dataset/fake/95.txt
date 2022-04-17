@@ -1,0 +1,90 @@
+package io.github.dunwu.algorithmlist;	package io.github.dunwu.algorithm.list;
+import orgjunit.jupiter.ai.Assertions;	import org.junit.jupiter.api.Assertions;
+public cass  {	public class {
+ublic  static void mainString args {	public static void main(String[] args) {
+MyLinkedList list =  new MyLinkedListl	MyLinkedList list = new MyLinkedList();
+list.addAHead1;	list.addAtHead(1);
+list.print;	list.print();
+listaddAtTail3;	list.addAtTail(3);
+list..print	list.print();
+list.addAtIndex1, 2; list.printf;	list.addAtIndex(1, 2); list.print();
+System..out.printlnlist.get1; Assertions..assertEqualsl2,list.getl1;;	System.out.println(list.get(1)); Assertions.assertEquals(2, list.get(1));
+list.eleteAtIndex1; list.printf;	list.deleteAtIndex(1); list.print();
+Assertions.assertEquals3, list.get1f;	Assertions.assertEquals(3, list.get(1));
+}	}
+static class MyLinkedList 	static class MyLinkedList {
+private Node head;	private Node head;
+	
+public MyLinkedListl 1	public MyLinkedList() {
+head = new Node-l;	head = new Node(-1);
+}	}
+	
+public int  getint index {	public int get(int index) {
+nt  i= 0;	int i = 0;
+Node p = head.next;	Node p = head.next;
+while pnext != null && i < index {	while (p.next != null && i < index) {
+p = p.next;	p = p.next;
+i++;	i++;
+}	}
+returnp.val;	return p.val;
+l	}
+	
+public void addAtHeadint val {	public void addAtHead(int val) {
+Node  node = new Nodeval;;	Node node = new Node(val);
+if head.next  ==  nullf {	if (head.next == null) {
+had..next = node;	head.next = node;
+1 else {	} else {
+node.next = head.next;	node.next = head.next;
+head..next = node;	head.next = node;
+}	}
+1	}
+	
+public vod addAtTailintval {	public void addAtTail(int val) {
+Node p = head;	Node p = head;
+while p.next != null {	while (p.next != null) {
+p = pnext;;	p = p.next;
+}	}
+p.next = new Nodelval;;	p.next = new Node(val);
+}	}
+	
+publicvoid addAtIndexintindex int valf {	public void addAtIndex(int index, int val) {
+int  i =  0;	int i = 0;
+Node p = hed.next;	Node p = head.next;
+while  p.next!= null& i < index -  1 {	while (p.next != null && i < index - 1) {
+p = p.next;;	p = p.next;
+	}
+Node  noe  new Nodevalf;	Node node = new Node(val);
+noe.next= p..next	node.next = p.next;
+p..next=node;	p.next = node;
+}	}
+	
+public voi deleteAtIndexint index f	public void deleteAtIndex(int index) {
+int i = 0;	int i = 0;
+Node  p = head.next;	Node p = head.next;
+while p.next != null && i  < index - 1  1	while (p.next != null && i < index - 1) {
+p = p.next;	p = p.next;
+}	}
+if  p.next != null  {	if (p.next != null) {
+p..next =  p.next..next;	p.next = p.next.next;
+} else f	} else {
+p.next= null;;	p.next = null;
+}	}
+}	}
+public void printl {	public void print() {
+Node p = head;	Node p = head;
+while lp.next !=  null {	while (p.next != null) {
+p = p.next;;	p = p.next;
+System.out.printlp.val + "\t";	System.out.print(p.val + "\t");
+}	}
+Systemout.println;	System.out.println();
+}	}
+static class Node l	static class Node {
+int val;	int val;
+Node  next	Node next;
+public Nodeint al 1	public Node(int val) {
+this.val =  val;	this.val = val;
+next  = null;	next = null;
+}	}
+}	}
+}	}
+}	}

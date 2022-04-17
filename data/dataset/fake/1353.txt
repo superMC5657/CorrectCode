@@ -1,0 +1,39 @@
+package learn..frq05;	package learn.freq05;
+public class Pow {	public class Pow {
+public doule powdouble  x, it n {	public double pow(double x, int n) {
+if n < 0l {	if (n < 0) {
+retrn 1.0/ /p/o/w/2//x/,/ /-/n//;/	return 1.0 / /p/o/w/2/(/x/,/ /-/n/)/;/
+/ / // / /  // /}/ /e/l/s/e/ /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / / /  / /  / / /r/e/t/u/r/n/ /p/o/w/2/x/,/ /n//;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /p/o/w/2/(/x/,/ /n/)/;/
+// / / / /   / //	/ / / / / / / / /}/
+/	/
+/ / / / /}/	/ / / / /}/
+/	/
+/ // / /p/u/b/l/i/c/ /d/o/u/b/l/e/ /p/o/w/2//d/o/u/b/l/e/ /x/,/ /i/n/t /n// /{/	/ / / / /p/u/b/l/i/c/ /d/o/u/b/l/e/ /p/o/w/2/(/d/o/u/b/l/e/ /x/,/ /i/n/t/ /n/)/ /{/
+/ / /  / / / / / /i/f/ //n/ /=/=/  /0///l/	/ / / / / / / / /i/f/ /(/n/ /=/=/ /0/)/ /{/
+/ / / / / / / / / / / / /r/e/t/u/rn /1/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /1/;/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/	/
+/// / //  / /double result  = pow2x, n /  /2//;/	/ / / / / / / / double result = pow2(x, n / /2/)/;/
+/ /// / / / /  if fn %  == 1 {	/ / / / / / / / if (n % 2 == 1) {
+return x * result * result;	return x * result * result;
+} else 	} else {
+return  resut * result;	return result * result;
+} }	} }
+}	}
+class Solution {	class Solution {
+publi double powdouble x, int n {	public double pow(double x, int n) {
+if n < 0 	if (n < 0) {
+return  1.0 / /p/o/w/2//x/,//-/n/f//	return 1.0 / /p/o/w/2/(/x/,/ /-/n/)/;/
+/ / / / / /  / / /}/ /e/l/s/e/ //	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/  / / // / / / / / / / /r/e/t/u/r/n//p/o/w/2//x/,/ /n//;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /p/o/w/2/(/x/,/ /n/)/;/
+/  / /  / / / /  / /}/	/ / / / / / / / /}/
+// / / /}/	/ / / / /}/
+/	/
+/ / / / /p/r/i/v/a/t/e/ //o/u/b/l/e/  /po/w/2//d/o/u/b/l/e/ /x/,/ i/n/t/ /n// /{/	/ / / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /p/o/w/2/(/d/o/u/b/l/e/ /x/,/ /i/n/t/ /n/)/ /{/
+/ / / / / / /  / /i/f/ //n/ /=/=/ /0// /f/	/ / / / / / / / /i/f/ /(/n/ /=/=/ /0/)/ /{/
+/ / /// / // / / / / /r/e/t/u/r/n/ /1/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /1/;/
+/ /  / // / / / /}/	/ / / / / / / / /}/
+/ / / / / // / /d/o/u/b/l/e/ /r/e/s/u/l/t/;/	/ / / / / / / / /d/o/u/b/l/e/ /r/e/s/u/l/t/;/
+/ / / / / // / /i/f/ l/n/ /%/  /2/ /=/=/ /1// /1/	/ / / / / / / / /i/f/ /(/n/ /%/ /2/ /=/=/ /1/)/ /{/
+/ / / / // / / / /  / //r/e/s/u/l/t/ /=/ /x	/ / / / / / / / / / / / /r/e/s/u/l/t/ /=/ /x/

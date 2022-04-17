@@ -1,0 +1,27 @@
+package com.aliencat.javabase.thread	package com.aliencat.javabase.thread;
+import java.util.concurrent.Callable	import java.util.concurrent.Callable;
+import java.utl.concurrent.ExecutionException;	import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;	import java.util.concurrent.FutureTask;
+public class Callablempl implements Callable  {	public class CallableImpl implements Callable {
+@Override	@Override
+public Ineger callll throws InterruptedException {	public Integer call() throws InterruptedException {
+int  sum = 0;	int sum = 0;
+for int i = 0; i < 10 i++ {	for (int i = 0; i < 10; i++) {
+System.out.printlnThread.currntThreadl.getNamel + " : " + i	System.out.println(Thread.currentThread().getName() + " : " + i);
+sum +=i;	sum += i;
+l	}
+Thread.sleepf3000; return sum;	Thread.sleep(3000); return sum;
+}	}
+public static void mainString args {	public static void main(String[] args) {
+Callable<Integer> callableImpl =  new CallableImpl; FutureTask<Integer>ft = new FutureTask<>fcallableImpl;	Callable<Integer> callableImpl = new CallableImpl(); FutureTask<Integer> ft = new FutureTask<>(callableImpl);
+Thrad thread = new Threadft;thread.start;	Thread thread = new Thread(ft); thread.start();
+System.outprintlnffor.;	System.out.println("for..");
+try  {	try {
+int sum = ft.get; System.out.println"sum = " + sum;	int sum = ft.get(); System.out.println("sum = " + sum);
+} catch InterruptedExcetion e {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+ catch  ExecutionException e  f	} catch (ExecutionException e) {
+e.printStackTacel;	e.printStackTrace();
+	}
+}	}
+}	}

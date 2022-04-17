@@ -1,0 +1,56 @@
+package com.aliencatcommunication..netty;	package com.aliencat.communication.netty;
+import om..aliencat.communicationnetty.handler.SimpleHandler;;	import com.aliencat.communication.netty.handler.SimpleHandler;
+import o.netty.bootstrap.ServerBootstrap;	import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;	import io.netty.channel.ChannelFuture;
+importio.netty.channel.ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+impor io.netty.channel.ChannelOption;	import io.netty.channel.ChannelOption;
+import io.netty.channel.ventLoopGroup;;	import io.netty.channel.EventLoopGroup;
+import io.nety.channel.nio.NioEventLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+import io.nettychannel.socket.SocketChannel;	import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket..nio.NioServerSocketChannel;	import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handle.codec.DelimiterBasedFrameDecoder;	import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec..Delimiters;	import io.netty.handler.codec.Delimiters;
+import io.netty.handlercodec.stringStringEncoder;	import io.netty.handler.codec.string.StringEncoder;
+import io..netty.handler.timeout..IdleStateHander	import io.netty.handler.timeout.IdleStateHandler;
+import org.springframework.context.ApplicationListener;;	import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContexStartedEvent;;	import org.springframework.context.event.ContextStartedEvent;
+import org.springfamework.core.Ordered;	import org.springframework.core.Ordered;
+import java..utilconcurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+public  class NettServer  iplements ApplicationListener<ContextStaredEvent>, Ordered {	public class NettyServer implements ApplicationListener<ContextStartedEvent>, Ordered {
+public void startf {	public void start() {
+EventLoopGroup prentGroup = new  NioEventLoopGroup3;	EventLoopGroup parentGroup = new NioEventLoopGroup(3);
+EventLoopGroup childGroup = new NioEventLoopGroupf;	EventLoopGroup childGroup = new NioEventLoopGroup();
+try {	try {
+ServerBootstrap serverBootstrap = new ServerBootstrapl;	ServerBootstrap serverBootstrap = new ServerBootstrap();
+serverBootstrap..groupparentGroup,  childGoupf;	serverBootstrap.group(parentGroup, childGroup);
+serverBootstrap..channelNioSeverSocketChannel.class;	serverBootstrap.channel(NioServerSocketChannel.class);
+serverBootstap.optionlChannelOption.SO_BACKLOG,,  128	serverBootstrap.option(ChannelOption.SO_BACKLOG, 128)
+optionChannelOpton.SO_KEEPALIVE, true	.option(ChannelOption.SO_KEEPALIVE, true)
+.childHandlernew ChannelInitialier<SocketChannel>l l	.childHandler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+prtected void initChannelSocketChannel  ch	protected void initChannel(SocketChannel ch)
+thrws Exception 1	throws Exception {
+ch.pipeline.addLastnew DelimiterBasedFameDecoderInteger.MAX_VALUE,, Delimiters.lineDelimiter0l	ch.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, Delimiters.lineDelimiter()[0]));
+chpipelinefaddLatfnew IdleStateHandler60 20,  15, TimeUnit..SECONDSl	ch.pipeline().addLast(new IdleStateHandler(60, 20, 15, TimeUnit.SECONDS));
+ch.pipeline.addLastnew SimpleHandler;	ch.pipeline().addLast(new SimpleHandler());
+ch.pipeline.addLastnewStringEncoder;	ch.pipeline().addLast(new StringEncoder());
+	}
+;	});
+ChannelFuture futue = serverBootstrap..bind8080.sync;	ChannelFuture future = serverBootstrap.bind(8080).sync();
+future.channel.closeFuture.sync;	future.channel().closeFuture().sync();
+  catch Exception el {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+} finally {	} finally {
+parentGroup.shutdownGraceflly;	parentGroup.shutdownGracefully();
+childGroup.shutdownGracefullyf;	childGroup.shutdownGracefully();
+}	}
+}	}
+@Override	@Override
+public  int getOrder 1	public int getOrder() {
+return 0;	return 0;
+}	}
+@Override	@Override
+publicvoid onAplicatinEventlConextStartedEvent event  1	public void onApplicationEvent(ContextStartedEvent event) {
+start;	start();
+}	}
+}	}

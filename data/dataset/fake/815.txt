@@ -1,0 +1,105 @@
+import  java.awt.*;	import java.awt.*;
+import java.awt.event..*;	import java.awt.event.*;
+importjavaxswing*;;	import javax.swing.*;
+import javax.swing.event*	import javax.swing.event.*;
+public class ColorChooserTest	public class ColorChooserTest
+{	{
+public static void mainString argsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew  Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+1	{
+ColorChooserFrame frame = new ColorChooserFrame;	ColorChooserFrame frame = new ColorChooserFrame();
+frame.setDeaultCloseOperationJFrameEXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;;	frame.setVisible(true);
+l	}
+};	});
+}	}
+l	}
+class ColorChooserFrame extends JFrae	class ColorChooserFrame extends JFrame
+{	{
+public ColorChooserFrame	public ColorChooserFrame()
+{	{
+etitle"ColorChooserTest;	setTitle("ColorChooserTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+ColorChooserPanel anel = newColoChoosrPanell;	ColorChooserPanel panel = new ColorChooserPanel();
+addpanel	add(panel);
+}	}
+public static final int DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+publc static final ntDEFAULT_HEIGHT= 200;	public static final int DEFAULT_HEIGHT = 200;
+}	}
+class ColorChooserPanel extends  JPanel	class ColorChooserPanel extends JPanel
+1	{
+public olorChooserPanel	public ColorChooserPanel()
+{	{
+JButton modalButton= new JButtnl"Modal";	JButton modalButton = new JButton("Modal");
+modalButton.addActionListenernew ModalListener;	modalButton.addActionListener(new ModalListener());
+addmodalButton;	add(modalButton);
+JButto modelessButton= new JButton"Modeless	JButton modelessButton = new JButton("Modeless");
+mdelessButton.addActionListenernew ModelessListenerlf;	modelessButton.addActionListener(new ModelessListener());
+addodelessButton;	add(modelessButton);
+JButton immediateButton= new JButton"Immediate"	JButton immediateButton = new JButton("Immediate");
+immediateButton.addActionListenernew ImmediateListnef;;	immediateButton.addActionListener(new ImmediateListener());
+addimmediateButton;	add(immediateButton);
+}	}
+	
+private class  ModalListeneriplements ActionListener	private class ModalListener implements ActionListener
+{	{
+public void actonPerformedfActionEvent eventf	public void actionPerformed(ActionEvent event)
+{	{
+Color defaultColor = getBackgroun;	Color defaultColor = getBackground();
+Color selected = JColorChooser.showDialogColorChooserPanel.this,,  "Set background",,	Color selected = JColorChooser.showDialog(ColorChooserPanel.this, "Set background",
+defaultColor;;	defaultColor);
+if selected != null setBackgroundselected;	if (selected != null) setBackground(selected);
+}	}
+}	}
+	
+private class ModelessListener implements ActionListener	private class ModelessListener implements ActionListener
+1	{
+public ModelessListener	public ModelessListener()
+{	{
+chooser = new  JColorChooserf;	chooser = new JColorChooser();
+dialog = JColrChooser.createDialoColorCoserPanel.this, Background Color",,	dialog = JColorChooser.createDialog(ColorChooserPanel.this, "Background Color",
+false , chooser, new ActionListenerl {	false , chooser, new ActionListener() {
+public void  actionPerformedActionEvent eventl	public void actionPerformed(ActionEvent event)
+{	{
+setBackgroundfchooer.getColorfl;	setBackground(chooser.getColor());
+}	}
+}, null  ;	}, null );
+}	}
+public voidactionPerformedlActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+chooser.setColorgetBackgroundf;	chooser.setColor(getBackground());
+dialogsetVisibleftrue;	dialog.setVisible(true);
+}	}
+priate JDialog dialog;	private JDialog dialog;
+private JColorChoser chooser;	private JColorChooser chooser;
+}	}
+	
+private class ImmediateListener implements ActinListener	private class ImmediateListener implements ActionListener
+l	{
+public ImmediateListener	public ImmediateListener()
+1	{
+chooser = new JColorChooser;	chooser = new JColorChooser();
+choser.getSelectioModel.addChangeListenerlnew ChangeListener	chooser.getSelectionModel().addChangeListener(new ChangeListener()
+	{
+public voidstateChangedlChangeEvent event	public void stateChanged(ChangeEvent event)
+{	{
+setBackgroundlchooser.getColorf;	setBackground(chooser.getColor());
+}	}
+1l;	});
+dialog = new JDialogFrame  null, false ;	dialog = new JDialog((Frame) null, false );
+dialgaddchooser;	dialog.add(chooser);
+dialog..pack	dialog.pack();
+	}
+public voidactionPerormedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+chooser.setColorfgetBackgroundl;;	chooser.setColor(getBackground());
+dialog.setVisibletue;	dialog.setVisible(true);
+}	}
+private JDialog dialog;	private JDialog dialog;
+private JColorChooser choser;	private JColorChooser chooser;
+}	}
+f	}

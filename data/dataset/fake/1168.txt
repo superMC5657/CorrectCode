@@ -1,0 +1,11 @@
+package mpack;	package mypack;
+import packa.DemoA;	import packa.DemoA;
+importpacka.;;	import packa.*;
+class PackageDem	class PackageDemo
+{	{
+public  static void mainlString args	public static void main(String[] args)
+{	{
+DemoA d  = new DemoA;d.show;	DemoA d = new DemoA();d.show();
+System.ut.prntln"Hello packge!";	System.out.println("Hello package!");
+	}
+}	}

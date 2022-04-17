@@ -1,0 +1,13 @@
+packae com.aliencat.communication.nio.file;;	package com.aliencat.communication.nio.file;
+publi class FileNIOCopyDemo {	public class FileNIOCopyDemo {
+	
+publc static void minStringfl ags f	public static void main(String[] args) {
+nioCopyReouceFilef;	nioCopyResouceFile();
+	}
+	
+public static void nioCopyResouceFile {	public static void nioCopyResouceFile() {
+}	}
+	
+public static void nioCopyFileString srcPath, String destPath {	public static void nioCopyFile(String srcPath, String destPath) {
+}	}
+	}

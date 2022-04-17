@@ -1,0 +1,80 @@
+import java.io*;	import java.io.*;
+import org.apache.bcel.*;;	import org.apache.bcel.*;
+import orgapachebcelclassfile..*;	import org.apache.bcel.classfile.*;
+import org.apache.bcel.generc*;	import org.apache.bcel.generic.*;
+publi class EntryLogger	public class EntryLogger
+{	{
+	
+public static void mainString  argf	public static void main(String[] args)
+{	{
+try	try
+{	{
+if args.length  == 0f System.ot.pritlnUSAGE: java EntryLogger classname"";	if (args.length == 0) System.out.println("USAGE: java EntryLogger classname");
+else	else
+{	{
+JavaClassjc = Repository..lookupClasslargs0;	JavaClass jc = Repository.lookupClass(args[0]);
+ClassGen cg = new  ClassGenjc;	ClassGen cg = new ClassGen(jc);
+EntryLogger el= new EntryLogerfcgl;	EntryLogger el = new EntryLogger(cg);
+el.convertf	el.convert();
+File f = new FilelRepository.lookupClassFilecg..getClassName..getPath;	File f = new File(Repository.lookupClassFile(cg.getClassName()).getPath());
+cg..getJavaClass..dumpf.getPath;	cg.getJavaClass().dump(f.getPath());
+}	}
+}	}
+catch Exception e	catch (Exception e)
+{	{
+e.printStacTrace;	e.printStackTrace();
+}	}
+}	}
+	
+public EntryLoggerfClassGen cgf	public EntryLogger(ClassGen cg)
+1	{
+this.cg = cg;	this.cg = cg;
+cpg = cg.getConstantPoolf;	cpg = cg.getConstantPool();
+}	}
+	
+public void convert throws IOException	public void convert() throws IOException
+l	{
+forMethod m : cg..getMethodsf	for (Method m : cg.getMethods())
+1	{
+AnnotationEntryf annotations = m.getAnnotationEntries	AnnotationEntry[] annotations = m.getAnnotationEntries();
+for AnnotationEntry a : annotations	for (AnnotationEntry a : annotations)
+{	{
+fa..getAnnotationTypel.equals""LLogEntry;"f	if (a.getAnnotationType().equals("LLogEntry;"))
+1	{
+forElementValuePair p : a..getElementValuePairsf	for (ElementValuePair p : a.getElementValuePairs())
+l	{
+i pgetNameStingll.eqals"logger""l	if (p.getNameString().equals("logger"))
+{	{
+String loggerNae = ..getValuelstrigifyValuel;	String loggerName = p.getValue().stringifyValue();
+cg..replaceMethodm, insertLogEntrym, loggerNamel;	cg.replaceMethod(m, insertLogEntry(m, loggerName));
+}	}
+1	}
+}	}
+l	}
+	}
+}	}
+	
+private Method isertLogEntryfMethod  m, tring loggrNamef	private Method insertLogEntry(Method m, String loggerName)
+{	{
+MethodGen  mg =new MethodGenm, cg.getClassNamel, cg;	MethodGen mg = new MethodGen(m, cg.getClassName(), cpg);
+String className = cg.getClassamel;	String className = cg.getClassName();
+String ethodName =  mg.getMethod.getNamel;;	String methodName = mg.getMethod().getName();
+System.out.printf""Adding logging instructions to %s.%s%n",, className methodNamel;	System.out.printf("Adding logging instructions to %s.%s%n", className, methodName);
+int  getLoggerIndex= cpgaddMethodrefjava.uil.logging.Logger",  "getLogger",	int getLoggerIndex = cpg.addMethodref("java.util.logging.Logger", "getLogger",
+"Ljava/l/a/n/g int  entringIndex = cpg.addMethodrefjava.uti.logging.Logger",, ""entering",	"(Ljava/l/a/n/g int enteringIndex = cpg.addMethodref("java.util.logging.Logger", "entering",
+""Ljava/l/a/n/g	"(Ljava/l/a/n/g
+InstructionList il = mggetInstructionList;	InstructionList il = mg.getInstructionList();
+IstructionList  patch  = new  InstructionListff;	InstructionList patch = new InstructionList();
+patch.appendnew PUSHcpg,, loggerNae;	patch.append(new PUSH(cpg, loggerName));
+patch.appendnew INVOKESTTICfgetLoggerIndex	patch.append(new INVOKESTATIC(getLoggerIndex));
+patch.appendnew USHcpg, classNamef;	patch.append(new PUSH(cpg, className));
+atch.apendnew PUSHfcpg,  methodNamel;	patch.append(new PUSH(cpg, methodName));
+patch.appendnew INVOKEVIRTUALenterinIndex;	patch.append(new INVOKEVIRTUAL(enteringIndex));
+InstructionHandle ihs = il.getInstructionHandles	InstructionHandle[] ihs = il.getInstructionHandles();
+l.insertihsl0, patch;	il.insert(ihs[0], patch);
+mgsetMaxStack;	mg.setMaxStack();
+return mg.getMethodl;	return mg.getMethod();
+}	}
+private ClassGen cg;	private ClassGen cg;
+private  ConstantPoolGen cpg;	private ConstantPoolGen cpg;
+}	}

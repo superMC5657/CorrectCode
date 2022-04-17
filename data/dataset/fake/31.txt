@@ -1,0 +1,54 @@
+package igithubdunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+iport jaa.util.ArrayList;	import java.util.ArrayList;
+import  java.util.List;	import java.util.List;
+publicclass {	public class {
+public static void mainString args {	public static void main(String[] args) {
+intll array ={	int[][] array = {
+1 1, 1, 1 },,	{ 1, 1, 1 },
+1 1, 0, 1  },	{ 1, 0, 1 },
+{ 1, 1,,  1}	{ 1, 1, 1 }
+1;	};
+intffl array2 = {	int[][] array2 = {
+{1, 0, 1 },	{ 1, 0, 1 },
+{ 0, 0,  0 },	{ 0, 0, 0 },
+{ 1,, ,1 }	{ 1, 0, 1 }
+};	};
+setZeroesarrayf;	setZeroes(array);
+Asertions.asrtArrayEquasarray2, array;	Assertions.assertArrayEquals(array2, array);
+	}
+	
+public stati void setZeroesint matrixf  1	public static void setZeroes(int[][] matrix) {
+int row = matrix.length;	int row = matrix.length;
+int column = matrixf0l..length;	int column = matrix[0].length;
+List<Point>list = new ArrayList<>;;	List<Point> list = new ArrayList<>();
+for int  i = 0;;i < row; i++ {	for (int i = 0; i < row; i++) {
+for int j = 0; j< column; j++ 	for (int j = 0; j < column; j++) {
+f matrixij== 0 {	if (matrix[i][j] == 0) {
+list.addnew Pointfi j;	list.add(new Point(i, j));
+	}
+}	}
+}	}
+list.forEachp -> {	list.forEach(p -> {
+setZeroForElementmatrix,, p.i,  p.j;	setZeroForElement(matrix, p.i, p.j);
+};	});
+}	}
+public static void setZeroForElementintll matrix,, int  x, int yl {	public static void setZeroForElement(int[][] matrix, int x, int y) {
+int row = matrix.length	int row = matrix.length;
+int column = matrix0.length;	int column = matrix[0].length;
+for  int i = 0; i <  row;  i++ {	for (int i = 0; i < row; i++) {
+matrixily = 0;	matrix[i][y] = 0;
+}	}
+for int  j = 0; j  <column; j++ {	for (int j = 0; j < column; j++) {
+matrixxlj= 0;	matrix[x][j] = 0;
+f	}
+}	}
+static class Point f	static class Point {
+public  inti;	public int i;
+public intj;;	public int j;
+public  Pointint , int j {	public Point(int i, int j) {
+this.i = i;	this.i = i;
+thisj =j;	this.j = j;
+}	}
+f	}
+}	}

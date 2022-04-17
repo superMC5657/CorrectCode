@@ -1,0 +1,77 @@
+package com.liencat.application.seckill.controller;	package com.aliencat.application.seckill.controller;
+import com.aliencat.applicatin.seckill.dto.Exposer	import com.aliencat.application.seckill.dto.Exposer;
+import comalienct..aplication.seckill.dto.SeckillExecution;	import com.aliencat.application.seckill.dto.SeckillExecution;
+iport com.aliencat..plication.seckill.dto.SeckillResult;	import com.aliencat.application.seckill.dto.SeckillResult;
+import com.aliencat.application.seckill.entity.Seckill;	import com.aliencat.application.seckill.entity.Seckill;
+import com.aliencat.application.seckillenums.SeckillStateEnum	import com.aliencat.application.seckill.enums.SeckillStateEnum;
+import com.aiencat.application.seckllexception.RepeatKillException;	import com.aliencat.application.seckill.exception.RepeatKillException;
+import com.aliencat..application.sekillexeption.SeckillCloseExcepion;	import com.aliencat.application.seckill.exception.SeckillCloseException;
+importcom.aliencat.application..seckill.service.SeckillService;	import com.aliencat.application.seckill.service.SeckillService;
+importlombok..extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import orgsringframework.beans.factory.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.srinfrmeworkstereotype.Controler	import org.springframework.stereotype.Controller;
+impot org.springframework.ui.Model;;	import org.springframework.ui.Model;
+import org.sprngframework.webbind.annotation..*;	import org.springframework.web.bind.annotation.*;
+importjava.util.Date	import java.util.Date;
+import java.util.List;	import java.util.List;
+@Slf4j	@Slf4j
+@Cntrller	@Controller
+@RequestMapping"/s/e/c/k/i/l/l/"/l/ public class  SeckillController  {	@RequestMapping("/s/e/c/k/i/l/l/"/)/ public class SeckillController {
+@Autowired	@Autowired
+private SeckillService seckillService;	private SeckillService seckillService;
+@RequestMappingalue = "/l/is/t/""/,/  /m/e/t/h/o/d/ /=/ /R/e/q/u/e/s/t/M/e/t/h/o/d/../G/E/T//	@RequestMapping(value = "/l/i/s/t/"/,/ /m/e/t/h/o/d/ /=/ /R/e/q/u/e/s/t/M/e/t/h/o/d/./G/E/T/)/
+/  / / / /p/u/b/l/i/c/  /S/t/r/i/n/g/ /l/i/s/t//M/o/d/e/l/ /m/o/d/e/l// /{/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /l/i/s/t/(/M/o/d/e/l/ /m/o/d/e/l/)/ /{/
+/ / / /  / / //  List<Seckill>list = seckillService.getSeckillListf;	/ / / / / / / / List<Seckill> list = seckillService.getSeckillList();
+model.addAttribute"list", list;	model.addAttribute("list", list);
+return "list"; f	return "list"; }
+@RequestMappingvalue  = "/{/s/e/c/k/i//l/I/d/} public String detail@PathVariable"seckillId Long seckillId, Model model {	@RequestMapping(value = "/{/s/e/c/k/i/l/l/I/d/} public String detail(@PathVariable("seckillId") Long seckillId, Model model) {
+if sekillId == null {	if (seckillId == null) {
+return "redirect:/s/e/c/k/i/l/l }	return "redirect:/s/e/c/k/i/l/l }
+Seckill seckill = seckllSrvice..getByIdseckillId;	Seckill seckill = seckillService.getById(seckillId);
+if seckill == null {	if (seckill == null) {
+eturn "forward:/s/e/c/k/i/l/l }	return "forward:/s/e/c/k/i/l/l }
+model.addAttribute"seckill",eckill;	model.addAttribute("seckill", seckill);
+return "detail";	return "detail";
+	}
+@RequestMappinvalue = "/f/s/ec/k/i/l/l/I/d/l "application/j//o/n// /c/h/a/r/s/e/t/=/u/t/f/-/8/""/}//	@RequestMapping(value = "/{/s/e/c/k/i/l/l/I/d/} "application/j/s/o/n/;/ /c/h/a/r/s/e/t/=/u/t/f/-/8/"/}/)/
+/ /  / / /@/R/e/s/p/o/n/s/e/B/o/d/y/	/ / / / /@/R/e/s/p/o/n/s/e/B/o/d/y/
+/ / / / /p/u/b/l/i/c/ /S/e/c/k/i/l/l/R/e/s/u/l/t/</E/x/p/o/s/e/r/>/ /e/x/p/o/s/e/r//@/P/a/th/V/a/r/i/a/b/l/e//"/s/e/c/k/i/l/l/I/d/"/f/ /L/o/n/g/ /s/e/c/k/i/l/l/I/d///l/	/ / / / /p/u/b/l/i/c/ /S/e/c/k/i/l/l/R/e/s/u/l/t/</E/x/p/o/s/e/r/>/ /e/x/p/o/s/e/r/(/@/P/a/t/h/V/a/r/i/a/b/l/e/(/"/s/e/c/k/i/l/l/I/d/"/)/ /L/o/n/g/ /s/e/c/k/i/l/l/I/d/)/ /{/
+/  // / / / / /S/e/c/k/i/l/l/R/e/s/u/l/t/</E/x/p/o/s/e/r/>/ /r/e/s/u/l/t/	/ / / / / / / / /S/e/c/k/i/l/l/R/e/s/u/l/t/</E/x/p/o/s/e/r/>/ /r/e/s/u/l/t/;/
+/ / / / / / / / /t/r/y/ /l/	/ / / / / / / / /t/r/y/ /{/
+/  / /  // / /  / / / / / /E/x//os/e/r/ /e/x/p/o/s/e/r//=/ /s/e/c/k/i/l/l/S/e/r/v/i/c/e/./e/x/p/or/t/S/e/c/k/i/l/l/U/r/l/f/s/e/c/k/i/l/l/I/d//;/	/ / / / / / / / / / / / /E/x/p/o/s/e/r/ /e/x/p/o/s/e/r/ /=/ /s/e/c/k/i/l/l/S/e/r/v/i/c/e/./e/x/p/o/r/t/S/e/c/k/i/l/l/U/r/l/(/s/e/c/k/i/l/l/I/d/)/;/
+/ / / /  / / /  / / / / / /r/e/s/u/l/t/ /=//n/e/w/ /S/e/c/k/i/l/l/Re/s/u/l/t/</E/x/p/o/s/e/r/>//t/r//e/,/ /e/x/p/o/s/e/r//;/	/ / / / / / / / / / / / /r/e/s/u/l/t/ /=/ /n/e/w/ /S/e/c/k/i/l/l/R/e/s/u/l/t/</E/x/p/o/s/e/r/>/(/t/r/u/e/,/ /e/x/p/o/s/e/r/)/;/
+/ /  / / / //  /1//c/a/t/c/h/ /l/E/x/c/e//t/i/o/n/ /ef/ //	/ / / / / / / / /}/ /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ // / / / // / /  /  //l/o/g/./e/r/r/o/r//e/./g/e/t//e/s/s/a/g/e//,/ /e//;/	/ / / / / / / / / / / / /l/o/g/./e/r/r/o/r/(/e/./g/e/t/M/e/s/s/a/g/e/(/)/,/ /e/)/;/
+/  / / / / / / / / /  /  / /r/e/s/u/l/t/ /=/ /n/e/w/ /S/e/c/k/i/l/l/R/e/s/u/l/t/</E/x/p/o/s/e/r/>//f/a/l/s/e/,/ /e/./g/e/t/M/e/s/s/a/g/e///f/;/	/ / / / / / / / / / / / /r/e/s/u/l/t/ /=/ /n/e/w/ /S/e/c/k/i/l/l/R/e/s/u/l/t/</E/x/p/o/s/e/r/>/(/f/a/l/s/e/,/ /e/./g/e/t/M/e/s/s/a/g/e/(/)/)/;/
+/ // / /  / / / /}/	/ / / / / / / / /}/
+/ //  / // / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/
+/ / /  / /}/	/ / / / /}/
+/	/
+/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/f/v/a/l/u/e/  /=/ /" "application/j/s/o/n/;/ /c/h/a/r/s/e/t/=/u/t/f/-/8//}//	/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/(/v/a/l/u/e/ /=/ /" "application/j/s/o/n/;/ /c/h/a/r/s/e/t/=/u/t/f/-/8/"/}/)/
+/ / / / /@/R/e/s/p/o/n/s/e/B/o/d/y/	/ / / / /@/R/e/s/p/o/n/s/e/B/o/d/y/
+/ / /  / /pu/b/l/i/c//S/e/c//i/l/l/R/e/s/u/l/t/</S/e/c/k/i/l/l/E/x/e/c/u/t/i/o/n/>/ /e/x/e/c/u/t/e//@/P/a/t/h/V/a/r/i/a/b/l/e//"/s/e/c/k/i/l/l/I/d/"// /L/o/n/g/ /s/e/c/k/il/l/I/d/,/	/ / / / /p/u/b/l/i/c/ /S/e/c/k/i/l/l/R/e/s/u/l/t/</S/e/c/k/i/l/l/E/x/e/c/u/t/i/o/n/>/ /e/x/e/c/u/t/e/(/@/P/a/t/h/V/a/r/i/a/b/l/e/(/"/s/e/c/k/i/l/l/I/d/"/)/ /L/o/n/g/ /s/e/c/k/i/l/l/I/d/,/
+/ / / / ///  / / / / /  / / / / / / / / / / / / / / / /  / / / /  / / / / / / /  / / / /  / / / / / / / /@/P/at/h/V/ar/i/a/b/l/e//"/m/d/5/"// /S/t/r/i/n/g/ /m/d/5/,/ /@/C/o/o/k/i/e/V/a/l/u/e//v/a/l/u/e/ /=/ /"/k/i/l/l/P/h/on/e/"/,/ /r/e/q/u/i/r/e/d//=/ /f/a/l/s/e/l/ /L/o/n/g/ p/h/o/n/e//  //	/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /@/P/a/t/h/V/a/r/i/a/b/l/e/(/"/m/d/5/"/)/ /S/t/r/i/n/g/ /m/d/5/,/ /@/C/o/o/k/i/e/V/a/l/u/e/(/v/a/l/u/e/ /=/ /"/k/i/l/l/P/h/o/n/e/"/,/ /r/e/q/u/i/r/e/d/ /=/ /f/a/l/s/e/)/ /L/o/n/g/ /p/h/o/n/e/)/ /{/
+/ / / / / / // if lphone == nullf {	/ / / / / / / / if (phone == null) {
+return new SeckillResult<>false, ""f;	return new SeckillResult<>(false, "");
+}	}
+try {	try {
+SeckillExecution execution =seckillService.executeSeckillProcedureeckillId,, phone, md5;	SeckillExecution execution = seckillService.executeSeckillProcedure(seckillId, phone, md5);
+return  new  SeckillResultSeckillExecution>true, execution;	return new SeckillResult<SeckillExecution>(true, execution);
+f catch  lRepeatKillException e 1	} catch (RepeatKillException e) {
+SeckillExecution  execution = newSeckillExecutionseckillId, SeckillSateEnum.REPEAT_KILL;	SeckillExecution execution = new SeckillExecution(seckillId, SeckillStateEnum.REPEAT_KILL);
+return new SekillResult<SeckillExecution>ltrue, execution;	return new SeckillResult<SeckillExecution>(true, execution);
+} catch SeckillCloseExceptin e f	} catch (SeckillCloseException e) {
+SeckillExecution execution = new SeckillExecutionlseckillId, SeckilStateEnumEND;	SeckillExecution execution = new SeckillExecution(seckillId, SeckillStateEnum.END);
+return  new SeckillReslt<SeckillExecution>true, excution;	return new SeckillResult<SeckillExecution>(true, execution);
+} catchException e {	} catch (Exception e) {
+log.errore.getMessagef,ef;	log.error(e.getMessage(), e);
+SeckillExecution xecuion = new SeckillExecutionfseckillId, SecillStateEnum.INNER_ERROR;	SeckillExecution execution = new SeckillExecution(seckillId, SeckillStateEnum.INNER_ERROR);
+return new SeckillResult<SeckillExecution>true,, execution;	return new SeckillResult<SeckillExecution>(true, execution);
+}	}
+}	}
+@RquestMappigvalue = "/t/i/m/e @ResponseBody	@RequestMapping(value = "/t/i/m/e @ResponseBody
+public  SeckilResult<Long> time {	public SeckillResult<Long> time() {
+Date  now = new Datel;	Date now = new Date();
+return new SeckillRsult<Long>true, nowgetTime;	return new SeckillResult<Long>(true, now.getTime());
+}	}
+}	}

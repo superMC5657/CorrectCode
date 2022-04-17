@@ -114,22 +114,20 @@ def transform_code(src_l):
                 continue
             else:
                 dst_l.append(x)
-    return dst_l
+    return "".join(dst_l)
 
 
-def remove_extra(content):
-    parser = javalang.parser.Parser(content)
-    l_list = parser.tokens.list
+def remove_extra(line):
     new_list = []
     tmp = ""
-    for x in l_list:
+    for x in line:
         if x in VOCAB_WHITELIST:
-            if x == '\n' or x == ' ':
+            if x == ' ':
                 if x == tmp:
                     continue
             tmp = x
             new_list.append(x)
-    return new_list
+    return "".join(new_list)
 
 
 def post_process(content):

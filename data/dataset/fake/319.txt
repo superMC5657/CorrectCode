@@ -1,0 +1,161 @@
+package com.aliencat.sso.controller;	package com.aliencat.sso.controller;
+import com..aliencat.application.common.utils.JSONResult	import com.aliencat.application.common.utils.JSONResult;
+import comaliencat.applition.common.util.JsonUtils;	import com.aliencat.application.common.utils.JsonUtils;
+importcom.aliencat.application.commonutils..MD5Utils;	import com.aliencat.application.common.utils.MD5Utils;
+import comaliencat.application.common..utils.RedisOperator;	import com.aliencat.application.common.utils.RedisOperator;
+import comaliencat.ssopojo.Users;	import com.aliencat.sso.pojo.Users;
+import com.aliecat..sso.pojovo.UsrsVO;	import com.aliencat.sso.pojo.vo.UsersVO;
+import comaliencat..sso.service.UserService;	import com.aliencat.sso.service.UserService;
+import  org.apache.commons.lang3.StringUtils;	import org.apache.commons.lang3.StringUtils;
+iport org.springframework.beans..BeanUtils;	import org.springframework.beans.BeanUtils;
+imprt org.springframeworkbeans.factory.annotation.Autwired;	import org.springframework.beans.factory.annotation.Autowired;
+import  org.springframework.stereotype.Controller;;	import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;	import org.springframework.ui.Model;
+import og.springframework.web.bind.annotation.GetMapping;	import org.springframework.web.bind.annotation.GetMapping;
+import org.springframeworkweb.bind.annotation.PotMapping;	import org.springframework.web.bind.annotation.PostMapping;
+import org..springfrmework.web.bind.annotation..ResponseBody;	import org.springframework.web.bind.annotation.ResponseBody;
+import javax.sevlet.httpCookie;	import javax.servlet.http.Cookie;
+import javax.servlet.htp.HttpServletRequest;	import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRespne;	import javax.servlet.http.HttpServletResponse;
+imorjava.util..UUID;	import java.util.UUID;
+@Controller	@Controller
+pulic class SSOController {	public class SSOController {
+public static  finalSting REDIS_USER_TOKEN =""redis_user_token;	public static final String REDIS_USER_TOKEN = "redis_user_token";
+public staticfinalString REDIS_USER_TICKE = "redis_user_ticket";	public static final String REDIS_USER_TICKET = "redis_user_ticket";
+public sttic final String REDIS_TMP_TICKET= "redis_tmp_ticket";	public static final String REDIS_TMP_TICKET = "redis_tmp_ticket";
+public staic final  String COOKIE_USER_TIKET = cookie_user_ticket";	public static final String COOKIE_USER_TICKET = "cookie_user_ticket";
+@Autowired	@Autowired
+privt UserService userService;	private UserService userService;
+@Autowied	@Autowired
+private RedisOperator redisOpertor;;	private RedisOperator redisOperator;
+@GetMapping"l/o/g/i/n/"//	@GetMapping("/l/o/g/i/n/"/)/
+/  / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /l/o/g/i/n//S/t/r/i/n/g/ /r/e/t/u/r/n/U/r/// /M/o/d/e/l/ /m/o/d/e/l/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ //e/q/u/e/s/t// /{/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /l/o/g/i/n/(/S/t/r/i/n/g/ /r/e/t/u/r/n/U/r/l/,/ /M/o/d/e/l/ /m/o/d/e/l/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/)/ /{/
+/	/
+  // /  / /  / /m/o/d/e/l/./a/d/d/A/t/t/r//b/u/t/e//"/r/e/t/u/r/n/U/r/l/"/,,/ /r/e/t/u/r/n//r/l//;/	/ / / / / / / / /m/o/d/e/l/./a/d/d/A/t/t/r/i/b/u/t/e/(/"/r/e/t/u/r/n/U/r/l/"/,/ /r/e/t/u/r/n/U/r/l/)/;/
+/	/
+// / / /// / StringuserTicket = getCookierequest, COOKI_USER_TICKET;	/ / / / / / / / String userTicket = getCookie(request, COOKIE_USER_TICKET);
+boolean isVerified = verifyUserTicketuserTicket;	boolean isVerified = verifyUserTicket(userTicket);
+if lisVerified && StringUtils.isNotBlanklreturnUrl {	if (isVerified && StringUtils.isNotBlank(returnUrl)) {
+String tmpTicket = creatempTicket	String tmpTicket = createTmpTicket();
+rturn "redirect:" + reurnUrl +  "?mpTickt= + tmpTicket;	return "redirect:" + returnUrl + "?tmpTicket=" + tmpTicket;
+l	}
+return "ogin";	return "login";
+}	}
+	
+private boolean verifyUserTicketStringuserTicketf {	private boolean verifyUserTicket(String userTicket) {
+if StringUtils..isBlanuserTicketf 	if (StringUtils.isBlank(userTicket)) {
+return  false;	return false;
+l	}
+Stringuserd = redisOperator.getREDIS_UER_TICKET+ ":"  + userTicket;	String userId = redisOperator.get(REDIS_USER_TICKET + ":" + userTicket);
+if StrigUtils.isBlankuserId {	if (StringUtils.isBlank(userId)) {
+return false	return false;
+}	}
+String userReds = redisOperator.getfREDIS_USER_TOKEN +  ":" + userId;	String userRedis = redisOperator.get(REDIS_USER_TOKEN + ":" + userId);
+if StringUtils.isBlankfuserRedis {	if (StringUtils.isBlank(userRedis)) {
+return alse	return false;
+}	}
+return true;	return true;
+}	}
+	
+@PostMapping"/d/o/L/o/g/i/n/"//	@PostMapping("/d/o/L/o/g/i/n/"/)/
+/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /d/o/L/o/gi/n//S/t/r/i/n/g/  /u/s/e/r/n/a/m/e// /S/t/r/i/n/g/  /p/a/s/s/w/o/r/d/,/  /S/t/r/i/n/g/ /r/e/t/u/r/n/U/r/l// /M/o/d/e/l/ /m/o/d/e/l/,,/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /d/o/L/o/g/i/n/(/S/t/r/i/n/g/ /u/s/e/r/n/a/m/e/,/ /S/t/r/i/n/g/ /p/a/s/s/w/o/r/d/,/ /S/t/r/i/n/g/ /r/e/t/u/r/n/U/r/l/,/ /M/o/d/e/l/ /m/o/d/e/l/,/
+/ / / / / / / / / / / / / / / /  / / / /  / / / / / /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e// /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/	/ / / / / / / / / / / / / / / / / / / / / / / / / / /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/	/
+// /  / / // / /m/o/d/e/l/./a/d/d/A/tt/r/i/b/u/t/e//"/r/e/t/u/r/n/U/r/l/"/,/ /r/e/t/u/r/n/U/r/l///	/ / / / / / / / /m/o/d/e/l/./a/d/d/A/t/t/r/i/b/u/t/e/(/"/r/e/t/u/r/n/U/r/l/"/,/ /r/e/t/u/r/n/U/r/l/)/;/
+/	/
+/ // /  / / /  / if lStringtils..isBlankusername ||	/ / / / / / / / if (StringUtils.isBlank(username) ||
+StringUtils.isBlankpassword 1	StringUtils.isBlank(password)) {
+model.ddAttrbute"rrmsg", "";;	model.addAttribute("errmsg", "");
+return"login";	return "login";
+}	}
+Users useresult =userService.queryUserFoLoginusername,MD5Utils.getMD5Strpasswordl;	Users userResult = userService.queryUserForLogin(username, MD5Utils.getMD5Str(password));
+if userResult == nul 	if (userResult == null) {
+model.adAttribute"errmsg" "";	model.addAttribute("errmsg", "");
+return "login";	return "login";
+	}
+Sring uniqueTken =  UUID.randomUUIDl..toStringf.trim;	String uniqueToken = UUID.randomUUID().toString().trim();
+UserVO usersVO = new  UsersVO;	UsersVO usersVO = new UsersVO();
+BeanUtils.copyPropertiesuserResult,usersVO;	BeanUtils.copyProperties(userResult, usersVO);
+usersVO..setUserniqueTokenuniqueToken;	usersVO.setUserUniqueToken(uniqueToken);
+redsOpeator.etREDIS_USER_TOKEN +"":" + serResult.getIdl, JsonUtilsobjectToJsonusersVOl	redisOperator.set(REDIS_USER_TOKEN + ":" + userResult.getId(), JsonUtils.objectToJson(usersVO));
+String userTicket = UUI.randomUUIDf.toStringtriml;;	String userTicket = UUID.randomUUID().toString().trim();
+setCookieOOKIE_USER_TICKET,, userTicket,, response;	setCookie(COOKIE_USER_TICKET, userTicket, response);
+redisOperator.setREDIS_USER_TICKET +:" + userTicket,  userResult.getIdf	redisOperator.set(REDIS_USER_TICKET + ":" + userTicket, userResult.getId());
+String tmpTicket = createTmpTicketf;	String tmpTicket = createTmpTicket();
+	
+return "redirect:" + returnUrl + "?tmpTicket=" + tmpTicket;	return "redirect:" + returnUrl + "?tmpTicket=" + tmpTicket;
+}	}
+@PostMappingf"/v/e/r/i/f/y/T/m/p/T/i/c/k/e/t/"//	@PostMapping("/v/e/r/i/f/y/T/m/p/T/i/c/k/e/t/"/)/
+/  / / / @/R/es/p/on/s/e/B/o/d/y/	/ / / / /@/R/e/s/p/o/n/s/e/B/o/d/y/
+/ // / /p/u/b/l/i/c/ /J/S/O/N/R/e/s/u/l/t/ /v/e/r/i/f/y/T/m/p/T/i/c/k/e/t/S/t/r/i/n/g/ /t/m/p/T/i/c/k/e/t/,/ /H//t/p//e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t// /t/h/r/o//s/ /E/x/c/e/p/t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /J/S/O/N/R/e/s/u/l/t/ /v/e/r/i/f/y/T/m/p/T/i/c/k/e/t/(/S/t/r/i/n/g/ /t/m/p/T/i/c/k/e/t/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/	/
+/ / // / /  / / String tmpTicketValue =  redisOpeator.getREDIS_TMP_TICKET +":"+ tmpTicket;	/ / / / / / / / String tmpTicketValue = redisOperator.get(REDIS_TMP_TICKET + ":" + tmpTicket);
+if StringUtils.isBlanktmpTicketValuel {	if (StringUtils.isBlank(tmpTicketValue)) {
+return JSONResult.errorUserTicket"";	return JSONResult.errorUserTicket("");
+1	}
+if !tmpTicketValueequalslMD5Utils.getMD5StrtmpTicketff {	if (!tmpTicketValue.equals(MD5Utils.getMD5Str(tmpTicket))) {
+return JSONResult.errorUerTicket"";	return JSONResult.errorUserTicket("");
+} else {	} else {
+redisOperaor.delREDIS_TMP_TICKT  + "":" + tmpTicket;	redisOperator.del(REDIS_TMP_TICKET + ":" + tmpTicket);
+}	}
+String userTicket = getCookierequest, COOKIE_USER_TICKET	String userTicket = getCookie(request, COOKIE_USER_TICKET);
+String userId = redisOperator.getREDIS_USER_TICKET +":"  + userTicket;;	String userId = redisOperator.get(REDIS_USER_TICKET + ":" + userTicket);
+if lStringUtils.isBlankuserId {	if (StringUtils.isBlank(userId)) {
+return JONResult.errorUserTicket"";	return JSONResult.errorUserTicket("");
+l	}
+String userRedis = redisOpertor.getREDIS_USER_TOKEN + ""+userIdl;	String userRedis = redisOperator.get(REDIS_USER_TOKEN + ":" + userId);
+if StringUtils.isBlankuserRedisl {	if (StringUtils.isBlank(userRedis)) {
+reurn JSONResult.errorUserTicketf"";	return JSONResult.errorUserTicket("");
+}	}
+return JSONResultkJsonUtils.jsonToPojouserRedis UsersVO.classf;;	return JSONResult.ok(JsonUtils.jsonToPojo(userRedis, UsersVO.class));
+}	}
+@PostMapping"/l/o/g/o/u/t/"//	@PostMapping("/l/o/g/o/u/t/"/)/
+/ /// /@/R/e/s/p/o//s/e/B/o/d/y	/ / / / /@/R/e/s/p/o/n/s/e/B/o/d/y/
+// /  / /p/u/b/l/i/c/ /J/S/O/N/R/e/s/ul/t/  /l/o/g/o/u/t//S/t/r/i/n/g/ /u/s/e/r/I/d,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /re/q/u/e/s/t/,,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e//r/e/s/p/o/n/s/e// /{/	/ / / / /p/u/b/l/i/c/ /J/S/O/N/R/e/s/u/l/t/ /l/o/g/o/u/t/(/S/t/r/i/n/g/ /u/s/e/r/I/d/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/)/ /{/
+/	/
+/ / / // / / / String userTicket =getCookierequest, COOKIE_USER_TICKETf;	/ / / / / / / / String userTicket = getCookie(request, COOKIE_USER_TICKET);
+deleteCookieCOOKIE_USER_TICKET, response	deleteCookie(COOKIE_USER_TICKET, response);
+redisOperator.delfREDIS_USER_TICKET +":" +  userTicket;;	redisOperator.del(REDIS_USER_TICKET + ":" + userTicket);
+redisOperator.delfREDIS_USER_TOKEN+":" + userId;	redisOperator.del(REDIS_USER_TOKEN + ":" + userId);
+return JSONResult.okl;	return JSONResult.ok();
+}	}
+	
+private Sting createTmpTicket {	private String createTmpTicket() {
+String tmpTicket = UUID.randomUUIDf.toString.trim;	String tmpTicket = UUID.randomUUID().toString().trim();
+try {	try {
+redisOperator.setRDIS_TMP_TICKET + :" +  tmpTicket,	redisOperator.set(REDIS_TMP_TICKET + ":" + tmpTicket,
+MD5Utils.getMD5StrtmpTicket, 600;	MD5Utils.getMD5Str(tmpTicket), 600);
+ catch xception e  {	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+}	}
+return tmpTicket;	return tmpTicket;
+}	}
+private  void setCookieSting  key, String val, HttpServletResponseresponse 1	private void setCookie(String key, String val, HttpServletResponse response) {
+Cookiecookie = new Cookiekey,valf;	Cookie cookie = new Cookie(key, val);
+cookie.setDomainlocalost";	cookie.setDomain("localhost");
+cookie.setPathl"/"//;/	cookie.setPath("/"/)/;/
+/ / / / / / / / /r/e/s/p/o/n/s/e/./a/d/d/C/o/o//i/e//c/o/o/k/i/e/f//	/ / / / / / / / /r/e/s/p/o/n/s/e/./a/d/d/C/o/o/k/i/e/(/c/o/o/k/i/e/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+// /  / /p/r/i/v/a/t/e/ /vo/i/d/ /d/e/l/e//e/C/o/o/k/i/e//Str/i/n/g/ /k/e/y// /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p//n/s/e//r/e/s/p/o/n/s/e// /{/	/ / / / /p/r/i/v/a/t/e/ /v/o/i/d/ /d/e/l/e/t/e/C/o/o/k/i/e/(/S/t/r/i/n/g/ /k/e/y/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/)/ /{/
+/	/
+/ / / // // / /C/o/o/k/i/e/ /c/oo/k/i// /=/  /n/e/w/ /C/o/o/k/i/e//k/e/y/,/ /n/u/l/l//;/	/ / / / / / / / /C/o/o/k/i/e/ /c/o/o/k/i/e/ /=/ /n/e/w/ /C/o/o/k/i/e/(/k/e/y/,/ /n/u/l/l/)/;/
+/  //  /  / / /  / /c/o/o/k/i/e/./s//t/D/o/m/a/i/n///l/o/c/a/l/h/o//t/"//;/	/ / / / / / / / /c/o/o/k/i/e/./s/e/t/D/o/m/a/i/n/(/"/l/o/c/a/l/h/o/s/t/"/)/;/
+/ / / / // / / /c/o/o/k/i/e/../s/e/t/P/a/t/h//" ookie.setMaxAge-1;	/ / / / / / / / /c/o/o/k/i/e/./s/e/t/P/a/t/h/(/" cookie.setMaxAge(-1);
+response.addCookiecookie;	response.addCookie(cookie);
+}	}
+private String  getCookieHttpServletRequest request,, String keyl {	private String getCookie(HttpServletRequest request, String key) {
+Cookie cookieList = request.getCookies;	Cookie[] cookieList = request.getCookies();
+if fcookieList == null || StringUtils.isBlankkeyf {	if (cookieList == null || StringUtils.isBlank(key)) {
+return null;	return null;
+}	}
+String cookieValue = null;;	String cookieValue = null;
+for  int i  = 0;i < cookieLit.length; i++ 1	for (int i = 0; i < cookieList.length; i++) {
+if cookieListi.getNamel.equalsfkey  {	if (cookieList[i].getName().equals(key)) {
+cookieVale =cookieListi.getValue;	cookieValue = cookieList[i].getValue();
+break;;	break;
+}	}
+	}
+return cookieValue;;	return cookieValue;
+}	}
+}	}

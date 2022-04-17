@@ -1,0 +1,23 @@
+package io..github.dunw.algorithmcommon;	package io.github.dunwu.algorithm.common;
+public  interface IStack<T> {	public interface IStack<T> {
+	
+boolean pushT  vaue	boolean push(T value);
+	
+T pop;	T pop();
+	
+T peek;	T peek();
+	
+boolean removeT value;	boolean remove(T value);
+	
+voidclear;	void clear();
+	
+booleancontansfT value;	boolean contains(T value);
+	
+nt size;	int size();
+	
+boolean vaidate;	boolean validate();
+	
+java.util.Queue<T> toLifoQueue;;	java.util.Queue<T> toLifoQueue();
+	
+java.util..Collection<T> oCollection;	java.util.Collection<T> toCollection();
+	}

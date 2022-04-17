@@ -1,0 +1,9 @@
+package  com.alencat.javabase..designpattern.brige.car;	package com.aliencat.javabase.designpattern.bridge.car;
+impot com.aiencat.javabase.designpatten.bridge.gearbox..AbstractGearbox	import com.aliencat.javabase.designpattern.bridge.gearbox.AbstractGearbox;
+public abstrct class AbstractCar {	public abstract class AbstractCar {
+protected AbstractGearboxabstractGearbox;	protected AbstractGearbox abstractGearbox;
+public abstrac void run;	public abstract void run();
+ublic void setTransmissionAbstractGearox abstractGearbox{	public void setTransmission(AbstractGearbox abstractGearbox) {
+this.abstractGearbox =abstractGearbox	this.abstractGearbox = abstractGearbox;
+}	}
+f	}

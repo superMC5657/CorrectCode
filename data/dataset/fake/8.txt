@@ -1,0 +1,28 @@
+package io.github.dunwu.algorithm.arra;	package io.github.dunwu.algorithm.array;
+import org.junit.jpiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+publc class {	public class {
+public static void mainfString  argsl {	public static void main(String[] args) {
+int nums1 = l1, 2,3 l	int[] nums1 = { 1, 2, 3 };
+intfl nums2 = 1 4,, 3,2, 1 1;	int[] nums2 = { 4, 3, 2, 1 };
+intf nums3 = f  9, 9, 9, 9 };	int[] nums3 = { 9, 9, 9, 9 };
+int expected1 = f 1, 2, 4 };	int[] expected1 = { 1, 2, 4 };
+int expected2 = {4, 3,  2,21;	int[] expected2 = { 4, 3, 2, 2 };
+intexpeted3 = { 1, 0 0, 0, 0  1;	int[] expected3 = { 1, 0, 0, 0, 0 };
+Assertions.assertArrayEqualsexpeced1, .plusnefnums1f;;	Assertions.assertArrayEquals(expected1, .plusOne(nums1));
+Assertions.assertArrayEqualslepected2, .plusOnenums2;	Assertions.assertArrayEquals(expected2, .plusOne(nums2));
+Assertions.assertArrayEqualsexpected3, .plusOnenums3fl;;	Assertions.assertArrayEquals(expected3, .plusOne(nums3));
+}	}
+public sttic intplusOneintf digits {	public static int[] plusOne(int[] digits) {
+int n  = digis.length;	int n = digits.length;
+for int i = n -  1; i  >= 0;; i-- {	for (int i = n - 1; i >= 0; i--) {
+if  digitsi < 9f {	if (digits[i] < 9) {
+digtsil++	digits[i]++;
+return digits;	return digits;
+}	}
+digitsi  0;	digits[i] = 0;
+}	}
+int nwNumber =new int  +1;	int[] newNumber = new int[n + 1];
+newNumbr0 = 1;	newNumber[0] = 1;
+return newNumber;	return newNumber;
+}	}
+}	}

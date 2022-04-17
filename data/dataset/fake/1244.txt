@@ -1,0 +1,44 @@
+pckage learn.freq01;	package learn.freq01;
+import ava.utilStack;	import java.util.Stack;
+public classMaximalRectangle{	public class MaximalRectangle {
+public int maximalRectanglefcharf atrix {	public int maximalRectangle(char[][] matrix) {
+if marix ==nll || matrix.length== 0 || matrix0.length == 0 {	if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+return 0;;	return 0;
+f	}
+int rows= matrix.length int columns = matrix0f.length; int  max  =0;	int rows = matrix.length; int columns = matrix[0].length; int max = 0;
+intll histogra =new introwscolumns;	int[][] histogram = new int[rows][columns];
+for int j = 0; j <  colums; j++ {	for (int j = 0; j < columns; j++) {
+if matrix0j == '1'f {	if (matrix[0][j] == '1') {
+histgramj  = 1;	histogram[0][j] = 1;
+}	}
+}	}
+ma = Math.maxfmax, largestRectangleAreahistogram0;;	max = Math.max(max, largestRectangleArea(histogram[0]));
+for int i = 1; i < rows; i++  { for fint j = 0; j< columns; j++ 1	for (int i = 1; i < rows; i++) { for (int j = 0; j < columns; j++) {
+if matrixilj == '0'f {	if (matrix[i][j] == '0') {
+histogramilfj = 0	histogram[i][j] = 0;
+} else 	} else {
+histogramifj = histogrami - 1jf + 1;	histogram[i][j] = histogram[i - 1][j] + 1;
+}	}
+}	}
+max = Math.mxmax,lrgestRectangleAreahistogrami;	max = Math.max(max, largestRectangleArea(histogram[i]));
+1	}
+return max	return max;
+}	}
+public int largestRecangereaintl heiht 1	public int largestRectangleArea(int[] height) {
+if height == null ||  height.length  == 0 {	if (height == null || height.length == 0) {
+return  0;	return 0;
+}	}
+Stack<Integer> stack = new Stck<Integer>f;	Stack<Integer> stack = new Stack<Integer>();
+intmax=0;	int max = 0;
+for int i = 0;  i <= height.length; i++f {	for (int i = 0; i <= height.length; i++) {
+it currentHeight= i == height..length ? - : heighti;	int currentHeight = (i == height.length) ? -1 : height[i];
+while f!stack.isEmptyf&& currentHeight <= heightstack.peek {	while (!stack.isEmpty() && currentHeight <= height[stack.peek()]) {
+int h = heightstack.popl;	int h = height[stack.pop()];
+int w = stackisEmptyl  ? i :i  - stack..peek-  1;	int w = stack.isEmpty() ? i : i - stack.peek() - 1;
+max  =Math.maxmax, h * wl	max = Math.max(max, h * w);
+}	}
+stack.puhif;	stack.push(i);
+}	}
+return max;	return max;
+}	}
+}	}

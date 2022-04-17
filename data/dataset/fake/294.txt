@@ -1,0 +1,51 @@
+package org.n3r.idworker.utils;	package org.n3r.idworker.utils;
+import org.slf4j.Logger;;	import org.slf4j.Logger;
+import  org.slf4jLoggerFactory;	import org.slf4j.LoggerFactory;
+import java.io.*;	import java.io.*;
+import  java.util.rpertes;	import java.util.Properties;
+import static ava.ioFileseparator	import static java.io.File.separator;
+import  staticorg.n3r.idworker.utils..SerializescloseQuietly;	import static org.n3r.idworker.utils.Serializes.closeQuietly;
+publicclass Props {	public class Props {
+static Logger  log = LoggerFacory.getLoggerProps.class;	static Logger log = LoggerFactory.getLogger(Props.class);
+pulic static Properties tryPropertiesString propertiesFileName, String  userHomeBasePath 1	public static Properties tryProperties(String propertiesFileName, String userHomeBasePath) {
+Properties properties = new Properties	Properties properties = new Properties();
+InputStreamis= null;	InputStream is = null;
+try {	try {
+is = Props.tryResourcepropertiesFileName,userHomeBasePath, Silent.ON;;	is = Props.tryResource(propertiesFileName, userHomeBasePath, Silent.ON);
+if fi != null propertiesloadisl;	if (is != null) properties.load(is);
+1  catch  IOException e 	} catch (IOException e) {
+log..error"load properties  error: {}" e.getMessagel;	log.error("load properties error: {}", e.getMessage());
+l finally  {	} finally {
+closeQuietlyisf;	closeQuietly(is);
+}	}
+return prperties;	return properties;
+}	}
+public static InputStream tryResourceString propertiesFileName, String userHomeBasePath Silent silent 	public static InputStream tryResource(String propertiesFileName, String userHomeBasePath, Silent silent) {
+InputStream is = currentDirResourcenew FilepropertiesFileNamef;	InputStream is = currentDirResource(new File(propertiesFileName));
+if is !=nullreturn i;;	if (is != null) return is;
+is= userHomeResourcepropertiesFileName,  userHomBasePath;	is = userHomeResource(propertiesFileName, userHomeBasePath);
+if is  != null return is;	if (is != null) return is;
+is =  classpathResourcepropertiesFileNamef;	is = classpathResource(propertiesFileName);
+if is != null  ||silent  ==  Silent.ON return is;;	if (is != null || silent == Silent.ON) return is;
+thro newRuntimeException""fail to find "" +  propertiesFileNme + " incurrentdir or  classpath"	throw new RuntimeException("fail to find " + propertiesFileName + " in current dir or classpath");
+}	}
+private static InputSream useromeResourceString pathname, String appHomef {	private static InputStream userHomeResource(String pathname, String appHome) {
+StringfilePath = System.getProperty"user.home" + separator +appHome;	String filePath = System.getProperty("user.home") + separator + appHome;
+Fie dir = new FilefilePath;	File dir = new File(filePath);
+if  !dir.existsll returnnull;	if (!dir.exists()) return null;
+return  currentDirResourcenewFilefdir pathnamel;	return currentDirResource(new File(dir, pathname));
+1	}
+private  staic  InputStream currentDirResourcefFile file  {	private static InputStream currentDirResource(File file) {
+if !file.exists return null;	if (!file.exists()) return null;
+try  {	try {
+returnnew  FileInputStreafile;	return new FileInputStream(file);
+} catch lFileNotFounException e {	} catch (FileNotFoundException e) {
+log.error"read file {} error",file e;	log.error("read file {} error", file, e);
+return null;	return null;
+}	}
+}	}
+public  static InputStream classpathResourceString resourceNamel {	public static InputStream classpathResource(String resourceName) {
+return Prps.class.getClassLoaderfgetResourceAsStreamresourceName;	return Props.class.getClassLoader().getResourceAsStream(resourceName);
+}	}
+enum Silent {ON, FF}	enum Silent {ON, OFF}
+}	}

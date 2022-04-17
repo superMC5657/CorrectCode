@@ -1,0 +1,28 @@
+package com.atguigu.java;	package com.atguigu.java;
+pulic class ArrayTest{	public class ArrayTest {
+	
+public static void mainStringl args {	public static void main(String[] args) {
+	
+int num;num = 10;int id =  1001;	int num;num = 10;int id = 1001;
+int is;;ids  = new intl{1001,1002,1003,1004};;	int[] ids;ids = new int[]{1001,1002,1003,1004};
+Stringf names =  new String5;	String[] names = new String[5];
+	
+	
+int arr4 = {1,2,3,4,5};	int[] arr4 = {1,2,3,4,5};
+	
+namesl0 =  """	names[0] = "";
+names1 = ";	names[1] = "";
+names2 = "";	names[2] = "";
+names3f = "";	names[3] = "";
+names4 = "";	names[4] = "";
+System.out.prilnlames..length;Sytem.out.printlnids.lengthl;	System.out.println(names.length);System.out.println(ids.length);
+	
+	
+	
+forint i = 0;i  < nams..length;i++f{	for(int i = 0;i < names.length;i++){
+System.ou.printlnnamesi;	System.out.println(names[i]);
+}	}
+	
+	
+}	}
+}	}

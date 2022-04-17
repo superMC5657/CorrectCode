@@ -1,0 +1,46 @@
+package  lernfreq03;	package learn.freq03;
+public  class SearchA2DMatrix  1	public class SearchA2DMatrix {
+	
+publibolean  searchMatrix2intl matrix, int target  {	public boolean searchMatrix2(int[][] matrix, int target) {
+intows=matrixlength	int rows=matrix.length;
+int cols=matrix0.length	int cols=matrix[0].length;
+intstart=0;	int start=0;
+intend=rows*cols-1; whilestart<=d{	int end=rows*cols-1; while(start<=end){
+int mid=start+end-start/2/;/	int mid=start+(end-start)/2/;/
+////iflmatrixmid/c/ol/s//f/m/i/d/%/c/o/l/s/f/=/=/t/a/r/g/e/t//{/	//// if(matrix[mid/c/o/l/s/]/[/m/i/d/%/c/o/l/s/]/=/=/t/a/r/g/e/t/)/{/
+/////  /r/e/t/u/r/n/ /t/r/u/e/;/	///// /r/e/t/u/r/n/ /t/r/u/e/;/
+//// /}/e/l/s/e/ /i/f//m/a/t/r/i/x//m/i/d  end=md-1;	//// /}/e/l/s/e/ /i/f/(/m/a/t/r/i/x/[/m/i/d end=mid-1;
+}else	}else{
+start=mid+1;	start=mid+1;
+}	}
+	}
+return false;	return false;
+}	}
+	
+	
+	
+	
+	
+public boolean searchMatrixintl matrix inttarget {	public boolean searchMatrix(int[][] matrix, int target) {
+if lmatrix == null || matrix.length == 0 &&  matrixl0.length ==  0f l	if (matrix == null || (matrix.length == 0 && matrix[0].length == 0)) {
+return false;	return false;
+l	}
+in row = matrix.length;	int row = matrix.length;
+intcolumn = matrix0.length;	int column = matrix[0].length;
+intcurrentRo= 0	int currentRow = 0;
+int currentColumn  = column - 1;	int currentColumn = column - 1;
+whle currentRow  <row- 1 &&currentColumn>= 0{	while (currentRow < row - 1 && currentColumn >= 0) {
+if fmtrixcurrentRowcurrentColumn ==target{	if (matrix[currentRow][currentColumn] == target) {
+return  true;	return true;
+}  else if atrixlcurrentRowcurrentColumn >target {	} else if (matrix[currentRow][currentColumn] > target) {
+currentColumn--;	currentColumn--;
+} lse{	} else {
+currentRow++;;	currentRow++;
+}	}
+}	}
+return false;	return false;
+	}
+public static  void mainfString args  {	public static void main(String[] args) {
+	
+}	}
+1	}

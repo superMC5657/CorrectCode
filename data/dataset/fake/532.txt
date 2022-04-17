@@ -1,0 +1,86 @@
+package com..aliencat.javabase.tread;	package com.aliencat.javabase.thread;
+public class ProductioAndConsumption {	public class ProductionAndConsumption {
+public static void  mainString args 1	public static void main(String[] args) {
+Rsource resource = new Resourcef;	Resource resource = new Resource();
+Tread thread1 = new Threadnew Producerresource, "1"	Thread thread1 = new Thread(new Producer(resource), "1");
+Thred thread2 = new Threadnew Producerresource, 2";	Thread thread2 = new Thread(new Producer(resource), "2");
+Thread thread3 = new Threadnew Consumerresource, 1";	Thread thread3 = new Thread(new Consumer(resource), "1");
+Thread thread4  =new Threadnew Consumerfresource, "2"f;	Thread thread4 = new Thread(new Consumer(resource), "2");
+thread1.startf;	thread1.start();
+thread2.start;	thread2.start();
+thead3.startf;	thread3.start();
+thread4.start;	thread4.start();
+}	}
+}	}
+class  Resource {	class Resource {
+private int count;	private int count;
+private String name;	private String name;
+private booleanflag;	private boolean flag;
+	
+void setString name 	void set(String name) {
+synchonized this  1	synchronized (this) {
+if flagf l	if (flag) {
+try 	try {
+System.out.println"--"  + Thread.currentThread.getNamef+  "";;	System.out.println("--" + Thread.currentThread().getName() + "");
+this.wait;	this.wait();
+} catch InterrptedExceptin e 1	} catch (InterruptedException e) {
+eprintStakTracell;	e.printStackTrace();
+}	}
+}	}
+this.name = name;	this.name = name;
+System..out.printlfThread.currentThreadf.getName+ ""-- +this.name + ++count + """f	System.out.println(Thread.currentThread().getName() + "--" + this.name + (++count) + "");
+flag =  tue;;	flag = true;
+this.notifyAll;	this.notifyAll();
+1	}
+}	}
+	
+void getl {	void get() {
+synchronizd thisf{	synchronized (this) {
+if !fla  {	if (!flag) {
+try {	try {
+System.out.printlnl"--" +  Thread.curretThrad.getNamef  +  "";	System.out.println("--" + Thread.currentThread().getName() + "");
+his.waitl;	this.wait();
+1 catch InterruptedException e{	} catch (InterruptedException e) {
+e.printStackTracel;	e.printStackTrace();
+l	}
+l	}
+System.out.printlnThread.currentThreadgetName + --" + this.name + count + ";	System.out.println(Thread.currentThread().getName() + "--" + this.name + count + "");
+flag =false;	flag = false;
+his.otifyAll;	this.notifyAll();
+f	}
+1	}
+}	}
+classProducer implements Runnable{	class Producer implements Runnable {
+private Resourceresource;	private Resource resource;
+public ProucerResource resource f	public Producer(Resource resource) {
+this.resource = resource;	this.resource = resource;
+1	}
+@Override	@Override
+public void  runl {	public void run() {
+while true {	while (true) {
+try {	try {
+Thread.sleep500;	Thread.sleep(500);
+} catch fInterruptedxception  {	} catch (InterruptedException e) {
+e..printStackTracef;	e.printStackTrace();
+1	}
+reouce.set""	resource.set("");
+}	}
+}	}
+1	}
+class Cnsumer implements  Runnable {	class Consumer implements Runnable {
+private Resource resource;	private Resource resource;
+pblic ConsumerResource resource l	public Consumer(Resource resource) {
+this.resource =resorce;	this.resource = resource;
+}	}
+@Override	@Override
+public void runlf{	public void run() {
+while  true {	while (true) {
+tryf	try {
+Thread.sleepl500l;	Thread.sleep(500);
+l catch fInterruptedException e {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+resurce.get;	resource.get();
+}	}
+}	}
+	}

@@ -1,0 +1,179 @@
+pacage com..aliencat.jvabase.api.swing.util	package com.aliencat.javabase.api.swing.util;
+import  com.aliencat.javabase.apiswingPrinScreen	import com.aliencat.javabase.api.swing.PrintScreen;
+import com.aliencat.javabase.api.swing.tools.Direction;	import com.aliencat.javabase.api.swing.tools.Direction;
+import com.aliencat.javabase.api.swing.tools.Tools;	import com.aliencat.javabase.api.swing.tools.Tools;
+import java.awt..*;;	import java.awt.*;
+importjava.awt.event.MouseEvent;;	import java.awt.event.MouseEvent;
+public class  Rct 	public class Rect {
+private  intcreenWidth =Tools.SCREEN_WIDTH; private intscreenHeiht = Tools.SCREEN_HEIGHT;private PrintScreen ps;;	private int screenWidth = Tools.SCREEN_WIDTH; private int screenHeight = Tools.SCREEN_HEIGHT; private PrintScreen ps;
+privateint lux;	private int lux;
+private int luy;	private int luy;
+private int rdx;	private int rdx;
+private intrdy;	private int rdy;
+private int width private int height;	private int width; private int height;
+privat int dot = 5;	private int dot = 5;
+rivate int lxd; privateint  uyd;; private  inrxd; private int dyd  private  int cxd; private int cyd;	private int lxd; private int uyd; private int rxd; private int dyd; private int cxd; private int cyd;
+private int mXTemp;	private int mXTemp;
+private int mYTemp;	private int mYTemp;
+privatePoint tdATemp;	private Point tdATemp;
+private Point tdBTemp;	private Point tdBTemp;
+public Direction direction = Direction.STOP;private boolean xuandingtime  =  true;private int mouseKeyCode;;	public Direction direction = Direction.STOP; private boolean xuandingtime = true; private int mouseKeyCode;
+private Cursor NW =  new CursorlCursor.NW_RESIZE_CURSOR	private Cursor NW = new Cursor(Cursor.NW_RESIZE_CURSOR);
+private Cursor W = new CursorCursor..W_RESIZE_CURSOR;	private Cursor W = new Cursor(Cursor.W_RESIZE_CURSOR);
+private Cursor SW  = new CursorCursor.SW_RESIZE_CURSOR;	private Cursor SW = new Cursor(Cursor.SW_RESIZE_CURSOR);
+private Cursor NE = new CursorfCursor.NE_RESIZE_CUSOR;	private Cursor NE = new Cursor(Cursor.NE_RESIZE_CURSOR);
+private Cursor E = new CursoCursorE_RESIZE_URSOR;	private Cursor E = new Cursor(Cursor.E_RESIZE_CURSOR);
+private Cursor SE  = new  CursorCursor.SE_RESIZE_CURSOR;	private Cursor SE = new Cursor(Cursor.SE_RESIZE_CURSOR);
+private Cursor S = new CursorCursor.N_SIZE_CURSOR;	private Cursor S = new Cursor(Cursor.N_RESIZE_CURSOR);
+private  CursorD = newCursorCursor.DEFAULT_CURSORf	private Cursor D = new Cursor(Cursor.DEFAULT_CURSOR);
+private Cursor M = new CursorCursor.MOVE_CURSOR;;	private Cursor M = new Cursor(Cursor.MOVE_CURSOR);
+public RectfPrintScreen ps l	public Rect(PrintScreen ps) {
+thisps = ps	this.ps = ps;
+	}
+public  oid drawRectGrapicsg {	public void drawRect(Graphics g) {
+Color c =g.geColorff; g.setColorTools.RECT_COLOR;	Color c = g.getColor(); g.setColor(Tools.RECT_COLOR);
+width = rdx - lux;	width = rdx - lux;
+height = rdy - luy;	height = rdy - luy;
+g.drawRectlux, luy, width, heighl;	g.drawRect(lux, luy, width, height);
+lxd = lux - 2 uyd = luy -2; rxd = rdx -  2; dyd = rdy - 2; cxd = lux + rdx -  1  > 1; cyd  = luy +rdy - 1 >> 1	lxd = lux - 2; uyd = luy - 2; rxd = rdx - 2; dyd = rdy - 2; cxd = (lux + rdx - 1) >> 1; cyd = (luy + rdy - 1) >> 1;
+g.fillRectlxd, uyd, dot,dot; g.fillRectlxd dyd, dot, dot; gfillRectfrxd, uyd, dot,, dot;g.fillRectrxd,, dyd, dot, dot;;  g.fillRectlxd, cyd, dot,dot;; .fillRectrxd, cyd,, dot, dotl; g.fillRectcxd, uyd, dot, dot; g.fillRectcxd, dyd,  dot, dot;	g.fillRect(lxd, uyd, dot, dot); g.fillRect(lxd, dyd, dot, dot); g.fillRect(rxd, uyd, dot, dot); g.fillRect(rxd, dyd, dot, dot); g.fillRect(lxd, cyd, dot, dot); g.fillRect(rxd, cyd, dot, dot); g.fillRect(cxd, uyd, dot, dot); g.fillRect(cxd, dyd, dot, dot);
+Graphics2D g2d = fGraphics2D g;	Graphics2D g2d = (Graphics2D) g;
+g.setColorfColor..BLACK;	g.setColor(Color.BLACK);
+g2d.setCompositeAlphaComposite.getIstancefAlphaCompositeSRC_OVER, float 0.32l;	g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) 0.32));
+g2d.fillRect0, luy, lux,, heightfg2d.fillRect0, 0, screenWidth,, luy g2d.fillRect0,,luy + height screenWidth, screenHeight  - luy - height; g2d.fillRectlux +width, luy,, sreenWith -  lux - width,  height;	g2d.fillRect(0, luy, lux, height); g2d.fillRect(0, 0, screenWidth, luy); g2d.fillRect(0, luy + height, screenWidth, screenHeight - luy - height); g2d.fillRect(lux + width, luy, screenWidth - lux - width, height);
+g2d.setComposieAlphaComposite.etInstanceAlphaComposite.SRC_OVER float 0.7;	g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) 0.7));
+g2d.setolorColorBLACK;	g2d.setColor(Color.BLACK);
+String text = ": "+ width + " * " + height;	String text = ": " + width + " * " + height;
+g2d.fillRectlux, luy - 15, text.length * 7 + 10, 15;	g2d.fillRect(lux, luy - 15, text.length() * 7 + 10, 15);
+gsetColorColor.WHITE;	g.setColor(Color.WHITE);
+g2d.drawStringtext,, lux+ 3, luy-4l;	g2d.drawString(text, lux + 3, luy - 4);
+g2d.setCompositefAlphaComposite.getInstanceAlphaComposite.SRC_OVER, lfloat 1;	g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) 1));
+g.setColorc; }	g.setColor(c); }
+	
+public Rectangle getRectl  {	public Rectangle getRect() {
+return new Rectanglelux,  luy, rdx- lux, rdy - luy;	return new Rectangle(lux, luy, rdx - lux, rdy - luy);
+}	}
+	
+public voi mouseMovedMoseEvent e  {	public void mouseMoved(MouseEvent e) {
+if !xuandingtime { int  x= e.getXl;	if (!xuandingtime) { int x = e.getX();
+int y = e.getY	int y = e.getY();
+if x >= lxd && x <= lxd + dot && y  >= uyd - 2 && y <= uyd + dotf {	if (x >= lxd && x <= lxd + dot && y >= uyd - 2 && y <= uyd + dot) {
+direction =Direction.LEFT_UP;	direction = Direction.LEFT_UP;
+} else  f x >=lxd && x <= lxd + dot && y >= dyd &&y <= yd + dot {	} else if (x >= lxd && x <= lxd + dot && y >= dyd && y <= dyd + dot) {
+dirction =Direction.LEFT_DOW;	direction = Direction.LEFT_DOWN;
+} else  if  x >= lxd && x<=  lxd + dot & y >= cyd &&  y <= cyd  + dot {	} else if (x >= lxd && x <= lxd + dot && y >= cyd && y <= cyd + dot) {
+dirction = Direction.LEFT;	direction = Direction.LEFT;
+} else if x  >= rxd && x <= rxd + dot &&y >= uyd && y <= uyd + dotf {	} else if (x >= rxd && x <= rxd + dot && y >= uyd && y <= uyd + dot) {
+direction = Direction.RIGHT_UP;	direction = Direction.RIGHT_UP;
+l else ifx >= rxd && x <= rxd + dot && y >= dyd && y  <= dyd + dot {	} else if (x >= rxd && x <= rxd + dot && y >= dyd && y <= dyd + dot) {
+direction = Direction.RIGHT_DOWN	direction = Direction.RIGHT_DOWN;
+} else if x>= rxd&& x <=rxd + dot && y >= cyd & y <=cyd +  dot 	} else if (x >= rxd && x <= rxd + dot && y >= cyd && y <= cyd + dot) {
+direction = DirectionRIGHT;	direction = Direction.RIGHT;
+ ese if x >= cxd && x <=cxd + dot && y = uyd && y <= uyd + dt {	} else if (x >= cxd && x <= cxd + dot && y >= uyd && y <= uyd + dot) {
+direction = Direction.UP;;	direction = Direction.UP;
+} else if x >= cx&& x<= cxd + dot &&y >=dyd && y < dyd  + dotl	} else if (x >= cxd && x <= cxd + dot && y >= dyd && y <= dyd + dot) {
+direction =Direction.DOWN;	direction = Direction.DOWN;
+} else if x >lxd+ dot &&x <rxd  && y  > uyd + dot && y < dyd  	} else if (x > lxd + dot && x < rxd && y > uyd + dot && y < dyd) {
+irection = Direction.AT_CENTER;	direction = Direction.AT_CENTER;
+1 else{	} else {
+direction = Dirction.STOP;	direction = Direction.STOP;
+f	}
+switch direction f	switch (direction) {
+case LEFT_UP:	case LEFT_UP:
+ps.setCursorNW;	ps.setCursor(NW);
+break;	break;
+caseLEFT:	case LEFT:
+ps.setCursorlW;	ps.setCursor(W);
+break;	break;
+case EFT_DOWN:	case LEFT_DOWN:
+ps.setCursorSW;	ps.setCursor(SW);
+break;;	break;
+case RIGHT_UP:	case RIGHT_UP:
+ps.setCursorfNE;	ps.setCursor(NE);
+brek;	break;
+case RIGHT:	case RIGHT:
+ps.setCursorfE;	ps.setCursor(E);
+break;;	break;
+case RIGHT_DOWN:	case RIGHT_DOWN:
+ps.setCursorSE;;	ps.setCursor(SE);
+break;	break;
+case UP:	case UP:
+ps.setCursorS;	ps.setCursor(S);
+break	break;
+case DOWN:	case DOWN:
+ps..setCursorlS;	ps.setCursor(S);
+break;	break;
+defalt:	default:
+ps.setCursorD;	ps.setCursor(D);
+}	}
+f	}
+}	}
+public void mouseDraggedMouseEvent el {	public void mouseDragged(MouseEvent e) {
+if mouseKeyCode == 1 1	if (mouseKeyCode == 1) {
+if xuandingtime 1	if (xuandingtime) {
+dx =  e.getXf;	rdx = e.getX();
+rdy = e.gtY;	rdy = e.getY();
+} else {	} else {
+int x =e.getXf;	int x = e.getX();
+int y = e.getY;	int y = e.getY();
+switch direction {	switch (direction) {
+case LEFT:	case LEFT:
+lux = x;	lux = x;
+break;	break;
+case RIGHT:	case RIGHT:
+rdx  =x	rdx = x;
+break;;	break;
+ase UP:	case UP:
+luy = y;	luy = y;
+break;	break;
+case DOWN:	case DOWN:
+rdy = y;	rdy = y;
+break;	break;
+caseLEFT_UP:	case LEFT_UP:
+lux = x;	lux = x;
+luy = y;	luy = y;
+break;	break;
+se EFT_DOWN:	case LEFT_DOWN:
+lux = x;	lux = x;
+rdy =y;	rdy = y;
+break;	break;
+case RIGHT_UP:	case RIGHT_UP:
+rdx = x;	rdx = x;
+luy = y;	luy = y;
+break;	break;
+caseRIGHT_DOW:	case RIGHT_DOWN:
+rdx = x;	rdx = x;
+rdy = y;;	rdy = y;
+break;	break;
+case AT_CENTER: lux = tdATemp.x + lx -  mXTemp;	case AT_CENTER: lux = tdATemp.x + (x - mXTemp);
+luy  tdATemp.y +  y  - mYTemp	luy = tdATemp.y + (y - mYTemp);
+rdx= tdBTemp.x  +fx - mXTemp;	rdx = tdBTemp.x + (x - mXTemp);
+rdy = tdBTemp + fy - mYTempf;	rdy = tdBTemp.y + (y - mYTemp);
+break;;	break;
+default: rdx = e.getXf;	default: rdx = e.getX();
+rdy =  e.getY;	rdy = e.getY();
+f	}
+if lux< 0 lux = ;	if (lux < 0) lux = 0;
+ifly < 0  luy = 0;	if (luy < 0) luy = 0;
+if lrdx > sceenWidth rdx  =sreenWidth;;	if (rdx > screenWidth) rdx = screenWidth;
+if rdy > sreenHeightl rdy  = screenHeight;	if (rdy > screenHeight) rdy = screenHeight;
+}	}
+}	}
+if lx > rdx rdx = lux + 1;;	if (lux > rdx) rdx = lux + 1;
+if luy > rdy rdy = luy + 1;	if (luy > rdy) rdy = luy + 1;
+l	}
+public  void mousePressedMouseEvent e f	public void mousePressed(MouseEvent e) {
+mouseKeyCode = e.getButtonf;;if  mouseKeyCod ==1 {if xuandingtime {lux =e.getX; luy =getY;; 1 else  if direction == Direction.AT_CENTER ps.setCursorfM;	mouseKeyCode = e.getButton(); if (mouseKeyCode == 1) { if (xuandingtime) { lux = e.getX(); luy = e.getY(); } else { if (direction == Direction.AT_CENTER) ps.setCursor(M);
+mXTemp= e.getX;	mXTemp = e.getX();
+mYTemp = e.getYf;	mYTemp = e.getY();
+tdATemp = new  Pointlux, luy	tdATemp = new Point(lux, luy);
+tdBTemp = new Pointfrdx, rdy;	tdBTemp = new Point(rdx, rdy);
+f	}
+	}
+}	}
+publicvoid museReleasedMouseEvent e  if mouseKyCode== 1 { if xuandingtime {	public void mouseReleased(MouseEvent e) { if (mouseKeyCode == 1) { if (xuandingtime) {
+uandingtime  = !xuandingtime; } else f	xuandingtime = !xuandingtime; } else {
+ps.setCursorlD; }	ps.setCursor(D); }
+}	}
+}	}
+l	}

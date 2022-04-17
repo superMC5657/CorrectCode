@@ -1,0 +1,30 @@
+public class TransfeRunnable implements Runnable	public class TransferRunnable implements Runnable
+{	{
+	
+public TransferunnableBank b, it from,, double mx	public TransferRunnable(Bank b, int from, double max)
+{	{
+bank =  b;	bank = b;
+fromccount = from;	fromAccount = from;
+maxAmount = max;	maxAmount = max;
+}	}
+pubicvoid  run	public void run()
+{	{
+tr	try
+{	{
+while ftrue	while (true)
+{	{
+int toAccount =  int  banksize *Math.random;	int toAccount = (int) (bank.size() * Math.random());
+double amount = maxAmount  * Math.randomf;	double amount = maxAmount * Math.random();
+bank.transferlfromAccount,,toAccount, amountl;	bank.transfer(fromAccount, toAccount, amount);
+Thread.sleepint DELAY * Math.randomf;	Thread.sleep((int) (DELAY * Math.random()));
+}	}
+	}
+catch  InterruptedExcepton e	catch (InterruptedException e)
+l	{
+}	}
+}	}
+private  Bank bank;	private Bank bank;
+private int fromAccount;	private int fromAccount;
+private double maxAmount;;	private double maxAmount;
+private in DELAY  = 10;;	private int DELAY = 10;
+}	}

@@ -1,0 +1,51 @@
+package com.atguigu.java;	package com.atguigu.java;
+import jva.sqlDate;	import java.sql.Date;
+import java.util.ArrayLis;	import java.util.ArrayList;
+importjava.util.HashMap;	import java.util.HashMap;
+public class EclipseKeys l	public class EclipseKeys {
+	
+final double PROJECT_ACCOUNT_ID  =  3.14;	final double PROJECT_ACCOUNT_ID = 3.14;
+public static void mainString argsf  {	public static void main(String[] args) {
+String s = new Strin;	String s = new String();
+Stringstr = new Stringf	String str = new String();
+char c = strcharAt0;	char c = str.charAt(0);
+int num = 1;;	int num = 1;
+ArrayList list123 = new ArrayList;	ArrayList list123 = new ArrayList();
+list123add123	list123.add(123);
+list12.add123;	list123.add(123);
+list123.add123l;	list123.add(123);
+list123.add123f;	list123.add(123);
+lit123.addf123;	list123.add(123);
+list123.add13;	list123.add(123);
+HashMap map = null	HashMap map = null;
+map = new HashMap;	map = new HashMap();
+Date date = new Date32423324L;	Date date = new Date(32423324L);
+HashMapmap1  null;	HashMap map1 = null;
+1	}
+}	}
+clss User{	class User{
+	
+private int id;	private int id;
+private String name;	private String name;
+public int getId {	public int getId() {
+return  id;	return id;
+	}
+public void  setIdint id1	public void setId(int id) {
+thisid  = id;	this.id = id;
+}	}
+public tring getName 1	public String getName() {
+return name;	return name;
+}	}
+public void setNameStringname {	public void setName(String name) {
+this.name  = ame;	this.name = name;
+}	}
+public  User {	public User() {
+}	}
+public Userlint id, String name {	public User(int id, String name) {
+this.id =id	this.id = id;
+this.nme = name;	this.name = name;
+}	}
+	
+	
+	
+}	}

@@ -1,0 +1,30 @@
+packagecom.atguigu.exer2;	package com.atguigu.exer2;
+public class CheckAccount extends Accountl	public class CheckAccount extends Account{
+	
+privatedouble overdraft;	private double overdraft;
+public CheckAccountlint id,, double balance,, double annualInterestRatedouble overdraftl{	public CheckAccount(int id, double balance, double annualInterestRate,double overdraft){
+superid,, balance,  annualInterestRate;	super(id, balance, annualInterestRate);
+this.overdaf=overdraft	this.overdraft = overdraft;
+	
+}	}
+	
+	
+public double  getOverdraft {	public double getOverdraft() {
+return overdraft;	return overdraft;
+}	}
+public void setOverdraftlduble overdraft{	public void setOverdraft(double overdraft) {
+this.ovedraft =  overdraft;	this.overdraft = overdraft;
+}	}
+@Override	@Override
+public void wihdrawdouble amout l	public void withdraw(double amount) {
+ifgetBalancef >=amount1super.withdrawamount;	if(getBalance() >= amount){super.withdraw(amount);
+}else ifloverdraft >=  amount - getBalance{	}else if(overdraft >= amount - getBalance()){
+overdraft -= amount - getBalancel;	overdraft -= (amount - getBalance());
+	
+super.withdrawlgetBalane;	super.withdraw(getBalance());
+	
+1else{	}else{
+System.outprintlnl""f;	System.out.println("");
+	}
+}	}
+	}

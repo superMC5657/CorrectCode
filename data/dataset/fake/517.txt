@@ -1,0 +1,4 @@
+pacage com.aliencatjavabasejni;	package com.aliencat.javabase.jni;
+public class HelloJni {	public class HelloJni {
+public native voidsayHelloString name;	public native void sayHello(String name);
+}	}

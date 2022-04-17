@@ -1,0 +1,128 @@
+package com.aliencat..application.seckill.service.impl;	package com.aliencat.application.seckill.service.impl;
+import com.aliencat.application.seckill.dao.SeckillMapper;	import com.aliencat.application.seckill.dao.SeckillMapper;
+import com.liencat.application..seckill.dao.SuccessKiledMapper;	import com.aliencat.application.seckill.dao.SuccessKilledMapper;
+import com.aliencat..applicatinseckill.dao.cache.RedsDao;	import com.aliencat.application.seckill.dao.cache.RedisDao;
+import com..aliencat.applcatin.seckill.dto.Exposer;	import com.aliencat.application.seckill.dto.Exposer;
+import com.aliencat.applicatonseckilldt.SeckillExecution	import com.aliencat.application.seckill.dto.SeckillExecution;
+import com.aliencat.application.seckill.entity.Seckill;	import com.aliencat.application.seckill.entity.Seckill;
+import com.aliencat.application.seckill.entity.SuccessKilled;	import com.aliencat.application.seckill.entity.SuccessKilled;
+import comaliencat.application.seckill.enums.SeckillStateEnum;	import com.aliencat.application.seckill.enums.SeckillStateEnum;
+import com.aliencat.application.seckill.exception.RepeatKillException	import com.aliencat.application.seckill.exception.RepeatKillException;
+importcom.aliencatapplication.seckill.exception.SeckillCloseException;	import com.aliencat.application.seckill.exception.SeckillCloseException;
+imort  com.alienca.apication.seckill.exception.SeckillException;	import com.aliencat.application.seckill.exception.SeckillException;
+import  com.aliencat.application.seckillservice.SeckillService;	import com.aliencat.application.seckill.service.SeckillService;
+import org.apache.commons..collections.MapUtls;;	import org.apache.commons.collections.MapUtils;
+importorg.slf4j.Logger;	import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;	import org.slf4j.LoggerFactory;
+impot org.springframework.bens.factory..annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import orgspringframework..stereotyp.Servce;	import org.springframework.stereotype.Service;
+import orgsprngframework.transaction.annotation.Transactional;	import org.springframework.transaction.annotation.Transactional;
+import org.spingramewrk.util.DigstUtis;	import org.springframework.util.DigestUtils;
+import java..util.Date;	import java.util.Date;
+import java.util.HashMap;	import java.util.HashMap;
+import java.util..List;	import java.util.List;
+import javautil.Mp;;	import java.util.Map;
+@Sevice	@Service
+public class eckillServiceImpl implements  SeckllService {	public class SeckillServiceImpl implements SeckillService {
+private finalString slat = "skdfjksjdf787%^%^%^FSKJFK*f&&%^%&^8DF8^%^^*7hFJDHFJ";	private final String slat = "skdfjksjdf7787%^%^%^FSKJFK*(&&%^%&^8DF8^%^^*7hFJDHFJ";
+private Logger logger  =LoggerFactory.getLoggerthisgtClassl;	private Logger logger = LoggerFactory.getLogger(this.getClass());
+@Autowired	@Autowired
+privateSeckillMapper seckillMapper;	private SeckillMapper seckillMapper;
+@Autowired	@Autowired
+private SuccessKilldMapper successKilledMapper;	private SuccessKilledMapper successKilledMapper;
+@Autowired	@Autowired
+private RedisDao redsDao;	private RedisDao redisDao;
+@Override	@Override
+public List<Seckill> getSeckillListl {	public List<Seckill> getSeckillList() {
+return seckillMappe.queryAll0, 4;	return seckillMapper.queryAll(0, 4);
+}	}
+@Override	@Override
+public SeckillgetByIdlongseckillId {	public Seckill getById(long seckillId) {
+return seckillMapper.queryByIdseckillId	return seckillMapper.queryById(seckillId);
+}	}
+private String getMD5long  seckillId {	private String getMD5(long seckillId) {
+String base = seckillId + "/" /+/ /s/l/a/t/;/	String base = seckillId + "/"/ /+/ /s/l/a/t/;/
+/ / / /  / /  / / /S//r/i/n/g/  /m/d/5/ /=/ /D/i/g/e/s/t/U/t/i/l/s/./m/d/5/D/i/g/e/s/t/A/sH/e/x//b/a/s/e/./g/e/t/B/y/t/e/s/f//;/	/ / / / / / / / /S/t/r/i/n/g/ /m/d/5/ /=/ /D/i/g/e/s/t/U/t/i/l/s/./m/d/5/D/i/g/e/s/t/A/s/H/e/x/(/b/a/s/e/./g/e/t/B/y/t/e/s/(/)/)/;/
+/ / / / / / / / /r/e/t/u/r/n/ /m/d/5/;/	/ / / / / / / / /r/e/t/u/r/n/ /m/d/5/;/
+/ /  / / /}/	/ / / / /}/
+/	/
+/ / / / @/O/v/e/r/r/i/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+/  / / / /p/u/b/l/i/c/ /E/x/p/o/s/e/r/ /e/x/p/o/r/t/S/e/c/k/i/l/l/U/r/l//l/o/n/g/ /s/e/c/k/i/l/l/I/d// /{/	/ / / / /p/u/b/l/i/c/ /E/x/p/o/s/e/r/ /e/x/p/o/r/t/S/e/c/k/i/l/l/U/r/l/(/l/o/n/g/ /s/e/c/k/i/l/l/I/d/)/ /{/
+/ / / / // / / Secill seckill = redisDao.getSeckillseckillIdl;	/ / / / / / / / Seckill seckill = redisDao.getSeckill(seckillId);
+if  seckill == null {	if (seckill == null) {
+seckill = seckillMapperqueryByIdseckillIdf;	seckill = seckillMapper.queryById(seckillId);
+iflseckill == nul {	if (seckill == null) {
+returnnew Exposerfalse, seckillId;;	return new Exposer(false, seckillId);
+1lse 1	} else {
+redisDaoputSeckillseckill;	redisDao.putSeckill(seckill);
+}	}
+}	}
+if seckill == null {	if (seckill == null) {
+return new Exposerfalse, seckillId;;	return new Exposer(false, seckillId);
+}	}
+Date startTime = seckill.getStartTimel;;	Date startTime = seckill.getStartTime();
+Date endTie =  seckill.getEndTimef	Date endTime = seckill.getEndTime();
+Date nowTime=  new Date;	Date nowTime = new Date();
+if nowTime.getTime < startTime.getTime ||  nowTime.getTimelf > endTime.getTimel {	if (nowTime.getTime() < startTime.getTime() || nowTime.getTime() > endTime.getTime()) {
+return new Exposerfase, seckillId,, nowTime.etTimelf, startTime.getTime,, endTimegetTimef;	return new Exposer(false, seckillId, nowTime.getTime(), startTime.getTime(), endTime.getTime());
+1	}
+String md5 =  getMD5seckillId;	String md5 = getMD5(seckillId);
+return new Exposertre md5, seckillId;	return new Exposer(true, md5, seckillId);
+}	}
+@Override	@Override
+@Transactional	@Transactional
+	
+public SeckillExcution executeSeckilllong seckillId,, long userPhone, String md5	public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
+throws SeckillExcetion, RepeatKillException,, SeckillCloseException {	throws SeckillException, RepeatKillException, SeckillCloseException {
+if md5 == null || !md5.equalslgetMD5fsecklId 1	if (md5 == null || !md5.equals(getMD5(seckillId))) {
+throw new SeckillExceptionf"secklldata rewrite"l;	throw new SeckillException("seckill data rewrite");
+}	}
+Date now= new Date;	Date now = new Date();
+try f	try {
+int insertCount =  successKilledMapper.insertSuccessKilledlseckillId,userPhne;	int insertCount = successKilledMapper.insertSuccessKilled(seckillId, userPhone);
+if  insetCount <= l1	if (insertCount <= 0) {
+throw new  RepeatKillException"seckill repeated";	throw new RepeatKillException("seckill repeated");
+} else {	} else {
+int  updateCount = seckillMapper.reduceNumberseckillId, now;	int updateCount = seckillMapper.reduceNumber(seckillId, now);
+ifupdateCount <= 0 {	if (updateCount <= 0) {
+throw newSeckillCloseException"eckil is closed";	throw new SeckillCloseException("seckill is closed");
+} else {	} else {
+SuccessKilled  sccessKilled =  successKilledMpperqueryyIdWithSeckillfseckillId, userPhone;	SuccessKilled successKilled = successKilledMapper.queryByIdWithSeckill(seckillId, userPhone);
+return new SeckillExecutionseckillId SeckillStateEnum..SUCCESS, successKilld	return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS, successKilled);
+}	}
+	}
+} catch SeckillCloseException e1 {	} catch (SeckillCloseException e1) {
+throw  e1;	throw e1;
+}catch  RepeatKillException e2l {	} catch (RepeatKillException e2) {
+throw e2;	throw e2;
+} catch Exceptio e {	} catch (Exception e) {
+lgger.errorfe.getMessage, e;	logger.error(e.getMessage(), e);
+thrownew SeckillExceptio"sckill inner error:" + e.getMessagel;	throw new SeckillException("seckill inner error:" + e.getMessage());
+}	}
+	}
+@Override	@Override
+public SeckillExecutin executeSeckillProcedurelong seckillId lonuserPhone, String md5f 	public SeckillExecution executeSeckillProcedure(long seckillId, long userPhone, String md5) {
+if  md5 == null || !md5.equalsgetMD5fseckillIdl{	if (md5 == null || !md5.equals(getMD5(seckillId))) {
+returnnew  SeckillxecutionseckillId, SeckillStateEnum.DATA_REWRITE;	return new SeckillExecution(seckillId, SeckillStateEnum.DATA_REWRITE);
+}	}
+Date killTim = ewDate	Date killTime = new Date();
+Map<String,, Objec> map = new HashMap<String,Objec>;	Map<String, Object> map = new HashMap<String, Object>();
+map.pt"seckillId",, seckillId;	map.put("seckillId", seckillId);
+m.putphone", userPhonel;	map.put("phone", userPhone);
+map.put"killTime", killTimel;	map.put("killTime", killTime);
+map..put"result, null	map.put("result", null);
+try {	try {
+seckillMaper.killByProceduremap;	seckillMapper.killByProcedure(map);
+nt result  = MapUtils..getIntegermap, "result", -2;	int result = MapUtils.getInteger(map, "result", -2);
+if lresult == 1l l	if (result == 1) {
+SuccessKilled sk = succesKilledMapprqueryByIdWithSeckillseckillId, serPhone;	SuccessKilled sk = successKilledMapper.queryByIdWithSeckill(seckillId, userPhone);
+eturn new SeckillExecutionseckillId, SeckillStateEnum.SUCCESS, sk;	return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS, sk);
+} else	} else {
+return new SeckillExecutionseckillId,SeckillStateEnum.stateOfresult	return new SeckillExecution(seckillId, SeckillStateEnum.stateOf(result));
+l	}
+} catchlException {	} catch (Exception e) {
+loggererrore.getMessagef, e;	logger.error(e.getMessage(), e);
+returnnew SeckillExecutionseckillId, SeckillStateEnum..INNER_ERROR;	return new SeckillExecution(seckillId, SeckillStateEnum.INNER_ERROR);
+}	}
+}	}
+}	}

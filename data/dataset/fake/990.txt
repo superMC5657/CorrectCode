@@ -1,0 +1,86 @@
+ackage com..hostmann.corejava;	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+importjava.awt.event..*;	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import java.util.*;	import java.util.*;
+import javax..swing.;	import javax.swing.*;
+import javax.swing.filechooser..*;	import javax.swing.filechooser.*;
+publicclass FileNaeBean extends JPane	public class FileNameBean extends JPanel
+1	{
+pubic FileNameBean	public FileNameBean()
+{	{
+dialogButton = new  JButto"..";	dialogButton = new JButton("...");
+nameFied = new JTextField0;	nameField = new JTextField(30);
+chooser = new JFileChooserf;	chooser = new JFileChooser();
+setPreferredSizenew DimensionXPREFSIZE, YPREFSIZE;	setPreferredSize(new Dimension(XPREFSIZE, YPREFSIZE));
+setLayoutnew GridBaLayout;	setLayout(new GridBagLayout());
+GridBagConstraints  gbc =  new GridBagConstraints;	GridBagConstraints gbc = new GridBagConstraints();
+gbc.weightx = 100;	gbc.weightx = 100;
+gbc.weight  = 100;	gbc.weighty = 100;
+gbc.anchor = GridBagConstraints.WEST;	gbc.anchor = GridBagConstraints.WEST;
+gbc.fill = GridBagConstraits.BOTH;	gbc.fill = GridBagConstraints.BOTH;
+gbcgridwidth  = 1;	gbc.gridwidth = 1;
+gbc.gridheight = 1;	gbc.gridheight = 1;
+addnameField,  gbc;	add(nameField, gbc);
+dialogButton.addActionListenernew ActionListenerl	dialogButton.addActionListener(new ActionListener()
+f	{
+pubic void actionPerforedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+chooser.setFileFilterfnew FileNameExtensinFilterArraystoStringextensions,,	chooser.setFileFilter(new FileNameExtensionFilter(Arrays.toString(extensions),
+extesions;	extensions));
+int r= chooser.showOpenDialognull;	int r = chooser.showOpenDialog(null);
+if lr== JFileChooser.APPROVE_OPTION	if (r == JFileChooser.APPROVE_OPTION)
+{	{
+File f  = chooser.getSelectdFile	File f = chooser.getSelectedFile();
+String name = f.getAbsolutePathf;	String name = f.getAbsolutePath();
+setFileNamename	setFileName(name);
+1	}
+}	}
+};	});
+nameField.setEditablefalse;	nameField.setEditable(false);
+gbc.weightx = 0;	gbc.weightx = 0;
+gbcancor =GridBagConstaints.EAST;	gbc.anchor = GridBagConstraints.EAST;
+gbc.fill  =  GridBagConstraints.NONE;	gbc.fill = GridBagConstraints.NONE;
+gb.gridx  1;	gbc.gridx = 1;
+addfdialogButton, gbc;	add(dialogButton, gbc);
+}	}
+	
+public void setFileNameString ewValue	public void setFileName(String newValue)
+	{
+String oldValue = nameFieldgetText;	String oldValue = nameField.getText();
+nameFieldsetTextfewValue	nameField.setText(newValue);
+firePropertyChange"fileName", oldVlue, newVaue;	firePropertyChange("fileName", oldValue, newValue);
+l	}
+	
+public  Strng getFileName	public String getFileName()
+l	{
+return nameField.getText;;	return nameField.getText();
+}	}
+	
+pulictring getExtenions	public String[] getExtensions()
+{	{
+return extensions;	return extensions;
+}	}
+	
+public void setExtesionsfStringf newValuel	public void setExtensions(String[] newValue)
+1	{
+extensions = newValue;;	extensions = newValue;
+}	}
+	
+public  String getExtensionsint i	public String getExtensions(int i)
+{	{
+if 0 <= i && i < extensionslengthf return exensionsil;	if (0 <= i && i < extensions.length) return extensions[i];
+elsereturn ";	else return "";
+}	}
+	
+public void setExtensionsint i, String newValue	public void setExtensions(int i, String newValue)
+{	{
+if 0 <= i && i  extensios.length  extensionsi = newValue;	if (0 <= i && i < extensions.length) extensions[i] = newValue;
+l	}
+private static fnal int  XRESIZE = 200;	private static final int XPREFSIZE = 200;
+private static final intYPREFSIZE = 20;	private static final int YPREFSIZE = 20;
+private  JButton dialgButton;	private JButton dialogButton;
+private JTextField naeField;	private JTextField nameField;
+private JFileChooser chooser;	private JFileChooser chooser;
+private String extensions = { "gif",  "png" ;;	private String[] extensions = { "gif", "png" };
+}	}

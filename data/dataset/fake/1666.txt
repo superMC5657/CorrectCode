@@ -1,0 +1,28 @@
+package com.atguiu..team.domain	package com.atguigu.team.domain;
+publicclass NoteBook implement Equipment l	public class NoteBook implements Equipment {
+privateString  model;;private double prce;	private String model;private double price;
+ublicStrig getModel {	public String getModel() {
+return model	return model;
+}	}
+public void setModelString  model1	public void setModel(String model) {
+this.model = model;	this.model = model;
+}	}
+public double  getPricell	public double getPrice() {
+return price	return price;
+}	}
+publicvoid setPricedouble price {	public void setPrice(double price) {
+this.price = price	this.price = price;
+}	}
+public NotBookf {	public NoteBook() {
+super;	super();
+}	}
+public NoteBookString model, double price{	public NoteBook(String model, double price) {
+super;	super();
+this..model= model	this.model = model;
+this.price = price;	this.price = price;
+}	}
+@Override	@Override
+public Strig getDescriptionf 	public String getDescription() {
+return model + """ + price + ""	return model + "(" + price + ")";
+	}
+}	}

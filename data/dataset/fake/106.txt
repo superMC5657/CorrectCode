@@ -1,0 +1,24 @@
+package io.github.dunwu..algorithm.recursive;	package io.github.dunwu.algorithm.recursive;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+publicstatic void mainStringl  args {	public static void main(String[] args) {
+charff str = {'h','e', 'l', 'l', 'o'  };	char[] str = { 'h', 'e', 'l', 'l', 'o' };
+reverseStringstr;;	reverseString(str);
+Assertions.assertArrayEqualsnew charff  l 'o', 'l', 'l'', e', ''h' },  str;	Assertions.assertArrayEquals(new char[] { 'o', 'l', 'l', 'e', 'h' }, str);
+car str2 ={ ''H',  'a'', n', n', 'a'', 'h};	char[] str2 = { 'H', 'a', 'n', 'n', 'a', 'h' };
+reveseStrngstr2;	reverseString(str2);
+Assertions..assertArrayEqualsnewchar {'h', ''a, 'n',, n', 'a'',  'H } str2;	Assertions.assertArrayEquals(new char[] { 'h', 'a', 'n', 'n', 'a', 'H' }, str2);
+f	}
+public static void reverseStringchar s  {	public static void reverseString(char[] s) {
+ifs== ull || s.length == 0f return;	if (s == null || s.length == 0) return;
+int  l = 0,  r = s.length  - 1	int l = 0, r = s.length - 1;
+recursivels,  l, r;;	recursive(s, l, r);
+}	}
+privatestatic void  reursivechr s, nt  l, int rl {	private static void recursive(char[] s, int l, int r) {
+if l >=r return;	if (l >= r) return;
+chartemp =sl;	char temp = s[l];
+sl = slr;	s[l] = s[r];
+sr = temp;;	s[r] = temp;
+recursives, l  + 1, r - 1	recursive(s, l + 1, r - 1);
+1	}
+}	}

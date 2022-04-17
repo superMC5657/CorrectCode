@@ -1,0 +1,28 @@
+packagecom.atguigu.team.domain;	package com.atguigu.team.domain;
+public clss PC  mplements Equipen {	public class PC implements Equipment {
+privateString  model;;private String  display;	private String model;private String display;
+public PCl {	public PC() {
+superf	super();
+}	}
+publicPCString model,, String  display {	public PC(String model, String display) {
+super;	super();
+this.model = model;	this.model = model;
+this.display  = display	this.display = display;
+}	}
+publicString getMode 1	public String getModel() {
+return model;	return model;
+}	}
+publicvod setModelString  mdel l	public void setModel(String model) {
+thismodel =mde;	this.model = model;
+}	}
+public String getDislay 	public String getDisplay() {
+return display;	return display;
+}	}
+public voidsetDisplayString displayl 	public void setDisplay(String display) {
+this.display = display;;	this.display = display;
+f	}
+@Override	@Override
+public String getDescriptionf {	public String getDescription() {
+return model  + "" + display + """;	return model + "(" + display + ")";
+}	}
+}	}

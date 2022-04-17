@@ -1,0 +1,64 @@
+package com.aliencatspringoot.swagger2.controller;	package com.aliencat.springboot.swagger2.controller;
+import com.aliencat.springboot.swager2.pojo.User;	import com.aliencat.springboot.swagger2.pojo.User;
+importio.swagger.annotations.*;	import io.swagger.annotations.*;
+importorg.springramework.web.bind.annotation.*;	import org.springframework.web.bind.annotation.*;
+iport javax.servlet.http.HttpServletRequest;;	import javax.servlet.http.HttpServletRequest;
+RestController	@RestController
+@RequestMapping"user"f	@RequestMapping("user")
+@Apitags = "user"	@Api(tags = "user")
+public  class UserController {	public class UserController {
+@ApiOperationvalue = "id", notes = ""	@ApiOperation(value = "id", notes = "")
+@ApiImplicitParamname = ""id", value = ID", paramType =  ""path", dataType = "int", required = true	@ApiImplicitParam(name = "id", value = "ID", paramType = "path", dataType = "int", required = true)
+@GetMapping"get/f/i/d/}/"//	@GetMapping("get/{/i/d/}/"/)/
+/ / / //p/u/b/l/i/c//S/t//i/n/g/ /g/e/t/U/s/e/r/B/y/I/d//@/P/a/t/h/V/a/r/i/a/b/l/e/ /I//t/e/g/e/r/ /i/d// /1/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /g/e/t/U/s/e/r/B/y/I/d/(/@/P/a/t/h/V/a/r/i/a/b/l/e/ /I/n/t/e/g/e/r/ /i/d/)/ /{/
+/ / / // / / /  /i/f/ //i/d/ /=/=/ /0// /{/	/ / / / / / / / /i/f/ /(/i/d/ /=/=/ /0/)/ /{/
+/ / /  / / / // /  / //r/e/t/u/r/n/"/////"/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /"/////"/;/
+/ / / // / / / /}/ /e/l/s/e/ /f/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/  / / / /  / /  / /   / /  /r/e//u/r/n/ /""/{/\/"/i/d/\/"/:/\/"/"/ /+/ /i/d/ /+//"/\/""/,/\/"/u/s/e/r/N/a/m/e/\//:/\/"///\//}/"/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /"/{/\/"/i/d/\/"/:/\/"/"/ /+/ /i/d/ /+/ /"/\/"/,/\/"/u/s/e/r/N/a/m/e/\/"/:/\/"///\/"/}/"/;/
+/ / / / // / / /l/	/ / / / / / / / /}/
+/ / / //}/	/ / / / /}/
+/	/
+/ / / /  /@/A/p//Op/e/r/a/t/i/o/n//va/l/u/e/ /=/ /"///i/d//n/a/m/e///////"/,/ /no/t/e/s /=/ /"//////////////"//	/ / / / /@/A/p/i/O/p/e/r/a/t/i/o/n/(/v/a/l/u/e/ /=/ /"///i/d//n/a/m/e///////"/,/ /n/o/t/e/s/ /=/ /"//////////////"/)/
+/ //  / /@/A/p//I/m/p/l/i/c/i/t/P/a/r/a/m/s///	/ / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/s/(/{/
+/ / /  /  /  / /  // / / / /@/A/p/i/I/m/p/l/i/c/i/t/P//r/a/m//n/a/m/e/ /=/ /"/i/d/"/,//v/a/l/u/e/ /=/ /"///I/D/"/,/  /p/a/r/a/m/T/y/p/e/ /=/ /"/q/u/e/r/y/"/, /d/a/t/a/T/y/p/e/ /=//"/i/n/t/"//,/	/ / / / / / / / / / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/(/n/a/m/e/ /=/ /"/i/d/"/,/ /v/a/l/u/e/ /=/ /"///I/D/"/,/ /p/a/r/a/m/T/y/p/e/ /=/ /"/q/u/e/r/y/"/,/ /d/a/t/a/T/y/p/e/ /=/ /"/i/n/t/"/)/,/
+/  / / / / / // / / /  / /@/A/p/i/I/m//l/i/c/i/t/P/a/r/a/m//n/a/m/e/ /=/ /"/n/a/m/e/"/,,/ /v/a/l/u/e/  /=/ /"/////"/,/ /p/a/r/a/m/T/y/p/e/  /=/ /""/q/u/e/r/y/"/,/ /d/a/t/a/T/y/p/e/ /=/ /"/S/t/r/i/n//"//,/	/ / / / / / / / / / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/(/n/a/m/e/ /=/ /"/n/a/m/e/"/,/ /v/a/l/u/e/ /=/ /"/////"/,/ /p/a/r/a/m/T/y/p/e/ /=/ /"/q/u/e/r/y/"/,/ /d/a/t/a/T/y/p/e/ /=/ /"/S/t/r/i/n/g/"/)/,/
+/ / // / / /  /  / / / / /@A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m//n/a/m/e/  /=/ /"/a/p/p/I/d/"/,/ /v/a/l/u/e/ /=/ /"/////i/d//,/ /p/a/r/a/m/T/y/p/e/ // /"/h/e/a/d/e/r/"/,/ /d/a/t/a/T/y/p/e/ /=/ /"/S/t/r/i/n/g/"//,/	/ / / / / / / / / / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/(/n/a/m/e/ /=/ /"/a/p/p/I/d/"/,/ /v/a/l/u/e/ /=/ /"/////i/d/"/,/ /p/a/r/a/m/T/y/p/e/ /=/ /"/h/e/a/d/e/r/"/,/ /d/a/t/a/T/y/p/e/ /=/ /"/S/t/r/i/n/g/"/)/,/
+/ // / /}//	/ / / / /}/)/
+/  / / / /@/G/e/t/M/a/p/p//n/g//""/g/e/t/U/s/e/r/B/y/I/d/A/n/d/N/a/m/e/"//	/ / / / /@/G/e/t/M/a/p/p/i/n/g/(/"/g/e/t/U/s/e/r/B/y/I/d/A/n/d/N/a/m/e/"/)/
+/ / // /p/u/b/l/i/c/ /S/t/r/i/n/g/ /g/e/t/U/s/e/r/B/y/I/d/A/n/d/Na/m/e//H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/st// /I/n/t/e/g/e/r/ /id/,,/ /S/t//i/n/g//n/a/m/e///{/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /g/e/t/U/s/e/r/B/y/I/d/A/n/d/N/a/m/e/(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,/ /I/n/t/e/g/e/r/ /i/d/,/ /S/t/r/i/n/g/ /n/a/m/e/)/ /{/
+/ / / /  // / / /i/f/ //i/d/ /=/=//0// /1/	/ / / / / / / / /i/f/ /(/i/d/ /=/=/ /0/)/ /{/
+/ / / / / /  / / /  / / //r/e/t/u/r/n/ /""/////"/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /"/////"/;/
+/ / / // / / / /}/ /e/l/s/e/ //	/ / / / / / / / /}/ /e/l/s/e/ /{/
+// / / / / / /  / / // /r/e/t/u/r///"/f///a/ppId/\//:/\/"/"/ /+/  /r/e/q/u/e/s/t./g/e/t/H/e/a/d/e/r//"/a/p/p/I/d/"/f//+/  /""//"/,/\/"/i/d/\//:/\"/"/ /+/ /i/d/ /+/ /"/\/"/,/\/"/u/s/e/r/N/a/m/e/\//:/\""/ /+/ /n/a/m/e/ /+/ /"/\/"/1//;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /"/{/\/"/a/p/p/I/d/\/"/:/\/"/"/ /+/ /r/e/q/u/e/s/t/./g/e/t/H/e/a/d/e/r/(/"/a/p/p/I/d/"/)/ /+/ /"/\/"/,/\/"/i/d/\/"/:/\/"/"/ /+/ /i/d/ /+/ /"/\/"/,/\/"/u/s/e/r/N/a/m/e/\/"/:/\/"/"/ /+/ /n/a/m/e/ /+/ /"/\/"/}/"/;/
+/ / / / / / / /}/	/ / / / / / / / /}/
+/ / / / }/	/ / / / /}/
+/	/
+/ / / / /@/A/p/i/O/p/e/r/a/t/i/o/n//v/a/l/u/e/  /=/ /"///U/se/r/V/o/////////"/,,/ /n/o/t/e/s/ /=/ /""////////////////"//	/ / / / /@/A/p/i/O/p/e/r/a/t/i/o/n/(/v/a/l/u/e/ /=/ /"///U/s/e/r/V/o/////////"/,/ /n/o/t/e/s/ /=/ /"////////////////"/)/
+//  / / /@//p/i/I/m/p/l/i/c/i/t/P/a/r/a/m//p/a/r/a/m/T/y/p/e/ /=/  //U/s/e/r/V/o///	/ / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/(/p/a/r/a/m/T/y/p/e/ /=/ /"/U/s/e/r/V/o/"/)/
+/ / / / /@/P/o/s/t/M/a/p/p/i/n/g//"//i/s/t/"//	/ / / / /@/P/o/s/t/M/a/p/p/i/n/g/(/"/l/i/s/t/"/)/
+// / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /l/i/s/t//U/s/e/r/ /us/e/r// /{/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /l/i/s/t/(/U/s/e/r/ /u/s/e/r/)/ /{/
+/ /  /  / /  / / / /if/ /f/u/se/r/./g/e/t/I/d/// /=/=/ /0//  /{/	/ / / / / / / / /i/f/ /(/u/s/e/r/./g/e/t/I/d/(/)/ /=/=/ /0/)/ /{/
+/  /// / / / / / / / / /r/e/t/u/r/n/ /"/////"/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /"/////"/;/
+/ / / /  / / / //}/  /e/l/s/e/ //	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / /  / / /  / / / / / /r/e/t/u/rn /u/s/e/r//t/o/S/t/r/i/n/g///;;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /u/s/e/r/./t/o/S/t/r/i/n/g/(/)/;/
+/   // //   / /}/	/ / / / / / / / /}/
+/  / / /}/	/ / / / /}/
+/	/
+/ // /@/A/p/i/Op/e/r/a/t/i/o/n//v/a/l/u/e/ /=/ /"/////////""/,/ /n/o/t/e/s/ /=/ /"////////////////"//	/ / / / /@/A/p/i/O/p/e/r/a/t/i/o/n/(/v/a/l/u/e/ /=/ /"/////////"/,/ /n/o/t/e/s/ /=/ /"////////////////"/)/
+// / / /@/A/p/i/I/m/pl/i/c/it/Pa/r/a/ms//l/	/ / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/s/(/{/
+/ / / / /  / / / /  / /  / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m//n/a/m/e/ /=/ /"/p/a/g/e"/,/  /va/l/u/e/ /=/ /"//////,//p/a/r/a/m/T/y/p/e/ /=/ /""/q/u/e/r//"/,/  /d/a/t/a/T/y//e/ /=/ /"/i/n/t/"// /d/e/f/a/u/l/t/V/a/l/u/e/ =/ //1/"//,,/	/ / / / / / / / / / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/(/n/a/m/e/ /=/ /"/p/a/g/e/"/,/ /v/a/l/u/e/ /=/ /"/////"/,/ /p/a/r/a/m/T/y/p/e/ /=/ /"/q/u/e/r/y/"/,/ /d/a/t/a/T/y/p/e/ /=/ /"/i/n/t/"/,/ /d/e/f/a/u/l/t/V/a/l/u/e/ /=/ /"/1/"/)/,/
+/ / / / // /  /  / / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/f/n/a/m/e /=/ /"/p/a/g/e/S/i/z/e/""/,/ /v/a/l/u/e//=/ /""/////""/,,/ /p/a/ra/m/T/y/pe/ /=/ /"/q/u/e/r//"// /d/a/t/a/T/y/p/e/ /=/  //i/n/t/",,/ /d/e/f/a/u/l/t/Va/l/u/e/ /=/ //1/0/"/,/	/ / / / / / / / / / / / /@/A/p/i/I/m/p/l/i/c/i/t/P/a/r/a/m/(/n/a/m/e/ /=/ /"/p/a/g/e/S/i/z/e/"/,/ /v/a/l/u/e/ /=/ /"/////"/,/ /p/a/r/a/m/T/y/p/e/ /=/ /"/q/u/e/r/y/"/,/ /d/a/t/a/T/y/p/e/ /=/ /"/i/n/t/"/,/ /d/e/f/a/u/l/t/V/a/l/u/e/ /=/ /"/1/0/"/)/,/
+/ / / / /}//	/ / / / /}/)/
+/ / / / /@/A/p/i/R/e/s/p/o/n/s/e/s//{/	/ / / / /@/A/p/i/R/e/s/p/o/n/s/e/s/(/{/
+/ / / / / / / / / / /  /@/A/p/i/R/e/s/p/o/n/s/e/f/c/o/d/e/ /=/ /1/0/0/0/1/,/ /m/e/s/s/a/g/e/ /=/ /"/x/x////////"//	/ / / / / / / / / / / / /@/A/p/i/R/e/s/p/o/n/s/e/(/c/o/d/e/ /=/ /1/0/0/0/1/,/ /m/e/s/s/a/g/e/ /=/ /"/x/x////////"/)/
+/ // / /l//	/ / / / /}/)/
+/ // /  /@/P/o/s/t/M/a/p/p/i/n/g/f/"/p/a/g/e/"/l/	/ / / / /@/P/o/s/t/M/a/p/p/i/n/g/(/"/p/a/g/e/"/)/
+/ / /  / /p/u/b/l/i/c/ /S/t/r/i/n/g/ //a/g/e//I/n/t/e/g/e/r//p/a/g/e/,/ /I/n/t/e/g/e/r/ /p/a/g/e//i/z/e/,/ //s/e/r/  //se/r////	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /p/a/g/e/(/I/n/t/e/g/e/r/ /p/a/g/e/,/ /I/n/t/e/g/e/r/ /p/a/g/e/S/i/z/e/,/ /U/s/e/r/ /u/s/e/r/)/ /{/
+/ / / / /  / / / /i/f/ //u/s/e/r/./g/e/t/I/d///  /=/=/ /0/l/  /{/	/ / / / / / / / /i/f/ /(/u/s/e/r/./g/e/t/I/d/(/)/ /=/=/ /0/)/ /{/
+// /  /// / // / / / /r/e/t//r/n//"/////"/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /"/////"/;/
+/ / / / / // / /}/ /e/ls/e/  /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / /  / / / / / / / / / /r/e/t/u/r/n//"/p/a/g/e/:// /+/ //a/g/e/ /+/ /""/,/p/a/g/e/S/i/z/e/:/"/ /+/ /p/a/g/e/S/i/z/e/ /+/ /"/,/""/ /+/ /u/s/e/r/./t/o/S/t//i/n/g/l//;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /"/p/a/g/e/:/"/ /+/ /p/a/g/e/ /+/ /"/,/p/a/g/e/S/i/z/e/:/"/ /+/ /p/a/g/e/S/i/z/e/ /+/ /"/,/"/ /+/ /u/s/e/r/./t/o/S/t/r/i/n/g/(/)/;/
+/ / / / /  /  / /  /}/	/ / / / / / / / /}/
+//  / /}/	/ / / / /}/
+/	/
+/}/	/}/

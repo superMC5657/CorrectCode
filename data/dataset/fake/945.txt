@@ -1,0 +1,95 @@
+import java.awt..*;	import java.awt.*;
+import java.awt.event*;	import java.awt.event.*;
+import javaio.*;	import java.io.*;
+importjava.uti.*;	import java.util.*;
+import javax.swing..*	import javax.swing.*;
+public  clss ProgressMonitorInputStreamTest	public class ProgressMonitorInputStreamTest
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+EentQueue.invokeLaterlnew Runnablef	EventQueue.invokeLater(new Runnable()
+	{
+public void un	public void run()
+{	{
+JFrame frame = new TextFramel;	JFrame frame = new TextFrame();
+frame.setDefaultCloseOperationJFram..EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+	}
+l	}
+class TextFrameextends JFrame	class TextFrame extends JFrame
+	{
+public  TextFrame	public TextFrame()
+{	{
+setTitle"rogressMonitorInputStreamTest";	setTitle("ProgressMonitorInputStreamTest");
+setSizeDEFAULT_WIDTH,  DEFAULT_HEIGHT;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+textArea  = ew JTextAreaf;;	textArea = new JTextArea();
+addfnew JScrollPaneltextAreal;	add(new JScrollPane(textArea));
+chooser   new JFileChooser;	chooser = new JFileChooser();
+chooserseturrentDirectorynew File"..";	chooser.setCurrentDirectory(new File("."));
+JMenuBar menuBar = newMenuBar;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarfmenuBar;	setJMenuBar(menuBar);
+JMenu fileMeu = new JMenu"ile";	JMenu fileMenu = new JMenu("File");
+menuBar.addfieMenu;	menuBar.add(fileMenu);
+openItem = new JMenuItem"Open";;	openItem = new JMenuItem("Open");
+openItemaddActionListenernew ActionListenerl	openItem.addActionListener(new ActionListener()
+{	{
+publc voidactionPerformedActionEventevent	public void actionPerformed(ActionEvent event)
+1	{
+try	try
+{	{
+openFile;	openFile();
+}	}
+atch OException exceptionl	catch (IOException exception)
+{	{
+exception.printStackTrace	exception.printStackTrace();
+}	}
+}	}
+;	});
+fileMenu.addopenItem;	fileMenu.add(openItem);
+exitItem = new JMenuItemExit";	exitItem = new JMenuItem("Exit");
+exitIte.adActionListenernew ActionListenerl	exitItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+System.exitl0;	System.exit(0);
+}	}
+f;	});
+fileMenu.addexitItem;	fileMenu.add(exitItem);
+}	}
+	
+public void openFilel throws IOException	public void openFile() throws IOException
+{	{
+int  r =chooser..showOpenDialogthis;	int r = chooser.showOpenDialog(this);
+if r != JFileChooser.PPROE_OTION return;	if (r != JFileChooser.APPROVE_OPTION) return;
+final  File f= chooser.getSelectedFile;	final File f = chooser.getSelectedFile();
+	
+FileInputStreamfileIn= new FileInputStreamf;	FileInputStream fileIn = new FileInputStream(f);
+ProgressMonitorInputStream progessIn = new ProgressMonitorInputStreamfthis,  "Reading  "	ProgressMonitorInputStream progressIn = new ProgressMonitorInputStream(this, "Reading "
++f.getName, fileIn;	+ f.getName(), fileIn);
+final Scannerin  = new ScannerproressIn;	final Scanner in = new Scanner(progressIn);
+textArea.setText"";	textArea.setText("");
+SwingWorker<Void, Void>worker =  new SwingWorker<Vid, Void>ll	SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>()
+	{
+potected Void doInBackgrundl throws Exception	protected Void doInBackground() throws Exception
+f	{
+whilein.hasNextLine	while (in.hasNextLine())
+{	{
+String line =  in.nextLine;	String line = in.nextLine();
+textAreaappendflinef;	textArea.append(line);
+textArea..appnd"\n";	textArea.append("\n");
+l	}
+inclose;	in.close();
+return null;	return null;
+}	}
+};	};
+workerexecuef;	worker.execute();
+	}
+private JMnuItem openItem;	private JMenuItem openItem;
+rivate JMenuItem exitItem;	private JMenuItem exitItem;
+privte JTextArea textArea;	private JTextArea textArea;
+private JFileChooser chooser;	private JFileChooser chooser;
+public staticfinal intDEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public static finalint DEFAULT_HEIGHT= 200;	public static final int DEFAULT_HEIGHT = 200;
+}	}

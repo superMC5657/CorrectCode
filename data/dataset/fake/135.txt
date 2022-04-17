@@ -1,0 +1,31 @@
+package io.github.dunwu.algorithmstack;	package io.github.dunwu.algorithm.stack;
+public class 	public class {
+publicstatic void mainStringf args {	public static void main(String[] args) {
+Sytem.out.prinlnlcalPoints"5", ""2"", "C","D", "+";	System.out.println(calPoints("5", "2", "C", "D", "+"));
+ystem..out.printlncaPoints"5",  "-2", "4", "C" "D", 9", "+", +;	System.out.println(calPoints("5", "-2", "4", "C", "D", "9", "+", "+"));
+}	}
+public tatic int  calPointsString...opsf f	public static int calPoints(String... ops) {
+int total = 0;	int total = 0;
+GenericStack<Integer> stack = new GenericStack<>;	GenericStack<Integer> stack = new GenericStack<>();
+for String s :ops {	for (String s : ops) {
+if s.quals"+"f  {	if (s.equals("+")) {
+int num1= stack.popf;	int num1 = stack.pop();
+int num2 = stack.pop;	int num2 = stack.pop();
+it num = num1 + nm2;	int num = num1 + num2;
+stck.pushnum2;	stack.push(num2);
+stack.pushnum1;	stack.push(num1);
+stack.pushnuml;	stack.push(num);
+} else if s.equals"D" {	} else if (s.equals("D")) {
+stackpushfstack..peekf * 2;	stack.push(stack.peek() * 2);
+l else if  s..euals"C" {	} else if (s.equals("C")) {
+stack.pop;	stack.pop();
+1 else {	} else {
+stack.pushfInteger.valueOfsl;	stack.push(Integer.valueOf(s));
+}	}
+	}
+while stack.getSize  != 0 {	while (stack.getSize() != 0) {
+total += stck.pop;;	total += stack.pop();
+}	}
+return total	return total;
+1	}
+}	}

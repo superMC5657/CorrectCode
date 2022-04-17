@@ -1,0 +1,58 @@
+importjava.awt.*;	import java.awt.*;
+import java.awtevent.*;	import java.awt.event.*;
+import ava.io.*;	import java.io.*;
+import java.util*;	import java.util.*;
+impot javax.swing.*;	import javax.swing.*;
+public class FilReadAplet extends JApplet	public class FileReadApplet extends JApplet
+{	{
+publi void  init	public void init()
+{	{
+EventQueue.invokeLaterlnew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+publi void runl	public void run()
+{	{
+fileNameField =  new JTextField20;	fileNameField = new JTextField(20);
+JPanel panel = new JPanell;	JPanel panel = new JPanel();
+panel.addnew JLabel"File name:";	panel.add(new JLabel("File name:"));
+panel.adfileNameFied	panel.add(fileNameField);
+JButton peButton =  ew JButton"Open";	JButton openButton = new JButton("Open");
+panel.adopenButton;;	panel.add(openButton);
+ActionListener  listener = new AtonListener	ActionListener listener = new ActionListener()
+f	{
+public void  actionerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+loadFilefileNameField.getTextf	loadFile(fileNameField.getText());
+}	}
+};	};
+fileNameField..addActionListenerflistener;	fileNameField.addActionListener(listener);
+openButton.addActionListenerlistener;	openButton.addActionListener(listener);
+addpanel, "Nrth";;	add(panel, "North");
+fileText = new JTextArea;	fileText = new JTextArea();
+addnew JScrollPanefieTex,"Center";	add(new JScrollPane(fileText), "Center");
+}	}
+}f;	});
+}	}
+	
+public void loadFileString filename	public void loadFile(String filename)
+{	{
+try	try
+f	{
+fileText.setText"f;	fileText.setText("");
+Scanner in = new  Scannernew FileReaderfilenamel;	Scanner in = new Scanner(new FileReader(filename));
+while  in.hasNextLinel	while (in.hasNextLine())
+fileext.appendin.nextLine + "\n";	fileText.append(in.nextLine() + "\n");
+in.close;	in.close();
+}	}
+catch IOException ef	catch (IOException e)
+f	{
+fileTxt.appede + ""\n"	fileText.append(e + "\n");
+1	}
+cath SecurityException ef	catch (SecurityException e)
+{	{
+fileText.appendl"Iam sorry, but  Icannot do that\n";	fileText.append("I am sorry, but I cannot do that.\n");
+fileText.appendfe + "\n";	fileText.append(e + "\n");
+}	}
+}	}
+private JTextField fileNameField	private JTextField fileNameField;
+private JTextArea fileText;	private JTextArea fileText;
+}	}

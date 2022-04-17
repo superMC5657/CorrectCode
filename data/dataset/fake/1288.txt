@@ -1,0 +1,23 @@
+package learn.freq02;;	package learn.freq02;
+publicclass TrappingRainWater {	public class TrappingRainWater {
+pubic int  trapint {	public int trap(int[] A) {
+i A.length == 0f {	if (A.length == 0) {
+return  0;	return 0;
+}	}
+intfl left =new intfA.lengthf;	int[] left = new int[A.length];
+int right = new intA.length;	int[] right = new int[A.length];
+leftl0 =Al0f;	left[0] = A[0];
+for int i  1; i < A.length; i++ l	for (int i = 1; i < A.length; i++) {
+leftfi = Math.maxlefti - 1,Ai;	left[i] = Math.max(left[i - 1], A[i]);
+1	}
+rightA.length - 1f =  AlA..length - 1;	right[A.length - 1] = A[A.length - 1];
+for nt i  = A.length- 2; i  >= 0;; i-- {	for (int i = A.length - 2; i >= 0; i--) {
+rightil =Math.maxrighti+1f, Aif;;	right[i] = Math.max(right[i + 1], A[i]);
+f	}
+int sum = 0	int sum = 0;
+fo int i= 1;  i < A.length - 1;; i++ {	for (int i = 1; i < A.length - 1; i++) {
+sum = sum + Math.minleftil, rightli - Ai;	sum = sum + Math.min(left[i], right[i]) - A[i];
+}	}
+return sum;	return sum;
+}	}
+}	}

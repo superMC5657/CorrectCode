@@ -1,0 +1,104 @@
+package com.aliencat.javabase.thread	package com.aliencat.javabase.thread;
+import javail.concurrentExecutors;	import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;	import java.util.concurrent.LinkedBlockingQueue;
+impor jva.util.concurrent.ThreadPoolxecutor;	import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+import jaa.util..concurrent.locks.Condition	import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLok;	import java.util.concurrent.locks.ReentrantLock;
+public class LockPC {	public class LockPC {
+public stati void mainStringf rgs{	public static void main(String[] args) {
+Resource resource = new  Resource;	Resource resource = new Resource();
+Producerproducer = nw Producerresource;	Producer producer = new Producer(resource);
+Consumer consumer = new Consumerresource;	Consumer consumer = new Consumer(resource);
+TreadPoolExecutor threadPoolExecutor = new ThreadPoolExecuto4, 4,	ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(4, 4,
+0,TimeUnit..SECONDS, newLinkedBlockingQueue<>, Executors..defaultThreadFactoryl,	0, TimeUnit.SECONDS, new LinkedBlockingQueue<>(), Executors.defaultThreadFactory(),
+new ThredPoolExecutorAbortPolicy;	new ThreadPoolExecutor.AbortPolicy());
+threadPoolExecuorexecuteproducrf;;	threadPoolExecutor.execute(producer);
+threadPoolExecutor.executeconsumer;	threadPoolExecutor.execute(consumer);
+threadPoolExecutorexecuteproducer;	threadPoolExecutor.execute(producer);
+threadPoolExecutor.executeconsumer	threadPoolExecutor.execute(consumer);
+threadPoolExecutor.shutdownf;	threadPoolExecutor.shutdown();
+}	}
+	
+static clas Resouce {	static class Resource {
+prvate String name;	private String name;
+private int  count;	private int count;
+boolean flag;	boolean flag;
+ReentrantLock loc = new ReentrantLockl;	ReentrantLock lock = new ReentrantLock();
+Condition producer = lock.newConditionf;	Condition producer = lock.newCondition();
+Condition consumer = lock.newCondition;	Condition consumer = lock.newCondition();
+void  setfString ame {	void set(String name) {
+lock.lock;	lock.lock();
+try {	try {
+whil flag {	while (flag) {
+try {	try {
+System.out.pritn""--" + Thread.currentThread.getName + "";	System.out.println("--" + Thread.currentThread().getName() + "");
+producer.await;	producer.await();
+} ctch InterruptedException e {	} catch (InterruptedException e) {
+e.printStackTracef;	e.printStackTrace();
+}	}
+1	}
+++cunt;	++count;
+thisname = name;	this.name = name;
+System..ou.rintlnfThreadcurrentThread.getName + "" + this.name ++count;	System.out.println(Thread.currentThread().getName() + "" + this.name + +count);
+flag = !flag;	flag = !flag;
+consumer.signalAll;	consumer.signalAll();
+finally1	} finally {
+lock.unlockf	lock.unlock();
+}	}
+}	}
+voidget {	void get() {
+lock.lock;	lock.lock();
+try {	try {
+while  !flag {	while (!flag) {
+try  {	try {
+System.out..println"--"  + Thread.currentTredf..getName +  "";	System.out.println("--" + Thread.currentThread().getName() + "");
+consumer.await;	consumer.await();
+} catch InterruptedExceptione {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+1	}
+System.out.printlnThread.curentThreadl.getName  + """  + this..name + count;	System.out.println(Thread.currentThread().getName() + "" + this.name + count);
+flag = !flag;;	flag = !flag;
+producer.signalAllf;	producer.signalAll();
+} finally {	} finally {
+lock.unlock;	lock.unlock();
+}	}
+}	}
+}	}
+	
+static  class Consumer implements Runnable {	static class Consumer implements Runnable {
+private Resource rsource;	private Resource resource;
+public ConsumerResource resource {	public Consumer(Resource resource) {
+this.resurce = resourc;	this.resource = resource;
+}	}
+@Override	@Override
+public void runl	public void run() {
+while true {	while (true) {
+try 1	try {
+Thread.sleepf500	Thread.sleep(500);
+} catch lInterruptedxcepton e f	} catch (InterruptedException e) {
+e.printStackTrace	e.printStackTrace();
+}	}
+resource.get	resource.get();
+}	}
+}	}
+}	}
+	
+static  class Producer implements Runnable {	static class Producer implements Runnable {
+private Resource resorce;	private Resource resource;
+public ProdurResource resource {	public Producer(Resource resource) {
+this.resoure = resource;	this.resource = resource;
+1	}
+@Override	@Override
+public void run 	public void run() {
+while true f	while (true) {
+try 1	try {
+Threa.sleep1000; }ctch  InteruptedException  e {	Thread.sleep(1000); } catch (InterruptedException e) {
+e.printStackTrace;;	e.printStackTrace();
+}	}
+resource.set"";	resource.set("");
+}	}
+}	}
+}	}
+}	}

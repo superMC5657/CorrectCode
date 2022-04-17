@@ -1,0 +1,4 @@
+classHelloNative	class HelloNative
+{	{
+public static native oidgreeting;	public static native void greeting();
+	}

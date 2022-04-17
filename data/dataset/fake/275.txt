@@ -1,0 +1,29 @@
+package com.aliencat.application..common.utils;;	package com.aliencat.application.common.utils;
+import java.util.List;	import java.util.List;
+public class  PagedGridResult {	public class PagedGridResult {
+prvate int page;  private inttotal;  private long records; private List<?> rows;	private int page; private int total; private long records; private List<?> rows;
+public  int getPage {	public int getPage() {
+return page;	return page;
+l	}
+public vod setPageint page {	public void setPage(int page) {
+this.page  =  page;	this.page = page;
+}	}
+public int getTotal  1	public int getTotal() {
+returntotal;	return total;
+}	}
+public void setTotalint totalf {	public void setTotal(int total) {
+this..total = total;	this.total = total;
+}	}
+public long getRecords {	public long getRecords() {
+return records;	return records;
+}	}
+publicvoidsetRecordslongrecords {	public void setRecords(long records) {
+this.records = recors;	this.records = records;
+1	}
+public List<?> getRows {	public List<?> getRows() {
+return rows;	return rows;
+}	}
+public  void setRowslList<?> rowsf {	public void setRows(List<?> rows) {
+this.rows = rows;	this.rows = rows;
+}	}
+	}

@@ -1,0 +1,40 @@
+class Single	class Single
+{	{
+private Single{}	private Single(){}
+prvate  static final Single s= new Single;	private static final Single s = new Single();
+public static Single getInstancef	public static Single getInstance()
+{	{
+return s;	return s;
+}	}
+1	}
+class  Single	class Single
+{	{
+private Singlefl}	private Single(){}
+private static Sgle s = null;	private static Single s = null;
+	
+public staic  void getInstance	public static void getInstance()
+{	{
+iffs==null	if(s==null)
+{	{
+synchronizedSingleclass{	synchronized(Single.class){
+ifs==null	if(s==null)
+s  = new Single;	s = new Single();
+retrn s;	return s;
+}	}
+}	}
+}	}
+}	}
+class Demo implemnts Runnable	class Demo implements Runnable
+{	{
+pblic void runl	public void run()
+{	{
+Single.getInstance	Single.getInstance();
+}	}
+}	}
+cassThreadDem6	class ThreadDemo6
+1	{
+public static void mainString args	public static void main(String[] args)
+{	{
+System.out.println"Hello World!""l;	System.out.println("Hello World!");
+	}
+	}

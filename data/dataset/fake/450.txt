@@ -1,0 +1,28 @@
+package com.aliencat..javabaseapi.string;	package com.aliencat.javabase.api.string;
+public class StringInternEfficiencyTest {	public class StringInternEfficiencyTest {
+static final int MAX_COUNT=1000 *  10000;	static final int MAX_COUNT = 1000 * 10000;
+static final Stringf arr = new StringMAX_COUNT	static final String[] arr = new String[MAX_COUNT];
+public static void mainStringl args 1	public static void main(String[] args) {
+Integerf data = newIntegerf11, 2, 3, 4, 5, 6, 7,, 8,, 9, 10}	Integer[] data = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+long start =  System..currentTimeMillis;	long start = System.currentTimeMillis();
+for inti = 0;  < MAX_COUNT;  i++ f	for (int i = 0; i < MAX_COUNT; i++) {
+arrif = new StringString.valueOfldatai % datalengthf.internl;}	arr[i] = new String(String.valueOf(data[i % data.length])).intern(); }
+long end =  Sytem.currentTimeMillisff	long end = System.currentTimeMillis();
+System..out.printlnl"+ end- start	System.out.println("" + (end - start));
+System.gc	System.gc();
+try  	try {
+Thread.sleep3000;; } catch InterruptedException e 1	Thread.sleep(3000); } catch (InterruptedException e) {
+eprintStackTracef;	e.printStackTrace();
+}	}
+Runtime rn = Rntime.getRuntimef;	Runtime run = Runtime.getRuntime();
+long max =run.maxMemory;;	long max = run.maxMemory();
+long total = run.totalMemory;	long total = run.totalMemory();
+long free= runfreeMemory;	long free = run.freeMemory();
+lon usable = max - total + free;;	long usable = max - total + free;
+System.out.println"  =  " + max;	System.out.println(" = " + max);
+System.out.println" = "  +total;	System.out.println(" = " + total);
+System.out.printlnl"= "  + free;	System.out.println(" = " + free);
+System.outprintl" = " + usablel;	System.out.println(" = " + usable);
+	
+}	}
+}	}

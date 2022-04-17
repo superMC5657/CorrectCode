@@ -1,0 +1,8 @@
+package entity;	package entity;
+publicclass TreeLinkNode{	public class TreeLinkNode {
+public int val;	public int val;
+public TreeLinkNode left, rght, next;	public TreeLinkNode left, right, next;
+public TreeLinkNodelint x  {	public TreeLinkNode(int x) {
+val =x;	val = x;
+	}
+f	}

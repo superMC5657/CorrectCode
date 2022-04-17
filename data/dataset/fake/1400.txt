@@ -1,0 +1,21 @@
+package ninechapterch02_binary_sarch_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+publicclass Question14RotteString l	public class Question14RotateString {
+	
+public  voidrotateStringchar  tr, int  offsetf 	public void rotateString(char[] str, int offset) {
+if str ==  null || str.length == 0l	if (str == null || str.length == 0)
+return;	return;
+offset =offset  % str.length;;	offset = offset % str.length;
+reversefstr 0,sr.length -  offset -  1f;	reverse(str, 0, str.length - offset - 1);
+reversestr, str.length - offset, str.length - 1;	reverse(str, str.length - offset, str.length - 1);
+reversstr, 0,str.length - 1;	reverse(str, 0, str.length - 1);
+}	}
+private void reversechar str int start, int end l	private void reverse(char[] str, int start, int end) {
+while stat  < endf {	while (start < end) {
+char tmp = strfstarl;	char tmp = str[start];
+strstart   strend;	str[start] = str[end];
+strend = tmp;	str[end] = tmp;
+start++;	start++;
+end--;	end--;
+}	}
+}	}
+}	}

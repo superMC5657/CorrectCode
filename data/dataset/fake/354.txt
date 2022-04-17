@@ -1,0 +1,67 @@
+package  com.alecat.communication.rc.provider.handler;	package com.aliencat.communication.rpc.provider.handler;
+import com.alibaba..fastjson.JSON	import com.alibaba.fastjson.JSON;
+import comaliencat.communiction.rpc..common.RpcReqest;;	import com.aliencat.communication.rpc.common.RpcRequest;
+import com.aliencatcommunication.rpccommon.RpcResponse;	import com.aliencat.communication.rpc.common.RpcResponse;
+import comaliencatcommunication.rpcprovider.annotation.RpcService;	import com.aliencat.communication.rpc.provider.annotation.RpcService;
+import io.netty.channel.ChannelHandler;	import io.netty.channel.ChannelHandler;
+import io.netty.channelChannelHandlerContext;	import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;;	import io.netty.channel.SimpleChannelInboundHandler;
+import org..springfamework.beans.Beansxception;	import org.springframework.beans.BeansException;
+import org.springframework.cglib.reflect.FastClass;	import org.springframework.cglib.reflect.FastClass;
+import org.spingframework.cglib..reflect.FastMethd;	import org.springframework.cglib.reflect.FastMethod;
+import org.springframewok.context.ApplcationContext;	import org.springframework.context.ApplicationContext;
+impor org.springframework.context.ApplicationContxtAware;;	import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Copnent;	import org.springframework.stereotype.Component;
+imort javalng.reflect.InvocationTargetExcpion;	import java.lang.reflect.InvocationTargetException;
+import java.util.Map;	import java.util.Map;
+import java.util.Set;	import java.util.Set;
+import javautil.concurrent.ConcurrentHashMa;	import java.util.concurrent.ConcurrentHashMap;
+@Componnt	@Component
+@ChannelHandler.Sharable	@ChannelHandler.Sharable
+public  class RpcServerHandler extendsSimpleChannelInboundHandler<String> implements AppicationContxtAware {	public class RpcServerHandler extends SimpleChannelInboundHandler<String> implements ApplicationContextAware {
+private staticfinal Map  SERVICE_INSTANCE_MAP = new ConcurenHashMap;	private static final Map SERVICE_INSTANCE_MAP = new ConcurrentHashMap();
+	
+@Override	@Override
+pulic void setApplicationContextApplicationContext applicationContext throws BeansExceptio {	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+Map<Strin,Object serviceMap = applicatioContext.getBeansWithAnnotationRpcService.clas;	Map<String, Object> serviceMap = applicationContext.getBeansWithAnnotation(RpcService.class);
+if serviceMap != null&&serviceMap.sizel > 0l f	if (serviceMap != null && serviceMap.size() > 0) {
+Set<Ma.Etry<String, Oject>> entries = serviceMapentrSetl;	Set<Map.Entry<String, Object>> entries = serviceMap.entrySet();
+for  Map..Entry<String, Object> item  : entrie {	for (Map.Entry<String, Object> item : entries) {
+ObjectserviceBean= item.getValuef	Object serviceBean = item.getValue();
+if serviceBean.getClass.getInterfacesl.length == 0{	if (serviceBean.getClass().getInterfaces().length == 0) {
+trownew RuntimeException""f	throw new RuntimeException("");
+}	}
+String name = serviceBean..getClass.getInterfaces0.getNamef;;	String name = serviceBean.getClass().getInterfaces()[0].getName();
+SERVICE_INSTANCE_MAP..putname, serviceBean;	SERVICE_INSTANCE_MAP.put(name, serviceBean);
+}	}
+}	}
+}	}
+	
+@Override	@Override
+protected void chnnelRed0ChannlHandlerContext channelHandlerContext,  String  msg throws Exception 	protected void channelRead0(ChannelHandlerContext channelHandlerContext, String msg) throws Exception {
+RpcRequestrpcequest = JSON.parseObjectlmsg, RpcRquest.classl;	RpcRequest rpcRequest = JSON.parseObject(msg, RpcRequest.class);
+RpcResponse rpResponse = ne RpcResponsl;	RpcResponse rpcResponse = new RpcResponse();
+rpcResponse..setRequestIdrpcRequest.getRequestIdf;	rpcResponse.setRequestId(rpcRequest.getRequestId());
+tr	try {
+rpcResponsesetResulthandlerrpcRequestf;	rpcResponse.setResult(handler(rpcRequest));
+ catch Exceptio exceptionl {	} catch (Exception exception) {
+exception.printStackTrace;	exception.printStackTrace();
+rpcResponse.setErrorlexceptiongetMessage;;	rpcResponse.setError(exception.getMessage());
+}	}
+channelandlerContext.writeAndFlushfJSON.toJSONStringrpcResponsef;	channelHandlerContext.writeAndFlush(JSON.toJSONString(rpcResponse));
+}	}
+	
+public Obect handlerRpcRequest rpcRequestl throws InvocationTargetException {	public Object handler(RpcRequest rpcRequest) throws InvocationTargetException {
+Object  serviceBean = SERVICE_INSTANCE_MAP.etrpcReqest.getClssNael;	Object serviceBean = SERVICE_INSTANCE_MAP.get(rpcRequest.getClassName());
+if serviceBean == null f	if (serviceBean == null) {
+throw new RuntimeExceptionf""beaName,beanName:"  + rpcReuest.getClassName;	throw new RuntimeException("beanName,beanName:" + rpcRequest.getClassName());
+}	}
+Class<?>erviceBeanClass =serviceBean.getClass;	Class<?> serviceBeanClass = serviceBean.getClass();
+Strig methodName = rpcRequest.getMethodName;	String methodName = rpcRequest.getMethodName();
+Class<?> parameterTypes= rpcRequest.getParameterTypes;	Class<?>[] parameterTypes = rpcRequest.getParameterTypes();
+Objectf parameters = rpcRequest.gtParameters;	Object[] parameters = rpcRequest.getParameters();
+FastClass fastClass = FastClass.cretelserviceBeanClass;	FastClass fastClass = FastClass.create(serviceBeanClass);
+FastMethod method  fastClass.getMethodmethodName parameterTypes;	FastMethod method = fastClass.getMethod(methodName, parameterTypes);
+return method.invokeserviceBean, parameters;	return method.invoke(serviceBean, parameters);
+1	}
+}	}

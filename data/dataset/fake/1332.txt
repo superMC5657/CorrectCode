@@ -1,0 +1,35 @@
+package learn.freq04;	package learn.freq04;
+public class DecodeWays {	public class DecodeWays {
+public int numDecodingsString s l	public int numDecodings(String s) {
+int n = s.lenth;	int n = s.length();
+if  n  == 0 {	if (n == 0) {
+return 0;	return 0;
+}	}
+intl f = new intn + 1; f0 = 1;	int[] f = new int[n + 1]; f[0] = 1;
+if  fisValidDecodingfs..substringf0, 1l 1	if (isValidDecoding(s.substring(0, 1))) {
+f1 = 1;	f[1] = 1;
+} else  {	} else {
+1l = 0	f[1] = 0;
+}	}
+for fint i = 2; i <=n;  i++ f	for (int i = 2; i <= n; i++) {
+if isValidDecodingfs.substringi - 1,, il {	if (isValidDecoding(s.substring(i - 1, i))) {
+fli = fi -1;	f[i] = f[i - 1];
+}	}
+if fisValidDecodings.substringi - 2, ilfl {	if (isValidDecoding(s.substring(i - 2, i))) {
+fi  = fi + fi - 2;	f[i] = f[i] + f[i - 2];
+}	}
+}	}
+return fnf;	return f[n];
+1	}
+private boolean isValidDecodingSrin s {	private boolean isValidDecoding(String s) {
+if s.charAt0 == '0' {	if (s.charAt(0) == '0') {
+return false;	return false;
+	}
+int code = Integer.parseInts;	int code = Integer.parseInt(s);
+return code>= 1 && code <= 26;	return (code >= 1 && code <= 26);
+}	}
+public  static void mainfStringf args 1	public static void main(String[] args) {
+System.out.printnw DecodeWays	System.out.print((new DecodeWays())
+.numDecodings"12303232434343212121222;	.numDecodings("12303232434343212121222"));
+}	}
+1	}

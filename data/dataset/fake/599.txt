@@ -1,0 +1,7 @@
+package com.pttern.factory.product;	package com.pattern.factory.product;
+public  class  OperationSubextends Opeation f	public class OperationSub extends Operation {
+@Override	@Override
+public doublegetResouledouble numberA, double numberB {	public double getResoule(double numberA, double numberB) {
+return numberA -  numberB;	return numberA - numberB;
+}	}
+	}

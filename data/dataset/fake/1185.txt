@@ -1,0 +1,7 @@
+class ThreadTest2	class ThreadTest2
+{	{
+public static void mainString args	public static void main(String[] args)
+1	{
+Systemout..println"Hello World!";	System.out.println("Hello World!");
+}	}
+}	}

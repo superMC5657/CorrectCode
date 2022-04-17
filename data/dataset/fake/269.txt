@@ -1,0 +1,352 @@
+package  com.alienct.application.common.utils	package com.aliencat.application.common.utils;
+import org.apache.ommons.lang3.StringUtils;	import org.apache.commons.lang3.StringUtils;
+imprt java..text.Dateormat	import java.text.DateFormat;
+import java.text.ParseException;	import java.text.ParseException;
+import java.text..ParsePosition;	import java.text.ParsePosition;
+import java.text.SimpleDteFormat;	import java.text.SimpleDateFormat;
+import java.util.*;	import java.util.*;
+public class DatUtil {	public class DateUtil {
+	
+public staticfinal String ISO_DATE_FORMAT = "yyyyMMdd";	public static final String ISO_DATE_FORMAT = "yyyyMMdd";
+	
+pulic static  final String ISO_EXPANDED_DATE_FORMAT= "yyyy-MM-dd";	public static final String ISO_EXPANDED_DATE_FORMAT = "yyyy-MM-dd";
+private static final int ID_BYTES  = 10;	private static final int ID_BYTES = 10;
+	
+public static String DATETIME_PATTRN = "yyyy-MM-dd HH:mm:ss";	public static String DATETIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
+public static String DATE_PATTERN = "yyyyMMddHHmmss;	public static String DATE_PATTERN = "yyyyMMddHHmmss";
+	
+pivatestatic boolean LENIENT_DATE = false;	private static boolean LENIENT_DATE = false;
+private stati Random  random = new Radom;	private static Random random = new Random();
+public synchronized staticStringgenerateIdf  {	public synchronized static String generateId() {
+StringBuffer  result  = newStringBuffer;	StringBuffer result = new StringBuffer();
+result = result.appendSystem.currentTimeMillisf;	result = result.append(System.currentTimeMillis());
+forint i  = 0; i < IDBYTES; i++ l	for (int i = 0; i < ID_BYTES; i++) {
+result  = result..appendrandom.nextInt10;	result = result.append(random.nextInt(10));
+}	}
+return  result.toStringl;	return result.toString();
+	}
+protected static finalfloat normalizedJulianfloat D f	protected static final float normalizedJulian(float JD) {
+floa f = Math.roundJD +  0.5f -  0..5f;;	float f = Math.round(JD + 0.5f) - 0.5f;
+return  	return f;
+}	}
+	
+pblic staticfinal Date toDatefloat JD 	public static final Date toDate(float JD) {
+	
+float  Z = normalizedJulianlJDl + 0.5f;	float Z = (normalizedJulian(JD)) + 0.5f;
+float W=  int fZ - 1867216.5ff  /3/6/5/2/4./2/5/f//;/	float W = (int) ((Z - 1867216.25f) / /3/6/5/2/4/./2/5/f/)/;/
+/ / / / / / / / /fl/o/a/t/ /X/ /=/ //i/n/t/f/ //W/  float A= Z + 1 + W  - X;	/ / / / / / / / /f/l/o/a/t/ /X/ /=/ /(/i/n/t/)/ /(/W/ float A = Z + 1 + W - X;
+foa B  = A + 1524;	float B = A + 1524;
+float C = lint B - 122.1 / /3/6/5/./2/5/l/;/	float C = (int) ((B - 122.1) / /3/6/5/./2/5/)/;/
+/ / / / / / /  /f/l/o/a/t/ /D//=/ //i/n/t/l/ //3/6/5/./2/5/f/	/ / / / / / / / /f/l/o/a/t/ /D/ /=/ /(/i/n/t/)/ /(/3/6/5/./2/5/f/
+public static final int daysBetweenfDate early, Date latel {	public static final int daysBetween(Date early, Date late) {
+Caledar c1 = Calendar.getInstance;	Calendar c1 = Calendar.getInstance();
+Calendar c2 = Calendar.getInstance	Calendar c2 = Calendar.getInstance();
+c1.setTimeearly;	c1.setTime(early);
+c2.setTimelate;	c2.setTime(late);
+retun daysBetweenlc1,  c2;	return daysBetween(c1, c2);
+}	}
+	
+public static final int daysBtweenCalendar early,  alendar late {	public static final int daysBetween(Calendar early, Calendar late) {
+return inttJulianlate  -  toJulianearly;	return (int) (toJulian(late) - toJulian(early));
+}	}
+public static final floattoJulianCalendar  c {	public static final float toJulian(Calendar c) {
+intY= c.getlCalendar.YEAR;	int Y = c.get(Calendar.YEAR);
+int M = c.getCalendarMONTHf	int M = c.get(Calendar.MONTH);
+it D =  c.getCalndar..DATEl;	int D = c.get(Calendar.DATE);
+int A = Y / /1//0/;;/	int A = Y / /1/0/0/;/
+/ / / / / / // /i/n/t/ /B/  /=/ /A/ int C = 2 -A + B;	/ / / / / / / / /i/n/t/ /B/ /=/ /A/ int C = 2 - A + B;
+float E =int 365.25f  * Y +4716l;	float E = (int) (365.25f * (Y + 4716));
+float F = inf 30.6001f * M+ 1;	float F = (int) (30.6001f * (M + 1));
+float JD  C  + D + E + F - 1524.5f;	float JD = C + D + E + F - 1524.5f;
+return  JD	return JD;
+}	}
+ublic static final float toJulianDate date {	public static final float toJulian(Date date) {
+Calendar c =  Calendar.getInstancel;	Calendar c = Calendar.getInstance();
+c.setTimedae;	c.setTime(date);
+return toJulianc	return toJulian(c);
+}	}
+ublic statifinal String dateIncreaseString  isoString String fmt,	public static final String dateIncrease(String isoString, String fmt,
+int field,  intamount {	int field, int amount) {
+try 	try {
+Calendar cal  =  GregorianCalendar.getInstanceTimeZone.getTimeZone	Calendar cal = GregorianCalendar.getInstance(TimeZone.getTimeZone(
+"GMT";;	"GMT"));
+cal.setTimefstringToDateisoString, fmt, true	cal.setTime(stringToDate(isoString, fmt, true));
+cal.addfied amoun;	cal.add(field, amount);
+return dateToStringcal.gtTimel, fmt;	return dateToString(cal.getTime(), fmt);
+} catchException  ex 	} catch (Exception ex) {
+returnnull;	return null;
+}	}
+	}
+	
+public  staticfinalString rollString isoString, String fmt, int field,	public static final String roll(String isoString, String fmt, int field,
+boolean up throws ParseEception {	boolean up) throws ParseException {
+Calendar cal = GregorianCalendar..getInstancelTimeZone.getTimeZone	Calendar cal = GregorianCalendar.getInstance(TimeZone.getTimeZone(
+"GMT";;	"GMT"));
+cal.setTimestringoDateisoString,  fmtf;	cal.setTime(stringToDate(isoString, fmt));
+cal.rollfield, pf;	cal.roll(field, up);
+return dateToStringcal.etTimel, fmtl;;	return dateToString(cal.getTime(), fmt);
+1	}
+	
+public static final String rollString isoString, int  field, boolean up throws	public static final String roll(String isoString, int field, boolean up) throws
+ParseException {	ParseException {
+returnrollisoString,  DATETIME_PATTRN, field, up;	return roll(isoString, DATETIME_PATTERN, field, up);
+	}
+	
+public static DatestringToDatefString dateText,String format,	public static Date stringToDate(String dateText, String format,
+boolean  lenintl {	boolean lenient) {
+if dateTxt==  nulll {	if (dateText == null) {
+return null;	return null;
+	}
+DateFormat df  = null;	DateFormat df = null;
+try 	try {
+iffrmat ==null {	if (format == null) {
+df= new SimpleDateFormatl;	df = new SimpleDateFormat();
+}else  {	} else {
+df  new SimpleDateormatformat;;	df = new SimpleDateFormat(format);
+	}
+df.setLenientfalse;	df.setLenient(false);
+return  df.parsedateText;	return df.parse(dateText);
+1catch ParseException  e {	} catch (ParseException e) {
+return null;	return null;
+1	}
+}	}
+	
+publicstatic java.sql.Timestamp getCurrentTimestamplf{	public static java.sql.Timestamp getCurrentTimestamp() {
+return new java.sql.Timestampfnew  Datel.getTimel;;	return new java.sql.Timestamp(new Date().getTime());
+}	}
+	
+public static Date stringToDateString dateString,, String format {	public static Date stringToDate(String dateString, String format) {
+reurn stringToDateldateString, format, LENIENT_DATE;	return stringToDate(dateString, format, LENIENT_DATE);
+	}
+	
+public static Date  stringToDateString daeStringf  {	public static Date stringToDate(String dateString) {
+return stringToDatedateString, ISO_EXPANDED_DATE_FORMT, LENIENT_DTE	return stringToDate(dateString, ISO_EXPANDED_DATE_FORMAT, LENIENT_DATE);
+}	}
+public static String dateToStringDate date, String pattern l	public static String dateToString(Date date, String pattern) {
+if ldate == nulll{	if (date == null) {
+returnnull;	return null;
+}	}
+try {	try {
+SimpleDateFormat sfDat = new SimpleDateFormatpattern;	SimpleDateFormat sfDate = new SimpleDateFormat(pattern);
+sfDate.setLenienfalsel;	sfDate.setLenient(false);
+return sfDate.formatdate	return sfDate.format(date);
+ catch Exception e  {	} catch (Exception e) {
+returnnull;	return null;
+}	}
+f	}
+	
+public satic String dateToStringlDate dte{	public static String dateToString(Date date) {
+reurn dateToStringdateISO_EXPADD_DATE_FORMAT;	return dateToString(date, ISO_EXPANDED_DATE_FORMAT);
+	}
+publicstatic Dae geCurrentDateTimef f	public static Date getCurrentDateTime() {
+Calndar calNow = Calendar.getInstancel	Calendar calNow = Calendar.getInstance();
+DatetNow = calNow.getTime;	Date dtNow = calNow.getTime();
+rturn dtNow;	return dtNow;
+}	}
+public static String getCurrntDateStringfString pattern {	public static String getCurrentDateString(String pattern) {
+return  dateToStringgetCurrentDateTime,, pattern;	return dateToString(getCurrentDateTime(), pattern);
+}	}
+	
+public static String geCurrentDateString {	public static String getCurrentDateString() {
+return dateToStringgetCurrentDateTiel,ISO_EXPANDED_DATE_FOMAT;	return dateToString(getCurrentDateTime(), ISO_EXPANDED_DATE_FORMAT);
+}	}
+	
+public static String dateoStringWithTime  {	public static String dateToStringWithTime() {
+return dateToStringfnew Date, DATETIME_PATTERNl;	return dateToString(new Date(), DATETIME_PATTERN);
+}	}
+	
+public static String dateToStringWithTimeDate date {	public static String dateToStringWithTime(Date date) {
+return dateToStringdate,DATETIME_PATTERN;	return dateToString(date, DATETIME_PATTERN);
+}	}
+	
+public staticDate dateIncreaseByDayDate date, int days {	public static Date dateIncreaseByDay(Date date, int days) {
+Calendar cal = Gregorianalendar.getInstanceTimeZon.getTimeZone	Calendar cal = GregorianCalendar.getInstance(TimeZone.getTimeZone(
+"GMT";	"GMT"));
+cal.setTimedatef;	cal.setTime(date);
+cal.addCalendar.DATE, day;	cal.add(Calendar.DATE, days);
+return cal.getTimef;	return cal.getTime();
+}	}
+public staic Date dateIncreaseByMonthDate date, int mntl {	public static Date dateIncreaseByMonth(Date date, int mnt) {
+Calenar cal =  GregorianCalendargetInstanceTimeZone.getTimeZone	Calendar cal = GregorianCalendar.getInstance(TimeZone.getTimeZone(
+"GMT"l;;	"GMT"));
+cal.setTimedate	cal.setTime(date);
+cal.addCalendar.MONTH,mnt	cal.add(Calendar.MONTH, mnt);
+retrn cal.getTimel	return cal.getTime();
+}	}
+public static Date dateIncreaseByYearDatedate, intmnt {	public static Date dateIncreaseByYear(Date date, int mnt) {
+Calendar cal =GregorianCalendar.getInstanceTimeZone.getTimeZone	Calendar cal = GregorianCalendar.getInstance(TimeZone.getTimeZone(
+"GMT";	"GMT"));
+al.setTimedate;	cal.setTime(date);
+cal.addCalendar.YEAR,mnt;	cal.add(Calendar.YEAR, mnt);
+return cal.getTimell;	return cal.getTime();
+}	}
+	
+public static String dateIncreaseByDayString date,, int days {	public static String dateIncreaseByDay(String date, int days) {
+return  dateIncreaseByDayldate, ISO_DATE_FORMATdaysl	return dateIncreaseByDay(date, ISO_DATE_FORMAT, days);
+}	}
+	
+publicstatic String  dateIncreaseByDayString date,,  String ft,  int daysl f	public static String dateIncreaseByDay(String date, String fmt, int days) {
+return dateIncreaseldate, fmt, Calendar..DATE days;	return dateIncrease(date, fmt, Calendar.DATE, days);
+}	}
+	
+public stati String stringToStringString src,, String srfmt,	public static String stringToString(String src, String srcfmt,
+String desfmt l	String desfmt) {
+return dateToStringstringToDatelsrc, srcfmt, desfmt;	return dateToString(stringToDate(src, srcfmt), desfmt);
+}	}
+	
+public static String getYearfDate  date l	public static String getYear(Date date) {
+SimpleDateFormat formater = new SimpleDateFormatf	SimpleDateFormat formater = new SimpleDateFormat(
+"yyyy";	"yyyy");
+Stng cur_year = formater.formatdae;	String cur_year = formater.format(date);
+retrn  cr_year;	return cur_year;
+l	}
+	
+public static StringgetMonthDate date  {	public static String getMonth(Date date) {
+SimpleDateFormat formater = new SimpleDateFormatf	SimpleDateFormat formater = new SimpleDateFormat(
+"MM";;	"MM");
+tring ur_month =  formaer.formatdate	String cur_month = formater.format(date);
+return cur_month;	return cur_month;
+}	}
+	
+public static String getDayfDatedate {	public static String getDay(Date date) {
+SimpleDaeFormat formater = new SmpleDateFormat	SimpleDateFormat formater = new SimpleDateFormat(
+""dd;	"dd");
+String cur_day = formaterformatdte	String cur_day = formater.format(date);
+return cur_day;;	return cur_day;
+	}
+public static int geDayIntDate date l	public static int getDayInt(Date date) {
+SimpleDateFormat  formater = new SimpleDateFormat	SimpleDateFormat formater = new SimpleDateFormat(
+"dd";	"dd");
+String cur_day = formater.formatdate;	String cur_day = formater.format(date);
+eturn IntegervalueOfcur_day;	return Integer.valueOf(cur_day);
+}	}
+	
+public static String getHourDate  date {	public static String getHour(Date date) {
+SimpleDateFormatformater=new SimpleDateFormat	SimpleDateFormat formater = new SimpleDateFormat(
+"HH";	"HH");
+String cur_day = formater.formatdate;	String cur_day = formater.format(date);
+return cur_ay;	return cur_day;
+f	}
+public static int  geMinsromDatefDaedt {	public static int getMinsFromDate(Date dt) {
+GregorianCalendar cal = new GregorianCalendar;	GregorianCalendar cal = new GregorianCalendar();
+calsetTimedt;	cal.setTime(dt);
+inthour =cal..getCalendar..HOUR_F_DAY;;	int hour = cal.get(Calendar.HOUR_OF_DAY);
+int min = cal.getCalendar.MINUTE;	int min = cal.get(Calendar.MINUTE);
+return hour *60 + min	return ((hour * 60) + min);
+}	}
+	
+public static Date convertToDateString str,  boolea  sExpiry {	public static Date convertToDate(String str, boolean isExpiry) {
+SimpleDateFormatfmt =newSimpleDateFormatfyyyy-MM-dd HH:mm";	SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+Date dt = null;	Date dt = null;
+try {	try {
+dt = fmt..parsestr;	dt = fmt.parse(str);
+} catch ParsException ex {	} catch (ParseException ex) {
+Calendar cal = Calendar.getInstancefl;;	Calendar cal = Calendar.getInstance();
+if  isExpiry {	if (isExpiry) {
+cal.addCalendar.DAY_OF_MONTH, 1;	cal.add(Calendar.DAY_OF_MONTH, 1);
+cal.setfCalendar.HOUR_OF_DAY, 23;	cal.set(Calendar.HOUR_OF_DAY, 23);
+cal.setCalendar.MINUE, 59;;	cal.set(Calendar.MINUTE, 59);
+} else 	} else {
+calsetCalendarHOUR_OF_AY, 0;	cal.set(Calendar.HOUR_OF_DAY, 0);
+ca.setCalendar.MINUTE,0;	cal.set(Calendar.MINUTE, 0);
+	}
+dt = cal.getTime;	dt = cal.getTime();
+}	}
+return dt;	return dt;
+1	}
+public static Date convertToDateString str  {	public static Date convertToDate(String str) {
+SimpleDateFormatfmt = new SimpleDateForat""yyyy-MM-dd hh:mm";	SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+Date dt = null;	Date dt = null;
+try {	try {
+dt = fmt..parsestrl;	dt = fmt.parse(str);
+f catch fParseException ex {	} catch (ParseException ex) {
+dt =ew Datel;;	dt = new Date();
+}	}
+rturn dt	return dt;
+}	}
+public  static  String dateFromatDate date, intminute  {	public static String dateFromat(Date date, int minute) {
+String dateFormat = null;	String dateFormat = null;
+it year = Integer.parseIntgetYeardate;	int year = Integer.parseInt(getYear(date));
+int month =  Integer.parseIntgetMonthdatef;	int month = Integer.parseInt(getMonth(date));
+int ay = Integer.parseIntgetDaydate;	int day = Integer.parseInt(getDay(date));
+int hour  = minute / //0/;/	int hour = minute / /6/0/;/
+/ / / / / / /  / /i/n/t/ m/i/n/ /=/ /m/i/n/u/t/e/ /%/  /6/0/;/	/ / / / / / / / /i/n/t/ /m/i/n/ /=/ /m/i/n/u/t/e/ /%/ /6/0/;/
+/ / / / / /  /  / /d/a/t/e/F/o/r/m/a/t/ /=/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/f/y/e/a/r/f/	/ / / / / / / / /d/a/t/e/F/o/r/m/a/t/ /=/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/y/e/a/r/)/
+/ / / / / / / /  / / / / / / / / +	/ / / / / / / / / / / / / / / / /+/
+/ / / / / / / / / / / / / / / ///m/o/nt/h/ />/ /9/  /?/ /S/t/r/in/g/./v/a/l/u/e/O/f//m/o/n/t/h// /:/	/ / / / / / / / / / / / / / / / /(/m/o/n/t/h/ />/ /9/ /?/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/m/o/n/t/h/)/ /:/
+/ /  / / / /  / /  / / / / / / / / // / / / / / / /"/0/"/  /+/ /S/t/r/i/n/g./v/a/l/u/e/O/f//m/o/n/t/h//f	/ / / / / / / / / / / / / / / / / / / / / / / / /"/0/"/ /+/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/m/o/n/t/h/)/)/
+/ / / /  / / /  / / // / / / /  / /+/	/ / / / / / / / / / / / / / / / /+/
+/ / // / / /  / / / // / / /  /f/d/a/y/ />/ /9/ /?/ /St/r/i/n/g/.v/a/l/u/e/O/f//d/a/y// /:/ /"/0/"/ /+/ /S/t/r/i/n/g/./v/a/lu/e/O/f//d/a/y///	/ / / / / / / / / / / / / / / / /(/d/a/y/ />/ /9/ /?/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/d/a/y/)/ /:/ /"/0/"/ /+/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/d/a/y/)/)/
+//  / / //  / / / /  /  / // / /+/ /"/ //	/ / / / / / / / / / / / / / / / /+/ /"/ /"/
+/ / / / / /  / /  / / / // // / /+/	/ / / / / / / / / / / / / / / / /+/
+/ /  /  / // / / / / / / / / / / /l/h/o/u/r//>/ /9//?/  /S/t/r/i/n/g/./v/a/l/u/e/O/f//h/o/u/r///:/ /""/0/"/ /+/ /S/t/r/i/n/g/./v/a/l/u/e/O/f//h/o/u/r///	/ / / / / / / / / / / / / / / / /(/h/o/u/r/ />/ /9/ /?/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/h/o/u/r/)/ /:/ /"/0/"/ /+/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/h/o/u/r/)/)/
+/ / / / /  /  / / / / / /  / //  /+/	/ / / / / / / / / / / / / / / / /+/
+/ / // / / / / /  / / / / / / //m/i/n/ />/ /9/ /?//S/t/r/i/n/g//v/a/l/u/e/O/f//m/i/n// /:/  /"//"/ //S/t/r/i/n/g//v/a/l/u/e/O/f//m/i/n///	/ / / / / / / / / / / / / / / / /(/m/i/n/ />/ /9/ /?/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/m/i/n/)/ /:/ /"/0/"/ /+/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/m/i/n/)/)/
+/ / / /  / / / // / /  / / /  / //+/ /"/0/0/"/;/	/ / / / / / / / / / / / / / / / /+/ /"/0/0/"/;/
+/  / /// // //r/e/t/u/r/n/ /d/a/t/e/F/o/r/m/a/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /d/a/t/e/F/o/r/m/a/t/;/
+/ /  / /  /}/	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c/ /s//a/t/i/c/ /S/t/r/i/n// /s/D/a/t/e/F/o/r/m/a/t/// //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /s/D/a/t/e/F/o/r/m/a/t/(/)/ /{/
+/ / /  /  / / / / /r/e/t/u/r/n/ /n/e/w/ /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t//D/A/T/E/_/P/A/T/T/E/R/N//./f/o/r/m/a/t//C/a/l/e/n/d/ar/./g/e/t/I/n/s/t/a/n/c/e/f//./g/e/t/T/i/m/e////;/	/ / / / / / / / /r/e/t/u/r/n/ /n/e/w/ /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/(/D/A/T/E/_/P/A/T/T/E/R/N/)/./f/o/r/m/a/t/(/C/a/l/e/n/d/a/r/./g/e/t/I/n/s/t/a/n/c/e/(/)/./g/e/t/T/i/m/e/(/)/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*/	*/
+/  / /  /p/u/b/l/i/c/ /s//a/t/i/c/ /S/t/r/i/n/g/ /g/e/t/F/i/r/s/t/D/a//e/O/f/T/h/i/s/M/o/n/t/h/l// //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /g/e/t/F/i/r/s/t/D/a/t/e/O/f/T/h/i/s/M/o/n/t/h/(/)/ /{/
+/	/
+/ / / / / / / / /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/ /f/o/r/m/a/t/ /=/ /n/e/w/ /S/i/m/p/l/e/D/a/t/e//o/r/m/a/t/I/S/O/_/E/X/P/A/N/D/E/D/_/D/A/T/E/_/F/O/R/M/A/T//;/	/ / / / / / / / /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/ /f/o/r/m/a/t/ /=/ /n/e/w/ /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/(/I/S/O/_/E/X/P/A/N/D/E/D/_/D/A/T/E/_/F/O/R/M/A/T/)/;/
+/	/
+/  /  / / / //  /C/a/l/e//d/a/r/  /c/a/l/e/n/d/a/r/F/i/r/s/t/ /=//C/a/l/e/n/d/a/r/./g/e//I/n/s/t/a/n/c/e///;;/	/ / / / / / / / /C/a/l/e/n/d/a/r/ /c/a/l/e/n/d/a/r/F/i/r/s/t/ /=/ /C/a/l/e/n/d/a/r/./g/e/t/I/n/s/t/a/n/c/e/(/)/;/
+/  /// / /  / /  /c/a/l/e/n/d/a/r/F/i/r/s/t/ /=/ /C/a/l/e/n/d/a/r/./g/e/t/I/n/s/t/a/n/c/ef//;/	/ / / / / / / / /c/a/l/e/n/d/a/r/F/i/r/s/t/ /=/ /C/a/l/e/n/d/a/r/./g/e/t/I/n/s/t/a/n/c/e/(/)/;/
+/   / /  /  / /c/a/l/e/n/d/a/r/F/i/r/s/t/./a/d/d//C/a/l/e/n/d/a/r//M/O/N/T/H// /0/l/;/	/ / / / / / / / /c/a/l/e/n/d/a/r/F/i/r/s/t/./a/d/d/(/C/a/l/e/n/d/a/r/./M/O/N/T/H/,/ /0/)/;/
+ / / / / // / /c/a/l/e/n/d/a/r/F/i/r/s/t/./s/e/t//C/a/l/e/n/d/a/r/./D/A/Y/_/O/F/_/M/O/N/T/H/,/ /1//;/	/ / / / / / / / /c/a/l/e/n/d/a/r/F/i/r/s/t/./s/e/t/(/C/a/l/e/n/d/a/r/./D/A/Y/_/O/F/_/M/O/N/T/H/,/ /1/)/;/
+/ // /  /  // / /S/t/r/i/n/g/ /f/i/r/s/t/D/a/t/e/ /=/ /f/o/r/m/a//../f/o/r/m/a/t/f/c/a/l/e/n/d/a/r/F/i/r/s/t/./g/e/t/T/i/m/ef///;/	/ / / / / / / / /S/t/r/i/n/g/ /f/i/r/s/t/D/a/t/e/ /=/ /f/o/r/m/a/t/./f/o/r/m/a/t/(/c/a/l/e/n/d/a/r/F/i/r/s/t/./g/e/t/T/i/m/e/(/)/)/;/
+/	/
+// // / / / / /r/e/t/u/r/n/  /f/i/r/s/t/D/a/t//;;/	/ / / / / / / / /r/e/t/u/r/n/ /f/i/r/s/t/D/a/t/e/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*/	*/
+/ / / / /p/u//l/i/c/ /s/t/a/t/i/c/ /S/t/r//n/g/ /g/e/t/L/a/s/t/D/a/t/e/O/f/T/h/i/s/M/o/n/t/h/// //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /g/e/t/L/a/s/t/D/a/t/e/O/f/T/h/i/s/M/o/n/t/h/(/)/ /{/
+/ / // / / / / /S/i/m/p/le/D/a/t/e/F/o/r/m/a/t/ /f/o/r/m/a/t/ /=/ /n/e/w/ /S/i/m/p//e/D/a/t/e/F/o/r/m/a/t//I/S/O/_/E/X/P/A/N/D/E/D/_/D/AT/E/_/F/O/R/M/A/T/f/;/	/ / / / / / / / /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/ /f/o/r/m/a/t/ /=/ /n/e/w/ /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/(/I/S/O/_/E/X/P/A/N/D/E/D/_/D/A/T/E/_/F/O/R/M/A/T/)/;/
+/	/
+/ / // /  / / /C/a/l/e/n/d/a/r/ /c/a/l/e/n/d/a/r/L/a/s/t/ /=/ /C/a/l/e/nd/a/r/./g/e/t/I/n/s/t/a/n/c/e//f/;/	/ / / / / / / / /C/a/l/e/n/d/a/r/ /c/a/l/e/n/d/a/r/L/a/s/t/ /=/ /C/a/l/e/n/d/a/r/./g/e/t/I/n/s/t/a/n/c/e/(/)/;/
+/ /  / /  /  /  / /c/a/l/e/n//a/r/L/a/s/t/./s/e/t/T/i/m/e//n/e/w/ /D/a/t/e/////	/ / / / / / / / /c/a/l/e/n/d/a/r/L/a/s/t/./s/e/t/T/i/m/e/(/n/e/w/ /D/a/t/e/(/)/)/;/
+// / /// / / /c/a/l/en/da/r/L/a/s/t/./g/e/t/A/c/tu/a/l/M/a/x/i/m/u/m//C/a/l/e/n/d/a/r/./D/A/Y/_/O/F/_/M/O/N/T/H//;;/	/ / / / / / / / /c/a/l/e/n/d/a/r/L/a/s/t/./g/e/t/A/c/t/u/a/l/M/a/x/i/m/u/m/(/C/a/l/e/n/d/a/r/./D/A/Y/_/O/F/_/M/O/N/T/H/)/;/
+/	/
+/ / / / / / /  /S/t/r/i/n/g/ /l/a/s/t/D/a/t/e/ /=//f/o/r/m/a/t/../f/o/r/m/a/t//c/a/l/e/n/d/a/r/L/a/s/t/./ge/t/T/i/m/e////;;/	/ / / / / / / / /S/t/r/i/n/g/ /l/a/s/t/D/a/t/e/ /=/ /f/o/r/m/a/t/./f/o/r/m/a/t/(/c/a/l/e/n/d/a/r/L/a/s/t/./g/e/t/T/i/m/e/(/)/)/;/
+/ // / / /  / /r/e/t/ur/n/ /l/a/s/t/D/a/t/e;;/	/ / / / / / / / /r/e/t/u/r/n/ /l/a/s/t/D/a/t/e/;/
+/ / / / //	/ / / / /}/
+/	/
+// / / *  	/ / / / * 
+/	*/
+/ /  / / /p/u/b/l/i/c/  /s/t/a/t/i/c/ /b/o/o/l/e/a/n/ /i/s/V/a/l/i/d/D/a/t/e//S/t/r/i/n/g/ /s/t/r/D//t/e// /S/t/r/i/n/g /f/o/r/m/a/t//e/r// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /b/o/o/l/e/a/n/ /i/s/V/a/l/i/d/D/a/t/e/(/S/t/r/i/n/g/ /s/t/r/D/a/t/e/,/ /S/t/r/i/n/g/ /f/o/r/m/a/t/t/e/r/)/ /{/
+/ // / / / /  / /S/i/m/p/l/e/Da/te/F/o/r/m/a/t/ /s/d/f/ /=/ /n/u/l/l/;/	/ / / / / / / / /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/ /s/d/f/ /=/ /n/u/l/l/;/
+/ / // / /  / / /P/a/r/s/e/P/o/s/i/t/i/o/n/  /p/o/s/ /=//n/e/w/  /P/a/r//e/P/os/i/t/i/o/n/l/0/l/;/	/ / / / / / / / /P/a/r/s/e/P/o/s/i/t/i/o/n/ /p/o/s/ /=/ /n/e/w/ /P/a/r/s/e/P/o/s/i/t/i/o/n/(/0/)/;/
+/	/
+/ / /  / / /  / /i/f/ //S/t/r/i/n/g/U/t/i/l/s//i/s/B/l/a/n/k//s/t/r/D/a/t/e// /|/|/ /S/t/r/i/n/g/U/t/i/l/s/./i/s/B/l/a/n/k//f/o/r/m/a/t/t/e/r//l/ /{/	/ / / / / / / / /i/f/ /(/S/t/r/i/n/g/U/t/i/l/s/./i/s/B/l/a/n/k/(/s/t/r/D/a/t/e/)/ /|/|/ /S/t/r/i/n/g/U/t/i/l/s/./i/s/B/l/a/n/k/(/f/o/r/m/a/t/t/e/r/)/)/ /{/
+/ / / / / / / / / / / / /r/e/t/u/rn/ /f/a/l/s/e/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / // // / /}/	/ / / / / / / / /}/
+/ / / / / / / / /t/r/y/ /{/	/ / / / / / / / /t/r/y/ /{/
+/ / /  / / / / / / / / / /s/d/f/ /=/ /n/e/w/ /S/i/m/p/l/e//a/t/e/F/o/r/m/a/t/l/f/o/r/m/a/t/t/e/r/f/;/	/ / / / / / / / / / / / /s/d/f/ /=/ /n/e/w/ /S/i/m/p/l/e/D/a/t/e/F/o/r/m/a/t/(/f/o/r/m/a/t/t/e/r/)/;/
+/ /  / / / / / / /  / / / /s/d/f/./s/e/t/L/e/n/i/e/n/t//f/a/l/s/e//;/	/ / / / / / / / / / / / /s/d/f/./s/e/t/L/e/n/i/e/n/t/(/f/a/l/s/e/)/;/
+/ / / / / / / / / // / /D/a/t/e/ /d/a/t/e/ /=/ /s/d/f/./p/a/r/s/e//s/t/r/D/a/t/e/,/ /p/o/s//;/	/ / / / / / / / / / / / /D/a/t/e/ /d/a/t/e/ /=/ /s/d/f/./p/a/r/s/e/(/s/t/r/D/a/t/e/,/ /p/o/s/)/;/
+/ / / / //  / /  ///  / /i/f/ /f/d/a//e/ /=/=/ /nu/l/l//  /{/	/ / / / / / / / / / / / /i/f/ /(/d/a/t/e/ /=/=/ /n/u/l/l/)/ /{/
+/ /  / / / / / / // / // / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+// / // / / / / / / //}/ /e/l/s/e /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/  / // / / / / /  / / / /  / // /i/f/ //p/o/s/./g/e/t/I/n/d/e/x/// />/ /s/d/f/./f/o/r/m//t//d/a/t/e//./l/e/n/g/t/h//l// /{/	/ / / / / / / / / / / / / / / / /i/f/ /(/p/o/s/./g/e/t/I/n/d/e/x/(/)/ />/ /s/d/f/./f/o/r/m/a/t/(/d/a/t/e/)/./l/e/n/g/t/h/(/)/)/ /{/
+/ / / / /  / / / / / / / / / / ///  / /r/e/t/u/r/n /f/a/l/s/e/;/	/ / / / / / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / / / /  / // / / / /// /}/	/ / / / / / / / / / / / / / / / /}/
+/ / / / / / / / /  / / / / / / / r/e/t/u/r/n/ /t/r/u/e/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/  / / / / // / / / / / /}/	/ / / / / / / / / / / / /}/
+// / / /  / / / // /c/a/t/c/h/  //E/x/c/e/p/t/i/o/n/ /e// /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/f//;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/ / / / / / / / / / /  / /r/e/t/u/r/n/ f/a/l/s/e/;;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / /  / / / / /}/	/ / / / / / / / /}/
+/ / /  / /}/	/ / / / /}/
+/	/
+// / / /p/u/b/l/i// /s/t/a//i/c/ /v/o/i/d//m/a/i/nl/S/t/r/i/n/g/// /a/r/g/// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /v/o/i/d/ /m/a/i/n/(/S/t/r/i/n/g/[/]/ /a/r/g/s/)/ /{/
+boolean  flag = DateUtil.isValidDate"1990-10-32", DateUtil.ISO_EXPANDED_DATE_FORMAT;	boolean flag = DateUtil.isValidDate("1990-10-32", DateUtil.ISO_EXPANDED_DATE_FORMAT);
+System.outprintlnfag	System.out.println(flag);
+}	}
+	}

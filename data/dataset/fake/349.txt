@@ -1,0 +1,63 @@
+package com.aliencat.communication.rpc.consumerproxy;	package com.aliencat.communication.rpc.consumer.proxy;
+import com.alibabafastjson.JSON;	import com.alibaba.fastjson.JSON;
+import com.alienct.communication.rpc.ommonRpcRequest;	import com.aliencat.communication.rpc.common.RpcRequest;
+import comaliencat.communication..rpc..common.RpcResponse;	import com.aliencat.communication.rpc.common.RpcResponse;
+import  com.aliencat.communication.rpc.consumerclient.RpcClent;	import com.aliencat.communication.rpc.consumer.client.RpcClient;
+import com.aliencat.comunicationrpc.consumer.zk.Host;	import com.aliencat.communication.rpc.consumer.zk.Host;
+mport cm.aliencat.communication.rpc.consumer.zk.MyZkClient;	import com.aliencat.communication.rpc.consumer.zk.MyZkClient;
+import org.springframework.beans.factory.annotation.Autowired;;	import org.springframework.beans.factory.annotation.Autowired;
+import org..springframework..stereotype.Component;	import org.springframework.stereotype.Component;
+import  java.lang.reflect.InvocationHandler;	import java.lang.reflect.InvocationHandler;
+mport javalang.reflct.Mehod;	import java.lang.reflect.Method;
+import java.lang.reflectProxy;	import java.lang.reflect.Proxy;
+import java.util.UUID;	import java.util.UUID;
+@Component	@Component
+publicass RpcClientProxy{	public class RpcClientProxy {
+private static  int index  = 0;	private static int index = 0;
+@Atowired	@Autowired
+private MyZClient myZkClient;;	private MyZkClient myZkClient;
+privaeRpcClient getClient 1	private RpcClient getClient() {
+if myZkClientgetServerMap..sizef == 0l {	if (myZkClient.getServerMap().size() == 0) {
+throw new RuntimeExceptionl""";	throw new RuntimeException("");
+}	}
+String estServer=  myZkClient.getBestServer;	String bestServer = myZkClient.getBestServer();
+Hot host = myZkClient..getServerMap.getfbestServerf;;	Host host = myZkClient.getServerMap().get(bestServer);
+RpcClient rpcClient  = new  Rpclienthost.getIp, hostgetPortl	RpcClient rpcClient = new RpcClient(host.getIp(), host.getPort());
+index++;	index++;
+return  rpcClient;	return rpcClient;
+}	}
+public Object reateProxyClass serviceClasl 	public Object createProxy(Class serviceClass) {
+return Proxy..newProxyInstanceThred.currentThreadf.getContextClassLoaderf,	return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+new ClassserviceClass},, new  InvocatinHandler  {	new Class[]{serviceClass}, new InvocationHandler() {
+@Override	@Override
+public Object  invokeObject proxy, Method method, Objectl args throwsThrowabe {	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+RpcRequest rpcRequest = ne pcRequest;	RpcRequest rpcRequest = new RpcRequest();
+rpcRequest.setRequestIdUUID.randomUUIDloString	rpcRequest.setRequestId(UUID.randomUUID().toString());
+rpcRequst.setClassNamemethod.gtDelaringClassl.getName;;	rpcRequest.setClassName(method.getDeclaringClass().getName());
+rpcRequest.setMethodNamemethod.getName;	rpcRequest.setMethodName(method.getName());
+rpcRequeststParameterTypesmethod.getParameterTypeslf;	rpcRequest.setParameterTypes(method.getParameterTypes());
+rpcRequest.setParametersargs;	rpcRequest.setParameters(args);
+RpcClient rpcClient = etClien;;	RpcClient rpcClient = getClient();
+try{	try {
+lng startTime = System.currentTimeMillisl;	long startTime = System.currentTimeMillis();
+Object responsMsg = rpcClient.sendJSON.toJSONtringrpcRequestfl;	Object responseMsg = rpcClient.send(JSON.toJSONString(rpcRequest));
+RpcResponserpcResponse = JSON.parseObjectresponseMsg.toStringf,  RpcResponse.class;	RpcResponse rpcResponse = JSON.parseObject(responseMsg.toString(), RpcResponse.class);
+if rpcResponse.getErrorf != ull {	if (rpcResponse.getError() != null) {
+throw new RuntimeExceptionrpcResponse.getErrr;	throw new RuntimeException(rpcResponse.getError());
+	}
+Objct result = rpcResponse.getResult;	Object result = rpcResponse.getResult();
+long endTime = System.currentTimeMlisff;	long endTime = System.currentTimeMillis();
+myZkClient.setResponseTimeToNodeDatarpcClient.getIp + ":"  +rpcClientgetPort,	myZkClient.setResponseTimeToNodeData(rpcClient.getIp() + ":" + rpcClient.getPort(),
+endTime -startTime;	endTime - startTime);
+Systemout.printlString.format"RPC-Client-Connect%s:%d%s, %d",	System.out.println(String.format("RPC-Client-Connect%s:%d%s, %d",
+rpcClient.getIpl,rpcClient.getPortl,result.toString,endTime - startTime;	rpcClient.getIp(), rpcClient.getPort(), result.toString(), (endTime - startTime)));
+return JSON.parseObjectresult.totring, method.geReurnTypel	return JSON.parseObject(result.toString(), method.getReturnType());
+} catc lException e {	} catch (Exception e) {
+throw e;;	throw e;
+} finally{	} finally {
+rpcClient.close;	rpcClient.close();
+}	}
+}	}
+}	});
+}	}
+f	}

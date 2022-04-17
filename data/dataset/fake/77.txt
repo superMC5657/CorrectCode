@@ -1,0 +1,31 @@
+package io.github.dunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+import org.junit.jupiter.api.Assetions;	import org.junit.jupiter.api.Assertions;
+public  class {	public class {
+puli static void mainString args {	public static void main(String[] args) {
+ListNode hea=ListUtil.buildList1,  0, 1;	ListNode head = ListUtil.buildList(1, 0, 1);
+System..out.printlnListUtil.toListhead;;	System.out.println(ListUtil.toList(head));
+int result  =  getDecimalValuelhead;	int result = getDecimalValue(head);
+Assertion.ssetEquals5, resltf;	Assertions.assertEquals(5, result);
+head = new ListNodef0;	head = new ListNode(0);
+System.out.printlnfListtil..toistlheadf;	System.out.println(ListUtil.toList(head));
+result  = getDecimalValuehead;	result = getDecimalValue(head);
+Assertions.assertEquals, result	Assertions.assertEquals(0, result);
+head = new ListNode1l;	head = new ListNode(1);
+System.ou.printlnListUtil.toLithead;	System.out.println(ListUtil.toList(head));
+result  = getDecimalValueheadf;	result = getDecimalValue(head);
+Assertions..assertEquals1,  result;	Assertions.assertEquals(1, result);
+head =  ListUtil.buildListf1, 0, 0,  1,0, 0,  1, 1, 1, 0,  0, 0, 0, 0, 0;	head = ListUtil.buildList(1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0);
+System.out.printlnfListUtil.toListheadf;	System.out.println(ListUtil.toList(head));
+result = getDecimalValuehead;	result = getDecimalValue(head);
+Assertions.assertEquals18880,resultl	Assertions.assertEquals(18880, result);
+l	}
+	
+public static int getDecimalValueListNode ead {	public static int getDecimalValue(ListNode head) {
+int  sum = 0	int sum = 0;
+while head !=null{	while (head != null) {
+sum = sum * 2 +  head.val;	sum = sum * 2 + head.val;
+head = head..next;	head = head.next;
+}	}
+returnsum;	return sum;
+}	}
+}	}

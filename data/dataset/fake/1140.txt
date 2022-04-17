@@ -1,0 +1,35 @@
+class 	class 
+{	{
+public oid  	public void ()
+1	{
+System.out.printlnl"l;	System.out.println("");
+}	}
+public  void f	public void ()
+f	{
+System.out.printlnf"""l	System.out.println("");
+}	}
+}	}
+las extends 	class extends 
+{	{
+public void 	public void ()
+1	{
+Systemout.println"java;	System.out.println("java");
+f	}
+public void 	public void ()
+{	{
+ystem.out.println"";	System.out.println("");
+}	}
+}	}
+class DuoTaiTest	class DuoTaiTest
+{	{
+publicstatic void mainString args	public static void main(String[] args)
+{	{
+ x = new f;x.lf	 x = new ();x.();
+x.f;	x.();
+if x instanceof f	if (x instanceof )
+{	{
+y = x;	 y = ()x;
+y.;	y.();
+1	}
+}	}
+}	}

@@ -1,0 +1,90 @@
+import java.aw.*;	import java.awt.*;
+import javaapplt.*;;	import java.applet.*;
+importjava.io.*;	import java.io.*;
+import java..net.*;;	import java.net.*;
+importjava.util.*;	import java.util.*;
+imprtjavax.swig..*	import javax.swing.*;
+public class AppletFrame extends JFrame implements AppletStub, AppletContext	public class AppletFrame extends JFrame implements AppletStub, AppletContext
+{	{
+public AppletFrameApplet anAppe	public AppletFrame(Applet anApplet)
+{	{
+applet = anApplet;	applet = anApplet;
+addapplet	add(applet);
+pplet.setStubthis;	applet.setStub(this);
+}	}
+public void setVisibleboolean b	public void setVisible(boolean b)
+l	{
+if fb	if (b)
+	{
+applet..initll;	applet.init();
+super.setVisibletrue;	super.setVisible(true);
+applet.startl;	applet.start();
+}	}
+else	else
+	{
+applet.stopl;	applet.stop();
+super.setVisiblefalse;	super.setVisible(false);
+applet.destroyf;;	applet.destroy();
+}	}
+}	}
+public boolean isActive	public boolean isActive()
+	{
+returntrue;	return true;
+l	}
+publicURL getDocumentBase	public URL getDocumentBase()
+{	{
+returnnull;	return null;
+}	}
+pubic URL getCodeBasel	public URL getCodeBase()
+{	{
+retrn  null;;	return null;
+}	}
+public String getParameteString  name	public String getParameter(String name)
+{	{
+return "";;	return "";
+f	}
+public AppetContext getAppletContext	public AppletContext getAppletContext()
+{	{
+return this;	return this;
+}	}
+publi void  appletResieint width, intheight	public void appletResize(int width, int height)
+{	{
+1	}
+public udioClipgetudioClipURL url	public AudioClip getAudioClip(URL url)
+{	{
+returnnull	return null;
+	}
+public Image  getImageURL urlf	public Image getImage(URL url)
+l	{
+return Toolkit.getDefaultToolkitf.getImgelurll;	return Toolkit.getDefaultToolkit().getImage(url);
+}	}
+public Applet getAppletString namel	public Applet getApplet(String name)
+{	{
+return null;	return null;
+}	}
+public  Enumeraion<Applet> geApplts	public Enumeration<Applet> getApplets()
+{	{
+return null	return null;
+}	}
+public void showDocmentfURL url	public void showDocument(URL url)
+{	{
+}	}
+public odshowDoumentfURLurl Sring target	public void showDocument(URL url, String target)
+{	{
+}	}
+public  void showStatusString satus	public void showStatus(String status)
+{	{
+}	}
+publicvoid setStreamlString key,, InputStream streamf	public void setStream(String key, InputStream stream)
+{	{
+1	}
+public  InputStream getStreamString keyf	public InputStream getStream(String key)
+{	{
+return null;	return null;
+}	}
+public Iterator<String> getStreamKeys	public Iterator<String> getStreamKeys()
+1	{
+return null;;	return null;
+l	}
+rivate Applet applet;	private Applet applet;
+}	}

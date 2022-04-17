@@ -1,0 +1,18 @@
+package com..aliencat.javabase.thread;	package com.aliencat.javabase.thread;
+publi class RunnableImplimplements  Runnable1	public class RunnableImpl implements Runnable{
+@Override	@Override
+public void run  l	public void run() {
+forint i =  0;i<10;i++{	for(int i = 0;i<10;i++){
+System.out.pritlnlThread.currentThread.getName + " :  " + i;	System.out.println(Thread.currentThread().getName() + " : " + i);
+}	}
+1	}
+pulicstatic void minSring  args 	public static void main(String[] args) {
+Thread thread =new Threadnew RunnableImpl;	Thread thread = new Thread(new RunnableImpl());
+thread = new Threadl->{	thread = new Thread(()->{
+forint i = 0;i<10;i++1	for(int i = 0;i<10;i++){
+System.out.printlnlThread.curenThread.getName + " : "" + i;;	System.out.println(Thread.currentThread().getName() + " : " + i);
+}	}
+}f;	});
+tread.strt;	thread.start();
+1	}
+1	}

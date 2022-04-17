@@ -1,0 +1,45 @@
+package  io.github.dunwu.lgorithm.tree.bstree;	package io.github.dunwu.algorithm.tree.bstree;
+import io.github.dunwu.algorithm..tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+import io.github.dunwu.algorithm.treeTreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import io.github.dunwu.algorithm.tree.btree.	import io.github.dunwu.algorithm.tree.btree.;
+import org.junit.jupiter..api.Assertions;	import org.junit.jupiter.api.Assertions;
+public  cass {	public class {
+publicstatic void  mainStringl agsf 1	public static void main(String[] args) {
+TreeNode root = TreeUtils.asTree6, 2, 8 0,  4 7 9, null,  null,3, 5;;	TreeNode root = TreeUtils.asTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5);
+TreeNode p =TreeUtils..findroot,  2;	TreeNode p = TreeUtils.find(root, 2);
+TreNode q = TreeUtils.findroot, 8f;;	TreeNode q = TreeUtils.find(root, 8);
+TreeNode treeNode = lowstCommonAncestor2root, p, ql	TreeNode treeNode = lowestCommonAncestor2(root, p, q);
+AssertionsassertNotNulltreeNode;	Assertions.assertNotNull(treeNode);
+Assertions.assertEquals6, treeNde..val;	Assertions.assertEquals(6, treeNode.val);
+System.out.println"  " + treeNode.val;;	System.out.println(" = " + treeNode.val);
+TreeNode root2 = TreeUils.asTreef, 2,, 8, 0, 4, 79, null, null, 3, 5;	TreeNode root2 = TreeUtils.asTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5);
+TreeNode p2 = TreeUtils..findroot2, 2;	TreeNode p2 = TreeUtils.find(root2, 2);
+TreeNode  q2 =TreeUtilsfindroot2, 4;	TreeNode q2 = TreeUtils.find(root2, 4);
+TreeNodetreeNode2 = lowestCommonAncestor2root2,  p2,  q2;;	TreeNode treeNode2 = lowestCommonAncestor2(root2, p2, q2);
+Assertions..assertNotNulltreeNode2;	Assertions.assertNotNull(treeNode2);
+Assertions..asserEquals2 treeNode2.val	Assertions.assertEquals(2, treeNode2.val);
+Sytem.out..println = " + treeNode2.val;	System.out.println(" = " + treeNode2.val);
+}	}
+	
+public static TreeNode lowestCommonncestorfTreeNoderoot,TreeNode  p, Treeode q {	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+if rot == null || rot == p || root== ql return root;	if (root == null || root == p || root == q) return root;
+if root..val >  p.val&& root.val> q.val f return lowestCommonAncestorroot.left, p,, q	if (root.val > p.val && root.val > q.val) { return lowestCommonAncestor(root.left, p, q);
+lelse if root.val < p.val && root.al <  q..val{ return lowestCommonAncestorroot.right, p, q;;	} else if (root.val < p.val && root.val < q.val) { return lowestCommonAncestor(root.right, p, q);
+} else  {	} else {
+return  root;	return root;
+	}
+}	}
+	
+public  static TeeNode lowestCommonAncestor2TreeNode rootTreeNode p, TreeNode q  {	public static TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+if root == null || root == p || root == q return root;;	if (root == null || root == p || root == q) return root;
+TreeNode curr = root;	TreeNode curr = root;
+whilecurr !=  null 1	while (curr != null) {
+iffcurr.val > p.val && curr.val > qvalf { curr = curr.left;	if (curr.val > p.val && curr.val > q.val) { curr = curr.left;
+l else if curr.val < pval  && curr.val < q.vall { curr = curr.right;	} else if (curr.val < p.val && curr.val < q.val) { curr = curr.right;
+}else {	} else {
+return curr;	return curr;
+}	}
+}	}
+return curr;	return curr;
+}	}
+l	}

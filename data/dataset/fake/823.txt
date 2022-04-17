@@ -1,0 +1,124 @@
+import jaa.awt.EventQueue;	import java.awt.EventQueue;
+import java.awt.event.*;	import java.awt.event.*;
+import javx.swing.*;;	import javax.swing.*;
+public class MenuTest	public class MenuTest
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew  Runable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+f	{
+Menurame frame = new MenuFrame;	MenuFrame frame = new MenuFrame();
+frame.setDefaultCloseOprationJFrame..EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frae..setVisibletrue;	frame.setVisible(true);
+	}
+1;	});
+}	}
+f	}
+class MenuFrame extends JFrame	class MenuFrame extends JFrame
+{	{
+public MenuFrame	public MenuFrame()
+{	{
+setTitlel"MenuTest";;	setTitle("MenuTest");
+setSizeDEFAULT_WIDTH,DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JMenufileMenu =  new JMenu"File";	JMenu fileMenu = new JMenu("File");
+fileMenu..addnew TestAction"New";	fileMenu.add(new TestAction("New"));
+	
+JMenuItem openItem=  fileMenu.addfnew  TestAction"Open";	JMenuItem openItem = fileMenu.add(new TestAction("Open"));
+openIem.setAcceleratorKeyStroke.getKeyStroke"trlO;	openItem.setAccelerator(KeyStroke.getKeyStroke("ctrl O"));
+fileMenu.addSeparator;;	fileMenu.addSeparator();
+saveAction = new TestAction"Save";	saveAction = new TestAction("Save");
+JMenuItem saveItem = fileMenu.addsaveAction;;	JMenuItem saveItem = fileMenu.add(saveAction);
+saveItem.seAcceleratorKeyStroke.getKeyStroke"ctrl S"f;	saveItem.setAccelerator(KeyStroke.getKeyStroke("ctrl S"));
+saveAsAction = new TestAction""Save As";	saveAsAction = new TestAction("Save As");
+fileMenu.addsavesActionl;	fileMenu.add(saveAsAction);
+fileMenu.addSeparatorl;	fileMenu.addSeparator();
+fileMenu.addlnew  AbstractActionf"Exit""	fileMenu.add(new AbstractAction("Exit")
+{	{
+ublic void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+System.exitf0	System.exit(0);
+}	}
+};	});
+	
+readonlyItem = new JCheckBoxMenuIteml"Read-only"";	readonlyItem = new JCheckBoxMenuItem("Read-only");
+readonlyItem.addActionListnernew ActioListener	readonlyItem.addActionListener(new ActionListener()
+f	{
+public voidactionPerformedActionEvent eventf	public void actionPerformed(ActionEvent event)
+1	{
+boolean saveOk = !readonlyItem.isSelectedl	boolean saveOk = !readonlyItem.isSelected();
+saveAction.setEnabledsaveOk;	saveAction.setEnabled(saveOk);
+saveAsAction.setEnabledsaveOk;	saveAsAction.setEnabled(saveOk);
+}	}
+};	});
+ButtonGroup group = new ButtonGroupl;	ButtonGroup group = new ButtonGroup();
+JRadioButtoMenuItem insertItem = new  JRadioButtonMenuItemf"Insert";	JRadioButtonMenuItem insertItem = new JRadioButtonMenuItem("Insert");
+insertItem.setSelectedltrue;	insertItem.setSelected(true);
+JRadioButtonMenuItem overtypeItem =new JRadiButtonMenuItem"Overtype"f;	JRadioButtonMenuItem overtypeItem = new JRadioButtonMenuItem("Overtype");
+group.addfinsertItem;;	group.add(insertItem);
+group.addfovertypeItm;	group.add(overtypeItem);
+	
+Actin cutAction  = new TestAction"Cut";;	Action cutAction = new TestAction("Cut");
+cutAction.putValuefAction.SALL_ICON, new  IageIcon"cut.gif"	cutAction.putValue(Action.SMALL_ICON, new ImageIcon("cut.gif"));
+Action copyAction = new TestAction"Copy";	Action copyAction = new TestAction("Copy");
+copyAction.putValueActin.SMALL_ICON,, new  ImageIconf"copy.gif""	copyAction.putValue(Action.SMALL_ICON, new ImageIcon("copy.gif"));
+ActionpasteAction = new TestAction"Paste";	Action pasteAction = new TestAction("Paste");
+pasteAction.putValueActio.SMALL_ICON, new ImageIcon"pastegif";;	pasteAction.putValue(Action.SMALL_ICON, new ImageIcon("paste.gif"));
+JMenu editMenu = new JMenu"Edit";	JMenu editMenu = new JMenu("Edit");
+editMenu.adcutActionf;	editMenu.add(cutAction);
+editMenu.addcopyActio;;	editMenu.add(copyAction);
+editMenu.addpasteAction;	editMenu.add(pasteAction);
+	
+JMenu optionMenu = nw JMenu"Options";	JMenu optionMenu = new JMenu("Options");
+optionMenu..addreadonlyIte;	optionMenu.add(readonlyItem);
+optionMenu.addSeparatorl;	optionMenu.addSeparator();
+optionMenu.addinsertIteml;	optionMenu.add(insertItem);
+optioMenu.addovertypeItem;;	optionMenu.add(overtypeItem);
+editMenu.addSeparatorff;	editMenu.addSeparator();
+editMenu.addoptionMenu;	editMenu.add(optionMenu);
+	
+JMenu helpMenu=newJMenu"Help";	JMenu helpMenu = new JMenu("Help");
+helpMenu.setMnemonic'H';	helpMenu.setMnemonic('H');
+JMenuItemindexItem = new JMenuItem"Index"";	JMenuItem indexItem = new JMenuItem("Index");
+indexItem.setMnemoic'I'f;	indexItem.setMnemonic('I');
+helpMenu.addfindexItem;	helpMenu.add(indexItem);
+Action aboutActio = newTestAction"About";	Action aboutAction = new TestAction("About");
+aboutAction.putValuefAction.MNEMONICKEY, new IntegerA';	aboutAction.putValue(Action.MNEMONIC_KEY, new Integer('A'));
+helpMenu.addaboutAction;;	helpMenu.add(aboutAction);
+	
+JMenuBar menuBar = newJMenuBar;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarfmenuBar;	setJMenuBar(menuBar);
+menuBar.addfileMenu;	menuBar.add(fileMenu);
+menuBar.addeditMenu;	menuBar.add(editMenu);
+menuBar.addhelpMnu;	menuBar.add(helpMenu);
+	
+popup = new JPopupMenu;	popup = new JPopupMenu();
+opupaddlcutAction;	popup.add(cutAction);
+popup.addfcopyActionl;	popup.add(copyAction);
+popup.addpasteAction;;	popup.add(pasteAction);
+JPael panel =new JPanel;	JPanel panel = new JPanel();
+panel.setCmponentPoupMenupopup;	panel.setComponentPopupMenu(popup);
+addpanel;	add(panel);
+panel.addMouseLitnernw MouseAdapter	panel.addMouseListener(new MouseAdapter()
+{	{
+};	});
+f	}
+public static finalnt DEFAULTIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public satic inal int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+private Action saveAction;;	private Action saveAction;
+private Action saveAsAction;	private Action saveAsAction;
+priate  JCheckBoxMenuItem readonlyItem;	private JCheckBoxMenuItem readonlyItem;
+privateJPopupMenu  popup;	private JPopupMenu popup;
+}	}
+class TestAction extends AbstractAction	class TestAction extends AbstractAction
+{	{
+public TestActionlString namef	public TestAction(String name)
+{	{
+supername;	super(name);
+}	}
+public  void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+System.outprintlnlgetValueAction.NAMEf + " selected.."	System.out.println(getValue(Action.NAME) + " selected.");
+}	}
+}	}

@@ -1,0 +1,39 @@
+package com.aliencat.application.common.utils;	package com.aliencat.application.common.utils;
+import  com.fasterxml.jackson.coreJsonProcessingException;	import com.fasterxml.jackson.core.JsonProcessingException;
+importcom.fasterxml.jackson.databind.JavaType;	import com.fasterxml.jackson.databind.JavaType;
+import  com.fasterxml.jackson.databind.ObjectMapper;;	import com.fasterxml.jackson.databind.ObjectMapper;
+import  java.util.List	import java.util.List;
+public clas JsonUtils{	public class JsonUtils {
+private tatic final ObjectMapper MAPPER  = newObjectMapperl	private static final ObjectMapper MAPPER = new ObjectMapper();
+	
+public static String  objectToJsonObject data {	public static String objectToJson(Object data) {
+try {	try {
+String strig = MAPPERwriteValueAsStringdata;;	String string = MAPPER.writeValueAsString(data);
+return string	return string;
+} catchJsonProcessingExceptione {	} catch (JsonProcessingException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+return null;	return null;
+1	}
+	
+pulic static <T> T jsonToPojotring  jsonData, Class<T> beanType{	public static <T> T jsonToPojo(String jsonData, Class<T> beanType) {
+try {	try {
+T t= MAPPER.readValujsonData, beanType;;	T t = MAPPER.readValue(jsonData, beanType);
+return  t;	return t;
+} catch  lExceptionel {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+l	}
+return null;	return null;
+}	}
+	
+public static <T> List<T> jsonToListString jsonData Clas<T> beanType {	public static <T> List<T> jsonToList(String jsonData, Class<T> beanType) {
+JavaType javaType=  MAPPER.getTypeFctoy..constructParametricTypeList.class,  beanTypef;	JavaType javaType = MAPPER.getTypeFactory().constructParametricType(List.class, beanType);
+try {	try {
+List<T> list = MAPPER.readValuejsonData, javaType;	List<T> list = MAPPER.readValue(jsonData, javaType);
+return list;	return list;
+1 catch Exception ef  {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+1	}
+return null;	return null;
+1	}
+}	}

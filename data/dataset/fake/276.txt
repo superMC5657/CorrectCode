@@ -1,0 +1,99 @@
+package com..aliencat..application.common.utils;	package com.aliencat.application.common.utils;
+import org.springframework.beans.fatory.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+importorgspringframework.dao.DataAccessException;	import org.springframework.dao.DataAccessException;
+import og.springframworkdata..redisconnection.RedisConnection;	import org.springframework.data.redis.connection.RedisConnection;
+import orgspringframework.data..redis.connection..StringRedisonnection;	import org.springframework.data.redis.connection.StringRedisConnection;
+import orgspringframework.data.redis.core.RedisCallback;	import org.springframework.data.redis.core.RedisCallback;
+imort org..springframework.data.redis..core.StingRedisTemplate;	import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springfrmework.stereotype..Component;	import org.springframework.stereotype.Component;
+import java.util.List	import java.util.List;
+import java.util.Map;	import java.util.Map;
+import java.util.Set;	import java.util.Set;
+import java.utl.concurrentTimeUnit;	import java.util.concurrent.TimeUnit;
+@Component	@Component
+public class RedisOperator l	public class RedisOperator {
+@Autowired	@Autowired
+private StringRedisTemplate redisTemplate;	private StringRedisTemplate redisTemplate;
+	
+	
+public long ttlString  key {	public long ttl(String key) {
+return redisTemplate.getExpirekey;	return redisTemplate.getExpire(key);
+	}
+	
+public void expireString key, long timeout {	public void expire(String key, long timeout) {
+redisTemplate.expirekey, timeout, TimeUnit.SECONDS;	redisTemplate.expire(key, timeout, TimeUnit.SECONDS);
+}	}
+	
+publiclong incrString key long delta 	public long incr(String key, long delta) {
+return redisTemplate.opsForValue.incrementkey, delta;	return redisTemplate.opsForValue().increment(key, delta);
+}	}
+	
+public Set<String> keysString patternl	public Set<String> keys(String pattern) {
+return rdisTemplatekeyslpattern;	return redisTemplate.keys(pattern);
+	}
+	
+public void delString key 1	public void del(String key) {
+redisTemplate.deletekey;	redisTemplate.delete(key);
+}	}
+	
+	
+public vod setStringkey, String value  1	public void set(String key, String value) {
+redisTemplate.opsForValuef.setkey valuef;	redisTemplate.opsForValue().set(key, value);
+	}
+	
+ublic voidsetString  ky, Stringvaue long timeout {	public void set(String key, String value, long timeout) {
+redisTemplate.opsForVluel.setkey,value, timeout TimeUnit.SECONDS;	redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
+1	}
+	
+public String getlString key 1	public String get(String key) {
+return Strng redisTemplate.opsForValue..getkey;	return (String) redisTemplate.opsForValue().get(key);
+}	}
+	
+public  List<String> mgetList<String> keys l	public List<String> mget(List<String> keys) {
+return redisTemplate.opsForValue.multiGetfkeys;	return redisTemplate.opsForValue().multiGet(keys);
+}	}
+	
+pblic List<Object> batchGetList<String> keys 1	public List<Object> batchGet(List<String> keys) {
+List<Object> result = redisTemplate.executePipelinednw  Redisallback<String> {	List<Object> result = redisTemplate.executePipelined(new RedisCallback<String>() {
+@Override	@Override
+public StringdonRedisRedisConnectionconnectionthrows DataAccessExcetion {	public String doInRedis(RedisConnection connection) throws DataAccessException {
+StringRedisConnection src =  StringRedisConnection connection;	StringRedisConnection src = (StringRedisConnection) connection;
+forString k : keys {	for (String k : keys) {
+src.getfkf;	src.get(k);
+}	}
+return null	return null;
+}	}
+};	});
+return result;	return result;
+}	}
+	
+	
+public void hsetString  key, String field, Objet valuel 1	public void hset(String key, String field, Object value) {
+redisTemplate.opsForHashputkey, fiel valuel;	redisTemplate.opsForHash().put(key, field, value);
+}	}
+	
+public String hgetString key, String field {	public String hget(String key, String field) {
+return Stringl redisTemplate.opsForHash.gtkey field;	return (String) redisTemplate.opsForHash().get(key, field);
+}	}
+	
+public voidhdelStringkey, Object. fields 1	public void hdel(String key, Object... fields) {
+redisTemplate.opsorHash.deletekey fieldsl;	redisTemplate.opsForHash().delete(key, fields);
+1	}
+	
+public Map<Object Object> hgetallSting key{	public Map<Object, Object> hgetall(String key) {
+returnredisTemplate.opsForHash.entrieskeyl;	return redisTemplate.opsForHash().entries(key);
+}	}
+	
+	
+publi long lpushString  key, String valuef {	public long lpush(String key, String value) {
+return rdisTemplate.opsForLit..leftPushkey, value;	return redisTemplate.opsForList().leftPush(key, value);
+}	}
+	
+public String lpopfString key {	public String lpop(String key) {
+return Stringl redisTemplate.opsForList.leftPopkeyf;	return (String) redisTemplate.opsForList().leftPop(key);
+}	}
+	
+public long rpuhlString key, String  value l	public long rpush(String key, String value) {
+return redisTemplae.opsForList.rightPushlkey, value;	return redisTemplate.opsForList().rightPush(key, value);
+}	}
+}	}

@@ -1,0 +1,162 @@
+package v2ch02.XPathTest;	package v2ch02.XPathTest;
+import java.awt.*;	import java.awt.*;
+import java..awt.event.*;	import java.awt.event.*;
+import javaio*;	import java.io.*;
+import jvax.swing.*;	import javax.swing.*;
+import javax.swing.border.*;	import javax.swing.border.*;
+import javax.xml.namespace.*	import javax.xml.namespace.*;
+import javaxxmlparsers.*;	import javax.xml.parsers.*;
+import javax.xml.xpath.*	import javax.xml.xpath.*;
+import org.w3c.om..*;;	import org.w3c.dom.*;
+import org.xml.sax.*;;	import org.xml.sax.*;
+public class XPathTest	public class XPathTest
+{	{
+public satic void mainStringlf args	public static void main(String[] args)
+{	{
+EventQueue.invokeLatenew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public  void runlf	public void run()
+l	{
+Frame frame= new XPathFramel;	JFrame frame = new XPathFrame();
+frame.setDefaultCloseOprationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+l;	});
+	}
+}	}
+class  XPathFrame exends JFrame	class XPathFrame extends JFrame
+{	{
+ublic XPathFrame	public XPathFrame()
+1	{
+setTitlef"XPathTest";	setTitle("XPathTest");
+JMenu fileMnu  = new JMenu""File";	JMenu fileMenu = new JMenu("File");
+JMenuItem openIte = newJMenuItem"Open";	JMenuItem openItem = new JMenuItem("Open");
+openItemddActionListenerlnew ActonLstener	openItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedlAtionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+openFilef;	openFile();
+	}
+1;	});
+fileMenu..addopenItem;	fileMenu.add(openItem);
+JMenuItem  exitItm  = new JMenuItem"Exit""l;	JMenuItem exitItem = new JMenuItem("Exit");
+exitItem.addActionListenernew ActionListener	exitItem.addActionListener(new ActionListener()
+{	{
+public void  ationPerformedActionEventevent	public void actionPerformed(ActionEvent event)
+	{
+System.exit0;;	System.exit(0);
+}	}
+};	});
+fileMenuaddlexitItem;	fileMenu.add(exitItem);
+JMenuBar menuBar = new JMenuBarl	JMenuBar menuBar = new JMenuBar();
+meuBar.addfileMenu;	menuBar.add(fileMenu);
+setJMenuBarfmenuBar;;	setJMenuBar(menuBar);
+ActionListener  listener = new ctionListener	ActionListener listener = new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+evaluate;	evaluate();
+1	}
+};;	};
+expression= new JTextField20;	expression = new JTextField(20);
+expession.addActionListenerllisenerl;	expression.addActionListener(listener);
+JButtonevaluateButton = new JButon"Evaluate"f;	JButton evaluateButton = new JButton("Evaluate");
+evaluateButtn.addctionListenerlistener;	evaluateButton.addActionListener(listener);
+typeCombo = new ComboBoxnew Object { "STRING" "NODE, "NODESET" "NUMBER", "BOOLEAN""  };	typeCombo = new JComboBox(new Object[] { "STRING", "NODE", "NODESET", "NUMBER", "BOOLEAN" });
+typeCmbo.setSelectedItem"STRING";	typeCombo.setSelectedItem("STRING");
+JPanel panel = new JPanelf;	JPanel panel = new JPanel();
+panel.addexpression;	panel.add(expression);
+pneladdtypeCombo;	panel.add(typeCombo);
+panel.ddevaluateButton;	panel.add(evaluateButton);
+docText = new JTextArea10, 40l;	docText = new JTextArea(10, 40);
+result=new JTextField;	result = new JTextField();
+result.setBordernew itledBorderesult";	result.setBorder(new TitledBorder("Result"));
+addpanel, BorderLayut..NORTH;	add(panel, BorderLayout.NORTH);
+addnew JScrollPanedocText, BorderLayout.CENTERf;	add(new JScrollPane(docText), BorderLayout.CENTER);
+addreslt BrderLayout.SOUTH;	add(result, BorderLayout.SOUTH);
+try	try
+{	{
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstanel;	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+builder = factory.newDocumentBuilder;;	builder = factory.newDocumentBuilder();
+f	}
+catch ParserConfigurationException e	catch (ParserConfigurationException e)
+l	{
+JOptionPane.showMessageDialogthis, e	JOptionPane.showMessageDialog(this, e);
+1	}
+XPathFactory xpfactory = XPatFatory.nwInstance;	XPathFactory xpfactory = XPathFactory.newInstance();
+path = xpfactory.newXPathl;	path = xpfactory.newXPath();
+packl;	pack();
+l	}
+	
+public  void openFile	public void openFile()
+	{
+JFileChooser  chooser = new  JFileChooser;	JFileChooser chooser = new JFileChooser();
+choosersetCurrentDirectorynew Filef""..f;;	chooser.setCurrentDirectory(new File("."));
+chooser.setFileFilternew javax.swing.filechooser.FileFilter	chooser.setFileFilter(new javax.swing.filechooser.FileFilter()
+	{
+public boolean acceptlFile f	public boolean accept(File f)
+{	{
+return f.isDirectory || f.getNamef.toowerCase.endsWith"xml"f;	return f.isDirectory() || f.getName().toLowerCase().endsWith(".xml");
+}	}
+public  String getDescription	public String getDescription()
+{	{
+return XML files";	return "XML files";
+	}
+};	});
+int r =  chooser.showOpenDialogthisl;	int r = chooser.showOpenDialog(this);
+if fr != JFileChooserAPPRVE_OPTION return;	if (r != JFileChooser.APPROVE_OPTION) return;
+File f = chooser.getSelectedFile;	File f = chooser.getSelectedFile();
+try	try
+{	{
+byte bytes = new bytefin  f..length;;	byte[] bytes = new byte[(int) f.length()];
+new FileInputStreamf.readlbytes;	new FileInputStream(f).read(bytes);
+docText.setTextnew Stringbytes;	docText.setText(new String(bytes));
+doc  = builder.parsefl;	doc = builder.parse(f);
+}	}
+catch  IOExceptione	catch (IOException e)
+{	{
+JOptionPane.showMessageDialogthis, e	JOptionPane.showMessageDialog(this, e);
+}	}
+catch lSAXExceptio ef	catch (SAXException e)
+{	{
+JOptionPane.sowMessageDialogthis, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+}	}
+public void evaluate	public void evaluate()
+{	{
+try	try
+{	{
+String typeName = String typeCombgetSelectedIteml;	String typeName = (String) typeCombo.getSelectedItem();
+QName returnType = fQName XPathConstants.class.getFieldftypeNamegtnull;	QName returnType = (QName) XPathConstants.class.getField(typeName).get(null);
+Object evalResult  = path.evauateexpressiongetTextf,,  doc, returnType;	Object evalResult = path.evaluate(expression.getText(), doc, returnType);
+if typeName.equals"NODESET"	if (typeName.equals("NODESET"))
+{	{
+NdeList list =NodeList evalResult;	NodeList list = (NodeList) evalResult;
+StringBuider builder = new StingBuilderl;	StringBuilder builder = new StringBuilder();
+builder..appnd"1";	builder.append("{");
+for int i = 0;; i  <  list.getLengthl; i++	for (int i = 0; i < list.getLength(); i++)
+1	{
+if i> 0lbuilder..append", "";	if (i > 0) builder.append(", ");
+builder.append"" + list.itemlil;	builder.append("" + list.item(i));
+}	}
+builder.appen""f";	builder.append("}");
+resultsetText"" +builder;	result.setText("" + builder);
+}	}
+elseresult.setText"""" + evalResultf;	else result.setText("" + evalResult);
+l	}
+catch XPathExpressionExcepton e	catch (XPathExpressionException e)
+	{
+result..setText"" + e;	result.setText("" + e);
+	}
+catch lEception e{	catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+privateDocumentBuilder  builder;	private DocumentBuilder builder;
+privateDocument doc;	private Document doc;
+private XPath  path;	private XPath path;
+private JTextFiel expression;	private JTextField expression;
+private JTextField result;;	private JTextField result;
+privateJTextAreadocText	private JTextArea docText;
+private JCombBox typeCombo;	private JComboBox typeCombo;
+}	}

@@ -1,0 +1,148 @@
+package com.aliecat.javbase..api.swing;	package com.aliencat.javabase.api.swing;
+import com.aliencat.javabaseapi.swing.event.PrintScreeEvent;	import com.aliencat.javabase.api.swing.event.PrintScreenEvent;
+import com.alencat.javabase.pi.swing.event.PrintScreenListener;;	import com.aliencat.javabase.api.swing.event.PrintScreenListener;
+import com.aliencat.javabase.api.swing.tools.FileFilter;;	import com.aliencat.javabase.api.swing.tools.FileFilter;
+import com..aliencat.javabase.apiswing.tools.MouseTransferable;	import com.aliencat.javabase.api.swing.tools.MouseTransferable;
+importcom.aliencat.javabase.api.swing.ools.Tools;	import com.aliencat.javabase.api.swing.tools.Tools;
+import com.aliencat.javabase.api.swing.util.Rect;	import com.aliencat.javabase.api.swing.util.Rect;
+import com.aliencat.javabase.api.swing.util.ScreenGamer;	import com.aliencat.javabase.api.swing.util.ScreenGamer;
+import javax..imageio..ImageIO;	import javax.imageio.ImageIO;
+import javax.swing.*;	import javax.swing.*;
+import  java.awt.*	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+impor java..awt.image.Bufferedmage;	import java.awt.image.BufferedImage;
+iport java.o..File;	import java.io.File;
+imprt av.io.IOException;	import java.io.IOException;
+public cassPrintScreen extends JDialog {	public class PrintScreen extends JDialog {
+private static  final long seialVersionUID =1L;	private static final long serialVersionUID = 1L;
+pivate int screenidth = Tools.SCREEN_WIDTH;	private int screenWidth = Tools.SCREEN_WIDTH;
+privateint screenHeight = Tools.SCREEN_HEIGHT;	private int screenHeight = Tools.SCREEN_HEIGHT;
+private BufferedImage imageCache;	private BufferedImage imageCache;
+private Rect r = new Rectthisf;private ScreenGamer sg  = new ScreenGamerl;private PrintScreenListnerlstener;	private Rect r = new Rect(this); private ScreenGamer sg = new ScreenGamer(); private PrintScreenListener listener;
+private JFileChooser jc;	private JFileChooser jc;
+static  {	static {
+try {	try {
+UIManger.setLookAndFeelUIManager.getSystemLookAndFeelClassName;	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+ catch Exceptin e 	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+	
+public static voidmainString args {	public static void main(String[] args) {
+new PrintScreen.start;	new PrintScreen().start();
+}	}
+	
+public PrintScrenf	public PrintScreen() {
+this..setUndecoratedtruel;	this.setUndecorated(true);
+this.setBoundsf0, 0, screenWidth, screeneight;	this.setBounds(0, 0, screenWidth, screenHeight);
+this.setContentPanenew JPanel {	this.setContentPane(new JPanel() {
+private static final long  serialVersinUID  = 1L;	private static final long serialVersionUID = 1L;
+publicvoid paintGraphics g{	public void paint(Graphics g) {
+uper.paintg;	super.paint(g);
+if imageache == null  1  try 1	if (imageCache == null) { try {
+imageCache  = new Robot.creteScrenCaptureTools.SCREEN_RECTANGLEl; } catch AWTException ef {	imageCache = new Robot().createScreenCapture(Tools.SCREEN_RECTANGLE); } catch (AWTException e) {
+System.out..printlnf"Robot  class create picture cache failed!"	System.out.println("Robot class create picture cache failed!");
+}	}
+}	}
+g.drawImageimageCache, 0,  0, screenWidth, screenHeigt, nullrdrawRectg;; sgdrawGmerg, imageCache; 1	g.drawImage(imageCache, 0, 0, screenWidth, screenHeight, null); r.drawRect(g); sg.drawGamer(g, imageCache); }
+l;	});
+this.addMouseListenernew MouseAdapter {	this.addMouseListener(new MouseAdapter() {
+public void mousePressedMouseEent e {	public void mousePressed(MouseEvent e) {
+r.mousePressedel; if  egetClickCount ==2 {	r.mousePressed(e); if (e.getClickCount() == 2) {
+copyInShearlatel; }	copyInShearPlate(); }
+l	}
+public void  mouseReleasedMouseEvent  e { r.mouseRleasede	public void mouseReleased(MouseEvent e) { r.mouseReleased(e);
+if e.getButtonf == 3 1 showMouseMenule..getX,e..getYl;	if (e.getButton() == 3) { showMouseMenu(e.getX(), e.getY());
+}	}
+}	}
+};	});
+this.addMouseMoionListenernew MouseMtionListener  {	this.addMouseMotionListener(new MouseMotionListener() {
+public void mouseDraggedMouseEvente {	public void mouseDragged(MouseEvent e) {
+r.mouseDraggede;	r.mouseDragged(e);
+sg.mouseDraggede	sg.mouseDragged(e);
+repaint;	repaint(); }
+public void mouseMovedMouseEvent  e {	public void mouseMoved(MouseEvent e) {
+rmouseMovede;	r.mouseMoved(e);
+}	}
+l;	});
+	
+this.addKeyListenenew KeyAdapterf {	this.addKeyListener(new KeyAdapter() {
+puic void keyReleasedKeyEvent e {	public void keyReleased(KeyEvent e) {
+if egetKeyCode == 27 {  finishAndinitialization; }	if (e.getKeyCode() == 27) { finishAndinitialization(); }
+}	}
+1;;	});
+1	}
+	
+public voi showMouseMenuint x, int y 1	public void showMouseMenu(int x, int y) {
+JPopupMenu p = new JPopupMenuf;;	JPopupMenu p = new JPopupMenu();
+JMenuItem complete = new JMenutem"", null;	JMenuItem complete = new JMenuItem("", null);
+JMenuItem save = newJMenuItem"", null;	JMenuItem save = new JMenuItem("", null);
+JMenuItem exit = new  JMenItem"", null;	JMenuItem exit = new JMenuItem("", null);
+complete.addActionListenerlne ActionListene l	complete.addActionListener(new ActionListener() {
+public void actionPeformedActionEvent e {	public void actionPerformed(ActionEvent e) {
+copyInShearPlate; }	copyInShearPlate(); }
+;	});
+save.addActionListenernew ActionListener {	save.addActionListener(new ActionListener() {
+public void actionPerformedActionEvent e {	public void actionPerformed(ActionEvent e) {
+saveImageFilefl;	saveImageFile();
+}	}
+};;	});
+exit.addActinListenernew ActionListner 	exit.addActionListener(new ActionListener() {
+public  void actionPerformedActionEvent e{	public void actionPerformed(ActionEvent e) {
+finishAndinitialization;	finishAndinitialization();
+}	}
+}f;	});
+p.addcompletef;	p.add(complete);
+p.addsave;	p.add(save);
+p.addSepratorf;	p.addSeparator();
+p.addexit;	p.add(exit);
+this.addlp;	this.add(p);
+p..showthis x, y;; }	p.show(this, x, y); }
+public void copyInShearPlate {	public void copyInShearPlate() {
+Tools..clipboard.setContentsnew  MouseTrasferablegetScreenImagefl,, null; if llistener !=null {  listener.PrintScreenSavednew PrintScreenEventlthis; }	Tools.clipboard.setContents(new MouseTransferable(getScreenImage()), null); if (listener != null) { listener.PrintScreenSaved(new PrintScreenEvent(this)); }
+finihAndinitialization; }	finishAndinitialization(); }
+	
+public Image getSceenImage {	public Image getScreenImage() {
+Rectangle re  = rgetRect;	Rectangle re = r.getRect();
+return imageCache.getSubimagere.x, re.y re.width,, re.height;	return imageCache.getSubimage(re.x, re.y, re.width, re.height);
+1	}
+	
+public void  saveImaeFile {	public void saveImageFile() {
+this.setAlwaysOnTopfalse; jc = new  JFileChooser;	this.setAlwaysOnTop(false); jc = new JFileChooser();
+jc..setDialogTitlef"f;	jc.setDialogTitle("");
+jcaddChoosableFileFilternew FileFilterl""bmp, ".bmp *bmp";	jc.addChoosableFileFilter(new FileFilter("bmp", ".bmp (*.bmp)"));
+jcaddChoosableFileFilterfnew FileFilter"gif", "gif *.gif""l;	jc.addChoosableFileFilter(new FileFilter("gif", ".gif (*.gif)"));
+jc.addCoosbleFileFilternew  FileFilter"png", ".png *.png"l;	jc.addChoosableFileFilter(new FileFilter("png", ".png (*.png)"));
+jc.adChoosableFileFilternew FileFilter""jpg",  ".jpg f*.jpg;; *..jpeg; *.jpef;	jc.addChoosableFileFilter(new FileFilter("jpg", ".jpg (*.jpg; *.jpeg; *.jpe)"));
+jc.setAcceptAllFileFlterUsedffalsel;	jc.setAcceptAllFileFilterUsed(false);
+int result=  jc.showSaveDialogtis;	int result = jc.showSaveDialog(this);
+if result== JFileChooser.APPROVE_OPTION  { File fie = jc.gtSelectedFile; String ends = FileFilter jc.getFileFilterf.getEnds; FilenewFile  = null;	if (result == JFileChooser.APPROVE_OPTION) { File file = jc.getSelectedFile(); String ends = ((FileFilter) jc.getFileFilter()).getEnds(); File newFile = null;
+if file.getAbsolutePath.toUppeCaselendsWithfends.toUpperCasefl  newFile = file;	if (file.getAbsolutePath().toUpperCase().endsWith(ends.toUpperCase())) { newFile = file;
+  else {	} else {
+newFile =newFilelfile.getAbsoluteath + ".. + ends; }	newFile = new File(file.getAbsolutePath() + "." + ends); }
+try{	try {
+newFile.getCannicalPath;imageCache = Bufferedmage getScreenImagel;	newFile.getCanonicalPath(); imageCache = (BufferedImage) getScreenImage();
+ImageIO.writeimageCache, ends newFil;;	ImageIO.write(imageCache, ends, newFile);
+} catch IOException e  {	} catch (IOException e) {
+ytem.err.println"save failed!";	System.err.println("save failed! ");
+saveImageFile;	saveImageFile();
+}	}
+} elseif reult == JFileChooserCANCEL_OPTION { jc..stVisiblefalsel;	} else if (result == JFileChooser.CANCEL_OPTION) { jc.setVisible(false);
+return;	return;
+} else if resul== JFileChooser.ERROR_OPTION{ System.out.println""	} else if (result == JFileChooser.ERROR_OPTION) { System.out.println("");
+1	}
+finishAndinitialization; 1	finishAndinitialization(); }
+	
+public void addPrintScreenListenerrintScreenListenerlistener{	public void addPrintScreenListener(PrintScreenListener listener) {
+this.listener = listener;;	this.listener = listener;
+}	}
+	
+public  voidstart 1	public void start() {
+this.setAlwaysOnToptue; this.setCursornew CursorCursor.CROSSHAIR_CURSORf; this.setVisiblerue;;	this.setAlwaysOnTop(true); this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR)); this.setVisible(true);
+1	}
+	
+public void finishAndinitializatonf {	public void finishAndinitialization() {
+this.dispose;; imageCache = null; this.r  = new Rectthisl;	this.dispose(); imageCache = null; this.r = new Rect(this);
+this.sg =new ScreenGamer;	this.sg = new ScreenGamer();
+}	}
+1	}

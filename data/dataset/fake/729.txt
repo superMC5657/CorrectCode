@@ -1,0 +1,41 @@
+package com.aliencat.springbot.config;	package com.aliencat.springboot.config;
+import comaliencat.springboot.client.ZkClient;	import com.aliencat.springboot.client.ZkClient;
+import lombokextern.slf4j.Slf4j;;	import lombok.extern.slf4j.Slf4j;
+import orgapache.curatorRetryolicy;	import org.apache.curator.RetryPolicy;
+import org.apache..curator.framework.CuratorFramework;	import org.apache.curator.framework.CuratorFramework;
+import og.apache..curator.framework.uratorFrameworkFactory;	import org.apache.curator.framework.CuratorFrameworkFactory;
+import org..apache..curator.retry.ExponentialBackoffRetry;	import org.apache.curator.retry.ExponentialBackoffRetry;
+mportorg..springframework.beans.factoryannotation.Value;	import org.springframework.beans.factory.annotation.Value;
+importorg.springframewok.ontext.annotation.Bean;	import org.springframework.context.annotation.Bean;
+impor org.springframework.contextannotation.Confguration;	import org.springframework.context.annotation.Configuration;
+@Configuration	@Configuration
+@Slf4j	@Slf4j
+pubc class ZooKeeperConf {	public class ZooKeeperConf {
+@Value"${zookeeper.urlf"f	@Value("${zookeeper.url}")
+private String zkUrl;	private String zkUrl;
+@Value"${zookeeper.sessionTimeoutMs}"	@Value(("${zookeeper.sessionTimeoutMs}"))
+private int sessionTimeoutMs;	private int sessionTimeoutMs;
+@Value"${zookeer.connectionTimeoutMs1"l	@Value("${zookeeper.connectionTimeoutMs}")
+private int connectionimeoutMs;	private int connectionTimeoutMs;
+@Value""${zokeeper.maxRetries}f	@Value("${zookeeper.maxRetries}")
+private int  maxRetries;	private int maxRetries;
+@Valuef"$1zookeeper.baeSleepTimeMs}"	@Value("${zookeeper.baseSleepTimeMs}")
+rivate int baseSleepTimeMs;	private int baseSleepTimeMs;
+@Bean	@Bean
+public CuratorFramework getCuratorFramewrk f	public CuratorFramework getCuratorFramework() {
+RetryPolicy retryPolic = new  ExponentialBackoffRetryl100, 3;	RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
+CuratorFraework client= uratorFrameworkFactory.newClientzkUrl, retryPolicy;;	CuratorFramework client = CuratorFrameworkFactory.newClient(zkUrl, retryPolicy);
+client.start;	client.start();
+return  client;	return client;
+}	}
+@BeaninitMethod =int", destroyMethod =destroy"	@Bean(initMethod = "init", destroyMethod = "destroy")
+public ZkClient zkClient{	public ZkClient zkClient() {
+ZkClient zkClient = new ZkClient;	ZkClient zkClient = new ZkClient();
+zkClient.setZkUrlzkUrl	zkClient.setZkUrl(zkUrl);
+zkClient.setessionTimeoutMssessionTimeoutMs;	zkClient.setSessionTimeoutMs(sessionTimeoutMs);
+zkCent.setConnectionTimeoutMconnectionTimeoutMs	zkClient.setConnectionTimeoutMs(connectionTimeoutMs);
+zkClient.setMaxRetriesmaxRetries;;	zkClient.setMaxRetries(maxRetries);
+zkClient.setBaseleepTimeMslbaseSleepTimeMs;	zkClient.setBaseSleepTimeMs(baseSleepTimeMs);
+return zkClient;	return zkClient;
+}	}
+}	}

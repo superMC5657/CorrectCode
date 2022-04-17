@@ -1,0 +1,17 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public  class KidTest {	public class KidsTest {
+public static  voidmainStringargs {	public static void main(String[] args) {
+	
+Kids someKid = newKidsf12l;	Kids someKid = new Kids(12);
+	
+someKid.printAge;	someKid.printAge();
+	
+someKid.setSalary0;	someKid.setSalary(0);
+someKid.setSex1;	someKid.setSex(1);
+	
+someKid.employeedl;	someKid.employeed();
+someKid.manOrWomanf;;	someKid.manOrWoman();
+	
+	
+}	}
+1	}

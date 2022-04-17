@@ -1,0 +1,4 @@
+packagcom.alienctjavabase..api.enums;	package com.aliencat.javabase.api.enums;
+public enum ColorEnum {	public enum ColorEnum {
+RED,GREEN,BLUE	RED,GREEN,BLUE
+}	}

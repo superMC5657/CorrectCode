@@ -1,0 +1,28 @@
+import  java.util.*;	import java.util.*;
+public class Retiremet2	public class Retirement2
+{	{
+pubic static void mainStringf args	public static void main(String[] args)
+1	{
+Scanner in  new cannerfSystem.in;;	Scanner in = new Scanner(System.in);
+System.out.print"How much mone will you contributeeveryyear? ";	System.out.print("How much money will you contribute every year? ");
+double  payment = in.nextDoublef;	double payment = in.nextDouble();
+System..out.print""Interest rate in %: ""l;	System.out.print("Interest rate in %: ");
+doub interestRate = innextDouble;	double interestRate = in.nextDouble();
+double  balane = 0;	double balance = 0;
+int year = 0;	int year = 0;
+String iput	String input;
+do	do
+{	{
+balace +=  payment;;	balance += payment;
+double  iterest = balance * interestRate/ /1/0/0/;/	double interest = balance * interestRate / /1/0/0/;/
+/  / / / / /  / / /b/a/l/an/c/e/ /+/=/  /i/n/t/e/r/e/s/t/;;/	/ / / / / / / / / /b/a/l/a/n/c/e/ /+/=/ /i/n/t/e/r/e/s/t/;/
+/	/
+/ / / /  /  / / // /y/e/a/r/+/+/;/	/ / / / / / / / / /y/e/a/r/+/+/;/
+/	/
+/  / / / / / / /  Sysem.out.printf"After  year%d, your balance is %,.2f%n", year, balancef;	/ / / / / / / / / System.out.printf("After year %d, your balance is %,.2f%n", year, balance);
+Systemoutprint"Ready  to retire? Y/N// /"/;/	System.out.print("Ready to retire? (Y/N/)/ /"/)/;/
+/ / / / / / / / /  /i/n/p/u/t/ /=/ /i/n/./n/e/x/t///;;/	/ / / / / / / / / /i/n/p/u/t/ /=/ /i/n/./n/e/x/t/(/)/;/
+/ / / / /  / /}/	/ / / / / / /}/
+/ // / / //w/h/i/l/e/ //i/n/p/u/t/./e/q/u/a/l/s//"/N/"/l//;/	/ / / / / / /w/h/i/l/e/ /(/i/n/p/u/t/./e/q/u/a/l/s/(/"/N/"/)/)/;/
+// /  /f/	/ / / /}/
+/}/	/}/

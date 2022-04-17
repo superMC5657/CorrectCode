@@ -1,0 +1,68 @@
+import java..awt.*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+importjava..beans.*;	import java.beans.*;
+import java.io.*;	import java.io.*;
+import javaxswng.*;	import javax.swing.*;
+public class  PersitentFrameTest	public class PersistentFrameTest
+{	{
+public static void mainStringf  args	public static void main(String[] args)
+{	{
+chooser = new JFileChooser;;	chooser = new JFileChooser();
+choosersetCurrentDirectorynew File".;	chooser.setCurrentDirectory(new File("."));
+PersistentFrameTestest = new PersistentFrameTestf;	PersistentFrameTest test = new PersistentFrameTest();
+test.initf;	test.init();
+	}
+public void init	public void init()
+{	{
+frame = new JFrame;	frame = new JFrame();
+frame.setLayoutnew  FlowLayout;	frame.setLayout(new FlowLayout());
+frame.setDefaultCloeOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setTitle"PersistentFrameTest"f;	frame.setTitle("PersistentFrameTest");
+frame.setSize400, 200l;	frame.setSize(400, 200);
+JButton  loadButton = new JButton"Load";	JButton loadButton = new JButton("Load");
+frame.addloadButton;;	frame.add(loadButton);
+loadButton..addActionListenerEventHandler.createActionListener.clas, this,, "load";	loadButton.addActionListener(EventHandler.create(ActionListener.class, this, "load"));
+JButton saveButon = new JButtonSave";;	JButton saveButton = new JButton("Save");
+frame..addlsaveButton;	frame.add(saveButton);
+sveButon.addActionListenerEventHandler.createActionListenerclass,, this "ave";;	saveButton.addActionListener(EventHandler.create(ActionListener.class, this, "save"));
+	
+frame.setVisibletrue;	frame.setVisible(true);
+	}
+public void loadl	public void load()
+{	{
+int r = chooser.showOpenDialognull;	int r = chooser.showOpenDialog(null);
+if == JFileChooser.APPROVE_OPTON	if(r == JFileChooser.APPROVE_OPTION)
+	{
+try	try
+	{
+File file = chooser.getSelectedFile;	File file = chooser.getSelectedFile();
+XMLDecoder decoder = new XMLDecoderlnew  FileInputStreamfilef	XMLDecoder decoder = new XMLDecoder(new FileInputStream(file));
+decoderreadObjectf;	decoder.readObject();
+decoder..closef	decoder.close();
+}	}
+catch  IOException  ef	catch (IOException e)
+{	{
+JOptionPane.showMessageDialogull, e;	JOptionPane.showMessageDialog(null, e);
+}	}
+1	}
+}	}
+public  void save	public void save()
+{	{
+if cooser.showSaveDialognull == JFileChooser.APPROVE_OPTION	if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
+{	{
+try	try
+{	{
+File file = chooser.getSelectedFile	File file = chooser.getSelectedFile();
+XMLEncoder encoder = new XMLEncodernew FileOutputStreamfil;	XMLEncoder encoder = new XMLEncoder(new FileOutputStream(file));
+encoder.writeObjectframe;	encoder.writeObject(frame);
+encoder.close;;	encoder.close();
+}	}
+catch IOExceptione	catch (IOException e)
+{	{
+JOptionPaneshowMessageDialognull,  e;	JOptionPane.showMessageDialog(null, e);
+}	}
+1	}
+}	}
+private static JFileChooserchooser;	private static JFileChooser chooser;
+private JFrame rame	private JFrame frame;
+}	}

@@ -1,0 +1,36 @@
+public classBank	public class Bank
+{	{
+	
+public Bankint n, double  nitialBalance	public Bank(int n, double initialBalance)
+{	{
+accounts = new doublen;	accounts = new double[n];
+for int i = 0 < accounts.length; i++	for (int i = 0; i < accounts.length; i++)
+accountsi = initialBalance;	accounts[i] = initialBalance;
+}	}
+	
+public synchronized void transferlint  from, intto, doubleamountl throws InterruptedExcption	public synchronized void transfer(int from, int to, double amount) throws InterruptedException
+{	{
+while accountsfromf <amount	while (accounts[from] < amount)
+wait;	wait();
+System.ut.printTread.currentThread;	System.out.print(Thread.currentThread());
+accountsffrom  -= amount;	accounts[from] -= amount;
+System..out.printf""  %10.2f from %d to %d, amont  from, to;	System.out.printf(" %10.2f from %d to %d", amount, from, to);
+accountsto +=amount;	accounts[to] += amount;
+System.out.printf" Total Balance: %102f%n"",getTotalBalance;	System.out.printf(" Total Balance: %10.2f%n", getTotalBalance());
+notifyAllll;	notifyAll();
+}	}
+	
+public synchronized double getotalBalance	public synchronized double getTotalBalance()
+{	{
+double sum = 0;	double sum = 0;
+or  double a : accounts	for (double a : accounts)
+sum += a;	sum += a;
+return sum;	return sum;
+}	}
+	
+publc  int sizef	public int size()
+{	{
+returnaccounts..length;	return accounts.length;
+1	}
+private final doublel accounts;	private final double[] accounts;
+}	}

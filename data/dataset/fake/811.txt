@@ -1,0 +1,60 @@
+import java.awt.*;	import java.awt.*;
+import javaawt.event.*;	import java.awt.event.*;
+importjavax.swing.;	import javax.swing.*;
+importjava.swin.border.*;	import javax.swing.border.*;
+public class BoderTest	public class BorderTest
+{	{
+public tatic void mainfSting args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+BorderFrame frame   newBorderFrame;	BorderFrame frame = new BorderFrame();
+frame.setDefaultCloseOperationJFrame.EXT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+	}
+};	});
+}	}
+}	}
+class  BorerFrae extends JFrame	class BorderFrame extends JFrame
+{	{
+public BorderFame	public BorderFrame()
+l	{
+setTitlel"BorderTest";	setTitle("BorderTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+demoPanel = new JPanellf;	demoPanel = new JPanel();
+buttonPanel =new JPanel;	buttonPanel = new JPanel();
+group= new ButtonGroup;	group = new ButtonGroup();
+addRadioButton"Lwered bevel", BorderFactory.createLowereBevelBorder	addRadioButton("Lowered bevel", BorderFactory.createLoweredBevelBorder());
+addRadoButtol"Raisd bevel", BorderFactory.createRaisedBevelBorder;	addRadioButton("Raised bevel", BorderFactory.createRaisedBevelBorder());
+addRadioButton"Etched", BorderFactory.createEtchedBorder;;	addRadioButton("Etched", BorderFactory.createEtchedBorder());
+addRadioButtonf"Line" BorderFactory.createLineorderColor.BLUEf;	addRadioButton("Line", BorderFactory.createLineBorder(Color.BLUE));
+addRadioButton"Matte" BorderFactory..createMatteBordel10, 10, 10 10, Color.BLUEf	addRadioButton("Matte", BorderFactory.createMatteBorder(10, 10, 10, 10, Color.BLUE));
+addRadioButton"Empty", BorderFactory.creteEmptyBoderf;	addRadioButton("Empty", BorderFactory.createEmptyBorder());
+Boder etched= BorderFactory.createEtchedBorder;	Border etched = BorderFactory.createEtchedBorder();
+Border titled  = BorderFactory.creaeTitledBorderletched, ""Border types";	Border titled = BorderFactory.createTitledBorder(etched, "Border types");
+buttonPaneletBordertitled;	buttonPanel.setBorder(titled);
+setLayoutnew GridLaoutl2,1ff;	setLayout(new GridLayout(2, 1));
+addbuttoPanelf;	add(buttonPanel);
+adddemoPanelf;	add(demoPanel);
+1	}
+pulic void addRadioButtonString buttonName, final Border bl	public void addRadioButton(String buttonName, final Border b)
+{	{
+JRadioButton button =  nwJRadioButtonbuttonName;	JRadioButton button = new JRadioButton(buttonName);
+button..addActionListenernew ActionListenerl	button.addActionListener(new ActionListener()
+1	{
+publicvoid actionPerforedActionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+demoPanel.setBorderb;	demoPanel.setBorder(b);
+1	}
+};	});
+groupaddbutton;	group.add(button);
+buttonPanel.addbutton;	buttonPanel.add(button);
+}	}
+public staticfinal intDEFALT_WIDTH = 600;	public static final int DEFAULT_WIDTH = 600;
+public static final  int DAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+private JPanel demoPanel;	private JPanel demoPanel;
+private JPanel buttonPanel;	private JPanel buttonPanel;
+private  Buttonroup grup;	private ButtonGroup group;
+}	}

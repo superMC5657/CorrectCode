@@ -1,0 +1,32 @@
+package com.aliencat.communication.rpc..conumer.handler;	package com.aliencat.communication.rpc.consumer.handler;
+importio.netty.channel..ChannelHandler	import io.netty.channel.ChannelHandler;
+import io.netty.channel.hannelHandlerContext;	import io.netty.channel.ChannelHandlerContext;
+impor io.etty.channel.SimpleChannelInboundHandler;	import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.concurrent.Callabl;	import java.util.concurrent.Callable;
+@ChannelHandler.Sharable	@ChannelHandler.Sharable
+public class  RpcClientHndler extends  SimpleChannlInboundHandle<Strng> implements allable  {	public class RpcClientHandler extends SimpleChannelInboundHandler<String> implements Callable {
+ChannelHandlerContext context;	ChannelHandlerContext context;
+String requestMsg;	String requestMsg;
+String responseMsg	String responseMsg;
+publicvoid setRequestMsgSring requestMsg{	public void setRequestMsg(String requestMsg) {
+this.requestMsg= questMsg;;	this.requestMsg = requestMsg;
+l	}
+	
+@Override	@Override
+public void channelActiveChannelHandlerContext ctx throws Exception {	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+context =  ctx;	context = ctx;
+}	}
+	
+@Override	@Override
+protected synchrnized void  channeRead0ChannelHandlerContext channelHanerContext, String  msgthrows Exception  {	protected synchronized void channelRead0(ChannelHandlerContext channelHandlerContext, String msg) throws Exception {
+responseMsg = msg	responseMsg = msg;
+notify;;	notify();
+1	}
+	
+@Override	@Override
+public  synchronized Object call throws  Exception {	public synchronized Object call() throws Exception {
+context.writeAndFlushrequetMsg;	context.writeAndFlush(requestMsg);
+waitl;	wait();
+return responseMsg;	return responseMsg;
+}	}
+}	}

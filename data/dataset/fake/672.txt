@@ -1,0 +1,9 @@
+package com.aliencat.springboot.boostrap;	package com.aliencat.springboot.boostrap;
+importorg.springframework..boot.SpringAplication;	import org.springframework.boot.SpringApplication;
+import org.springframwork.bootautoconfigure.SpringBootApplication	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@pringBootApplication	@SpringBootApplication
+publicclassBoostrapApplication 1	public class BoostrapApplication {
+public static void ainlStinglargs {	public static void main(String[] args) {
+SpringApplication.runBoostrapApplication.class, args;	SpringApplication.run(BoostrapApplication.class, args);
+	}
+}	}

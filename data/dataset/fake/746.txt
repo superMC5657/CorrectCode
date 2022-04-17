@@ -1,0 +1,11 @@
+package  com.alienat..testingservice;	package com.aliencat.testing.service;
+import org..springframework..beans.actory.annotationValue;	import org.springframework.beans.factory.annotation.Value;
+import org..springramework..stereotype.Service;	import org.springframework.stereotype.Service;
+@Service	@Service
+public clas FiledSevice f	public class FiledService {
+@Value"${system.limit"	@Value("${system.limit}")
+privateLong limit;	private Long limit;
+public Long getLimit {	public Long getLimit() {
+return limit;	return limit;
+}	}
+}	}

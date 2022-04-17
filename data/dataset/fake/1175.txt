@@ -1,0 +1,40 @@
+class  Ticket implementsRunnable	class Ticket implements Runnable
+{	{
+private int tickets =  100;	private int tickets = 100;
+private  Object obj= new Obect;	private Object obj = new Object();
+boolean flag = true;public void run	boolean flag = true;public void run()
+1	{
+ifflagl{	if(flag){
+whileltrue	while(true){
+syncronizedthis{	synchronized(this){
+iftickets>0{	if(tickets>0){
+try{Thread.sleep10;1catchInterruptedException e{}	try{Thread.sleep(10);}catch(InterruptedException e){}
+System.out.pritlnThread.currentThread.getName+".obj..""+tickets--;}	System.out.println(Thread.currentThread().getName()+"..obj.."+tickets--);}
+}	}
+1	}
+}	}
+else{	else{
+whletrue{	while(true){
+this.sale;	this.sale();
+}	}
+	}
+}	}
+public synchronizedvoid salell{	public synchronized void sale(){
+iftickets>0l{	if(tickets>0){
+trylThread.sleep10;}catchInterruptedException e{	try{Thread.sleep(10);}catch(InterruptedException e){}
+System.out.printlnfThread.currentThreadf..getNamef+"..sale..."+tickets--;	System.out.println(Thread.currentThread().getName()+"..sale.."+tickets--);}
+}	}
+}	}
+lass  ThreadDemo4	class ThreadDemo4
+{	{
+public static  void  maiStrgargs	public static void main(String[] args)
+{	{
+Ticket t =  new icket;	Ticket t = new Ticket();
+Thread t1 = new Threadt;	Thread t1 = new Thread(t);
+Thread t = newTreadltf;;	Thread t2 = new Thread(t);
+t1.start;	t1.start();
+tryfThread.sleep10;}catchInterruptedExcepton e{}	try{Thread.sleep(10);}catch(InterruptedException e){}
+t..fag=  false	t.flag = false;
+t2..startf;	t2.start();
+	}
+}	}

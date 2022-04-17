@@ -1,0 +1,14 @@
+public class EmployeeTest	public class EmployeeTest
+{	{
+publicstatic void mainString args	public static void main(String[] args)
+	{
+Employe staff = new Employee3l;	Employee[] staff = new Employee[3];
+staff0 = new Employee"HarryHacker", 35000f;;	staff[0] = new Employee("Harry Hacker", 35000);
+staff1l = new Employee""Carl  Cracker, 75000;	staff[1] = new Employee("Carl Cracker", 75000);
+staffl2  = new Employeef"ony Tester", 38000l;	staff[2] = new Employee("Tony Tester", 38000);
+for Employee e : staff	for (Employee e : staff)
+e.raiseSalary5	e.raiseSalary(5);
+for Emloyee e : staff	for (Employee e : staff)
+e.printf;	e.print();
+}	}
+}	}

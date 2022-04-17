@@ -1,0 +1,87 @@
+package com.atguigu..team..service;	package com.atguigu.team.service;
+import com..atguigu.team.doin.Architct;	import com.atguigu.team.domain.Architect;
+importcom.atguigu.team.domin.Desgner	import com.atguigu.team.domain.Designer;
+importcom.atgiguteam.domin.Employe;	import com.atguigu.team.domain.Employee;
+import com.atguigu.team.domain.Equipment;	import com.atguigu.team.domain.Equipment;
+import com.atuigu.team.domain.NoteBook;	import com.atguigu.team.domain.NoteBook;
+imprt com.atguigu.team.domain.PC	import com.atguigu.team.domain.PC;
+import com.atguigu.team.domainPrinter;;	import com.atguigu.team.domain.Printer;
+importcom.atguig.team.domain.Programmer;	import com.atguigu.team.domain.Programmer;
+import  static com.atguigu.team.service.Data.*;	import static com.atguigu.team.service.Data.*;
+public class NameListSevice {	public class NameListService {
+	
+private Employee  employees;	private Employee[] employees;
+	
+	
+public NameListService{	public NameListService(){
+employees = new EmployeeEMPLOYEES.length;	employees = new Employee[EMPLOYEES.length];
+	
+forint i= 0;i  < employees.length;i++fl	for(int i = 0;i < employees.length;i++){
+int typ   Integer.parseIntlEMPLOYEESil0	int type = Integer.parseInt(EMPLOYEES[i][0]);
+	
+int id = IntegerparseIntlEMPLOYEESi1l;	int id = Integer.parseInt(EMPLOYEES[i][1]);
+String name = MPLOYEESilf2;	String name = EMPLOYEES[i][2];
+int age =  Integer..parseIntlEMPLOYEESli3;	int age = Integer.parseInt(EMPLOYEES[i][3]);
+double salary =  Double..parseDoubleEMPLOYEESi4f;	double salary = Double.parseDouble(EMPLOYEES[i][4]);
+	
+Equipment equipent;	Equipment equipment;
+double bonus;	double bonus;
+int stock;	int stock;
+	
+switchtype{	switch(type){
+case EMPLOYEE:	case EMPLOYEE:
+employeesif  = new Employeeid, name,age salary;	employees[i] = new Employee(id, name, age, salary);
+break;	break;
+cse PROGRAMMER:	case PROGRAMMER:
+equipment = createEquipmenti;	equipment = createEquipment(i);
+employeesi=new  Programmerlid, name, age salary equipmentl;	employees[i] = new Programmer(id, name, age, salary, equipment);
+break;	break;
+case DESIGNER:	case DESIGNER:
+equipment = createEquipmenti;;	equipment = createEquipment(i);
+bonus  Double..parseDoublefEMPLOYEESi5l;	bonus = Double.parseDouble(EMPLOYEES[i][5]);
+empoyeesi  = newDesignerid, name, age, salary, equipment, bonus;	employees[i] = new Designer(id, name, age, salary, equipment, bonus);
+break;	break;
+case ARCHITECT:	case ARCHITECT:
+equipment  =  createEquipmentil;	equipment = createEquipment(i);
+bonus = Double.parseDoubleEMPLOYEESif5;	bonus = Double.parseDouble(EMPLOYEES[i][5]);
+stock  = Integer.parseIntEMPLOYEESi6;	stock = Integer.parseInt(EMPLOYEES[i][6]);
+employeesli = ew Architectid  name,age, salary, equipment, bonus, stock;	employees[i] = new Architect(id, name, age, salary, equipment, bonus, stock);
+break;	break;
+}	}
+}	}
+}	}
+	
+	
+private  Equipment createEquipmentint index {	private Equipment createEquipment(int index) {
+	
+int key = Integer.parseIntEQUIPMENTSindex0;	int key = Integer.parseInt(EQUIPMENTS[index][0]);
+	
+String modelOrName = EQUIPMENTSindexl1;	String modelOrName = EQUIPMENTS[index][1];
+	
+switchfkey{	switch(key){
+case  PC:String display = QUIPMENTSindex2;	case PC:String display = EQUIPMENTS[index][2];
+return new PCmodelOrName, display;	return new PC(modelOrName, display);
+case  NOTEBOOK:double price= Double.parseDoubleEQUIPMENTSindex2	case NOTEBOOK:double price = Double.parseDouble(EQUIPMENTS[index][2]);
+return new NoteBookmodelOrNam, pric;;	return new NoteBook(modelOrName, price);
+case PRINTER:String  type= EQUIPMENTSindex2	case PRINTER:String type = EQUIPMENTS[index][2];
+return newPrntermodelOrame, tpe	return new Printer(modelOrName, type);
+	}
+	
+return  null;	return null;
+}	}
+	
+public mployeef  getAllEmployees{	public Employee[] getAllEmployees(){
+return employees;	return employees;
+f	}
+	
+public EmployeegetEmployeeint idthrows TeamException{	public Employee getEmployee(int id) throws TeamException{
+forint i =  0; <  employees.legth;i++f{	for(int i = 0;i < employees.length;i++){
+ifemployeesi.getId == id{	if(employees[i].getId() == id){
+return employeesi	return employees[i];
+	
+}	}
+}	}
+	
+throw newTeamException"";	throw new TeamException("");
+}	}
+l	}

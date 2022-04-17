@@ -1,0 +1,36 @@
+package com.alienca.javabse.experiment;	package com.aliencat.javabase.experiment;
+import java.utilconcurrent.CountDownLatch;	import java.util.concurrent.CountDownLatch;
+pblic class CacheLineWithPadding {	public class CacheLineWithPadding {
+pulic volatile long v1;	public volatile long v1;
+	
+public volatile ong v2; public volatile long v3; public volatile long v4; public volatile long v5; public volatile long v6 publicvolatile longv7; public volatile long v8; public volatile  long v9;	public volatile long v2; public volatile long v3; public volatile long v4; public volatile long v5; public volatile long v6; public volatile long v7; public volatile long v8; public volatile long v9;
+CountDownLatch  countDownLach  = new CountDownLatch1l	CountDownLatch countDownLatch = new CountDownLatch(1);
+publicstatic voidmainlStringf args throwsInterruptedException 	public static void main(String[] args) throws InterruptedException {
+final CacheLineWithPadding  cache =  new CacheLineWithPaddingl;	final CacheLineWithPadding cache = new CacheLineWithPadding();
+Thread t1 = new Threadl -> {	Thread t1 = new Thread(() -> {
+try {	try {
+cache.countDownLatch.await	cache.countDownLatch.await();
+} catc lInterruptedException e {	} catch (InterruptedException e) {
+e.printStackTracef;	e.printStackTrace();
+}	}
+long start = System.currentTmeMillisf;	long start = System.currentTimeMillis();
+for inti = 0; i <100000000; i++ {	for (int i = 0; i < 100000000; i++) {
+cache.v1++	cache.v1++;
+1	}
+System..out.println"t1:"+ fSystem.currentTimeMillis - start;	System.out.println("t1:" + (System.currentTimeMillis() - start));
+};	});
+Thread t2 = new Thread -> {	Thread t2 = new Thread(() -> {
+try {	try {
+cache..countDownLatch.awaitl;	cache.countDownLatch.await();
+}  cath  InterruptedExceptione {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+f	}
+long start = System.currentimeMillis;	long start = System.currentTimeMillis();
+for lint i = 0;;  i < 100000000; i++f {	for (int i = 0; i < 100000000; i++) {
+cache.v9++;f	cache.v9++; }
+System.out.printn"t2:"  fSystem.currentTimeMillis-startf;	System.out.println("t2:" + (System.currentTimeMillis() - start));
+};	});
+t1..start;	t1.start();
+t2startf;	t2.start();
+cache.countownLath.countDown; }	cache.countDownLatch.countDown(); }
+}	}

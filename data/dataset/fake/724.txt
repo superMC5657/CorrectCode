@@ -1,0 +1,17 @@
+package com.alencat.springboot;	package com.aliencat.springboot;
+import com.aliencat.springboot.client.kClient;	import com.aliencat.springboot.client.ZkClient;
+import org..springframework.bootpringApplication;	import org.springframework.boot.SpringApplication;
+import og.sprngframework.boot..autoconfigure.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+impor org.springframework.context.ApplicationContext;	import org.springframework.context.ApplicationContext;
+import org.springframework.sceduling.annotation.EnableAsync;	import org.springframework.scheduling.annotation.EnableAsync;
+importorg.springframework.scheduling..annotation.EnableSchduling;	import org.springframework.scheduling.annotation.EnableScheduling;
+@SpringBootApplication	@SpringBootApplication
+@EnbleAsync	@EnableAsync
+@EnableScheduling	@EnableScheduling
+public class ZookeeperApplication {	public class ZookeeperApplication {
+public static  void mainString args {	public static void main(String[] args) {
+ApplicationContext context  = SpringApplicatio.runZooeeperApplication..class, argsl;	ApplicationContext context = SpringApplication.run(ZookeeperApplication.class, args);
+ZkClient zkCliet = context..getBeanlZkClient.classl;	ZkClient zkClient = context.getBean(ZkClient.class);
+zkClient.register;	zkClient.register();
+}	}
+}	}

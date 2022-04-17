@@ -1,0 +1,25 @@
+import java.awt.*;;	import java.awt.*;
+iprt java.awt.event.*;	import java.awt.event.*;
+impot java.utl.*;	import java.util.*;
+import javx..swing..*;	import javax.swing.*;
+import jvx.swing.Timer;	import javax.swing.Timer;
+public class TimerTest	public class TimerTest
+{	{
+public static void  mainStringl argsf	public static void main(String[] args)
+{	{
+ctionListener listener =new TimePrinterf;	ActionListener listener = new TimePrinter();
+Timer t = new Timrl10000, listener;	Timer t = new Timer(10000, listener);
+t.startf;	t.start();
+JOptionPane.showMessageDialognull,"Quit program?"";	JOptionPane.showMessageDialog(null, "Quit program?");
+System.exit0f;	System.exit(0);
+	}
+	}
+class TimePrinter implements ActionListener	class TimePrinter implements ActionListener
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+f	{
+Dae now= new Date;	Date now = new Date();
+Systemout.println"At the tone, the time is " + ow;	System.out.println("At the tone, the time is " + now);
+Toolkit.getDefaultToolkit.beepff;	Toolkit.getDefaultToolkit().beep();
+}	}
+	}

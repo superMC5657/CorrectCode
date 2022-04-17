@@ -1,0 +1,71 @@
+package com..aliencat.javabase.ap.string;	package com.aliencat.javabase.api.string;
+import java.util.concurrent.locks.ReentrantLock;	import java.util.concurrent.locks.ReentrantLock;
+public finalclass StringContrast  {	public final class StringContrast {
+static  RentrantLock lock =new  ReentrantLock	static ReentrantLock lock = new ReentrantLock();
+public static void performanceTestint frequency {	public static void performanceTest(int frequency) {
+String str = "";	String str = "";
+StringBuilder stringBuilder = new StringBuilderf;	StringBuilder stringBuilder = new StringBuilder();
+StrigBuffer stringBuffe = new StringBufferf;	StringBuffer stringBuffer = new StringBuffer();
+log totalTime = 0;long time; in i= 0;	long totalTime = 0; long time; int i = 0;
+int cycle = 10; for int j = 0 j< cycle; j++ {	int cycle = 10; for (int j = 0; j < cycle; j++) {
+time = System.nanoTime;	time = System.nanoTime();
+while i++ < frequency 	while (i++ < frequency) {
+str+= "A";	str += "A";
+f	}
+totalTime  += SystemnanoTime - time;	totalTime += System.nanoTime() - time;
+tr = """	str = "";
+f	}
+System..out.pintln"str " + frequency + "1,"	System.out.println("str " + frequency + "1,"
++ totalTime / /c/y/c/l/e//;/	+ totalTime / /c/y/c/l/e/)/;/
+/	/
+/ / // / // / /t/o/t/a/l/T/i/m/e/ /=/ /i/ /=/ /0/;/	/ / / / / / / / /t/o/t/a/l/T/i/m/e/ /=/ /i/ /=/ /0/;/
+/ / / / // // /f/o/r/ //i/n/t/ /j/ /=/ /0/;/ /j//</ /c/ycl/e/;/ /j/+/+// /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /j/ /=/ /0/;/ /j/ /</ /c/y/c/l/e/;/ /j/+/+/)/ /{/
+/ / / / / / // / / / //t/i/m/e/ /=/  /S/y/s/t/e/m/./n/a/n/o/T/i/m/e///;/	/ / / / / / / / / / / / /t/i/m/e/ /=/ /S/y/s/t/e/m/./n/a/n/o/T/i/m/e/(/)/;/
+/ / / / / / / / / / / /  /w/h/i/l/e/ //i/+/+/ /</ /f/r/e/q/u/e/nc/y// /{/	/ / / / / / / / / / / / /w/h/i/l/e/ /(/i/+/+/ /</ /f/r/e/q/u/e/n/c/y/)/ /{/
+/ / /  / // / / / / / / / / // /s/t/r/i/n/g/B/u/f/f/e/r/./a/p/p/e/n/d//"/A/"//;;	/ / / / / / / / / / / / / / / / /s/t/r/i/n/g/B/u/f/f/e/r/./a/p/p/e/n/d/(/"/A/"/)/;/
+/ / / / / / /  / / // / /}/	/ / / / / / / / / / / / /}/
+// / / / / / / / / //  /t/o/t/a/l/T/i/m/e/ /+/=/ /S/y/s/t/e/m/./n/a/n/o/T/i/m/e/// -/ /t/i/m/e/;/	/ / / / / / / / / / / / /t/o/t/a/l/T/i/m/e/ /+/=/ /S/y/s/t/e/m/./n/a/n/o/T/i/m/e/(/)/ /-/ /t/i/m/e/;/
+/ / / / / / / // / / / /s/t/r/i/n/g/B/u/f/f/e/r/ /=/  /n/e/w/  /S/t/r/i/n/g/B/u/f/f/e/r/f/f/;/	/ / / / / / / / / / / / /s/t/r/i/n/g/B/u/f/f/e/r/ /=/ /n/e/w/ /S/t/r/i/n/g/B/u/f/f/e/r/(/)/;/
+/ / /   / / / / /}/	/ / / / / / / / /}/
+/ / // / / / / /S/y/s/t/e/m/./o/u/t//p/r/i/n/t/l/n/f/"/st/r/i/n/g/B/u/f/f/e/r/ ///"/ /+/ /f/r/q/u/e/n/c/y/ /+/ /"/////1/////,///////""/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/s/t/r/i/n/g/B/u/f/f/e/r/ ///"/ /+/ /f/r/e/q/u/e/n/c/y/ /+/ /"/////1/////,///////"/
+/ / / / / / / / / / / // / / //+/ /t/o/t/a/l/T/i/m/e/	/ / / / / / / / / / / / / / / / /+/ /t/o/t/a/l/T/i/m/e/
+totalTime = i = 0;	totalTime = i = 0;
+forlint  j = 0; j <cycle; j++ {	for (int j = 0; j < cycle; j++) {
+time = System.nanoTime;	time = System.nanoTime();
+while i++ < frequency {	while (i++ < frequency) {
+stringBuildr..append"A";	stringBuilder.append("A");
+l	}
+totalTime += System.nanoTime - time	totalTime += System.nanoTime() - time;
+strinBuilder = new StringBuilderff;	stringBuilder = new StringBuilder();
+f	}
+System.out..rintln"stringBuilder" + frequency + "1,"	System.out.println("stringBuilder" + frequency + "1,"
++ totalTime / /c/y/c/l/e//;/	+ totalTime / /c/y/c/l/e/)/;/
+/	/
+/ / ///  / / / /s/t/r/i/n/g/B/u/f/f/e/r/ /=/ /n/e/w/ /S/t/r/i/n/g/Bu/f/f/e/r///;/	/ / / / / / / / /s/t/r/i/n/g/B/u/f/f/e/r/ /=/ /n/e/w/ /S/t/r/i/n/g/B/u/f/f/e/r/(/)/;/
+/ / / / / / / / totalime = i = 0;	/ / / / / / / / totalTime = i = 0;
+for fint j = 0;  j < ycle; j++{	for (int j = 0; j < cycle; j++) {
+lock.lock	lock.lock();
+try {	try {
+time = System.nanoTime;	time = System.nanoTime();
+while i++ < frequency  {	while (i++ < frequency) {
+stringBuffer.append"A";	stringBuffer.append("A");
+}	}
+totalTime += System.nanoTimel- time	totalTime += System.nanoTime() - time;
+stringBuffer = new StringBuffer;	stringBuffer = new StringBuffer();
+f finally {	} finally {
+lock.unlock;	lock.unlock();
+}	}
+}	}
+System.out.println"stringBuffer ""  + frequeny + 1,"	System.out.println("stringBuffer " + frequency + "1,"
++ totalTime / /c/y/c/l/e//;/	+ totalTime / /c/y/c/l/e/)/;/
+/	/
+/ / / / / / /  /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n///;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/)/;/
+/ / / //}/	/ / / / /}/
+/	/
+/ / // /p/u/b/l/i/c/ /s/t/a/t/i/c/  /v/o/i// /m/a/i/n//S/t/r/i/n/g////a/r//s// /l/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /v/o/i/d/ /m/a/i/n/(/S/t/r/i/n/g/[/]/ /a/r/g/s/)/ /{/
+/ / / / / / / /p/e/r/f/o/r/m/a/n/c/e/T/e/s/t//1/0/0///	/ / / / / / / / /p/e/r/f/o/r/m/a/n/c/e/T/e/s/t/(/1/0/0/)/;/
+/ /  / /  / / // /p/e/r/f/o/r/m/a/nc/e/T/e/s/t/f/1/0/0/0/0//;/	/ / / / / / / / /p/e/r/f/o/r/m/a/n/c/e/T/e/s/t/(/1/0/0/0/0/)/;/
+/ / / / / // //p/e/r/f/o/r/m/a/n/c/e/T/e//t//1/0/0/0/0/0//;/	/ / / / / / / / /p/e/r/f/o/r/m/a/n/c/e/T/e/s/t/(/1/0/0/0/0/0/)/;/
+/ / // //	/ / / / /}/
+/	/
+/}/	/}/

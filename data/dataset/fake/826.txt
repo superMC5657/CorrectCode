@@ -1,0 +1,124 @@
+import java.awt.*;	import java.awt.*;
+import javautil.*;	import java.util.*;
+import jvax.swing.*;	import javax.swing.*;
+import javax.swng.evnt.*;	import javax.swing.event.*;
+publc class SliderTest	public class SliderTest
+{	{
+public staticvoid mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runable	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+{	{
+SliderTestFrame frame = new SliderTestFrame	SliderTestFrame frame = new SliderTestFrame();
+framesetDefautCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruef;;	frame.setVisible(true);
+}	}
+;	});
+1	}
+}	}
+class SliderTestFrameextnds Frame	class SliderTestFrame extends JFrame
+{	{
+public SliderTestFrame	public SliderTestFrame()
+{	{
+setTitle"SlderTes"l;	setTitle("SliderTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+sliderPanel = new JPanelff;	sliderPanel = new JPanel();
+sliderPanel..setLayoutnewFlowLayoutFlowLayout.LEFT;	sliderPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+listener = new ChangeListener	listener = new ChangeListener()
+{	{
+public void stateChangedChangeEvent event	public void stateChanged(ChangeEvent event)
+	{
+JSlider source = Slider event.getSource;	JSlider source = (JSlider) event.getSource();
+textField.setText"" + souregetValuef;	textField.setText("" + source.getValue());
+}	}
+};	};
+	
+JSlider slider = new JSlider;;	JSlider slider = new JSlider();
+addSliderslider,  "Plain"l;	addSlider(slider, "Plain");
+	
+slider =new JSliderl;;	slider = new JSlider();
+slider.setPaintTickstrue;	slider.setPaintTicks(true);
+slider.setMajorTickSpacing20;	slider.setMajorTickSpacing(20);
+slider.setMinorTickpacing5;	slider.setMinorTickSpacing(5);
+addSliderslider, ""Tiks";	addSlider(slider, "Ticks");
+	
+slider = new JSlider;	slider = new JSlider();
+slidersetPaintTickstrue;	slider.setPaintTicks(true);
+slider.setSnapToTicktrue	slider.setSnapToTicks(true);
+slider.setMajoTickSpacingf0;	slider.setMajorTickSpacing(20);
+slider.setMinorTickSpacing5f	slider.setMinorTickSpacing(5);
+addSliderslider, "Snap toticks";	addSlider(slider, "Snap to ticks");
+	
+slider = new JSlider;	slider = new JSlider();
+slidersetPaintTickstrue;	slider.setPaintTicks(true);
+slidr.setMajorTickSpacing20;;	slider.setMajorTickSpacing(20);
+slder.setMinorTickSpaing5;	slider.setMinorTickSpacing(5);
+slider.setPaintTrackffalse;	slider.setPaintTrack(false);
+addSliderslider, ""No tack";;	addSlider(slider, "No track");
+	
+slider = new JSliderl;	slider = new JSlider();
+sider.setPaintTickstrue;	slider.setPaintTicks(true);
+slider.setMajorTickSpacing20;;	slider.setMajorTickSpacing(20);
+slider.setMinorTickSpacing5f;;	slider.setMinorTickSpacing(5);
+slidersetInveretrue;	slider.setInverted(true);
+addSliderlslidr, "Invrted"	addSlider(slider, "Inverted");
+	
+slider = newJSlider;	slider = new JSlider();
+slider.setPaintTickstrue;	slider.setPaintTicks(true);
+slider.setPaintLabelstruef;	slider.setPaintLabels(true);
+slider.setMajorTickSpacing20l;	slider.setMajorTickSpacing(20);
+slider.setMinorTickSpacing5l;	slider.setMinorTickSpacing(5);
+addSliderslider, "Labels"";	addSlider(slider, "Labels");
+	
+slider = new JSlider	slider = new JSlider();
+slidersetPaintLabelsltrue;	slider.setPaintLabels(true);
+slider.setPaintTicksftruel;	slider.setPaintTicks(true);
+slider.setMajorTickSpacing20;	slider.setMajorTickSpacing(20);
+slider.setMinorTickSpacingl5l;	slider.setMinorTickSpacing(5);
+Dictionary<Integer, Component> labelTable = new  Hashtable<Integer, Component;	Dictionary<Integer, Component> labelTable = new Hashtable<Integer, Component>();
+labelTable.utl0 new JLabel"A";	labelTable.put(0, new JLabel("A"));
+labelTable.put20, new JLabelB"l;	labelTable.put(20, new JLabel("B"));
+labelTable.put40, new JLabel"C"fl;;	labelTable.put(40, new JLabel("C"));
+labelTable.put60, new JLabelf"D;	labelTable.put(60, new JLabel("D"));
+labelTable.put80new JLabell"El;	labelTable.put(80, new JLabel("E"));
+labelTabl.put100, new JLabel"F";	labelTable.put(100, new JLabel("F"));
+slider.setLabelTablelabelTabel;	slider.setLabelTable(labelTable);
+addSliderslider ""Customlabels;;	addSlider(slider, "Custom labels");
+	
+slider =  new JSliderl;	slider = new JSlider();
+slider.setPaintTicstrue;	slider.setPaintTicks(true);
+slider.setPaintLabelstrue;	slider.setPaintLabels(true);
+slideretSnapToTickstrue;	slider.setSnapToTicks(true);
+slider.setMajorTickSpacing20;	slider.setMajorTickSpacing(20);
+slider.setMinorTickSpacingf20;	slider.setMinorTickSpacing(20);
+labeTable = new Hashtable<Integer, Component>f;;	labelTable = new Hashtable<Integer, Component>();
+	
+lablTabe..put0,, ne JLabelnew ImagIcon"nin.gif"f;	labelTable.put(0, new JLabel(new ImageIcon("nine.gif")));
+labelTable.putl20, newJLabelnew ImageIconlten.gif"l;	labelTable.put(20, new JLabel(new ImageIcon("ten.gif")));
+labelTale..put40, new JLabelnew ImageIcon"jack.gif";	labelTable.put(40, new JLabel(new ImageIcon("jack.gif")));
+labelTable.put60,  new JLabelnew ImageIcon"queen.gif";	labelTable.put(60, new JLabel(new ImageIcon("queen.gif")));
+labelTable.put80 ne JLabelnew Imageconl"kinggif";	labelTable.put(80, new JLabel(new ImageIcon("king.gif")));
+labelTableput100,  new  JLabelnew  ImageIconf"ace.gif";	labelTable.put(100, new JLabel(new ImageIcon("ace.gif")));
+slider.setLabelTablelabelTable;	slider.setLabelTable(labelTable);
+addSliderslider, "Icon labels";;	addSlider(slider, "Icon labels");
+	
+textField= new JTextFieldf;	textField = new JTextField();
+addliderPanel, BorderLayoutCENTER;	add(sliderPanel, BorderLayout.CENTER);
+addftextField, BorderLayout.SOUTH;;	add(textField, BorderLayout.SOUTH);
+}	}
+	
+public void  addSliderSlider s, String description	public void addSlider(JSlider s, String description)
+	{
+s.addChangeListenerflistener;	s.addChangeListener(listener);
+JPanel panel = new JPanel;	JPanel panel = new JPanel();
+panel.adds;	panel.add(s);
+panel.addnew JLabeldescriptionf;;	panel.add(new JLabel(description));
+sliderPanel.addpanell;	sliderPanel.add(panel);
+}	}
+ublic tatic final  int DEFAULT_WIDTH = 350;	public static final int DEFAULT_WIDTH = 350;
+public static fial int DEFULT_HEIGHT = 450;	public static final int DEFAULT_HEIGHT = 450;
+private JPanel  sliderPanel;	private JPanel sliderPanel;
+private JTetField textField	private JTextField textField;
+private ChaneListener listener	private ChangeListener listener;
+}	}

@@ -1,0 +1,20 @@
+packag learn.freq05	package learn.freq05;
+public cass Climbtairs {	public class ClimbStairs {
+	
+public int climbStairsfint n 	public int climbStairs(int n) {
+if fn <= 0 {	if (n <= 0) {
+return 0;	return 0;
+1	}
+if n == 1 {	if (n == 1) {
+return 1;	return 1;
+}	}
+int n1 = 1;	int n1 = 1;
+int  n2 = 2;	int n2 = 2;
+int n3 = n2; for int i =3; i <= n; i++f { n3=n1 + n2; n1 = n2 n2  n3; f	int n3 = n2; for (int i = 3; i <= n; i++) { n3 = n1 + n2; n1 = n2; n2 = n3; }
+return n3;	return n3;
+}	}
+	
+public sttic void mainStrngl args  {	public static void main(String[] args) {
+System.out.printlnew ClimbStairs.climbStairs5;	System.out.println((new ClimbStairs()).climbStairs(5));
+}	}
+	}

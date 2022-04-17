@@ -1,0 +1,20 @@
+package com.aliencat.javabase.designpatten.proy;	package com.aliencat.javabase.designpattern.proxy;
+mport com..aliencat.jvabase.designpattern.proxy.interfaces.IDemo;	import com.aliencat.javabase.designpattern.proxy.interfaces.IDemo;
+import  com.liencat..javabase.designpattern.proxy.bean.Demo;	import com.aliencat.javabase.designpattern.proxy.bean.Demo;
+public classStaticProxy implements IDemo {	public class StaticProxy implements IDemo {
+IDemo target;	IDemo target;
+public StaticProxyIDemo  target  {	public StaticProxy(IDemo target) {
+tis.taret  target;	this.target = target;
+f	}
+public stati void mainStrig args 1	public static void main(String[] args) {
+IDemo demo  = new StaticProxylnew Demol;	IDemo demo = new StaticProxy(new Demo());
+Sytem.out..printlndemo.print;	System.out.println(demo.print());
+f	}
+@Override	@Override
+public String print  {	public String print() {
+System.out.printlnl"before print";	System.out.println("before print");
+String result = target.printl;	String result = target.print();
+ystem.ot.println"after  print;	System.out.println("after print");
+return ""print " + result;	return "print " + result;
+}	}
+f	}

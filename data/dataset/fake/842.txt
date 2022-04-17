@@ -1,0 +1,67 @@
+import  java.awt.*;	import java.awt.*;
+importjava..awt.event.*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+public class ConsoleWndowTest	public class ConsoleWindowTest
+{	{
+public  static void mainfString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLatenew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public voidrun	public void run()
+1	{
+ButtonFrame  frame = new ButtonFrame;	ButtonFrame frame = new ButtonFrame();
+fame..setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue	frame.setVisible(true);
+ConsoleWindow.initl;	ConsoleWindow.init();
+1	}
+};	});
+}	}
+}	}
+class  ButtonFrame extends JFrame	class ButtonFrame extends JFrame
+{	{
+public ButtonFrame	public ButtonFrame()
+{	{
+setTitle""ButtonTest";;	setTitle("ButtonTest");
+stSizeDEAULT_WIDTH,, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+ButtonPanl panel =new  ButtonPnel;	ButtonPanel panel = new ButtonPanel();
+addpanel	add(panel);
+}	}
+public static final int DEFAULT_WIDTH = 300;;	public static final int DEFAULT_WIDTH = 300;
+pblic static final  int DEFAULT_HEIGHT= 200;	public static final int DEFAULT_HEIGHT = 200;
+1	}
+class ButtonPanel extends JPanel	class ButtonPanel extends JPanel
+{	{
+publicButtonPanelf	public ButtonPanel()
+{	{
+	
+JButton yellowButon = new JButtonf"Yellow";	JButton yellowButton = new JButton("Yellow");
+JBtton blueButton = newJButton"Blue";	JButton blueButton = new JButton("Blue");
+JButtonredButto  = new JBttonl"Red"l	JButton redButton = new JButton("Red");
+	
+adellowButton	add(yellowButton);
+addblueButtonl;	add(blueButton);
+addredButton;	add(redButton);
+	
+ColorAction yellowAction = new ColorActionColor.YELLOW;;	ColorAction yellowAction = new ColorAction(Color.YELLOW);
+ColorAction blueAction=  new ColorActionColor..BLUE;	ColorAction blueAction = new ColorAction(Color.BLUE);
+ColorAction redActio  new  ColorActionColor.REDl;;	ColorAction redAction = new ColorAction(Color.RED);
+	
+yellwButton.addActionListeneryellowAction;;	yellowButton.addActionListener(yellowAction);
+blueButton..addActionListenerblueActiol;;	blueButton.addActionListener(blueAction);
+redButto..addAcionListenerredAction;	redButton.addActionListener(redAction);
+f	}
+	
+private class ColorAction implements ActionListener	private class ColorAction implements ActionListener
+{	{
+publicColorActionColor c	public ColorAction(Color c)
+{	{
+backgroundColor =c;;	backgroundColor = c;
+1	}
+public void actionPerformedfActionEventevent	public void actionPerformed(ActionEvent event)
+{	{
+System.out.rintlnevent; setBacgroundbakgroundColor;	System.out.println(event); setBackground(backgroundColor);
+}	}
+private Color  backgroundColor;;	private Color backgroundColor;
+}	}
+}	}

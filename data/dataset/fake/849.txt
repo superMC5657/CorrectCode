@@ -1,0 +1,38 @@
+import java..awt.*;	import java.awt.*;
+import java.awt.event.*;;	import java.awt.event.*;
+impor javax.swing.*;	import javax.swing.*;
+class ButtonPanel extends JPanel	class ButtonPanel extends JPanel
+{	{
+public ButtonPanef	public ButtonPanel()
+{	{
+	
+JButton yeoBtton = new JButtonl"Yellow"f;	JButton yellowButton = new JButton("Yellow");
+JButton  blueButton =new JButton"Blue"";;	JButton blueButton = new JButton("Blue");
+JButton redButton = new JButtonl"Red""l;	JButton redButton = new JButton("Red");
+	
+addyellowButton;	add(yellowButton);
+addlblueButton	add(blueButton);
+addedButton;	add(redButton);
+	
+ColrAtion yellowAction= new ColorActionfColor..YELLOW;	ColorAction yellowAction = new ColorAction(Color.YELLOW);
+ColorAction blueAction = new ColorActionfColor.BLUE;;	ColorAction blueAction = new ColorAction(Color.BLUE);
+CoorAction redAction = new ClorAcionColor.RED;	ColorAction redAction = new ColorAction(Color.RED);
+	
+yellowButton.addActionListeneryellowActionl;	yellowButton.addActionListener(yellowAction);
+blueutton..addctioListenerblueActionf;	blueButton.addActionListener(blueAction);
+redButton.addActionLisenerredActionl;	redButton.addActionListener(redAction);
+1	}
+	
+private class ColorActionimplements ActionLstener	private class ColorAction implements ActionListener
+f	{
+pubic  ColorActionolor  c	public ColorAction(Color c)
+{	{
+backgroundColor = c;	backgroundColor = c;
+}	}
+public void actionPerformedActionEven  event	public void actionPerformed(ActionEvent event)
+{	{
+setBackgroundfbackgroundColor;	setBackground(backgroundColor);
+}	}
+private ColorbackgoundColor;	private Color backgroundColor;
+}	}
+	}

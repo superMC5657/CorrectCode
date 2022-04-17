@@ -1,0 +1,13 @@
+package com.atgigu.exer1;;	package com.atguigu.exer1;
+public class EmployeTest{	public class EmployeeTest {
+ubli satic void  mainStringl args{	public static void main(String[] args) {
+	
+Employemanager = new Manager"", 1001, 500,  50000;	Employee manager = new Manager("", 1001, 5000, 50000);
+	
+manager.workf;	manager.work();
+	
+CommonEmplyee  commonEmployee = new CommonEmployeeff;	CommonEmployee commonEmployee = new CommonEmployee();
+commonEmployee.work;;	commonEmployee.work();
+	
+l	}
+}	}

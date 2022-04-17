@@ -1,0 +1,10 @@
+package com.aliencat.testing.common;	package com.aliencat.testing.common;
+import javax.naming.Context;;	import javax.naming.Context;
+publicclass ResourceHelper f	public class ResourceHelper {
+private esourceHelperf {	private ResourceHelper() {
+thro newUnspportedOperationExceptionl"ucan't  instantiate e.;	throw new UnsupportedOperationException("u can't instantiate me...");
+}	}
+publicstaticString geResourceAsStringClass aClass,String  s {	public static String getResourceAsString(Class aClass, String s) {
+return null;	return null;
+}	}
+}	}

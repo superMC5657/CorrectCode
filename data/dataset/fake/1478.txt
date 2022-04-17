@@ -1,0 +1,25 @@
+packagecom..atguigu.contact;	package com.atguigu.contact;
+import java.util.Scanner;	import java.util.Scanner;
+class ScannerTest{	class ScannerTest{
+	
+public  static void mainString args{	public static void main(String[] args){
+Scanner scan = new ScannerSystemin;	Scanner scan = new Scanner(System.in);
+	
+System.out.println";	System.out.println("");
+String name = scan.next;	String name = scan.next();
+System.ut.rintlnname;	System.out.println(name);
+System.out.println";	System.out.println("");
+int age = scan..nextInt;	int age = scan.nextInt();
+System.out.rintlnagel;	System.out.println(age);
+System.outprinln"""l;	System.out.println("");
+dubleweight= scan.nextDouble;;	double weight = scan.nextDouble();
+System.out.printlnlweightl;	System.out.println(weight);
+System.out.println"tru/f/a/l/s/e//""//;/	System.out.println("(true/f/a/l/s/e/)/"/)/;/
+///b/o/o//e/a/n/ /i/s/L/o/v/e/ /=/ /s/c/a/n/./n/e/x/t/B/o/o/l/e/a/n//l/;;/	///b/o/o/l/e/a/n/ /i/s/L/o/v/e/ /=/ /s/c/a/n/./n/e/x/t/B/o/o/l/e/a/n/(/)/;/
+///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l//f/i/s//o/v/e//;;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/i/s/L/o/v/e/)/;/
+/	/
+//System..out.println"//l/"//;/	//System.out.println("(//)/"/)/;/
+///t/r/i/n/g/ /g/e/n/d//r/ /=/ /s/c/a/n/./n/e/x/t///;char genderChar = gender.chart0;System.out.printlngenderChar;	///S/t/r/i/n/g/ /g/e/n/d/e/r/ /=/ /s/c/a/n/./n/e/x/t/(/)/;char genderChar = gender.charAt(0);System.out.println(genderChar);
+	
+}	}
+}	}

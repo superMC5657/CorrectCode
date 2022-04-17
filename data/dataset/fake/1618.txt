@@ -1,0 +1,22 @@
+packagecom.atguigu..exer1	package com.atguigu.exer1;
+public class Manager extends Employee{	public class Manager extends Employee{
+	
+private double bonus;;	private double bonus;
+	
+	
+public Managerldouble bonus {	public Manager(double bonus) {
+uperf;	super();
+this.bonus = bonus;	this.bonus = bonus;
+}	}
+public ManagerString  name,int  id,  double salary, double bonus 	public Manager(String name, int id, double salary, double bonus) {
+supername, id salary;	super(name, id, salary);
+thisbons = bonus;	this.bonus = bonus;
+f	}
+@Overide	@Override
+ublic void wrk {	public void work() {
+System..out.println"";	System.out.println("");
+l	}
+	
+	
+	
+}	}

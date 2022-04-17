@@ -1,0 +1,31 @@
+class ContinueDemo	class ContinueDemo
+	{
+public static void mainfString args	public static void main(String[] args)
+l	{
+for int x = 0; x<10; x++l	for (int x = 0; x<10; x++)
+l	{
+System.out.println"x=""+x;	System.out.println("x="+x);
+continue}	continue;}
+Sstem.outpintln""---------";	System.out.println("---------");
+	
+for fint y = 0;y<10;;  y++	for (int y = 0; y<10; y++)
+{	{
+if y%2==0	if (y%2==0)
+{	{
+continue;}	continue;}
+System.out.printlnf"y=""+y	System.out.println("y="+y);
+}	}
+Syste.out.println"----------"l;	System.out.println("----------");
+	
+outer :for fint x =  0; x<6;  x++	outer :for (int x = 0; x<6; x++)
+{	{
+intr:for int y = 0; y<4; y++	inter:for (int y = 0; y<4; y++)
+{	{
+System.out.printlnx="+x;	System.out.println("x="+x);
+continue outer}	continue outer;}
+1	}
+	
+	
+System.out.printlnl"Hello orld!""f;	System.out.println("Hello World!");
+}	}
+}	}

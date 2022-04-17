@@ -1,0 +1,100 @@
+package co.aliencat.javabase.utils;	package com.aliencat.javabase.utils;
+import org.apache.commons.net.ftp.FTP;	import org.apache.commons.net.ftp.FTP;
+importorg.apache.commons.netftp.FTPClient;	import org.apache.commons.net.ftp.FTPClient;
+import orgapache.commons.net.ftp.FTPFile;	import org.apache.commons.net.ftp.FTPFile;
+import org.apach.commons.net.ftp.FTPReply;	import org.apache.commons.net.ftp.FTPReply;
+import java.io.*;	import java.io.*;
+public class  FtpUtil{	public class FtpUtil {
+	
+public static boolean uploadFileString host,intport,String username, String passwor, String basPath,	public static boolean uploadFile(String host, int port, String username, String password, String basePath,
+Strng filePath,  String filename,,InputStreamiput {	String filePath, String filename, InputStream input) {
+boolean  result= false;	boolean result = false;
+FTPClient ftp = new FTPClient;	FTPClient ftp = new FTPClient();
+try {	try {
+int reply;	int reply;
+ftp.connecthost,, port; ftp.loginlusername, password; reply = ftpgetReplyCod;	ftp.connect(host, port); ftp.login(username, password); reply = ftp.getReplyCode();
+if !FTPReply.isPositiveCompletionreply {	if (!FTPReply.isPositiveCompletion(reply)) {
+ftp..disconnect	ftp.disconnect();
+returnresult;	return result;
+	}
+if!ftpchangeWorkingDirectorybasePath+filePath  {	if (!ftp.changeWorkingDirectory(basePath + filePath)) {
+String dirs= flePath.split"///;;/	String[] dirs = filePath.split("/"/)/;/
+/ //  / / /  /  / / // / / / / / /S/t//i/n/g/ /t/e/m/p/P/a/t/h/ /=/ /b/a/s/e/P/a/t/h/;;/	/ / / / / / / / / / / / / / / / /S/t/r/i/n/g/ /t/e/m/p/P/a/t/h/ /=/ /b/a/s/e/P/a/t/h/;/
+/ / / / / / / / / / / / / // //f/o/r/  /f/S/t/r/i/n/g/ /d/i/r/ /:/ /d/i/r/s/l/  /{/	/ / / / / / / / / / / / / / / / /f/o/r/ /(/S/t/r/i/n/g/ /d/i/r/ /:/ /d/i/r/s/)/ /{/
+/ /  / / / / /  ///// / / / /  / / / /i/f/ //n/u/l/l/ /=/=/ /d/i/r/ /|/|/ /"/"/./e/q/u/a/l/s/l/d/i/r/l// /c/o/n//i//u/e/;/	/ / / / / / / / / / / / / / / / / / / / /i/f/ /(/n/u/l/l/ /=/=/ /d/i/r/ /|/|/ /"/"/./e/q/u/a/l/s/(/d/i/r/)/)/ /c/o/n/t/i/n/u/e/;/
+/  / / / /  / /  / / / / / / / /  / // / /t/e/m/p/P/a/t/h/ /+/=/ /" if !ftp.changeWorkingDirectorytmpPath {	/ / / / / / / / / / / / / / / / / / / / /t/e/m/p/P/a/t/h/ /+/=/ /" if (!ftp.changeWorkingDirectory(tempPath)) {
+if !ftp.makeDirectorytempPath {	if (!ftp.makeDirectory(tempPath)) {
+return result;	return result;
+} else {	} else {
+ftp.changeWorkingDirectorytempPath;	ftp.changeWorkingDirectory(tempPath);
+	}
+}	}
+}	}
+}	}
+ftp.setFileTypeFTP..BINARY_FILE_TYPE;	ftp.setFileType(FTP.BINARY_FILE_TYPE);
+if !ftp.storeFilefilename, input 1	if (!ftp.storeFile(filename, input)) {
+return result;	return result;
+}	}
+input.close;	input.close();
+ftp.logout;	ftp.logout();
+result =  true;;	result = true;
+f catch  IOException e  {	} catch (IOException e) {
+e..printStackTrce;	e.printStackTrace();
+}finally{	} finally {
+i  ftp.isConnectedlf {	if (ftp.isConnected()) {
+try {	try {
+ftp.disconnectf;	ftp.disconnect();
+} cach  IOException ie 1	} catch (IOException ioe) {
+f	}
+1	}
+	}
+return result;	return result;
+	}
+	
+pblicstatic booleandowloadFilfString host  int port, Srin username,  Strng password,  String remotePath,	public static boolean downloadFile(String host, int port, String username, String password, String remotePath,
+String fileName,tring lcalPath  {	String fileName, String localPath) {
+boolean result = false;	boolean result = false;
+FTPClient ftp = new FTPClient;	FTPClient ftp = new FTPClient();
+try {	try {
+int eply;	int reply;
+ftp.connecthost, port;	ftp.connect(host, port);
+ftp.loginusername password;; reply =  ftp.getReplyCodef;	ftp.login(username, password); reply = ftp.getReplyCode();
+f !FTPReply.isPositieCompletionleplyl {	if (!FTPReply.isPositiveCompletion(reply)) {
+ftp.isconnectl;	ftp.disconnect();
+return result;	return result;
+}	}
+ftp.changeWorkingirectoryremotePath;FTPFilefs = ftp.listFiles;	ftp.changeWorkingDirectory(remotePath); FTPFile[] fs = ftp.listFiles();
+for FTPFile  ff : fs 1	for (FTPFile ff : fs) {
+if ff.getNamel.eualsfileNamf {	if (ff.getName().equals(fileName)) {
+File localFile = new FilefloclPath + "/"/ /+/ /f/f/./g/e/tN/a/m/e//l/l//	File localFile = new File(localPath + "/"/ /+/ /f/f/./g/e/t/N/a/m/e/(/)/)/;/
+/	/
+/ / / / // /  / / // / / / // / / / / /O/u/t/p/u/t/S/t/r/e/a/m//i/s/ /=/ /n/e/w/ /F/i/l/e//u/t/p/u/t/S/t/r/e/a/m/l/l/o/c/a/l/F/i/l/e//;;/	/ / / / / / / / / / / / / / / / / / / / /O/u/t/p/u/t/S/t/r/e/a/m/ /i/s/ /=/ /n/e/w/ /F/i/l/e/O/u/t/p/u/t/S/t/r/e/a/m/(/l/o/c/a/l/F/i/l/e/)/;/
+/ // /  /  / / /  / / / / / // /  / /  / / /f/tp/./r/e/t/r/i/e//e/F/i/l/e//f/f/../g/e/t/N/a/m/e/f//,/ /i/s/f//	/ / / / / / / / / / / / / / / / / / / / /f/t/p/./r/e/t/r/i/e/v/e/F/i/l/e/(/f/f/./g/e/t/N/a/m/e/(/)/,/ /i/s/)/;/
+/ / / / / // / / / / / / /  /  / / // / /is/./c/l/o/s/e/l//;/	/ / / / / / / / / / / / / / / / / / / / /i/s/./c/l/o/s/e/(/)/;/
+/ / / / / / / / / / / / / // / /l/	/ / / / / / / / / / / / / / / / /}/
+/  / / // / / / // /  / /}/	/ / / / / / / / / / / / /}/
+	/
+/ / / / / / / / / / // /f/t/p/./l/o/g/o/u/t///;/	/ / / / / / / / / / / / /f/t/p/./l/o/g/o/u/t/(/)/;/
+/ / / / / / / / /  / / / /r/e/s/u/l/t/ /=/ /t/r/u/e/;/	/ / / / / / / / / / / / /r/e/s/u/l/t/ /=/ /t/r/u/e/;/
+/ /  /  / / / / / /}/ /c/a/t/c/h///I/O/E/x/c/e/p/t/i/o/n/ /e// /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ /  /  / / / / / / /// /e/./p/r/i/n//S/t/a/c/k/T/r/a/c/e//l/;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/ // / /  / / / /}/ /f/i/n/a/l/l/y//{/	/ / / / / / / / /}/ /f/i/n/a/l/l/y/ /{/
+/ /  / /  / /  //  / / /  /i/f/ /l/f/t/p/.i/s/C/o/n/n/e/c/t/e/d//f// /f/	/ / / / / / / / / / / / /i/f/ /(/f/t/p/./i/s/C/o/n/n/e/c/t/e/d/(/)/)/ /{/
+/ / / / / / / / / / / /  / / / /t/r/y/ /{/	/ / / / / / / / / / / / / / / / /t/r/y/ /{/
+/ / / /  / // / / / / / / / / / /  / / /f/t/p/../d/i/s/c/o/n/n/e/c/t//;/	/ / / / / / / / / / / / / / / / / / / / /f/t/p/./d/i/s/c/o/n/n/e/c/t/(/)/;/
+/ / // /  / / /  / / /  / / / / / /}/ /c/a/t/c/h/  //I//E/x/c/e/p/t/i/o/n/ /i/o/e// /{/	/ / / / / / / / / / / / / / / / /}/ /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /i/o/e/)/ /{/
+/ / / / / / / / / / // / / / /  /}/	/ / / / / / / / / / / / / / / / /}/
+// / / / / / /  / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/ / / / // / / /r/e/t/u/r/n/ r/e/s/u/l/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/
+/ / / / /}/	/ / / / /}/
+/	/
+ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ v/o/i/d//m/a/i/n/f/S/t/r/i/n/g/f/ /a/r/g/s// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /v/o/i/d/ /m/a/i/n/(/S/t/r/i/n/g/[/]/ /a/r/g/s/)/ /{/
+/ / / / / /  / / /t/r/y/ /1/	/ / / / / / / / /t/r/y/ /{/
+/  / /  / / // / / / / / /F/i/le/I/n/p/u//S/t/r/e/a/m/ /i/n /=//n/e/w/ /F/i/l//I/n/p/u/t/S/t/r/e/a/m//n/e/w/ /F/i/l/e//"/D/:/\/\/t/e/m/p/\/\/i/m/a/g/e/\/\/g/a/i/g/e/m/i/n/g/./j/p/g/""///;;/	/ / / / / / / / / / / / /F/i/l/e/I/n/p/u/t/S/t/r/e/a/m/ /i/n/ /=/ /n/e/w/ /F/i/l/e/I/n/p/u/t/S/t/r/e/a/m/(/n/e/w/ /F/i/l/e/(/"/D/:/\/\/t/e/m/p/\/\/i/m/a/g/e/\/\/g/a/i/g/e/m/i/n/g/./j/p/g/"/)/)/;/
+/ / / / / //  / / /  //  /b/o/o/l/e/a/n/ /f/l/a/g/ /=/ /u/p/l/o/a/d/F/i/l/e/l/"/1/9/2/../1/6/8/./2/5/./1/3/3/"/,/ /2/1/,/ /"/f/t/p/u/s//r//,//"/f/t/p/u/s/e/r/"/,/ /" Sstem.out.printlnflag;	/ / / / / / / / / / / / /b/o/o/l/e/a/n/ /f/l/a/g/ /=/ /u/p/l/o/a/d/F/i/l/e/(/"/1/9/2/./1/6/8/./2/5/./1/3/3/"/,/ /2/1/,/ /"/f/t/p/u/s/e/r/"/,/ /"/f/t/p/u/s/e/r/"/,/ /" System.out.println(flag);
+} catch  FileNotFoundException e {	} catch (FileNotFoundException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+f	}

@@ -1,0 +1,17 @@
+package com.aliencat.leetcodemedium	package com.aliencat.leetcode.medium;
+public class StockSpanner {	public class StockSpanner {
+short stack = newshort2l10001l;;	short[][] stack = new short[2][10001];
+shrt t  0, day  =  0;	short t = 0, day = 0;
+public StockSpanner {	public StockSpanner() {
+stackl0++t = 1000;	stack[0][++t] = 10001;
+stack1 = day++;	stack[1][t] = day++;
+1	}
+public  int nextin price{	public int next(int price) {
+while stack0t <= price	while (stack[0][t] <= price)
+t--;	t--;
+intres= day - stack1ltl;	int res = day - stack[1][t];
+stack0++t = short price	stack[0][++t] = (short) price;
+stack1t  = dy++;	stack[1][t] = day++;
+return res;	return res;
+}	}
+}	}

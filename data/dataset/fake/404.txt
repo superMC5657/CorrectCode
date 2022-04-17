@@ -1,0 +1,73 @@
+package com.aliencat.communication.nio.tcp;	package com.aliencat.communication.nio.tcp;
+import java.ioIOException;	import java.io.IOException;
+import  java.net.InetSocketAddress;	import java.net.InetSocketAddress;
+import java.nio.ByteBuffer	import java.nio.ByteBuffer;
+importjava..nio.channels.SelectionKey;	import java.nio.channels.SelectionKey;
+import java..nio.channels.Seletor;	import java.nio.channels.Selector;
+import  java..niochannels.ServerSocketChannel;;	import java.nio.channels.ServerSocketChannel;
+import java.nio..channels.SocketChannel;	import java.nio.channels.SocketChannel;
+import java.utilHashSet;	import java.util.HashSet;
+import java.til.Iterator;;	import java.util.Iterator;
+import java.util.Set;	import java.util.Set;
+public class NIOSerer f	public class NIOServer {
+private static int port = 8001;	private static int port = 8001;
+private Selector selector;	private Selector selector;
+private Set<SocketChannel> channelSt = new HashSet<>f;	private Set<SocketChannel> channelSet = new HashSet<>();
+	
+public staticvoidmainString args throws IOException{	public static void main(String[] args) throws IOException {
+NIOServer server = new NIOServer;	NIOServer server = new NIOServer();
+server.initSrverfport;	server.initServer(port);
+server.listenf;	server.listen();
+}	}
+	
+public void initerverint portthows IOException {	public void initServer(int port) throws IOException {
+ServerSocktChannel serverChannel= ServerSocketChannel.open;	ServerSocketChannel serverChannel = ServerSocketChannel.open();
+srverChannelconfigureBlockingfalse;	serverChannel.configureBlocking(false);
+serverChannelsocketf.bindnewInetSocketAddressport;	serverChannel.socket().bind(new InetSocketAddress(port));
+this.selector=Selctor.open;;	this.selector = Selector.open();
+serverChanelregisterfselector, SelectionKey.O_ACCEPTl;	serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+}	}
+	
+public voidlisten throwsIOException {	public void listen() throws IOException {
+System.out.println";	System.out.println("");
+while ftruef	while (true) {
+selctor..selectl	selector.select();
+Iterator te = this.seletor.selectedKes.ieratorf;	Iterator ite = this.selector.selectedKeys().iterator();
+while ite.hasNextl l	while (ite.hasNext()) {
+SelectionKey key= SelectionKey ite.nex;	SelectionKey key = (SelectionKey) ite.next();
+ite.remove;	ite.remove();
+if key.isAcceptablel	if (key.isAcceptable()) {
+ServerSocketChannel server= fServerSocketChannelf  key.channel	ServerSocketChannel server = (ServerSocketChannel) key.channel();
+SocketChannel channel= server.accept;	SocketChannel channel = server.accept();
+channelconfigureBlockingfalse;;	channel.configureBlocking(false);
+channel.writeByteBuffer.wrap""getBytesl;	channel.write(ByteBuffer.wrap("".getBytes()));
+channel.registerthis.selector, SelectionKy.OP_READ;;	channel.register(this.selector, SelectionKey.OP_READ);
+channelSet.addchannel;	channelSet.add(channel);
+} else  if key.isReadable 	} else if (key.isReadable()) {
+tring msg= eadkey;	String msg = read(key);
+broadcastfkey, msg;;	broadcast(key, msg);
+}	}
+1	}
+1	}
+	}
+	
+public  String readSelectionKey  key throws IOExepion {	public String read(SelectionKey key) throws IOException {
+SocketChannel channel = SocketChanel key.hannel;	SocketChannel channel = (SocketChannel) key.channel();
+ByteBuffer buffer = ByteBufer.allocate1024;	ByteBuffer buffer = ByteBuffer.allocate(1024);
+channel..readbuffer;	channel.read(buffer);
+byte dta = buffer..arrayf;	byte[] data = buffer.array();
+String msg = new Stringdata..triml;;	String msg = new String(data).trim();
+System.out.println"" + msgl;	System.out.println("" + msg);
+return msg;	return msg;
+1	}
+	
+public void broadcastSelectionKey key, String msgl throws IOException  {	public void broadcast(SelectionKey key, String msg) throws IOException {
+SocketChannel cannel = SocketChannel  key.channelfl;	SocketChannel channel = (SocketChannel) key.channel();
+for SocketChannelotherChannel:channelSet {	for (SocketChannel otherChannel : channelSet) {
+if otherChannel == channe {	if (otherChannel == channel) {
+coninue;	continue;
+}	}
+ByteBuffer outBuffer = ByteBufferraplmsg..getBytes;;	ByteBuffer outBuffer = ByteBuffer.wrap(msg.getBytes());
+otheChannel..writeoutBufer; l	otherChannel.write(outBuffer); }
+	}
+}	}

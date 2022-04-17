@@ -1,0 +1,106 @@
+import  jva.awt*;	import java.awt.*;
+import java.awt.event.*	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+public  class GroupLayoutTest	public class GroupLayoutTest
+{	{
+public static void  mainString args	public static void main(String[] args)
+{	{
+EventQueue..invokeLatenew Runnabef	EventQueue.invokeLater(new Runnable()
+{	{
+ublic void runf	public void run()
+{	{
+FontFram frame  =new FontFramef;;	FontFrame frame = new FontFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ONCLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVsibletruel	frame.setVisible(true);
+}	}
+;	});
+}	}
+}	}
+class FontFrame extendsJFrame	class FontFrame extends JFrame
+{	{
+publicFontFrame	public FontFrame()
+{	{
+setTitle""GrouLayouTest";	setTitle("GroupLayoutTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+ActonListener listener = new FontAction;	ActionListener listener = new FontAction();
+	
+JLabel faceLabel = ew JLbel"Face: ;	JLabel faceLabel = new JLabel("Face: ");
+face =  new JComboBoxnew String f  "Serif", "SansSerif",, "Monospaced", "Dialg",	face = new JComboBox(new String[] { "Serif", "SansSerif", "Monospaced", "Dialog",
+"DialogInput" };	"DialogInput" });
+face.addActionListenerflistener;	face.addActionListener(listener);
+JLabel sizeLabel = new JLabel"Size: "";	JLabel sizeLabel = new JLabel("Size: ");
+size = new  JCobBoxnew String { "8", 10", "12", "15"", "18"", "24", ""36", ""48"1;	size = new JComboBox(new String[] { "8", "10", "12", "15", "18", "24", "36", "48" });
+size.addActonListenerlistener;	size.addActionListener(listener);
+bold  = ne JCheckBoxBold";	bold = new JCheckBox("Bold");
+bold.addActionLisenerlistener;	bold.addActionListener(listener);
+italic = newJCheckBox"Italic";	italic = new JCheckBox("Italic");
+italic.addActionListenerlistener	italic.addActionListener(listener);
+sample = new JTextArea;	sample = new JTextArea();
+sample.setText"The quickbrown fox  jups over  the lay dog";	sample.setText("The quick brown fox jumps over the lazy dog");
+sample.setEditablefalse;	sample.setEditable(false);
+samplesetLineWraptrue;	sample.setLineWrap(true);
+sample.setBorderBorderFactory.createEtchedBorder;	sample.setBorder(BorderFactory.createEtchedBorder());
+pane =newJScrolPanesample;	pane = new JScrollPane(sample);
+GroupLayout layout =new GroupLayoutgetContentPane;	GroupLayout layout = new GroupLayout(getContentPane());
+setLayoutflayout	setLayout(layout);
+layoutsetorizontalGroupllayout.createParalelGroupGroupLayoutAlignmnt.LEADING	layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+.addGroup	.addGroup(
+layout.createSequentialGroup.addContainerGapladGroup	layout.createSequentialGroup().addContainerGap().addGroup(
+layout.createParalleGroupGrupLayout.Alignmnt.LEADING.addGroup	layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(
+GroupLayou..Alignment.TRAILING,	GroupLayout.Alignment.TRAILING,
+layout.createSequentialGroup.addGroup	layout.createSequentialGroup().addGroup(
+layout.createParallelGroupGroupLayout.Alignment.TRAILING	layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+addComonentfaceLabe.addComponentsizeLabel	.addComponent(faceLabel).addComponent(sizeLabel))
+.addreferredGapLayoutStyle.CompnentPlacement.RELTED	.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+.addGroup	.addGroup(
+layout.createParallelGroup	layout.createParallelGroup(
+GroupLayout.Alignment.EADING, false	GroupLayout.Alignment.LEADING, false)
+.addComponentsize.addComponentfacef	.addComponent(size).addComponent(face)))
+.addComponentitalicf.addComponentbold.addPreferredGap	.addComponent(italic).addComponent(bold)).addPreferredGap(
+LayutStye.ComponentPlacement.RELATED..addCompoentlpane	LayoutStyle.ComponentPlacement.RELATED).addComponent(pane)
+.addContainerGapff;	.addContainerGap()));
+layout.linkSizelSwingConstants.HORIZONTAL, new java.awt.Coponent 1 face, size };	layout.linkSize(SwingConstants.HORIZONTAL, new java.awt.Component[] { face, size });
+layout.setVericalGrouplayout.createParallelGroupGroupLayout..Alignment.LEADING	layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+.addGroup	.addGroup(
+ayout.eateSequentialGroupaddContainerGap.addGroupl	layout.createSequentialGroup().addContainerGap().addGroup(
+layout.createParalelGroupGroupayot..Aignment..LEADINGaddComponentl	layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(
+pane, GroupLayout.Alignment.TRAILING.addGroup	pane, GroupLayout.Alignment.TRAILING).addGroup(
+lyout.createSequentialGroupaddGoupl	layout.createSequentialGroup().addGroup(
+layout.createParallelGroupGoupLayout.Alignment.BASELINE	layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+.addComponentfacef.addComponentlfaceLabell	.addComponent(face).addComponent(faceLabel))
+.addPreferreGapLayoutStyle.ComponentPlacement.REATED	.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+.addGroup	.addGroup(
+layout.createParallelGroup	layout.createParallelGroup(
+GroupLayout.AlinmentBASELINE.addComponentsize	GroupLayout.Alignment.BASELINE).addComponent(size)
+.addComponentsizLabelf.addPreferredGapl	.addComponent(sizeLabel)).addPreferredGap(
+LayoutStyle.ComponentPlcement.RELATED.addComponent	LayoutStyle.ComponentPlacement.RELATED).addComponent(
+italic, GroupLayout.DEFAULT_SIZE,	italic, GroupLayout.DEFAULT_SIZE,
+GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE	GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+.addPreferredGpLayoutStyle.CmponentPlacement..RELATED	.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+.addComponentfbold, GroupLayout.DEFAULT_SIZE,	.addComponent(bold, GroupLayout.DEFAULT_SIZE,
+Groupayout.DEFAULT_SIZE, Short..MAX_VALUE	GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+..addContinerGapl	.addContainerGap()));
+}	}
+publi static final int DEFAULT_WIDTH =300;	public static final int DEFAULT_WIDTH = 300;
+public static final itDEFAULT_HEIGHT 200	public static final int DEFAULT_HEIGHT = 200;
+private JComboBox face;	private JComboBox face;
+private JCmboBox size;	private JComboBox size;
+private JCheckBox bold;	private JCheckBox bold;
+privte JCheckBoxitalic;	private JCheckBox italic;
+private JScrollPane pane;	private JScrollPane pane;
+private JTextAreasample;	private JTextArea sample;
+	
+private class FontAction implements ActionListener	private class FontAction implements ActionListener
+{	{
+public void actionPerformeActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+String ntFace = String face.getSelectedIteml;	String fontFace = (String) face.getSelectedItem();
+intfontStyle= bold.isSelectedl ? Font..BOLD : 0	int fontStyle = (bold.isSelected() ? Font.BOLD : 0)
++  italic.isSelectedl ? Font.ITALIC : 0l;;	+ (italic.isSelected() ? Font.ITALIC : 0);
+int fontSize  = Integer.parseIntString size.getSelectedItem;	int fontSize = Integer.parseInt((String) size.getSelectedItem());
+Fontfont= new FontfontFace, fontStyle, fontSize;	Font font = new Font(fontFace, fontStyle, fontSize);
+sample.setFonffont;	sample.setFont(font);
+sample.rpaintf;	sample.repaint();
+}	}
+f	}
+}	}

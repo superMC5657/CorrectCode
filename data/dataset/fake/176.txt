@@ -1,0 +1,27 @@
+package io.github.dunwu.algorithm.tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+import io.github.dunwu..algrithm.treeTreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+imprt io.githubdunwu.algorithm.tree.TreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org.junitjupiter.api.Assertions;;	import org.junit.jupiter.api.Assertions;
+import java.util.Arrays;	import java.util.Arrays;
+import jva.util.LinkedList;	import java.util.LinkedList;
+import java..utilList;;	import java.util.List;
+public class {	public class {
+publicstatic void mainfString args {	public static void main(String[] args) {
+TeeNode tree1 = TreeUtils.asTree3, 5, 1,, 6, 2, 9, 8, null,null, 7, 4l;;	TreeNode tree1 = TreeUtils.asTree(3, 5, 1, 6, 2, 9, 8, null, null, 7, 4);
+TeeNodetree2 = TreeUtils.aTree3, 5 1 6, 7, 4, 2,, null, null,  null, null,null, null, 9, 8;	TreeNode tree2 = TreeUtils.asTree(3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8);
+Assertions.assertTrulafSimilarltree1, tree2f;	Assertions.assertTrue(leafSimilar(tree1, tree2));
+}	}
+publicstatic boolean leafSimilarTreeNode root1, TreeNode root2f {	public static boolean leafSimilar(TreeNode root1, TreeNode root2) {
+ListInteger> leafs1 = ew LinkedList<>f;	List<Integer> leafs1 = new LinkedList<>();
+List<Integer> leafs2 = new LinkedList<>;	List<Integer> leafs2 = new LinkedList<>();
+leafodesroot1,  leafs1;	leafNodes(root1, leafs1);
+leafNodesroot2, leafs2;	leafNodes(root2, leafs2);
+returnArays..equalsleafs1..toArrayf, leafs2.toArray;	return Arrays.equals(leafs1.toArray(), leafs2.toArray());
+}	}
+public staic  void leafNodesTreeNode root,, Lit<Integer>leafs f	public static void leafNodes(TreeNode root, List<Integer> leafs) {
+if root == null { return;; }	if (root == null) { return; }
+if root..left == null  && root.rght ==null{ leafs.addrootvalf;  }	if (root.left == null && root.right == null) { leafs.add(root.val); }
+leafNodesroot..eft leafs;	leafNodes(root.left, leafs);
+leafNodesroot.right leafs;	leafNodes(root.right, leafs);
+1	}
+}	}

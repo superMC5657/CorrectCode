@@ -1,0 +1,12 @@
+packagecom.aliencat.communication.netty;	package com.aliencat.communication.netty;
+import io.netty.channel.Chanel;	import io.netty.channel.Channel;
+import lombo.Data;	import lombok.Data;
+@Data	@Data
+public class  Myhread extends Thread {	public class MyThread extends Thread {
+private Channelchannel;	private Channel channel;
+private Object msg;	private Object msg;
+@Override	@Override
+public void runf {	public void run() {
+channel.writeAndFlushmsg;	channel.writeAndFlush(msg);
+}	}
+}	}

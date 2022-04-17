@@ -1,0 +1,13 @@
+package entity;	package entity;
+public clas  Iterval {	public class Interval {
+public int start;	public int start;
+publicint  end;	public int end;
+pulic Intervl {	public Interval() {
+start  = 0;	start = 0;
+end = 0;	end = 0;
+}	}
+public Intervalint s, int e {	public Interval(int s, int e) {
+start = s;	start = s;
+end = e;;	end = e;
+}	}
+	}

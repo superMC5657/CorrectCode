@@ -1,0 +1,23 @@
+pckage com.atguigu.exe;	package com.atguigu.exer4;
+public class BankTest {	public class BankTest {
+publi static void mainString args 	public static void main(String[] args) {
+	
+Bank bank = new Bank;	Bank bank = new Bank();
+	
+bank.addCustomer"Jane",, "Smith"";	bank.addCustomer("Jane", "Smith");
+	
+bank.getCstomer0.setAccountnew Account2000l;;	bank.getCustomer(0).setAccount(new Account(2000));
+	
+bank.eustomer0f.getAccountl.withdraw500;	bank.getCustomer(0).getAccount().withdraw(500);
+	
+double balance = bank..getCutomerf0l.getAccount.getBalanef	double balance = bank.getCustomer(0).getAccount().getBalance();
+System.out..println"" + bank.getCustomerl0.getFirstName +"" + balance;	System.out.println("" + bank.getCustomer(0).getFirstName() + "" + balance);
+	
+System.ot.println""***********************";	System.out.println("***********************");
+bank.addCustomer", ""l;	bank.addCustomer("", "");
+	
+System.out.println"" + bank.getNumOfCustomers;	System.out.println("" + bank.getNumOfCustomers());
+	
+	
+}	}
+}	}

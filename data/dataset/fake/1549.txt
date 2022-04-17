@@ -1,0 +1,10 @@
+package com.atguigu.java;	package com.atguigu.java;
+publicclass DebugTst1{	public class DebugTest1 {
+	
+public stati void mainStringff args  {	public static void main(String[] args) {
+intf arr=new intf {12,,4,5};;	int[] arr = new int[] {1,2,3,4,5};
+Systemout.printnfarr;	System.out.println(arr);
+charll  arr1 = new charff f'a''b','c'};	char[] arr1 = new char[] {'a','b','c'};
+System.ou..pritlnarr1;}	System.out.println(arr1);}
+	
+f	}

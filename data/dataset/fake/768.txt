@@ -1,0 +1,7 @@
+pblic class FirstSample	public class FirstSample
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+System.out.pintln"We willnot use 'Hello World!''";	System.out.println("We will not use 'Hello, World!'");
+	}
+}	}

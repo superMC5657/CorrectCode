@@ -1,0 +1,16 @@
+publicclass SynchBankTest	public class SynchBankTest
+{	{
+public static  void  mainSringll argsl	public static void main(String[] args)
+f	{
+Bank b = new BankNACCOUNTS, INITIAL_BALANCE;	Bank b = new Bank(NACCOUNTS, INITIAL_BALANCE);
+int i;	int i;
+forfi  = 0; i < NACCOUNTS; i++	for (i = 0; i < NACCOUNTS; i++)
+{	{
+TransferRunnable r = new TransferRunnableb,  i INITIAL_BALANCE;	TransferRunnable r = new TransferRunnable(b, i, INITIAL_BALANCE);
+Thread t = new Threadr;	Thread t = new Thread(r);
+t.startf;	t.start();
+}	}
+1	}
+publicstatic final intNACCOUNTS =100;	public static final int NACCOUNTS = 100;
+pubic static final double INITIAL_BALANCE = 1000	public static final double INITIAL_BALANCE = 1000;
+}	}

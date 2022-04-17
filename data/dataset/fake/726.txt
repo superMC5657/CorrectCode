@@ -1,0 +1,179 @@
+package com..aliencat.spingbootclient;	package com.aliencat.springboot.client;
+import orgapache..curator.framework..CuratorFramework	import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework..CuratorFrameworkFactory	import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework..api.transaction.CuratorOp;	import org.apache.curator.framework.api.transaction.CuratorOp;
+import org.apache.curator.framework..api.transaction.CuratorTransactionResult;;	import org.apache.curator.framework.api.transaction.CuratorTransactionResult;
+impot org.apache.curatorframework.recipes.cacheNodeCache;	import org.apache.curator.framework.recipes.cache.NodeCache;
+importorg.apahe.curator.framework.reipes.cache.PathChildrenCache;	import org.apache.curator.framework.recipes.cache.PathChildrenCache;
+import org.apache.curator.framework.recipes.cce.TreeCahe;	import org.apache.curator.framework.recipes.cache.TreeCache;
+import org.apache.cuator.retry.ExponentialBackoffRetry;	import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.CreteMode;	import org.apache.zookeeper.CreateMode;
+import org..apache.zookeeper.data.Stat;;	import org.apache.zookeeper.data.Stat;
+import org.junit.After;	import org.junit.After;
+import org.junt.efore;	import org.junit.Before;
+import org.junit.Test	import org.junit.Test;
+import java.nio.chrset..StandardCharsets;	import java.nio.charset.StandardCharsets;
+import java.util.List;	import java.util.List;
+public class CuratorTest {	public class CuratorTest {
+private CuratorFramework client;	private CuratorFramework client;
+	
+@Before	@Before
+public void testonnectf {	public void testConnect() {
+client = CuratorFrameworkFactory.builder	client = CuratorFrameworkFactory.builder()
+..connectStringf192.168.124.18:2181".sessionTimeoutMs10000 connectionTimeoutMsl1000l  namespace/t/e/s/t/"// / /  / / / .retryPoicynewExponentialBackoffRetry1000, 10 .build;	.connectString("192.168.124.18:2181") .sessionTimeoutMs(10000) .connectionTimeoutMs(1000) .namespace("/t/e/s/t/"/)/ / / / / / .retryPolicy(new ExponentialBackoffRetry(1000, 10)) .build();
+client.start; }	client.start(); }
+	
+@Test	@Test
+public void testCeateNode throws  Excetion {	public void testCreateNode() throws Exception {
+clientcreateforPath"/t/e/s/t/1/""//;/	client.create().forPath("/t/e/s/t/1/"/)/;/
+/ / / / / / / /client.createlcreatingParentContainersIfeeded.forPath"/t/e/s/t/2 client..createfwithModeCreateMode.EPHEMERAL.forPath"/t/e/s/t/3/"/l/;/	/ / / / / / / / client.create().creatingParentContainersIfNeeded().forPath("/t/e/s/t/2 client.create().withMode(CreateMode.EPHEMERAL).forPath("/t/e/s/t/3/"/)/;/
+/ / / // / / / client.create.forPath"/t/e/s/t/4/"/,/ //T/h/i/s/ /i/s/ /t/e/s/t/4"/../g/e/t/B/y/t/e/s//S/t/a/n/d/a/r/d/C/h/a/r/s/e/t/s/./U/T/F/_/8////	/ / / / / / / / client.create().forPath("/t/e/s/t/4/"/,/ /"/T/h/i/s/ /i/s/ /t/e/s/t/4/"/./g/e/t/B/y/t/e/s/(/S/t/a/n/d/a/r/d/C/h/a/r/s/e/t/s/./U/T/F/_/8/)/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+*  @throws Exceptin	* @throws Exception
+*/	*/
+/  / / / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / / /p/u/b/l/i/c /v/o/i/d/ /t/e/s/t/U/p/d/a/t/e/N/o/d/e/// /t/h/r/o/w/s//E/x/c/e/p/t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/U/p/d/a/t/e/N/o/d/e/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / / / / / / client.setDataforPath"/t/e/s/t/4/"/,/ /"//////"/./g/e/t/B/y/t/e/s////;/	/ / / / / / / / client.setData().forPath("/t/e/s/t/4/"/,/ /"//////"/./g/e/t/B/y/t/e/s/(/)/)/;/
+/ / / / / / / / clientsetData.withVersionl1.forPath"/t/e/s/t/4/"/,/ /"//////"/./g/e/t/B/y/t/e/s/f//f//	/ / / / / / / / client.setData().withVersion(1).forPath("/t/e/s/t/4/"/,/ /"//////"/./g/e/t/B/y/t/e/s/(/)/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / /  *	/ / / / * 
+*/	*/
+/ / / //@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ /  // /p/u/bl/i/c/  /v/o/i/d/ /t/e/s/t/Q/u/e/r/y/N/o/d/e/// /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/Q/u/e/r/y/N/o/d/e/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ // // / / /  /S/t/a/t/ /s/t/a/t/1/ /=/ /c/l/i/e/n/t/./c/h/e/c/k/E/x/i/s/t/s///f/o/r/P/a/t/h//" System.outprintln"/te/s/t/1//////""/ /+/ //s/t/a/t/1/ /!/=/ /n/u/l/l////	/ / / / / / / / /S/t/a/t/ /s/t/a/t/1/ /=/ /c/l/i/e/n/t/./c/h/e/c/k/E/x/i/s/t/s/(/)/./f/o/r/P/a/t/h/(/" System.out.println("/t/e/s/t/1//////"/ /+/ /(/s/t/a/t/1/ /!/=/ /n/u/l/l/)/)/;/
+/	/
+/ / / /  / / // /b/y/t/e/// /b/y/t/e/s/ /=/  /c/l/i/e/n/t/./g/e/t/D/a/t/a//l/./f/o/r/P/a/t/h//" System.out.println"/t/e/s/t/2//////""/ /+/ /n/e/w/ /S/t/r//n/g//b/y/t/e/s///;/	/ / / / / / / / /b/y/t/e/[/]/ /b/y/t/e/s/ /=/ /c/l/i/e/n/t/./g/e/t/D/a/t/a/(/)/./f/o/r/P/a/t/h/(/" System.out.println("/t/e/s/t/2//////"/ /+/ /n/e/w/ /S/t/r/i/n/g/(/b/y/t/e/s/)/)/;/
+/	/
+// / //  / /  / /S/t/a/t/ /s/t/a/t/2/ /=/ /n/e/w/  /S/t/a/t///;/	/ / / / / / / / /S/t/a/t/ /s/t/a/t/2/ /=/ /n/e/w/ /S/t/a/t/(/)/;/
+/ // / / / / /  /b/y/t/e/s/ /=/ /c/l/i/e/n/t/./g/e/t/D/a/t/a///./s/t/o/r/i/n/g/St/a/t/I/n/l/s/t/a/t/2//./f/o/r/P/a/t/h//" System.outprintln"//e/s/t///////"/ /+/ /n/e/w/ /S/t/r/i/n/g//b/y/t/e/s//f//	/ / / / / / / / /b/y/t/e/s/ /=/ /c/l/i/e/n/t/./g/e/t/D/a/t/a/(/)/./s/t/o/r/i/n/g/S/t/a/t/I/n/(/s/t/a/t/2/)/./f/o/r/P/a/t/h/(/" System.out.println("/t/e/s/t/4//////"/ /+/ /n/e/w/ /S/t/r/i/n/g/(/b/y/t/e/s/)/)/;/
+/  / / / / / / / /S///t/e/m/./o/u/t/./p/r/i/n/t/l/n//""//}	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"// }
+	
+@Test	@Test
+public void testDeleteNodef throws Exception l	public void testDeleteNode() throws Exception {
+clientdeletel.forPath"/t/e/s/t/1/""/l/;/	client.delete().forPath("/t/e/s/t/1/"/)/;/
+// / / / / / / client..deltef.deletingChilrenIfNeededf.forPath"/t/e/s/t/2/"//;	/ / / / / / / / client.delete().deletingChildrenIfNeeded().forPath("/t/e/s/t/2/"/)/;/
+/ / / /  / /  / / clientdeletel..withVersion1forPath"//e/s/t/4/"/l//	/ / / / / / / / client.delete().withVersion(1).forPath("/t/e/s/t/4/"/)/;/
+/ / / / / /  / / client.deletel.guaranteed..forPath/t/e/s/t/3/"/f/;/	/ / / / / / / / client.delete().guaranteed().forPath("/t/e/s/t/3/"/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / *NodeCache	/ / / / * NodeCache
+*	*
+* @throws Exception	* @throws Exception
+*/	*/
+/ / / / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/N/o/d/e/C/a/c/h/e/// /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/N/o/d/e/C/a/c/h/e/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / / / // /NodeCache cace = new  NodeCacheclient, "/s/u/p/e/r/"/,/ /f/a/l/s/e/l//	/ / / / / / / / NodeCache cache = new NodeCache(client, "/s/u/p/e/r/"/,/ /f/a/l/s/e/)/;/
+/ / / / / / / / /c/a/c/h/e/./s/t/a/r/t//t/r/u/e/l/;/	/ / / / / / / / /c/a/c/h/e/./s/t/a/r/t/(/t/r/u/e/)/;/
+/ / / / / / / / cache..getListenable.addListener-> l	/ / / / / / / / cache.getListenable().addListener(() -> {
+System.out.println"" + cache.getCurrentData.getPathf;	System.out.println("" + cache.getCurrentData().getPath());
+Systemout.printl""+ new Stringlcache.getCurrentData.getDataf;	System.out.println("" + new String(cache.getCurrentData().getData()));
+System.out.println"" + cache.getCurrentDatafgetStat;	System.out.println("" + cache.getCurrentData().getStat());
+l;;	});
+client.createforPathf"/n/o/d/e/C/a/c/h/e/""/,//"/1/2/3/4/"//g/e/t/B/yt/e/s////;/	client.create().forPath("/n/o/d/e/C/a/c/h/e/"/,/ /"/1/2/3/4/"/./g/e/t/B/y/t/e/s/(/)/)/;/
+/ / / / / / / /  /T/h/re/a/d/./s/l/e/e/p/f/1/0/0/0///	/ / / / / / / / /T/h/r/e/a/d/./s/l/e/e/p/(/1/0/0/0/)/;/
+/ / /   /  / / / /c/l/i/e/n/t/../s/e/t/D/a/t/a///./f/o/r/P/a/t/h//" Thread.sleep1000;	/ / / / / / / / /c/l/i/e/n/t/./s/e/t/D/a/t/a/(/)/./f/o/r/P/a/t/h/(/" Thread.sleep(1000);
+client.delete.forPath""/n/o/d/e/C/a/c/h/e/""//;/	client.delete().forPath("/n/o/d/e/C/a/c/h/e/"/)/;/
+/ / / / / /  / / /T/h/r/e/a/d/./s/l/e/e/p/5/0/0/0//;/	/ / / / / / / / /T/h/r/e/a/d/./s/l/e/e/p/(/5/0/0/0/)/;/
+/ /  / /  /}/	/ / / / /}/
+/	/
+/	/
+/ / / / * PathChildrenCache	/ / / / * PathChildrenCache
+*	*
+*@thrws Exception	* @throws Exception
+*/	*/
+/// / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / / /p/u/b/l/i/c  /v/o/i/d/ /t/e/s/t/P/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/// /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n///	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/P/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ // / // / / PathChildrenCache childrenCache = new PathChildrenCacheclient, "/s/u/p/e/r/"/,/ /tr/u/e//;/	/ / / / / / / / PathChildrenCache childrenCache = new PathChildrenCache(client, "/s/u/p/e/r/"/,/ /t/r/u/e/)/;/
+/ / // / / /  / * 	/ / / / / / / / * 
+PahChildrenCache.tartModeBUILD_INITIAL_CACHE/s/u/p/e/r///	PathChildrenCache.StartMode.BUILD_INITIAL_CACHE/s/u/p/e/r///
+/ / / / /  / // / //////P/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/./S/t/a/r/t/M/o/d/e/./P/O/S/T/_/I/N/I/T/I/A/L/I/Z/E/D/_/E/V/E/N/T/////B/U/I/L/D/_/I/N/I/TI/A/L/_/C/A/C/H/E/////////// PathChildrenCche.StartMode.NORMAL	/ / / / / / / / / //////P/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/./S/t/a/r/t/M/o/d/e/./P/O/S/T/_/I/N/I/T/I/A/L/I/Z/E/D/_/E/V/E/N/T/////B/U/I/L/D/_/I/N/I/T/I/A/L/_/C/A/C/H/E/////////// PathChildrenCache.StartMode.NORMAL
+*/	*/
+/ / / / / / / / /c/h/i/l/d/r/e/n/C/a/c/h/e/.//t/ar/t/l/P/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/./S/t/a/r/t/M/o/d/e/./P/O/S/T/_/I/N/I/T/I/A/L/I/Z/E/D/_/E/V/E/N/T//;/	/ / / / / / / / /c/h/i/l/d/r/e/n/C/a/c/h/e/./s/t/a/r/t/(/P/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/./S/t/a/r/t/M/o/d/e/./P/O/S/T/_/I/N/I/T/I/A/L/I/Z/E/D/_/E/V/E/N/T/)/;/
+/ / / /  / /  / / c/h/i/l/d/r/e/n/C/a/c/h/e/./g/e/t/L/i/s/t/e/n/a/b/l/e///./a/d/d/L/i/s/t/e/n/e/r///f/r/a/m/e/w/o/r/k/,,/ /e/v/e/n/// /-/>/ /{/	/ / / / / / / / /c/h/i/l/d/r/e/n/C/a/c/h/e/./g/e/t/L/i/s/t/e/n/a/b/l/e/(/)/./a/d/d/L/i/s/t/e/n/e/r/(/(/f/r/a/m/e/w/o/r/k/,/ /e/v/e/n/t/)/ /-/>/ /{/
+/  / / / / / / / /  // / /s/w/i/t/c/h/ /l/e/v/e/n/t/./g/e/t/T/y/p/e//// /{/	/ / / / / / / / / / / / /s/w/i/t/c/h/ /(/e/v/e/n/t/./g/e/t/T/y/p/e/(/)/)/ /{/
+/ / / /  / /  / / / / / / / / /  /  //a/s/e/  /C/H/I/L/D/_/A/D/D/E/D/:/	/ / / / / / / / / / / / / / / / /c/a/s/e/ /C/H/I/L/D/_/A/D/D/E/D/:/
+/ / / / / // / /  / / / / / / /  / // /S/y/s/t/e/m/./o/u//./p/r//nt/l/n/l/"/CH/I/L/D/_/A/D/D/E/D/////"/ /+//e/v/e/n/t/../g/e/t/T/y/p/e////+/ /"/////"/ /+/  /e/v/e/n/t/./g/e/t/D/a/t/a/f//./g/e/t/P/a//h/// /+/ /"/////"/ /+/	/ / / / / / / / / / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/C/H/I/L/D/_/A/D/D/E/D/////"/ /+/ /e/v/e/n/t/./g/e/t/T/y/p/e/(/)/ /+/ /"/////"/ /+/ /e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/P/a/t/h/(/)/ /+/ /"/////"/ /+/
+/// / /  / / / / / / / / / / / / / / / / / / / / / / /  /n/e/w/ /S/t/r/i/n/g//e/v/e/n/t/./g/e/t/D/a/t/a//l/./g/e/t/D/a/t/a//l/l/ /+/ /"////// /+/ e//e/nt/./g/e/t/D/a/t/a//./g/e/t//t/a/t///l/;/	/ / / / / / / / / / / / / / / / / / / / / / / / / / / / /n/e/w/ /S/t/r/i/n/g/(/e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/D/a/t/a/(/)/)/ /+/ /"/////"/ /+/ /e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/S/t/a/t/(/)/)/;/
+/ / / / / / / // / / // / / /  /  / /  /b/r/e/a/k/;;/	/ / / / / / / / / / / / / / / / / / / / /b/r/e/a/k/;/
+/ / / / / / / / / / / / / // / /c/a/s/e/ /C/H/I/L/D/_/U/P/D/A/T/E/D/:/	/ / / / / / / / / / / / / / / / /c/a/s/e/ /C/H/I/L/D/_/U/P/D/A/T/E/D/:/
+// / / / / / / / / / / / / / / / / / / /S/y/s/t/e/m/./o//t//p/r/i/n/t/l/n//"//H/I/L/D/_//P/D/A/T/E/D////// /+/  /e/v/e/n/t/./g/e/t/T/y/p/e/// +/ /"/////"/ /+/ /e/v/e/n/t//g/e/t/D/a/t/a///./g/e/t/P/a/t/h/f// /+/ /"/////"/ /+/	/ / / / / / / / / / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/C/H/I/L/D/_/U/P/D/A/T/E/D/////"/ /+/ /e/v/e/n/t/./g/e/t/T/y/p/e/(/)/ /+/ /"/////"/ /+/ /e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/P/a/t/h/(/)/ /+/ /"/////"/ /+/
+/ / // // / / / / / / //  / // / / / /  / / / / / //  n/e/w/ /S/tr/i/n/g//e/v/e/n/t/./g/e/t/D/a/t/a//f/./g/e/t/D/a/t/a//// /+/ /"/////""/  /+/ /e/v/en/t/./g/e/t/D/a/t/a///../g/e/t/S/t/a/t////;;/	/ / / / / / / / / / / / / / / / / / / / / / / / / / / / /n/e/w/ /S/t/r/i/n/g/(/e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/D/a/t/a/(/)/)/ /+/ /"/////"/ /+/ /e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/S/t/a/t/(/)/)/;/
+/  / / // / / / //  /  /  /  / / / /  /  / / /b/r/e/a/k/;/	/ / / / / / / / / / / / / / / / / / / / /b/r/e/a/k/;/
+// /  /  / /// / /  /  / /  /  /ca/s/e/ /C/H/I/L/D/_/R//M/O/V/E/D/:/	/ / / / / / / / / / / / / / / / /c/a/s/e/ /C/H/I/L/D/_/R/E/M/O/V/E/D/:/
+/  / / / / / / / / / / / / / / / / / / / /S/y/s//e/m/./o/u/t/./p//i/n/t/l/n//"/C/H/I/L/D//R/E/M/O/V/E/D/////"/ /+/ /e/v/e/n/t/./g/e/t/T/y/p//f// /+/ /""/////"/ /+/ /e/v/e/n/t/../g/e/t/D/a/t/a////g//t/P/a/t/h//f/ /+/ /"/////""/ /+/	/ / / / / / / / / / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/C/H/I/L/D/_/R/E/M/O/V/E/D/////"/ /+/ /e/v/e/n/t/./g/e/t/T/y/p/e/(/)/ /+/ /"/////"/ /+/ /e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/P/a/t/h/(/)/ /+/ /"/////"/ /+/
+/  // / / /    /  / / / / / / / / / / / /  / / / //  / / / /n/e/w/ /S/t/r/i/n/g//e/v/e/n/t/./g/e/t/D/a/t/a///../g/e/t/D/a/t/a//// /+/ /"/////"/ /+/ /e/v/e/n/t/../g/e/t/D/a/t/a///./g/e/t/S/t/a/t//f//;/	/ / / / / / / / / / / / / / / / / / / / / / / / / / / / /n/e/w/ /S/t/r/i/n/g/(/e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/D/a/t/a/(/)/)/ /+/ /"/////"/ /+/ /e/v/e/n/t/./g/e/t/D/a/t/a/(/)/./g/e/t/S/t/a/t/(/)/)/;/
+/ / / / /  /  / /  /  /  / // // / / / //b/r/e/a/k/;/	/ / / / / / / / / / / / / / / / / / / / /b/r/e/a/k/;/
+/ / / / / // / / / // /  / / / /d/e/f/au/l/t/:/	/ / / / / / / / / / / / / / / / /d/e/f/a/u/l/t/:/
+/ / / / / // // / / / /// / / / / / /b/r/e/a/k/;;/	/ / / / / / / / / / / / / / / / / / / / /b/r/e/a/k/;/
+/ / /  // /  / // / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / /  /  / /1//;/	/ / / / / / / / /}/)/;/
+/	/
+/ / / / / / / /  /c/l/i/e/n/t//c/r/e/a/t/////f/o/r/P/a/t///" client.ceate.creatingParentsINeeded.withModeCreateMode.PERSISTENTfoPath"/s/u/p/e/r client.setDatal.forPathl"/p/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/"/,/  /"/4/5/6/""../g/e/t/B/y/t/e/s////;/	/ / / / / / / / /c/l/i/e/n/t/./c/r/e/a/t/e/(/)/./f/o/r/P/a/t/h/(/" client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/s/u/p/e/r client.setData().forPath("/p/a/t/h/C/h/i/l/d/r/e/n/C/a/c/h/e/"/,/ /"/4/5/6/"/./g/e/t/B/y/t/e/s/(/)/)/;/
+/ / / /  /  / / / /c/l/i/e/n/t/./s/e/t/D/a/t/a///../f/o/r/P/a/t/h/l/""  client.delete.guaranteedl.deletinChildrenIfNeededl.forPath"/s/u/p/e/r///;/	/ / / / / / / / /c/l/i/e/n/t/./s/e/t/D/a/t/a/(/)/./f/o/r/P/a/t/h/(/" client.delete().guaranteed().deletingChildrenIfNeeded().forPath("/s/u/p/e/r/"/)/;/
+/ / / / / /  / / /T/h/r/e/a/d/.//l/e/e/p/f/5/0/00//;/	/ / / / / / / / /T/h/r/e/a/d/./s/l/e/e/p/(/5/0/0/0/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / // * TreeCache	/ / / / * TreeCache
+*	*
+* @throws Exception	* @throws Exception
+*/	*/
+/ / / / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / / /p/u/b/l/i/c//v/o/i/d/  /t/e/s/t/T/r/e/e/C/a/c/h/e/// /t/h/r/o/w/s/ //x/c/e/p/t/i/o/n/ /1/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/T/r/e/e/C/a/c/h/e/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/  / / / / / / / /T/r/e/e/C/a/c/h/e/ /t/r/e/e/C/a/c/h/e//=/ /n/e/w/  /T/r/e/e/C/a/c/h/e/l/c/l/i/e/n/t/,,//" reeCace.start	/ / / / / / / / /T/r/e/e/C/a/c/h/e/ /t/r/e/e/C/a/c/h/e/ /=/ /n/e/w/ /T/r/e/e/C/a/c/h/e/(/c/l/i/e/n/t/,/ /" treeCache.start();
+treeCache.getListenablef..addListenerfcuratorramework, treeCacheEvet -> {	treeCache.getListenable().addListener((curatorFramework, treeCacheEvent) -> {
+switch treeCacheEvent.getType {	switch (treeCacheEvent.getType()) {
+case NODE_ADDED:	case NODE_ADDED:
+Sysem.out..printlnl"NODE_ADDED" +reeCacheEvent.getData.getPathl+ "" +  new SringltreeCacheEvent..getDatal.getDatal	System.out.println("NODE_ADDED" + treeCacheEvent.getData().getPath() + "" + new String(treeCacheEvent.getData().getData())
++ "" + treeCacheEvent.gtData.getStatf	+ "" + treeCacheEvent.getData().getStat());
+break;	break;
+case NODE_UPDATED:	case NODE_UPDATED:
+Systemot.printlnNODE_UPDAED"   treeCcheEvent.getData.getPat + "" +new StringtreeCacheEvent.getData.getDatal	System.out.println("NODE_UPDATED" + treeCacheEvent.getData().getPath() + "" + new String(treeCacheEvent.getData().getData())
++ "" + treeCachEvent.getDataf.getStat	+ "" + treeCacheEvent.getData().getStat());
+break;	break;
+case NODE_REMOVED:	case NODE_REMOVED:
+Sytem.out.println"NODE_REMOVED" + treCacheEvent.getData.getPathl + "" + new StringtreeCacheEvent.getDataf.getDaa	System.out.println("NODE_REMOVED" + treeCacheEvent.getData().getPath() + "" + new String(treeCacheEvent.getData().getData())
++  +  treeCcheEvent.getDat.getStat;	+ "" + treeCacheEvent.getData().getStat());
+break	break;
+default:	default:
+brek;	break;
+}	}
+}f;	});
+client.createf.forPath/t/r/e/e/C/a/c/h/e/"/,/ /"/1/2/3/"/./g/e/t/B/y/t/e/s////;/	client.create().forPath("/t/r/e/e/C/a/c/h/e/"/,/ /"/1/2/3/"/./g/e/t/B/y/t/e/s/(/)/)/;/
+/ / / /  / / / /c/l/i/e/n/t//c/r/e/a/t/e/l//../c/r/e/a/t/i/n/g/P/a/r/e/n/t/s/I/f/N/e/e/d/e/d/l//./w/i/t/h/M/o/d/e//C/r/e/a/t/e/M/o/d/e/..//E/R/S/I/S/T/E/N/T//.f/o/r/P/a/th//" client.setData.forPathl"/t/r/e/e/C/a/c/h/e/"/,/ /"/7//9/"/./g/e/t/B/y/t/e/s/l/f/;/	/ / / / / / / / /c/l/i/e/n/t/./c/r/e/a/t/e/(/)/./c/r/e/a/t/i/n/g/P/a/r/e/n/t/s/I/f/N/e/e/d/e/d/(/)/./w/i/t/h/M/o/d/e/(/C/r/e/a/t/e/M/o/d/e/./P/E/R/S/I/S/T/E/N/T/)/./f/o/r/P/a/t/h/(/" client.setData().forPath("/t/r/e/e/C/a/c/h/e/"/,/ /"/7/8/9/"/./g/e/t/B/y/t/e/s/(/)/)/;/
+/ / / /  //  / / /c/l/i/e/n/t/./s/e/t/D/a/t/a///./f/o/r/P/a/t/h//" clientdelete.forPath"/t/r/e/e/C/a/c/h/e client.delete.forPath"/t/r/e/e/C/a/c/h/e/"//;/	/ / / / / / / / /c/l/i/e/n/t/./s/e/t/D/a/t/a/(/)/./f/o/r/P/a/t/h/(/" client.delete().forPath("/t/r/e/e/C/a/c/h/e client.delete().forPath("/t/r/e/e/C/a/c/h/e/"/)/;/
+/ / / // / / / /T/h/r/e/a/d/../s/l/e//p//5/0/0/0//;/	/ / / / / / / / /T/h/r/e/a/d/./s/l/e/e/p/(/5/0/0/0/)/;/
+/	/
+/  / //}/	/ / / / /}/
+/	/
+/	/
+/  / / * 	/ / / / * 
+*	*
+* @throws Exception	* @throws Exception
+*/	*/
+// / / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / / /p/u/b/l/i/c/ /v/o/i/d/  /t//s/t/T/r/a/n/s/a/c/t/i/o/n////t/h/r/o/w/s/ //x/c/e//t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/T/r/a/n/s/a/c/t/i/o/n/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ /    / / / / / CuratorOp createOp = client.transactionOp.createl	/ / / / / / / / CuratorOp createOp = client.transactionOp().create()
+.forPath"t/r/a/ns/a/c/t/i/o/n	.forPath("/t/r/a/n/s/a/c/t/i/o/n
+CuratorOp setDataOp =  client.transactionOp.setData	CuratorOp setDataOp = client.transactionOp().setData()
+.forPath/t/r/a/n/s/a/c/t/i/o/n/"/,/ /"/o/t/h/e/r/ /t/r/a/n/s/a/c/t/i/o/n/"/./g/e/t/B/y/t/e/s////;/	.forPath("/t/r/a/n/s/a/c/t/i/o/n/"/,/ /"/o/t/h/e/r/ /t/r/a/n/s/a/c/t/i/o/n/"/./g/e/t/B/y/t/e/s/(/)/)/;/
+/	/
+/  /  / / / / / /C/u/r/a/t/o/r/O/p/ /d/e/l/e/t/e/O/p//=/ /c/l/i/e/n/t/./t/r/a/ns/a/c/t/i/o/n/O/p/l//./d/e/l/e/t/e/f//	/ / / / / / / / /C/u/r/a/t/o/r/O/p/ /d/e/l/e/t/e/O/p/ /=/ /c/l/i/e/n/t/./t/r/a/n/s/a/c/t/i/o/n/O/p/(/)/./d/e/l/e/t/e/(/)/
+/  / / /  / / // / / /  / / / / / /./f/o/r/P/a/t/h//"	/ / / / / / / / / / / / / / / / /./f/o/r/P/a/t/h/(/"
+List<CuratorTransactionResult> reslts = client.transaction	List<CuratorTransactionResult> results = client.transaction()
+.forOperatinscreateOp, setDataOp,, deleteOp;	.forOperations(createOp, setDataOp, deleteOp);
+for  CuratorTransactionResultresult  : results	for (CuratorTransactionResult result : results) {
+System.out.println""+ resultgetForPathl + "--"" + resultgetType;	System.out.println(" " + result.getForPath() + "--" + result.getType());
+}	}
+}	}
+	
+@After	@After
+public void testClose {	public void testClose() {
+if client  != nll {	if (client != null) {
+clint.close;	client.close();
+}	}
+}	}
+f	}

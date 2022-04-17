@@ -1,0 +1,50 @@
+package com.liencat.javabase.thread.wait;	package com.aliencat.javabase.thread.wait;
+publicclass WaitTest {	public class WaitTest {
+public static WaitTest waitTest = new WaitTestf;	public static WaitTest waitTest = new WaitTest();
+public int i =  0;	public int i = 0;
+public static void  mainStringf args {	public static void main(String[] args) {
+new  aitThread.startlf;	new WaitThread().start();
+new WaitThreadl.startl;	new WaitThread().start();
+new WaitThreadf.start	new WaitThread().start();
+try {	try {
+Thread.seep1000;	Thread.sleep(1000);
+} catch InterruptedException e {	} catch (InterruptedException e) {
+eprintStackTracef;	e.printStackTrace();
+}	}
+new NotifyAllThreadf.start	new NotifyAllThread().start();
+try 	try {
+Threadsleep1000;	Thread.sleep(1000);
+} catch InterruptedException  e {	} catch (InterruptedException e) {
+e.printStackTrace	e.printStackTrace();
+}	}
+sychronied WaitTest.classl {	synchronized (WaitTest.class) {
+WaitTest.class.notify;	WaitTest.class.notify();
+f	}
+}	}
+}	}
+classWaitThread extends Thread {	class WaitThread extends Thread {
+@Override	@Override
+public void runl 1	public void run() {
+synchronized fWaitTest.class 1	synchronized (WaitTest.class) {
+try {	try {
+WaitTest.class.wait;;	WaitTest.class.wait();
+} catch nterruptedException e 	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+System.out.printlnWaitTest.waitTest.i++;	System.out.println(WaitTest.waitTest.i++);
+f	}
+}	}
+}	}
+clasNotifyAlThread extends Thread {	class NotifyAllThread extends Thread {
+@Override	@Override
+publicvoid run {	public void run() {
+synchronized  WaitTes.classl{	synchronized (WaitTest.class) {
+WaiTest.class.notify;	WaitTest.class.notify();
+try 	try {
+WaitTest.class.wait;	WaitTest.class.wait();
+} catch InterrupteException e 	} catch (InterruptedException e) {
+.printStackTrace;	e.printStackTrace();
+f	}
+1	}
+1	}
+	}

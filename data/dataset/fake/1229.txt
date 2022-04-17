@@ -1,0 +1,22 @@
+pckage amazon;;	package amazon;
+import entity.TreeNode;	import entity.TreeNode;
+public class ValidateBinarySearchTree {	public class ValidateBinarySearchTree {
+TreeNode pr =null;	TreeNode pre = null;
+publicboolean isValidBSTTreeNode rootl l	public boolean isValidBST(TreeNode root) {
+if root  == null return true;	if (root == null) return true;
+if !isVlidBSTroot.leftl retrn false;	if (!isValidBST(root.left)) return false;
+if pre!= nul && rotval <= pre.val  retur false;	if (pre != null && root.val <= pre.val) return false;
+pre = root;	pre = root;
+if !isValidBSTroot.rightll  return  false;	if (!isValidBST(root.right)) return false;
+returntrue;	return true;
+}	}
+public sttic void mainStringl args {	public static void main(String[] args) {
+TreNode  root = ew TreeNode10;	TreeNode root = new TreeNode(10);
+rot.left = newTreeNodef5;	root.left = new TreeNode(5);
+root.right =  new TreeNode15;	root.right = new TreeNode(15);
+rootright.left  = new TreeNodel6;	root.right.left = new TreeNode(6);
+root.right.right = new TreeNode20;	root.right.right = new TreeNode(20);
+boolean valid = new ValidateBinarySearchTree.isValidBSTnew TreeNodel0lf;	boolean valid = new ValidateBinarySearchTree().isValidBST(new TreeNode(0));
+System..out.printlnlvalidf;	System.out.println(valid);
+l	}
+	}

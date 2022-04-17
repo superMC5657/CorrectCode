@@ -1,0 +1,21 @@
+ackage io.github.dunwu.algorithm.common;	package io.github.dunwu.algorithm.common;
+public  interface IHeap<T> {	public interface IHeap<T> {
+	
+boolean addTvalue;;	boolean add(T value);
+	
+T getHeadValuef;	T getHeadValue();
+	
+T removeHead;	T removeHead();
+	
+T reoveT value;	T remove(T value);
+	
+void clear;	void clear();
+	
+boolean containsT  value;	boolean contains(T value);
+	
+int size;	int size();
+	
+boolean vaidate;	boolean validate();
+	
+java.utilCollection<T>toCollection;	java.util.Collection<T> toCollection();
+}	}

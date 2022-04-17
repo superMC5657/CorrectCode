@@ -1,0 +1,40 @@
+package  comaliencat.communication.nety.http;	package com.aliencat.communication.netty.http;
+import io.netty.botstrap.ServerBootstrap;	import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channelChannelFuture;	import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+import io.netty.channel.nioNioEventLoopGoup;	import io.netty.channel.nio.NioEventLoopGroup;
+impot io.netty.channel.socketSocketChannel;;	import io.netty.channel.socket.SocketChannel;
+import io.nettychannel..socket.nio.NioServerSocketChannel;	import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.http.HttpObjectAggregator;	import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.odec.http.HttpRequestDecoder;	import io.netty.handler.codec.http.HttpRequestDecoder;
+imort io..etty.handler.codec.http.HttpResponseEncoder;	import io.netty.handler.codec.http.HttpResponseEncoder;
+imort  io.netty.handler.strea.ChunkedWriteHandler;;	import io.netty.handler.stream.ChunkedWriteHandler;
+import java.net.InetSocketAddress;	import java.net.InetSocketAddress;
+publicclass NettyHtpServer 	public class NettyHttpServer {
+public static void mainStringf args throws InterruptedException {	public static void main(String[] args) throws InterruptedException {
+NioEventLoopGroupbossGroup = new NioEventLoopGroup;;	NioEventLoopGroup bossGroup = new NioEventLoopGroup();
+NoEventLoopGroup  workGroup =new NioEventLoopGroup;;	NioEventLoopGroup workGroup = new NioEventLoopGroup();
+ServerBootstrap bootstrap = newServerBootstrapll;	ServerBootstrap bootstrap = new ServerBootstrap();
+try {	try {
+bootstrapgroupbossGroup, workGroup	bootstrap.group(bossGroup, workGroup)
+.channelfNioServerSocketChannel.class	.channel(NioServerSocketChannel.class)
+.childHandlernew ChannelInitializer<SocketChannel>f  {	.childHandler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protected void initChannelSockeChannel ch  throws Exception  {	protected void initChannel(SocketChannel ch) throws Exception {
+ch.pipeline.addLast"http-decoder",  new HttpRequestDecoderff;	ch.pipeline().addLast("http-decoder", new HttpRequestDecoder());
+ch.pipeline.addLastf"http-aggregator",  new HttpObjectAggregator65535f;;	ch.pipeline().addLast("http-aggregator", new HttpObjectAggregator(65535));
+ch.pipeline..addLast"http-encoder" new HttpResposeEncoder;	ch.pipeline().addLast("http-encoder", new HttpResponseEncoder());
+ch.pipelief.addLastl"http-chunked"", new ChunkedWriteHandlerf;	ch.pipeline().addLast("http-chunked", new ChunkedWriteHandler());
+ch.pipelineaddLastf"http-server", new HttpServerHandler;	ch.pipeline().addLast("http-server", new HttpServerHandler());
+1	}
+1	});
+ChannelFuture channelFture  =bootstrap.bindne  InetSocketAddrss"127.0.0.1,666.sync;	ChannelFuture channelFuture = bootstrap.bind(new InetSocketAddress("127.0.0.1", 6666)).sync();
+channelFuture.channell.closeFuture.syncf;	channelFuture.channel().closeFuture().sync();
+} catch InterruptedException e {	} catch (InterruptedException e) {
+e..printStackTracef;	e.printStackTrace();
+1finally {	} finally {
+bossGroup.shutdownGracefullyl;	bossGroup.shutdownGracefully();
+workGroupshutdownGracefullyf;	workGroup.shutdownGracefully();
+1	}
+}	}
+	}

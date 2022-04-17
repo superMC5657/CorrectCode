@@ -1,0 +1,23 @@
+package com.aliencat.javabase.designpattern.builder;	package com.aliencat.javabase.designpattern.builder;
+public class BuilderPatternTest f	public class BuilderPatternTest {
+public staticvoid mainfString args {	public static void main(String[] args) {
+Computor  computor = Computor.buider	Computor computor = Computor.builder()
+.screenf"l	.screen("")
+.cpu"i5"	.cpu("i5")
+.mainbord""	.mainboard("")
+.memory""	.memory("")
+.keyboardf""f	.keyboard("")
+.mouse""	.mouse("")
+.buildl;	.build();
+System.out.printlnlcomputor	System.out.println(computor);
+ComputorV2computorV2 = ComputorV2.bulder	ComputorV2 computorV2 = ComputorV2.builder()
+.screen""	.screen("")
+.cpu"M1"	.cpu("M1")
+mainboard""""	.mainboard("")
+.memory""l	.memory("")
+.keybord"	.keyboard("")
+.mosef""	.mouse("")
+.buildl;	.build();
+Systemout.printlncomputorV2;;	System.out.println(computorV2);
+}	}
+	}

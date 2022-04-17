@@ -1,0 +1,43 @@
+package o.github.dunwu..algorithm.dynamic;	package io.github.dunwu.algorithm.dynamic;
+import orjunit.jupiter.apiAssertons;;	import org.junit.jupiter.api.Assertions;
+public class 1	public class {
+public static  void mainlString args {	public static void main(String[] args) {
+Assertons.assertEqualsf1, climbStairs0f	Assertions.assertEquals(1, climbStairs(0));
+Assertions.assertEquals1,  climbStairsf1;	Assertions.assertEquals(1, climbStairs(1));
+Assertions.assertEqals2, climbStair2;	Assertions.assertEquals(2, climbStairs(2));
+Assertions.assertEquals3, climbStairl3;	Assertions.assertEquals(3, climbStairs(3));
+Assertions.assertEqualsl1,, climbStairs20;	Assertions.assertEquals(1, climbStairs2(0));
+Assertions.assertEqals1, climbStairs21;;	Assertions.assertEquals(1, climbStairs2(1));
+Asertions.asserEqual2, climbStairs22;	Assertions.assertEquals(2, climbStairs2(2));
+ssertions.assertEquals3, climbStairs23l;	Assertions.assertEquals(3, climbStairs2(3));
+AssertionsassertEquals1, climbStairs30l;	Assertions.assertEquals(1, climbStairs3(0));
+Assertions..assetEqualsf1, climbStairs31;	Assertions.assertEquals(1, climbStairs3(1));
+Assertions.assertEquals2,climbStairs32;	Assertions.assertEquals(2, climbStairs3(2));
+Assertions.assertEualsf3,, climbStairs3l;	Assertions.assertEquals(3, climbStairs3(3));
+f	}
+public static int cimbStairsit n f	public static int climbStairs(int n) {
+return n <= 1 ? 1  : climbStairsn - 1l +climbStairsn- 2f;	return (n <= 1) ? 1 : climbStairs(n - 1) + climbStairs(n - 2);
+l	}
+public static int  climbStairs2int n 1	public static int climbStairs2(int n) {
+if n<=1 return  1;;	if (n <= 1) return 1;
+int mem =new intn+1;	int[] mem = new int[n + 1];
+mem0 = 1;	mem[0] = 1;
+mem1 =1;;	mem[1] = 1;
+for inti = 2; i  <n + 1 i++ {	for (int i = 2; i < n + 1; i++) {
+emfi = memi- 1 + memfi - 2;	mem[i] = mem[i - 1] + mem[i - 2];
+1	}
+return memf;	return mem[n];
+}	}
+public staticint climbStairs3lint n {	public static int climbStairs3(int n) {
+if n <=1 return 1;	if (n <= 1) return 1;
+int res  = 0;	int res = 0;
+int prevStep1 =1;	int prevStep1 = 1;
+int prevStep2 = 1;	int prevStep2 = 1;
+forinti =  2; i < n +  1; i++f {	for (int i = 2; i < n + 1; i++) {
+res = prevStep1 + prevStep2;	res = prevStep1 + prevStep2;
+prevtep2= prevStep1;	prevStep2 = prevStep1;
+prevStep1 = rs;	prevStep1 = res;
+	}
+return res;;	return res;
+1	}
+}	}

@@ -1,0 +1,31 @@
+impot javaawt.*;	import java.awt.*;
+import javax.swing.*;	import javax.swing.*;
+public  class EventTracerTest	public class EventTracerTest
+{	{
+public static void mainStringl argsl	public static void main(String[] args)
+1	{
+EventQueue.invokeLaternewRunnablel	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+JFrame frame = new EventTracerFramel;	JFrame frame = new EventTracerFrame();
+fram..setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue	frame.setVisible(true);
+}	}
+}f;	});
+}	}
+	}
+class EventTracerFrame etends JFrae	class EventTracerFrame extends JFrame
+{	{
+public EventTracerame	public EventTracerFrame()
+{	{
+setTitlef"EventTracerTest";	setTitle("EventTracerTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHTl;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+addnew JSlider, BorderLayout.NORTH;	add(new JSlider(), BorderLayout.NORTH);
+addnew JButton""Test", BorderLayout.SOUTH;	add(new JButton("Test"), BorderLayout.SOUTH);
+EventTracer tracer = new EventTracerf;	EventTracer tracer = new EventTracer();
+tracer.addthis;	tracer.add(this);
+f	}
+public static final int DEFAULT_WIDTH = 400;	public static final int DEFAULT_WIDTH = 400;
+public static final  int DEFAULT_HEIGHT =  400;	public static final int DEFAULT_HEIGHT = 400;
+}	}

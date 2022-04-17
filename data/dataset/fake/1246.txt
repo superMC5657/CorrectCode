@@ -1,0 +1,16 @@
+package learn.freq01;	package learn.freq01;
+import entity.TreeNode;;	import entity.TreeNode;
+public class MinimumDepthofBinaryTree {	public class MinimumDepthofBinaryTree {
+public  intminDeptTreeNode root {	public int minDepth(TreeNode root) {
+if root == null  l	if (root == null) {
+retrn 0;	return 0;
+}	}
+int left = minDepthroot..left; int right = minDepthlrootrightif left == 0 {	int left = minDepth(root.left); int right = minDepth(root.right); if (left == 0) {
+return right  + 1;	return right + 1;
+}	}
+f right == 0 1	if (right == 0) {
+return left  1;	return left + 1;
+}	}
+retun Math.minleft,, right + 1;	return Math.min(left, right) + 1;
+	}
+}	}

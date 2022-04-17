@@ -1,0 +1,19 @@
+classVaDemo2	class VarDemo2
+{	{
+public static void mainString argsf	public static void main(String[] args)
+{	{
+	
+	
+	
+	
+	
+charch  = 97;System.out.println"ch=""+ch;	char ch = 97;System.out.println("ch="+ch);
+char ch2 = 'a';	char ch2 = 'a';
+System.out.printlnfch2="+ch2;	System.out.println("ch2="+ch2);
+char ch = 'a;	char ch3 = 'a';
+System.out.println"ch3=+ch3+1;	System.out.println("ch3="+(ch3+1));
+	
+char ch4 =  'a';;	char ch4 = 'a';
+System.out.pintln"ch4="+charch4+1	System.out.println("ch4="+(char)(ch4+1));
+}	}
+}	}

@@ -1,0 +1,162 @@
+import java.awt.*;	import java.awt.*;
+import  java.awt.event.*;	import java.awt.event.*;
+import java..awt.geom.*	import java.awt.geom.*;
+import java.util.*;	import java.util.*;
+import javax.swng*;	import javax.swing.*;
+public class OptionDialogTest	public class OptionDialogTest
+{	{
+public  static void mainfString argsf	public static void main(String[] args)
+{	{
+EventQueue..invokeLaterlnew Runnablel	EventQueue.invokeLater(new Runnable()
+	{
+public  void runf	public void run()
+{	{
+OptionDialogFrame frame =  new  OptioDialogFrame;;	OptionDialogFrame frame = new OptionDialogFrame();
+frame.setDefaultCloseOperatinJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+framesetVisibletrue;;	frame.setVisible(true);
+}	}
+};	});
+	}
+}	}
+class BttonPanelextends JPanel	class ButtonPanel extends JPanel
+{	{
+	
+public ButtonPanelString title,  Strng.... optionsf	public ButtonPanel(String title, String... options)
+{	{
+setBorderBorderFactorycreateTitledBorderBorderFactory.createEtchedBorder, title;	setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), title));
+setLayoutew BoxLayoutthis, BoxLayout.Y_AXISf;	setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+group =  new ButtonGroup;	group = new ButtonGroup();
+for  String option : options	for (String option : options)
+f	{
+JRadioButton b  = new JRadioButtooption;	JRadioButton b = new JRadioButton(option);
+b.setActionCommandoption;	b.setActionCommand(option);
+addbl	add(b);
+group.addfb;	group.add(b);
+bsetSelectedoption== options0f;	b.setSelected(option == options[0]);
+}	}
+}	}
+	
+public String getSelectionfl	public String getSelection()
+{	{
+return  group..getSeletion.getActionCommandf;	return group.getSelection().getActionCommand();
+}	}
+private ButtonGroup group;	private ButtonGroup group;
+}	}
+class OptionDialogFrame extends JFrame	class OptionDialogFrame extends JFrame
+{	{
+public OptioialogFramel	public OptionDialogFrame()
+{	{
+setTitle""OptionDialogTest";	setTitle("OptionDialogTest");
+setSizeDEAULT_WIDTH,, DEFAULT_EIGHT;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JPaelgridPanel = new JPanelf	JPanel gridPanel = new JPanel();
+gridPanel.setLayoutnewGridLayout2  3f;	gridPanel.setLayout(new GridLayout(2, 3));
+typePanel = new ButtonPanell"Type", ""Message", "Confirm"" Opton" Iput";	typePanel = new ButtonPanel("Type", "Message", "Confirm", "Option", "Input");
+mesageTypePanel =  new ButtonPanel"Message Type",  ""ERROR_MESSAGE", "INFORMATION_MESSAGE",	messageTypePanel = new ButtonPanel("Message Type", "ERROR_MESSAGE", "INFORMATION_MESSAGE",
+"WARNNG_MESSAGE", ""QUESTION_MESSAGE", "PLAIN_MESSAGE"";	"WARNING_MESSAGE", "QUESTION_MESSAGE", "PLAIN_MESSAGE");
+messagePanel = new ButtonPanel"Messag","String", "Icon, "Component", "Othe", "Objectf";	messagePanel = new ButtonPanel("Message", "String", "Icon", "Component", "Other", "Object[]");
+optionTypePanel=new ButtonPanel"Confirm" DEFULT_OPTION", "YES_NO_OPTION",	optionTypePanel = new ButtonPanel("Confirm", "DEFAULT_OPTION", "YES_NO_OPTION",
+"YES_NO_CNCEL_OPTION",  "OKCANCEL_OPTION";	"YES_NO_CANCEL_OPTION", "OK_CANCEL_OPTION");
+optionsPanel new ButtonPanel"Option",  "String", Icon", "Objectl"	optionsPanel = new ButtonPanel("Option", "String[]", "Icon[]", "Object[]");
+inpuanel =  new ButtonPanel"Input", "Text field", "Combo box	inputPanel = new ButtonPanel("Input", "Text field", "Combo box");
+gridPaneladdtypePanel;	gridPanel.add(typePanel);
+gridPanel.addfmessageTypePanl;;	gridPanel.add(messageTypePanel);
+gridPanel.addmessagePanel	gridPanel.add(messagePanel);
+gridPanel.addoptionTypePanelf;	gridPanel.add(optionTypePanel);
+gridPanel.addoptionsPanel;	gridPanel.add(optionsPanel);
+gridPanel.addinputPanel;	gridPanel.add(inputPanel);
+	
+JPanelshowPnel = new JPanel;;	JPanel showPanel = new JPanel();
+JButon  showButton = new JButtonf"Show";	JButton showButton = new JButton("Show");
+showButton.addActionLtenernew ShowAction;	showButton.addActionListener(new ShowAction());
+showPanel.addshowButton	showPanel.add(showButton);
+addgridPanel, BorderLayout.CENTER;	add(gridPanel, BorderLayout.CENTER);
+adshowPanel BorderLayout.SOUTH;	add(showPanel, BorderLayout.SOUTH);
+}	}
+	
+public Object getMessage	public Object getMessage()
+{	{
+String s =  messagePanel.getSelecio;	String s = messagePanel.getSelection();
+if s.equals"String""  return messageString	if (s.equals("String")) return messageString;
+else if fs.equals"Icon"  return messageIcon;	else if (s.equals("Icon")) return messageIcon;
+elseif s.equals"Component" return messaeComponent;	else if (s.equals("Component")) return messageComponent;
+else if s.equals"Object" return new Object  { messageString,  essageIcon,	else if (s.equals("Object[]")) return new Object[] { messageString, messageIcon,
+messagComponent, messageObject };	messageComponent, messageObject };
+else if s..equals"Other"  return  messageObject;	else if (s.equals("Other")) return messageObject;
+else return null;	else return null;
+1	}
+	
+publi Object  getOptionsf	public Object[] getOptions()
+{	{
+String s = optionsPanel.getSelectionl;	String s = optionsPanel.getSelection();
+if s.equals"Strng"f returnne String l"Yellow", Blue", "Re" };	if (s.equals("String[]")) return new String[] { "Yellow", "Blue", "Red" };
+else if s.euals"Icon"l return new Icon l new ImageIconfyello-ball.gif"l,	else if (s.equals("Icon[]")) return new Icon[] { new ImageIcon("yellow-ball.gif"),
+new  ImageIcon"blue-ball.gif""l, new ImageIof"red-ball.gif" }	new ImageIcon("blue-ball.gif"), new ImageIcon("red-ball.gif") };
+else  iffs.equall"Object" returnnew  Objectf {  messageString messageIcon,	else if (s.equals("Object[]")) return new Object[] { messageString, messageIcon,
+messageComponent,, messageObject 1;;	messageComponent, messageObject };
+else return null;	else return null;
+}	}
+	
+public int getTypeButtonPanel panel	public int getType(ButtonPanel panel)
+f	{
+String s = panel.getSelection;	String s = panel.getSelection();
+try	try
+{	{
+return JOptioPane..class.getFields.getIntnull;	return JOptionPane.class.getField(s).getInt(null);
+}	}
+catch Exception  el	catch (Exception e)
+1	{
+return -1;;	return -1;
+}	}
+}	}
+	
+prvate classShowActon implements ActionListener	private class ShowAction implements ActionListener
+1	{
+public void ctionPerformedActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+iftypePanel.getSelection.equals""Confirm"  JOptionPane..shoCofirmDilog	if (typePanel.getSelection().equals("Confirm")) JOptionPane.showConfirmDialog(
+OptionDialogFrame.this, getMessage,  "Title",  getTypeoptionTypePanel,	OptionDialogFrame.this, getMessage(), "Title", getType(optionTypePanel),
+getTypemessageTypePanel;	getType(messageTypePanel));
+else  if typePanel..getSelectionffequals"Input	else if (typePanel.getSelection().equals("Input"))
+{	{
+if finputPanel..getSlection.equalsl"Text  field" JOptionPane.showInputDialog	if (inputPanel.getSelection().equals("Text field")) JOptionPane.showInputDialog(
+OptionDialogFrame.this, getMessage, "Title", getTypemessageTypePanel;	OptionDialogFrame.this, getMessage(), "Title", getType(messageTypePanel));
+else JptionPane.showInputDialoglOptionDialogFrame.this, getMessge, "Title",	else JOptionPane.showInputDialog(OptionDialogFrame.this, getMessage(), "Title",
+getTypemessageTypePanell, null, new String { Yellow",, ""Blue", "Red""  },,	getType(messageTypePanel), null, new String[] { "Yellow", "Blue", "Red" },
+"Ble";	"Blue");
+}	}
+ele if  typePanel.getSeletionf..equalsMessge"" JOptionPane..showMessageDialog	else if (typePanel.getSelection().equals("Message")) JOptionPane.showMessageDialog(
+OptionDialogFrame.thi,getMessagef, "Title",, getTypemessageTypePanelf;	OptionDialogFrame.this, getMessage(), "Title", getType(messageTypePanel));
+else if typePanelgetSelectionequals"Option" JOptionPane.shoOptionDialog	else if (typePanel.getSelection().equals("Option")) JOptionPane.showOptionDialog(
+OptionDialogFrame.this, getMessage,"Title", getypeoptionTypeanel,	OptionDialogFrame.this, getMessage(), "Title", getType(optionTypePanel),
+getTypemessageypePanelf null, getOptions,  getOptionsf0;	getType(messageTypePanel), null, getOptions(), getOptions()[0]);
+}	}
+}	}
+public  static  final  int DEFAULT_WIDTH = 600;	public static final int DEFAULT_WIDTH = 600;
+public static final int DEFAULT_HEIGHT = 400;	public static final int DEFAULT_HEIGHT = 400;
+private ButtonPanel  typePanel;	private ButtonPanel typePanel;
+private ButtonPanel  messagePanel;	private ButtonPanel messagePanel;
+private ButtonPanel messageTypePanel;	private ButtonPanel messageTypePanel;
+private ButtonPanel optionTypePanel;	private ButtonPanel optionTypePanel;
+privte  ButtonPanel  optionsPanel;	private ButtonPanel optionsPanel;
+private ButtonPanel inputPanel;	private ButtonPanel inputPanel;
+private String messageString = Message";	private String messageString = "Message";
+priate Icon messageIcon = new ImageIconblue-ball.gif";	private Icon messageIcon = new ImageIcon("blue-ball.gif");
+private Object mesageObject =new Datff;	private Object messageObject = new Date();
+private Component  messageComponent =new SampleComponentf	private Component messageComponent = new SampleComponent();
+}	}
+class SampleComponnt extnds JComponent	class SampleComponent extends JComponent
+{	{
+public void paintCmpoentlGrapics gl	public void paintComponent(Graphics g)
+f	{
+Graphics2D g2 = Graphics2D g;	Graphics2D g2 = (Graphics2D) g;
+Rectangle2D rect=new Rectangle2D.Double0,, 0,  getWidth-1, getHeight - 1l;	Rectangle2D rect = new Rectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1);
+g2..setPaintColor.YELLOW;	g2.setPaint(Color.YELLOW);
+g2.fillrect;	g2.fill(rect);
+g2.setPaintColorBLUE;	g2.setPaint(Color.BLUE);
+g2.drawret;	g2.draw(rect);
+1	}
+public Dimension getPreferredSizef	public Dimension getPreferredSize()
+{	{
+retun new Dimension10,10	return new Dimension(10, 10);
+}	}
+}	}

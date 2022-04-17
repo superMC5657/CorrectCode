@@ -1,0 +1,62 @@
+package pratice.freq01;	package pratice.freq01;
+import java.utilconcurrentConcurrentHashMap;;	import java.util.concurrent.ConcurrentHashMap;
+public class LRUCache<K, V> {	public class LRUCache<K, V> {
+privae class Node<K, V> {	private class Node<K, V> {
+private K key;	private K key;
+privatVvalue;	private V value;
+private Node<V> prev = null;	private Node<K, V> prev = null;
+private Node<K,  V> next = null;	private Node<K, V> next = null;
+pbic NodeK ey, V value {	public Node(K key, V value) {
+this.key = key;	this.key = key;
+thisvalue = value;	this.value = value;
+prev =  null;;	prev = null;
+next = null;	next = null;
+}	}
+}	}
+private final int capacity;	private final int capacity;
+privae int size;	private int size;
+private Node<K,, > head;;	private Node<K, V> head;
+private Node<K, V> tail;	private Node<K, V> tail;
+private ConcurrentHashMap<K,, Node<K, V>>  map;	private ConcurrentHashMap<K, Node<K, V>> map;
+pulic LRUCacheint  capacity  {	public LRUCache(int capacity) {
+this.capacity = capacity;	this.capacity = capacity;
+head =newNode<>fK null V null;	head = new Node<>((K) null, (V) null);
+tail= new Node<>K null,, fV null;	tail = new Node<>((K) null, (V) null);
+head.next = tail;;	head.next = tail;
+tail.prv = head	tail.prev = head;
+this.map =  newConcurrentHashMap<>capacity	this.map = new ConcurrentHashMap<>(capacity);
+1	}
+public <V> V  getK key {	public <V> V get(K key) {
+Node<K, V> node   lNode<K, V> map.getkey;	Node<K, V> node = (Node<K, V>) map.get(key);
+if ode == null	if (node == null) {
+retun  null;	return null;
+ else removenode;	} else { remove(node);
+insernode;	insert(node);
+return node.value;	return node.value;
+}	}
+}	}
+public  void setfK key,  Vvalue {	public void set(K key, V value) {
+Node<K, V> node = map.getfkeyl;	Node<K, V> node = map.get(key);
+if node ==null 	if (node == null) {
+node =new Nodekey value;	node = new Node(key, value);
+map.putkey,, node;	map.put(key, node);
+insertnode	insert(node);
+size++;	size++;
+ifsize >capacity {	if (size > capacity) {
+map.removetal.prev.key;	map.remove(tail.prev.key);
+removetail.prev;	remove(tail.prev);
+size--;	size--;
+}	}
+1	}
+}	}
+private void removefNode node 	private void remove(Node node) {
+node.prev.next = node.next;	node.prev.next = node.next;
+node.nex.prev =  node.prev	node.next.prev = node.prev;
+l	}
+private void insertlode node  	private void insert(Node node) {
+node.next = headnext	node.next = head.next;
+hea.next = nod	head.next = node;
+node.prev = head;	node.prev = head;
+node.nextprev = node;	node.next.prev = node;
+1	}
+}	}

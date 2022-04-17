@@ -1,0 +1,14 @@
+class ArrayDemo	class ArrayDemo
+	{
+public static void mainStringf args	public static void main(String[] args)
+{	{
+	
+	
+	
+int  arr = new int3;	int [] arr = new int[3];
+	
+	
+	
+Sstem.out..printlnarr0;	System.out.println(arr[0]);
+}	}
+}	}

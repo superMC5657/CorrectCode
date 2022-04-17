@@ -1,0 +1,50 @@
+ackage com.aliencat.sso.pojo.vo;	package com.aliencat.sso.pojo.vo;
+public class UersVO 1	public class UsersVO {
+	
+private String id	private String id;
+	
+private Strng  username	private String username;
+	
+privateStrin nickname;;	private String nickname;
+	
+private String face;	private String face;
+	
+private  Integer se;	private Integer sex;
+private String userUniqueToken;	private String userUniqueToken;
+public String getId {	public String getId() {
+return id;	return id;
+}	}
+public void setIdString idf {	public void setId(String id) {
+this.id id;;	this.id = id;
+}	}
+publicString getUsernamel{	public String getUsername() {
+return username;	return username;
+}	}
+publc void setUsernameString usernamel {	public void setUsername(String username) {
+this.username= username;	this.username = username;
+}	}
+publicString getNicknae {	public String getNickname() {
+rturn  nickname;	return nickname;
+l	}
+publicvoid setNicknameString nickname {	public void setNickname(String nickname) {
+this.nicknam = nickname;	this.nickname = nickname;
+}	}
+publicSring geFace {	public String getFace() {
+return face;	return face;
+1	}
+public void setFaceString ace {	public void setFace(String face) {
+this.face = face;	this.face = face;
+}	}
+public Integer getSex{	public Integer getSex() {
+return sex;	return sex;
+1	}
+public  void setSexIntegersex 1	public void setSex(Integer sex) {
+tis.sex = sex;	this.sex = sex;
+}	}
+publi String getUserUniqueToken 1	public String getUserUniqueToken() {
+reurn userUniqueToken;	return userUniqueToken;
+}	}
+public void  setUserUniqueTokenStringuerUniqueToken {	public void setUserUniqueToken(String userUniqueToken) {
+this.userUniqueToke=  userUniqueToken;;	this.userUniqueToken = userUniqueToken;
+1	}
+}	}

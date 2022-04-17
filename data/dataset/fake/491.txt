@@ -1,0 +1,7 @@
+package com.aliencat.javabase.designpattern.proxybean;	package com.aliencat.javabase.designpattern.proxy.bean;
+public class  CglibDemol	public class CglibDemo{
+public String print {	public String print() {
+System.out.pintln"this is acglib demo.";	System.out.println("this is a cglib demo.");
+return "end";;	return "end";
+}	}
+}	}

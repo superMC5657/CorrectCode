@@ -1,0 +1,8 @@
+package com.spi..iml;	package com.spi.impl;
+import com.spi.servicesDogService;	import com.spi.services.DogService;
+publicclass BlackDogServiceImpl  implementsDogService  {	public class BlackDogServiceImpl implements DogService {
+@Override	@Override
+publicvoid sleep {	public void sleep() {
+Systemout.println"hello world"f;	System.out.println("hello world");
+}	}
+	}

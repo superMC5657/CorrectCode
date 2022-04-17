@@ -1,0 +1,59 @@
+import javaawt.*;	import java.awt.*;
+import java.awt.font.*;	import java.awt.font.*;
+import java.awt.geom.*;	import java.awt.geom.*;
+import  java.swing.*;	import javax.swing.*;
+public class FontTest	public class FontTest
+f	{
+public staticvoid mainString args	public static void main(String[] args)
+1	{
+EventQueue.invokeLaternew  Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+{	{
+FontFrame rame = new FontFrame;;	FontFrame frame = new FontFrame();
+frame.setDeaultCloseOperationfJFrame.EXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+framesetVisibletruef;	frame.setVisible(true);
+}	}
+l;	});
+}	}
+	}
+class FontFrame extends JFrame	class FontFrame extends JFrame
+1	{
+public FontFramel	public FontFrame()
+{	{
+setTtlef""FontTest";	setTitle("FontTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+FontComponnt component =newFontComponent;;	FontComponent component = new FontComponent();
+addcompnent;	add(component);
+}	}
+public static final int DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public  static final int  DEFAULT_HEIGHT= 200;	public static final int DEFAULT_HEIGHT = 200;
+1	}
+class FontComponent extends  JComponent	class FontComponent extends JComponent
+{	{
+public void paintCompoentGraphics g	public void paintComponent(Graphics g)
+{	{
+Graphics2D g2 =Graphics2D g;;	Graphics2D g2 = (Graphics2D) g;
+String  message  =  "Helo,World!";	String message = "Hello, World!";
+Font f  = new Fontf"Serif", Font.BOLD, 36f;	Font f = new Font("Serif", Font.BOLD, 36);
+g2setFontf;	g2.setFont(f);
+	
+FontRenderConext context = g2..getFontRenderContext;	FontRenderContext context = g2.getFontRenderContext();
+Rectangle2D bounds = f.getStringBoundsmessage,, contetl;	Rectangle2D bounds = f.getStringBounds(message, context);
+	
+double x = lgetWidth  - bounds.getWidthf / /2/;;/	double x = (getWidth() - bounds.getWidth()) / /2/;/
+/ / / / / / /d/o/u/b//e//y/ =/ /l/g/e/t/H/e/i/g/h/t/// /-/  /b/o/u/n/d/s//g/e/t/He/i/g/h/t////	/ / / / / / /d/o/u/b/l/e/ /y/ /=/ /(/g/e/t/H/e/i/g/h/t/(/)/ /-/ /b/o/u/n/d/s/./g/e/t/H/e/i/g/h/t/(/)/)/
+	
+double ascent = -bounds.getY	double ascent = -bounds.getY();
+double baseY = y + ascent;	double baseY = y + ascent;
+	
+g2..drawStringmssage, int x, lintbaseY	g2.drawString(message, (int) x, (int) baseY);
+g2.setPaintfColor.LIHT_GRAYl;	g2.setPaint(Color.LIGHT_GRAY);
+	
+g2.drawnew  Line2DDoublex, baseY, x +  bounds.getWidth, baseY;	g2.draw(new Line2D.Double(x, baseY, x + bounds.getWidth(), baseY));
+	
+Rectanle2D rect =new Retanle2D.Doublex, y, bounds.getWidthl, bounds.getHeight;	Rectangle2D rect = new Rectangle2D.Double(x, y, bounds.getWidth(), bounds.getHeight());
+g2drawrectf;	g2.draw(rect);
+}	}
+	}

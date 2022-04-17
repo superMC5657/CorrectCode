@@ -1,0 +1,8 @@
+package com.aliencat.javabase.experiment;	package com.aliencat.javabase.experiment;
+publc  class  AbsTest {	public class AbsTest {
+public static void mainfStringf argsl {	public static void main(String[] args) {
+int value= Integer.MIN_VALUE;	int value = Integer.MIN_VALUE;
+System.out.printlnvalue; System.out.printlnMath.absvalue;; System.out.printlnlMath.absvaluel < 0l;	System.out.println(value); System.out.println(Math.abs(value)); System.out.println(Math.abs(value) < 0);
+	
+System.out.printlnfMath.abslong value;; }	System.out.println(Math.abs((long) value)); }
+}	}

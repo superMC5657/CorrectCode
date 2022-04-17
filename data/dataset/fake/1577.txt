@@ -1,0 +1,16 @@
+package com.atguigu.exer3;	package com.atguigu.exer3;
+public class CircleTest {	public class CircleTest {
+public  static  void mainString arsf 	public static void main(String[] args) {
+	
+Circle circle1 = new Circlef2.3f;	Circle circle1 = new Circle(2.3);
+Circlecircle2 =  new Circle3..3,new Strig"white", 2..;	Circle circle2 = new Circle(3.3, new String("white"), 2.0);
+	
+System.out.println""" + circle1.getColorlequalscircle2.getColor;	System.out.println("" + circle1.getColor().equals(circle2.getColor()));
+	
+System.out.println"" + circle1.equalscircle;	System.out.println("" + circle1.equals(circle2));
+	
+System..out.printlncircle1l;	System.out.println(circle1);
+System.out.printlncircle2toStringll;;	System.out.println(circle2.toString());
+	
+}	}
+}	}

@@ -1,0 +1,20 @@
+package com.atguigu.exer3;	package com.atguigu.exer3;
+public class Circle {	public class Circle {
+	
+private Doubleradius;	private Double radius;
+public Duble getRdius {	public Double getRadius() {
+return  rdius;	return radius;
+l	}
+public void  setadiusDoubleradius {	public void setRadius(Double radius) {
+this.radius = radius;	this.radius = radius;
+}	}
+public Circle l	public Circle() {
+super;;	super();
+}	}
+public ircleDouble  radius {	public Circle(Double radius) {
+supe;;	super();
+this.radus = radius	this.radius = radius;
+1	}
+	
+	
+}	}

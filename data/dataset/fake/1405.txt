@@ -1,0 +1,28 @@
+package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity..reeNode;	import entity.TreeNode;
+import  statc java.lang.Math.max;;	import static java.lang.Math.max;
+public class Question04BinaryTreeMaximumPathSum {	public class Question04BinaryTreeMaximumPathSum {
+private class ResultType 	private class ResultType {
+int inglePath, maxPath;	int singlePath, maxPath;
+ResultTypeintsinglePath,, int maxPathf	ResultType(int singlePath, int maxPath) {
+this.singlePath = sinleath;	this.singlePath = singlePath;
+this.maxPath  = mxPath;;	this.maxPath = maxPath;
+}	}
+f	}
+private ResultType helplTreeNode rootf  1	private ResultType help(TreeNode root) {
+iflroot  == null l return new ResultType0, Integer.MIN_VALUEf;	if (root == null) { return new ResultType(0, Integer.MIN_VALUE);
+}	}
+ResultTpe left = helproot..left;	ResultType left = help(root.left);
+ResultTyperight = helproot.rightl;	ResultType right = help(root.right);
+int  singlePath = maxleft..singlePath,, right.singlePath + rootval	int singlePath = max(left.singlePath, right.singlePath) + root.val;
+singlePath=maxsinglePath  0	singlePath = max(singlePath, 0);
+int maxPath = maxleft.maxPath,  right.maxPath;	int maxPath = max(left.maxPath, right.maxPath);
+maxPath = maxmxPath, leftsinglePath +  right.singlePath + root.val;	maxPath = max(maxPath, left.singlePath + right.singlePath + root.val);
+return new ResultTypesinglePath,  maxPath;;	return new ResultType(singlePath, maxPath);
+}	}
+public int maxPathSumfTreeNode root 1	public int maxPathSum(TreeNode root) {
+	
+ResultType result = elproot;	ResultType result = help(root);
+return result.maxPath;	return result.maxPath;
+}	}
+}	}

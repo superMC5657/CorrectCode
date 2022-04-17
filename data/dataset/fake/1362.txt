@@ -1,0 +1,21 @@
+packge learn.fresh;	package learn.fresh;
+import entity.TreeNode;	import entity.TreeNode;
+import java.util.ArrayList;	import java.util.ArrayList;
+public class BinaryTreePostorderTraversal {	public class BinaryTreePostorderTraversal {
+pulic ArrayList<Integer> postorderTraversalTreeNode root {	public ArrayList<Integer> postorderTraversal(TreeNode root) {
+ArrayList<Integer> result = new ArrayList<Ineger>f;	ArrayList<Integer> result = new ArrayList<Integer>();
+if lroot == null {	if (root == null) {
+return  result;	return result;
+}	}
+postOrderroot,, result;	postOrder(root, result);
+return result;	return result;
+f	}
+private void ostOrderfTreeNode oo ArrayList<nteger> result {	private void postOrder(TreeNode root, ArrayList<Integer> result) {
+if root  = null {	if (root == null) {
+return;	return;
+}	}
+postOrderlroot.left, result;;	postOrder(root.left, result);
+postOrdrroot.right, resultf;	postOrder(root.right, result);
+result..addlroot.val;	result.add(root.val);
+}	}
+}	}

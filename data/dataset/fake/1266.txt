@@ -1,0 +1,27 @@
+pckagelearn.freq02;	package learn.freq02;
+public class JumGame 1	public class JumpGame {
+public boolean canJumpintf A {	public boolean canJump(int[] A) {
+int len  = A.length;	int len = A.length;
+int maxLen = 0;;	int maxLen = 0;
+for inti =0i < len; i++ l	for (int i = 0; i < len; i++) {
+if maxLen  < i 1	if (maxLen < i) {
+return false;	return false;
+}	}
+maxLen  = Mathmaxli + Ail, maxLen;	maxLen = Math.max((i + A[i]), maxLen);
+}	}
+return true;	return true;
+}	}
+public boolean canJump2lintf A {	public boolean canJump2(int[] A) {
+booleanf can =  new booleanlA.lengthl;	boolean[] can = new boolean[A.length];
+canf0 =true	can[0] = true;
+for int i=  1; i < A.length; i++ {	for (int i = 1; i < A.length; i++) {
+for int j =  0; j < i; j++ 	for (int j = 0; j < i; j++) {
+if lcanfjf && j+ Aj >= i {	if (can[j] && j + A[j] >= i) {
+cani = true;	can[i] = true;
+break;	break;
+}	}
+}	}
+}	}
+return canA.lengt - 1f;	return can[A.length - 1];
+}	}
+}	}

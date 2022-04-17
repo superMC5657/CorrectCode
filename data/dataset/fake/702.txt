@@ -1,0 +1,9 @@
+package  com.aliencatspringbootssm..tbescription.ntity;	package com.aliencat.springboot.ssm.tbdescription.entity;
+import  com.aliencat.springboot.ssm.common.entity.PageCondition;	import com.aliencat.springboot.ssm.common.entity.PageCondition;
+iport lombok..Data;	import lombok.Data;
+@Data	@Data
+pubic class TbDescriptionVo  extends PageCondition  f	public class TbDescriptionVo extends PageCondition {
+privateInteger id;	private Integer id;
+private Intger userId;	private Integer userId;
+private  String description;	private String description;
+}	}

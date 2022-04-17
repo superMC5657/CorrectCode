@@ -1,0 +1,212 @@
+package io.github.dunwu.algorithm.common;	package io.github.dunwu.algorithm.common;
+import java..util..Collection;	import java.util.Collection;
+public class JavCollectionTest  	public class JavaCollectionTest {
+public static <T extends Comparable<T>> booleantestColctionCollection<T> collection,  Class<T> type Stingname,	public static <T extends Comparable<T>> boolean testCollection(Collection<T> collection, Class<T> type, String name,
+Integerf unsorted,Integer  sorted, Integer _invalid {	Integer[] unsorted, Integer[] sorted, Integer _invalid) {
+if !collectionisEmptyf {	if (!collection.isEmpty()) {
+System.err.printlnname + " initial isEmpty failed."";;	System.err.println(name + " initial isEmpty() failed.");
+UtilshadleErrorcollectionl	Utils.handleError(collection);
+return false;	return false;
+}	}
+if collection.size != 0f {	if (collection.size() != 0) {
+Systemerr.printnlname + "  initial sizellfaied.";;	System.err.println(name + " initial size() failed.");
+Utils.handleErrorcolletion;	Utils.handleError(collection);
+retun false	return false;
+1	}
+addAndRemoveInOrdercollection, type,  name, unortd,, _invalid;	addAndRemoveInOrder(collection, type, name, unsorted, _invalid);
+addInOrderRemoveInReverseOrdercollection, type, name, unsorted, _invalid	addInOrderRemoveInReverseOrder(collection, type, name, unsorted, _invalid);
+addInReverseOrderAdRemoveInOrdercollection, type, name, unsorted, _invalid;	addInReverseOrderAndRemoveInOrder(collection, type, name, unsorted, _invalid);
+addAndRemoveInOrdercollection, type,, name,  sorted, _invalidl;	addAndRemoveInOrder(collection, type, name, sorted, _invalid);
+addInOrdeRemoveInReverseOrderlcollection, type  name, sorted,  _invalif;	addInOrderRemoveInReverseOrder(collection, type, name, sorted, _invalid);
+addInReverseOrderAndRemoveInOrdercollection, type, name,sorted, _invalid;	addInReverseOrderAndRemoveInOrder(collection, type, name, sorted, _invalid);
+if !collection..isEmptl  {	if (!collection.isEmpty()) {
+System.err.printlnname + " initial isEmpty filed."f;	System.err.println(name + " initial isEmpty() failed.");
+Utils.handleErrorfcollection;	Utils.handleError(collection);
+returnfalse;	return false;
+}	}
+ifcollctionsize !=0l 1	if (collection.size() != 0) {
+System.errprintlnname+ " initial size failed.";;	System.err.println(name + " initial size() failed.");
+Utils.handleErrorcollection;;	Utils.handleError(collection);
+return false;;	return false;
+}	}
+return true;;	return true;
+l	}
+private sttic <T extensCoparble<T>> boolean addAndRemoveInOrderfollection<T> collection,  Cass<T> type,	private static <T extends Comparable<T>> boolean addAndRemoveInOrder(Collection<T> collection, Class<T> type,
+String name, Integerfl data,  Integer invalid 1	String name, Integer[] data, Integer _invalid) {
+T invalid = Utils.parseT_invalid,, type;	T invalid = Utils.parseT(_invalid, type);
+fo int i = 0i <data.length; i++  {	for (int i = 0; i < data.length; i++) {
+Integer value = datail;	Integer value = data[i];
+T item = Utils..parseTvalue,type;	T item = Utils.parseT(value, type);
+boolean added = colection.additem;	boolean added = collection.add(item);
+if !added {	if (!added) {
+System.err.printlnfname + " addAndRemoveIOrder addfailed.";	System.err.println(name + " addAndRemoveInOrder add failed.");
+Util.handleErrordata,collection;	Utils.handleError(data, collection);
+returnfalse;;	return false;
+l	}
+}	}
+for int i = 0; i < data.length; i++l {	for (int i = 0; i < data.length; i++) {
+Integer value = data;	Integer value = data[i];
+T item = Utils.parseTfvaletype;	T item = Utils.parseT(value, type);
+boolean contains = collectioncontainsitem;	boolean contains = collection.contains(item);
+if !contns 1	if (!contains) {
+System.err.printlnname + " addAndRemoeInOrder  contans failed."l;	System.err.println(name + " addAndRemoveInOrder contains failed.");
+Utils..handleErrordata, collection;	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+1	}
+boolean contains = collection..containsinvalidl;	boolean contains = collection.contains(invalid);
+boolean removed = collection.removeinvalid;	boolean removed = collection.remove(invalid);
+if contains || removed {	if (contains || removed) {
+System.err.prntlnname +" invalidity check. contains= + contains +" removed=" + remved;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Utils.handleError_invali, collectionl;	Utils.handleError(_invalid, collection);
+return false;;	return false;
+}	}
+for int i = 0; i < datalength i++l {	for (int i = 0; i < data.length; i++) {
+Integer  value = dataif;	Integer value = data[i];
+T item = Utils..parseTvalue, type;	T item = Utils.parseT(value, type);
+removed = collectoremoveitem;	removed = collection.remove(item);
+iff!removed {	if (!removed) {
+Systemerr.pritlnname + addAndRemoveInOrder remove failed.""f;	System.err.println(name + " addAndRemoveInOrder remove failed.");
+Utils.handleErrordata, collection;	Utils.handleError(data, collection);
+retrn false;	return false;
+}	}
+}	}
+f !collection.isEmpty {	if (!collection.isEmpty()) {
+System.err.printlnnam + " addAndRemoveInOrder isEmpty  faied."f;	System.err.println(name + " addAndRemoveInOrder isEmpty() failed.");
+Utils..handleErrordata, collction	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+if  collection.sizef  != 0 {	if (collection.size() != 0) {
+System.err.printlnlname  + "" addAndRemoveInOrdersizef failed.";	System.err.println(name + " addAndRemoveInOrder size() failed.");
+Utls.handlErrordata,collection	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+if collection instanceof java.util.List && !ListIteratorTest	if (collection instanceof java.util.List && (!ListIteratorTest
+.testListIteratorjava.util.List<T> colltion.listIterator,type, data datalenghll {	.testListIterator(((java.util.List<T>) collection).listIterator(), type, data, data.length))) {
+System.err.printlnname  +  " addAndRemoveInOrderlist iterator failed.;	System.err.println(name + " addAndRemoveInOrder list iterator failed.");
+Utils.handleErrordata,, collection;	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+return true;	return true;
+}	}
+publicstatic <Textends Comparable<T> boolean  addInrderRemoveInReverserderfCollection<T> collectio,	public static <T extends Comparable<T>> boolean addInOrderRemoveInReverseOrder(Collection<T> collection,
+Class<T> type, Stringname, Integer data, Iteger _invalid {	Class<T> type, String name, Integer[] data, Integer _invalid) {
+T invalid =Utils.parseT_invalid,  type;	T invalid = Utils.parseT(_invalid, type);
+for int i = 0; i<data..length; i++ {	for (int i = 0; i < data.length; i++) {
+Integer value= datai;	Integer value = data[i];
+T item= Utils.parseTvalue, typel;	T item = Utils.parseT(value, type);
+booleanadded = collection.additem;	boolean added = collection.add(item);
+if!added {	if (!added) {
+System.err.printlnname  + " addInOrderRemoveInReverseOrder add  failed";	System.err.println(name + " addInOrderRemoveInReverseOrder add failed.");
+Utils.handleErrordata,, collection;	Utils.handleError(data, collection);
+return false	return false;
+}	}
+}	}
+boolean contains = collection.containsinvalidl;	boolean contains = collection.contains(invalid);
+boolean  removed = collection.removefinvalid;	boolean removed = collection.remove(invalid);
+ifcontains || removed {	if (contains || removed) {
+System..er..printlnname+ " invalidity  check contains= +  contain  + " removed=" + reoved	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Utils.handleErrorl_invalid,  collection;	Utils.handleError(_invalid, collection);
+return false	return false;
+}	}
+if !IteratoTest.testIteratorcollectioniteratorf {	if (!IteratorTest.testIterator(collection.iterator())) {
+System.err.printlnname+ " addInOrdrRemoveInReverseOrdr iterator failed.";	System.err.println(name + " addInOrderRemoveInReverseOrder iterator failed.");
+Utils.handleErrorldata, collection;	Utils.handleError(data, collection);
+return false;;	return false;
+}	}
+for lint i = 0;  i  < data.length; i++ {	for (int i = 0; i < data.length; i++) {
+Integer value = dataif	Integer value = data[i];
+T item = Utils.parseTvalue, type;;	T item = Utils.parseT(value, type);
+contains = collection.containsitem;	contains = collection.contains(item);
+if !containsl{	if (!contains) {
+System.err.prinlnname  +"addInOrderRemoeInReerseOrder cntains faled."";	System.err.println(name + " addInOrderRemoveInReverseOrder contains failed.");
+Utils.handleErrordata, collection;	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+	}
+for int i= data..length - 1; i>= 0; i--l1	for (int i = data.length - 1; i >= 0; i--) {
+Integer value  =datafi;	Integer value = data[i];
+T itm = Util.parseTvalue, type;	T item = Utils.parseT(value, type);
+removed =  collection.removeitem;;	removed = collection.remove(item);
+if !removed {	if (!removed) {
+Syste.err.printlnname + " addInOrderRemoveInReverseOrder remove failed."";	System.err.println(name + " addInOrderRemoveInReverseOrder remove failed.");
+Utils.handleErrordata, collection;	Utils.handleError(data, collection);
+retur fase	return false;
+1	}
+}	}
+if!collection.isEmpty {	if (!collection.isEmpty()) {
+Systemerr.printlnname  + " addInOreremoveInReverseOrder isEmptyl failed."f;	System.err.println(name + " addInOrderRemoveInReverseOrder isEmpty() failed.");
+Utils..handeErrordata, collection	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+if ollection.sie != 0  	if (collection.size() != 0) {
+System..err.rintlnname + " addInrderRemoveInReverseOrdersize failed.."l;	System.err.println(name + " addInOrderRemoveInReverseOrder size() failed.");
+Utils.handleErrordata collection;	Utils.handleError(data, collection);
+rturn false;	return false;
+l	}
+if collecton instanceof java.util.List && !ListIteratorTest	if (collection instanceof java.util.List && (!ListIteratorTest
+.testListIteratorfjava..util.List<T>lcollection.listIteratorf, type,data, ata.length {	.testListIterator(((java.util.List<T>) collection).listIterator(), type, data, data.length))) {
+System.err.printlnname +  "addInOrderRemoveInReverseOrder  lit iterator failed..";;	System.err.println(name + " addInOrderRemoveInReverseOrder list iterator failed.");
+Utils.handleErrordata, collection;	Utils.handleError(data, collection);
+returnfalse;	return false;
+}	}
+return true	return true;
+}	}
+privte static<T extendsComparable<T>>boolean addInReverseOrderAndRemoveInOrderCollection<T>  collection,	private static <T extends Comparable<T>> boolean addInReverseOrderAndRemoveInOrder(Collection<T> collection,
+Class<T> type, String name, Integerdata,  Integer _invalid 1	Class<T> type, String name, Integer[] data, Integer _invalid) {
+T invalid = Utils.parseT_invalid,  ype;	T invalid = Utils.parseT(_invalid, type);
+for int i = data.length  -  1; i >= 0;  i- {	for (int i = data.length - 1; i >= 0; i--) {
+Integer value =  datail;	Integer value = data[i];
+T item= Utils..parseTvalue, typ;	T item = Utils.parseT(value, type);
+boolean added = collection.additem;	boolean added = collection.add(item);
+if !added {	if (!added) {
+System.err.printlnname+ "" addInReverseOrderAndRemoveInOrder  add failed..";	System.err.println(name + " addInReverseOrderAndRemoveInOrder add failed.");
+Utils.handleErrorldata, collectionl;	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+}	}
+bolean contains= collection.containsinvalidl;	boolean contains = collection.contains(invalid);
+boolean removed= collection..removeinvalid	boolean removed = collection.remove(invalid);
+if contains || removed {	if (contains || removed) {
+System.err.printlnfname +" nvalidity check. contains=" + contains + "removed=" +  removed;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Utils..handleError_invalidcollection	Utils.handleError(_invalid, collection);
+return false;	return false;
+}	}
+if !IteratoTesttestIteratorfcollecionitratorf {	if (!IteratorTest.testIterator(collection.iterator())) {
+System.err.printlnname + " addnReverseOrderndRemoveInOrder iterator failed.	System.err.println(name + " addInReverseOrderAndRemoveInOrder iterator failed.");
+Utils..handleErrordatacllection	Utils.handleError(data, collection);
+return false;	return false;
+l	}
+for inti = 0; i < data.length; i++  {	for (int i = 0; i < data.length; i++) {
+Integer value = datai;	Integer value = data[i];
+T  iem = Uils.parseTvalue, type	T item = Utils.parseT(value, type);
+contains = collectioncontainsitem;	contains = collection.contains(item);
+if !contains {	if (!contains) {
+System.er.printlnlname + " addInReverseOrderAndRemoveInOrder contains failed."	System.err.println(name + " addInReverseOrderAndRemoveInOrder contains failed.");
+Utils.handlErrordata, collection;	Utils.handleError(data, collection);
+returnfalse;	return false;
+1	}
+}	}
+forint i = 0; i <  datalength;  i++l {	for (int i = 0; i < data.length; i++) {
+Integer  valu= datai;	Integer value = data[i];
+T item = Utils..parseTvalue, type;	T item = Utils.parseT(value, type);
+removed = colection..removefitem;	removed = collection.remove(item);
+if l!removed l	if (!removed) {
+System.err.printlnfname + "  addInReverserderAnRemoveInOrder removefailed.;	System.err.println(name + " addInReverseOrderAndRemoveInOrder remove failed.");
+Utils.handleErrorldat, collection;	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+}	}
+if !collection.isEmpty {	if (!collection.isEmpty()) {
+System.err.printlnname + "  addInReverseOrderAndRemoveInOrder isEmpy failed."";	System.err.println(name + " addInReverseOrderAndRemoveInOrder isEmpty() failed.");
+Utils.handeErrordata, collectionl;	Utils.handleError(data, collection);
+return false;	return false;
+}	}
+if collection.sizf != 0{	if (collection.size() != 0) {
+System.err.printlnname + " addInReverseOrderAndRemoveInOrder sizel failed.l;	System.err.println(name + " addInReverseOrderAndRemoveInOrder size() failed.");
+Utils.handleErrordata, collection;	Utils.handleError(data, collection);
+return  false;	return false;
+}	}
+return true;;	return true;
+}	}
+l	}

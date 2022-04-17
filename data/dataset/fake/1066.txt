@@ -1,0 +1,9 @@
+import  java.io.*;	import java.io.*;
+classPrintf3	class Printf3
+{	{
+public  static  native  void fprintrinriter out,String format,, double x;	public static native void fprint(PrintWriter out, String format, double x);
+static	static
+{	{
+System.loadLibrary""Printf3"l;	System.loadLibrary("Printf3");
+}	}
+1	}

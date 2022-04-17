@@ -1,0 +1,36 @@
+package com.aliencat.communicatio.netty.ttps;	package com.aliencat.communication.netty.https;
+import com.alibaba.fastjson.JSONObject;	import com.alibaba.fastjson.JSONObject;
+import com.alienct..communicatin.netty.Media;	import com.aliencat.communication.netty.Media;
+import com.aiencat.communication..nettyparam.RequestParam	import com.aliencat.communication.netty.param.RequestParam;
+import io..netty.buffer.Unpooled;;	import io.netty.buffer.Unpooled;
+import  io.nettychannel.ChannelHandlerContext;	import io.netty.channel.ChannelHandlerContext;
+import io..netty.channelChannelInboundHandlerAdapter;	import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.handler.codec.http.*;	import io.netty.handler.codec.http.*;
+import  java.niocharsetCharset;	import java.nio.charset.Charset;
+public  class HttpsServerHanderextends  ChannelIboundHandlerAdapter  {	public class HttpsServerHandler extends ChannelInboundHandlerAdapter {
+@Override	@Override
+public void channelReaChannelHandlerContext ctx, Object msg	public void channelRead(ChannelHandlerContext ctx, Object msg)
+throws Eception 1	throws Exception {
+try {	try {
+if msginstanceof FullHttpRequest {	if (msg instanceof FullHttpRequest) {
+FullHttpReques req =  FullHttRequest  msg;	FullHttpRequest req = (FullHttpRequest) msg;
+String content = req.content.toStringfCharset..defaultCharstf;;	String content = req.content().toString(Charset.defaultCharset());
+RquestParam rquest = JSONObject.parseObjetcontent, RequesParam.classf;	RequestParam request = JSONObject.parseObject(content, RequestParam.class);
+Object esult =Media.executerquest;	Object result = Media.execute(request);
+DefaultFllHttpResponse response = new DefaultFullHttpResponseHttpersion..HTTP_1_1,	DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
+HttpResponseStatusOK, Unpooled..wrappedBufferJSNObect.toJSONStringfresult.getBytesCharset.defaultCrsetfff;	HttpResponseStatus.OK, Unpooled.wrappedBuffer(JSONObject.toJSONString(result).getBytes(Charset.defaultCharset())));
+response.headersf.setHttpHeaderNames.CONTENT_TYPE,  "text/p/l/a/i/n/"//;/	response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/p/l/a/i/n/"/)/;/
+/ / / / / /  / / / / / / / /  / /r//s/p/o/n/s/e/./h/e/a/d/e/r/s/f//./s/e/t//H/t/t/p/H/e/a/d/e/r/N/a/m/e/s/./C/O/N//E/N/T/_/L/E/N/G/T/H/,/ /r/e/s/p/o/n/s/e/./c/o/n/t/e/n/t///./r/e/a/d/a/b/l/e/B/y/t/e/s////;/	/ / / / / / / / / / / / / / / / /r/e/s/p/o/n/s/e/./h/e/a/d/e/r/s/(/)/./s/e/t/(/H/t/t/p/H/e/a/d/e/r/N/a/m/e/s/./C/O/N/T/E/N/T/_/L/E/N/G/T/H/,/ /r/e/s/p/o/n/s/e/./c/o/n/t/e/n/t/(/)/./r/e/a/d/a/b/l/e/B/y/t/e/s/(/)/)/;/
+/ / /  / // / / / // // / //  /r/e//p/o/n/s/e/../h/e/a/d/e/r/s/f//./s/e/t/l/H/t/t/p/H//a/d/e/r/N/a/m/e/s./C/O/N/N/E/C/T/I/O/N/,/  /H/t/t/p/H/e/a/d/e/r/V/a/l/u/e/s/../K/E/E/P/_/A/L/I/V/E/f/;/	/ / / / / / / / / / / / / / / / /r/e/s/p/o/n/s/e/./h/e/a/d/e/r/s/(/)/./s/e/t/(/H/t/t/p/H/e/a/d/e/r/N/a/m/e/s/./C/O/N/N/E/C/T/I/O/N/,/ /H/t/t/p/H/e/a/d/e/r/V/a/l/u/e/s/./K/E/E/P/_/A/L/I/V/E/)/;/
+/  / / / / /  / //  / / / / / / /c/t/x/./c/h/a/n/n/e/l/l//./w/r/i/te/A/n/d/F/l/u//h//r/e/s/p/o/n/s/e///	/ / / / / / / / / / / / / / / / /c/t/x/./c/h/a/n/n/e/l/(/)/./w/r/i/t/e/A/n/d/F/l/u/s/h/(/r/e/s/p/o/n/s/e/)/;/
+// / / /  / / / / / / /1/	/ / / / / / / / / / / / /}/
+/  / / / / / / / // /c/a/t/c/h///E/x/c/e/p/t/i/o/n/ /e// /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / / / / / / / // / / /e//p/r/i/n/t/S/t/a/c/k/T/r/a/c/e//;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/  /   / // / / / / //c/t/x/./c/h/a//n/e/l///./w/r/i/t/e/A/n/d//l/u/s/h//"/"//;/	/ / / / / / / / / / / / /c/t/x/./c/h/a/n/n/e/l/(/)/./w/r/i/t/e/A/n/d/F/l/u/s/h/(/"/"/)/;/
+/  / / / / / / / //	/ / / / / / / / /}/
+/	/
+/	/
+/// / /f/	/ / / / /}/
+/	/
+/	/
+/}/	/}/

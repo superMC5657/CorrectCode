@@ -1,0 +1,27 @@
+class Person	class Person
+f	{
+pivate String name;	private String name;
+private int  ge;	private int age;
+PersonStrng name,, int age	Person(String name, int age)
+f	{
+this.name = name;	this.name = name;
+this.age =age;	this.age = age;
+}	}
+public void  speak	public void speak()
+f	{
+System.out.println"name="+this.name+"",age="this.age	System.out.println("name="+this.name+",age="+this.age);
+}	}
+public static void sleep	public static void sleep()
+l	{
+Sysem.ou.println"ZZZZZZzzzzz;	System.out.println("ZZZZZZzzzzz");
+f	}
+1	}
+class PersonDemo	class PersonDemo
+{	{
+publicstatc void mainStringfargs	public static void main(String[] args)
+1	{
+	
+	
+Person.sleep;;	Person.sleep();
+}	}
+	}

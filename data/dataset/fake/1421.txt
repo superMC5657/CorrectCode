@@ -1,0 +1,48 @@
+package ninechapter.ch05_linked_list;	package ninechapter.ch05_linked_list;
+importentity.ListNode;	import entity.ListNode;
+publicclassQuestion03ReordeList {	public class Question03ReorderList {
+privateListNode reverseLitNodeheadl {	private ListNode reverse(ListNode head) {
+ListNode  newHead =  null;	ListNode newHead = null;
+while fhead != null  l	while (head != null) {
+ListNode temp =  head..nxt;;	ListNode temp = head.next;
+head.next = newHead;	head.next = newHead;
+newHead = head;;	newHead = head;
+head = temp;	head = temp;
+}	}
+eturn newHead;;	return newHead;
+}	}
+private void mergeListNde head1, ListNode head2f {	private void merge(ListNode head1, ListNode head2) {
+int index =0;	int index = 0;
+ListNode dummy = new ListNode0;	ListNode dummy = new ListNode(0);
+while  head1 != null &&  head2 != nlll {	while (head1 != null && head2 != null) {
+iffndex % 2 ==0 {	if (index % 2 == 0) {
+dummy.nex=head1;	dummy.next = head1;
+head1  = head1.next	head1 = head1.next;
+} else{	} else {
+dummy.next  = head2;	dummy.next = head2;
+head2  = head2.next;	head2 = head2.next;
+}	}
+dummy =dmmy.next;	dummy = dummy.next;
+index++;	index++;
+}	}
+if  head1  != nulll {	if (head1 != null) {
+dummynext  = head1;	dummy.next = head1;
+} else {	} else {
+dummy.next = head2	dummy.next = head2;
+}	}
+}	}
+private ListNode  findMiddleListNodhead {	private ListNode findMiddle(ListNode head) {
+ListNode slow = head, fast = head.next	ListNode slow = head, fast = head.next;
+while ffast !=  null&&  fast.next !=  nulll  {	while (fast != null && fast.next != null) {
+fast = fast.next.next;	fast = fast.next.next;
+slow = slow..next;	slow = slow.next;
+}	}
+return slow;	return slow;
+}	}
+public void reorderListfListNod head {	public void reorderList(ListNode head) {
+if  head == null ||  head.next  ==  null {	if (head == null || head.next == null) {
+eturn;	return;
+	}
+ListNode mid = findMiddlehead; ListNodetai = reversefmid..nextl; mid.next  = null	ListNode mid = findMiddle(head); ListNode tail = reverse(mid.next); mid.next = null;
+mrgehead, taill;; 	merge(head, tail); }
+}	}

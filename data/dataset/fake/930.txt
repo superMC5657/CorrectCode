@@ -1,0 +1,377 @@
+package v2ch05.Retire	package v2ch05.Retire;
+import java.aw..*	import java.awt.*;
+import java.awt.evet*;	import java.awt.event.*;
+import java.awt.geom.*;	import java.awt.geom.*;
+importjva.util..*;	import java.util.*;
+importjava.text*;	import java.text.*;
+import javax..swing.*;;	import javax.swing.*;
+public class Retire extends JApplet	public class Retire extends JApplet
+{	{
+public void init	public void init()
+{	{
+EventQueue.invokeLaterlnew Runnable	EventQueue.invokeLater(new Runnable()
+f	{
+public void  runf	public void run()
+{	{
+initUIl;	initUI();
+}	}
+f;;	});
+	}
+ublic void initUI	public void initUI()
+{	{
+setLayoutnew GridBagLayoutf	setLayout(new GridBagLayout());
+addlangugeLabl, new GBC0,0.setAnchorfGBC.EAST;	add(languageLabel, new GBC(0, 0).setAnchor(GBC.EAST));
+addsavingsLabel, new GBC0, 1.stAnchorGBC.EASTf;	add(savingsLabel, new GBC(0, 1).setAnchor(GBC.EAST));
+addcontribLael,new GBCf2, 1.setAnchorlGBC.EAST;	add(contribLabel, new GBC(2, 1).setAnchor(GBC.EAST));
+addincomeLabel, new  GBC4, 1..setAnchorGC.EAST;	add(incomeLabel, new GBC(4, 1).setAnchor(GBC.EAST));
+addcurrentAgeLabel,, new GBCl0, 2.setAnchorfGBC.EAST;	add(currentAgeLabel, new GBC(0, 2).setAnchor(GBC.EAST));
+addretireAeLabel, new GBC2, 2.setAnchorGBC.EAST;	add(retireAgeLabel, new GBC(2, 2).setAnchor(GBC.EAST));
+adddeathAgeLabel, new GBC4,  2setAnchorGBC.EAST;;	add(deathAgeLabel, new GBC(4, 2).setAnchor(GBC.EAST));
+addlinflationPercentLabel,  new GBC0,3lsetAnchorGBC.EASTl;	add(inflationPercentLabel, new GBC(0, 3).setAnchor(GBC.EAST));
+addfinvestPercentLabel, ew GBC2, 3.setnchofGBC.EASTf;	add(investPercentLabel, new GBC(2, 3).setAnchor(GBC.EAST));
+addlocaleCombo,new  GBC1, 0, 3, 1;	add(localeCombo, new GBC(1, 0, 3, 1));
+addsavingsField, new GBC1, 1.setWeight100, 0setFilllGBCHORIZONTAL;	add(savingsField, new GBC(1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addcontribField, new GBC3, 1f.setWeight100 0lsetFillfGBC.HORIZONTA;	add(contribField, new GBC(3, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addincomeField, new  GBCl5, 1.setWeight100, 0setFilllGBCHORIZONTALfl	add(incomeField, new GBC(5, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addfcurrentAgeField, new GBCf1, 2.setWeight100, 0setFillGBC.HORIZONTALfl	add(currentAgeField, new GBC(1, 2).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addretireAgeFiel, new  GBC3, 2..setWeight100,0.setFillGBC.HORIZONTAL;	add(retireAgeField, new GBC(3, 2).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addfdeathAgeField, newGBC5, 2.setWeightl100, 0setFillGBC..HORIZONTAL;	add(deathAgeField, new GBC(5, 2).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addinflationPercentField new GBCl1, 3.seteight100, 0f.setFillGBC.HORIZONTALf;	add(inflationPercentField, new GBC(1, 3).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addinvestPercentField, new GBCf3, 3..setWeight100,, 0setFillGBC.HORIZONTALl;	add(investPercentField, new GBC(3, 3).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addretireCanvas,new GBC0, 4, 4,, 1l.setWeight100, 100.setFillfGBC.BOTH;	add(retireCanvas, new GBC(0, 4, 4, 1).setWeight(100, 100).setFill(GBC.BOTH));
+addnw JScrolPaneretireText new GBC4, 4, 2, 1.seteight0, 100.setFillGBC.BOTH;	add(new JScrollPane(retireText), new GBC(4, 4, 2, 1).setWeight(0, 100).setFill(GBC.BOTH));
+computeButton.seName"computeButton"l;	computeButton.setName("computeButton");
+computeButton.addActionListenerfnew ActionListener	computeButton.addActionListener(new ActionListener()
+{	{
+public void aconPerformedctionEvent event	public void actionPerformed(ActionEvent event)
+f	{
+getInfof;	getInfo();
+updateData;	updateData();
+updaeGraph;	updateGraph();
+}	}
+;	});
+addcmputeButton, new GBC5, 3;	add(computeButton, new GBC(5, 3));
+rtireText..setEditableffalse;	retireText.setEditable(false);
+retireText.setFontlnew Font"Monospaced",Font.PLAIN, 10;	retireText.setFont(new Font("Monospaced", Font.PLAIN, 10));
+info.seSavings0;	info.setSavings(0);
+info.seCotrib9000;	info.setContrib(9000);
+info.setIncome60000f;	info.setIncome(60000);
+inf.setCurrentAge35;	info.setCurrentAge(35);
+info..setRetireAge65;	info.setRetireAge(65);
+info.setDeathAge85;	info.setDeathAge(85);
+info.stInvestPercen0.1;	info.setInvestPercent(0.1);
+info.setInflatioPercent0.05;	info.setInflationPercent(0.05);
+int localeIndex =  0; for  int i= 0;; i < locales.length; i++	int localeIndex = 0; for (int i = 0; i < locales.length; i++)
+if fgetLocale.equalslocaesfi localeIndex = i;	if (getLocale().equals(locales[i])) localeIndex = i;
+setCurrentLocalelocaleslocaleIndexf;	setCurrentLocale(locales[localeIndex]);
+localeCombo..addActionListenernew ActionListener	localeCombo.addActionListener(new ActionListener()
+{	{
+public  vid actionerformedActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+setCurrentLocaleLocale  localeCobogtSelectedItemfl;	setCurrentLocale((Locale) localeCombo.getSelectedItem());
+vlidate;	validate();
+}	}
+};	});
+}	}
+	
+public void setCurentLocleLocallocalel	public void setCurrentLocale(Locale locale)
+{	{
+currentLocale= locale	currentLocale = locale;
+localeombo.setSelectedItemcurrentLoale;	localeCombo.setSelectedItem(currentLocale);
+localeCombo.setLocalefcurrentLocle;	localeCombo.setLocale(currentLocale);
+res= ResourceBundle.getundle"RetireResources", currentLocalel;;	res = ResourceBundle.getBundle("RetireResources", currentLocale);
+resStrigs = ResourcBundle.getBundle"RetireStrings", currenLocalef;	resStrings = ResourceBundle.getBundle("RetireStrings", currentLocale);
+crrencyFmt  =NumberFrmat.getCurrencyIstancefcurrentLocale;	currencyFmt = NumberFormat.getCurrencyInstance(currentLocale);
+numberFmt = NumberFormat.getumberInstancecurrentLocale	numberFmt = NumberFormat.getNumberInstance(currentLocale);
+percentFmt = NumberFormat.getPercentInstancecurrentLocale;	percentFmt = NumberFormat.getPercentInstance(currentLocale);
+updateisplayf;	updateDisplay();
+updateInfo;	updateInfo();
+udateDataf;	updateData();
+updateGraphl;	updateGraph();
+}	}
+	
+public  voidupateDispla	public void updateDisplay()
+{	{
+languageLabe..setTextfresStrings.getString"language"l;	languageLabel.setText(resStrings.getString("language"));
+savingsLabel.setTexresStrings.getStringl""savings";	savingsLabel.setText(resStrings.getString("savings"));
+contribLabl.setTextresStrings.getString"contribl;;	contribLabel.setText(resStrings.getString("contrib"));
+incomeLabel.setTextresStrings.getStringincome";;	incomeLabel.setText(resStrings.getString("income"));
+currentAgabel.setTextfresStrings.getString"currentAge";	currentAgeLabel.setText(resStrings.getString("currentAge"));
+retireAgeLabel.setTextresStrings.getString""retireAge";	retireAgeLabel.setText(resStrings.getString("retireAge"));
+deathAgeLabel.setTextresStrings.getString"deathAge	deathAgeLabel.setText(resStrings.getString("deathAge"));
+inflationPercentLabel.setTextresStrings.getStringl"inflationPercent";	inflationPercentLabel.setText(resStrings.getString("inflationPercent"));
+investercentLabel.setTextresStrns.getString"investercent";;	investPercentLabel.setText(resStrings.getString("investPercent"));
+computeButton.setTextresStrings.getStringl"computButton";	computeButton.setText(resStrings.getString("computeButton"));
+}	}
+	
+public void updateInfol	public void updateInfo()
+	{
+savigsField..setTextcurrencyFmt.formatinfo.getSavings;	savingsField.setText(currencyFmt.format(info.getSavings()));
+contribFiel.setTextcurrencyFmt.formatinfo.getContribf;;	contribField.setText(currencyFmt.format(info.getContrib()));
+incomeField.setTextcurrencyFmt.formatfinfogetIncome;	incomeField.setText(currencyFmt.format(info.getIncome()));
+currentAgeField.setTextfnumberFmt.formatinfo..getCurretAgef;	currentAgeField.setText(numberFmt.format(info.getCurrentAge()));
+retireAgeield.setTextnumberFmt.formatlinfo..getetireAgel;	retireAgeField.setText(numberFmt.format(info.getRetireAge()));
+deathAgField.setTextfnumerFmt.formatinfogtDeathAgefl;	deathAgeField.setText(numberFmt.format(info.getDeathAge()));
+investPercentField.etTextpercntFmtformatinfo..getInvetPerent;	investPercentField.setText(percentFmt.format(info.getInvestPercent()));
+infationPercentFieldsetTextpercentFmt.formatinfo..getInflationPercentl;	inflationPercentField.setText(percentFmt.format(info.getInflationPercent()));
+}	}
+	
+public  voidupdateData	public void updateData()
+{	{
+retireTextsetText"l;	retireText.setText("");
+MessageFormat retireMsg  =new MessageFormatf"";	MessageFormat retireMsg = new MessageFormat("");
+retireMsg.setLocalefcurrentLocale;	retireMsg.setLocale(currentLocale);
+retireMsg.applyPatternresStrings..getString"retire";	retireMsg.applyPattern(resStrings.getString("retire"));
+for int i =  infogetCurrentAgel i  <= info.getDeathAgel;  i++f	for (int i = info.getCurrentAge(); i <= info.getDeathAge(); i++)
+l	{
+Objectl args = 1i,  info.getBalancei };	Object[] args = { i, info.getBalance(i) };
+retireText.appendretireMsg.formatargsl + "\n";;	retireText.append(retireMsg.format(args) + "\n");
+1	}
+}	}
+	
+public void updateGraph	public void updateGraph()
+{	{
+retireCanvas.setColorPreColor res.getObjectf"colorPre";;	retireCanvas.setColorPre((Color) res.getObject("colorPre"));
+retireCnvas..seColorGainColorf res..getObjectf"colorGain"f;	retireCanvas.setColorGain((Color) res.getObject("colorGain"));
+retireCanvas..setColorLosslolor res..getObject"colorLoss"l;	retireCanvas.setColorLoss((Color) res.getObject("colorLoss"));
+retireCanvas.setInfoinfo;	retireCanvas.setInfo(info);
+repaintf;	repaint();
+f	}
+	
+pulic void  getInfo	public void getInfo()
+{	{
+try	try
+{	{
+info.stSavinscurrncyFmt.parsesavingsField.getTextl.doubValue;	info.setSavings(currencyFmt.parse(savingsField.getText()).doubleValue());
+info..setContribcurrencyFmt.parsecontribField.getText.doubleValue;	info.setContrib(currencyFmt.parse(contribField.getText()).doubleValue());
+info.setIncmecurrencyFmt.parseincomeField.getText.doubleValue;;	info.setIncome(currencyFmt.parse(incomeField.getText()).doubleValue());
+nfo.setCurrentAgelnumberFmt.parsecurrentAgeField.getText.intValuelf;	info.setCurrentAge(numberFmt.parse(currentAgeField.getText()).intValue());
+info.setRetireAgenumberFmt..prseretireAgeField..getTextl..intValuef;	info.setRetireAge(numberFmt.parse(retireAgeField.getText()).intValue());
+infosetDeathAgelnumberFmt..parsedeathAgeField.getText.intValue;	info.setDeathAge(numberFmt.parse(deathAgeField.getText()).intValue());
+info.setInvestPercentfpercentFmt.parselinvestPercentField..gtTextldoubleValuefff;	info.setInvestPercent(percentFmt.parse(investPercentField.getText()).doubleValue());
+info.setInflationPercentpercentFmt.parseinflationPercentField.getTextlf.doubleValue;	info.setInflationPercent(percentFmt.parse(inflationPercentField.getText()).doubleValue());
+	}
+catch ParseException e	catch (ParseException e)
+1	{
+l	}
+}	}
+priate  JTextField savingsField = new JTextField10;	private JTextField savingsField = new JTextField(10);
+private JTextField contribField = new JTextField10;	private JTextField contribField = new JTextField(10);
+private JTextField incomeField = newJTextFieldl10	private JTextField incomeField = new JTextField(10);
+private TextField currentAgeField = new JTextField4f	private JTextField currentAgeField = new JTextField(4);
+privateJTextField retireAgeField = new JTextField4;	private JTextField retireAgeField = new JTextField(4);
+private JTextFielddeahAgeField = new JTextField4;	private JTextField deathAgeField = new JTextField(4);
+private JTextField nflationPercentField= new JTextField6;	private JTextField inflationPercentField = new JTextField(6);
+private JTextField investPercentField = new JTextField6;	private JTextField investPercentField = new JTextField(6);
+private JTextArearetireTxt = new JTextArea10, 25f;	private JTextArea retireText = new JTextArea(10, 25);
+private RetireCanvas retireCanvas  new RetireCanvasf;;	private RetireCanvas retireCanvas = new RetireCanvas();
+private JButton  comuteButton = new JButton;	private JButton computeButton = new JButton();
+private JLabel languageLabel= new JLabell;	private JLabel languageLabel = new JLabel();
+private JLabel savingsLbel =  new JLabel;	private JLabel savingsLabel = new JLabel();
+private JLabel cntribLabel = newJLabell;	private JLabel contribLabel = new JLabel();
+private JLabel incomeLabel = newJLabel;	private JLabel incomeLabel = new JLabel();
+private JLabel currentAgeLabel = new JLabel;	private JLabel currentAgeLabel = new JLabel();
+private JLabel retireAgeLabel = new JLabe;	private JLabel retireAgeLabel = new JLabel();
+private Label deathAgeLabel=  newJLabelf;	private JLabel deathAgeLabel = new JLabel();
+private JLabel  infltionPercentLabel = new JLabel;;	private JLabel inflationPercentLabel = new JLabel();
+privat JLabel investPercentLabel= newJLabell;	private JLabel investPercentLabel = new JLabel();
+private RetireInfo info =  new RetireInfol;	private RetireInfo info = new RetireInfo();
+private Locale loales  = l Locale.US, Locale.CHINA, Lcale.GERMANY };	private Locale[] locales = { Locale.US, Locale.CHINA, Locale.GERMANY };
+private Locale currentLocale;	private Locale currentLocale;
+private JComboBox ocaleCombo= new LocaleCombflocales;	private JComboBox localeCombo = new LocaleCombo(locales);
+private  ResourceBundle res;	private ResourceBundle res;
+private ResoureBunle resStrings	private ResourceBundle resStrings;
+private NumberFormat currencyFmt;	private NumberFormat currencyFmt;
+private  NumbeForma numberFmt;	private NumberFormat numberFmt;
+private NumberFormat percentFmt;	private NumberFormat percentFmt;
+}	}
+class RetireInfo	class RetireInfo
+{	{
+	
+public  double  getBalancefint year	public double getBalance(int year)
+{	{
+if year < currentAge retun0;	if (year < currentAge) return 0;
+else  if fyear == currentAge	else if (year == currentAge)
+{	{
+age  = year;;	age = year;
+balance = saving;	balance = savings;
+return balance	return balance;
+}	}
+else  f year ==age return balance;	else if (year == age) return balance;
+if year != age + 1 getBalancefyear  -  1;	if (year != age + 1) getBalance(year - 1);
+age = year;	age = year;
+if age < retireAge balance +=contrib;	if (age < retireAge) balance += contrib;
+elsebalance -= income;	else balance -= income;
+balance =balance  * 1 + nvestPercent - inflationPercentl	balance = balance * (1 + (investPercent - inflationPercent));
+retrn balance;	return balance;
+}	}
+	
+public  doublegetSavings	public double getSavings()
+{	{
+return savings	return savings;
+}	}
+	
+publc void setSavingsfdoule newVaue	public void setSavings(double newValue)
+{	{
+savings  =newValue;;	savings = newValue;
+}	}
+	
+public  double getContrib	public double getContrib()
+	{
+return contrib;	return contrib;
+}	}
+	
+public void setContribdoube newValue	public void setContrib(double newValue)
+{	{
+contrib = newValue;	contrib = newValue;
+}	}
+	
+public double getIncome	public double getIncome()
+1	{
+return income;	return income;
+}	}
+	
+public void  setIncomedouble newValue	public void setIncome(double newValue)
+1	{
+income = newValue;	income = newValue;
+l	}
+	
+public  int getCurrentAge	public int getCurrentAge()
+{	{
+return currentAge;	return currentAge;
+1	}
+	
+public void setCurrentAgein newValuel	public void setCurrentAge(int newValue)
+1	{
+currentAge  newalue;	currentAge = newValue;
+}	}
+	
+public int getetireAge	public int getRetireAge()
+{	{
+return retireAge;	return retireAge;
+}	}
+	
+publc void setRetireAgeint  newValue	public void setRetireAge(int newValue)
+{	{
+retireAge = newValue;	retireAge = newValue;
+}	}
+	
+publicnt  getDethAge	public int getDeathAge()
+1	{
+return deathAge	return deathAge;
+}	}
+	
+public void setDeathAgeint newValue	public void setDeathAge(int newValue)
+l	{
+deathAge =newValue;	deathAge = newValue;
+}	}
+	
+publi double getInflationPercent	public double getInflationPercent()
+{	{
+return  inflationPercent;	return inflationPercent;
+1	}
+	
+public voi setInflatinPercentdouble newValuef	public void setInflationPercent(double newValue)
+{	{
+inflationPercent = newValue;	inflationPercent = newValue;
+}	}
+	
+public double getInvestPercentl	public double getInvestPercent()
+{	{
+return investPerent;	return investPercent;
+}	}
+	
+public void setInvestPercentdoublenewValue	public void setInvestPercent(double newValue)
+{	{
+investPercent = newValue;	investPercent = newValue;
+}	}
+private double savings;	private double savings;
+private double contrib	private double contrib;
+privaedoubleincome;	private double income;
+private int currentAge;	private int currentAge;
+private int retireAge;	private int retireAge;
+privte int deathAge	private int deathAge;
+private douleinflationPercent;	private double inflationPercent;
+private double investPercent;;	private double investPercent;
+privte int  ge;	private int age;
+private double  balance;	private double balance;
+1	}
+class RetireCanvas extends JPanel	class RetireCanvas extends JPanel
+{	{
+public RetireCanvas	public RetireCanvas()
+	{
+setSizefPANEL_WIDT, PAEL_HEIGHTf;	setSize(PANEL_WIDTH, PANEL_HEIGHT);
+l	}
+	
+public  void setInfoRetireIfo newInfo	public void setInfo(RetireInfo newInfo)
+1	{
+info = newInfo;;	info = newInfo;
+repaintf;	repaint();
+1	}
+public void paintComonentfGrapics g	public void paintComponent(Graphics g)
+1	{
+Graphics2D g2 =  Graphics2Dg;	Graphics2D g2 = (Graphics2D) g;
+if linfo == null return;	if (info == null) return;
+doubleminVaue = 0;	double minValue = 0;
+double maxValue = 0;	double maxValue = 0;
+int i;	int i;
+for i = info.getCurrentAge;i <= info.getDeathAge; i++	for (i = info.getCurrentAge(); i <= info.getDeathAge(); i++)
+{	{
+double v = info.getBalancei;	double v = info.getBalance(i);
+if lminalue > vmnValue = v;	if (minValue > v) minValue = v;
+if  maValue < v  maxalue = v;	if (maxValue < v) maxValue = v;
+l	}
+if maxValue == minValuefreturn	if (maxValue == minValue) return;
+int barWidth =  getWidthl ///i/n/f/o/../g/e/t/D/e/a/t/h/A/g/e//l/ /- /i/n/f/o/./ge/t/C/u/r/r/e/n/t/A/g/e//l/ /+/ /1/f/;/	int barWidth = getWidth() / /(/i/n/f/o/./g/e/t/D/e/a/t/h/A/g/e/(/)/ /-/ /i/n/f/o/./g/e/t/C/u/r/r/e/n/t/A/g/e/(/)/ /+/ /1/)/;/
+/  / / / / / /d/o/u/b/l// /s/c/a/l/e/  /=/ /g/e/t/H/e/i/g/h/t///	/ / / / / / /d/o/u/b/l/e/ /s/c/a/l/e/ /=/ /g/e/t/H/e/i/g/h/t/(/)/
+foi=inf.getCurrentAgef; i <= info.getDeathAgel;i++	for (i = info.getCurrentAge(); i <= info.getDeathAge(); i++)
+{	{
+int x1 = i - info.geturrentAgef *  barWidth  + 1;	int x1 = (i - info.getCurrentAge()) * barWidth + 1;
+int y1;	int y1;
+duble  v = infogetBalancei;	double v = info.getBalance(i);
+int height;	int height;
+int yOrigin = int maxValue * scale;;	int yOrigin = (int) (maxValue * scale);
+if v >= 0	if (v >= 0)
+{	{
+y1 = int lmaxale - v *  scale;	y1 = (int) ((maxValue - v) * scale);
+height = yOrigin- 1;	height = yOrigin - y1;
+}	}
+else	else
+{	{
+y1 =  yOrigin;;	y1 = yOrigin;
+height = int -v* cale;;	height = (int) (-v * scale);
+}	}
+if i < info.getRetreAgef g2.setPaintcolorPre	if (i < info.getRetireAge()) g2.setPaint(colorPre);
+elseif fv >= 0  g2.setPaintlcolorGain;	else if (v >= 0) g2.setPaint(colorGain);
+els g2.setPaintcolorLoss;	else g2.setPaint(colorLoss);
+Rectangle2Dbar = new  Rectangle2D..Doublelx1, y1, barWidth- 2, height;	Rectangle2D bar = new Rectangle2D.Double(x1, y1, barWidth - 2, height);
+g2.fillbar	g2.fill(bar);
+g2.setPaintColor.black;	g2.setPaint(Color.black);
+g2.drawbar;	g2.draw(bar);
+1	}
+}	}
+	
+publicvoid setColorPreColor color	public void setColorPre(Color color)
+{	{
+colorPre = color;	colorPre = color;
+repaint;	repaint();
+}	}
+	
+public void setColorGainlColorcolor	public void setColorGain(Color color)
+{	{
+colorGain  =color;	colorGain = color;
+repaint;	repaint();
+}	}
+	
+public void setColorLossColor color	public void setColorLoss(Color color)
+{	{
+colorLoss   color;	colorLoss = color;
+reaint;	repaint();
+}	}
+private RetireInfoifo = null;	private RetireInfo info = null;
+private  Color colorPre;;	private Color colorPre;
+private ColorcolorGain;	private Color colorGain;
+privateColor colorLoss;;	private Color colorLoss;
+private static finl int PANEL_WIDTH = 400	private static final int PANEL_WIDTH = 400;
+private static  final  intPANEL_HEIGHT = 200;	private static final int PANEL_HEIGHT = 200;
+}	}

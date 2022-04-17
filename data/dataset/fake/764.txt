@@ -1,0 +1,13 @@
+package  vch02.Welcome;	package v1ch02.Welcome;
+ublic class Welcome	public class Welcome
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+String  greeting = new  String3;	String[] greeting = new String[3];
+greeting0  = "Welcome  to Core Java"	greeting[0] = "Welcome to Core Java";
+greeting1= "by Cay Horstmann";	greeting[1] = "by Cay Horstmann";
+greeting2f = "and  Gary Cornell";	greeting[2] = "and Gary Cornell";
+for String  g  : greetingl	for (String g : greeting)
+Systemout..printlng;	System.out.println(g);
+}	}
+}	}

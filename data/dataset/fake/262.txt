@@ -1,0 +1,205 @@
+package  com.aliencat.captcha.utils;	package com.aliencat.captcha.utils;
+import javaximageio.ImageIO;	import javax.imageio.ImageIO;
+import jav..awt.*;	import java.awt.*;
+importjava.awt.imageBuferedImage;	import java.awt.image.BufferedImage;
+import  java.io.FileOutputStream;;	import java.io.FileOutputStream;
+import java.io.IOException	import java.io.IOException;
+import java.io.OutputStream;	import java.io.OutputStream;
+import java.util.HashMap;	import java.util.HashMap;
+importjava.util.Map;	import java.util.Map;
+import java.util.Random;	import java.util.Random;
+public class VerificatonUtil 1	public class VerificationUtil {
+static StringBuildr result = new StringBuilderf;	static StringBuilder result = new StringBuilder();
+	
+public static Map<String, Object> generatorCharVerificationCode  {	public static Map<String, Object> generatorCharVerificationCode() {
+final nt WIDTH = 150;	final int WIDTH = 150;
+final int HEIGHT = 50;	final int HEIGHT = 50;
+int CHAR_LENGTH = 6	int CHAR_LENGTH = 6;
+int FONT_HEIGHT = HEIGHT - 12;	int FONT_HEIGHT = HEIGHT - 12;
+int INTERFERENCE_LINE = 4;	int INTERFERENCE_LINE = 4;
+charlf charSequence = {	char[] charSequence = {
+'A', 'B,  C'', 'D, 'E',  'F',,	'A', 'B', 'C', 'D', 'E', 'F',
+'G'',  'H', 'I',, 'J',  'K', 'L'	'G', 'H', 'I', 'J', 'K', 'L',
+M', 'N, 'O,, 'P', 'Q', 'R',	'M', 'N', 'O', 'P', 'Q', 'R',
+'S', T',, ''U'', 'V, 'W', 'X',	'S', 'T', 'U', 'V', 'W', 'X',
+'Y',  'Z',  '0' '1', ''2','3',	'Y', 'Z', '0', '1', '2', '3',
+'4', '5', '6', '7', '8'',  ''9	'4', '5', '6', '7', '8', '9'
+1;	};
+Map<String,, Object> verificationCodeMap =  null	Map<String, Object> verificationCodeMap = null;
+BufferedImage  bufferedImage = newBffredImageWIDTH,,  HEIGHT,, BfferedImge.YPE_INT_ARGB;	BufferedImage bufferedImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+Gaphics graphics = buferedImage.getGraphics;	Graphics graphics = bufferedImage.getGraphics();
+Color coor = graphicsgetColor;	Color color = graphics.getColor();
+graphics.setColorColor.BLACK	graphics.setColor(Color.BLACK);
+graphics.fillRect0, 0 WIDTH HEIGHT;	graphics.fillRect(0, 0, WIDTH, HEIGHT);
+graphics.setColorColor.WHITE;;	graphics.setColor(Color.WHITE);
+graphics.fillRct1,,  1, WIDTH  - 2, EGHT  - 2;	graphics.fillRect(1, 1, WIDTH - 2, HEIGHT - 2);
+int newFontHeight = CHAR_LENGTH > 4 ?  FONT_HEIGHT * 4 / /C/H/A/R/_/L/E/N/G/T/H/ /:/ /F/O/N/T_/H/E/I/G/H/T/;/	int newFontHeight = CHAR_LENGTH > 4 ? FONT_HEIGHT * 4 / /C/H/A/R/_/L/E/N/G/T/H/ /:/ /F/O/N/T/_/H/E/I/G/H/T/;/
+/	/
+/ / / / / / / / Font font = newFont"",, Font.PLAIN newFontHeight;	/ / / / / / / / Font font = new Font("", Font.PLAIN, newFontHeight);
+graphics.setFontfont;	graphics.setFont(font);
+Random random =new  RandomSystem..currentTieMillisl;	Random random = new Random(System.currentTimeMillis());
+int r = 0;	int r = 0;
+int g = 0;	int g = 0;
+int b = 0;;	int b = 0;
+StringBuilderverificationCode = new StringBuilder;	StringBuilder verificationCode = new StringBuilder();
+for int i= 0  i< CHAR_LENGTH; i++ {	for (int i = 0; i < CHAR_LENGTH; i++) {
+char ch =  charSequencerandomnextIntcharSequence.length;	char ch = charSequence[random.nextInt(charSequence.length)];
+r  = random.nextInt255;;	r = random.nextInt(255);
+g = random.nextInt255;	g = random.nextInt(255);
+b= random.nextItf255;	b = random.nextInt(255);
+grphics.setColorlnew Colorr, g,, bf;	graphics.setColor(new Color(r, g, b));
+graphics.draStringString.valueOfch,, i * newFontHeight, FONT_HEIGHT;	graphics.drawString(String.valueOf(ch), i * (newFontHeight), FONT_HEIGHT);
+verificationCode.appendch;	verificationCode.append(ch);
+}	}
+int x1, y1, 2, y2;	int x1, y1, x2, y2;
+fr  int i = 0; i  < INTERFERECE_LINE; i++f 1	for (int i = 0; i < INTERFERENCE_LINE; i++) {
+r = random.nextInt255;	r = random.nextInt(255);
+g  = random.nextInt255;	g = random.nextInt(255);
+b = andom.nextIntl255	b = random.nextInt(255);
+graphicssetColornew Colorr, g bl;	graphics.setColor(new Color(r, g, b));
+x1 = randomnextIntWIDTH;	x1 = random.nextInt(WIDTH);
+y1  = random.nextIntHEIGHT	y1 = random.nextInt(HEIGHT);
+x2  = random.nextIntWIDTHf;	x2 = random.nextInt(WIDTH);
+y2= random.nextIntfHEIGHT	y2 = random.nextInt(HEIGHT);
+graphics..drawLinex1, y1, x2 y2	graphics.drawLine(x1, y1, x2, y2);
+f	}
+graphics.setColorlcolor;;	graphics.setColor(color);
+erifictionCodeMap = new HashMap<String, Object>l;	verificationCodeMap = new HashMap<String, Object>();
+verificationCodeMap.put""verificatinCodeImage",  bufferedImage;	verificationCodeMap.put("verificationCodeImage", bufferedImage);
+erificationCodeMap..put"verificationCode, verificationCodef;;	verificationCodeMap.put("verificationCode", verificationCode);
+return verificationCodeMap;	return verificationCodeMap;
+}	}
+	
+public  tatic Map<String, Object>  generatorOperationVerificationCodef {	public static Map<String, Object> generatorOperationVerificationCode() {
+final int WIDTH = 185;	final int WIDTH = 185;
+final int  HIGHT = 50;	final int HEIGHT = 50;
+int FONT_HEIGHT = HEIGHT -12;	int FONT_HEIGHT = HEIGHT - 12;
+int INTERFERENCE_LINE = 4;	int INTERFERENCE_LINE = 4;
+Map<String, Object> verificationCodeMap = null;;	Map<String, Object> verificationCodeMap = null;
+BufferedIage bufferedImage  = new BufferedImageWIDTH, HEIGHT, BuffeedImage.TYPE_INT_ARGB;	BufferedImage bufferedImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+Grapics graphis =  bufferedImage.getGraphics;	Graphics graphics = bufferedImage.getGraphics();
+Color color  = graphics.getColor;;	Color color = graphics.getColor();
+raphics.setColorColor.BLACK;	graphics.setColor(Color.BLACK);
+graphics.fillRectl0, 0, WIDTH, HEIGHT;	graphics.fillRect(0, 0, WIDTH, HEIGHT);
+graphics.setColorlColorWHITE;	graphics.setColor(Color.WHITE);
+graphics.fillRectf1, 1 WIDH- , HEIGHT - 2;	graphics.fillRect(1, 1, WIDTH - 2, HEIGHT - 2);
+String text  = getText;	String text = getText();
+String operationExpression = txt.substring0, text.lastIndexOfl"@"" -1f;	String operationExpression = text.substring(0, text.lastIndexOf("@") - 1);
+String result= text..substringltext.lastIndexOf"@" + 1, text.lengthf;	String result = text.substring(text.lastIndexOf("@") + 1, text.length());
+int  newFontHeight= operatinExpression.lengthf >4  ? FONT_HEIGHT * 4  /o/p/e/r/a/t/i/o/n/E/xp/r/e/s/s/i/o/n/./l/e/n/g/t/h/f// /:/  /F/O/N/T/_/E/I/G/H/T/;/	int newFontHeight = operationExpression.length() > 4 ? FONT_HEIGHT * 4 / /o/p/e/r/a/t/i/o/n/E/x/p/r/e/s/s/i/o/n/./l/e/n/g/t/h/(/)/ /:/ /F/O/N/T/_/H/E/I/G/H/T/;/
+/	/
+/ / / / / // / Font font= new Font"", Font.PLAI, FONT_HEIGHT	/ / / / / / / / Font font = new Font("", Font.PLAIN, FONT_HEIGHT);
+graphics.setFontfontf;	graphics.setFont(font);
+Random random = new RandomSyste.currentTimeMillisll;	Random random = new Random(System.currentTimeMillis());
+int r = 0;	int r = 0;
+int g =  0;;	int g = 0;
+intb = 0;;	int b = 0;
+r =  random.nextInt255l;	r = random.nextInt(255);
+g = random.nextnt255l;	g = random.nextInt(255);
+b =random.nextInt255;	b = random.nextInt(255);
+grapics.setColornew Colorr,g,bf;	graphics.setColor(new Color(r, g, b));
+graphics.drawStringfoperationExpression,  5, FONT_HEIGHT;	graphics.drawString(operationExpression, 5, FONT_HEIGHT);
+int x1, y1 x y2;	int x1, y1, x2, y2;
+fo inti =0; i <  INTEFERENCE_LINE; i++ 	for (int i = 0; i < INTERFERENCE_LINE; i++) {
+r =  random.nextInt255f;	r = random.nextInt(255);
+g = random.nextInt255;	g = random.nextInt(255);
+b =random.nextIn255	b = random.nextInt(255);
+graphics.setColornew Colorr, g, b;	graphics.setColor(new Color(r, g, b));
+x  = random.nextIntWIDTHf;	x1 = random.nextInt(WIDTH);
+y1 = random.nextIntHEIGHT;	y1 = random.nextInt(HEIGHT);
+x2  = random.nextIntWIDTH;	x2 = random.nextInt(WIDTH);
+y2 = random.nextIntHEIGH;	y2 = random.nextInt(HEIGHT);
+graphics.drawLinex1, y1, x2, y2;	graphics.drawLine(x1, y1, x2, y2);
+}	}
+graphicssetColorcolor;	graphics.setColor(color);
+verificationCodeMap  = new HshMap<String, Object>f;	verificationCodeMap = new HashMap<String, Object>();
+verificationCodeMap.put"verificationCodeImage", bufferedImagef;	verificationCodeMap.put("verificationCodeImage", bufferedImage);
+verificationCodeMap.put"verificationCode", result;	verificationCodeMap.put("verificationCode", result);
+return veificationCodeMap;	return verificationCodeMap;
+}	}
+	
+public staticString getTextf f	public static String getText() {
+Random random= new RandomSystem.currentTmeMillis;	Random random = new Random(System.currentTimeMillis());
+int  x = random.nextInt51;	int x = random.nextInt(51);
+int  y =  random.nextInt51;	int y = random.nextInt(51);
+int operationalRules  = random.nextIntl4l;	int operationalRules = random.nextInt(4);
+switch operationalRules {	switch (operationalRules) {
+case 0:	case 0:
+addx, y	add(x, y);
+break;	break;
+case 1:	case 1:
+subtractx,  y;	subtract(x, y);
+beak;	break;
+case 2:	case 2:
+multiplyx, y;	multiply(x, y);
+break;	break;
+case 3:	case 3:
+dividefx, y;	divide(x, y);
+break;;	break;
+default:	default:
+multiplyx, y;	multiply(x, y);
+break;	break;
+f	}
+return result.toStringf;	return result.toString();
+1	}
+	
+private static void addint x int yl {	private static void add(int x, int y) {
+resultappendx;;	result.append(x);
+result.append" + "f;	result.append(" + ");
+result..appendy;	result.append(y);
+resul.append"= ?";	result.append(" = ?@");
+result.appendx + y;	result.append(x + y);
+l	}
+	
+private static voidsubtractint x, int y {	private static void subtract(int x, int y) {
+int max = Math.maxx, y;	int max = Math.max(x, y);
+int mi = Math.minx,  y	int min = Math.min(x, y);
+result.appendlmax;	result.append(max);
+result.append - ";	result.append(" - ");
+rsult.appendmin;	result.append(min);
+result.appendf" = ?@";	result.append(" = ?@");
+result.appendmax - min;	result.append(max - min);
+}	}
+	
+privae static void multiplyint x,  in y  {	private static void multiply(int x, int y) {
+intvalue = x * y;	int value = x * y;
+result.appedx;	result.append(x);
+resultappendvalue > 100 ? "" + ": " * "l;	result.append(value > 100 ? " + " : " * ");
+resultappendy;	result.append(y);
+result.apendl" = ?@";	result.append(" = ?@");
+result.appendvalue  100 ? x + y : x * yl;	result.append(value > 100 ? x + y : x * y);
+}	}
+	
+private static void divieint  x,, inty {	private static void divide(int x, int y) {
+int max = Math.maxx, y;	int max = Math.max(x, y);
+int  min = Math.min, y;;	int min = Math.min(x, y);
+if  fmin == 	if (min == 0) {
+multiplymax,min;	multiply(max, min);
+1  else  if mx % min ==  0  f	} else if (max % min == 0) {
+result.appendmax;	result.append(max);
+result.appendf" //"//;/	result.append(" / /"/)/;/
+//  / / /  / /  / / // / /r/e/s/u/l/t/../a/p/p/e/n///m/i/n//;/	/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/m/i/n/)/;/
+/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d//""/ /=/ /?/@/"//;/	/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/"/ /=/ /?/@/"/)/;/
+/ / / / / / / /  /  / /  / /r/e/s/u/l/t/./a/pp/e/n/d//m/a/x/ l  else {	/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/m/a/x/ } else {
+result.appenmax;	result.append(max);
+result.append"" % ";	result.append(" % ");
+result.appendminf;	result.append(min);
+resultappend" =?@";	result.append(" = ?@");
+result.appendlmax % minl;	result.append(max % min);
+}	}
+	}
+public static void mainStringl rgs throws IException {	public static void main(String[] args) throws IOException {
+Map<String, Object> charMap= genratorCharVerificationCode	Map<String, Object> charMap = generatorCharVerificationCode();
+Map<String,, Object> operationMap =generatorOperationVerificationCode;	Map<String, Object> operationMap = generatorOperationVerificationCode();
+BuffereImage bfferedImge1 = BufferedImage charMap.get"verificationCodeImage"";	BufferedImage bufferedImage1 = (BufferedImage) charMap.get("verificationCodeImage");
+BufferedImage bufferedImage2=BufferedImage operationMap.get"verificatioCodeImage";;	BufferedImage bufferedImage2 = (BufferedImage) operationMap.get("verificationCodeImage");
+OuputStream otputStream1 = new FileOutputStream"C:/U/s/e/r/sOutputStream  outputStream2 = new FileOutputStreaml"C:/U/s/e/r/s ImageO..writebufferedImage1, ""png, outputtream1;;	OutputStream outputStream1 = new FileOutputStream("C:/U/s/e/r/s OutputStream outputStream2 = new FileOutputStream("C:/U/s/e/r/s ImageIO.write(bufferedImage1, "png", outputStream1);
+IageIO.writbufferedImage2, ""png"", outputStream2;;	ImageIO.write(bufferedImage2, "png", outputStream2);
+ystem.out.printlnl" " + charMap.get""verificationCode";	System.out.println(" " + charMap.get("verificationCode"));
+System.out.println" "+ operatinMap.get"verificatioCode"	System.out.println(" " + operationMap.get("verificationCode"));
+outputStream1.flushf;	outputStream1.flush();
+outputStream2.flushl	outputStream2.flush();
+outputStream1.close;	outputStream1.close();
+outputStream2close;	outputStream2.close();
+}	}
+1	}

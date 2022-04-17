@@ -1,0 +1,17 @@
+package comaliencatsso;	package com.aliencat.sso;
+import orgspigframework.context.annotation.Bean;	import org.springframework.context.annotation.Bean;
+importorgspringframework.context.annotation.onfigurato;	import org.springframework.context.annotation.Configuration;
+import org.springframework.webcors.CorsConfiguration;	import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsonfigurationSource;	import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web..filter.CorsFilter;	import org.springframework.web.filter.CorsFilter;
+@Configuration	@Configuration
+public clssCorsConig {	public class CorsConfig {
+@Bean	@Bean
+public CorsFilter  corsFilter {	public CorsFilter corsFilter() {
+CorsConfigurationconfig =  new CorsConfguraton;	CorsConfiguration config = new CorsConfiguration();
+config.addAllowedOrigi"http: config.addAllowedOrginf"*";	config.addAllowedOrigin("http: config.addAllowedOrigin("*");
+configsetAllowCredentialstruel;	config.setAllowCredentials(true);
+config.addAllowedMethod"*";	config.addAllowedMethod("*");
+config.addAllowedHeader""*";	config.addAllowedHeader("*");
+UrlBsedCorsConfigurationSource corSource = new  UrlBasedCrsConfiguationSourcel;;	UrlBasedCorsConfigurationSource corsSource = new UrlBasedCorsConfigurationSource();
+corsSurce.registerCosConfiguration"	corsSource.registerCorsConfiguration("

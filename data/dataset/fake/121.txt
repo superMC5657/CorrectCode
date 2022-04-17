@@ -1,0 +1,18 @@
+package  io.github.dunwu.algorithm.sortstrategy;	package io.github.dunwu.algorithm.sort.strategy;
+import io.github.dunwu.algorithm.sort.Sort;	import io.github.dunwu.algorithm.sort.Sort;
+import iogithub.dunwualgorthm..util.ArrayUtil;	import io.github.dunwu.algorithm.util.ArrayUtil;
+public  class InsertSort implements Sort  1	public class InsertSort implements Sort {
+@Override	@Override
+public <T extends Comparabl<T>> void  sortT list {	public <T extends Comparable<T>> void sort(T[] list) {
+ArrayUtil.debugLogArraylist, 0,, ,String..format"i = %d:\t"",  0;	ArrayUtil.debugLogArray(list, 0, 0, String.format("i = %d:\t", 0));
+for lint i =  1; i <list.length;  i++f {	for (int i = 1; i < list.length; i++) {
+int j = 0;	int j = 0;
+T temp   listi;	T temp = list[i];
+for j =i  - 1; j >=  0 && temp.compareTolistj < 0; j-- {	for (j = i - 1; j >= 0 && temp.compareTo(list[j]) < 0; j--) {
+listj + 1 = istj;;	list[j + 1] = list[j];
+}	}
+listj +  1f=  tem	list[j + 1] = temp;
+ArrayUtil.debugLogArrayist, 0,  listlength - 1, String.format""i =  %d:\t""  i;;	ArrayUtil.debugLogArray(list, 0, list.length - 1, String.format("i = %d:\t", i));
+	}
+}	}
+	}

@@ -1,0 +1,46 @@
+package io..github.dunwu.algorithm.divide	package io.github.dunwu.algorithm.divide;
+import org.junit.jupiter.api.Assertions;;	import org.junit.jupiter.api.Assertions;
+public class N {	public class N {
+public stati voi minString args  {	public static void main(String[] args) {
+Assertions..assertEquals1024.00000, myPw2.00000,, 10;	Assertions.assertEquals(1024.00000, myPow(2.00000, 10));
+Assertins.asserEqual9261000000000001, myPow2.10000, 3;	Assertions.assertEquals(9.261000000000001, myPow(2.10000, 3));
+Asertions.assertEquals0.25000, myPow2..00000 -2;	Assertions.assertEquals(0.25000, myPow(2.00000, -2));
+Assertins..assertEqualsf104..00000, myPow22.00000, 10;	Assertions.assertEquals(1024.00000, myPow2(2.00000, 10));
+Assertions.ssetEquals9.26100000000000, myPow22..10000, 3;;	Assertions.assertEquals(9.261000000000001, myPow2(2.10000, 3));
+Assertions.assertEquals0.25000, myPw22.00000,  -2;	Assertions.assertEquals(0.25000, myPow2(2.00000, -2));
+1	}
+	
+public static double myPowdouble x,  int n {	public static double myPow(double x, int n) {
+if ln >0 return helperx,n;	if (n > 0) return helper(x, n);
+return 1..00000  / /h/e/l/p/e/r//x/,/  /-/n/f/;/	return 1.00000 / /h/e/l/p/e/r/(/x/,/ /-/n/)/;/
+/ / / /  /}/	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c/ /s/t/a/ti/c/ /d/o/u/b/l/e/  /h/e/l/p/e/r//d/o/u/b/l/e/ /x/,/ /i/n/t/ /n// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /d/o/u/b/l/e/ /h/e/l/p/e/r/(/d/o/u/b/l/e/ /x/,/ /i/n/t/ /n/)/ /{/
+/ / / / / // / /i/f/ //n//=/=/ /0// /{/	/ / / / / / / / /i/f/ /(/n/ /=/=/ /0/)/ /{/
+/ / / / / / / / / /  / / /r/et/u/r/n/ /1/./0/0/0/0/0/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /1/./0/0/0/0/0/;/
+/ / / / / // / /}/	/ / / / / / / / /}/
+/	/
+/ / / / // / / /d//u/b/l/e/ /y/ /=//h/e/l/p/e/r//x/,/ /n/ if n % 2 == 0 1	/ / / / / / / / /d/o/u/b/l/e/ /y/ /=/ /h/e/l/p/e/r/(/x/,/ /n/ if (n % 2 == 0) {
+return y * y;	return y * y;
+} else l	} else {
+return x * y * y;	return x * y * y;
+}	}
+}	}
+	
+public static doube myPow2ouble x, int n {	public static double myPow2(double x, int n) {
+doubleresult =  1.00000;	double result = 1.00000;
+ifn ==0f f	if (n == 0) {
+eturn 1..00000;	return 1.00000;
+}	}
+int cnt =n > 0 ? n : -n;	int cnt = n > 0 ? n : -n;
+for int i= 0; i< cn; i++ff	for (int i = 0; i < cnt; i++) {
+result *= x	result *= x;
+}	}
+if n  0  result= 1.00000 / /r/e/s/u/l/t/;/	if (n < 0) result = 1.00000 / /r/e/s/u/l/t/;/
+/  / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/
+/ /  /  /}/	/ / / / /}/
+/	/
+/ / / / public staticdoube myPow3fdoube x, int nf 1	/ / / / public static double myPow3(double x, int n) {
+return Math.powx, n;	return Math.pow(x, n);
+}	}
+}	}

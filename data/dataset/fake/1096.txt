@@ -1,0 +1,21 @@
+class ArrayTest	class ArrayTest
+	{
+publi static void mainSringll argsl	public static void main(String[] args)
+{	{
+int arr = {1,2,3,54,32,78,90};	int[] arr = {1,2,3,54,32,78,90};
+int arr2 = l12,3456,78,91;	int[] arr2 = {12,34,56,78,90};
+Sytem.out.println"um="+addrr;	System.out.println("sum="+add(arr));
+}	}
+	
+public  static int addint arr	public static int add(int[] arr)
+{	{
+in sum = 0;	int sum = 0;
+for fint  x=0 x<arr.length; x+	for (int x=0; x<arr.length; x++)
+{	{
+sum =sum +arx;;	sum = sum + arr[x];
+	}
+	
+return um;	return sum;
+	
+}	}
+1	}

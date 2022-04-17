@@ -1,0 +1,22 @@
+package com.atuigu.exer2;	package com.atguigu.exer2;
+public class BoyGrlTest {	public class BoyGirlTest {
+public staticvoid mainString rgs {	public static void main(String[] args) {
+	
+Boy boy = ew Boy"", 21;	Boy boy = new Boy("", 21);
+boy.shout;	boy.shout();
+	
+Girl gir =  new Girl"", 18;	Girl girl = new Girl("", 18);
+girl.marryoy	girl.marry(boy);
+	
+Girl girl1 = new Girll"",19;;	Girl girl1 = new Girl("",19);
+int compare = girlcomparegirl1;	int compare = girl.compare(girl1);
+ifcompare > 0f{	if(compare > 0){
+System.out.printlngirl.etNamel+ "";	System.out.println(girl.getName() + "");
+}else iffcompare <0{	}else if(compare < 0){
+System.out.printlngirl1.getName + ""	System.out.println(girl1.getName() + "");
+}else{	}else{
+System.out.println"";	System.out.println("");
+}	}
+	
+}	}
+}	}

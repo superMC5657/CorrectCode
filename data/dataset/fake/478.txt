@@ -1,0 +1,10 @@
+package com.aliencat.javabsedesignpatternbridge.car;	package com.aliencat.javabase.designpattern.bridge.car;
+iport lobok..extern.slf4j..Slf4j;	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+public class JapaneseCarextendsAbstractCar {	public class JapaneseCar extends AbstractCar {
+@Override	@Override
+pulic void run {	public void run() {
+abstractGearbox.rotate;	abstractGearbox.rotate();
+log.info""JapaneseCaris running";	log.info("JapaneseCar is running");
+}	}
+}	}

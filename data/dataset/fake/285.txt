@@ -1,0 +1,6 @@
+package org.n3r.idworker;	package org.n3r.idworker;
+public interface WorkerIdStratgy {	public interface WorkerIdStrategy {
+void initializef;	void initialize();
+long  availableWorkerId;	long availableWorkerId();
+void release;	void release();
+}	}

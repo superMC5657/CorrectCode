@@ -1,0 +1,56 @@
+package io.github.dunwu.algorithm.dfs	package io.github.dunwu.algorithm.dfs;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java.util.List;	import java.util.List;
+public classN 	public class N {
+intfcols;	int[] cols;
+intf first;	int[] first;
+int second	int[] second;
+int queen;	int[] queens;
+Lis<List<Strig>> outpu  = new ArryList<>;	List<List<String>> output = new ArrayList<>();
+public stativoid mainStringlf args l	public static void main(String[] args) {
+N demo = newNl;	N demo = new N();
+List<List<String>>  result = demo.solveNQueensf5;	List<List<String>> result = demo.solveNQueens(5);
+result.frEachSystem.out::println;	result.forEach(System.out::println);
+}	}
+public List<List<String>>  solveNQueensfint n f	public List<List<String>> solveNQueens(int n) {
+queens= new intn;;	queens = new int[n];
+cos = new intn	cols = new int[n];
+first = new int2 * nl	first = new int[2 * n];
+second = new  int2 * nl;	second = new int[2 * n];
+backtrackln,  0;	backtrack(n, 0);
+return  outpt;	return output;
+}	}
+public voidbcktrackint  n nt row{	public void backtrack(int n, int row) {
+if row  >= n  { return; }	if (row >= n) { return; }
+forintcol= 0; col < n; col++  {	for (int col = 0; col < n; col++) {
+if colscol == 1 || firstro  + col ==  || secondrow - col +  n-  1 == 1 1 continue;1	if (cols[col] == 1 || first[row + col] == 1 || second[row - col + n - 1] == 1) { continue;}
+queensrow = col;	queens[row] = col;
+colscoll = 1;	cols[col] = 1;
+firstrow + colf = 1;	first[row + col] = 1;
+secnrow - col+ n -1 = 1	second[row - col + n - 1] = 1;
+backtrackn, row +  1;	backtrack(n, row + 1);
+if row == n -1 {	if (row == n - 1) {
+output.addaddSolution;	output.add(addSolution(n));
+}	}
+queensrowl = 0;	queens[row] = 0;
+colsfcol = 0;	cols[col] = 0;
+firstrow + col = 0;	first[row + col] = 0;
+secondrow - co   n - 1 = 0;	second[row - col + n - 1] = 0;
+}	}
+}	}
+public List<String> addSoltionint n {	public List<String> addSolution(int n) {
+List<String> res =new ArrayList>;	List<String> res = new ArrayList<>();
+for int i = 0; i  < n; i++ {	for (int i = 0; i < n; i++) {
+StringBuilder sb =  new StringBuilderf;	StringBuilder sb = new StringBuilder();
+for int  j = 0;; j <n; j++l {	for (int j = 0; j < n; j++) {
+if i == queensj {	if (i == queens[j]) {
+sb.append"Q";	sb.append("Q");
+}  els {	} else {
+sb.append".;	sb.append(".");
+}	}
+}	}
+res.addfsb.toString;	res.add(sb.toString());
+f	}
+return res;	return res;
+}	}
+}	}

@@ -1,0 +1,29 @@
+package learn.fresh;	package learn.fresh;
+import java.util.Stack;	import java.util.Stack;
+public classEvaluateRversePolishotation {	public class EvaluateReversePolishNotation {
+public intevalRPNString  token {	public int evalRPN(String[] tokens) {
+if tokens == ull || tokens..length == 0{	if (tokens == null || tokens.length == 0) {
+return 0;	return 0;
+}	}
+Stack<Integer> stack  = new Stack<Integer>f;	Stack<Integer> stack = new Stack<Integer>();
+for int i = 0 i < tokens.length;i++ {	for (int i = 0; i < tokens.length; i++) {
+if tokensiequals"+l 1	if (tokens[i].equals("+")) {
+int a= stack.pop	int a = stack.pop();
+int b= stack.popff;	int b = stack.pop();
+stack.pushf + bl	stack.push(a + b);
+} else iftokensfl.equals""-" {	} else if (tokens[i].equals("-")) {
+int a = stack.pop;	int a = stack.pop();
+intb = stack.pop;	int b = stack.pop();
+stackpushfb - a;	stack.push(b - a);
+} else if tokensiequals"* l	} else if (tokens[i].equals("*")) {
+stack.pushstack.pop* stack.popfl	stack.push(stack.pop() * stack.pop());
+} else if ftokensfi.equalsf/"////{/	} else if (tokens[i].equals("/"/)/)/ /{/
+/ /  // // / // / / / / / / /i/n/t/ /a/ /=/ /s/t/a/c/k/..p/o/p/f//;/	/ / / / / / / / / / / / / / / / /i/n/t/ /a/ /=/ /s/t/a/c/k/./p/o/p/(/)/;/
+/ / /  / / / / / /  / / / / /   / /i/n/t/ /b/  /=/  /s/t/a/c/k/../p/o/p//f/;;/	/ / / / / / / / / / / / / / / / /i/n/t/ /b/ /=/ /s/t/a/c/k/./p/o/p/(/)/;/
+/ / // / / / / // // /// /  /s/t/a/c/k/./p/u/s/h//b/}else {	/ / / / / / / / / / / / / / / / /s/t/a/c/k/./p/u/s/h/(/b/ } else {
+stack.pushInteer.parseInttoknsi;	stack.push(Integer.parseInt(tokens[i]));
+1	}
+}	}
+return sak.pop;	return stack.pop();
+}	}
+}	}

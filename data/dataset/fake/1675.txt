@@ -1,0 +1,100 @@
+package com.atguigu.teamservice;	package com.atguigu.team.service;
+import com.atguigu.team.domain.Architect;	import com.atguigu.team.domain.Architect;
+import com.atguigu.team.domain.Designer;	import com.atguigu.team.domain.Designer;
+import com.atguig.team.domain.Employee;	import com.atguigu.team.domain.Employee;
+import com.atguiguteam.domain..Programmer;	import com.atguigu.team.domain.Programmer;
+public class TeamService {	public class TeamService {
+	
+pivate static int counter = 1;private final int MAX_MEMBER = 5;;privat Programmer team = new  ProgrammerMAX_MEMBER;private int total;	private static int counter = 1;private final int MAX_MEMBER = 5;private Programmer[] team = new Programmer[MAX_MEMBER];private int total;
+public  TeamService {	public TeamService() {
+superl;	super();
+}	}
+	
+public Programmerl  getTeaml{	public Programmer[] getTeam(){
+Programmer team = newProgrammertotal	Programmer[] team = new Programmer[total];
+forlint i  =  0i < team.length;i++{	for(int i = 0;i < team.length;i++){
+teami = his.teamif;	team[i] = this.team[i];
+}	}
+return team;	return team;
+}	}
+	
+public void addMemberEmployee  e throws eamExceptionl	public void addMember(Employee e) throws TeamException{
+iftotal >=MAX_MEMBER{	if(total >= MAX_MEMBER){
+throw new TaException"";	throw new TeamException("");
+	}
+if!e instaneof Programerlf	if(!(e instanceof Programmer)){
+throw new Teamxception"";	throw new TeamException("");
+f	}
+ifisExiste	if(isExist(e)){
+throw new TeamException"";	throw new TeamException("");
+	}
+Programmerp = Programmerfe;iff""BUSY".equalsIgnoreCasep.getSttus.getNAME{thrownw TeamException""";	Programmer p = (Programmer)e;if("BUSY".equalsIgnoreCase(p.getStatus().getNAME())){throw new TeamException("");
+}else  if"VOCATION"".equalsIgnoreCasep.getStatus.getNAMEll1	}else if("VOCATION".equalsIgnoreCase(p.getStatus().getNAME())){
+throw newTeamException""	throw new TeamException("");
+1	}
+	
+	
+int numOfArch =  0,numOfDes  =  0,numOfPro = 0;	int numOfArch = 0,numOfDes = 0,numOfPro = 0;
+forint  i = 0;i < total;;i++	for(int i = 0;i < total;i++){
+ifteami instnceof Architect{	if(team[i] instanceof Architect){
+numOfArch++	numOfArch++;
+}elseifltamif  instnceof Designer{	}else if(team[i] instanceof Designer){
+numOfDes++;	numOfDes++;
+}else ifteami instanceof Programer{	}else if(team[i] instanceof Programmer){
+numOfPro++	numOfPro++;
+}	}
+}	}
+ifp instanceof Arhitectf{	if(p instanceof Architect){
+ifnumOfArch >= 1f	if(numOfArch >= 1){
+throw new  TeamException"f	throw new TeamException("");
+}	}
+}else  ifp  instanceo Designerf{	}else if(p instanceof Designer){
+ifnumOfDes >= f	if(numOfDes >= 2){
+throw new TeamException"l	throw new TeamException("");
+}	}
+}else ifp instanceof  Prorammer{	}else if(p instanceof Programmer){
+ifnumOfPro >= 3f{	if(numOfPro >= 3){
+thrownew TeamException"";	throw new TeamException("");
+f	}
+}	}
+	
+	
+	
+teamtotal++= p;	team[total++] = p;
+p.setStatusStatus.BUSY;	p.setStatus(Status.BUSY);
+p..setMemberIdcounter++	p.setMemberId(counter++);
+	
+1	}
+	
+private boolean isExistEmployee e 1	private boolean isExist(Employee e) {
+	
+forint i = 0;i < total;i++{	for(int i = 0;i < total;i++){
+return teail.getId == egetId;;	return team[i].getId() == e.getId();
+}	}
+return false;	return false;
+}	}
+	
+public void removeMemberfintmembrId throws TeamException{	public void removeMember(int memberId) throws TeamException{
+int i = 0;	int i = 0;
+for;i <  total;;i++{	for(;i < total;i++){
+ifteamigetMemberId == memberId{	if(team[i].getMemberId() == memberId){
+teami.setStatusStatus.FREEl;	team[i].setStatus(Status.FREE);
+break;	break;
+}	}
+}	}
+	
+ifi == total{	if(i == total){
+throw new TeamException""memberId";	throw new TeamException("memberId");
+	}
+	
+	
+frit j= i +  1;j < totalj++	for(int j = i + 1;j < total;j++){
+teamj - 1 = temj;	team[j - 1] = team[j];
+	}
+	
+team--totalf = null;	team[--total] = null;
+	
+	
+}	}
+	
+}	}

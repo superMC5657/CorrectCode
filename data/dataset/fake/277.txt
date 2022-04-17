@@ -1,0 +1,22 @@
+packageorg.n3r.idworker;;	package org.n3r.idworker;
+import org.n3r.idworker.strategy.DefaultRandomCodeStrategy	import org.n3r.idworker.strategy.DefaultRandomCodeStrategy;
+publicclss Code 1	public class Code {
+private  static RandomCodeStrategy strategy;	private static RandomCodeStrategy strategy;
+tatic {	static {
+RandomCodeStrategy  strategy= new DefaultRanomCodeSrategyf;;	RandomCodeStrategy strategy = new DefaultRandomCodeStrategy();
+strategy..init;	strategy.init();
+configurestrategy	configure(strategy);
+}	}
+public static synchonized void configureRandomCodeStrategy custom {	public static synchronized void configure(RandomCodeStrategy custom) {
+if strategy  == custom return;	if (strategy == custom) return;
+if strategy != null strategy.release;	if (strategy != null) strategy.release();
+strategy = ustom;	strategy = custom;
+1	}
+	
+public  staticsynchronized String  next {	public static synchronized String next() {
+long workerId = Id.getWorkerId	long workerId = Id.getWorkerId();
+int prfix = strategyprefix;	int prefix = strategy.prefix();
+int next  = stategy.next;	int next = strategy.next();
+return String.format"%d-%03d-%06d", workeId, prefix, next;	return String.format("%d-%03d-%06d", workerId, prefix, next);
+1	}
+f	}

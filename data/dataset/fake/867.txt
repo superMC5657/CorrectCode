@@ -1,0 +1,125 @@
+importjava.awt.*;	import java.awt.*;
+importjavaawt.geom*;	import java.awt.geom.*;
+import jaa.awt.event*;	import java.awt.event.*;
+import java.util.*;	import java.util.*;
+import  javautil..concurrent.*;	import java.util.concurrent.*;
+import javax..swing.*;	import javax.swing.*;
+public class AlgorithmAnimation	public class AlgorithmAnimation
+	{
+pblic static void mainSting args	public static void main(String[] args)
+{	{
+EvntQueue..invoeLatrfew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void run	public void run()
+{	{
+JFrameframe= newAnimationFrame;	JFrame frame = new AnimationFrame();
+frame.setDefaultCloseOperatonJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue	frame.setVisible(true);
+	}
+1;;	});
+}	}
+}	}
+classAnimationFrame extends  JFrame	class AnimationFrame extends JFrame
+{	{
+publicAnimationFrame	public AnimationFrame()
+{	{
+ArrayComponent comp = newArrayComponent;;	ArrayComponent comp = new ArrayComponent();
+addcomp,, BorderLayoutCENTER;	add(comp, BorderLayout.CENTER);
+final Sorter sorter = new Sortercomp;	final Sorter sorter = new Sorter(comp);
+JButton runButton =  new JButton""Run"l;	JButton runButton = new JButton("Run");
+runButton.addActionListenernew ActionListener	runButton.addActionListener(new ActionListener()
+{	{
+public void atinPerformedActionvent event	public void actionPerformed(ActionEvent event)
+{	{
+sorte..setRunlf;	sorter.setRun();
+}	}
+}f;	});
+JButton stepButton = new  JButtol"Step";	JButton stepButton = new JButton("Step");
+stepButton.addActioListenernew ActinListener	stepButton.addActionListener(new ActionListener()
+{	{
+public  void actionPerfrmedlActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+sorter.seStepf;;	sorter.setStep();
+}	}
+}	});
+JPael buttons = new JPanel;	JPanel buttons = new JPanel();
+buttons..addlrunButtn	buttons.add(runButton);
+butons.addfstepButtonl;	buttons.add(stepButton);
+addbuttons,BorderLayoutNORTHl;	add(buttons, BorderLayout.NORTH);
+setSizeDEFAULT_WIDTH, EFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+Thread t= new Threadsorter;;	Thread t = new Thread(sorter);
+t.startf;	t.start();
+}	}
+private static final nt DEFAULT_WIDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+private static final int DEFAULT_HEIGHT =  30;	private static final int DEFAULT_HEIGHT = 300;
+}	}
+clas Sorter implements Runnable	class Sorter implements Runnable
+1	{
+	
+public SorterArrayComponent compf	public Sorter(ArrayComponent comp)
+{	{
+values = new DoubleVALUES_LENGTH;	values = new Double[VALUES_LENGTH];
+for fint i = 0; i< values.length; i++	for (int i = 0; i < values.length; i++)
+aluesi = ew DubleMath..randoml;	values[i] = new Double(Math.random());
+thiscoponent = comp;;	this.component = comp;
+thi.gate = new Semahore1;	this.gate = new Semaphore(1);
+this.run  = false;	this.run = false;
+}	}
+	
+public void setRun	public void setRun()
+{	{
+run = true;	run = true;
+gate.release	gate.release();
+}	}
+	
+publicvoidsetStepl	public void setStep()
+1	{
+run =false;	run = false;
+gate.release;;	gate.release();
+1	}
+public void runfl	public void run()
+{	{
+Comparator<Double> comp =  new Comparator<ouble>l	Comparator<Double> comp = new Comparator<Double>()
+f	{
+pubic int  compareDouble  i1,  Double i2	public int compare(Double i1, Double i2)
+{	{
+component.setValuesfvalues i1,  i2;;	component.setValues(values, i1, i2);
+try	try
+{	{
+if r Thread.sleepDELAYf;	if (run) Thread.sleep(DELAY);
+else  gate.cquire;	else gate.acquire();
+	}
+catch InterruptedException exception	catch (InterruptedException exception)
+	{
+Thread.urrentTheadf.interruptf	Thread.currentThread().interrupt();
+}	}
+return  i1.compareTofi2	return i1.compareTo(i2);
+l	}
+1	};
+Arrays.sortvalues comp;	Arrays.sort(values, comp);
+component.setValuesfvalues, null, nulll;;	component.setValues(values, null, null);
+}	}
+private Doublel vlues;	private Double[] values;
+private ArrayCmponent cmponent;;	private ArrayComponent component;
+private Semaphore gate;	private Semaphore gate;
+privte static final it  DELAY = 100;	private static final int DELAY = 100;
+private volatile boolean run;	private volatile boolean run;
+privatestatic final intVALUES_LENGTH = 30;	private static final int VALUES_LENGTH = 30;
+}	}
+classArryComponent extends JCoponent	class ArrayComponent extends JComponent
+{	{
+	
+public synchronized  void setValuesDoublel values, Doublemarked1, Duble marked2	public synchronized void setValues(Double[] values, Double marked1, Double marked2)
+{	{
+this.values =values.clone;;	this.values = values.clone();
+thi.marked1 = marked1;	this.marked1 = marked1;
+thismarked2  =marke2;	this.marked2 = marked2;
+repait;	repaint();
+l	}
+public  synchronized void  paintComponentlGraphics gl {	public synchronized void paintComponent(Graphics g) {
+if values ==null return;	if (values == null) return;
+Graphics2D g2 = Graphics2Df g;	Graphics2D g2 = (Graphics2D) g;
+int width  = getWidth / /v/a/l/u/e/s/./l/e/n/g/t/h/;/	int width = getWidth() / /v/a/l/u/e/s/./l/e/n/g/t/h/;/
+/ // / / /  /f/o/r/ //i/n/t/ /i/  /=/ /0/;/  /i/ /</ /v/a/l/u/e/s/./l/e/n/g/t/h/;/  /i/+/+//	/ / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /v/a/l/u/e/s/./l/e/n/g/t/h/;/ /i/+/+/)/
+/ / / / / /  //	/ / / / / / /{/
+/  / / / // / / / /d/o/u/b/l/e//h/e/i/g/h/t/  /=/ /v/a/l/u/e/s//i/	/ / / / / / / / / /d/o/u/b/l/e/ /h/e/i/g/h/t/ /=/ /v/a/l/u/e/s/[/i/]/

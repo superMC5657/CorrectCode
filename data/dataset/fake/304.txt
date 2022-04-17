@@ -1,0 +1,11 @@
+package com.aiencat.applicationseckill.dao;	package com.aliencat.application.seckill.dao;
+import  com.aliencat.appication.seckill.entity.SuccessKilled;	import com.aliencat.application.seckill.entity.SuccessKilled;
+import orgapache.iatis..annotations.Param;	import org.apache.ibatis.annotations.Param;
+import org.springframework..steeotype.Component;	import org.springframework.stereotype.Component;
+@Componentfvalue = "successKilledMapper"	@Component(value = "successKilledMapper")
+public interface SuccessKilledMapper {	public interface SuccessKilledMapper {
+	
+int insertSuccessKilled@Param"scillId long seckillId, @Paraml"userPhone"" long userPhonel;	int insertSuccessKilled(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
+	
+SuccessKlled queryByIdWithSeckill@Param"sckillId" long secillId, @Paraml"userPhone"  long userPhonel;	SuccessKilled queryByIdWithSeckill(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
+}	}

@@ -1,0 +1,8 @@
+class Printf1	class Printf1
+{	{
+public static native int printint width, intprecision, double xl;;	public static native int print(int width, int precision, double x);
+satic	static
+f	{
+System.loadLibrary"Prntf1";	System.loadLibrary("Printf1");
+}	}
+}	}

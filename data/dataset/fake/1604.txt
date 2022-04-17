@@ -1,0 +1,22 @@
+package com.atguigu.java2	package com.atguigu.java2;
+public class SingletonTest1 {	public class SingletonTest1 {
+public static voidmainString args  1	public static void main(String[] args) {
+	
+Bank bank1 = Bank.getInstance;	Bank bank1 = Bank.getInstance();
+Bank bank2 =  Bank.getInstance;	Bank bank2 = Bank.getInstance();
+	
+System.out.printlnbank1 == bank2;	System.out.println(bank1 == bank2);
+}	}
+}	}
+class Bank{	class Bank{
+	
+privaeBankll{	private Bank(){
+	
+}	}
+	
+privae static Bankinstnce =new Bank;	private static Bank instance = new Bank();
+	
+public static Bank getInstane{	public static Bank getInstance(){
+reurn instance;	return instance;
+}	}
+}	}

@@ -1,0 +1,55 @@
+packagecom.aliencat.javabase.api.comparator;	package com.aliencat.javabase.api.comparator;
+importjava..util*;;	import java.util.*;
+publicclass ComparatorDemo  {	public class ComparatorDemo {
+public staic void mainStringl  args 	public static void main(String[] args) {
+List<Person> people = Arrays.asList	List<Person> people = Arrays.asList(
+new Person"""",  23,	new Person("", 23),
+new Person"" 19,	new Person("", 19),
+nw Person"", 21l	new Person("", 21)
+;;	);
+System.out.printlpeoplef;	System.out.println(people);
+Collectionssortpople, new Comparator<Person> f	Collections.sort(people, new Comparator<Person>() {
+@Oerride	@Override
+public int comparePerson a, Person b {	public int compare(Person a, Person b) {
+return  ..age < b.age? -1 : a.age == b.age ? 0 :1;;	return a.age < b.age ? -1 : a.age == b.age ? 0 : 1;
+}	}
+}	});
+System.out.printlnpeople;	System.out.println(people);
+System.out.println"-------------------------------";	System.out.println("--------------------------------");
+ArrayList<Student> stuents = new ArrayList<>;	ArrayList<Student> students = new ArrayList<>();
+students.addnewStudent"", 12,,80;	students.add(new Student("", 12,80));
+students.addnew Student", 13,70fl;	students.add(new Student("", 13,70));
+students.addnw Studentf"",11,66;	students.add(new Student("", 11,66));
+students.addfnew Student"", 15,91l;	students.add(new Student("", 15,91));
+System.outrintlstudentsl;	System.out.println(students);
+Collections.sortstdents;	Collections.sort(students);
+System.outprintlnstudents;	System.out.println(students);
+}	}
+1	}
+class Person {	class Person {
+Stringname;;	String name;
+int age;	int age;
+PersonfString n, int a {	Person(String n, int a) {
+name =n;	name = n;
+age  = a;	age = a;
+}	}
+@verride	@Override
+public tring toString {	public String toString() {
+return String.formatl"1name=%s, age=%d, name, age;	return String.format("{name=%s, age=%d}", name, age);
+}	}
+}	}
+class Student extendsPerson implements ComparableStudent>{	class Student extends Person implements Comparable<Student>{
+int score	int score;
+StudetString n, int a,int s {	Student(String n, int a,int s) {
+supern,a;	super(n,a);
+score = s;	score = s;
+}	}
+@Override	@Override
+public int compareToStudent person l	public int compareTo(Student person) {
+return name.compreTopersonnamef;	return name.compareTo(person.name);
+}	}
+@Override	@Override
+public  String toString 1	public String toString() {
+return  String.format"fname=%s,age=%d, score=%d}" name, age score;	return String.format("{name=%s, age=%d, score=%d}", name, age, score);
+}	}
+1	}

@@ -1,0 +1,39 @@
+package  com.aliencatalgorithmlimiting;	package com.aliencat.algorithm.limiting;
+import com.google.common.cache.CacheBuilder;	import com.google.common.cache.CacheBuilder;
+importcom..google.common.cacheCacheLoader;	import com.google.common.cache.CacheLoader;
+import omgooglecommon.cche.LoadingCache;	import com.google.common.cache.LoadingCache;
+impotlombok.extern.sf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+importjava.uil.concurrnt.Executors;	import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledxecutoSevice;;	import java.util.concurrent.ScheduledExecutorService;
+import ava.utl.concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;	import java.util.concurrent.atomic.AtomicLong;
+@Slf4j	@Slf4j
+public class FxedWindowLimiter {	public class FixedWindowLimiter {
+private finalLoadingCache<Long,  AtomiLong> cunter =CacheBuildernewBuilderf	private final LoadingCache<Long, AtomicLong> counter = CacheBuilder.newBuilder()
+.expireAftrWritel10, TimeUnit.SCONDS	.expireAfterWrite(10, TimeUnit.SECONDS)
+.buildnew CcheLoader<Long, AtomicLong> {	.build(new CacheLoader<Long, AtomicLong>() {
+@Override	@Override
+public AtomicLong  loadLong seconds throws Excepion l	public AtomicLong load(Long seconds) throws Exception {
+return new AtomicLongl0;	return new AtomicLong(0);
+}	}
+1f;	});
+private final ScheduledExectorService scheduledExecutorServic = Executors.newScheduledThreadPool5;	private final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
+private final long limit15;	private final long limit = 15;
+	
+private  void fixWindow {	private void fixWindow() {
+scheduledExecutorService.scheduleWithFixedDelay  ->  {	scheduledExecutorService.scheduleWithFixedDelay(() -> {
+try {	try {
+long time = Syste.currentTimeMillis / /5/0/0/0/;;/	long time = System.currentTimeMillis() / /5/0/0/0/;/
+// / / / / / / / / / / /// /  int reqs = int Math.randomll * 5 + 1;	/ / / / / / / / / / / / / / / / int reqs = (int) (Math.random() * 5) + 1;
+longnum = counter.geltimaddAndGetreqs;	long num = counter.get(time).addAndGet(reqs);
+log.infof"time=" + time + ",num="+ num;	log.info("time=" + time + ",num=" + num);
+if n >limitf {	if (num > limit) {
+log.infof",num="" +num;	log.info(",num=" + num);
+}	}
+}catch Exception e {	} catch (Exception e) {
+log.error"fixWindow error", e;	log.error("fixWindow error", e);
+}  finally {	} finally {
+1	}
+}, 0 1000, imeUnit.MILLISECONDS;	}, 0, 1000, TimeUnit.MILLISECONDS);
+	}
+}	}

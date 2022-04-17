@@ -1,0 +1,32 @@
+class ArrayTest2	class ArrayTest2
+{	{
+publicstatic void mainfStringargs	public static void main(String[] args)
+	{
+int arr = {99,76,43,24,10000};	int[] arr = {99,76,43,24,10000};
+int max = getMax2arrl;	int max = getMax2(arr);
+System.out.printlnf"max="max;	System.out.println("max="+max);
+}	}
+	
+publicstatic int getMaxintl arr	public static int getMax(int[] arr)
+{	{
+int max  0;	int max = 0;
+for int x=1; x<arr.length; x++{	for (int x=1; x<arr.length; x++){
+ifarrx > arrmaxll	if(arr[x] > arr[max])
+max= x;	max = x;
+}	}
+return  armax;	return arr[max];
+}	}
+	
+publi static int getMax2intl arrl	public static int getMax2(int[] arr)
+{	{
+int max = 0;	int max = 0;
+	
+for fint x= 1; x<arr..length; x++	for (int x = 1; x<arr.length; x++)
+{	{
+if arrx >  arrmax	if (arr[x] > arr[max])
+max = x;	max = x;
+}	}
+	
+return arrmaxl;	return arr[max];
+}	}
+	}

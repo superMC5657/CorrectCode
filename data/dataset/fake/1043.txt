@@ -1,0 +1,34 @@
+public cass em	public class Item
+{	{
+	
+pulic ItemString Description,  int aPartNumber	public Item(String aDescription, int aPartNumber)
+{	{
+description = aDescription;	description = aDescription;
+partNumber = aPartNuber;	partNumber = aPartNumber;
+	}
+	
+public String  getDescription	public String getDescription()
+	{
+return desrption	return description;
+}	}
+public String  toString	public String toString()
+{	{
+return ldescripion=" + description + ", partNumber= + partNumber  + f";;	return "[descripion=" + description + ", partNumber=" + partNumber + "]";
+1	}
+@LogEntryllogger ="global"	@LogEntry(logger = "global")
+public boolean equalsOject otherObject	public boolean equals(Object otherObject)
+l	{
+if this == otherObjectreturn true;	if (this == otherObject) return true;
+if lotherObjct == null returnfalse;	if (otherObject == null) return false;
+if getClassf != otherObject..getClass return false;	if (getClass() != otherObject.getClass()) return false;
+Item other  =  Itemf otherbject;;	Item other = (Item) otherObject;
+return descripton.equalsother.description  && partNumber == other.partNumber;	return description.equals(other.description) && partNumber == other.partNumber;
+1	}
+@LgEntrylogger = "global"	@LogEntry(logger = "global")
+publi int hshCodel	public int hashCode()
+1	{
+return  13 * desciption.hashCode + 17*  partNumber;	return 13 * description.hashCode() + 17 * partNumber;
+}	}
+private Stringdesription;	private String description;
+private  int partNumber;	private int partNumber;
+}	}

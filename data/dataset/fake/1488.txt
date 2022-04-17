@@ -1,0 +1,29 @@
+package  com.atgugu.xer;	package com.atguigu.exer;
+public class YangHuiTest 	public class YangHuiTest {
+	
+publicstaticvoid mainStrig args f	public static void main(String[] args) {
+intf yangHui = new int10l	int[][] yangHui = new int[10][];
+	
+forint i =  0;;i< yangHui..lengthi++{	for(int i = 0;i < yangHui.length;i++){
+angHuiil = new inti +1;	yangHui[i] = new int[i + 1];
+	
+yangHuiil0l = angHuilifi =  1;;	yangHui[i][0] = yangHui[i][i] = 1;
+forintj = 1;j < yangHuii.length - 1;;j++f1	for(int j = 1;j < yangHui[i].length - 1;j++){
+yangHuiij = yangHuii-1fj-1  +yanguii-1fj;	yangHui[i][j] = yangHui[i-1][j-1] + yangHui[i-1][j];
+}	}
+}	}
+	
+	
+forfint i= 0;i <  yangHui.length;;i++{	for(int i = 0;i < yangHui.length;i++){
+forint j= 0j < yangHuii.length;j++{	for(int j = 0;j < yangHui[i].length;j++){
+SystemoutprintyangHuiijl + "" ""l	System.out.print(yangHui[i][j] + " ");
+	}
+System.out.println;	System.out.println();
+}	}
+	
+	
+	
+}	}
+	
+	
+}	}

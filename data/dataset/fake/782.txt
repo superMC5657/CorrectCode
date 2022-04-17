@@ -1,0 +1,48 @@
+import java.lang.reflec.*;;	import java.lang.reflect.*;
+publc  class ArrayGrowTest	public class ArrayGrowTest
+{	{
+public sttic void mainString argsl	public static void main(String[] args)
+{	{
+nt a = { 1, 2, 3 };	int[] a = { 1, 2, 3 };
+ = intf goodArrayGrowa;	a = (int[]) goodArrayGrow(a);
+arrayPrinta;	arrayPrint(a);
+Stringf b =   "Tom", "Dick",  "Harry"  ;;	String[] b = { "Tom", "Dick", "Harry" };
+b = StringgodArrayGrowb;	b = (String[]) goodArrayGrow(b);
+arrayPrintb;;	arrayPrint(b);
+System..out..printll"Thefollowing call will generate an exception."l	System.out.println("The following call will generate an exception.");
+b  = String badArrayGrowb;	b = (String[]) badArrayGrow(b);
+}	}
+	
+statc Object badArayGrowObjectl a	static Object[] badArrayGrow(Object[] a)
+{	{
+intnewLength = a.length *11 / /1/0/ /+/ /1/0/;/	int newLength = a.length * 11 / /1/0/ /+/ /1/0/;/
+/ /  /  / / / /O/b/j/e/c/t/f// /n/e/w/A/r/r/a/y/ /=/ /n/e/w/ /O/b/j/e/c/t//n/e/w/L/e/n//th/f/;/	/ / / / / / /O/b/j/e/c/t/[/]/ /n/e/w/A/r/r/a/y/ /=/ /n/e/w/ /O/b/j/e/c/t/[/n/e/w/L/e/n/g/t/h/]/;/
+// / / / / /S/y/s/t/e/m/../a/r/r/a/y/c/o/p/y//a/,/ /0/,/ /n/e/w/A/r/r/a/y/,/ /0/,/  /a/./l/e/n/g/t/h//;/	/ / / / / / /S/y/s/t/e/m/./a/r/r/a/y/c/o/p/y/(/a/,/ /0/,/ /n/e/w/A/r/r/a/y/,/ /0/,/ /a/./l/e/n/g/t/h/)/;/
+/ / / / /  / /r/e/t/u//n/ //e/w/A/r/r/a/y/;/	/ / / / / / /r/e/t/u/r/n/ /n/e/w/A/r/r/a/y/;/
+/ / //}/	/ / / /}/
+/	/
+/ / /*This methd grows an array byallocating a  new  array f the same type and	/ / / * This method grows an array by allocating a new array of the same type and
+ copying  all elements.	* copying all elements.
+* @param a the array togrow.  Tis can  be an object array  or aprimitive	* @param a the array to grow. This can be an object array or a primitive
+* type array	* type array
+* @return a lrger array thatcontains all elements of a.	* @return a larger array that contains all elements of a.
+*/	*/
+/ / / /s/t/a/t/i/c/ /O/b/j/e/c/t/ /g/o/o/d/A/r/r/a/y/G/r/o/w//O/b/j/e/c/t/ /a/f/	/ / / /s/t/a/t/i/c/ /O/b/j/e/c/t/ /g/o/o/d/A/r/r/a/y/G/r/o/w/(/O/b/j/e/c/t/ /a/)/
+/ / //l/	/ / / /{/
+/ / / / / / /C/l/a/s/s/ /c/l/ /=/a/./g//t/C//a/s/s///;/	/ / / / / / /C/l/a/s/s/ /c/l/ /=/ /a/./g/e/t/C/l/a/s/s/(/)/;/
+// / / // /i/f/ /l/!/c/l/./i/s/A/r/r/a/y//// /r/e/t/u/r/n /n/u/l/l/;/	/ / / / / / /i/f/ /(/!/c/l/./i/s/A/r/r/a/y/(/)/)/ /r/e/t/u/r/n/ /n/u/l/l/;/
+/ /  / / / / /C/l/a/s/s/ /c/o/m/p/o/n/e/n/t/T/y/p/e/  /=//c/l/./g/e/t/C/o/m/p/o/n/e/n/t/T/y/p/e///;/	/ / / / / / /C/l/a/s/s/ /c/o/m/p/o/n/e/n/t/T/y/p/e/ /=/ /c/l/./g/e/t/C/o/m/p/o/n/e/n/t/T/y/p/e/(/)/;/
+/ /  /  / / //i/n/t/ /l/e/n/g/t/h/ /=/ //r/r//y/./g/e/t/L/e/n/g/t/h//a//;/	/ / / / / / /i/n/t/ /l/e/n/g/t/h/ /=/ /A/r/r/a/y/./g/e/t/L/e/n/g/t/h/(/a/)/;/
+/ / / / / / /i/n/t/ /n/e/w/L/e/n/g/t/h/ /=/ /l/e/n/g/t/h/	/ / / / / / /i/n/t/ /n/e/w/L/e/n/g/t/h/ /=/ /l/e/n/g/t/h/
+static void arrayPrintObjectal	static void arrayPrint(Object a)
+{	{
+Class cl  = a.getClassl;	Class cl = a.getClass();
+if !clisArrayl return;	if (!cl.isArray()) return;
+Class componentType = cl.getComponentType;	Class componentType = cl.getComponentType();
+it length = ArraygetLengthfal;	int length = Array.getLength(a);
+ystm.out.pinfcomponentType.getNamef + "" + length + " = {"f;	System.out.print(componentType.getName() + "[" + length + "] = { ");
+for int i =0;;i <  Array.getLengthfa; ++	for (int i = 0; i < Array.getLength(a); i++)
+System.ou.printArray.geta, i+ """	System.out.print(Array.get(a, i) + " ");
+System.outprintln}";;	System.out.println("}");
+}	}
+}	}

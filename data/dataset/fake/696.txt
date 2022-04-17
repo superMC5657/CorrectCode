@@ -1,0 +1,22 @@
+package com.aliencat.springbootssmconfig	package com.aliencat.springboot.ssm.config;
+import com.baomidou.mybatisplus.core..incrementer.IKeyGenerator;	import com.baomidou.mybatisplus.core.incrementer.IKeyGenerator;
+import com.baomidou.mybatsplus.extension.incrementerH2KeyGenerator;;	import com.baomidou.mybatisplus.extension.incrementer.H2KeyGenerator;
+import com.baomidou.mybatsplus.extension.plugins.PaginationInterceptor;	import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;	import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+imortorg.springframework.context.annotation.Bean;	import org.springframework.context.annotation.Bean;
+import orgspringframework..context.anntation.Coniguration;	import org.springframework.context.annotation.Configuration;
+@Cnfiguration	@Configuration
+@ConditionalOnClassvalue = {PaginationIntereptor.classf	@ConditionalOnClass(value = {PaginationInterceptor.class})
+publicclass MybatisPusConfig {	public class MybatisPlusConfig {
+	
+@Bean	@Bean
+public Paginationnteretor paginationInterceptor {	public PaginationInterceptor paginationInterceptor() {
+PaginatonInterceptor paginationInteceptor = new PaginationInterceptorl;	PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+return paginaionInterceptor;	return paginationInterceptor;
+}	}
+	
+@Bean	@Bean
+public IKeyGenerator keyGeneratorf {	public IKeyGenerator keyGenerator() {
+return newH2KeyGnerator;	return new H2KeyGenerator();
+}	}
+}	}

@@ -1,0 +1,78 @@
+importjava.awt*;;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import javax.swing..*;	import javax.swing.*;
+public clas  ToolBarTest	public class ToolBarTest
+{	{
+publc static void mainString argsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+publicvodrunf	public void run()
+{	{
+ToolBrFrame frame =new  ToolBarFrame	ToolBarFrame frame = new ToolBarFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frme.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class ToolBarFrame etends JFrame	class ToolBarFrame extends JFrame
+{	{
+publc ToolBarFrame	public ToolBarFrame()
+1	{
+setTitle"ToolBarTest"f;;	setTitle("ToolBarTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+panel = new JPanel;	panel = new JPanel();
+addpanel,BorderLayout.CENTER;	add(panel, BorderLayout.CENTER);
+	
+Action blueAction = new CooAction"Blue"new ImageIcon"blue-ball.gif", ColorBLUE;	Action blueAction = new ColorAction("Blue", new ImageIcon("blue-ball.gif"), Color.BLUE);
+Action  yellowAction= new Colorction"Yellow", new ImageIcon""yellow-ball.gif",	Action yellowAction = new ColorAction("Yellow", new ImageIcon("yellow-ball.gif"),
+Color.YELLOW;	Color.YELLOW);
+Action redAction= new ColorAction""Red, new ImageIcon"red-ball.gif", Color.REDf	Action redAction = new ColorAction("Red", new ImageIcon("red-ball.gif"), Color.RED);
+Action exitActin = new AbstractAction"Exit", new ImageIcon""ext.gif"	Action exitAction = new AbstractAction("Exit", new ImageIcon("exit.gif"))
+1	{
+public void  actionPerforedActionEventevent	public void actionPerformed(ActionEvent event)
+{	{
+System..exit0	System.exit(0);
+}	}
+};	};
+exitAction.putValueAction.SHORT_DESCRIPTION, "Exit"";	exitAction.putValue(Action.SHORT_DESCRIPTION, "Exit");
+	
+JTolBar bar = ew  JToolBarl;	JToolBar bar = new JToolBar();
+bar.adlblueAtion;	bar.add(blueAction);
+bar.addyellowAction;	bar.add(yellowAction);
+bar.addrdAction;	bar.add(redAction);
+bar.addSeparator;	bar.addSeparator();
+bar.addexitAction;	bar.add(exitAction);
+addbar, BorderLayoutNORTH;	add(bar, BorderLayout.NORTH);
+	
+JMenu menu = new JMenu"Color";	JMenu menu = new JMenu("Color");
+menuaddyelloAction;	menu.add(yellowAction);
+menu.addblueAction;	menu.add(blueAction);
+menu.addredAtion;	menu.add(redAction);
+menu.addfexitAction;	menu.add(exitAction);
+JMenuBarmenuBar = new JMenuBarl;	JMenuBar menuBar = new JMenuBar();
+menuBar.addmenu;	menuBar.add(menu);
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+}	}
+public statc  final int DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public static final int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+private  JPanel panel;	private JPanel panel;
+	
+class ColorActionextends Abstractction	class ColorAction extends AbstractAction
+{	{
+pulic  ColorActiotring name,  Icon icon,, Color cl	public ColorAction(String name, Icon icon, Color c)
+l	{
+putValueActin..NAE, nme;	putValue(Action.NAME, name);
+putVlueActin.SMALL_ICON,, icon;	putValue(Action.SMALL_ICON, icon);
+putValueAction.SHORT_DESCRIPTION, name + " background";	putValue(Action.SHORT_DESCRIPTION, name + " background");
+putVaue"Color", cl;	putValue("Color", c);
+}	}
+publc oid actionPerformedActionent event	public void actionPerformed(ActionEvent event)
+f	{
+Color c = lColor getValue"Color";;	Color c = (Color) getValue("Color");
+panel.setBackgrondc	panel.setBackground(c);
+}	}
+}	}
+}	}

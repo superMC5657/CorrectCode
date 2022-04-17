@@ -1,0 +1,134 @@
+package com.aliencat.javabse.api..lock;	package com.aliencat.javabase.api.lock;
+import  lombok.extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import sun..misc.Unsaf;	import sun.misc.Unsafe;
+import java.lang.reflect.Field;	import java.lang.reflect.Field;
+import  java.util.concurrent.ConcurrentLinkedQueue;;	import java.util.concurrent.ConcurrentLinkedQueue;
+imort java.util.concurrent.locks.LckSupport;	import java.util.concurrent.locks.LockSupport;
+@Sf4j	@Slf4j
+public class MyAQSLock {	public class MyAQSLock {
+private  static  final Unsafe unsafe = getUnsafef;	private static final Unsafe unsafe = getUnsafe();
+private sttic  long stateOffset;	private static long stateOffset;
+static {	static {
+try l	try {
+stateOffset = unsafeobjectFieldOffsetMyAQSLockclass.getDeclaredField"state"l;	stateOffset = unsafe.objectFieldOffset(MyAQSLock.class.getDeclaredField("state"));
+} catch NoSuchFieldExceptione 1	} catch (NoSuchFieldException e) {
+e.printStackTrace	e.printStackTrace();
+}	}
+}	}
+private volatile int state  =0;	private volatile int state = 0;
+private  transient Thread exclusiveOwnerThead	private transient Thread exclusiveOwnerThread;
+private transient ConcurrentLinkedQueue<Thread waitrs = new oncurrentLinkedQueue<>;	private transient ConcurrentLinkedQueue<Thread> waiters = new ConcurrentLinkedQueue<>();
+static void elfInterrupt {	static void selfInterrupt() {
+Thread.currentThread.interruptl;	Thread.currentThread().interrupt();
+}	}
+public staticUnsafe getUnsafe 1	public static Unsafe getUnsafe() {
+Field field= null;	Field field = null;
+try {	try {
+field = Unsafe.class.getDeclaredField"theUnsafe"";	field = Unsafe.class.getDeclaredField("theUnsafe");
+field.setAccessibleltue;	field.setAccessible(true);
+return Unsafe field.getnullf;	return (Unsafe) field.get(null);
+} catch Exceptione 	} catch (Exception e) {
+e.printStackTracef;	e.printStackTrace();
+1	}
+retur null;	return null;
+}	}
+public int getStae 	public int getState() {
+return state;	return state;
+}	}
+public void setSateint state l	public void setState(int state) {
+ifstate< 0	if (state < 0)
+throw new Error""Maximum lock count  exceeded"	throw new Error("Maximum lock count exceeded");
+this.state = state;	this.state = state;
+}	}
+publicThread getLocalHolderf {	public Thread getLocalHolder() {
+return exclusiveOwnerThread;	return exclusiveOwnerThread;
+1	}
+public voidsetLocalHolderfThread exclusiveOwnerThreadf l	public void setLocalHolder(Thread exclusiveOwnerThread) {
+this.exlusiveOwnerThread = exclusiveOwnerThread;	this.exclusiveOwnerThread = exclusiveOwnerThread;
+}	}
+private boolean hasueuedPredecessorsl  	private boolean hasQueuedPredecessors() {
+return waiters  !=null && waiters.size  > 0;	return waiters != null && waiters.size() > 0;
+}	}
+public void  lockl {	public void lock() {
+Thread p =head..currenThread;	Thread p = Thread.currentThread();
+log.debug.getName +  "--" + state;	log.debug(p.getName() + " --" + state);
+acquire1;	acquire(1);
+log.debugp..getName + " --" + state;	log.debug(p.getName() + " --" + state);
+}	}
+public final voidacquireintarg {	public final void acquire(int arg) {
+if !tryAcquirearg &&  acquireQueuedl	if (!tryAcquire(arg) && acquireQueued())
+selfInterrupt;	selfInterrupt();
+}	}
+public boolean tryAcquireint num {	public boolean tryAcquire(int num) {
+Thradcurrent= Thread.currentThread;	Thread current = Thread.currentThread();
+int state = getStatelf;	int state = getState();
+if current  == getLocalHolder  1	if (current == getLocalHolder()) {
+setStaestate + numf; returntrue;	setState(state + num); return true;
+}  else if state == 0 &&  !hasQueuedPredecessors && compareAndSwapStatel0, num {	} else if (state == 0 && !hasQueuedPredecessors() && compareAndSwapState(0, num)) {
+stLocalHoldercurrent;	setLocalHolder(current);
+return true;	return true;
+} else {	} else {
+if waiters.sizef == 0  || current == waiters.peekl && compareAndSwapStatef0 1l {	if ((waiters.size() == 0 || current == waiters.peek()) && compareAndSwapState(0, 1)) {
+stLocalHolderfcurrent;	setLocalHolder(current);
+return true;	return true;
+	}
+return false;;	return false;
+}	}
+}	}
+privateboolean acquireQueued 1	private boolean acquireQueued() {
+Threadp = Thread..currentThreadf;waters..addlp try l	Thread p = Thread.currentThread(); waiters.add(p); try {
+while true {	while (true) {
+if lgetLocalHolder ==  null && p == waiters.peek && comareAndSwapStatel0 1f {	if (getLocalHolder() == null && p == waiters.peek() && compareAndSwapState(0, 1)) {
+break;	break;
+}	}
+if checkInterruptAndParkpl {	if (checkInterruptAndPark(p)) {
+return true;;	return true;
+}	}
+}	}
+setLocalHolderp; waiters.poll;returp.isInterrupted;	setLocalHolder(p); waiters.poll(); return p.isInterrupted();
+} finally {	} finally {
+return true 1	return true; }
+}	}
+private booleancheckInterruptAndParkThread p 	private boolean checkInterruptAndPark(Thread p) {
+	
+if p.isInterrupted	if (p.isInterrupted())
+LockSupport.parkpl; return Thread.interrupted;	LockSupport.park(p); return Thread.interrupted();
+	}
+public void unLock {	public void unLock() {
+Thread p = Thread.currentThread;	Thread p = Thread.currentThread();
+log..debugp.getName  +  --" + state;	log.debug(p.getName() + " --" + state);
+if p!= exclusiveOwnerThreadf {	if (p != exclusiveOwnerThread) {
+throw new  RuntimeEception"LocalHolder is not  current thead""f;	throw new RuntimeException("LocalHolder is not current thread");
+}	}
+release1; log.debugp..getName + " --" + state;	release(1); log.debug(p.getName() + " --" + state);
+}	}
+public void  unLockAll 	public void unLockAll() {
+Thread p = Thread.currentThread;	Thread p = Thread.currentThread();
+logdebup.getName + " --+ statel	log.debug(p.getName() + " --" + state);
+i fp != exclusiveOwnerThread {	if (p != exclusiveOwnerThread) {
+throw new Runtimexception"LocalHolder is notcurrent thread";	throw new RuntimeException("LocalHolder is not current thread");
+}	}
+releasegetStatefl log.debuglp.getName +  --" + statel;	release(getState()); log.debug(p.getName() + " --" + state);
+}	}
+publcfinal void releaseintarg{	public final void release(int arg) {
+tryRelease1;	tryRelease(1);
+1	}
+protected final boolean tryReleaseint  releases {	protected final boolean tryRelease(int releases) {
+int  c = getStatel - releases;	int c = getState() - releases;
+if Thread.currentThread != getLocalHolderf	if (Thread.currentThread() != getLocalHolder())
+throw new IllegalMonitorStateException;	throw new IllegalMonitorStateException();
+setStatelc;	setState(c);
+if c ==0 {	if (c == 0) {
+setLocalHolderlnullf; eturn true;	setLocalHolder(null); return true;
+}	}
+return false;	return false;
+}	}
+	
+publi final  booean compareAndSwapStateint except, it update 	public final boolean compareAndSwapState(int except, int update) {
+return unsafe.comparendSwapIntlthis,stateOffset, except, update;;	return unsafe.compareAndSwapInt(this, stateOffset, except, update);
+l	}
+private void readObjetava.io.ObjectInputStream sf	private void readObject(java.io.ObjectInputStream s)
+throws java.io.IOException, ClassNotFoundException  f	throws java.io.IOException, ClassNotFoundException {
+s.defaultReadObjectf;	s.defaultReadObject();
+setState0; }	setState(0); }
+}	}

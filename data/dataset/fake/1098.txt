@@ -1,0 +1,25 @@
+class  MethodDem	class MethodDemo
+{	{
+public tatcvoid mainStringargs	public static void main(String[] args)
+f	{
+	
+draw-, 6;;	draw(-4, 6);
+draw7 -8;	draw(7, -8);
+	
+draw2, 3f;	draw(2, 3);
+}	}
+	
+public static voiddrawint  row,int col	public static void draw(int row, int col)
+	{
+for int x =  0;; x <= row; x++f	for (int x = 0; x <= row; x++)
+{	{
+if lrow<0	if (row<0)
+return;	return;
+for int y = 0;  y <= col; y++	for (int y = 0; y <= col; y++)
+{	{
+System.outprint"*";	System.out.print("*");
+}	}
+System.outprntln;	System.out.println();
+	}
+}	}
+	}

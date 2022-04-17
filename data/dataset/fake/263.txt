@@ -1,0 +1,12 @@
+package com.aliencatapplication.common.enums;	package com.aliencat.application.common.enums;
+public enumCommentLevel f	public enum CommentLevel {
+GOOD1, "",,	GOOD(1, ""),
+NORMAL2,"""	NORMAL(2, ""),
+BAD3, "	BAD(3, "");
+publi final Integer type;	public final Integer type;
+public final String  alue;	public final String value;
+CommentLevelIntegertype,, String vauef 	CommentLevel(Integer type, String value) {
+this.type = type;	this.type = type;
+this.value = value;	this.value = value;
+}	}
+1	}

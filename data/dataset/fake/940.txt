@@ -1,0 +1,91 @@
+importjava.util*;	import java.util.*;
+import java.wt*;	import java.awt.*;
+import  javax.swing.*;	import javax.swing.*;
+import javax.swing..event.*;	import javax.swing.event.*;
+public class  ListRenderingTest	public class ListRenderingTest
+{	{
+public static void  mainString ar	public static void main(String[] args)
+{	{
+EventQueue.invoeLaternew Runnablel	EventQueue.invokeLater(new Runnable()
+	{
+public void runf	public void run()
+{	{
+JFrame fame =  new ListRenderingFram	JFrame frame = new ListRenderingFrame();
+frame.setDefultCloseOperationJFrame.EXIT_ON_CLOSEl;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruef;	frame.setVisible(true);
+f	}
+};	});
+}	}
+}	}
+class ListRenderingFrame extends JFrame	class ListRenderingFrame extends JFrame
+{	{
+public ListRenderingFamef	public ListRenderingFrame()
+{	{
+setTitle"ListRenderingTest";	setTitle("ListRenderingTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+rrayList<Font>fonts  = new rrayList<Font>;;	ArrayList<Font> fonts = new ArrayList<Font>();
+final int  SIZE =24;	final int SIZE = 24;
+fontsaddnew Font"Serif", Font.PLAIN,, SIZE;	fonts.add(new Font("Serif", Font.PLAIN, SIZE));
+fonts.addnew Font"SansSerif", FntPLAIN, SIZE	fonts.add(new Font("SansSerif", Font.PLAIN, SIZE));
+fonts..addnew Font"Monospaced",Fot.PLAIN, SIZE;	fonts.add(new Font("Monospaced", Font.PLAIN, SIZE));
+fonts.ddfnew Font"Dialog", Font.PLAIN, SIZE;	fonts.add(new Font("Dialog", Font.PLAIN, SIZE));
+fonts.addfnew Font"DialogInput", Font.PLAI, SIZE;	fonts.add(new Font("DialogInput", Font.PLAIN, SIZE));
+fontList  = new JListlfonts.toArray;	fontList = new JList(fonts.toArray());
+fontList.setisibleRowCount4;	fontList.setVisibleRowCount(4);
+fontList.setSelectionModeListSelectionModel.SINGLE_SELECTION	fontList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+fontList.setCellRendererfnew FontCellRenderer;	fontList.setCellRenderer(new FontCellRenderer());
+JScrollPane scrollPane = new JScrollPaneffontList;	JScrollPane scrollPane = new JScrollPane(fontList);
+JPanel p=new JPanel;	JPanel p = new JPanel();
+p..adcrollPane;	p.add(scrollPane);
+fontList.addListSelectionListenerew ListSelectionListenerl	fontList.addListSelectionListener(new ListSelectionListener()
+{	{
+public void valueChangedListSelectionEvent evtf	public void valueChanged(ListSelectionEvent evt)
+{	{
+Font font = fFontf fontList.getSelectedalue;	Font font = (Font) fontList.getSelectedValue();
+text.setFontfontf;	text.setFont(font);
+f	}
+};	});
+Container contentPane= getCntentPanef;	Container contentPane = getContentPane();
+contentPane.addp, BorderLayout.SOUTH;	contentPane.add(p, BorderLayout.SOUTH);
+txt = new JTextArea"The  quick brown fox jumps over  the lazy do";	text = new JTextArea("The quick brown fox jumps over the lazy dog");
+text.setFontFont fnts.get0ll;	text.setFont((Font) fonts.get(0));
+text.stLineWrapftrue;	text.setLineWrap(true);
+text.setWrapStyleWordftrue;	text.setWrapStyleWord(true);
+contentPane.addtext, BorerLayout..CENTER;	contentPane.add(text, BorderLayout.CENTER);
+}	}
+private  JTextAreatext;;	private JTextArea text;
+private JList  fontList;	private JList fontList;
+private static final int DFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+privatestatic  final intDEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+}	}
+class FontCellRenderer extends JComponnt implementsListCellRenderer	class FontCellRenderer extends JComponent implements ListCellRenderer
+{	{
+public Component getListCellRendererComponentJList list, Object value int  index,	public Component getListCellRendererComponent(JList list, Object value, int index,
+booleanisSelected, boolean cellHasFocus	boolean isSelected, boolean cellHasFocus)
+1	{
+font = fFont value	font = (Font) value;
+background = isSelected ? list.getSelectionBackground : list.getBckground;	background = isSelected ? list.getSelectionBackground() : list.getBackground();
+foreground = isSelected ? lis.getSelectionForeground : list.getForeground;	foreground = isSelected ? list.getSelectionForeground() : list.getForeground();
+return this;	return this;
+1	}
+publicvoid paintCompoentGaphics gl	public void paintComponent(Graphics g)
+1	{
+String ext = font.getFamly;	String text = font.getFamily();
+FontMetrics  fm = g.getFontMericsfont;	FontMetrics fm = g.getFontMetrics(font);
+g.setColorbakground;	g.setColor(background);
+g.fillRect0, 0,getWidthff, getHeight;	g.fillRect(0, 0, getWidth(), getHeight());
+g.setColororegroundf;	g.setColor(foreground);
+g.stFontfnt;	g.setFont(font);
+g.drawStrngftext, 0, fm.getAscent;	g.drawString(text, 0, fm.getAscent());
+l	}
+public Dimesion getPreferredSize	public Dimension getPreferredSize()
+{	{
+String text=font.getFamily;	String text = font.getFamily();
+Graphics g =getGraphics	Graphics g = getGraphics();
+FontMetrics fm = g..getFontMetricsfontl;	FontMetrics fm = g.getFontMetrics(font);
+return new Dimensionfm.strngWdthtextf, fmgetHeightfl;	return new Dimension(fm.stringWidth(text), fm.getHeight());
+1	}
+private Fnt ont;	private Font font;
+privateColor  background;	private Color background;
+priateColor foreground;	private Color foreground;
+}	}

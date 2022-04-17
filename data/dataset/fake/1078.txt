@@ -1,0 +1,23 @@
+class BreakDemo	class BreakDemo
+{	{
+ublic static void mainSting args	public static void main(String[] args)
+	{
+	
+for int x= 0; x<3; x++	for (int x = 0; x<3; x++)
+1	{
+if x == 0	if (x == 0)
+{	{
+break; }	break; }
+System.out.printlnf"x="+x;	System.out.println("x="+x);
+	
+}	}
+	
+outer: for int x = 0; x<3;x++{	outer: for (int x = 0; x<3; x++){
+nter: for int  y = 0 y<6; y++	inter: for (int y = 0; y<6; y++)
+{	{
+Systemout.println"x=""+x;	System.out.println("x="+x);
+break outer;}	break outer;}
+}	}
+	
+}	}
+}	}

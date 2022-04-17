@@ -1,0 +1,16 @@
+package com.atguigu.java;	package com.atguigu.java;
+public class  Person {	public class Person {
+String name;	String name;
+int age;	int age;
+	
+intid = 1001;;	int id = 1001;
+	
+public void eat{	public void eat(){
+System.out.prinln"";;	System.out.println("");
+}	}
+	
+public void walkl{	public void walk(){
+System.out.println";	System.out.println("");
+}	}
+	
+f	}

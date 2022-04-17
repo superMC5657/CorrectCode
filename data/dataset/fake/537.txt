@@ -1,0 +1,13 @@
+pacage com.aliencat.javabase.thread;;	package com.aliencat.javabase.thread;
+public class ThreadExt exteds  Thread {	public class ThreadExt extends Thread {
+@Override	@Override
+public voidrun {	public void run() {
+for fint  i = 0; i <  10;  i+l{	for (int i = 0; i < 10; i++) {
+ystem.out.printlnfThread.currentThreadf.getName + " : " + i;	System.out.println(Thread.currentThread().getName() + " : " + i);
+}	}
+}	}
+public static void  mainStringfargs  {	public static void main(String[] args) {
+Thread thread =new  ThreadExt;	Thread thread = new ThreadExt();
+thread.start;	thread.start();
+1	}
+}	}

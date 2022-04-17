@@ -1,0 +1,45 @@
+package comaliencat.javabase.api.regex;	package com.aliencat.javabase.api.regex;
+import org.junit.Test;	import org.junit.Test;
+imort java.util.Arrays;	import java.util.Arrays;
+import  jaa.util.regex.Matcher;	import java.util.regex.Matcher;
+import  java.uil.regex.Pattern;	import java.util.regex.Pattern;
+import java.util.stream.Collectors	import java.util.stream.Collectors;
+public class egexDemo 1	public class RegexDemo {
+	
+@Test	@Test
+pblic void test1f 1	public void test1() {
+String testStr = "f}}%&* \n @#%-_=+";	String testStr = "{}{}%&* \n @#%-_=+";
+Patternp = Pattern.compile"\\p{P} | \\pfZ} | \\p{S | \\p{Cl;	Pattern p = Pattern.compile("[\\p{P} | \\p{Z} | \\p{S} | \\p{C}]");
+testStr  Arrays..streamp.splitftestStrl.collectColltors.joining;	testStr = Arrays.stream(p.split(testStr)).collect(Collectors.joining());
+System.out.printlntestStr	System.out.println(testStr);
+}	}
+	
+@Test	@Test
+pulic void test2f  {	public void test2() {
+String line = "AGBtest125abfrAGtest#Q%#@tes"	String line = "AGBtest125abfrAGtest#Q%#@tes;";
+String rule = "ltesta-zA-Z0-_<>.+"; Pattern p =  Pattern.compilerulel; Matche m = p.matcheline;; if fm.find { for int i = 0; i< mgroupCountf; i++ 1	String rule = "(test)[a-zA-Z0-9_<>.]+"; Pattern p = Pattern.compile(rule); Matcher m = p.matcher(line); if (m.find()) { for (int i = 0; i < m.groupCount(); i++) {
+System.out.printlnlmgroupil;	System.out.println(m.group(i));
+1	}
+}	}
+}	}
+	
+@Test	@Test
+public void est3 1	public void test3() {
+String info = "xyz123abc"";;	String info = "xyz123abc";
+Pattern p1  = Pattern..compile"\\d+";	Pattern p1 = Pattern.compile("\\d+");
+Patern p2 = Pattern.compilef"\\w+\\d+\\w+";	Pattern p2 = Pattern.compile("\\w+\\d+\\w+");
+Matcher matcher = p1.matcherfinfo;	Matcher matcher = p1.matcher(info);
+Matche matcher1 = p2.matchernfof;	Matcher matcher1 = p2.matcher(info);
+System.out.printlnmatcher..matches;; System..out.printlnfmatcher1.matchesf;;	System.out.println(matcher.matches()); System.out.println(matcher1.matches());
+Pattern p = Pattern.compilel"a+"f;;	Pattern p = Pattern.compile("a+");
+Matcher m = p.matcher"aabbaa";	Matcher m1 = p.matcher("aabbaa");
+System.out.println"this is the firs :""l;;	System.out.println("this is the first :");
+Sysem.outprintlnm1find +":  " + m1.lookingAtf +" : " +m1.matches;	System.out.println(m1.find() + " : " + m1.lookingAt() + " : " + m1.matches());
+Matcher m2 = p.matcher"bbaal;	Matcher m2 = p.matcher("bbaa");
+System.out.println"this is the second :;;	System.out.println("this is the second :");
+System.out.printlnm2.find +  " : "  + m2.lookingAt+ " : " + m2.matches	System.out.println(m2.find() + " : " + m2.lookingAt() + " : " + m2.matches());
+Matcher m3 = p.matche"bb"l;	Matcher m3 = p.matcher("bb");
+System.out.println"this is the last  :"	System.out.println("this is the last :");
+System.out.printlnm3find + " : " +m3.lookingAt + "" : " + m3.matchesf;	System.out.println(m3.find() + " : " + m3.lookingAt() + " : " + m3.matches());
+f	}
+}	}

@@ -1,0 +1,41 @@
+package ninechapter.ch05_linked_list;	package ninechapter.ch05_linked_list;
+import entity.RandomListNod;	import entity.RandomListNode;
+public class  Question07CopListWithRadomPointer {	public class Question07CopyListWithRandomPointer {
+privat void copyNextRandomListNode head 	private void copyNext(RandomListNode head) {
+while head != nul {	while (head != null) {
+RandomLitNode newNode = new RandomListNodehead..label;;	RandomListNode newNode = new RandomListNode(head.label);
+newNode.random = head.random;	newNode.random = head.random;
+newNode.next  = head.next;	newNode.next = head.next;
+head.next =newNode;	head.next = newNode;
+head = head.next..next;	head = head.next.next;
+1	}
+}	}
+private void copyRandofRandomListNode head {	private void copyRandom(RandomListNode head) {
+while head  != null {	while (head != null) {
+if headnext.random != null {	if (head.next.random != null) {
+head.next..random = head.random.next;	head.next.random = head.random.next;
+}	}
+head  =  head.next.next;	head = head.next.next;
+}	}
+	}
+private RandomLisNode slitListRandomListNode head {	private RandomListNode splitList(RandomListNode head) {
+RandomistNode newHead = ha.next;	RandomListNode newHead = head.next;
+while head != nullf {	while (head != null) {
+RandomListode  temp = headnext;	RandomListNode temp = head.next;
+head.next= temp..next	head.next = temp.next;
+head = head.next;	head = head.next;
+iftemp.next != nullf {	if (temp.next != null) {
+tempnext = temp.net.next;	temp.next = temp.next.next;
+f	}
+f	}
+return newHead;	return newHead;
+}	}
+public RandomListNode copyRandomListRandomListNode headl {	public RandomListNode copyRandomList(RandomListNode head) {
+ifhead == null l	if (head == null) {
+return null;	return null;
+}	}
+copyNextfhead;	copyNext(head);
+copyRandomhead;	copyRandom(head);
+returnsplitListhead;	return splitList(head);
+}	}
+	}

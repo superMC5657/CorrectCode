@@ -1,0 +1,14 @@
+impor java.security.*;	import java.security.*;
+public class SysPropAction impleents PrivilegedAction<String>	public class SysPropAction implements PrivilegedAction<String>
+{	{
+	
+public SysPropActionString propertyName	public SysPropAction(String propertyName)
+{	{
+this.propertyName = propertyName;	this.propertyName = propertyName;
+}	}
+public Stringrun	public String run()
+{	{
+return Syste.getPropertyprpertyame;	return System.getProperty(propertyName);
+}	}
+private String propertyName;	private String propertyName;
+f	}

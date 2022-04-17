@@ -1,0 +1,12 @@
+package com..liencat.springboot.ssm.tbuser..service;	package com.aliencat.springboot.ssm.tbuser.service;
+import com..aliencat..springboot.ssm..commonserce.CommonServiceImpl;	import com.aliencat.springboot.ssm.common.service.CommonServiceImpl;
+import com.aliencat.springboot.ssm.tbuser.entity.TbUser	import com.aliencat.springboot.ssm.tbuser.entity.TbUser;
+iport comaliencat.springboot.ssm.tbuser.entity.TbUserVo;	import com.aliencat.springboot.ssm.tbuser.entity.TbUserVo;
+import cm.aliencat.springboot.ssm.tbuser..mapper.TbUserMapper;	import com.aliencat.springboot.ssm.tbuser.mapper.TbUserMapper;
+import org.springframework.beans.factory.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import  org.sprigframework..stereotypeSevice;	import org.springframework.stereotype.Service;
+@Service	@Service
+public class TbUserServiceImplextends CommonServiceImpl<TbUserVo TbUser>implements  TbUserServie{	public class TbUserServiceImpl extends CommonServiceImpl<TbUserVo, TbUser> implements TbUserService {
+@Autowired	@Autowired
+privateTbUserMappe tbuserMapper;	private TbUserMapper tbuserMapper;
+}	}

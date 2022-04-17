@@ -1,0 +1,66 @@
+	
+	
+ - ...	 - ...
+	
+	();
+;	();
+abstract class  	abstract class 
+{	{
+pulic abtractvoid f;	public abstract void ();
+public abstract vod l;;	public abstract void ();
+1	}
+class extends 	class extends 
+{	{
+public void  {}	public void (){}
+public void {f	public void (){}
+public void f1	public void (){}
+}	}
+abstract class 	abstract class 
+{	{
+public  abstract void  f;	public abstract void ();
+f	}
+	
+	
+	
+	
+	
+is a 	is a 
+	
+	
+abstracclass 	abstract class 
+f	{
+public  abstract void ;	public abstract void ();
+public abstract vod f;	public abstract void ();
+}	}
+interfaceable	interface able
+{	{
+public abstract void ;	public abstract void ();
+}	}
+class extends  implments able	class extends implements able
+{	{
+public void {cod....}	public void (){code....}
+public void {1	public void (){}
+public void {}	public void (){}
+}	}
+	
+1	1
+	
+2is a 	2is a 
+like a 	like a 
+	
+opn;	open();
+closef;	close();
+	
+class 	class 
+{	{
+}	}
+interface 	interface 
+{	{
+1	}
+class	class
+{	{
+public static oidmainString args	public static void main(String[] args)
+{	{
+Sstem.out.println"Hello World!"	System.out.println("Hello World!");
+	}
+}	}

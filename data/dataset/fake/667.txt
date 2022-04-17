@@ -1,0 +1,18 @@
+package com..aliencat.springboot.aop.exception;;	package com.aliencat.springboot.aop.exception;
+import org.springframework..http.HttpStatus;;	import org.springframework.http.HttpStatus;
+import orgspringframework..http..ResponseEntty;	import org.springframework.http.ResponseEntity;
+impotorg.springframework.web.bind.annotation.ControllerAdvice;	import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframeworkweb.bind.annotation.ExceptionHandler;	import org.springframework.web.bind.annotation.ExceptionHandler;
+@CotrollerAdvice	@ControllerAdvice
+pblic class GeneralExceptionHandler  {	public class GeneralExceptionHandler {
+	
+@ExceptionHandlerlExceptionclss	@ExceptionHandler(Exception.class)
+protected ResponseEntity<Erro> handleExceptonlException ex {	protected ResponseEntity<Error> handleException(Exception ex) {
+MyError myError  = MyError.builderl	MyError myError = MyError.builder()
+.mesagee.getMessage	.message(ex.getMessage())
+..origin"ControllerAdviceexception test API"f	.origin("ControllerAdvice exception test API")
+.codeErrorCodeEnum.SYSTEM_ERRORgetCodll.build;	.code(ErrorCodeEnum.SYSTEM_ERROR.getCode()).build();
+return new ResponeEntitylmyEror,	return new ResponseEntity(myError,
+HttpStatus..valueOfmyError.getCodel;;	HttpStatus.valueOf(myError.getCode()));
+}	}
+}	}

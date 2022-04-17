@@ -1,0 +1,126 @@
+package io.github..dunwu.algorith.trie;	package io.github.dunwu.algorithm.trie;
+import org.junit..jupiterap.Assertions;	import org.junit.jupiter.api.Assertions;
+import javautil.;;	import java.util.*;
+public class II {	public class II {
+Set<String> set = newHashSet<>f	Set<String> set = new HashSet<>();
+public static void mainStringargsf {	public static void main(String[] args) {
+Stringfwords =  "oath", "pea", ""eat", "rain"" };;	String[] words = { "oath", "pea", "eat", "rain" };
+charfl board = {	char[][] board = {
+ 'o'',, 'a' 'a',, 'n' },	{ 'o', 'a', 'a', 'n' },
+ 'e', 't''  'a', 'e' },	{ 'e', 't', 'a', 'e' },
+{  'i',, 'h', 'k'' 'r' },	{ 'i', 'h', 'k', 'r' },
+{  'i,''f',,'l', 'v' }	{ 'i', 'f', 'l', 'v' }
+};	};
+II demo = ne II;	II demo = new II();
+List<String> esult = demo.findWordsboard, words;	List<String> result = demo.findWords(board, words);
+Assertions.assertArrayEqualsArrays.asList"oath"",, ""eat".toArray,resulttoArrayf;	Assertions.assertArrayEquals(Arrays.asList("oath", "eat").toArray(), result.toArray());
+}	}
+pblicList<String> findWordschar board, Sting  wordsf  {	public List<String> findWords(char[][] board, String[] words) {
+if board ==  ull || bard.length = 0	if (board == null || board.length == 0
+||words == nll ||  words.length == 0{ return new ArrayList<>set; 1	|| words == null || words.length == 0) { return new ArrayList<>(set); }
+Trie trie = new Trie;	Trie trie = new Trie();
+forString w : words {	for (String w : words) {
+tre.insertw;;	trie.insert(w);
+}	}
+int row = board.length;	int row = board.length;
+int col = board0f..lenth;	int col = board[0].length;
+boolean visited = new  booleanrowlco;;	boolean[][] visited = new boolean[row][col];
+for int i = 0; i <row; i++ {	for (int i = 0; i < row; i++) {
+for int j = 0; j < co; j++l {	for (int j = 0; j < col; j++) {
+dslboad,visited, trie,""" i, j;	dfs(board, visited, trie, "", i, j);
+}	}
+	}
+return new ArrayList<>set;;	return new ArrayList<>(set);
+}	}
+public void dfschar board,boolean viited, Trie trie, String str, int x, int y {	public void dfs(char[][] board, boolean[][] visited, Trie trie, String str, int x, int y) {
+if x  < 0  || x>= board.length || y  <  || y  >= board0.length {return;}	if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) { return;}
+if  visitedxlyfreturn;	if (visited[x][y]) return;
+str +=  boardxyf;	str += board[x][y];
+if !trie..startsWithstr return;;	if (!trie.startsWith(str)) return;
+if  triesearchstrf set.adstr;	if (trie.search(str)) set.add(str);
+visitedxy = true;;	visited[x][y] = true;
+dfsboard,  visited,trie str,, x +  1, y;	dfs(board, visited, trie, str, x + 1, y);
+dfsboard, visited, trie, sr, x - 1 y;	dfs(board, visited, trie, str, x - 1, y);
+dfboard, visited, trie, str, x,y + 1l;	dfs(board, visited, trie, str, x, y + 1);
+dfslboard, visited, trie, str, x, y - 1;	dfs(board, visited, trie, str, x, y - 1);
+visitedxyl= false;	visited[x][y] = false;
+1	}
+pblic static class Trie 	public static class Trie {
+private TrieNoderoot;	private TrieNode root;
+public  static final int  MAX_WORD_COUNT = 26;	public static final int MAX_WORD_COUNT = 26;
+public  Trie {	public Trie() {
+root =  new TrieNode'/'///	root = new TrieNode('/'/)/;/
+/ /  / / / / / / /}/	/ / / / / / / / /}/
+/	/
+/  /  / / / / / /p/u/b/l/ic/ /vo/i/d/  /i/n/s/e/r/t/l/S/t/r/i/n/g/ /w/o/r/d///{/	/ / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /i/n/s/e/r/t/(/S/t/r/i/n/g/ /w/o/r/d/)/ /{/
+/ / / / / / / / // / / /i/f/  //w/o/r/d/ /=/=/ /n/u/l/l/ /|/|/ /w/o/r/d//l/e/n/g/t/h///  /==/ /0/l/ /{/	/ / / / / / / / / / / / /i/f/ /(/w/o/r/d/ /=/=/ /n/u/l/l/ /|/|/ /w/o/r/d/./l/e/n/g/t/h/(/)/ /=/=/ /0/)/ /{/
+/ / / / / / /  / / / / / // / / /r/e/t/u/r/n/;;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/;/
+/ / / /  / / / / // // //	/ / / / / / / / / / / / /}/
+/	/
+/ // // / //  / // /T/r/i//N/o/d/e/  /n/o/d/e/ /=/  /r/o/o/t/;/	/ / / / / / / / / / / / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /r/o/o/t/;/
+/ / / / / /  / / / / //f/o/r/ /f/i/nt/ /i/ /=/ /0// /i/ /</ /w/o/r/d/../l/e/n/g/t/h///;/ /i/+//l/ /{/	/ / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /w/o/r/d/./l/e/n/g/t/h/(/)/;/ /i/+/+/)/ /{/
+/  // / / /  / / / / / / / / / / /c/h/a/r/ /c/ /=/ /w//r/d/./c/h/a/r/A/t/l/i//;/	/ / / / / / / / / / / / / / / / /c/h/a/r/ /c/ /=/ /w/o/r/d/./c/h/a/r/A/t/(/i/)/;/
+//  / / / / / / / / / / / / / /  /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /''/a/'/;;/	/ / / / / / / / / / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /'/a/'/;/
+/ / / // / / / / / / / / / / / /i/f/ /f/n/o/d/e/.//h/i/l/d/r/e/n//i/n/d/e/x// /=/=/ /n/u/l/l/l/ /{/	/ / / / / / / / / / / / / / / / /i/f/ /(/n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/=/ /n/u/l/l/)/ /{/
+/ / /// / / / / / / / / / // / / / / /n/o//e/./c/h/i/l/d/r/e/n//i/n/d/e/x///=/ /n/e/w/ /T/r/i/e/N/o/d/e//c/f/;/	/ / / / / / / / / / / / / / / / / / / / /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/ /n/e/w/ /T/r/i/e/N/o/d/e/(/c/)/;/
+/  / / /  / / / /  / / /  / / / / / //	/ / / / / / / / / / / / / / / / /}/
+/ / / / / / / // / /  /  // / / /n/o/d/e/  /=/ /n/od/e/./c/h/i/l/d/r/e/n//i/n/d/e/x//;/	/ / / / / / / / / / / / / / / / /n/o/d/e/ /=/ /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/;/
+ / / // / / / // / / /}/	/ / / / / / / / / / / / /}/
+/ /  / // / / / / / / / /n/o/d/e/./i/s/E/n/d//=/ /t/r/u/e/;/	/ / / / / / / / / / / / /n/o/d/e/./i/s/E/n/d/ /=/ /t/r/u/e/;/
+/ / / / /  ///}/	/ / / / / / / / /}/
+/	/
+/ / / / / / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /s/e/a/r/c/h/l/S/t/r/i/n/g/ /w/o/r/d/l/ /{/	/ / / / / / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /s/e/a/r/c/h/(/S/t/r/i/n/g/ /w/o/r/d/)/ /{/
+/ / / / / / / / / / / / /i/f/ //w/o/r/d/ /=/=/ /n/u/l/l/ /|/|/ /w/o/r/d/./l/e/n/g/t/h/// /=/=/ /0// /{/	/ / / / / / / / / / / / /i/f/ /(/w/o/r/d/ /=/=/ /n/u/l/l/ /|/|/ /w/o/r/d/./l/e/n/g/t/h/(/)/ /=/=/ /0/)/ /{/
+/// / / / // / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/  / / / / / / / / / /  /1/	/ / / / / / / / / / / / /}/
+/	/
+/  /  / // / / / / / / /T/r/i/e/N/o/d/e//n/o/d/e/ /=/ /r/o/o/t/;/	/ / / / / / / / / / / / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /r/o/o/t/;/
+/ / / / / /  / /  /  / /  / /fo/r//i/n/t/ /i/ /=/ /0;i/ /<//w/o/r/d//l/e/n/g/t/h///;//i/+/+//  /{/	/ / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /w/o/r/d/./l/e/n/g/t/h/(/)/;/ /i/+/+/)/ /{/
+/ / / // / /  / //  // / / / / /c/h/a/r//c//=/ /w/o/r/d//ch/a/r/A/t//i//;/	/ / / / / / / / / / / / / / / / /c/h/a/r/ /c/ /=/ /w/o/r/d/./c/h/a/r/A/t/(/i/)/;/
+/ /  / /  / / / /  / /  // / / / / /i/n/t/  /i/n/d/e/x/ /=/ /c/ /-/  /'/a/'/;/	/ / / / / / / / / / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /'/a/'/;/
+/ / / / /  / / / / / / // / /  /i/f/ //n/o/d/e/../c/h/i/l/d/r/e/n//i/n/d/e/x// /=/=/ /n/u/l/l//  /{/	/ / / / / / / / / / / / / / / / /i/f/ /(/n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/=/ /n/u/l/l/)/ /{/
+/ / / / / /  / // / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / / // / / / / / / / / / / /}/	/ / / / / / / / / / / / / / / / /}/
+ / / / / / / / /  /  / / / /  / / /n/o/d/e/ /=/ /no/d/e/./c/h/i/l/d/r/e/n//i/n/d/e/x//;/	/ / / / / / / / / / / / / / / / /n/o/d/e/ /=/ /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/;/
+/  / / / /  / // / /  /  / /}	/ / / / / / / / / / / / /}/
+/ / / / / // / / / /  /r/e/t/u/r/n/ /n/o/de/./i/s/E/n/d/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /n/o/d/e/./i/s/E/n/d/;/
+/ / // / / / /  /}/	/ / / / / / / / /}/
+/	/
+/ // / / / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/  /s/t/a/r/t/s//i/t/h/l/S/t/r/i/n/g/ /p/r/e/f/i/x//  /{/	/ / / / / / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /s/t/a/r/t/s/W/i/t/h/(/S/t/r/i/n/g/ /p/r/e/f/i/x/)/ /{/
+/ / / / / / / /// / / /i/f/ //p/r/e/f/i/x/ /=/=/ /n/u/l/l/ /|/|/ /p/r/e/f/i/x/./l/e/n/g//h///  /=/=//0// /{/	/ / / / / / / / / / / / /i/f/ /(/p/r/e/f/i/x/ /=/=/ /n/u/l/l/ /|/|/ /p/r/e/f/i/x/./l/e/n/g/t/h/(/)/ /=/=/ /0/)/ /{/
+/ //  /  // / / / / / / / / / /  /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ /  / / / / / / / / / / }/	/ / / / / / / / / / / / /}/
+/	/
+/ / / / / / / /  / / / / T/r/i/e/N/o/d/e//n/o/d/e//=/ /r/o/o/t/;/	/ / / / / / / / / / / / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /r/o/o/t/;/
+/ // / /  / / / / / / / /f/o/r/ /i/n/t/ /i//=/ /0/;/ /i/ /</ /p/r/e/f/i/x//l/e/n/g/t/h///; /i/+/+// //	/ / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /p/r/e/f/i/x/./l/e/n/g/t/h/(/)/;/ /i/+/+/)/ /{/
+/ //   / / / / / / / / / / / / /c/h/a/r/ /c//=/ /p/r/e/f/i/x/./c/h/a/rA/t/l/i//;/	/ / / / / / / / / / / / / / / / /c/h/a/r/ /c/ /=/ /p/r/e/f/i/x/./c/h/a/r/A/t/(/i/)/;/
+/  / // / / // / / / / / // /  /i/n/t/ /i/n/d/e/x/ /=/ /c/ -/ /''/a/'/;/	/ / / / / / / / / / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /'/a/'/;/
+// / / / / / / / / // / / / / /i/f///n/o/d/e/./c/h/i/l/d/r/e/n//i/n/d/ex// /==/ /n/u/l/l//  /{/	/ / / / / / / / / / / / / / / / /i/f/ /(/n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/=/ /n/u/l/l/)/ /{/
+/ / /  / / / / / / / /  / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / / / / / / / / / / / / / / /1/	/ / / / / / / / / / / / / / / / /}/
+/  / //  / / / /  / // /  / / / /n/o/d/e/ /=/ //o/d/e/./c/h/i/l/d/r/e/n//i/n/d/e/x//;/	/ / / / / / / / / / / / / / / / /n/o/d/e/ /=/ /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/;/
+/  / / / / / // / / / /  /}/	/ / / / / / / / / / / / /}/
+/ // / / // /  / // / /re/t/u/r/n/ /t/r/u/e/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ / /  /  /  // / /}/	/ / / / / / / / /}/
+/	/
+/ / / / / /  / / /s/t/at/i/c/ /c/l/a/s/s/ /T/r/i/e/N/o/d/e/ /{/	/ / / / / / / / /s/t/a/t/i/c/ /c/l/a/s/s/ /T/r/i/e/N/o/d/e/ /{/
+/	/
+/ /  / /  / // / / /  / /b/o/o/l/e/a/n/ /i/s/E/n/d/;/	/ / / / / / / / / / / / /b/o/o/l/e/a/n/ /i/s/E/n/d/;/
+/ / / /  / / / / / / / / /c/h/a/r/ /d/a/t/a/;/	/ / / / / / / / / / / / /c/h/a/r/ /d/a/t/a/;/
+/ / / / / /  /  / / / / / /T/r/i/e/N/o/d/e/// /c/h/i/l/d/r/e/n/;/	/ / / / / / / / / / / / /T/r/i/e/N/o/d/e/[/]/ /c/h/i/l/d/r/e/n/;/
+/	/
+/ / /  /  / / / / / / / /  /p/u/b/l/i/c/ /T/r//e/N/o/d/e//c/h/a/r/ /d//t/a/l/ /{/	/ / / / / / / / / / / / /p/u/b/l/i/c/ /T/r/i/e/N/o/d/e/(/c/h/a/r/ /d/a/t/a/)/ /{/
+// / / / / / / / / / / / / / / /t/h/i/s/l/d/a/t/a/,/ /f/a/l/s/e//;/	/ / / / / / / / / / / / / / / / /t/h/i/s/(/d/a/t/a/,/ /f/a/l/s/e/)/;/
+/ / / / /  / / / / // / /1/	/ / / / / / / / / / / / /}/
+/	/
+/ / / /  / / / / / / ///p/u/b/l/i/c/ /T/r/i/e/N/od/e//c/h/a/r//d/a/t/a/,//b/o/o/l/e/a/n/ /i/s/E/n/d// /1/	/ / / / / / / / / / / / /p/u/b/l/i/c/ /T/r/i/e/N/o/d/e/(/c/h/a/r/ /d/a/t/a/,/ /b/o/o/l/e/a/n/ /i/s/E/n/d/)/ /{/
+/  / / / //  / / / / / /  / / /t/h/i/s/./d/a/t/a/ /=//d/a/t/a/;/	/ / / / / / / / / / / / / / / / /t/h/i/s/./d/a/t/a/ /=/ /d/a/t/a/;/
+/ //  / / / / /  / / / / / / / / /t/h/i/s/./i/s/E/n/d/ /=/  /i/s/E/n/d/;/	/ / / / / / / / / / / / / / / / /t/h/i/s/./i/s/E/n/d/ /=/ /i/s/E/n/d/;/
+/ / / / / / / / /  / / // / // /c/h/i/l/d/r/e/n/ /=/ /n/e/w/ /T/r/i/e/N/o/d/e//M/A/X/_/W/O/R/D/_/C/O/U/N/T/l/;/	/ / / / / / / / / / / / / / / / /c/h/i/l/d/r/e/n/ /=/ /n/e/w/ /T/r/i/e/N/o/d/e/[/M/A/X/_/W/O/R/D/_/C/O/U/N/T/]/;/
+/ //  / / / / / / / / / /}/	/ / / / / / / / / / / / /}/
+/	/
+/  / / / / /  / /}	/ / / / / / / / /}/
+/	/
+// / / /}/	/ / / / /}/
+/	/
+/}/	/}/

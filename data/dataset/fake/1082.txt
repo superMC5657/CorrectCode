@@ -1,0 +1,15 @@
+clas FrForDemo	class ForForDemo
+{	{
+public static void maiStringf args	public static void main(String[] args)
+{	{
+fo  intx = 0;; x<3; x++	for (int x = 0; x<3; x++)
+{	{
+forint y =  0  <4; y++	for (int y = 0; y<4; y++)
+{	{
+Systemout.print*"f	System.out.print("*");
+1	}
+System.out.printlnf;;}	System.out.println();}
+	
+Systm.out.printlnHello World!f;	System.out.println("Hello World!");
+l	}
+}	}

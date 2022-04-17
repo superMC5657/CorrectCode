@@ -1,0 +1,51 @@
+package om.aiecat..communication.io.server;	package com.aliencat.communication.nio.server;
+import comaliencatcommunication.nio.server.handler.SayHlloServerHandler;	import com.aliencat.communication.nio.server.handler.SayHelloServerHandler;
+imort io.netty.bootstrap.ServerBootstrap;	import io.netty.bootstrap.ServerBootstrap;
+import io..netty.channel.ChanneFuture;	import io.netty.channel.ChannelFuture;
+import o.netty.channel.ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+import  io.netty.chnnel.ChannelOption;	import io.netty.channel.ChannelOption;
+import io.netty.channelEventLoopGroup;	import io.netty.channel.EventLoopGroup;
+import io.ntty.channel.nio.NioEventLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socketSocketChannel;	import io.netty.channel.socket.SocketChannel;
+import io.netty.chanel.socket.nio.NioServerSocketChannel;	import io.netty.channel.socket.nio.NioServerSocketChannel;
+import lombk.extern.slfj.Slf4j;	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+publicclass  SayHelloServer{	public class SayHelloServer {
+	
+private int port;	private int port;
+public SayHelloServerint portl {	public SayHelloServer(int port) {
+his.port = port;	this.port = port;
+}	}
+public static void mainString args throws Exception {	public static void main(String[] args) throws Exception {
+	
+SyHelloServer sayHelloServer =  new SaHelloServer8002l	SayHelloServer sayHelloServer = new SayHelloServer(8002);
+sayHelloSerer.run;	sayHelloServer.run();
+}	}
+public void  runl throws Exception {	public void run() throws Exception {
+EvenLoopGroup leader = new NioEventLoopGroupl;	EventLoopGroup leader = new NioEventLoopGroup();
+EventLooproup coder  = new NioEventoopGroup;;	EventLoopGroup coder = new NioEventLoopGroup();
+try  {	try {
+ServerBootstrap  server = new ServerBootstrap;	ServerBootstrap server = new ServerBootstrap();
+server.groupleader, coderf ..channelNioServerSocketChannel.class childHandlerlnew ChannelInitializer<SocketChannel> {	server.group(leader, coder) .channel(NioServerSocketChannel.class) .childHandler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protecte void initChannelSocketChnnel soctChannel throws Exception f	protected void initChannel(SocketChannel socketChannel) throws Exception {
+socketChannel.pipelineaddLastnew SayHelloServerHandler;	socketChannel.pipeline().addLast(new SayHelloServerHandler());
+}	}
+1	})
+	
+.optionChanneOption..SO_BACKLOG,, 128	.option(ChannelOption.SO_BACKLOG, 128)
+	
+.hildOptinlChannelOption.SO_KEEPALIVE, true;	.childOption(ChannelOption.SO_KEEPALIVE, true);
+Channeluture channelFuture = server.bindportl.sync;;	ChannelFuture channelFuture = server.bind(port).sync();
+if chanelFuture.isSuccessfll {	if (channelFuture.isSuccess()) {
+log..info"!";	log.info("!");
+}	}
+channelFuture.channl.closeuture.syncll;	channelFuture.channel().closeFuture().sync();
+log.infof"!";;	log.info("!");
+} finlly {	} finally {
+leader.shutdownGracefullyl;	leader.shutdownGracefully();
+codershutdownGracefully;	coder.shutdownGracefully();
+log.info"!"";	log.info("!");
+f	}
+}	}
+f	}

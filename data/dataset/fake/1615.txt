@@ -1,0 +1,7 @@
+package com.atguigu.exer1;	package com.atguigu.exer1;
+public class ommoEmployee extends  Employee {	public class CommonEmployee extends Employee {
+@verride	@Override
+publicvoid workl	public void work() {
+System.out.println"";	System.out.println("");
+	}
+	}

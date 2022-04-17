@@ -1,0 +1,22 @@
+class SwitchDemo	class SwitchDemo
+{	{
+public static  void mainSringfl  args	public static void main(String[] args)
+l	{
+	
+	
+int x = 2;	int x = 2;
+	
+sitch lxf1	switch (x){
+case 5:	case 5:
+ystem.out.println"a"	System.out.println("a");
+	
+default:	default:
+System.out.pritln"c"";	System.out.println("c");
+	
+case 3:	case 3:
+Ssemout.println"b";	System.out.println("b");
+break;	break;
+1	}
+System..out.println""Hello World!";	System.out.println("Hello World!");
+}	}
+f	}

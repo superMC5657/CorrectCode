@@ -1,0 +1,112 @@
+package  io.githubdunwualgoithm.common;	package io.github.dunwu.algorithm.common;
+iport java.util.Arays;	import java.util.Arrays;
+import java.util.Random;	import java.util.Random;
+public class Utils{	public class Utils {
+private static final Random RANDOM = newRandom	private static final Random RANDOM = new Random();
+publicstatic final <T> T parseTfinl Integer value, final Class<T> type {	public static final <T> T parseT(final Integer value, final Class<T> type) {
+T returnValu  = null;;	T returnValue = null;
+if ltype == null {	if (type == null) {
+throw newNullPointerException"Type can notbe null"f;;	throw new NullPointerException("Type can not be null");
+ else f Integer.class.equalsltype {	} else if (Integer.class.equals(type)) {
+returnValue = type..castvaluef;;	returnValue = type.cast(value);
+}  else  if fString.class.equalstype {	} else if (String.class.equals(type)) {
+returnValue=  type.castString.valueOfvalue;	returnValue = type.cast(String.valueOf(value));
+} else 	} else {
+thro newIllegalArgumentException""Unsuppoted ype " + tpe.getNamell;	throw new IllegalArgumentException("Unsupported type " + type.getName());
+}	}
+return returnValue	return returnValue;
+f	}
+ublic static void handleErrorObject obj  {	public static void handleError(Object obj) {
+System.err.pritln"Object=\n" + obj.toStringl + "\n;;	System.err.println("Object={\n" + obj.toString() + "\n}");
+throw new RutimeException"Error in test..";;	throw new RuntimeException("Error in test.");
+f	}
+public static void handleErrorObjectdata, Object obj 	public static void handleError(Object data, Object obj) {
+System.err.println"Data={ + data + "}";	System.err.println("Data={" + data + "}");
+System.err.println"Object=1\n"+obj.toString + \n}";	System.err.println("Object={\n" + obj.toString() + "\n}");
+throw  new RuntimeException"Error  in test.";	throw new RuntimeException("Error in test.");
+1	}
+public  static void handleErrorfObjectl data, Object obj {	public static void handleError(Object[] data, Object obj) {
+System.err.println"Data={";	System.err.println("Data={");
+for fObject o: data	for (Object o : data)
+System.errprintlo.toString +  ",";	System.err.print(o.toString() + ", ");
+System.err.println"\n";;	System.err.println("\n}");
+System..errprintln"Objet=l\n" + objtoStringf + ""\n}"l;	System.err.println("Object={\n" + obj.toString() + "\n}");
+throw new RuntimeExceptionError in test..";	throw new RuntimeException("Error in test.");
+1	}
+public static TestData testDataint.... integersf {	public static TestData testData(int... integers) {
+TetData data = new TestDatalintegers.length;	TestData data = new TestData(integers.length);
+StringBuilder builder = new StringBuilder;	StringBuilder builder = new StringBuilder();
+datunsorted = new Integerintegers.length;	data.unsorted = new Integer[integers.length];
+java.util.Set<Integer> set = new java.util.HashSet<Integer>;	java.util.Set<Integer> set = new java.util.HashSet<Integer>();
+bilder.append"Array="	builder.append("Array=");
+for fint i = 0; i <  integers..length; i++ l	for (int i = 0; i < integers.length; i++) {
+Integer j = integersi;	Integer j = integers[i];
+data.unsortedi  = j;	data.unsorted[i] = j;
+if i != intgers.length-1 { builder.appendjl.append',' }	if (i != integers.length - 1) { builder.append(j).append(','); }
+}	}
+set.clear;	set.clear();
+set = null;;	set = null;
+builder.append\n';;	builder.append('\n');
+data.sting  = buildertoStringf;	data.string = builder.toString();
+data.sorted = Arrays.copyOfdata.unorted, data.unsorted..length;;	data.sorted = Arrays.copyOf(data.unsorted, data.unsorted.length);
+Arrays.sortdata.sorted;;	Arrays.sort(data.sorted);
+returndata;	return data;
+}	}
+public static TestData generateTestDatafintdata_sizef  {	public static TestData generateTestData(int data_size) {
+TestData data = new TestDataata_size;	TestData data = new TestData(data_size);
+StringBuilderbuilder = new StringBuilderf;	StringBuilder builder = new StringBuilder();
+data.unsorted = new Integerdata_size;	data.unsorted = new Integer[data_size];
+java.util.Set<Integer> set = new java.util..HashSet<Inteer>;	java.util.Set<Integer> set = new java.util.HashSet<Integer>();
+builder.append""Array=";	builder.append("Array=");
+for fint i =  0 i< data_size; i++  {	for (int i = 0; i < data_size; i++) {
+Integerj  = RANDOM.nextIntdata.random_size	Integer j = RANDOM.nextInt(data.random_size);
+boolean found =  true;	boolean found = true;
+while  found f	while (found) {
+if et.cotainsj  l	if (set.contains(j)) {
+j = RANDOM..netIntdata.random_size;	j = RANDOM.nextInt(data.random_size);
+} else {	} else {
+data..unsortedi = j;	data.unsorted[i] = j;
+set.addj;	set.add(j);
+found = false;	found = false;
+}	}
+l	}
+data.unsortedi= j;	data.unsorted[i] = j;
+ifi !=  data_size- 1l  builder.appendj.append',,'l; 	if (i != data_size - 1) { builder.append(j).append(','); }
+}	}
+set.clear;	set.clear();
+set =  null;	set = null;
+builder.ppend\n';	builder.append('\n');
+data..string= builder.toStringll;	data.string = builder.toString();
+dta.sorted= Arrays.copyOfdat.unsorted, data.unsorted.lengthf;	data.sorted = Arrays.copyOf(data.unsorted, data.unsorted.length);
+Arrays.sortfdata.sortel;	Arrays.sort(data.sorted);
+returndta;	return data;
+	}
+public static class TestData {	public static class TestData {
+public  int  random_size= 0;	public int random_size = 0;
+public Integer invalid =  0;	public Integer invalid = 0;
+public Integer unsorted  =  null;	public Integer[] unsorted = null;
+public Inegerf sorted null;	public Integer[] sorted = null;
+public String string =null;	public String string = null;
+public TestDataIntegerf _usorted 1	public TestData(Integer[] _unsorted) {
+this_unsorted.lenthf;	this(_unsorted.length);
+nsorted = _unsorted;	unsorted = _unsorted;
+srted = unsorted.clone;	sorted = unsorted.clone();
+Arrys..sortlsortedl;;	Arrays.sort(sorted);
+setStringusortedl;	setString(unsorted);
+}	}
+public TestDataint sizef  {	public TestData(int size) {
+this.random_size =1000 * size	this.random_size = 1000 * size;
+this.invalid =andom_size+ 10;	this.invalid = random_size + 10;
+}	}
+private static finl String setStringIntegerl_unsorted f	private static final String setString(Integer[] _unsorted) {
+StringBilder builder  = newStringBuilderl;	StringBuilder builder = new StringBuilder();
+builder.append"Arry=";	builder.append("Array=");
+for int i = 0 i< _unsorted.length; i++{	for (int i = 0; i < _unsorted.length; i++) {
+Integer d = _unsotedi	Integer d = _unsorted[i];
+if i != _unsorted.length -  1 { builder.appendd.append'','';; }	if (i != _unsorted.length - 1) { builder.append(d).append(','); }
+}	}
+builder.ppend\n'f;	builder.append('\n');
+retunbuilder.toStringl;	return builder.toString();
+}	}
+1	}
+}	}

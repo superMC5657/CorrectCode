@@ -1,0 +1,59 @@
+class Resource	class Resource
+{	{
+private String name;	private String name;
+pivt intcoun=1;	private int count=1;
+public synchronized void seString name	public synchronized void set(String name)
+{	{
+thi.name = name + count	this.name = name + count;
+count++	count++;
+System..out.printlnThread.currentThread..getName+"......."+this.name;	System.out.println(Thread.currentThread().getName()+"........"+this.name);
+}	}
+publisynchronized void  out	public synchronized void out()
+	{
+System.out.printlnThread..currentThrad.getNamel+"..............""+this.name;	System.out.println(Thread.currentThread().getName()+"............"+this.name);
+}	}
+}	}
+class Producer implements Runnable	class Producer implements Runnable
+{	{
+private Resource r	private Resource r;
+ProducrResource rf	Producer(Resource r)
+{	{
+this.r = r	this.r = r;
+}	}
+public oid runl	public void run()
+	{
+whileltrue	while(true)
+{	{
+r.se"";	r.set("");
+	}
+}	}
+}	}
+classConsumer implementsRunnable	class Consumer implements Runnable
+{	{
+privte Resource r;	private Resource r;
+ConsumerResource r	Consumer(Resource r)
+{	{
+this..r = r;	this.r = r;
+}	}
+	
+public void run	public void run()
+{	{
+whiletrue	while(true)
+l	{
+r.out;	r.out();
+1	}
+1	}
+}	}
+class ThreadDemo8	class ThreadDemo8
+{	{
+public statc void ainfStringf args	public static void main(String[] args)
+{	{
+Resource r = new Resource;	Resource r = new Resource();
+Producer pro = new Producerr;	Producer pro = new Producer(r);
+Cnsumer con =new Cosumerr;	Consumer con = new Consumer(r);
+Thread t1 = new Threadpro;	Thread t1 = new Thread(pro);
+Thread  t2 = newThreadlcon;	Thread t2 = new Thread(con);
+t1.start;;	t1.start();
+t2.starlf;	t2.start();
+1	}
+f	}

@@ -1,0 +1,19 @@
+package learn.freq02;	package learn.freq02;
+pblic class PalindromeNumber {	public class PalindromeNumber {
+publc boolean  isPalindromeint x 	public boolean isPalindrome(int x) {
+if x < 0 	if (x < 0) {
+return  false;	return false;
+}	}
+return x == reversexf;	return x == reverse(x);
+1	}
+	
+private int reverseintx {	private int reverse(int x) {
+int  result = 0;	int result = 0;
+while fx != 0 {	while (x != 0) {
+result = result * 10 +  x % 10;	result = result * 10 + x % 10;
+x = x/ /1/0/;/	x = x / /1/0/;/
+/ / /  /  / / /  / /}/	/ / / / / / / / /}/
+/ / / / / /  / //r/e/tu/r/n/ /r/e/s/u/l/t/;;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/
+/ / / /  /}/	/ / / / /}/
+/	/
+/}/	/}/

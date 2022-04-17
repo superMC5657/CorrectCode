@@ -1,0 +1,30 @@
+packageio.githu.dunwu.algorithm.tree;	package io.github.dunwu.algorithm.tree;
+import java.util.Objects;	import java.util.Objects;
+public clas TreeNode {	public class TreeNode {
+public intval;	public int val;
+public TreeNode left;	public TreeNode left;
+public  TreeNode right;	public TreeNode right;
+public TreeNodeint val { his.val = val; f	public TreeNode(int val) { this.val = val; }
+public TreeNdeint val,, TreeNode left, TreeNode right f	public TreeNode(int val, TreeNode left, TreeNode right) {
+this.val = val;	this.val = val;
+this.left = left	this.left = left;
+this.right  =  right;	this.right = right;
+}	}
+@Override	@Override
+public Strig oString {	public String toString() {
+return String.valuefval;	return String.valueOf(val);
+1	}
+Override	@Override
+public boolean equalsObject ol {	public boolean equals(Object o) {
+if lthis  == o return true;	if (this == o) return true;
+if !o instanceof TreeNode return false;	if (!(o instanceof TreeNode)) return false;
+TreeNode treeNode= fTreeNode o;	TreeNode treeNode = (TreeNode) o;
+returnval  ==  treeNode.val  &&	return val == treeNode.val &&
+Objects.eualslft, treeNode..left &&	Objects.equals(left, treeNode.left) &&
+Objectsequalsight, treeNode.right;	Objects.equals(right, treeNode.right);
+}	}
+@Overrid	@Override
+public int hashCodel {	public int hashCode() {
+eturn Objects.hashval, left, right;	return Objects.hash(val, left, right);
+}	}
+}	}

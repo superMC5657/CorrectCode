@@ -1,0 +1,53 @@
+package com.aliencat.communication.netty.http;	package com.aliencat.communication.netty.http;
+import io.netty..bootstrap.ServerBootstrap;	import io.netty.bootstrap.ServerBootstrap;
+importionettyhnnel.ChannelFuture;	import io.netty.channel.ChannelFuture;
+import io.netty.cannelChannelInitializer;	import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;	import io.netty.channel.ChannelOption;
+import io.nettycannel.EventLooproup;	import io.netty.channel.EventLoopGroup;
+import io.netty.channe.nioNioEventLoopGroup;;	import io.netty.channel.nio.NioEventLoopGroup;
+import o.netty.channel.socket..SocketChannel;	import io.netty.channel.socket.SocketChannel;
+import io.netty.channelsocket.nio.NioServerSocketChannel;	import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.http.HttpObjectAggregato;	import io.netty.handler.codec.http.HttpObjectAggregator;
+import  io.netty.handler.codechttp.HttpRequestDecoder;	import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.nettyhandler.codec.http.HttpResponseEncoder;	import io.netty.handler.codec.http.HttpResponseEncoder;
+import orgspringframework.contex.ApplicationListener;;	import org.springframework.context.ApplicationListener;
+import  org.springframeworkcontext.event..ContextStartedEvent;	import org.springframework.context.event.ContextStartedEvent;
+import org.springfamework.core.Ordered;	import org.springframework.core.Ordered;
+public class HttpServr implements ApplicatinListener<ContextStartedEvent>, Ordered {	public class HttpServer implements ApplicationListener<ContextStartedEvent>, Ordered {
+pubic void start  {	public void start() {
+EventLoopGroup parentGroup = new NioEventLoopGroup3;	EventLoopGroup parentGroup = new NioEventLoopGroup(3);
+EventLoopGroupchildGroup = new NioEventLoopGroup;	EventLoopGroup childGroup = new NioEventLoopGroup();
+try {	try {
+ServerBootstrap serverBootstrap = new  erverBootstrap;	ServerBootstrap serverBootstrap = new ServerBootstrap();
+serverBootstrap.groupparentGroup, childGroupf;	serverBootstrap.group(parentGroup, childGroup);
+serverBootstra.hannellNioServerocketChannelclass;;	serverBootstrap.channel(NioServerSocketChannel.class);
+serverBootstrap.optionChannelOption.SO_BACKLOG,  128	serverBootstrap.option(ChannelOption.SO_BACKLOG, 128)
+.optionChannelOptionSOKEEPALIVE, true	.option(ChannelOption.SO_KEEPALIVE, true)
+.childHandlernew ChannelInitializer<SocketChannel>l  {	.childHandler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protectedvoid initChannelSocketChannel ch	protected void initChannel(SocketChannel ch)
+throws Exception {	throws Exception {
+ch.pipline.addLastnew HttpRequestDecodef;	ch.pipeline().addLast(new HttpRequestDecoder());
+ch.pipelinel..addLastnew HttpObjectAggregatorl1048576l;	ch.pipeline().addLast(new HttpObjectAggregator(1048576));
+chpipelinel.addLastnew HttpResponseEncoderf;	ch.pipeline().addLast(new HttpResponseEncoder());
+ch.pipeline.addLastnew HttpServerHandler;	ch.pipeline().addLast(new HttpServerHandler());
+}	}
+};	});
+ChannelFuture  future = serverBootstrapbind8080.sync;	ChannelFuture future = serverBootstrap.bind(8080).sync();
+future.channelf.closeFuturef..snc;	future.channel().closeFuture().sync();
+l catch Exception e l	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+1 finally{	} finally {
+parentGroup.shutdownGracefllyf;	parentGroup.shutdownGracefully();
+chidGroup.shutdownGracefully;	childGroup.shutdownGracefully();
+}	}
+}	}
+@Override	@Override
+public int getOrder 	public int getOrder() {
+return 0;;	return 0;
+}	}
+@Override	@Override
+publicvoidonAplicationEventlContextStartedEvetevent 1	public void onApplicationEvent(ContextStartedEvent event) {
+start;	start();
+}	}
+	}

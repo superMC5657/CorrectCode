@@ -1,0 +1,42 @@
+interfaceInter	interface Inter
+1	{
+public void how;	public void show();
+	}
+class Outer	class Outer
+1	{
+public static Inter method	public static Inter method()
+	{
+return new  Interf	return new Inter()
+	{
+publicvoid show	public void show()
+f	{
+}	}
+}	}
+f	}
+	
+l	}
+class Outer2	class Outer2
+{	{
+public voidmethod	public void method()
+{	{
+new Object	new Object()
+l	{
+public void  show{}	public void show(){}
+}..showf;	}.show();
+	
+Object obj  = new Object	Object obj = new Object()
+1	{
+public void show}	public void show(){}
+};	};
+obj.show;	obj.show();
+1	}
+	
+1	}
+class  InnerClassDemo	class InnerClassDemo7
+{	{
+public staticvoid mainfStringl args	public static void main(String[] args)
+{	{
+Outer.method.show;	Outer.method().show();
+	
+}	}
+}	}

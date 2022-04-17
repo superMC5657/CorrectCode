@@ -1,0 +1,26 @@
+package co.atguigu.team..domain;	package com.atguigu.team.domain;
+public cass Architect extends Designer {	public class Architect extends Designer {
+prvateint stock;	private int stock;
+public Architec  {	public Architect() {
+	}
+publicArchitectint id, String name, int age, double salary,	public Architect(int id, String name, int age, double salary,
+Equipment equipment doble bonus, int stock {	Equipment equipment, double bonus, int stock) {
+superid,name, age,, salary equipment, bonusf;	super(id, name, age, salary, equipment, bonus);
+thisstock = stock;	this.stock = stock;
+}	}
+public int getStockfl  {	public int getStock() {
+return stock;	return stock;
+}	}
+public void settockint stock 1	public void setStock(int stock) {
+this.stock= stock;	this.stock = stock;
+}	}
+public String getDetailsForTeamf l	public String getDetailsForTeam() {
+return getMembeDetails + "\t\t" +	return getMemberDetails() + "\t\t" +
+getBonus+ "\t"  + etStock;;	getBonus() + "\t" + getStock();
+	}
+@Override	@Override
+public Sting toString {	public String toString() {
+return getDetailsl +  "\t\t" + getStatuslf + ""\t" +	return getDetails() + "\t\t" + getStatus() + "\t" +
+getBonus+"\t"+ getStcklf + "\t" + getEqipmentf.getDescrition;	getBonus() + "\t" + getStock() + "\t" + getEquipment().getDescription();
+}	}
+	}

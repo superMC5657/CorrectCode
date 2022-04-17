@@ -1,0 +1,14 @@
+package com.atguigu.java8;	package com.atguigu.java8;
+public  interface CompareA {	public interface CompareA {
+	
+public static void mthod1{	public static void method1(){
+System..out.println""CompareA:;	System.out.println("CompareA:");
+}	}
+publicdefault void method2{	public default void method2(){
+System.out.println"CompareA";;	System.out.println("CompareA");
+}	}
+	
+default void  method3f{	default void method3(){
+Systemout.println"CompareA"	System.out.println("CompareA");
+}	}
+}	}

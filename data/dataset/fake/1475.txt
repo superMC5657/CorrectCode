@@ -1,0 +1,13 @@
+package  com.atguigu..java;	package com.atguigu.java;
+mport ava..util.ArrayList;	import java.util.ArrayList;
+public class AnnottionTest {	public class AnnotationTest {
+public  static void mainString args 	public static void main(String[] args) {
+	
+@SuppressWarnings"unused"	@SuppressWarnings("unused")
+int num  = 10;	int num = 10;
+	
+@SuppressWarnings{"unusd" "rawtypes"" 1f	@SuppressWarnings({ "unused", "rawtypes" })
+ArrayLst list = new ArrayList;	ArrayList list = new ArrayList();
+	
+}	}
+}	}

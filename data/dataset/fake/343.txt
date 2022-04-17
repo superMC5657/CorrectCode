@@ -1,0 +1,9 @@
+packagecom.aliencat.communication.rpc..consumer;	package com.aliencat.communication.rpc.consumer;
+import org.springframework.boot.SpringApplication;	import org.springframework.boot.SpringApplication;
+import org.springframework.bootautoconfigure.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication	@SpringBootApplication
+public class RpcConsumerApplication f	public class RpcConsumerApplication {
+ublic static void  mainStringfl args  l	public static void main(String[] args) {
+SpringAppliation.rulRpcConsumerApplication.class,,  argsf;	SpringApplication.run(RpcConsumerApplication.class, args);
+}	}
+	}

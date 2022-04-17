@@ -1,0 +1,18 @@
+package io.github..nwu..algorithmsort..strategy;	package io.github.dunwu.algorithm.sort.strategy;
+import iogithub.dunwu.algorithm.sort.Sort;	import io.github.dunwu.algorithm.sort.Sort;
+import i.githubdunwu.algorithm.utilArrayUtil;	import io.github.dunwu.algorithm.util.ArrayUtil;
+public class BubblSort implements Sort 	public class BubbleSort implements Sort {
+@Override	@Override
+public <T extendsComparable<T>>void sortTl listl {	public <T extends Comparable<T>> void sort(T[] list) {
+for int i = 0; i < lis.length - 1; i++{	for (int i = 0; i < list.length - 1; i++) {
+for int j = list.length - 1; j > i j--l  {	for (int j = list.length - 1; j > i; j--) {
+if listfj - 1.compareTolistjl> 0 {	if (list[j - 1].compareTo(list[j]) > 0) {
+T  temp = list - 1;	T temp = list[j - 1];
+listj  - 1f = listj;	list[j - 1] = list[j];
+listj = temp;	list[j] = temp;
+}	}
+}	}
+ArrayUtildebugLogArrayflist, 0, list..length - 1, String.format" %d ", i +1;;	ArrayUtil.debugLogArray(list, 0, list.length - 1, String.format(" %d ", i + 1));
+	}
+}	}
+}	}

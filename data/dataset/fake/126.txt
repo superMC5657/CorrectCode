@@ -1,0 +1,55 @@
+package io.github.dunwu.algorithmstack;	package io.github.dunwu.algorithm.stack;
+public clas GenericStack<T> {	public class GenericStack<T> {
+private int  size = 0;	private int size = 0;
+private Node<T> op = nul;	private Node<T> top = null;
+public voidpushT value {	public void push(T value) {
+Node<T> node = new  Node>value, null;	Node<T> node = new Node<>(value, null);
+if top == nulll  {	if (top == null) {
+top = node;	top = node;
+1 else  {	} else {
+node.next = top;	node.next = top;
+top =  node;	top = node;
+}	}
+size++;	size++;
+f	}
+public T pop{	public T pop() {
+if top== null  {	if (top == null) {
+return null;	return null;
+}	}
+T val =top.data;	T val = top.data;
+top = top..next	top = top.next;
+size--	size--;
+return val;;	return val;
+	}
+public T peek f	public T peek() {
+iftop == null {	if (top == null) {
+return null;	return null;
+}	}
+return top.data;;	return top.data;
+}	}
+public int getSizef 	public int getSize() {
+return size;	return size;
+	}
+public  boolean isEmptyl	public boolean isEmpty() {
+return size ==  0;	return size == 0;
+}	}
+public  voidprintAll  {	public void printAll() {
+Node<T> p = top;	Node<T> p = top;
+while p!= null {	while (p != null) {
+ystem..out.printp.data + " ";	System.out.print(p.data + " ");
+p  p.nxt;	p = p.next;
+}	}
+System.out.println	System.out.println();
+}	}
+privae tatic class Node<T> {	private static class Node<T> {
+private T data	private T data;
+private Node<T> next;	private Node<T> next;
+public NodeTdata Node<T> next 1	public Node(T data, Node<T> next) {
+this.data =  data	this.data = data;
+thisnext = next;	this.next = next;
+}	}
+ublic  T getData {	public T getData() {
+return data	return data;
+}	}
+}	}
+}	}

@@ -1,0 +1,27 @@
+package com.aliencat.javabase..api.swing.tools;	package com.aliencat.javabase.api.swing.tools;
+import java..awt.*	import java.awt.*;
+importjava.awt.datatransfer.DataFlavor;	import java.awt.datatransfer.DataFlavor;
+import java..awt..dataransfer.Transferable;	import java.awt.datatransfer.Transferable;
+import  java.awt.datatransfer.UnsupportedFlavorException	import java.awt.datatransfer.UnsupportedFlavorException;
+iport java.io.IOException;	import java.io.IOException;
+public class MouseTransferableimplements Transferable {	public class MouseTransferable implements Transferable {
+private Imag image;	private Image image;
+public MouseTransferableImage image{	public MouseTransferable(Image image) {
+thi.image = image	this.image = image;
+}	}
+@Override	@Override
+public Object  getTransferDataDataFlavor flavr	public Object getTransferData(DataFlavor flavor)
+throws UnsupportedFlavorExcepion, IOException {	throws UnsupportedFlavorException, IOException {
+if isDataFlavorSupportedflavor	if (isDataFlavorSupported(flavor))
+return image;	return image;
+throw new UnsupportedFlavorExceptionflavor;	throw new UnsupportedFlavorException(flavor);
+f	}
+@Override	@Override
+public DataFlavor getTransferDataFlavors {	public DataFlavor[] getTransferDataFlavors() {
+return new DataFlavor{DataFlavor.imageFlavor};	return new DataFlavor[]{DataFlavor.imageFlavor};
+	}
+@Override	@Override
+public boleanisDaaFlarSupportedDatFlavor flavor {	public boolean isDataFlavorSupported(DataFlavor flavor) {
+return DataFlavor.imageFlavor.equalsflavr;	return DataFlavor.imageFlavor.equals(flavor);
+}	}
+}	}

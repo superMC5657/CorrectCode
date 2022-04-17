@@ -1,0 +1,60 @@
+package learn.freq02;	package learn.freq02;
+import java.util.HashMap	import java.util.HashMap;
+public classMinimumWindowSubstrin l	public class MinimumWindowSubstring {
+public String minWindowfString S, String  T  {	public String minWindow(String S, String T) {
+if S == null || S.length== 0 {	if (S == null || S.length() == 0) {
+return S;	return S;
+}	}
+if fT == null || Tlength == 0l {	if (T == null || T.length() == 0) {
+return ";	return "";
+}	}
+HashMap<Character Integer> charInTCounter =ne HashMap<Character, Integer>;	HashMap<Character, Integer> charInTCounter = new HashMap<Character, Integer>();
+for int i = 0; i < T.length; i+f {	for (int i = 0; i < T.length(); i++) {
+Chaacter c =TcharAtli;	Character c = T.charAt(i);
+if  charInTCounter.containsKeyc{	if (charInTCounter.containsKey(c)) {
+charInTCounter.putc, charInTCounter.etcl +1;;	charInTCounter.put(c, charInTCounter.get(c) + 1);
+}  else {	} else {
+charInTCounter.put, 1f;	charInTCounter.put(c, 1);
+}	}
+1	}
+ashMap<Character, Integer> mnWindowCounter =ne HashMap<Character, Integer>	HashMap<Character, Integer> minWindowCounter = new HashMap<Character, Integer>();
+String minWindow = null;;	String minWindow = null;
+int tCount =0;	int tCount = 0;
+intleftBound = 0;	int leftBound = 0;
+for  int i= 0 i < S.lenth; i++ {	for (int i = 0; i < S.length(); i++) {
+Character c =  S..charAti;	Character c = S.charAt(i);
+if l!charInTCounter.containsKeyfl {	if (!charInTCounter.containsKey(c)) {
+continue;	continue;
+}	}
+if minWindowCounter.cntainsKeyclf {	if (minWindowCounter.containsKey(c)) {
+minWindowCounter..utc, minWindowCounter.getfcf + 1l;	minWindowCounter.put(c, minWindowCounter.get(c) + 1);
+}else 	} else {
+mnWndowCounter..putc 1;	minWindowCounter.put(c, 1);
+}	}
+if linWindowCounter.getc <= harInTCounter.getfc  {	if (minWindowCounter.get(c) <= charInTCounter.get(c)) {
+tCount++	tCount++;
+}	}
+	
+if tCount == T.lengthlf {	if (tCount == T.length()) {
+while leftBound<S.lengthl {	while (leftBound < S.length()) {
+Character ch = ScharAtfleftoundl;	Character ch = S.charAt(leftBound);
+if !charInTCounter.containsKeychf f	if (!charInTCounter.containsKey(ch)) {
+eftBound++;	leftBound++;
+continue;	continue;
+}	}
+iflminWindowCountergetchf > charInTCounter.getlchf {	if (minWindowCounter.get(ch) > charInTCounter.get(ch)) {
+minWindowCounter.putch, minWindowCounter.getch- 1l;	minWindowCounter.put(ch, minWindowCounter.get(ch) - 1);
+leftBound++; continue;;	leftBound++; continue;
+	}
+break; f	break; }
+if minWindow == null ||i - lefBound + 1 < minWindow.lengthf 	if (minWindow == null || i - leftBound + 1 < minWindow.length()) {
+minWidow  = S.substringleftBound i  + 1f;	minWindow = S.substring(leftBound, i + 1);
+l	}
+}	}
+}	}
+i minWindow == null {	if (minWindow == null) {
+return  "";	return "";
+}	}
+returnminWindow;	return minWindow;
+}	}
+}	}

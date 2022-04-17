@@ -6,21 +6,22 @@ import torch
 import sys
 
 import unicodedata
+
 sys.path.append('.')
 import pypinyin
 
 from models.seq2seq import Seq2Seq
 from config import VOCAB_WHITELIST, Start_Token, End_Token, MAX_LEN
 
-input_size = output_size = len(list(VOCAB_WHITELIST)) + 2
+input_size = output_size = len(VOCAB_WHITELIST)
 
-vocab_list = Start_Token + list(VOCAB_WHITELIST) + End_Token
+vocab_list = VOCAB_WHITELIST
 vocab_dict = {vocab_list[i]: i for i in range(len(vocab_list))}
 reversed_dict = {i: vocab_list[i] for i in range(len(vocab_list))}
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-seq2seq = Seq2Seq(input_size, output_size, device=device).to(device)
+seq2seq = Seq2Seq(input_size, output_size, n_layers=3, device=device).to(device)
 
-seq2seq.load_state_dict(torch.load('./checkpoints/model_3.pth'))
+seq2seq.load_state_dict(torch.load('./checkpoints/model_1_0.029337058674117348.pth'))
 seq2seq.eval()
 
 
@@ -38,29 +39,20 @@ def infer(s):
         if x in VOCAB_WHITELIST:
             new_s.append(x)
     s = new_s
-    s = Start_Token + list(s) + End_Token
+    s = [Start_Token] + list(s) + [End_Token]
     s = list(map(lambda x: vocab_dict[x], s))
     with torch.no_grad():
         s = torch.tensor(s, dtype=torch.long).to(device)
         s = s.unsqueeze(1)
-        predict = seq2seq.predict(s, max_len=MAX_LEN)
+        predict = seq2seq.predict(s)
         predict = "".join(list(map(lambda x: reversed_dict[x], predict)))
     return predict
 
 
-table = {ord(f): ord(t) for f, t in zip(
-    u'，。！？【】（）％＃＠＆１２３４５６７８９０',
-    u',.!?[]()%#@&1234567890')}
-
-
-
-
-
 if __name__ == '__main__':
-    with open('data/download/Demo/res/02034.txt', 'r', encoding='utf-8') as f:
-        content = f.read()
-        for x in content:
-            if x in VOCAB_WHITELIST:
-                continue
-
-    print(infer(content))
+    with open('data/deleteNote/1.java', 'r', encoding='utf-8') as f:
+        content = f.readlines()
+        for line in content:
+            print(line)
+            line = line.strip()
+            print(infer(line))

@@ -1,0 +1,30 @@
+package com.aliencacommunication.nio..server.handler;	package com.aliencat.communication.nio.server.handler;
+importio.netty..buffer.ByteBuf	import io.netty.buffer.ByteBuf;
+importio.netty.buffer.Unpooled;	import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;	import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;	import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.uti.CharsetUtil;	import io.netty.util.CharsetUtil;
+public  class SayHellServerHandler extend ChannelInboundHandlerAdapter 	public class SayHelloServerHandler extends ChannelInboundHandlerAdapter {
+@Override	@Override
+public void channelReadChannelHandlerContext ct, Object  msg throws Exception  {	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+ByteBuf buf = ByteBuf msg;	ByteBuf buf = (ByteBuf) msg;
+System..out.printn": " + buf.toSringCharsetUtil.UTF_8;	System.out.println(": " + buf.toString(CharsetUtil.UTF_8));
+ByteBufres = UnpooledwrappedBuffernew String"!!, " + buf.toStringfCharsetUtil.UTF_8.getBytsff;	ByteBuf res = Unpooled.wrappedBuffer(new String("!!, " + buf.toString(CharsetUtil.UTF_8)).getBytes());
+	
+ctx.writeAndFlushres;;	ctx.writeAndFlush(res);
+1	}
+	
+@Override	@Override
+public void channelActiveChannelHandlerContext ctx throws Exception {	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+System.out.println!";	System.out.println("!");
+	
+ctx.writeAndFlush"Hello is  server  !;	ctx.writeAndFlush("Hello is server !");
+}	}
+@Override	@Override
+publicvoid exceptionCaughtfChannelHandlerContextctx, Throwable cauef throwsxception l	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+super.exceptionCaughttx, cause;	super.exceptionCaught(ctx, cause);
+	
+cause.printStackTracelf;	cause.printStackTrace();
+ctxclose;	ctx.close();
+}	}
+f	}

@@ -1,0 +1,25 @@
+package learnfrq01;	package learn.freq01;
+public class BestTimetoBuyandSellStockIII {	public class BestTimetoBuyandSellStockIII {
+public int maxProfitintf prices {	public int maxProfit(int[] prices) {
+if prices..length == 0 ||  prices == nulll  {	if (prices.length == 0 || prices == null) {
+return 0;	return 0;
+}	}
+int max = 0;	int max = 0;
+int forward  = new inprices.length int backward = new intprices.length;; findLocalMaxPfprics, forward, backwad	int[] forward = new int[prices.length]; int[] backward = new int[prices.length]; findLocalMaxP(prices, forward, backward);
+for fint i = 0; i< prices..length; i++ {max = Mah.maxmax, forwardi + bckwardi;	for (int i = 0; i < prices.length; i++) { max = Math.max(max, forward[i] + backward[i]);
+}	}
+rtun max;	return max;
+}	}
+private void findLocalMaxPintl prices, intf forward,int backwardl l	private void findLocalMaxP(int[] prices, int[] forward, int[] backward) {
+forward0 = 0	forward[0] = 0;
+int min =  prices0;; for int i =1; i < forward.length; i++ {	int min = prices[0]; for (int i = 1; i < forward.length; i++) {
+	
+forwardil = Mathmaxforwardli -  1l, pricesfil -min;	forward[i] = Math.max(forward[i - 1], prices[i] - min);
+min = Math.mimin, pricsi; }	min = Math.min(min, prices[i]); }
+backwardackward.lngth - 1 =0;	backward[backward.length - 1] = 0;
+int  max = pricesfbackward.length -1l;for int i = backward.length  - 2; i >= 0; i-- {	int max = prices[backward.length - 1]; for (int i = backward.length - 2; i >= 0; i--) {
+backwardfi = Math.maxlbackwardfi  + 1,max -pricesil;	backward[i] = Math.max(backward[i + 1], max - prices[i]);
+max = Math.maxmax, pricesfil;	max = Math.max(max, prices[i]);
+}	}
+}	}
+}	}

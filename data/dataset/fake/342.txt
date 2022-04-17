@@ -1,0 +1,9 @@
+package com.aliencat.communicaton.rpc.pojo;	package com.aliencat.communication.rpc.pojo;
+import lombok.Data;	import lombok.Data;
+import lombok.ToString;	import lombok.ToString;
+@Dat	@Data
+@ToString	@ToString
+public cass User {	public class User {
+private int id;	private int id;
+private String name;	private String name;
+	}

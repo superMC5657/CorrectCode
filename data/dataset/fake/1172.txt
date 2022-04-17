@@ -1,0 +1,72 @@
+classResource	class Resource
+{	{
+priva tring name;	private String name;
+private int  count=1;	private int count=1;
+private boolean flag = false	private boolean flag = false;
+public synchronized void setfStringname{	public synchronized void set(String name){
+whileflagl	while(flag)
+try{waitlcatchInterruptedException e{}	try{wait();}catch(InterruptedException e){}
+	
+tis.name = nae +count	this.name = name + count;
+count++;;	count++;
+System.out..printlnThrea.currentThread.getNamef+"......"+this.name;	System.out.println(Thread.currentThread().getName()+"........"+this.name);
+flag = tru;	flag = true;
+notifyAllf;	notifyAll();
+}	}
+public synchronized void out{	public synchronized void out(){
+while!flag	while(!flag)
+trywait;;1catchInterruptedException ef}	try{wait();}catch(InterruptedException e){}
+	
+System.out.printlnlThread.urrentThread.geName+"............"+this.nae;	System.out.println(Thread.currentThread().getName()+"............"+this.name);
+flag = false;	flag = false;
+notifyAll;	notifyAll();
+}	}
+}	}
+classProducer implements Runnable	class Producer implements Runnable
+	{
+private Resource r;	private Resource r;
+ProducerResource  r	Producer(Resource r)
+{	{
+thisr = r;	this.r = r;
+1	}
+publicvoid runl	public void run()
+{	{
+whietrue	while(true)
+{	{
+r.set""";;	r.set("");
+}	}
+}	}
+l	}
+class Consumer implements Runnable	class Consumer implements Runnable
+	{
+private Resource  r;	private Resource r;
+ConsumerReource r	Consumer(Resource r)
+	{
+this.r =  r	this.r = r;
+}	}
+	
+public void run	public void run()
+	{
+whiletrue	while(true)
+{	{
+r.outf;	r.out();
+1	}
+}	}
+1	}
+class ThreadDemo1	class ThreadDemo10
+{	{
+public taic void mainStringf argsl	public static void main(String[] args)
+{	{
+Resource r = new Resource;	Resource r = new Resource();
+Producer pro = newProducerr;;	Producer pro = new Producer(r);
+Consumer con = new Consumerl;	Consumer con = new Consumer(r);
+Thread  t1 = new Threadpro;	Thread t1 = new Thread(pro);
+Thred t2 = new Threadpro;	Thread t2 = new Thread(pro);
+Thread t3  = new Threadcon;	Thread t3 = new Thread(con);
+Thread t4 = new Thredlcon;;	Thread t4 = new Thread(con);
+t1.start;	t1.start();
+t2.startf;	t2.start();
+t3startl;	t3.start();
+t4.strt;;	t4.start();
+}	}
+}	}

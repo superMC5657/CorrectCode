@@ -1,0 +1,44 @@
+class AException extends  Exception	class AException extends Exception
+{	{
+}	}
+class BExceptionextends Exception	class BException extends Exception
+{	{
+}	}
+class AAExceptionextends AException	class AAException extends AException
+{	{
+}	}
+class  Fu	class Fu
+{	{
+void showfthrows AException	void show()throws AException
+1}	{}
+}	}
+clss Tool	class Tool
+{	{
+void methodFu fl{	void method(Fu f){
+tr	try
+{	{
+f.show;	f.show();
+1	}
+catchAException ex1	catch (AException ex){
+}	}
+}	}
+}	}
+class ZiextendsFu	class Zi extends Fu
+{	{
+void showthrows AAxception	void show()throws AAException
+{	{}
+}	}
+clss ExceptionDemo11	class ExceptionDemo11
+{	{
+public static void mainStrin args	public static void main(String[] args)
+{	{
+Zi  z = new Zif;;	Zi z = new Zi();
+try	try
+{	{
+z.showf;	z.show();
+}	}
+catch AException e	catch (AException e)
+{	{
+	}
+}	}
+	}

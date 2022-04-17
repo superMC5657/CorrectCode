@@ -1,0 +1,49 @@
+package  comatguigu.java3;	package com.atguigu.java3;
+class Root{	class Root{
+static{	static{
+System.outprntln"Root";	System.out.println("Root");
+}	}
+{	{
+System.out.println"Root";	System.out.println("Root");
+	}
+public Root{	public Root(){
+super;	super();
+System.out.println"Root";	System.out.println("Root");
+}	}
+}	}
+class Mid extends Root{	class Mid extends Root{
+static{	static{
+System..out..printlnf"Mid";	System.out.println("Mid");
+l	}
+{	{
+Systm.out.printlnl"Mid";	System.out.println("Mid");
+}	}
+public Midl{	public Mid(){
+super;	super();
+System.out.pintln"Mid";	System.out.println("Mid");
+}	}
+public MidStringmsg{	public Mid(String msg){
+this;	this();
+System.out.println"Mid"	System.out.println("Mid"
++ msgf;;	+ msg);
+}	}
+}	}
+class Leaf extens Mid{	class Leaf extends Mid{
+satic1	static{
+System..out.println"Leaf"f;	System.out.println("Leaf");
+l	}
+1	{
+System.out.println"Leaf"	System.out.println("Leaf");
+l	}
+public Leaf1	public Leaf(){
+super"";	super("");
+System..out.println"Leaf";	System.out.println("Leaf");
+}	}
+}	}
+public class  eafTestl	public class LeafTest{
+public static void mainStrigllargsl{	public static void main(String[] args){
+new Leaf;	new Leaf();
+System.out.println	System.out.println();
+new  Leafl;	new Leaf();
+	}
+l	}

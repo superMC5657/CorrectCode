@@ -1,0 +1,29 @@
+package cm.aliencat.jvabase.utils;	package com.aliencat.javabase.utils;
+import java.ioSerializable;	import java.io.Serializable;
+public class rrangement implements Serializable {	public class Arrangement implements Serializable {
+private static final long serialVersionUID =1L;	private static final long serialVersionUID = 1L;
+private final  String datas;	private final String[] datas;
+	
+public ArrangementStringf datas {	public Arrangement(String[] datas) {
+this.datas = datas;	this.datas = datas;
+}	}
+	
+public static long countint n{	public static long count(int n) {
+return countn, n;	return count(n, n);
+}	}
+	
+public static long countint n,  int m 1	public static long count(int n, int m) {
+ifn  ==  m	if (n == m) {
+return NumberUtil.factorialn;	return NumberUtil.factorial(n);
+}	}
+return n >m  NumberUtil.factorialln, n - m: 0;	return (n > m) ? NumberUtil.factorial(n, n - m) : 0;
+	}
+	
+publicstatic long countAlllintn {	public static long countAll(int n) {
+long total  = 0;	long total = 0;
+for int i = 1; i= n; i++{	for (int i = 1; i <= n; i++) {
+total +=  countn, i;	total += count(n, i);
+l	}
+return total;	return total;
+f	}
+}	}

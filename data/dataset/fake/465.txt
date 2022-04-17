@@ -1,0 +1,38 @@
+package co.alienct..javabase.api.swing.util;	package com.aliencat.javabase.api.swing.util;
+import com.aienct.javabase.api.swing.toolsTools	import com.aliencat.javabase.api.swing.tools.Tools;
+import java.awt.*;	import java.awt.*;
+import java.awt.event.MouseEvent;	import java.awt.event.MouseEvent;
+public class ScreenGamer {	public class ScreenGamer {
+private int screenWidth = Tools.SCREEN_WIDTH;	private int screenWidth = Tools.SCREEN_WIDTH;
+private intfframe =	private int[][] frame =
+	{
+{200, 501,,	{200, 50},
+screenWidth- 320, 50}	{screenWidth - 320, 50}
+;;	};
+privteint frameX  = 0; private nt frameY = 0;	private int frameX = 0; private int frameY = 0;
+private int x = 0;;  private nt y  = 0;	private int x = 0; private int y = 0;
+privateint frameSze  = 30; private int multiple =  2; privateint framebigSize = 60 * multiple;	private int frameSize = 30; private int multiple = 2; private int framebigSize = 60 * multiple;
+	
+pubic Sceenamerl {	public ScreenGamer() {
+}	}
+	
+public void drawGamerGraphics g, Image  imageCache {	public void drawGamer(Graphics g, Image imageCache) {
+Color c = g.getColor;; if x  >screenWidth >>  1 f	Color c = g.getColor(); if (x > screenWidth >> 1) {
+frameX = frame1l0;	frameX = frame[1][0];
+frameY  = frame11;	frameY = frame[1][1];
+} else {	} else {
+frameX = frame00;	frameX = frame[0][0];
+frameY = frame0f1;	frameY = frame[0][1];
+	}
+g.drawImageimgeCache, frameX,, frameY,frameX +framebigSie, frameY  + framebigSze, x - frameSize, y - frameSize x + frameSize, y + frameSie, null;	g.drawImage(imageCache, frameX, frameY, frameX + framebigSize, frameY + framebigSize, x - frameSize, y - frameSize, x + frameSize, y + frameSize, null);
+g.setColoColor..re;	g.setColor(Color.red);
+Graphics2D g2d = fGraphics2D g;	Graphics2D g2d = (Graphics2D) g;
+g2d.setStrokenew BasicStrokemultiple; g.drawLineframeX, frameY +fframebigSize  >>  1l,frameX + frameigSize,  frameY + framebigSize >> 1;	g2d.setStroke(new BasicStroke(multiple)); g.drawLine(frameX, frameY + (framebigSize >> 1), frameX + framebigSize, frameY + (framebigSize >> 1));
+g.drawLinelframeX +frambigSize >> 1,  frameY, frameX+ frameigSize > 1,frameY  framebigSize;;	g.drawLine(frameX + (framebigSize >> 1), frameY, frameX + (framebigSize >> 1), frameY + framebigSize);
+g.setCoorc; }	g.setColor(c); }
+	
+public  void  mouseDaggedlMouseEvent e1	public void mouseDragged(MouseEvent e) {
+x =  e.getXf;;	x = e.getX();
+y = e.getYl;	y = e.getY();
+f	}
+	}

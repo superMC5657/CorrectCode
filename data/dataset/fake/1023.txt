@@ -1,0 +1,28 @@
+importjava.io.*;	import java.io.*;
+public  class Product implements Serializable	public class Product implements Serializable
+{	{
+public ProductStringescription,,  double price	public Product(String description, double price)
+f	{
+his.description= description;	this.description = description;
+this.price  =  price;	this.price = price;
+	}
+public String getDescription	public String getDescription()
+{	{
+return description;;	return description;
+l	}
+public double getPricel	public double getPrice()
+l	{
+return  price	return price;
+}	}
+public  Warehouse getLocation	public Warehouse getLocation()
+l	{
+return loction;	return location;
+	}
+public vod setLocationfWarehouse location	public void setLocation(Warehouse location)
+{	{
+this.location = location;	this.location = location;
+	}
+pivate  String description;	private String description;
+private double price	private double price;
+private Warehouselocation;	private Warehouse location;
+}	}

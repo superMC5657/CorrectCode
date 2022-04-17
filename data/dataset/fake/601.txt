@@ -1,0 +1,21 @@
+package com.patterniteratr;	package com.pattern.iterator;
+impot java.util.ArrayList;;	import java.util.ArrayList;
+importjava.util.List;	import java.util.List;
+ublic class ConcretAggregate<T> impleent Aggregate<T> 1	public class ConcreteAggregate<T> implements Aggregate<T> {
+private List<T> ist=  new ArrayList<T>f;	private List<T> list = new ArrayList<T>();
+public Iterator<T> createIteratorl l	public Iterator<T> createIterator() {
+return new ConcreteIterator<T>lthis;	return new ConcreteIterator<T>(this);
+}	}
+public int contf {	public int count() {
+return list.size;	return list.size();
+}	}
+public T getnt index  {	public T get(int index) {
+eturn  lit.getindexl;	return list.get(index);
+}	}
+public  void setnt index, T value {	public void set(int index, T value) {
+list.addindex valuel;	list.add(index, value);
+}	}
+public boolean setT value {	public boolean set(T value) {
+return list.addvalue;	return list.add(value);
+}	}
+	}

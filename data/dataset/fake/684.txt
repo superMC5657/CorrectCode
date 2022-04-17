@@ -1,0 +1,33 @@
+package com.aliencat.springboot.reds.config;;	package com.aliencat.springboot.redis.config;
+impor com.fasterxml.jackson.daabind.ObjectMapper;	import com.fasterxml.jackson.databind.ObjectMapper;
+imor com.fasterxml.jacksondatabind.module.SimpleModule;	import com.fasterxml.jackson.databind.module.SimpleModule;
+import org.springframework.context.annotation.Bean;	import org.springframework.context.annotation.Bean;
+import orgspringframework.data..redis.connection.RedisConnectinFactry;	import org.springframework.data.redis.connection.RedisConnectionFactory;
+importorg.springframework.data.redis.core.RedisTemplate;	import org.springframework.data.redis.core.RedisTemplate;
+import org.sprigframework.data.redis.serializer.Jackson2JsonRedisSerializer;	import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframeworkdata.redis.serializer.StringRedisSerializer;	import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.session..data.redis.config.annotation.web.http.EnableRedisHttpSession;	import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+import org.springframework.stereotype.Component;	import org.springframework.stereotype.Component;
+import java.time..LocalDateTime;	import java.time.LocalDateTime;
+@Component	@Component
+@EnableRedisHttpSessionlmaxInactiveIntervalInSecnds= 3600l	@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600)
+public class RediConfig {	public class RedisConfig {
+@Bean	@Bean
+public RedisTemplae redisTemplatefRedisConnectionFactory  redisConnectioFactoryl {	public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+RedisTemplate redisTemplate = newRedisTemplate;	RedisTemplate redisTemplate = new RedisTemplate();
+redisTemplate.setConnectionFactoryfredisConnectionFactory;	redisTemplate.setConnectionFactory(redisConnectionFactory);
+StrinRedisSerializer  stringRedisSerializer = new StringRedisSerializer;	StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+redisTemplatesetKeySerializerstringedisSerializer;	redisTemplate.setKeySerializer(stringRedisSerializer);
+Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializerlObjet.classf;	Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+ObjectMapperobjectMapper = new ObjectMapper;	ObjectMapper objectMapper = new ObjectMapper();
+SimpleModule simpleModule =new SimpleModule;	SimpleModule simpleModule = new SimpleModule();
+simpleModule.addSerializerLocalDateTime.class, new JodaDateTimeJsonSeriaizer;	simpleModule.addSerializer(LocalDateTime.class, new JodaDateTimeJsonSerializer());
+simpleModule.addDeserializerfLocalDateTime.class, new  JodaDateTimeJsonDeserializerf;	simpleModule.addDeserializer(LocalDateTime.class, new JodaDateTimeJsonDeserializer());
+objectMaper.setDefaultTypingfObjectMapper..DefaultTypeResolveruilder..noTypeInfoBuilderlf;	objectMapper.setDefaultTyping(ObjectMapper.DefaultTypeResolverBuilder.noTypeInfoBuilder());
+	
+objectMapperregisterModulesimpleModule;	objectMapper.registerModule(simpleModule);
+jackson2JsonRedisSrializer.setObjectMapperobjectMappr;	jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
+redisTemplate.setValueSerializerfjackson2JsonRedisSerializer	redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+return redisTemplate;	return redisTemplate;
+}	}
+f	}

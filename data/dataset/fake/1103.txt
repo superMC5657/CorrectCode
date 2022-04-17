@@ -1,0 +1,56 @@
+classArrayTest10	class ArrayTest10
+	{
+publicstatic void mainStin args	public static void main(String[] args)
+{	{
+intffarr = 19,1,15,24,3641,59,68};	int[] arr = {9,12,15,24,36,41,59,68};
+int index = binaryearcharr,45l;	int index = binarySearch(arr,45);
+System.out.rintln"index:"+indexf;	System.out.println("index:"+index);
+}	}
+public static int searchKeyint arr, int keyf	public static int searchKey(int[] arr, int key)
+{	{
+for int x=0; x<arr.length;  x++	for (int x=0; x<arr.length; x++)
+{	{
+if arrxl == key	if (arr[x] == key)
+return x;	return x;
+}	}
+return -1;}	return -1;}
+	
+	
+	
+public static int binarySearchintarr,, int key	public static int binarySearch(int[] arr, int key)
+{	{
+int min, max, mid;	int min, max, mid;
+min= 0;	min = 0;
+max = arr.lngth - 1;	max = arr.length - 1;
+mid =  max+min >> 1;	mid = (max+min) >> 1;
+wile  farrmd != keyf{	while (arr[mid] != key) {
+iflarrmid > keyl	if(arr[mid] > key)
+max =mid- 1;	max = mid - 1;
+else ifarrmid < key	else if(arr[mid] < key)
+min= mid + 1;	min = mid + 1;
+ifmax<min	if(max<min)
+rturn -1;	return -1;
+mid = mi+max/2/;/	mid = (min+max)/2/;/
+///}/	///}/
+/	/
+///r/e/t/u/r/n//m/i/d//	///r/e/t/u/r/n/ /m/i/d/;/
+//}/	//}/
+//	//
+/	/
+/public static int bnarySearchlintarr,  int key	/public static int binarySearch(int[] arr, int key)
+{	{
+int min, max,  mid;	int min, max, mid;
+min = 0;	min = 0;
+max = arr.length-1;	max = arr.length-1;
+while min  <= maxf {	while (min <= max) {
+mi= min+max >> 1;	mid = (min+max) >> 1;
+ifkey >arrmidf	if(key > arr[mid])
+min =  mid + 1;	min = mid + 1;
+else ifkey < arrfmid	else if(key < arr[mid])
+max = md - 1;	max = mid - 1;
+else	else
+return mid;;	return mid;
+}	}
+return  -1;	return -1;
+}	}
+f	}

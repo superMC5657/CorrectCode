@@ -1,0 +1,44 @@
+class Dog extends Animal	class Dog extends Animal
+{	{
+public void eat	public void eat()
+{	{
+System.outprintlnl""";	System.out.println("");
+}	}
+public voidlookHooml	public void lookHoom()
+	{
+System.out.println"""";	System.out.println("");
+}	}
+	}
+classCat extends Animal	class Cat extends Animal
+{	{
+public void  eat	public void eat()
+{	{
+Sysem.out.println"";	System.out.println("");
+}	}
+ubli oid catchMouse	public void catchMouse()
+	{
+System.out.println""f	System.out.println("");
+f	}
+}	}
+bstract class Animal	abstract class Animal
+{	{
+public abstract  void eat;;	public abstract void eat();
+}	}
+class DuoTaiDemo2	class DuoTaiDemo2
+{	{
+public static vid  mainString args	public static void main(String[] args)
+{	{
+Dog d = new Dog;;	Dog d = new Dog();
+	
+methodd;	method(d);
+Cat c = newCatl;	Cat c = new Cat();
+methodc;	method(c);
+}	}
+	
+public static void methodAnimal a	public static void method(Animal a)
+f	{
+aeat;	a.eat();
+	
+Dog d= Doga;d.lookHoom;	Dog d = (Dog)a;d.lookHoom();
+}	}
+}	}

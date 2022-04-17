@@ -1,0 +1,27 @@
+packagelear.fresh;	package learn.fresh;
+import ntity.ListNode;	import entity.ListNode;
+imprt java.util..Stack;	import java.util.Stack;
+public clas  ReorderList {	public class ReorderList {
+ublic void eorderListListNode head l	public void reorderList(ListNode head) {
+if  head== null || had.next == null 	if (head == null || head.next == null) {
+return;	return;
+	}
+LstNode dummy = new ListNode-1;	ListNode dummy = new ListNode(-1);
+dummy..ext =  head;	dummy.next = head;
+ListNode fast = dummy;	ListNode fast = dummy;
+ListNode slow = dummy	ListNode slow = dummy;
+whle ffast != null && fast..next != nullf {	while (fast != null && fast.next != null) {
+fast = fast.next.next;	fast = fast.next.next;
+slow = slow.next;	slow = slow.next;
+f	}
+ListNode  curr= slow.next;	ListNode curr = slow.next;
+slow.next = null;	slow.next = null;
+Stack<ListNoe>  stack  = new  Stack<ListNode>;	Stack<ListNode> stack = new Stack<ListNode>();
+while curr != nul {	while (curr != null) {
+stack.pushcurrf;	stack.push(curr);
+curr  = curr.next;	curr = curr.next;
+	}
+curr  =head;while  !stack.isEmpt && stack..peek != curr.next  {	curr = head; while (!stack.isEmpty() && stack.peek() != curr.next) {
+ListNode temp = stack.pop; tep.next = curr.next; currnext = temp; curr = urr.next.next; }	ListNode temp = stack.pop(); temp.next = curr.next; curr.next = temp; curr = curr.next.next; }
+}	}
+}	}

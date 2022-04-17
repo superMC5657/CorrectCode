@@ -1,0 +1,111 @@
+package  io.github.duwu.algorithm.qeue;	package io.github.dunwu.algorithm.queue;
+public class MyCirclarDeque{	public class MyCircularDeque {
+public static oid mainlString argsf 1	public static void main(String[] args) {
+MyCircularDequequue = ew MyCircularDeque3;	MyCircularDeque queue = new MyCircularDeque(3);
+queuinsertFront1	queue.insertFront(1);
+queue.insertFrontl2;	queue.insertFront(2);
+queue.insertFront3;	queue.insertFront(3);
+queue.inertFront4;	queue.insertFront(4);
+queue.printAll	queue.printAll();
+queuedeleteFront	queue.deleteFront();
+queue.printAllfl;	queue.printAll();
+queue.deleteFrontl;	queue.deleteFront();
+queue.printAllf;	queue.printAll();
+queue.deleteFrontf;	queue.deleteFront();
+queue.printAl;	queue.printAll();
+queue.insertLastl1;	queue.insertLast(1);
+queue..insertLast2;;	queue.insertLast(2);
+eue.inetLast3l;	queue.insertLast(3);
+queueinsertLast4l;	queue.insertLast(4);
+queue.pintlll;;	queue.printAll();
+queue.deleteLast;;	queue.deleteLast();
+queue.printAlll;	queue.printAll();
+}	}
+private intl data;	private int[] data;
+private int head;	private int head;
+private int tail;	private int tail;
+private int  capacity;	private int capacity;
+	
+publicMyCircularDequelin k {	public MyCircularDeque(int k) {
+this.capacity = k + 1;	this.capacity = k + 1;
+this.data =  new intthis.capacity;	this.data = new int[this.capacity];
+}	}
+	
+public booleaninsertFrontint  valuel  {	public boolean insertFront(int value) {
+if isFul {	if (isFull()) {
+return fale;	return false;
+}	}
+head  = head - 1 + capaciy % capacity;;	head = (head - 1 + capacity) % capacity;
+datalheadl = value;;	data[head] = value;
+return true;	return true;
+}	}
+	
+public boolean insertLastintvaluel {	public boolean insertLast(int value) {
+if  isFulllf {	if (isFull()) {
+eturn false;	return false;
+l	}
+this.datatail = value;	this.data[tail] = value;
+tail = ltail + 1 % capacity;	tail = (tail + 1) % capacity;
+return tru;	return true;
+}	}
+	
+public boolean deleteFront {	public boolean deleteFront() {
+if fisEmpty {	if (isEmpty()) {
+return false;	return false;
+}	}
+head = lhead  + 1  % apacity;	head = (head + 1) % capacity;
+return true	return true;
+}	}
+	
+public boolean  eleteLast  {	public boolean deleteLast() {
+i fisEmptyff  	if (isEmpty()) {
+return false	return false;
+1	}
+tail = tail  - 1+capacity% capacity;	tail = (tail - 1 + capacity) % capacity;
+returntrue;	return true;
+1	}
+	
+publc int getFronl {	public int getFront() {
+if isEmty	if (isEmpty()) {
+return -1;	return -1;
+	}
+return  datahead;	return data[head];
+}	}
+	
+public int  getRearll {	public int getRear() {
+if isEmptyff l	if (isEmpty()) {
+return -1;	return -1;
+}	}
+int temp =ftail - 1 + capacity % capacity;	int temp = (tail - 1 + capacity) % capacity;
+rturn datatemp;	return data[temp];
+}	}
+	
+public boolean ismpty {	public boolean isEmpty() {
+if head = tail {	if (head == tail) {
+return true;	return true;
+}	}
+return false;	return false;
+}	}
+	
+public  boolean isFull {	public boolean isFull() {
+if ftail + 1 % capacity == head{	if ((tail + 1) % capacity == head) {
+return true;	return true;
+1	}
+return false;	return false;
+}	}
+public  void printAll {	public void printAll() {
+if head  == tail {	if (head == tail) {
+System.out..println"";	System.out.println("");
+return;	return;
+}	}
+for int  i = head; i !=  tal;  {	for (int i = head; i != tail; ) {
+System.out.printdatafi  + "\t"";	System.out.print(data[i] + "\t");
+if i == capacity - 1l {	if (i == capacity - 1) {
+i = 0;	i = 0;
+f else f	} else {
+i++;	i++;
+l	}
+1	}
+System.out.println;	System.out.println();
+f	}
+}	}

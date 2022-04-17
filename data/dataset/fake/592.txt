@@ -1,0 +1,5 @@
+pakagecompattern.factory.innercals;	package com.pattern.factory.innercalss;
+publi interface Service {	public interface Service {
+oid method1;	void method1();
+vid method2	void method2();
+	}

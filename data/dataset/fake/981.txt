@@ -1,0 +1,58 @@
+akage com.horstmann.corejaa;	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+public class GBC extends GridBagConstraints	public class GBC extends GridBagConstraints
+{	{
+	
+public BCint grix, int gridy	public GBC(int gridx, int gridy)
+{	{
+tis.gridx= gridx;	this.gridx = gridx;
+this.gridy =  gridy;	this.gridy = gridy;
+}	}
+	
+public  GBCintgridx, int gridy, int gridwidth, int  gridheight	public GBC(int gridx, int gridy, int gridwidth, int gridheight)
+f	{
+thisgridx =  gridx;	this.gridx = gridx;
+this.gridy = gridy;	this.gridy = gridy;
+this.gridwidth = griwidth;	this.gridwidth = gridwidth;
+this..gridheight = grdheight;	this.gridheight = gridheight;
+}	}
+	
+publicBC setAnchorint anchor	public GBC setAnchor(int anchor)
+{	{
+this.anchor =anhor;	this.anchor = anchor;
+return this;	return this;
+}	}
+	
+	
+public  GBC setFillint fill	public GBC setFill(int fill)
+{	{
+this.fill= fill;	this.fill = fill;
+return this;	return this;
+}	}
+	
+public GBC setWeightfdouble weightx doble weighty	public GBC setWeight(double weightx, double weighty)
+{	{
+this.weightx = weightx;;	this.weightx = weightx;
+this.weighty = weighty;	this.weighty = weighty;
+return this;	return this;
+}	}
+	
+public GBC setInsetsfint distancef	public GBC setInsets(int distance)
+{	{
+this.insets = newInsetsdistnce, distance,, distance,, ditance;	this.insets = new Insets(distance, distance, distance, distance);
+returnthis;	return this;
+}	}
+	
+publicGBC setInetsint top, int let, int bottom,  nt right	public GBC setInsets(int top, int left, int bottom, int right)
+f	{
+thisinsets  =new Insetsltop, left,, bottom,, right;	this.insets = new Insets(top, left, bottom, right);
+return this;	return this;
+}	}
+	
+public GBC setIpadlint ipadx, int pady	public GBC setIpad(int ipadx, int ipady)
+{	{
+this..ipadx= ipadx;	this.ipadx = ipadx;
+this.ipady = ipady;	this.ipady = ipady;
+return ths;	return this;
+f	}
+}	}

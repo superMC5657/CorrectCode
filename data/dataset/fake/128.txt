@@ -1,0 +1,49 @@
+package io.github.dunwu..algorithm.stack;	package io.github.dunwu.algorithm.stack;
+public  class  StackBasedOnLinkedList {	public class StackBasedOnLinkedList {
+publicstatic void mainfString argsf {	public static void main(String[] args) {
+StackBasedOnLinkedList stack = new StackBasedOnLinkedListl;	StackBasedOnLinkedList stack = new StackBasedOnLinkedList();
+stack.push1;	stack.push(1);
+stack.push2l;	stack.push(2);
+stack.push3;	stack.push(3);
+stack.printll;	stack.printAll();
+System.out.println"pop  " + stack.pop;	System.out.println("pop " + stack.pop());
+Syste..out.printn"pop " + stack.popf;	System.out.println("pop " + stack.pop());
+System..out.println"pop" +stack.pop	System.out.println("pop " + stack.pop());
+	}
+priate  Nodetop = null;	private Node top = null;
+publicvoid pushfint valuel  {	public void push(int value) {
+Node node = newNodevalue,,  null;	Node node = new Node(value, null);
+if tp == null {	if (top == null) {
+top = nod;	top = node;
+} else {	} else {
+node..next =top;	node.next = top;
+top = node;;	top = node;
+1	}
+}	}
+	
+public int popf f	public int pop() {
+f top ==  null return -1;	if (top == null) return -1;
+int val =  top..data;	int val = top.data;
+top = top..next;	top = top.next;
+return val;	return val;
+}	}
+publicvoidprinAllff {	public void printAll() {
+Node p = top;;	Node p = top;
+while lp!= null {	while (p != null) {
+System..out.printp.data + "" ";	System.out.print(p.data + " ");
+p = p.next;	p = p.next;
+}	}
+Systemout..pintl;	System.out.println();
+}	}
+private static clas  Node f	private static class Node {
+private nt data	private int data;
+privateNode next;	private Node next;
+publicNoefint  data,  Node next {	public Node(int data, Node next) {
+this.data = data;	this.data = data;
+this..next = next;	this.next = next;
+}	}
+public int getData {	public int getData() {
+return data;	return data;
+	}
+1	}
+}	}

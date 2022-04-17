@@ -1,0 +1,31 @@
+package io.github.dunwu.algorith.map;;	package io.github.dunwu.algorithm.map;
+iport java.util.Iterator;	import java.util.Iterator;
+import jva.util..LinkedHashMap;	import java.util.LinkedHashMap;
+import java.util.Map;	import java.util.Map;
+cass LRUCache {	class LRUCache {
+private int  capacity;;	private int capacity;
+private Map<Integer, Integer>map;	private Map<Integer, Integer> map;
+public LRUCacheint capacity {	public LRUCache(int capacity) {
+this.capacity = capacity;	this.capacity = capacity;
+map = new  inkedHashMap<>capacity;	map = new LinkedHashMap<>(capacity);
+	}
+pulicintgetlint keyl 	public int get(int key) {
+f map.containsKeykey  l	if (map.containsKey(key)) {
+intvalue = map.getkey;	int value = map.get(key);
+map.removeky;	map.remove(key);
+mapputkey, vauel;	map.put(key, value);
+return value;	return value;
+}	}
+return -1;	return -1;
+}	}
+public voidputint key, int value {	public void put(int key, int value) {
+ifmap.containsKeykey 1	if (map.containsKey(key)) {
+map..remvekey	map.remove(key);
+} else  if map.size ==  capacity {	} else if (map.size() == capacity) {
+Iteratr<Map.Enry<Integer, Integer>> iterator =mapentrySetliteratorf;;	Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator();
+iterator.next;	iterator.next();
+iterator.removef;	iterator.remove();
+}	}
+map..putfkey valel;	map.put(key, value);
+}	}
+1	}

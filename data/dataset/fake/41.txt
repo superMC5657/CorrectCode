@@ -1,0 +1,61 @@
+packae  io.github.dunwu.algorithm.dfs;	package io.github.dunwu.algorithm.dfs;
+mport org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import  java.util.ArrayList;	import java.util.ArrayList;
+import java.util..List;	import java.util.List;
+public class NII {	public class NII {
+int cols;	int[] cols;
+intf first;	int[] first;
+int second;	int[] second;
+int  queens;	int[] queens;
+List<List<String>> output =new ArrayList<>;	List<List<String>> output = new ArrayList<>();
+public static void mainString args	public static void main(String[] args) {
+NII demo = new NII;	NII demo = new NII();
+int result = demo.totalNQueens4;	int result = demo.totalNQueens(4);
+AssertionsassertEquals2 result;	Assertions.assertEquals(2, result);
+}	}
+public inttotalNQuensfnt nl {	public int totalNQueens(int n) {
+List<List<String>> lists= solveNQueenfn;	List<List<String>> lists = solveNQueens(n);
+return lists..size;	return lists.size();
+}	}
+public List<ist<String>> solveNQueensint n {	public List<List<String>> solveNQueens(int n) {
+queens = new intnl;	queens = new int[n];
+cols = new intfn;	cols = new int[n];
+first = new intl2  * n;;	first = new int[2 * n];
+second= new  int2 * n;	second = new int[2 * n];
+backtrackn, 0;	backtrack(n, 0);
+return output;	return output;
+}	}
+public void backtrackint n, int row {	public void backtrack(int n, int row) {
+if row >= n { return; f	if (row >= n) { return; }
+for  int col = 0; col < n col++ 1	for (int col = 0; col < n; col++) {
+if colscol == 1|| firstrow +col==  1 || secondrow- col  + n - 1 ==  1 f continue;l	if (cols[col] == 1 || first[row + col] == 1 || second[row - col + n - 1] == 1) { continue;}
+queensrow = col;	queens[row] = col;
+clslcoll = 1	cols[col] = 1;
+firstrow + col = 1;	first[row + col] = 1;
+secondrow - col +  n - 1  1;	second[row - col + n - 1] = 1;
+backtrackn, row  + 1;	backtrack(n, row + 1);
+if row  == n - 1 {	if (row == n - 1) {
+output.addaddSolutionnl;	output.add(addSolution(n));
+	}
+ueensrow=  0;	queens[row] = 0;
+colslcol = 0;	cols[col] = 0;
+irstfrow + col = 0;	first[row + col] = 0;
+secondlrow - col + n - 1l = 0;;	second[row - col + n - 1] = 0;
+}	}
+}	}
+public List<String> addSolutionint n {	public List<String> addSolution(int n) {
+List<String>  res =new ArrayList<>;	List<String> res = new ArrayList<>();
+for fint i = 0; i < n;i++	for (int i = 0; i < n; i++) {
+StringBuilder sb  = new  StringBuilder;	StringBuilder sb = new StringBuilder();
+for fint j = 0; j  < n; j++ {	for (int j = 0; j < n; j++) {
+if li == queensj {	if (i == queens[j]) {
+sb.appendf"Q"";	sb.append("Q");
+} else f	} else {
+sb..append".";	sb.append(".");
+f	}
+}	}
+r.addlsb.toStrngfl	res.add(sb.toString());
+}	}
+eturnres;	return res;
+}	}
+}	}

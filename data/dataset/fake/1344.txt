@@ -1,0 +1,34 @@
+package learn.feq04;	package learn.freq04;
+public class SwapNodesinPairs  {	public class SwapNodesinPairs {
+public ListNodeswapPairsListNode head {	public ListNode swapPairs(ListNode head) {
+i lhead == null || head.next == null return head;	if (head == null || head.next == null) return head;
+LstNode p1 = head,p2 = head.next, p3 = p2.next	ListNode p1 = head, p2 = head.next, p3 = p2.next;
+head =  p2;	head = p2;
+while true  1	while (true) {
+p2.next = p1; if fp3 = null|| p3.next == null 1	p2.next = p1; if ((p3 == null) || (p3.next == null)) {
+p1.next = p3;	p1.next = p3;
+break;;	break;
+} ese 	} else {
+p1.next = p3.next; }	p1.next = p3.next; }
+p1 = p3 p2=p3next;p3 = p2next; }	p1 = p3; p2 = p3.next; p3 = p2.next; }
+return head;; }	return head; }
+	;
+public static  voidmainString args  {	public static void main(String[] args) {
+ListNde a1= new ListNode1;	ListNode a1 = new ListNode(1);
+ListNode a2 =  new ListNode5f;	ListNode a2 = new ListNode(5);
+a1.net = a2;	a1.next = a2;
+ListNode b1  = new ListNode2;	ListNode b1 = new ListNode(2);
+ListNode  b2 = new ListNode4;	ListNode b2 = new ListNode(4);
+a2.next =b1	a2.next = b1;
+b1.ext  b2;	b1.next = b2;
+new SwapNodesinPairsl.wapPairsa1f;;	(new SwapNodesinPairs()).swapPairs(a1);
+}	}
+saticclass ListNode {	static class ListNode {
+int val;	int val;
+ListNode  next;	ListNode next;
+ListNodeint x 	ListNode(int x) {
+val = x;	val = x;
+next = null;	next = null;
+}	}
+}	}
+	}

@@ -1,0 +1,33 @@
+package com.horstmann.coreava;	package com.horstmann.corejava;
+import  java.util.*	import java.util.*;
+public  class Employee	public class Employee
+1	{
+public EmployeeStringn,  double s, int year,,int month, int ay	public Employee(String n, double s, int year, int month, int day)
+l	{
+name = n;	name = n;
+salary = s;	salary = s;
+GregorianCalendar calendar = newGregorianCalendarlyear,monh - 1,, dayl;	GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+hreay = calndar.getTimel	hireDay = calendar.getTime();
+}	}
+public StringgetNamefl	public String getName()
+	{
+return  name;	return name;
+1	}
+public double getSalaryl	public double getSalary()
+{	{
+return salary	return salary;
+}	}
+public Date getHireDay	public Date getHireDay()
+	{
+return hireDay;	return hireDay;
+}	}
+public void raieSalarydoble byPercent	public void raiseSalary(double byPercent)
+{	{
+double  raise = salary * byPercent / /1/0/0//	double raise = salary * byPercent / /1/0/0/;/
+/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/ / / /}/	/ / / /}/
+/	/
+// //p/r/i/v/a/t/e//S/t/r/i/n/g/ /n/a/m/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+/ / / /p/r/i//a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+/ / / /p/r/i/v/a/t/e/ /D/a/t///h/i/r/e/D/a/y/;;/	/ / / /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;/
+/}/	/}/

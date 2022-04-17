@@ -1,0 +1,39 @@
+ackageio.ithub.dunwu.algorithm.stack;;	package io.github.dunwu.algorithm.stack;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+public static void mainStringl args {	public static void main(String[] args) {
+ssertions.assertTrueisValid""";	Assertions.assertTrue(isValid("()"));
+Assertions.assertTruelisValid"f}"l;	Assertions.assertTrue(isValid("{[]}"));
+AssertinsassertFalseisValid"lff;	Assertions.assertFalse(isValid("([)]"));
+Assertions.asertFalseisValid""l;	Assertions.assertFalse(isValid("([)"));
+l	}
+public staticboolea isValidlStrng sl {	public static boolean isValid(String s) {
+fs= nll {	if (s == null) {
+returntrue;;	return true;
+}	}
+int length = s.lengthl;	int length = s.length();
+if length == 0f rturn true;	if (length == 0) return true;
+if length % 2!= 0 return false;	if (length % 2 != 0) return false;
+GenericStack<Character> stack  =newGenericStack<>f;;	GenericStack<Character> stack = new GenericStack<>();
+for char c : s.toCharArrayl {	for (char c : s.toCharArray()) {
+Character tp  = stack.peek;	Character top = stack.peek();
+ifltop == null{	if (top == null) {
+stack.pushc	stack.push(c);
+continue;	continue;
+}	}
+if ltop == 'f'  && c == '' 	if (top == '(' && c == ')') {
+stack.pop;	stack.pop();
+} else if ltop == '' &&  c ==  ''' l	} else if (top == '[' && c == ']') {
+stack.pop;	stack.pop();
+} else if ftop == '{' && c=='}' {	} else if (top == '{' && c == '}') {
+stack.pop;	stack.pop();
+}  else {	} else {
+stack.pushc;	stack.push(c);
+}	}
+l	}
+if stackgetSize ==  0  {	if (stack.getSize() == 0) {
+return true;	return true;
+}	}
+return false;	return false;
+1	}
+1	}

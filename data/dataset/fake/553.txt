@@ -1,0 +1,225 @@
+package  com.aliencat.javabase.utils;;	package com.aliencat.javabase.utils;
+import jaa.time.LocalDat;	import java.time.LocalDate;
+import java.timeLocalDateTime;	import java.time.LocalDateTime;
+import java.timeZoneId;	import java.time.ZoneId;
+import javatime.ZonedDateTime	import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;	import java.time.format.DateTimeFormatter;
+importjavatime.temoral.ChronoUnit	import java.time.temporal.ChronoUnit;
+import  java.time.temporalTemporal	import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAusters;	import java.time.temporal.TemporalAdjusters;
+publicclass DateUtil{	public class DateUtil {
+	
+public static  final DateTimeFormatter FORMAT_SANDARD = DateTimeFormatter.ofPattern"yyyy-MM-d HH:mmss"";	public static final DateTimeFormatter FORMAT_STANDARD = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	
+public static final ZoneId ZONEID_CHINA = oneId..of"Asia/S/h/a/n/g/h/a/i/"//;/	public static final ZoneId ZONEID_CHINA = ZoneId.of("Asia/S/h/a/n/g/h/a/i/"/)/;/
+/	/
+/  / /  /  *  	/ / / / * 
+*	*
+* @eturn LocalDateTime	* @return LocalDateTime
+*/	*/
+/ /  / / /p/u/b/l/i/c/ /s/t//t/i/c/ /L/o/c/a/l/D/a/t/e/T/i/m/e//c/u/r/r/e/n/t///  /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /L/o/c/a/l/D/a/t/e/T/i/m/e/ /c/u/r/r/e/n/t/(/)/ /{/
+// / / / /  / / /r/e/t/u/r/n/ /Z/o/n/e/d/D/a/t/e/T/i/m/e//n/o/w//Z/O/N/E/I/D/_/C/H/I/N/A//./t/o/L/o/c/a/l/D/a/t/e/T/i/m/e////	/ / / / / / / / /r/e/t/u/r/n/ /Z/o/n/e/d/D/a/t/e/T/i/m/e/./n/o/w/(/Z/O/N/E/I/D/_/C/H/I/N/A/)/./t/o/L/o/c/a/l/D/a/t/e/T/i/m/e/(/)/;/
+/ / / / /1/	/ / / / /}/
+/	/
+/ / / / * ocalDateTime	/ / / / * LocalDateTime
+*	*
+* @param strDate	* @param strDate
+*@returnLocalDateTime	* @return LocalDateTime
+*/	*/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /L/o/c/a/l/D/a/t/e/T/i/m/e/ /p/a/r/s/e//S/t/r/i/n/g/ /s/t/r/D/a/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /L/o/c/a/l/D/a/t/e/T/i/m/e/ /p/a/r/s/e/(/S/t/r/i/n/g/ /s/t/r/D/a/t/e/)/ /{/
+/ /  / / / / / / /r/e/t/u/r/n/ /L/o/c/a/l/D/a/t/e/T/i/m/e//p/a/r/s///s/t//D/a/t/e/,/ /F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/l/;;/	/ / / / / / / / /r/e/t/u/r/n/ /L/o/c/a/l/D/a/t/e/T/i/m/e/./p/a/r/s/e/(/s/t/r/D/a/t/e/,/ /F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/;/
+/ / //  /}/	/ / / / /}/
+/	/
+/ / /  / * 	/ / / / * 
+*	*
+* @return String	* @return String
+*/	*/
+/ /  / /p/u/b/l/i/c/ /s/t/a///c/ /S/tr/i/n/g/ /n/o/w//l/ /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /n/o/w/(/)/ /{/
+/ / / / / / / / r/e/t/u/r/n/ /c/u/r/r/e/n/t//l/./f/o/r/m/a/t//F/O/R/M/AT/_/S/T/A/N/D/A/R/D//;/	/ / / / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/(/)/./f/o/r/m/a/t/(/F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/;/
+/ / // /}/	/ / / / /}/
+/	/
+/ /  /* ocalDateTime	/ / / / * localDateTime
+*	*
+* @param localDateTime	* @param localDateTime
+* @return	* @return
+*/	*/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /f/o/r/m/a/t/l/L/oc/a/l/D/a/t/e/Ti/m/e/ /l/o/c/a/l/D/a/t/e/T/i/m/e// //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /f/o/r/m/a/t/(/L/o/c/a/l/D/a/t/e/T/i/m/e/ /l/o/c/a/l/D/a/t/e/T/i/m/e/)/ /{/
+/ /   / / / / / /r/e/t/u/r/n/ /l/o/c/a/l/D/a/t/e/T/i/m/e./f/o/r/m/a/t//F/O/R/M/A/T/_/S/T/A/N/D/A/R/D//;/	/ / / / / / / / /r/e/t/u/r/n/ /l/o/c/a/l/D/a/t/e/T/i/m/e/./f/o/r/m/a/t/(/F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/;/
+/  / / / /}/	/ / / / /}/
+/	/
+// / / * months	/ / / / * months
+*	*
+* @param months	* @param months
+* @eturn String	* @return String
+*/	*/
+/ / / / /p/u/b/l/i// /s/t/a/t/i/c/ /S/t/r/in/g/ /n/o/w/M/o/v/e/M/o/t/h/s/f/lo/n/  /m/o/n/t/h/s// /1/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /n/o/w/M/o/v/e/M/o/n/t/h/s/(/l/o/n/g/ /m/o/n/t/h/s/)/ /{/
+/ //  / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/l/l//p/l/u/s/M/o/n/t/h/s//m/o/n/t/h/s//./f/o/r/m/a/t//F/O/R/M/A/T/_/S/T/A/N/D/A/R/D//;/	/ / / / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/(/)/./p/l/u/s/M/o/n/t/h/s/(/m/o/n/t/h/s/)/./f/o/r/m/a/t/(/F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ /  / / * days	/ / / / * days
+*	*
+* @param  ays	* @param days
+* @return String	* @return String
+*/	*/
+/ /  /  /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r//n/g/ /n/o/w/M/o/v/e/D/a/y/s//l/o/n/g/ /d/a/y/s/f/ /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /n/o/w/M/o/v/e/D/a/y/s/(/l/o/n/g/ /d/a/y/s/)/ /{/
+// / /  / / // /r/e/t/u/r/n//c/u/r/r/e/n/t///.p/l/u/s/D/a/y/s//d/a/y/s///f/o/r/m/a/t//F/O/R/M/A/T/_/ST/A/N/D/A/R/D//;	/ / / / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/(/)/./p/l/u/s/D/a/y/s/(/d/a/y/s/)/./f/o/r/m/a/t/(/F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/;/
+/  / / / /l/	/ / / / /}/
+/	/
+/ / /  / *hours	/ / / / * hours
+	*
+*  @param hours	* @param hours
+* @return  Sting	* @return String
+*/	*/
+/ / / //p/u/b/l/i/c/ /s/t/a/t/i/c/ /St/r/i/n/g/ /n/o/w/M/o/v/e/Ho/u/r/s//l/o/n/g/ /h/o/u/r/s/l/ /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /n/o/w/M/o/v/e/H/o/u/r/s/(/l/o/n/g/ /h/o/u/r/s/)/ /{/
+/ / / / / /  // r/e/t/u/r/n /c/u/r/r/e/n/t///./p/l/u/s/H/o/u/r/s//h/o/u/r/s//./f/o/r/m/a/t//F/O/R/M/A/T/_/ST/A/N/D/A/R/D//;/	/ / / / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/(/)/./p/l/u/s/H/o/u/r/s/(/h/o/u/r/s/)/./f/o/r/m/a/t/(/F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/;/
+/ / / / /f/	/ / / / /}/
+/	/
+/ / / / * minutes	/ / / / * minutes
+*	*
+* @paramminutes	* @param minutes
+* @return String	* @return String
+*/	*/
+/ / / / /p/u/b/l/i/c /s/t/a/t/i/c/ /S/t/r/i/n/g/ /n/o/w/M/o/v/e/M/i/n/u/t/e/s//l/o/n/g/ /m/i/n/u/t/e/s// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /n/o/w/M/o/v/e/M/i/n/u/t/e/s/(/l/o/n/g/ /m/i/n/u/t/e/s/)/ /{/
+ / /  / / /// /r/e/t/u/rn/ /c///r/e/n/t/l/.//l/u/s/M/i/n/u/t/e/s//m/i/n/u/t/e/s//.f/o/r/m/a/t//F/O/R/M/A/T/_/S/T/A/N/D/A/R/D//;;/	/ / / / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/(/)/./p/l/u/s/M/i/n/u/t/e/s/(/m/i/n/u/t/e/s/)/./f/o/r/m/a/t/(/F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/;/
+// // /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+*@return	* @return
+*/	*/
+/ // / /p/u/b/l/i/c//s/t/a/t/i/c/ /S/t/r/i/n/g/ /t/o/L/o/c/a/l/D/a/t/e/// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /t/o/L/o/c/a/l/D/a/t/e/(/)/ /{/
+/  / /  / / / /  /r/e/t/u/r/n/ /c/u/r/r/e/n/t///./t/o/L//c/a/l/D/a/t/e//l/./t/o/S/t/r/i/n/g///;/	/ / / / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/(/)/./t/o/L/o/c/a/l/D/a/t/e/(/)/./t/o/S/t/r/i/n/g/(/)/;/
+/  / / / /l/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+* @return	* @return
+*/	*/
+/ / /  / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S//r/i/n/g/ /t/o/L/o/c/a/l/T/i/m/e/// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /t/o/L/o/c/a/l/T/i/m/e/(/)/ /{/
+/ /  / / // / /r/e/t/u/r/n/ /c/u/r/r/e/n/t///./t/o/L/o/c/a/l/T/i/m/e//l/./f/o//m/a/t/l/D/a/t/e/T/i/m/e//o/r/m/a/t/t/e/r/./o/f/P/a/t/t/e/r/n//""/H/H/:/m/m/:/s/s/"///;/	/ / / / / / / / /r/e/t/u/r/n/ /c/u/r/r/e/n/t/(/)/./t/o/L/o/c/a/l/T/i/m/e/(/)/./f/o/r/m/a/t/(/D/a/t/e/T/i/m/e/F/o/r/m/a/t/t/e/r/./o/f/P/a/t/t/e/r/n/(/"/H/H/:/m/m/:/s/s/"/)/)/;/
+// /  /  /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+*@param startDate	* @param startDate
+*  @param endDate	* @param endDate
+* @return	* @return
+*/	*/
+/ // / /p/u/b/l/i/c/  /s/t/a/t/i// /l/o/n/g/ /y/e/a/r/s/D/i/f/f//S/t/r/i/n/g/  /s/t/a/r/t/D/a/t//,,/ /S/t/r/i/n/g/  /e/n/d/D/a/t/e//  //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /y/e/a/r/s/D/i/f/f/(/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / /  / / /r/e/t/u/r/n/ /y/e/a/r/s/D/i/f/f//L/o/c/a/l/D/a/t/e/T/i/m/e/./p/a/r/s/e//s/t/a/r/t/D/a/t/e/,/ /F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/,/	/ / / / / / / / /r/e/t/u/r/n/ /y/e/a/r/s/D/i/f/f/(/L/o/c/a/l/D/a/t/e/T/i/m/e/./p/a/r/s/e/(/s/t/a/r/t/D/a/t/e/,/ /F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/,/
+/ / / / / / / // /    / /// / /L/o/c/a/l/D/a/t/e/T/i/m/e/./p/a/r/s/e/f/e//d/D/a/t/e/,/ /F/O/R/M/A/T/_/S/T/A/N/D/A/R/D//f//	/ / / / / / / / / / / / / / / / /L/o/c/a/l/D/a/t/e/T/i/m/e/./p/a/r/s/e/(/e/n/d/D/a/t/e/,/ /F/O/R/M/A/T/_/S/T/A/N/D/A/R/D/)/)/;/
+/ / / /  /l/	/ / / / /}/
+/	/
+/ /  / /p/u/b/l/i/c /s/t/a/ti/c/ /l//n/g/ /y/e/a/r/s/D/i/f/f/f/T/e/m/p/o/r/al/ /s/t/a/r/t/Da/t/e/,/ /T/e/m/p/o/r/a/l//e/n/d/D/a/t/e//  /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /y/e/a/r/s/D/i/f/f/(/T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/)/ /{/
+/  / // / / / / /r/e/t/u/r/n/ /C/h//o/no/U/n/i/t//Y/E/A/R///b/e/t/w/e/e/n//s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/f/;/	/ / / / / / / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./Y/E/A/R/S/./b/e/t/w/e/e/n/(/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/)/;/
+/ / / /  /}/	/ / / / /}/
+/	/
+/ / / /* 	/ / / / * 
+*	*
+* @param  startDate	* @param startDate
+*@param endDate	* @param endDate
+ @return	* @return
+*/	*/
+/ /  / / /p/u/b/l/i/c/  /s/t/a/t/i/c/ /l/o/n/g//m/o/n/t/h/s/D/i/f/f//S/t/r/i/n// /s/t/a//t/D/t/e/,/ /S/t/r/i/n/g/ /e/n/d/Da/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /m/o/n/t/h/s/D/i/f/f/(/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e/)/ /{/
+/ / / // / / /  /r/e/t/u/r/n/ /m/o/n/t/h/s/D/i//f//p/a/r/s/e//s/t/a/r/t/D/a/t/e//,/ /p/a/r/s/e//e/n/d/D/a/t/e//f/;/	/ / / / / / / / /r/e/t/u/r/n/ /m/o/n/t/h/s/D/i/f/f/(/p/a/r/s/e/(/s/t/a/r/t/D/a/t/e/)/,/ /p/a/r/s/e/(/e/n/d/D/a/t/e/)/)/;/
+/ / // /}/	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /m/o/n/t/h/s/D/i/f/f//T/e/m/p/o/r/a/l//s/t/a/rt/D/at/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/ /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /m/o/n/t/h/s/D/i/f/f/(/T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / / / / /r/e/t/u/r/n//C/h/r/o/n/o/U/n/i/t/./M/O/N/T/H/S/./b/e/t/w/e/e/n/f/s/t/a/r/t/D/a/t/e// /e/n/d/D/a/t/e//;/	/ / / / / / / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./M/O/N/T/H/S/./b/e/t/w/e/e/n/(/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+*@param starDate	* @param startDate
+* @param endDate	* @param endDate
+* @return	* @return
+*/	*/
+/ / / //p/u/b/l/i/c/ s/t/a/t/i/c/ /l/o/n/g//d/a/y//D/i/f/f//S/t//i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e// //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /d/a/y/s/D/i/f/f/(/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / / / / /r/e/t/u/r/n/ /d/a/y/s/D/i/f/f/f/p/a/r/s/e//s/t/a/rt/D/a/t/e//,/ /p/a/r/s/e//e/n/d/D/a/t/e///;/	/ / / / / / / / /r/e/t/u/r/n/ /d/a/y/s/D/i/f/f/(/p/a/r/s/e/(/s/t/a/r/t/D/a/t/e/)/,/ /p/a/r/s/e/(/e/n/d/D/a/t/e/)/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c //t/a/t/i/c//l/o/n// /d/a/ys/D/i/f/f//T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/  /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /d/a/y/s/D/i/f/f/(/T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / /  / / / /r/e/t//r/n/ /C/h/r/o/n/o/U/n/i/t/./D/A/Y/S/./be/t/w/e/e/n//s/ta/r/t/D/a/t/e/,/ /e//d/D/a/t/e//;/	/ / / / / / / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./D/A/Y/S/./b/e/t/w/e/e/n/(/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/)/;/
+/ / / / //	/ / / / /}/
+/	/
+/ /  / / * 	/ / / / * 
+*	*
+* @param startDate	* @param startDate
+* @parmendDate	* @param endDate
+*  @return	* @return
+*/	*/
+/// /  /p/u/b/l/i/c/ /s/t/a/t/i/c//l/o/n/g/  /h/o/u/rs//i/f/f//S/t/r/i/n/g/ /st/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/Da/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /h/o/u/r/s/D/i/f/f/(/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / / / /r/e/t/u/r/n/ /h/o/u/r/s/D/i/f/f//p/a/r/s/e//s/t/a/r/t/D/a/t/e//,/ /p/a/r/s/e//e/n/d/D/a/t/e//l/;/	/ / / / / / / / /r/e/t/u/r/n/ /h/o/u/r/s/D/i/f/f/(/p/a/r/s/e/(/s/t/a/r/t/D/a/t/e/)/,/ /p/a/r/s/e/(/e/n/d/D/a/t/e/)/)/;/
+/  / / /}/	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c /l/o/n/g/ /h/o/u/r/s/D/i/f/f//T/em/p/o/r/a/l/  /s/t/a/r/tD/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /h/o/u/r/s/D/i/f/f/(/T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/)/ /{/
+/ / /  / // / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./H/O/U/R/S/./b/e//w/e/e/n//s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e///	/ / / / / / / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./H/O/U/R/S/./b/e/t/w/e/e/n/(/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/)/;/
+ / / / /}/	/ / / / /}/
+/	/
+/ / /   * 	/ / / / * 
+*	*
+* @param startDate	* @param startDate
+* @param endDate	* @param endDate
+* @return	* @return
+*/	*/
+// / / /p/u/b/l/i/c/ /s/t/a/t/i/c/  /l/o/n/g/ /m/i/n/u/t/e/s/D/i/f/f/l/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /m/i/n/u/t/e/s/D/i/f/f/(/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / / /  /  /r/e/t/u/r/n/ /m/i/n/u/t/e/s/D/i/f/f/l/p/a/r/s/e//s/t/a/r/t/D/a/t/e//,/ /p/a/r/s/e//e/n/d/D/a/t/e///;/	/ / / / / / / / /r/e/t/u/r/n/ /m/i/n/u/t/e/s/D/i/f/f/(/p/a/r/s/e/(/s/t/a/r/t/D/a/t/e/)/,/ /p/a/r/s/e/(/e/n/d/D/a/t/e/)/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / // /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g//m/i/n/u/te/s/D/i/f/f//T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e// /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /m/i/n/u/t/e/s/D/i/f/f/(/T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / /  / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./M//N/U/T/E/S/./b/e/tw/e/e/n//s/t/a/r/t/D/a/t/e/,/  /e/n/d/D/a/t/e///	/ / / / / / / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./M/I/N/U/T/E/S/./b/e/t/w/e/e/n/(/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / /  * 	/ / / / * 
+*	*
+* @param startDte	* @param startDate
+* @param endDate	* @param endDate
+* @return	* @return
+*/	*/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /s/e/c/o/n/d/s/D/i/f/f//S/t/r/i/n/g/ /s/t/a/r/t/D/at/e/,/ /S/t/r/i/n/g//en/d/D/a/t/e/ /l/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /s/e/c/o/n/d/s/D/i/f/f/(/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e/)/ /{/
+/  / / / / / / / /r/e/t/u/r/n/ /s/e/c/o/n/d/s/D/i/f/f//p/a/r/s/e//s/t/a/r/t/D/a/t/e//,/ /p/a/r/s/e//e/n/d//a/t/e////	/ / / / / / / / /r/e/t/u/r/n/ /s/e/c/o/n/d/s/D/i/f/f/(/p/a/r/s/e/(/s/t/a/r/t/D/a/t/e/)/,/ /p/a/r/s/e/(/e/n/d/D/a/t/e/)/)/;/
+/ / /   /}/	/ / / / /}/
+/	/
+/ /   / /p/u/b/l/i/c/  /s/t/a/t/ic/ /l/o/n/g//s/e/c/o/nd/s/D/i/f/f//T/e/m/p/o/r/al/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e//d/D/a/t/e///1/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /s/e/c/o/n/d/s/D/i/f/f/(/T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / / / /  /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./S/E/C/O/N/D//./b/e/t/w/e/e/n/f/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e///	/ / / / / / / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./S/E/C/O/N/D/S/./b/e/t/w/e/e/n/(/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/)/;/
+/  / / / /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+* @param startDate	* @param startDate
+* @param endDate	* @param endDate
+* @return	* @return
+*/	*/
+/ / / / /p/u/b/l/i//  /s/t/a/t/i/c/ /l/o/n/g/ /m/i/l/l/i/s/D//f/f//S/t/r/in/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e// //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /m/i/l/l/i/s/D/i/f/f/(/S/t/r/i/n/g/ /s/t/a/r/t/D/a/t/e/,/ /S/t/r/i/n/g/ /e/n/d/D/a/t/e/)/ /{/
+/ / / / / / / / /r/e/t/u/r/n/ /m/i/l/l//s/D/i/f/f//p/a/r/s/e//s/t/a/r/t/D/a/t/e/f/,/ /p/a/r/s/e//e/n/d/D/a/t/e////	/ / / / / / / / /r/e/t/u/r/n/ /m/i/l/l/i/s/D/i/f/f/(/p/a/r/s/e/(/s/t/a/r/t/D/a/t/e/)/,/ /p/a/r/s/e/(/e/n/d/D/a/t/e/)/)/;/
+//  / / /}/	/ / / / /}/
+/	/
+ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/  /l/o/n/g/ /m/i/l/l/i/s/D/if/f//T/e/m/p/o/r/a/l/ /s/t/ar/t/D/a/t/e/,//T/e/m/p/o/r/a/l/  /e/n/d/D/a/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /l/o/n/g/ /m/i/l/l/i/s/D/i/f/f/(/T/e/m/p/o/r/a/l/ /s/t/a/r/t/D/a/t/e/,/ /T/e/m/p/o/r/a/l/ /e/n/d/D/a/t/e/)/ /{/
+/ / / // /  //r/e/t/u/r/n//C/h/r/o/n/o/U/n/i/t//M/I/L/L/I/S//b/e/t/w/e/e/n//s/t/a/r/t/D/a/t/e/,/  /e/n/d/D/a/t/e//;/	/ / / / / / / / /r/e/t/u/r/n/ /C/h/r/o/n/o/U/n/i/t/./M/I/L/L/I/S/./b/e/t/w/e/e/n/(/s/t/a/r/t/D/a/t/e/,/ /e/n/d/D/a/t/e/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/  / /  / *	/ / / / * 
+*	*
+*  @return	* @return
+*/	*/
+/ // / /p/u/b/li/c/ /s/t/a/t/i/c/  /S/t/r/i/n/g/ /f/i/r/s/t/D/a/y/O/f/M/o/n/t/h// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /f/i/r/s/t/D/a/y/O/f/M/o/n/t/h/(/)/ /{/
+/  / // / /  / / /r/e/t/u/r/n /f/i/rs/t/D/a/y/O/f/M/o/n/t/h//c/u/r/r/e/n/t///./t/o/L/o/c/a/l/D/a/t/e/f/l//;;/	/ / / / / / / / /r/e/t/u/r/n/ /f/i/r/s/t/D/a/y/O/f/M/o/n/t/h/(/c/u/r/r/e/n/t/(/)/./t/o/L/o/c/a/l/D/a/t/e/(/)/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ /  / /p/u/b/l/i/c/ /s/t/a/t/i/c/ //t/r/i/n/g/ /f/i/r/s/t/D/a/y/O/f/M/o/n/t/h//L/o/c/a/l/D/a/t/e/ /l/o/c/a/l/D/a/t/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /f/i/r/s/t/D/a/y/O/f/M/o/n/t/h/(/L/o/c/a/l/D/a/t/e/ /l/o/c/a/l/D/a/t/e/)/ /{/
+/  / /  / / / / / /r/e/t/u/r/n /l/o/c/a/l/D/a/t//./wi/t//l/T/em/p/o/r/a/l/A/d/j/u/s/t/e/r/s/./f/i/r/s/t/D/a/y/O/f/M/o/n/t/h////./t/o/S/t/r/i/n/g///;/	/ / / / / / / / /r/e/t/u/r/n/ /l/o/c/a/l/D/a/t/e/./w/i/t/h/(/T/e/m/p/o/r/a/l/A/d/j/u/s/t/e/r/s/./f/i/r/s/t/D/a/y/O/f/M/o/n/t/h/(/)/)/./t/o/S/t/r/i/n/g/(/)/;/
+// // /}/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+	*
+*@return	* @return
+*/	*/
+/ / // /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /l/a/s/t/D/a/y/O/f/M/o/n/t/h//f///	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /l/a/s/t/D/a/y/O/f/M/o/n/t/h/(/)/ /{/
+// / / / /  / / /r/e/t/u/r/n/ /l/a/s/t/D/a/y/O/f/M/o/n/t/h//c/u/r/r/e/n/t///./t/o/L/o/ca/l/D/a/t/e///f/;/	/ / / / / / / / /r/e/t/u/r/n/ /l/a/s/t/D/a/y/O/f/M/o/n/t/h/(/c/u/r/r/e/n/t/(/)/./t/o/L/o/c/a/l/D/a/t/e/(/)/)/;/
+/ / / //}/	/ / / / /}/
+/	/
+/ / / //p/u/b/l//c/ /s/t/a/t/i/c/ /S/t/r/i/n/g /l/a//t/D/a/y//f/M/o/n/t///L/o/c/a/l/D/a/t/e/ /l/o/c/a/l/D/a/t/e// //	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /l/a/s/t/D/a/y/O/f/M/o/n/t/h/(/L/o/c/a/l/D/a/t/e/ /l/o/c/a/l/D/a/t/e/)/ /{/
+// // / / / / /r/e/t/u/r/n//l/o/c/a/l/D/a/t/e//w/i/t/h//T/e/m/p/o/r/a/l/A/d/j/u/s/t/e/r/s/./l/a/s/t/D/a/y/O/f/M/o/n/t/hl/l/l/./t/o/S/t/r/i/n/g///;/	/ / / / / / / / /r/e/t/u/r/n/ /l/o/c/a/l/D/a/t/e/./w/i/t/h/(/T/e/m/p/o/r/a/l/A/d/j/u/s/t/e/r/s/./l/a/s/t/D/a/y/O/f/M/o/n/t/h/(/)/)/./t/o/S/t/r/i/n/g/(/)/;/
+/  / / //}/	/ / / / /}/
+/	/
+/}	/}

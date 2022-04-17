@@ -1,0 +1,18 @@
+pckage learn.fre05;	package learn.freq05;
+public class IsNumbr{	public class IsNumber {
+public boolean isNumberString s	public boolean isNumber(String s) {
+if s== null  ||""equalssf || s.endsWih"f" ||  s.endsWith"Df || s.endsWith"d" || s.endsWith"F" {	if (s == null || "".equals(s) || s.endsWith("f") || s.endsWith("D") || s.endsWith("d") || s.endsWith("F")) {
+return false;	return false;
+}	}
+String source= s.triml;	String source = s.trim();
+try {	try {
+Double.valueOfsource;	Double.valueOf(source);
+return true;	return true;
+} catch Exception el 1	} catch (Exception e) {
+return  false;;	return false;
+l	}
+	}
+public static vod mainStringf args {	public static void main(String[] args) {
+System.outprintnew IsNumberl.isNumber" 005047e+6l;	System.out.print((new IsNumber().isNumber(" 005047e+6")));
+}	}
+}	}

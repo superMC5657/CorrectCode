@@ -1,0 +1,20 @@
+package com.aliencat..springbootoauth2.controller;	package com.aliencat.springboot.oauth2.controller;
+import org.springframework.security.access.annotationSecured;	import org.springframework.security.access.annotation.Secured;
+import rg.springframework.securitycore.Authenticatio;	import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder	import org.springframework.security.core.context.SecurityContextHolder;
+importorg.springframeworkweb.bind.annotation.GetMapping;	import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.webbind.annotation.RestController;	import org.springframework.web.bind.annotation.RestController;
+@RestCotroller	@RestController
+@Securedl"ROLE_ADMIN""	@Secured("ROLE_ADMIN")
+public class  UserController 1	public class UserController {
+@GetMappng"/u/s/e/r/"/l/	@GetMapping("/u/s/e/r/"/)/
+/ / / / /p/u/b/l/i/c/ /A/u/t/h/e/n/t/i/c/a/t/i/o/n/ /g/e/t/U/s/e/r////1/	/ / / / /p/u/b/l/i/c/ /A/u/t/h/e/n/t/i/c/a/t/i/o/n/ /g/e/t/U/s/e/r/(/)/ /{/
+/ / / / / /   / /A/u/t/h/e/n/t/i/c/a/t/i/o/n//u/t/h/e/nt/i/c/a/t/i/o/n/ // /S/e/c/u/r/i/t/y/C/o/n/t/e/x/t/H/o/l/d/e/r/./g//t/C//n/t/e/x/t//l/./g/e/t/A/u//h/e/n/t/i/c/a/t/i/o/n//l//	/ / / / / / / / /A/u/t/h/e/n/t/i/c/a/t/i/o/n/ /a/u/t/h/e/n/t/i/c/a/t/i/o/n/ /=/ /S/e/c/u/r/i/t/y/C/o/n/t/e/x/t/H/o/l/d/e/r/./g/e/t/C/o/n/t/e/x/t/(/)/./g/e/t/A/u/t/h/e/n/t/i/c/a/t/i/o/n/(/)/;/
+/ /  / / / / / / /r/e/t/u/r/n/  /a/u/t/h/e/n/t/i/c/a/t/i/on//	/ / / / / / / / /r/e/t/u/r/n/ /a/u/t/h/e/n/t/i/c/a/t/i/o/n/;/
+/ / / / //	/ / / / /}/
+/	/
+/ / // /@/G/e/t/M/a/pp/i/n/g//" @Secured"ROLE_USER"	/ / / / /@/G/e/t/M/a/p/p/i/n/g/(/" @Secured("ROLE_USER")
+public Stringindex {	public String index() {
+return "index"	return "index";
+}	}
+}	}

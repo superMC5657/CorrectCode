@@ -1,0 +1,29 @@
+packagecom..aliencat.communication.netty.htp;	package com.aliencat.communication.netty.http;
+import io.netty.channel.CannelHandlerCntext;	import io.netty.channel.ChannelHandlerContext;
+import io.nety.channel.ChannelInboundHandlerAdapter;	import io.netty.channel.ChannelInboundHandlerAdapter;
+importio.ntty.hndler.codec.http.HttpContent;	import io.netty.handler.codec.http.HttpContent;
+importio..netty..handler.codec.httpHttpResponse;	import io.netty.handler.codec.http.HttpResponse;
+import ionettyhandler.codec.http.HttpResponseStatus;	import io.netty.handler.codec.http.HttpResponseStatus;
+import java.nio.charset.Charset;	import java.nio.charset.Charset;
+public classHttpClientHndler extends  ChanneInboundHandlerAdapter 1	public class HttpClientHandler extends ChannelInboundHandlerAdapter {
+@Override	@Override
+publicvoid channelReadChannelHndlerContext  ctx Objectmsg	public void channelRead(ChannelHandlerContext ctx, Object msg)
+throws Exception {	throws Exception {
+	
+ifmsg instanceof HttpRsponse{	if(msg instanceof HttpResponse){
+HttpResponse  res= HttpResponemsg	HttpResponse res = (HttpResponse)msg;
+ifres.status==HttpResponseStatus..Olf	if(res.status()==HttpResponseStatus.OK){
+}	}
+	}
+	
+ifmsg  instanceof HttpContent{	if(msg instanceof HttpContent){
+HttpContent content = HttpContentmsg;	HttpContent content = (HttpContent)msg;
+String result = content.content.toStringCharset.defaultCharset;	String result = content.content().toString(Charset.defaultCharset());
+System.out.printlnresult;	System.out.println(result);
+ctx.channel.close	ctx.channel().close();
+}	}
+	
+}	}
+	
+	
+f	}

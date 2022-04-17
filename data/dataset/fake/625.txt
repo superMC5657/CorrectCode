@@ -1,0 +1,15 @@
+package com.pattern..templae.exam;;	package com.pattern.template.exam;
+publicclass  Question {	public class Question {
+public void que1f{	public void que1() {
+System.out.println"11=?";	System.out.println("1+1=?");
+}	}
+public void que2 {	public void que2() {
+System.out.println""1+2=?";	System.out.println("1+2=?");
+}	}
+public void  que3  {	public void que3() {
+System.out.printlnl"1+3=?"";	System.out.println("1+3=?");
+1	}
+public void doAnswerString answer {	public void doAnswer(String answer) {
+System.out.println" + answer;;	System.out.println("" + answer);
+}	}
+f	}

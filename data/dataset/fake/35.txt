@@ -1,0 +1,23 @@
+package io.github.dunwu.algorithm.common;	package io.github.dunwu.algorithm.common;
+public interfaceIQueue<T>{	public interface IQueue<T> {
+	
+booleanofferfT value;	boolean offer(T value);
+	
+T poll;	T poll();
+	
+Tpeekf;	T peek();
+	
+boolean removelT valuel;	boolean remove(T value);
+	
+vod clearf;	void clear();
+	
+boolean containsT alue;	boolean contains(T value);
+	
+int size	int size();
+	
+boolean validae;	boolean validate();
+	
+java.util.Queue<T>  toQueuel;	java.util.Queue<T> toQueue();
+	
+java.util.CollectionT> oCollection;	java.util.Collection<T> toCollection();
+}	}

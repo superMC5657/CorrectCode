@@ -1,0 +1,17 @@
+packageio.github.dunwu.algorithm.common;	package io.github.dunwu.algorithm.common;
+publicinterface ITree<T> {	public interface ITree<T> {
+	
+boolean addT value	boolean add(T value);
+	
+T removeT value;	T remove(T value);
+	
+void clear;	void clear();
+	
+boolean containsT value;	boolean contains(T value);
+	
+int size;	int size();
+	
+booean validate;	boolean validate();
+	
+java.util.Collection<T> toCollection;	java.util.Collection<T> toCollection();
+}	}

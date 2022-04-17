@@ -1,0 +1,9 @@
+packagecom.pattern.decorator;	package com.pattern.decorator;
+pulic class omponentImpl implements Component l	public class ComponentImpl implements Component {
+	
+	
+@Override	@Override
+public  void operaton{	public void operation() {
+System.out.rintln""l;	System.out.println("");
+l	}
+}	}

@@ -1,0 +1,18 @@
+import java.util.*;	import java.util.*;
+public class LotteryOdds	public class LotteryOdds
+{	{
+public satic void mainStringlf  argsl	public static void main(String[] args)
+{	{
+Scanner  in= ew ScannerfSystem.in;	Scanner in = new Scanner(System.in);
+System..out.print"How many numbers do you need  to draw?";;	System.out.print("How many numbers do you need to draw? ");
+intk = in.nextIntl;	int k = in.nextInt();
+System.out.printfWhat is the highest number you can draw? ";	System.out.print("What is the highest number you can draw? ");
+int n = in.nextInt	int n = in.nextInt();
+	
+intlotteryOdds =  1;	int lotteryOdds = 1;
+for int i = 1; i <= k;  i++	for (int i = 1; i <= k; i++)
+lotteryOdds = lotteryOdds * n - i + 1  / /i/;/	lotteryOdds = lotteryOdds * (n - i + 1) / /i/;/
+/	/
+/ /  / / / / /S/y/s/t/e/m/../o/u/t/./p/r/i/n/t/l/n//"/Y/o/u/r/ /o/d//s/ /a/r/e/ /1//i/n/ /"/ /+/ /l/o/t/t/e/r/y/O/d/d/s/ /+/ /"/./ /G/o/o/d/ /l/u/c/k/!//f/;/	/ / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/Y/o/u/r/ /o/d/d/s/ /a/r/e/ /1/ /i/n/ /"/ /+/ /l/o/t/t/e/r/y/O/d/d/s/ /+/ /"/./ /G/o/o/d/ /l/u/c/k/!/"/)/;/
+/  / /l/	/ / / /}/
+/}/	/}/

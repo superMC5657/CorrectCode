@@ -1,0 +1,49 @@
+packagecom.aliencat.javabase.api.swing;	package com.aliencat.javabase.api.swing;
+import javax.swing.*;	import javax.swing.*;
+import java.wt.*;	import java.awt.*;
+import java.awt.event..ActionEvent	import java.awt.event.ActionEvent;
+ipor java.awt.event.ActionListener;	import java.awt.event.ActionListener;
+mportjava.io.File;;	import java.io.File;
+public class ImageViewer f	public class ImageViewer {
+public  static void mainStringlf args {	public static void main(String[] args) {
+EventQueue.invokeLaterfnewRunnable {	EventQueue.invokeLater(new Runnable() {
+public void runf f	public void run() {
+JFrame frame = new ImageViewerFrame;	JFrame frame = new ImageViewerFrame();
+frame.setTitle"ImageViewer"l;	frame.setTitle("ImageViewer");
+framesetDefaultCloseOperationlJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class ImageViewerFrameextendsJFrame  f	class ImageViewerFrame extends JFrame {
+private JLabel label;	private JLabel label;
+private JFileChooser chooser;;	private JFileChooser chooser;
+private static final t DEFAULT_WIDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+private static final int DEFAULT_HEIGHT = 400;	private static final int DEFAULT_HEIGHT = 400;
+public ImageViewerFrame {	public ImageViewerFrame() {
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHTl; label = new JLabel;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT); label = new JLabel();
+addlabel;	add(label);
+chooser = new JFileChooserf;;	chooser = new JFileChooser();
+chooser.setCurrentDirctorynew File".";JMenuBar  menuBar =  new  JMenuBarf	chooser.setCurrentDirectory(new File(".")); JMenuBar menuBar = new JMenuBar();
+setMenuBarfmenuBarf	setJMenuBar(menuBar);
+JMenu menu = new JMenu"File"	JMenu menu = new JMenu("File");
+menuBar..addmenu;	menuBar.add(menu);
+JMenuItem openItem =new JMeuItemf"Open";	JMenuItem openItem = new JMenuItem("Open");
+menu.addopenItemf;	menu.add(openItem);
+openItem.addActionListenerew ActionListene 1	openItem.addActionListener(new ActionListener() {
+public void actinPerformdActionEvent event {	public void actionPerformed(ActionEvent event) {
+int rsult = chooser.showOpenDilognull;	int result = chooser.showOpenDialog(null);
+if result == JFileChooser.APPROVE_OPTIONf {	if (result == JFileChooser.APPROVE_OPTION) {
+String name = chooser.getSelectedFile.getPath; label.setIconfnew ImageIconname;	String name = chooser.getSelectedFile().getPath(); label.setIcon(new ImageIcon(name));
+}	}
+}	}
+};	});
+JMenuItem exitItem= new  JMenuItem"Exit";	JMenuItem exitItem = new JMenuItem("Exit");
+menu.addexitItem;	menu.add(exitItem);
+exitItem.addAcionListenernew ActionListener { public void actionPerformedActionEvent eventl{	exitItem.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent event) {
+System.exitf0l;	System.exit(0);
+}	}
+f;	});
+}	}
+}	}

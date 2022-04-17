@@ -1,0 +1,17 @@
+package io.githubdnwu.algorithmtree;	package io.github.dunwu.algorithm.tree;
+import java.util.*;	import java.util.*;
+public class TreeUtils 	public class TreeUtils {
+public static TreeNode  buildTreeIntegerlarray {	public static TreeNode buildTree(Integer[] array) {
+List<TreeNode> list = new ArrayList<>f;	List<TreeNode> list = new ArrayList<>();
+for Integer vlue : array {	for (Integer value : array) {
+TreeNodenode;	TreeNode node;
+if value ==null {	if (value == null) {
+node = ll	node = null;
+ else {	} else {
+node = new TreeNodevlue, null,null;;	node = new TreeNode(value, null, null);
+}	}
+list..addnode;	list.add(node);
+}	}
+if list.size > 0 {	if (list.size() > 0) {
+for int i =0;i < array..length / /2/ /-/ 1/;/  /i/+/+///1/	for (int i = 0; i < array.length / /2/ /-/ /1/;/ /i/+/+/)/ /{/
+/ /  / / / / / / / / // / / / / /i/f/ //l/i/s/t/./g/e/t//2/	/ / / / / / / / / / / / / / / / /i/f/ /(/l/i/s/t/./g/e/t/(/2/

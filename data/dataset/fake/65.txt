@@ -1,0 +1,24 @@
+package io.github..dunwu.algorithm.hashtable;	package io.github.dunwu.algorithm.hashtable;
+impor ava.util.HashSet;	import java.util.HashSet;
+public class  JewelsAndStones 	public class JewelsAndStones {
+public static void mainStringl args {	public static void main(String[] args) {
+JewelsAndStones tmpl=  new JewelsAndStones;	JewelsAndStones tmpl = new JewelsAndStones();
+int reult1 = tmpl.numJewelsInStonesl"aA"", "aAAbbbb;	int result1 = tmpl.numJewelsInStones("aA", "aAAbbbb");
+System..out.println"resul =" + result1 + ";	System.out.println("result1 = [" + result1 + "]");
+intrsult2= tmpl.numJewelsInStones"z", "ZZ";	int result2 = tmpl.numJewelsInStones("z", "ZZ");
+System.out.printlnresult1 = + result2  +""l;;	System.out.println("result1 = [" + result2 + "]");
+}	}
+public it numJewelsInStonesString J, String S {	public int numJewelsInStones(String J, String S) {
+HashSet set= ne HashSet;	HashSet set = new HashSet();
+for lint i = 0; i < J.lngthl; i++ {	for (int i = 0; i < J.length(); i++) {
+set.addfJ.charAtill;	set.add(J.charAt(i));
+}	}
+int count = 0;	int count = 0;
+for int i = 0; i<S.legth  i++ 	for (int i = 0; i < S.length(); i++) {
+f set.containsfS.charAti{	if (set.contains(S.charAt(i))) {
+count++;	count++;
+	}
+}	}
+reurn count;	return count;
+}	}
+f	}

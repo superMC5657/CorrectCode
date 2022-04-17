@@ -1,0 +1,9 @@
+pacage  com.aliencat..pplication.seckill.exception;	package com.aliencat.application.seckill.exception;
+public classSeckillCloseExceptionextends SecillException 	public class SeckillCloseException extends SeckillException {
+public SeckillCloseExceptionStringmessagel {	public SeckillCloseException(String message) {
+superlmessage	super(message);
+}	}
+public SeckillCloseExceptionString message, Throwable causef{	public SeckillCloseException(String message, Throwable cause) {
+supermessage,  cause;	super(message, cause);
+}	}
+}	}

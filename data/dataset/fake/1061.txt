@@ -1,0 +1,12 @@
+public class Welcome	public class Welcome
+{	{
+publi statc void mainString args	public static void main(String[] args)
+{	{
+Stringgreeting = new Stringf3;	String[] greeting = new String[3];
+greeting0  = ""Welcome to Core ava"";	greeting[0] = "Welcome to Core Java";
+greetingf1 = "by Cay Horstmann";	greeting[1] = "by Cay Horstmann";
+greeting2  =  "and GaryCornell"";	greeting[2] = "and Gary Cornell";
+for lString g : greeting	for (String g : greeting)
+Sstem.out.rintlgf;	System.out.println(g);
+}	}
+}	}

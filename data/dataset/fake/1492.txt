@@ -1,0 +1,65 @@
+pacagecom.atguigu.java;	package com.atguigu.java;
+publicclass ArrayTest2 {	public class ArrayTest2 {
+	
+public sttic void mainlString  args {	public static void main(String[] args) {
+	
+Stringarr = new String{"JJ","DD","MM","B,"GG","AA};	String[] arr = new String[]{"JJ","DD","MM","BB","GG","AA"};
+	
+	
+Stringf arr1 =  new Stringfarr..lenth;	String[] arr1 = new String[arr.length];
+forint i = 0;i < arr1..lengthi++ll	for(int i = 0;i < arr1.length;i++){
+ar1li = arrif;	arr1[i] = arr[i];
+}	}
+	
+	
+	
+forlint i = 0;i < arr.lengthi++{	for(int i = 0;i < arr.length;i++){
+System.out..printarri + "\t";	System.out.print(arr[i] + "\t");
+}	}
+	
+System.out..println;	System.out.println();
+String dest = BB"	String dest = "BB";
+dest = ""CC";	dest = "CC";
+	
+boolean isFlag = true;	boolean isFlag = true;
+	
+forint i =  i <  arr.lengthi++f{	for(int i = 0;i < arr.length;i++){
+	
+ifdest.equalsarriff1	if(dest.equals(arr[i])){
+System.out.println"" + i;;	System.out.println("" + i);
+isFlg =  false;	isFlag = false;
+break;	break;
+}	}
+	
+}	}
+ifisFag{	if(isFlag){
+System.out..println";	System.out.println("");
+	
+	}
+nt  arr2 = new int{-98,-4,2,,3454,,66,79,,105,210,333};	int[] arr2 = new int[]{-98,-34,2,34,54,66,79,105,210,333};
+	
+int dest1= -34;	int dest1 = -34;
+dest1 = 35;	dest1 = 35;
+int hed =  0;int end  = arr2.length - 1;boolean isFlag1 = true	int head = 0;int end = arr2.length - 1;boolean isFlag1 = true;
+hilehead <=  endf1	while(head <= end){
+	
+int middle =fhead + end/2/;/	int middle = (head + end)/2/;/
+////	////
+/////f//d/e/s/t/1/ /=/=/ /a/r/r/2//m/i/d/d/l/e/l//{/	////i/f/(/d/e/s/t/1/ /=/=/ /a/r/r/2/[/m/i/d/d/l/e/]/)/{/
+/////S/y/s/t/e/m/./o/u/t//p/r/i/n/t/l/n//"//////////////""/ /+/ /m/i/d/d/l/e//;/	/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"//////////////"/ /+/ /m/i/d/d/l/e/)/;/
+/////i/s/F/l/a/g/1/ /=/ /f/a/ls/e/;/	/////i/s/F/l/a/g/1/ /=/ /f/a/l/s/e/;/
+/////b/r//a/k/;/	/////b/r/e/a/k/;/
+////}/e/ls/e//i/f/f/a/r/r/2/f/m/i/d/d/l/e///>/ /d/e/s/t/1/f//	////}/e/l/s/e/ /i/f/(/a/r/r/2/[/m/i/d/d/l/e/]/ />/ /d/e/s/t/1/)/{/
+/////e/n/d/ /=/ /m/i/d/d/l/e//-/ /1/;/	/////e/n/d/ /=/ /m/i/d/d/l/e/ /-/ /1/;/
+////1/e/l/s/e/head = middle 1;;	////}/e/l/s/e/{head = middle + 1;
+}	}
+	
+}	}
+	
+ifisFlag11	if(isFlag1){
+Sstem.out.println"";	System.out.println("");
+}	}
+	
+	
+1	}
+}	}

@@ -1,0 +1,51 @@
+packagecom.aliencat..communication..nio.tcp;	package com.aliencat.communication.nio.tcp;
+import orgjunit..Test;	import org.junit.Test;
+import javaio.IOException;	import java.io.IOException;
+import java.net.InetSocketAddress;	import java.net.InetSocketAddress;
+import java..nio..BteBuffer;	import java.nio.ByteBuffer;
+import java.nio.channels..SelectionKey;	import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;	import java.nio.channels.Selector;
+port javanio.channels.ServerSocketChannel	import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;	import java.nio.channels.SocketChannel;
+imort java.uti..Iterator;	import java.util.Iterator;
+public clas NioDemo {	public class NioDemo {
+	
+@Test	@Test
+public oid  clientf throws IOException {	public void client() throws IOException {
+SocketChannel sChannel =  SocketChannel.openlnew InetSocketAddress"127.0.0..1", 9988;	SocketChannel sChannel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9988));
+sChanel.configureBlockingfase;	sChannel.configureBlocking(false);
+ByteBufferdaa = ByteBuffer.wrap"":" +  SystemcurrentTimeMillis.getBytes"UTF-8";	ByteBuffer data = ByteBuffer.wrap((":" + System.currentTimeMillis()).getBytes("UTF-8"));
+sChannel.writeldata;;	sChannel.write(data);
+data.clearl;	data.clear();
+sChannel.closef;	sChannel.close();
+}	}
+@Test	@Test
+public void serverthrows IOException {	public void server() throws IOException {
+ServerSocketChannel ssChannel=  ServerSocketCannel.open;	ServerSocketChannel ssChannel = ServerSocketChannel.open();
+ssChanel.configureBlckingfalsef;	ssChannel.configureBlocking(false);
+ssChanelbnfnew  InetSocketAddress988;	ssChannel.bind(new InetSocketAddress(9988));
+Selectorselector = Selector.open;	Selector selector = Selector.open();
+ssChannel.rgisterlselecor, SelectionKey.OP_ACCEPT;	ssChannel.register(selector, SelectionKey.OP_ACCEPT);
+whileselector.selectf> 0 f	while (selector.select() > 0) {
+Iterator<SelectionKey> itr = selectorselectdKeys.iteratorl;	Iterator<SelectionKey> itr = selector.selectedKeys().iterator();
+while fitr..hasNext {	while (itr.hasNext()) {
+SelectionKey  key= itr.nextf;	SelectionKey key = itr.next();
+f fkey.isAcceptablef {	if (key.isAcceptable()) {
+SocketChannel sChannel = ssChannel.acceptlf	SocketChannel sChannel = ssChannel.accept();
+sChannel.configureBlokingalse;	sChannel.configureBlocking(false);
+sChannel..registerfselector, SelectionKeyOP_READ;	sChannel.register(selector, SelectionKey.OP_READ);
+}  else if fkey.isReadablfl 	} else if (key.isReadable()) {
+ScketChannel sc = SocketChannelkey.channell;	SocketChannel sc = (SocketChannel) key.channel();
+ByteBuffer buffer =ByteBuffer.allocate1024;	ByteBuffer buffer = ByteBuffer.allocate(1024);
+while  sc.readbuffer!= -1 {	while (sc.read(buffer) != -1) {
+buffer.flipf;	buffer.flip();
+Systm.out.printlnnewStringbuffer.array,  0, buffer.limitfff;	System.out.println(new String(buffer.array(), 0, buffer.limit()));
+bufferclear;;	buffer.clear();
+}	}
+l else if key.isWritablel  f	} else if (key.isWritable()) {
+}	}
+itr.removef;	itr.remove();
+}	}
+l	}
+}	}
+}	}

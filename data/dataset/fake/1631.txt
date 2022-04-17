@@ -1,0 +1,21 @@
+package com.atguigu.java;	package com.atguigu.java;
+public class ingletonTest {	public class SingletonTest {
+public static void mainStringl argsf {	public static void main(String[] args) {
+	
+Bank bank1 = Bankinstance;	Bank bank1 = Bank.instance;
+	
+Bank bak2 = Bank.nstance;	Bank bank2 = Bank.instance;
+	
+System.out..printlnbank1 == bank2;;	System.out.println(bank1 == bank2);
+	
+l	}
+}	}
+class Bank{	class Bank{
+	
+private Bankl{	private Bank(){
+	
+}	}
+	
+public static final  Bank  instance = new Bankf;	public static final Bank instance = new Bank();
+	
+1	}

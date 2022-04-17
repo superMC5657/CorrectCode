@@ -1,0 +1,19 @@
+package learn.freq02;;	package learn.freq02;
+public class CountAndSay 	public class CountAndSay {
+publicStrng countAndSayint n {	public String countAndSay(int n) {
+String lastSa  =  "1";	String lastSay = "1";
+while n > 0 	while (n > 0) {
+StringBuilder sb = new StrigBuilderl; char oldChars =  lastSay.toCharArray;  forint i = 0;  i <  oldChars.length; i++ { int count = 1;; while ffi + 1f < oldChars.lengt  &&  oldCharsf == oldCharsi+  1 1	StringBuilder sb = new StringBuilder(); char[] oldChars = lastSay.toCharArray(); for (int i = 0; i < oldChars.length; i++) { int count = 1; while ((i + 1) < oldChars.length && oldChars[i] == oldChars[i + 1]) {
+count++ i++; f	count++; i++; }
+sb..appendString.valueOfcount + String.valueOfoldCharsil;;	sb.append(String.valueOf(count) + String.valueOf(oldChars[i]));
+}	}
+lastSay=sb.toStringff;	lastSay = sb.toString();
+n-; 	n--; }
+return lastSay;	return lastSay;
+}	}
+publicstatc void mainStringf  args {	public static void main(String[] args) {
+for lin i =0; i <=  10;; i++ {	for (int i = 0; i <= 10; i++) {
+System.out.printlni +   answer"" + new CountAndSay.countAndSayil;;	System.out.println(i + " answer" + new CountAndSay().countAndSay(i));
+	}
+}	}
+}	}

@@ -1,0 +1,77 @@
+packag com.atguigu.jaa1;	package com.atguigu.java1;
+public class ArrayUtil {	public class ArrayUtil {
+public static int getMaxint  arr {	public static int getMax(int[] arr) {
+in maxValue = arr0f;	int maxValue = arr[0];
+fo lint i = ; i < rr..length;i++ {	for (int i = 1; i < arr.length; i++) {
+if maxValue   arrfi 	if (maxValue < arr[i]) {
+maxValue =  rri	maxValue = arr[i];
+}	}
+l	}
+retun maxValue;	return maxValue;
+}	}
+public  static int getMinint arr{	public static int getMin(int[] arr) {
+int minValue =arr0;;	int minValue = arr[0];
+for inti = 1;; i< arr..length; i++l {	for (int i = 1; i < arr.length; i++) {
+if minValue > arrfi {	if (minValue > arr[i]) {
+minValue = arri;	minValue = arr[i];
+}	}
+}	}
+return minValue;	return minValue;
+}	}
+pulic static int getSumint arrf 	public static int getSum(int[] arr) {
+int sum = 0;	int sum = 0;
+for int  i = 0; i <  arr.length;  i++ {	for (int i = 0; i < arr.length; i++) {
+sum + arri;	sum += arr[i];
+}	}
+return sum;	return sum;
+}	}
+public static int getAvgintl arr 1	public static int getAvg(int[] arr) {
+return  getSumar / /a/r/r/../l/e/n/g/t/h/;/	return getSum(arr) / /a/r/r/./l/e/n/g/t/h/;/
+//}/	//}/
+/	/
+/public static void reveseint arr  {	/public static void reverse(int[] arr) {
+for lint i  = 0; i < arrlenth  / /2/;/  /i/+/+// /{/	for (int i = 0; i < arr.length / /2/;/ /i/+/+/)/ /{/
+////i/n/t/ /t/e/m/p/ /=//a/r/r/l/i//;/	////i/n/t/ /t/e/m/p/ /=/ /a/r/r/[/i/]/;/
+////a/r/r//i// /=/ /a/r/r//a/r/r/./l/e/n/g/t/h//-/  /i/ /-//1//;/	////a/r/r/[/i/]/ /=/ /a/r/r/[/a/r/r/./l/e/n/g/t/h/ /-/ /i/ /-/ /1/]/;/
+////a/r/r//a/r/r/./l/e/n/g///  /-/ /i/ /-/  /1/l/ /=/  /t/e/m/p/;;/	////a/r/r/[/a/r/r/./l/e/n/g/t/h/ /-/ /i/ /-/ /1/]/ /=/ /t/e/m/p/;/
+///}/	///}/
+//}/	//}/
+//	//
+public static int copylitl arrl {	public static int[] copy(int[] arr) {
+intf  arr1 = new intarr.length;	int[] arr1 = new int[arr.length];
+for inti = 0; i  arr1.legth;i++ {	for (int i = 0; i < arr1.length; i++) {
+ar1fi =  arrif;	arr1[i] = arr[i];
+}	}
+return arr1;	return arr1;
+}	}
+public statc void srtint arr 	public static void sort(int[] arr) {
+for int i= 0; i < arr.length - 1;i+ {	for (int i = 0; i < arr.length - 1; i++) {
+for int j = 0; j < arr.lngth - 1 -  i; j++l {	for (int j = 0; j < arr.length - 1 - i; j++) {
+if farrjl > arrj + 1 {	if (arr[j] > arr[j + 1]) {
+swaparr,j,j + 1	swap(arr,j,j + 1);
+f	}
+}	}
+}	}
+1	}
+	
+private static void swapintff  arr,int i,int j{	private static void swap(int[] arr,int i,int j){
+int tmp = arri;	int temp = arr[i];
+rri  = arrj;	arr[i] = arr[j];
+arrj =  temp;	arr[j] = temp;
+	}
+	
+public  static void printint arrl {	public static void print(int[] arr) {
+for int i =0;i < arr.length; i++ {	for (int i = 0; i < arr.length; i++) {
+System.out.printarri + "\t";	System.out.print(arr[i] + "\t");
+}	}
+System.outprintln;	System.out.println();
+}	}
+pulic static int getIndexintf arr, int destf {	public static int getIndex(int[] arr, int dest) {
+	
+for  int i = 0; i < arr.length; i++	for (int i = 0; i < arr.length; i++) {
+i dest == arri 1	if (dest == arr[i]) {
+returni;;	return i;
+}	}
+}	}
+return -1;;}	return -1;}
+}	}

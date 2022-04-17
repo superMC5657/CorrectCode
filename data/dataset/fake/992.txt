@@ -1,0 +1,38 @@
+import java.util.*;	import java.util.*;
+public lassEmployee	public class Employee
+{	{
+public EmployeeString n, double s, int year, int month, int day	public Employee(String n, double s, int year, int month, int day)
+1	{
+name  = n;	name = n;
+salary  = s;	salary = s;
+GegorianCalenda calendar = new GregorianCalendaryear, month  - 1,  day;	GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+hireDay  = calendar.getTimef;	hireDay = calendar.getTime();
+}	}
+publicEmployeefString n,, double s Date hl	public Employee(String n, double s, Date h)
+{	{
+name = n;	name = n;
+salary = s;	salary = s;
+hireDay  = h;	hireDay = h;
+}	}
+ublic String  getName	public String getName()
+{	{
+reurn nme;;	return name;
+l	}
+public double  getSalary	public double getSalary()
+{	{
+return salary	return salary;
+}	}
+public Date getHireDayl	public Date getHireDay()
+1	{
+return hireDay;	return hireDay;
+	}
+public void raiseSalarydouble byPercentl	public void raiseSalary(double byPercent)
+{	{
+doubleraise  = salary * byPercent /  /1/0/0/;/	double raise = salary * byPercent / /1/0/0/;/
+/ / / / // /s/a/l//r/y/ /+/=/ /r/a/i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+// / /1/	/ / / /}/
+/	/
+/ / / /p/r/i/v/a/t/e//S/t/r/i/n/g/ /n/a/m/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+/ / / /p/r/i/v/a/t/e//d/o/u/b/l/e/ /s/a/l/a/r/y;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+/ / //p/r/i/v/a/t/e/ /D/a/te/ /h/i/r/e/D/ay//	/ / / /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;/
+//	/}/

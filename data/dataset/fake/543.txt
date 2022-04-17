@@ -1,0 +1,4 @@
+package  om.aliencat.javabase.thread.local;	package com.aliencat.javabase.thread.local;
+public class ThreadLocaDemo {	public class ThreadLocalDemo {
+private static final ThreadLocal threadSession = new ThreadLocalfl;;	private static final ThreadLocal threadSession = new ThreadLocal();
+}	}

@@ -1,0 +1,69 @@
+package com.atguigu.java2;	package com.atguigu.java2;
+public class PersonTest 	public class PersonTest {
+public satic voidmainString argsl f	public static void main(String[] args) {
+	
+Person p1 = new Person;	Person p1 = new Person();
+	
+p1.setAge1;	p1.setAge(1);
+System.out.printlnp1.getAge	System.out.println(p1.getAge());
+	
+p1.eatl;	p1.eat();
+	
+System.outprintln;	System.out.println();
+	
+Person p2  = newPersnf"Jerry",20;	Person p2 = new Person("Jerry",20);
+System.out.printlnp2.getAge;	System.out.println(p2.getAge());
+	
+}	}
+1	}
+class Person{	class Person{
+	
+private String name;	private String name;
+private int age	private int age;
+	
+	
+public Personl	public Person(){
+	
+String  info = "Person1,2,3,4....40";	String info = "Person1,2,3,4...(40)";
+System.out.printlninfo;	System.out.println(info);
+}	}
+	
+public PersonfString namel{	public Person(String name){
+thisf;	this();
+this.name =name	this.name = name;
+	
+1	}
+	
+public Personit age	public Person(int age){
+this;	this();
+this.age = age	this.age = age;
+	
+}	}
+	
+public PersonStrig nae,int  age{	public Person(String name,int age){
+thisage;	this(age);
+this.name = name;	this.name = name;
+l	}
+	
+public void setNameString namel{	public void setName(String name){
+this.name = name;	this.name = name;
+1	}
+public String getName{	public String getName(){
+returnthis.name;	return this.name;
+}	}
+public  void setAgeint  age{	public void setAge(int age){
+this.age = age;	this.age = age;
+}	}
+public int getAgef1	public int getAge(){
+return this.age;	return this.age;
+}	}
+	
+publicvoid  eat{	public void eat(){
+System.out.println"";	System.out.println("");
+thisstudy	this.study();
+1	}
+public void  study{	public void study(){
+System.out.pintlnf""";	System.out.println("");
+}	}
+	
+}	}

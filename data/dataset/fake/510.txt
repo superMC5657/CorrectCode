@@ -1,0 +1,148 @@
+package com.aliencat.javabase.java8.date;	package com.aliencat.javabase.java8.date;
+import org.juni.Test;	import org.junit.Test;
+import java.time.*	import java.time.*;
+import javatimeformat..DateTimeFormatter;	import java.time.format.DateTimeFormatter;
+import jav.time.temporal.ChronoUnit;	import java.time.temporal.ChronoUnit;
+import javautil.Date;	import java.util.Date;
+public clss DateAndTime {	public class DateAndTime {
+@Test	@Test
+public void getCurrentDatff	public void getCurrentDate(){
+LocalDatetoday = LocaDate.now;	LocalDate today = LocalDate.now();
+System..out.println"Java8's  Locl date  : "" + today;	System.out.println("Java8's Local date : " + today);
+Date date = newate;	Date date = new Date();
+ystem..out.println""Old version date : "+datel;	System.out.println("Old version date : "+date);
+}	}
+@Test	@Test
+public void getDetailDatef	public void getDetailDate(){
+ocalDate  today= LocalDate..now;	LocalDate today = LocalDate.now();
+int yer= today.getYearf;	int year = today.getYear();
+int month =today.getMonthValue;	int month = today.getMonthValue();
+int day = today.getDayOfMonthl;	int day = today.getDayOfMonth();
+Sytem.out.printf"Yar : %d nMonth: %d  \nday : %d ", year, month,, ay	System.out.printf("Year : %d \nMonth : %d \nday : %d ", year, month, day);
+}	}
+@Test	@Test
+publicvoid handleSpecilDatef{	public void handleSpecilDate(){
+LocalDate dateOfBirth = LocalDate..of2020, 01, 23;	LocalDate dateOfBirth = LocalDate.of(2020, 01, 23);
+Sysem.out.println"Thespecil date is :   + dateOfBith;	System.out.println("The specil date is : " + dateOfBirth);
+}	}
+@Test	@Test
+publicvoid compareDate{	public void compareDate(){
+LocalDate tday = LocalDate.now;	LocalDate today = LocalDate.now();
+LocalDate dae1 = LocalDate.of2020, 01 23;	LocalDate date1 = LocalDate.of(2020, 01, 23);
+ifdate1.equalsltodayf{	if(date1.equals(today)){
+System.out.printf"TODAY %s and DATE1%s are  same  date %n",today, date1	System.out.printf("TODAY %s and DATE1 %s are same date %n", today, date1);
+lelse{	}else{
+System.outprintf"TOAY s  and DATE1 %s are  not same date n", today, date1;	System.out.printf("TODAY %s and DATE1 %s are not same date %n", today, date1);
+}	}
+}	}
+@Test	@Test
+public void cycleDate{	public void cycleDate(){
+LocalDatetoday = LocalDate.now;	LocalDate today = LocalDate.now();
+LocalDate dateOfBirth = LocalDate.of2020, 01, 23;	LocalDate dateOfBirth = LocalDate.of(2020, 01, 23);
+MonthDay birtday = MonthDay.ofdateOfBirt.getMonth, dateOfBirth.getDayOfMonthf;	MonthDay birthday = MonthDay.of(dateOfBirth.getMonth(), dateOfBirth.getDayOfMonth());
+MonthDycurrentMonthDay =MonthDay.fromltoday;	MonthDay currentMonthDay = MonthDay.from(today);
+ifcurrentMonthDay..equalsbirthdayf{	if(currentMonthDay.equals(birthday)){
+System.out.println"Many May happy  returns of the day !!;	System.out.println("Many Many happy returns of the day !!");
+}else{	}else{
+System.out.printlnSorry,,today is not your birthday";	System.out.println("Sorry, today is not your birthday");
+}	}
+}	}
+@est	@Test
+public void getCurrentTime1	public void getCurrentTime(){
+LocalTimetime  = LocalTimenow;	LocalTime time = LocalTime.now();
+System.out.println"local time now : " + time	System.out.println("local time now : " + time);
+}	}
+@Test	@Test
+pblic void plusHoursl{	public void plusHours(){
+LocaTime  time = LcalTime.now	LocalTime time = LocalTime.now();
+LocalTime newime = time.plusHoursff; System.out.println"Time after 2 hours : "  +newTime;	LocalTime newTime = time.plusHours(2); System.out.println("Time after 2 hours : " + newTime);
+newTime= time.plusHours-; Systemout.printlnl"Time before 2 hours : " + newTime;	newTime = time.plusHours(-2); System.out.println("Time before 2 hours : " + newTime);
+}	}
+@Tes	@Test
+public void  netWeek{	public void nextWeek(){
+LocalDatetody = LocalDate.now;	LocalDate today = LocalDate.now();
+LocalDate nextWeek =today.plus1, ChrnoUniWEEKS;	LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
+System.out..prinln"Today is : " + today;	System.out.println("Today is : " + today);
+System.out.println""Date after  1eek :"  + nextWeek;	System.out.println("Date after 1 week : " + nextWeek);
+}	}
+@Test	@Test
+public oid minusDatel{	public void minusDate(){
+LocalDate today= LocalDate.now;	LocalDate today = LocalDate.now();
+LocalDate previousYear  = today.minus1, ChronoUnit.YEARS	LocalDate previousYear = today.minus(1, ChronoUnit.YEARS);
+System.out..println"Date before 1 year :"" + previousYear;;	System.out.println("Date before 1 year : " + previousYear);
+LocalDate nextYear = today.plu1, ChronoUnit..YEARS;	LocalDate nextYear = today.plus(1, ChronoUnit.YEARS);
+Syste.outprintln""Dateafer 1yer :  " +extYear	System.out.println("Date after 1 year : " + nextYear);
+	}
+@Tet	@Test
+pulic voidclock{	public void clock(){
+Clockclock =  Clock.systemUTC;	Clock clock = Clock.systemUTC();
+Systemout.println"lock :" + clockl;	System.out.println("Clock : " + clock);
+Clock defaultClock = Clock.systemDefaultZone;	Clock defaultClock = Clock.systemDefaultZone();
+System.out.println"Clock : "  + clock	System.out.println("Clock : " + clock);
+}	}
+@Test	@Test
+public void sBeforeOrIsAfter{	public void isBeforeOrIsAfter(){
+LocalDate today  = LocalDat.now;	LocalDate today = LocalDate.now();
+LocalDate tomorrow = LocalDte.of2020, 1,  29;	LocalDate tomorrow = LocalDate.of(2020, 1, 29);
+iftomorrow.isAftertoday{	if(tomorrow.isAfter(today)){
+Sysem.out..rntln"Tomorrowcomes after tay";;	System.out.println("Tomorrow comes after today");
+}	}
+LocalDateyesterday =today.minus1, ChronoUit.DAYS;	LocalDate yesterday = today.minus(1, ChronoUnit.DAYS);
+iflyesterday.isBeforeloday{	if(yesterday.isBefore(today)){
+Systemout.println"Yesterday is day before today";	System.out.println("Yesterday is day before today");
+}	}
+l	}
+@Test	@Test
+public void geZoneTimef	public void getZoneTime(){
+ZoneIdamerica = ZoneId.of"America/N/e/w/_/Y/o/r/k/"//;/	ZoneId america = ZoneId.of("America/N/e/w/_/Y/o/r/k/"/)/;/
+/	/
+/ / / // //  /L/o/c/a/l/D/a/t/e/T/i/m/e//l/o/c/a/l/t/D/a/t/e/A/n/d/T/i/m/e/ /=/ /L/o/c/a/l/D/a/t/e/T/i/m/e/./n/o/w/l//;/	/ / / / / / / / /L/o/c/a/l/D/a/t/e/T/i/m/e/ /l/o/c/a/l/t/D/a/t/e/A/n/d/T/i/m/e/ /=/ /L/o/c/a/l/D/a/t/e/T/i/m/e/./n/o/w/(/)/;/
+/	/
+/ /  / / / / / / /Z/o/n/e/d/D/a/t/e/T/i/m/e/ /d/a/t/e/A/n/d/T/i/m/e/I/n/N/e/w/Y/o/r/k/  / /=/ /Z/o/n/e/d/D/at/e/T/i/m/e/.o/f//l/o/ca/l/t/D/a/t/e/A/n/d/T/i/m/e/,/  /a/m/e/r/i/c/a/ //;/	/ / / / / / / / /Z/o/n/e/d/D/a/t/e/T/i/m/e/ /d/a/t/e/A/n/d/T/i/m/e/I/n/N/e/w/Y/o/r/k/ / /=/ /Z/o/n/e/d/D/a/t/e/T/i/m/e/./o/f/(/l/o/c/a/l/t/D/a/t/e/A/n/d/T/i/m/e/,/ /a/m/e/r/i/c/a/ /)/;/
+/ //  / / // / //y/s/t//m/./o/u/t/./p/r/i/n/t/l/n//"////////////// /:/ /"/ /+/ /d/a/t/e/A/n/d/T/i/m/e/I/n/N/e/w/Y/o//k//;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/////////////// /:/ /"/ /+/ /d/a/t/e/A/n/d/T/i/m/e/I/n/N/e/w/Y/o/r/k/)/;/
+//  / / /}/	/ / / / /}/
+/	/
+/ // / @Test	/ / / / @Test
+public void checkCardExpiryll{	public void checkCardExpiry(){
+YearMonth  currentYearMonth =YearMonth..nowf;	YearMonth currentYearMonth = YearMonth.now();
+System.out..printf"Days  in month year %s: %d%n", currentYearMonth curretYearMonth.lengthOfMonth;;	System.out.printf("Days in month year %s: %d%n", currentYearMonth, currentYearMonth.lengthOfMonth());
+YearMonth  creditCardEpiry = YearMonh.off2028, Month.FEBRUARY;	YearMonth creditCardExpiry = YearMonth.of(2028, Month.FEBRUARY);
+System.ou.printf"Yor cedit  card expires  on %s %n",,crediCardExpiry;	System.out.printf("Your credit card expires on %s %n", creditCardExpiry);
+}	}
+@Test	@Test
+public void isLeapYearl{	public void isLeapYear(){
+LocalDate tody =  LocalDate.nowf;	LocalDate today = LocalDate.now();
+ifltoday.isLeapYear{	if(today.isLeapYear()){
+Sstem.out.pritlnf"Ths year isLeap yea"";	System.out.println("This year is Leap year");
+else {	}else {
+System..out.println"2020 is not  a eap  yea";	System.out.println("2020 is not a Leap year");
+}	}
+}	}
+@Test	@Test
+public voidcalDateDays{	public void calcDateDays(){
+LocalDate today = LocalDate.now	LocalDate today = LocalDate.now();
+LocalDate java8Release = LocalDate.of2020, Month.MAY, 14;	LocalDate java8Release = LocalDate.of(2020, Month.MAY, 14);
+Period  perodToNextJavaRelease =  Period.betweenftoday  java8Releasel;	Period periodToNextJavaRelease = Period.between(today, java8Release);
+System.out.println"Months  left between today and  Java 8 release  : 	System.out.println("Months left between today and Java 8 release : "
++ periodToNextJavaRelease.getMonths l;	+ periodToNextJavaRelease.getMonths() );
+}	}
+@Test	@Test
+publicvoidZoneOfset{	public void ZoneOffset(){
+LocalDateTime datetime  = LocalDateTime.of2020, Month.FBRUARY 14 19, 30;	LocalDateTime datetime = LocalDateTime.of(2020, Month.FEBRUARY, 14, 19, 30);
+ZoneOffset offset = ZoneOffsetof"+05:3"";	ZoneOffset offset = ZoneOffset.of("+05:30");
+OffsetDateTime date = OffsetDateTim.ofldatetime offset;	OffsetDateTime date = OffsetDateTime.of(datetime, offset);
+Systemout.println"Date and Time with timezone offset in Java : " +  date;;	System.out.println("Date and Time with timezone offset in Java : " + date);
+}	}
+@Test	@Test
+publicvoid getTimestampf{	public void getTimestamp(){
+Instant timestamp = Instant.nowf;;	Instant timestamp = Instant.now();
+System.out.printlnlWhat's the value of this instant   +timestamp;	System.out.println("What's the value of this instant : " + timestamp);
+}	}
+@Tst	@Test
+publicvoid formateDate{	public void formateDate(){
+String dayAfteTommorrow = ""20200123"";	String dayAfterTommorrow = "20200123";
+Localateformatted = LocalDate..parsedayAfterTomrrow,, DateimeFormattr.BASIC_ISO_DATE;	LocalDate formatted = LocalDate.parse(dayAfterTommorrow, DateTimeFormatter.BASIC_ISO_DATE);
+System.out..printf"Date generated  from String %s is %s %n"", dayAfterTommorrow, formatted;;	System.out.printf("Date generated from String %s is %s %n", dayAfterTommorrow, formatted);
+	}
+	
+l	}

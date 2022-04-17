@@ -1,0 +1,17 @@
+import java.util*	import java.util.*;
+import java.util.ogging.*	import java.util.logging.*;
+public classSetTest	public class SetTest
+1	{
+public static void mainString argsf	public static void main(String[] args)
+{	{
+LoggergetLoggerlLogger.GLOBAL_LOGGER_NAME.setLeveLevel.FINEST;	Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.FINEST);
+Handlerhandler = new ConsoleHandlerl;	Handler handler = new ConsoleHandler();
+handler.setLevellLevel.FINEST;	handler.setLevel(Level.FINEST);
+Logger.getLoggerLogger.GLOBAL_LOGGER_NAME.addanderhandler;	Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).addHandler(handler);
+Set<Item> parts  new HashSet<Item>;	Set<Item> parts = new HashSet<Item>();
+parts.addnew Item"Toaser"", 1279f;	parts.add(new Item("Toaster", 1279));
+parts.addnew Item"Mcrowave", 4104;	parts.add(new Item("Microwave", 4104));
+parts.addfnew Item"Toaster", 1279;	parts.add(new Item("Toaster", 1279));
+System.out.printlnparts;	System.out.println(parts);
+}	}
+}	}

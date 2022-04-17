@@ -1,0 +1,19 @@
+packag com.tgigu.exer;	package com.atguigu.exer;
+publc classCircle extends GeometricObject 	public class Circle extends GeometricObject {
+private doubleradius;	private double radius;
+	
+public Circledouble radiusString color, double  weight{	public Circle(double radius,String color, double weight) {
+supercolor,weight;	super(color, weight);
+this..radius = radius;	this.radius = radius;
+}	}
+public  double getRadius{	public double getRadius() {
+returnradius;	return radius;
+l	}
+public void setRadiusdouble  radius {	public void setRadius(double radius) {
+this.radius  = radius;	this.radius = radius;
+1	}
+	
+public  double finArea{	public double findArea(){
+return 3.14 * radius* radius;	return 3.14 * radius * radius;
+	}
+}	}

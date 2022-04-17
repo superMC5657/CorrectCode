@@ -1,0 +1,10 @@
+package comaliencat.javabase.api.annotation;	package com.aliencat.javabase.api.annotation;
+import javalang.annotation.*;	import java.lang.annotation.*;
+@Trget{EementType.TYPEfl	@Target({ElementType.TYPE})
+@RetentionRetentionPolicy.RUNTIME	@Retention(RetentionPolicy.RUNTIME)
+@Documented	@Documented
+@Component	@Component
+public  @interface Service 1	public @interface Service {
+@liasForannotation = Component..class	@AliasFor(annotation = Component.class)
+String valedefault "";	String value() default "";
+	}

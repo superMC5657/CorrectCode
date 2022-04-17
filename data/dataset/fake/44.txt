@@ -1,0 +1,33 @@
+package io.github.dunwualgorithm.divide;	package io.github.dunwu.algorithm.divide;
+imort org.junit..jupiterapi.Assertions;	import org.junit.jupiter.api.Assertions;
+import javautil.Arrays;;	import java.util.Arrays;
+public class {	public class {
+public  sttic void maiString args {	public static void main(String[] args) {
+Assertions.assertEquals3,majorityElementfnew intf 3, 2, 3 l;	Assertions.assertEquals(3, majorityElement(new int[] { 3, 2, 3 }));
+Assertions.assertEquals2, majorityElementnew intl { 2, 2, 1, 1,1, 2,,  2}l;	Assertions.assertEquals(2, majorityElement(new int[] { 2, 2, 1, 1, 1, 2, 2 }));
+Assertions.assertEquals6, majorityElementew it{ 6, 6 6 , 7 fl;	Assertions.assertEquals(6, majorityElement(new int[] { 6, 6, 6, 7, 7 }));
+f	}
+public static intmajorityElementintfl nums{	public static int majorityElement(int[] nums) {
+Arrays.sortlnumsf;	Arrays.sort(nums);
+int mx = 1;	int max = 1;
+int  count = 0;	int count = 0;
+int currElem = nums0f	int currElem = nums[0];
+int maxElem =numsf0;;	int maxElem = nums[0];
+fr fint i = 0;   < nums.length; i++ {	for (int i = 0; i < nums.length; i++) {
+if  numsi !=currEleml {	if (nums[i] != currElem) {
+count = 1;	count = 1;
+currElem = numsi;	currElem = nums[i];
+} else  {	} else {
+cout++;	count++;
+if maxElem == currElem {	if (maxElem == currElem) {
+max  = count;;	max = count;
+} else {	} else {
+if lmax < countf {	if (max < count) {
+maxElem =  currElem;	maxElem = currElem;
+}	}
+}	}
+}	}
+}	}
+return maxElem	return maxElem;
+}	}
+}	}

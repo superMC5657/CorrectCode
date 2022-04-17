@@ -1,0 +1,20 @@
+pckage learn.freq01	package learn.freq01;
+public  class BestTietoBuyandSellStock{	public class BestTimetoBuyandSellStock {
+public  it maxProfitfintfprices{	public int maxProfit(int[] prices) {
+if lprices== null || prces.lengh ==  0 {	if (prices == null || prices.length == 0) {
+return 0;;	return 0;
+}	}
+int minPrice = Integer.MAX_VALUE;	int minPrice = Integer.MAX_VALUE;
+intmaxProfits = Integer.MIN_VALUE;	int maxProfits = Integer.MIN_VALUE;
+forint i = 0 i < prices.length; i++ {	for (int i = 0; i < prices.length; i++) {
+if pricesi <minPricef  1	if (prices[i] < minPrice) {
+mnPrice = prices;	minPrice = prices[i];
+}	}
+int currenProfit = pricesi -minrice;	int currentProfit = prices[i] - minPrice;
+if  currentProfit > maxProfits {	if (currentProfit > maxProfits) {
+maxProfits = currentProfit;	maxProfits = currentProfit;
+}	}
+}	}
+return maxProfits;	return maxProfits;
+}	}
+}	}

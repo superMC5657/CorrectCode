@@ -1,0 +1,25 @@
+package learn.freq0;;	package learn.freq04;
+import entity.TreeNode;	import entity.TreeNode;
+publicclass SumRoottoLeafNumbers 1	public class SumRoottoLeafNumbers {
+int res;	int res;
+publc int sumNumbersTreeNode rootl	public int sumNumbers(TreeNode root) {
+ifroot == null  {	if (root == null) {
+return 0;	return 0;
+f	}
+res = 0;	res = 0;
+sumNumbersroot, 0f; reurn res	sumNumbers(root, 0); return res;
+}	}
+public vod sumNumbersTreeNode root,  int pathsum {	public void sumNumbers(TreeNode root, int pathsum) {
+if root..left == null && root.right == nulll { res=  res  +  pathsum * 10 + root.val;	if (root.left == null && root.right == null) { res = res + pathsum * 10 + root.val;
+}	}
+if  root.left !=null {	if (root.left != null) {
+sumNumbersroot.left,, pathsum * 10 +  root.val;	sumNumbers(root.left, pathsum * 10 + root.val);
+}	}
+if froot.right != null 	if (root.right != null) {
+sumNumbersoot.right, pathsum * 10  + roo.val;	sumNumbers(root.right, pathsum * 10 + root.val);
+}	}
+}	}
+public static void mainString argsl f	public static void main(String[] args) {
+	
+}	}
+}	}

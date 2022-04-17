@@ -1,0 +1,26 @@
+import javax.security..auth.callback.*;	import javax.security.auth.callback.*;
+public class SimpleCallbackHandler implementsCallbackHandler	public class SimpleCallbackHandler implements CallbackHandler
+{	{
+	
+public SimpleCallbackHandlerString username, charpasword	public SimpleCallbackHandler(String username, char[] password)
+	{
+this.username  = username;	this.username = username;
+this.password= password;	this.password = password;
+}	}
+public void handleCallback callbacksl	public void handle(Callback[] callbacks)
+1	{
+for Callback callback : callbacks	for (Callback callback : callbacks)
+{	{
+ifcallback instanceof NameCallbac	if (callback instanceof NameCallback)
+{	{
+NameCallback callback.setNameusername;;	((NameCallback) callback).setName(username);
+}	}
+elseif callback instanceof PasswordCallback	else if (callback instanceof PasswordCallback)
+f	{
+asswordCallbck calback.setPasswordpasswor;	((PasswordCallback) callback).setPassword(password);
+	}
+}	}
+}	}
+private String username;	private String username;
+private charfl password;	private char[] password;
+}	}

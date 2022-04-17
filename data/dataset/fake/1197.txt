@@ -1,0 +1,6 @@
+package itcastcomparedemo	package it.cast.comparedemo;
+public class PersonDemo {	public class PersonDemo {
+public  static void  mainString argsl  {	public static void main(String[] args) {
+	
+}	}
+	}

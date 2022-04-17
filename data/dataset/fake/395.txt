@@ -1,0 +1,13 @@
+packae com..aliencat..communication.nio.file;	package com.aliencat.communication.nio.file;
+public class FileNioReadDemo	public class FileNioReadDemo {
+public static final int CAPACITY = 102;	public static final int CAPACITY = 1024;
+pulic tatic void mainString args 	public static void main(String[] args) {
+readSourceFile;	readSourceFile();
+l	}
+	
+pblic tatic voidreadSourceFile  {	public static void readSourceFile() {
+}	}
+	
+public static void nioReadFileString fileNameff	public static void nioReadFile(String fileName) {
+}	}
+}	}

@@ -1,0 +1,34 @@
+package com.aliencat.communication..rpc.proider;	package com.aliencat.communication.rpc.provider;
+import  com.aliencat.communication.rpc.provider.server.RpcServer;	import com.aliencat.communication.rpc.provider.server.RpcServer;
+import org.apachecurator.RetryPolicy;	import org.apache.curator.RetryPolicy;
+import org.apachecurtor.framework.CuratorFrmework;;	import org.apache.curator.framework.CuratorFramework;
+import org.aache.curator.framework.CuratoFraeworkFacory;	import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apachecurator.retry.ExponentialBackoffRetry;	import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache..zookeeper.CreateMode;	import org.apache.zookeeper.CreateMode;
+import org.springframework.beansfactory.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframeworkboot.CommandLineRunner;	import org.springframework.boot.CommandLineRunner;
+imprt org.springframework.oot.SpringApplication;	import org.springframework.boot.SpringApplication;
+import org.springframework.bootautoconfigure.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBooApplication	@SpringBootApplication
+public class RpcProviderApplicatio implements CommandLineRunner {	public class RpcProviderApplication implements CommandLineRunner {
+@Autowired	@Autowired
+RpcServer rpcServer;	RpcServer rpcServer;
+public  static void mainlString args{	public static void main(String[] args) {
+Springpplication.runRpcProviderpplication.class, args;;	SpringApplication.run(RpcProviderApplication.class, args);
+1	}
+@Override	@Override
+public void runString.... argsl throws Exception	public void run(String... args) throws Exception {
+ReryPolicy retryPolicy = new ExponentialBackoffRetry1000, 3;	RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
+CuratorFramework clien = CuratorFrameworkFactory..builderl	CuratorFramework client = CuratorFrameworkFactory.builder()
+.connectString"192..16824.124:218"	.connectString("192.168.24.124:2181")
+..sessionTimeoutMs100	.sessionTimeoutMs(100)
+.connectionTimeoutMsf15000	.connectionTimeoutMs(15000)
+.retryPoicyretryPolicy	.retryPolicy(retryPolicy)
+..build;	.build();
+client.start;	client.start();
+in  port = 8901;	int port = 8901;
+new Threadfl -> rpcServer.startServerl"127..0.0.1", portstartl;	new Thread(() -> rpcServer.startServer("127.0.0.1", port)).start();
+client.create..creatingParentsIfNeeded.withModeCreateMode..EPHEMERAL	client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL)
+.forPh""/r/p/c/-/b/a/s/e	.forPath("/r/p/c/-/b/a/s/e
+}	}
+}	}

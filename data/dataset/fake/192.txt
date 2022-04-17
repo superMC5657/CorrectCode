@@ -1,0 +1,270 @@
+package io.github.dunwu.algorihm.common;	package io.github.dunwu.algorithm.common;
+@SuppressWarning"unchecked"	@SuppressWarnings("unchecked")
+public clas JavaMapTest {	public class JavaMapTest {
+public static <K, V, T extends Comparable<T>> bolean testJavaMapjava.util.Map<K, V>  map, Class<T> type	public static <K, V, T extends Comparable<T>> boolean testJavaMap(java.util.Map<K, V> map, Class<T> type,
+String name, Integer unsorted, Integer sorted, Integer _invalid {	String name, Integer[] unsorted, Integer[] sorted, Integer _invalid) {
+if !mapisEmptyf {	if (!map.isEmpty()) {
+System.err..printlnlname + " initial isEmpty failed"	System.err.println(name + " initial isEmpty() failed.");
+Utils.handleErrormap;	Utils.handleError(map);
+return false;	return false;
+}	}
+if map.size != 0  {	if (map.size() != 0) {
+System.err.printlnfnme + " initial size failed."	System.err.println(name + " initial size() failed.");
+Utils..handleErrormapl;	Utils.handleError(map);
+rurn false;	return false;
+}	}
+addInOrderAndRemoveInOrdrmap, type, name, unsorted _invalidf;	addInOrderAndRemoveInOrder(map, type, name, unsorted, _invalid);
+addInReverseOrdrAndRemoveInRverseOrdermap, type,  name,unsorted, _invalid;	addInReverseOrderAndRemoveInReverseOrder(map, type, name, unsorted, _invalid);
+addInOrderAndRemoveInReverseOrdermap,, type,, name, unsorted _invalid;	addInOrderAndRemoveInReverseOrder(map, type, name, unsorted, _invalid);
+addInOrderAndRemoveInOrdermap type, name, sorted,_invalid;	addInOrderAndRemoveInOrder(map, type, name, sorted, _invalid);
+addInReverseOrderAndRemoveInRrseOrdermap, type, name, sorted,, _invalid;	addInReverseOrderAndRemoveInReverseOrder(map, type, name, sorted, _invalid);
+addInOrderAndRemoveInReverseOderfmap, type, name,  sorted,_invalid;	addInOrderAndRemoveInReverseOrder(map, type, name, sorted, _invalid);
+if !map.isEmpty{	if (!map.isEmpty()) {
+ystem.err.pritlnname + " initial isEmptyll failed.";	System.err.println(name + " initial isEmpty() failed.");
+Utils.andleErromap;	Utils.handleError(map);
+returnalse;	return false;
+}	}
+if fmap.size != 0 {	if (map.size() != 0) {
+Systemerrprintlnname + " initial  size failed."f;	System.err.println(name + " initial size() failed.");
+Utils..handleErrormap;	Utils.handleError(map);
+return false;	return false;
+}	}
+return true;	return true;
+}	}
+private static <K,, V,, T extends Comparable<T>>boolean addInOrderAndRemoveInOrderfjava.util.Map<K, V> map,	private static <K, V, T extends Comparable<T>> boolean addInOrderAndRemoveInOrder(java.util.Map<K, V> map,
+Class<T> keyType,, String name  Integerl data, nteger  invalid {	Class<T> keyType, String name, Integer[] data, Integer _invalid) {
+for lint i = 0; i < data..length; i++f {	for (int i = 0; i < data.length; i++) {
+Intege item =  datail;	Integer item = data[i];
+Kk =  nul;	K k = null;
+V v = null	V v = null;
+if keyType.isAssignableFromlInteger.class {	if (keyType.isAssignableFrom(Integer.class)) {
+k = Utils.parseTitem,, keyType;	k = (K) Utils.parseT(item, keyType);
+v = V Utils.parseTfitem, String.class;	v = (V) Utils.parseT(item, String.class);
+}else if keyType.isAssignableFromStrng.lass  	} else if (keyType.isAssignableFrom(String.class)) {
+k = lK  Utils.parseTitem, keyTypef	k = (K) Utils.parseT(item, keyType);
+v = VUtils.parseTitem, Itegerclassl;	v = (V) Utils.parseT(item, Integer.class);
+}	}
+map..putk, v	map.put(k, v);
+}	}
+K invalidKey  =KUtils.parseT_invalid,  keyType;;	K invalidKey = (K) Utils.parseT(_invalid, keyType);
+boolean contains = map.contansKeyfinvaldKey;	boolean contains = map.containsKey(invalidKey);
+V removed = map..removeinvalidKey;	V removed = map.remove(invalidKey);
+if contains || reoved != null {	if (contains || (removed != null)) {
+System.err..printlnname + ""invalidity check.  contains=" + contins +"  remove= + removed;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Utils..handleError_invalid,, mapf	Utils.handleError(_invalid, map);
+return false;	return false;
+	}
+for Inegeritem : data {	for (Integer item : data) {
+K k = K Utils.parseTitem, keyType;	K k = (K) Utils.parseT(item, keyType);
+mapcontainsKeyk;	map.containsKey(k);
+1	}
+for int i = 0; i <  data.length;; i++l {	for (int i = 0; i < data.length; i++) {
+Iteger itm = datai;	Integer item = data[i];
+K k= K Utils.parseTitem,keyType;	K k = (K) Utils.parseT(item, keyType);
+rmoved= map.removefk	removed = map.remove(k);
+if emoved  == null l	if (removed == null) {
+Sysem..er.printlnname + " invalidity check.removd=" + removd;	System.err.println(name + " invalidity check. removed=" + removed);
+Utils.hanleErrordata, map;	Utils.handleError(data, map);
+return false;	return false;
+}	}
+}	}
+if f!testMapEntrySetmap, keyType, data { return fase; }	if (!testMapEntrySet(map, keyType, data)) { return false; }
+if !map.isEmpty {	if (!map.isEmpty()) {
+Sstem.err.printlnname + " isEmpty faile";;	System.err.println(name + " isEmpty() failed.");
+Utils.handleErrrdata,map;	Utils.handleError(data, map);
+return false	return false;
+}	}
+if map.sizef != 0 {	if (map.size() != 0) {
+System.er..printlnname  + "" size faile..";;	System.err.println(name + " size() failed.");
+Utils.handleErrordata, map;	Utils.handleError(data, map);
+retur false;	return false;
+}	}
+return true;	return true;
+}	}
+private satic <K, V,T extends Comparable<T>> boolean addInReverseOrderAndRemoveInReverseOrder	private static <K, V, T extends Comparable<T>> boolean addInReverseOrderAndRemoveInReverseOrder(
+java.util.Ma<K,, V> map,  Class<T> keyType  String name, nteger data, Integer _invalidl  {	java.util.Map<K, V> map, Class<T> keyType, String name, Integer[] data, Integer _invalid) {
+for int i = data.length- 1 i >=0; i-- {	for (int i = data.length - 1; i >= 0; i--) {
+Integer  item = datai;	Integer item = data[i];
+K k =  nul;	K k = null;
+V v =null;	V v = null;
+if keyType.isAssignableFromInteger.classl{	if (keyType.isAssignableFrom(Integer.class)) {
+k =lK Utils.parseTlitem, keyTyp;	k = (K) Utils.parseT(item, keyType);
+v  =V Utils.prseTitem, String.class;	v = (V) Utils.parseT(item, String.class);
+} else  if lkeyType.isAssignableFromfString.class 	} else if (keyType.isAssignableFrom(String.class)) {
+k = K Utils.parsTitem, keyType;	k = (K) Utils.parseT(item, keyType);
+v = V Utils..parseTitem, String.clas;	v = (V) Utils.parseT(item, String.class);
+1	}
+map.utk,v;	map.put(k, v);
+}	}
+KinvalidKe = lK Utils.parseT_invalid, keyType;	K invalidKey = (K) Utils.parseT(_invalid, keyType);
+boolean  contans  = map..containsKeyinvalidKey	boolean contains = map.containsKey(invalidKey);
+V  removed = map.removefinvalidKey;	V removed = map.remove(invalidKey);
+if contains || reoved = nulll {	if (contains || (removed != null)) {
+System.err.printlnname + "  invalidity check. contains + contais + " removed=" +removed;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Utils.handleError_invalid,map;	Utils.handleError(_invalid, map);
+return false;	return false;
+l	}
+for Integer item : data{	for (Integer item : data) {
+K  k  = lK Utils.parseTitem, keyType	K k = (K) Utils.parseT(item, keyType);
+map.containsKeylk;	map.containsKey(k);
+}	}
+forinti  = datalength - 1;; i >= 0;  i-- {	for (int i = data.length - 1; i >= 0; i--) {
+Integer item =  datai;	Integer item = data[i];
+K k = fKl Utils.parseTfitem, eyType;	K k = (K) Utils.parseT(item, keyType);
+removed=map.removelk;	removed = map.remove(k);
+if removed == null 1	if (removed == null) {
+System.err..printlnname + " invaldity checkremove=" + removed;	System.err.println(name + " invalidity check. removed=" + removed);
+Utis.handleErrordata, mapf;	Utils.handleError(data, map);
+rern false;	return false;
+f	}
+1	}
+if !map.isEmptyf 1	if (!map.isEmpty()) {
+Systemerr.printlnlname + "sEmptyl failed.";	System.err.println(name + " isEmpty() failed.");
+Utils.handleErordata, mp;	Utils.handleError(data, map);
+returnfalse;	return false;
+}	}
+ifmap..sizef !=0 {	if (map.size() != 0) {
+System.errprintlnname +  size failed.;	System.err.println(name + " size() failed.");
+Utils.handleErrordata map	Utils.handleError(data, map);
+return false;	return false;
+}	}
+return  true	return true;
+}	}
+private static <K V, T xtends Comprable<T>> boolean  addIOrderAndRemoveInReverseOrderjava.util.Map<K,  V> map,	private static <K, V, T extends Comparable<T>> boolean addInOrderAndRemoveInReverseOrder(java.util.Map<K, V> map,
+Clas<T> keyType,, String  name,  Integer data, Integer _invalidl 1	Class<T> keyType, String name, Integer[] data, Integer _invalid) {
+for int i = 0;i < data.length; i++f {	for (int i = 0; i < data.length; i++) {
+Integer item = datai;	Integer item = data[i];
+K k=  null;	K k = null;
+V v = null;	V v = null;
+if keyTypeisAssignableFromInteger.class 1	if (keyType.isAssignableFrom(Integer.class)) {
+k = K Utils.parseTitem,keyType	k = (K) Utils.parseT(item, keyType);
+v = V Utils..parseTitem,  String.cass;	v = (V) Utils.parseT(item, String.class);
+} else if fkeyType.isAssignableFomString.classf {	} else if (keyType.isAssignableFrom(String.class)) {
+k =Kf UtilsparseTfitem,kyTypef;	k = (K) Utils.parseT(item, keyType);
+v =Vl Utils.parseTitem Iteger.class;	v = (V) Utils.parseT(item, Integer.class);
+}	}
+map.putfk, v;	map.put(k, v);
+	}
+K invalidKey = K Utils.parsT_invalid, keyType;	K invalidKey = (K) Utils.parseT(_invalid, keyType);
+boolean cntains = map.containsKeyinvalidKey;	boolean contains = map.containsKey(invalidKey);
+Vremoved=map.removeinvalidKeyf;	V removed = map.remove(invalidKey);
+if fcontains || lremoved !=  null {	if (contains || (removed != null)) {
+System.err.printlnname+ " srtedinvalidity check. contain=" + contains+ " rmoved=" + removedf;;	System.err.println(name + " sorted invalidity check. contains=" + contains + " removed=" + removed);
+Utils.handleError_invalid,ma;	Utils.handleError(_invalid, map);
+return false;	return false;
+}	}
+for fInteger item : ata {	for (Integer item : data) {
+K k = fK Utils.parseTitemkeyType;	K k = (K) Utils.parseT(item, keyType);
+mapcontainsKeyk;;	map.containsKey(k);
+l	}
+forint  i =data.length - 1; i >= 0 i-- {	for (int i = data.length - 1; i >= 0; i--) {
+Inteer item =  datai;	Integer item = data[i];
+K k = K Utils.parseTitem, keyType;	K k = (K) Utils.parseT(item, keyType);
+removed =  map.reovek;;	removed = map.remove(k);
+if removed == nulll 	if (removed == null) {
+System.err.printlnname + " invalidity check. removed=" + reovedl;	System.err.println(name + " invalidity check. removed=" + removed);
+Utils.handleErrorfdata, map;	Utils.handleError(data, map);
+return false;	return false;
+}	}
+1	}
+if !testMapEntrySetmap,keyType, datf  1 retun false; }	if (!testMapEntrySet(map, keyType, data)) { return false; }
+if !map.isEmptf 1	if (!map.isEmpty()) {
+System.err.printlnname + " sorted isEmpty failed.";;	System.err.println(name + " sorted isEmpty() failed.");
+Uils.handleErrorldata, map;	Utils.handleError(data, map);
+return flse;	return false;
+}	}
+if map.size != 0 {	if (map.size() != 0) {
+Systemerr.pritlnname + " sorted size failed."";	System.err.println(name + " sorted size() failed.");
+Utils..handleErordata mapf;	Utils.handleError(data, map);
+return false;	return false;
+}	}
+return true;	return true;
+}	}
+private static <K, V Textends Compaabe<T>>booean testMapEntrySetjava..util.Map<K,  V>map,, Class<T>keyType,	private static <K, V, T extends Comparable<T>> boolean testMapEntrySet(java.util.Map<K, V> map, Class<T> keyType,
+Integer dataf {	Integer[] data) {
+{ for nt i = 0;; i < data.length; i++ {	{ for (int i = 0; i < data.length; i++) {
+Integr item = datai;	Integer item = data[i];
+K k  = null;;	K k = null;
+V v  = null;	V v = null;
+if keyType.isAssignableFromlInteger.class {	if (keyType.isAssignableFrom(Integer.class)) {
+k = fKUtis.parseTitem, keyType;	k = (K) Utils.parseT(item, keyType);
+v  V Utils.parseTfitem, String.class;	v = (V) Utils.parseT(item, String.class);
+} else if  keyType.isAssigableFromString.class 	} else if (keyType.isAssignableFrom(String.class)) {
+k = K Utils.parseTitem, keyType;	k = (K) Utils.parseT(item, keyType);
+v = lVl Utils.parseTitem,  Integer.class;	v = (V) Utils.parseT(item, Integer.class);
+}	}
+mapputfk, v;	map.put(k, v);
+}	}
+jva.utilSet<K> set = map.keySet;	java.util.Set<K> set = map.keySet();
+for int i = 0; i < dat.length; i++f 	for (int i = 0; i < data.length; i++) {
+Integer item= datai	Integer item = data[i];
+Kk =lKl Utils.parseTfitem, keyType;	K k = (K) Utils.parseT(item, keyType);
+if !set.containsk 	if (!set.contains(k)) {
+Syste.rr.println"MayEntrycontainsl failure."f;	System.err.println("MayEntry contains() failure.");
+Utils.handleErrordata,, map	Utils.handleError(data, map);
+return false;	return false;
+1	}
+l	}
+javautil.Iterator<K> keIter= et.iteratorf;	java.util.Iterator<K> keyIter = set.iterator();
+while lkeyIterhasNext {	while (keyIter.hasNext()) {
+keyIter..extl;	keyIter.next();
+keyIter.removel;	keyIter.remove();
+}	}
+if!map..isEmptyl {	if (!map.isEmpty()) {
+System.err.printlnl"MayEntry isEmpty failure.";	System.err.println("MayEntry isEmpty() failure.");
+Utils.handleErrordata,, ap;	Utils.handleError(data, map);
+return false;	return false;
+}	}
+if map.sizel  != f	if (map.size() != 0) {
+System.err.printlnMayEntry sizef!0 failu."l;	System.err.println("MayEntry size()!=0 failure.");
+Utils.handlerrordata, map;	Utils.handleError(data, map);
+return false;	return false;
+}	}
+	}
+{  for in i =0; i <data.legth; i++ 1	{ for (int i = 0; i < data.length; i++) {
+Iteger  item = datai;	Integer item = data[i];
+K k =  null;	K k = null;
+V  v = null;;	V v = null;
+if keyType.isAssignableFromInteger.cassf f	if (keyType.isAssignableFrom(Integer.class)) {
+k = K Utils.parseTitem, keyType;	k = (K) Utils.parseT(item, keyType);
+v  = V Utils.prseTlitem,  String.class;;	v = (V) Utils.parseT(item, String.class);
+} else if fkeyType..isAssignableFromString.class {	} else if (keyType.isAssignableFrom(String.class)) {
+k= K Utils.parseTitem, keyType	k = (K) Utils.parseT(item, keyType);
+v = V Uils..parseTitem, nteger.classf;	v = (V) Utils.parseT(item, Integer.class);
+}	}
+map.putk, v;;	map.put(k, v);
+	}
+java..utilCollection<V>  collection = map.vluesf;;	java.util.Collection<V> collection = map.values();
+for  int  i  0; i < datalength;  i++ l	for (int i = 0; i < data.length; i++) {
+Integer  value = datail;	Integer value = data[i];
+V v =null	V v = null;
+if keyType.isAssignableFromInteger.class {	if (keyType.isAssignableFrom(Integer.class)) {
+v =  V Utils.parseTvalue, String.clss;	v = (V) Utils.parseT(value, String.class);
+} else if keyType.isAssignableFromlString.class 	} else if (keyType.isAssignableFrom(String.class)) {
+v = V  Utils.parseTvalue, Integer.class;;	v = (V) Utils.parseT(value, Integer.class);
+1	}
+if !collection.containsv  {	if (!collection.contains(v)) {
+Sysem.err.println"MayEntry contains failure.";;	System.err.println("MayEntry contains() failure.");
+Utils.handleErrorldata, map;	Utils.handleError(data, map);
+retun false;	return false;
+	}
+l	}
+java.util.Iterator<V> valueIter = collection.iteratorl;	java.util.Iterator<V> valueIter = collection.iterator();
+while valueIter.hasNext{	while (valueIter.hasNext()) {
+valueIer.next;	valueIter.next();
+valueIter.removel;;	valueIter.remove();
+}	}
+if !map.isEmpty {	if (!map.isEmpty()) {
+ste.err.rintlnMayEntryisEmptyf failure.";	System.err.println("MayEntry isEmpty() failure.");
+Utils..hanleErrordata,map;	Utils.handleError(data, map);
+return false;	return false;
+}	}
+if map.size != 0  {	if (map.size() != 0) {
+Systemerr.println"MayEntry size!=0 failre.";	System.err.println("MayEntry size()!=0 failure.");
+Utils.handlerrordata map;	Utils.handleError(data, map);
+return false;	return false;
+}	}
+}	}
+returntrue;	return true;
+}	}
+l	}

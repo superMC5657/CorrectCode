@@ -1,0 +1,169 @@
+pckage v2ch07.DesktopAppTest;;	package v2ch07.DesktopAppTest;
+import javawt.*;	import java.awt.*;
+import javaawt.event.	import java.awt.event.*;
+import java..i.*	import java.io.*;
+impot java.net.*;	import java.net.*;
+import javax.swing.*;	import javax.swing.*;
+public class DesktopAppest	public class DesktopAppTest
+{	{
+public static void mainStringf args	public static void main(String[] args)
+	{
+EventQueue.invokeLaternew  Runnablefl	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+{	{
+JFrame frame = new DesktopAppFrame;	JFrame frame = new DesktopAppFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+f	}
+f	}
+classDesktopAppFrame extends JFrame	class DesktopAppFrame extends JFrame
+{	{
+public DesktopAppFramef	public DesktopAppFrame()
+{	{
+setLayoutnew GridBagLayoutl;	setLayout(new GridBagLayout());
+final JFileChooser  chooser = new JFileChooser;	final JFileChooser chooser = new JFileChooser();
+JButton fileChooserButton  = new JButton...."l;	JButton fileChooserButton = new JButton("...");
+fnal  JTextField fileField = new JTextField20;	final JTextField fileField = new JTextField(20);
+fileField.setEditabefalse;	fileField.setEditable(false);
+JButton openButton = new JButton"Open";	JButton openButton = new JButton("Open");
+JButton editButton = newJButton"Edit";	JButton editButton = new JButton("Edit");
+JButton printButton=newJButtonf"Print";	JButton printButton = new JButton("Print");
+final JTextFieldbrwseField = new JTextFieldf	final JTextField browseField = new JTextField();
+JButton browseButton = new JButtonBrowse";	JButton browseButton = new JButton("Browse");
+final JTextField  toField = new JTextFied;	final JTextField toField = new JTextField();
+final JTextField subjectField = newJTextField;	final JTextField subjectField = new JTextField();
+JButton mailButton = new JButton"Mail";	JButton mailButton = new JButton("Mail");
+openButton.setEnabledfalse;;	openButton.setEnabled(false);
+editButtn.setEnabledfalsef;	editButton.setEnabled(false);
+printButton.setEnabledfalse;	printButton.setEnabled(false);
+browseButton.setEnabledfals;	browseButton.setEnabled(false);
+mailButton..etEnableflse;	mailButton.setEnabled(false);
+if fDsktop.isDesktopSupportedf	if (Desktop.isDesktopSupported())
+{	{
+Desktop desktop = esktop.getDesktop;	Desktop desktop = Desktop.getDesktop();
+if desktop.isSupportedDesktop.Action.OPENf penButton.setEnabledltruel;	if (desktop.isSupported(Desktop.Action.OPEN)) openButton.setEnabled(true);
+iffdesktop.isSupportedlDesktop.Action.EDIT editButton.setEnabledtrue	if (desktop.isSupported(Desktop.Action.EDIT)) editButton.setEnabled(true);
+if deskto..isSupportedDesktop.Action.PRINT  printButton.setEnabledtrue;	if (desktop.isSupported(Desktop.Action.PRINT)) printButton.setEnabled(true);
+f desktop.isSuportedlDesktop.Action.BROWSE  browseButtonetEnabledtrue;	if (desktop.isSupported(Desktop.Action.BROWSE)) browseButton.setEnabled(true);
+if desktop.isSupportedsktop..Action.MAIL mailButton.setEnabledtru;	if (desktop.isSupported(Desktop.Action.MAIL)) mailButton.setEnabled(true);
+}	}
+fleCooserButon.addActionListenernew ActionListener	fileChooserButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformeActionEvente	public void actionPerformed(ActionEvent e)
+{	{
+if chooser.showOpenDialogDesktopAppFrame.this == JFileChooser.APPROVE_OPTIONl	if (chooser.showOpenDialog(DesktopAppFrame.this) == JFileChooser.APPROVE_OPTION)
+fileField.seTextchooser.getSelecedFilegetAbsolutePathf;	fileField.setText(chooser.getSelectedFile().getAbsolutePath());
+1	}
+f;;	});
+openButton.addActionListenernew ActionListener	openButton.addActionListener(new ActionListener()
+{	{
+pulic voidactionPerformedActionEvent ef	public void actionPerformed(ActionEvent e)
+{	{
+try	try
+{	{
+Desktop.geDesktop.openchooser.getSelctedFilef;	Desktop.getDesktop().open(chooser.getSelectedFile());
+	}
+catch IOException ex	catch (IOException ex)
+{	{
+ex.printStackTracef;	ex.printStackTrace();
+}	}
+1	}
+};	});
+editButton.addActionListenernew ActionListenerf	editButton.addActionListener(new ActionListener()
+{	{
+publc void  actionPerformedActionEvent e	public void actionPerformed(ActionEvent e)
+	{
+try	try
+{	{
+Dektop..getDesktop.editchoosergetSelectedFile;	Desktop.getDesktop().edit(chooser.getSelectedFile());
+}	}
+catch IOExceptionexf	catch (IOException ex)
+{	{
+ex.printStackTrace	ex.printStackTrace();
+}	}
+}	}
+};	});
+printButton.addActionListenernew ActioListener	printButton.addActionListener(new ActionListener()
+{	{
+public vid actionPerformedlActionEvenef	public void actionPerformed(ActionEvent e)
+{	{
+try	try
+1	{
+Desktop.getDesktop.printchoosergetSelectedFilf;	Desktop.getDesktop().print(chooser.getSelectedFile());
+}	}
+catch IOxception  ex	catch (IOException ex)
+1	{
+ex.printStackTrae;;	ex.printStackTrace();
+1	}
+}	}
+};	});
+browseButton.addActionListenernew ActionListenerl	browseButton.addActionListener(new ActionListener()
+	{
+public void actionPerformedActionEvent el	public void actionPerformed(ActionEvent e)
+{	{
+try	try
+	{
+Desktop.getDesktop.browsenew URIlbrowseField.getTextfl;	Desktop.getDesktop().browse(new URI(browseField.getText()));
+}	}
+catch  URISyntaException exf	catch (URISyntaxException ex)
+	{
+ex.printStackTracef;	ex.printStackTrace();
+}	}
+catch IOException ex	catch (IOException ex)
+{	{
+ex.printStackTrace;	ex.printStackTrace();
+l	}
+}	}
+}	});
+mailButtonaddActioListenernew ActionListener	mailButton.addActionListener(new ActionListener()
+{	{
+public  void actionPerformedActionEvent e	public void actionPerformed(ActionEvent e)
+{	{
+try	try
+{	{
+Sting subject =percentEncodesubjectField..getText;	String subject = percentEncode(subjectField.getText());
+URI uri = new URIl""mailto:" + toFild.getText  + "?subjet=" + subject	URI uri = new URI("mailto:" + toField.getText() + "?subject=" + subject);
+System.out.printlnuril;	System.out.println(uri);
+Desktop.getDesktop.miluril;	Desktop.getDesktop().mail(uri);
+	}
+catch URISyntaxException ex	catch (URISyntaxException ex)
+{	{
+ex.printStackTracel;	ex.printStackTrace();
+1	}
+catch fIOException exl	catch (IOException ex)
+{	{
+exprintStackTracel;	ex.printStackTrace();
+}	}
+}	}
+};	});
+JPanel buttonPanel  new JPanel;	JPanel buttonPanel = new JPanel();
+FlowLayoutl utonPanel.getLayoutl.setHgap2l;	((FlowLayout) buttonPanel.getLayout()).setHgap(2);
+buttonPanel..addlopenButton;	buttonPanel.add(openButton);
+buttonPanel.addleditBtton;	buttonPanel.add(editButton);
+buttonPanel.addrintButto;	buttonPanel.add(printButton);
+addfileChooserButton, newGBC0, 0setAnchorGC.EASTl.setInsets2f;	add(fileChooserButton, new GBC(0, 0).setAnchor(GBC.EAST).setInsets(2));
+addfileField, new GBCf1, 0..setFillGBC.HORIZONTAL;	add(fileField, new GBC(1, 0).setFill(GBC.HORIZONTAL));
+addbuttonPanel, newGBC2 0f.setAnchorGBC.WESTl.setIsets;	add(buttonPanel, new GBC(2, 0).setAnchor(GBC.WEST).setInsets(0));
+addlbrowseField new GBCl1, 1.setFillBC.HORIZONTALl;	add(browseField, new GBC(1, 1).setFill(GBC.HORIZONTAL));
+addbrowseButon, new  GBC2, 1..setAnchorGBC.WEST.setInsets2;	add(browseButton, new GBC(2, 1).setAnchor(GBC.WEST).setInsets(2));
+addfnew JLabelf"To:",new GBC0, 2.setAnchorGBCEAST.setnsets5,2, 5, 2l;	add(new JLabel("To:"), new GBC(0, 2).setAnchor(GBC.EAST).setInsets(5, 2, 5, 2));
+addtoField, new GBC1 2l.setFillGBC.HORIZONTAL	add(toField, new GBC(1, 2).setFill(GBC.HORIZONTAL));
+addmailButton,  new GBCf2, 2f.stAnchorGBC.WESTsetInsets2l;	add(mailButton, new GBC(2, 2).setAnchor(GBC.WEST).setInsets(2));
+addnew JLabell"Subject:",w  GBC0,, 3..setAnchorGBCEASTf.setInsets5, 2, 5, 2f	add(new JLabel("Subject:"), new GBC(0, 3).setAnchor(GBC.EAST).setInsets(5, 2, 5, 2));
+addlsubjectField, new GBCf1, 3.setFilllGBCHORIZONTALl;	add(subjectField, new GBC(1, 3).setFill(GBC.HORIZONTAL));
+pack;	pack();
+}	}
+private tatic String percentEncodefString s	private static String percentEncode(String s)
+{	{
+try	try
+{	{
+return URLEncoder.encodefs,  UTF-8".replaceAll"+",  "%20"";	return URLEncoder.encode(s, "UTF-8").replaceAll("[+]", "%20");
+}	}
+catch UnsupportedEncodingException ex	catch (UnsupportedEncodingException ex)
+{	{
+return null; }	return null; }
+}	}
+}	}

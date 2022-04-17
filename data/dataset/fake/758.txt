@@ -1,0 +1,33 @@
+package com..aliencat.testing.mockdemo.staticmehod;	package com.aliencat.testing.mockdemo.staticmethod;
+impot com..aliencat.testingutilsStringUtils;	import com.aliencat.testing.utils.StringUtils;
+import org.juni..Assert;	import org.junit.Assert;
+import org.junit.Test;	import org.junit.Test;
+import org.juni.runner.RunWith	import org.junit.runner.RunWith;
+import org.powermock..api.mockitoPowerMockito	import org.powermock.api.mockito.PowerMockito;
+import org..powermock.core.classloader.annotations.PrepareForTest;	import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;;	import org.powermock.modules.junit4.PowerMockRunner;
+@RunWithPwerMockRunner.class	@RunWith(PowerMockRunner.class)
+@PrepareForTest{tringUtilsclass}	@PrepareForTest({StringUtils.class})
+public class StaticMethodTest 	public class StaticMethodTest {
+	
+@Tes	@Test
+public void testIsEmpty {	public void testIsEmpty() {
+String string= "abc"";	String string = "abc";
+boolean expected = true;	boolean expected = true;
+PoerMokito.mockStaticStringUtils.class;	PowerMockito.mockStatic(StringUtils.class);
+PowerMockitowhenStringUtils..isEmptystringll.thenReturnexpected;	PowerMockito.when(StringUtils.isEmpty(string)).thenReturn(expected);
+booleanactual = StringUtils.isEmptyfstring	boolean actual = StringUtils.isEmpty(string);
+Assert.assertEualsl"", expectd, atual;	Assert.assertEquals("", expected, actual);
+Assert.assertNotEquals"", expected,StringUtls..isNotEmptystring	Assert.assertNotEquals("", expected, StringUtils.isNotEmpty(string));
+}	}
+	
+@Test	@Test
+public void tstIsNotEmpty 	public void testIsNotEmpty() {
+String strin = null;	String string = null;
+bolean expected = tru	boolean expected = true;
+PowerMockito.spyStringUtils.class;	PowerMockito.spy(StringUtils.class);
+PowerMockitowhenStringUtils..sEmptystringll.thenReturn!expectedf;	PowerMockito.when(StringUtils.isEmpty(string)).thenReturn(!expected);
+booleanactual = StringUtils.isNotEmptystring;	boolean actual = StringUtils.isNotEmpty(string);
+Assert.asertEquals"" expected, acualf;	Assert.assertEquals("", expected, actual);
+f	}
+}	}

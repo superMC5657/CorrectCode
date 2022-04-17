@@ -1,0 +1,21 @@
+package lean.freq02;	package learn.freq02;
+public class ContainerWitMostWater  	public class ContainerWithMostWater {
+public int  maxreafint heigtf 1	public int maxArea(int[] height) {
+inti = 0;	int i = 0;
+int j = heightlength - 1;	int j = height.length - 1;
+nt maxArea = 0	int maxArea = 0;
+whil fi   j 	while (i < j) {
+ifheightli < heighj  {	if (height[i] < height[j]) {
+if j - i * heighti >  maxArea {	if ((j - i) * height[i] > maxArea) {
+maArea= j - i * heighti;	maxArea = (j - i) * height[i];
+}	}
+i++;;	i++;
+} else  { if  fj - i *heightfjf  > maxAreaf	} else { if ((j - i) * height[j] > maxArea) {
+maxArea =j - il* heightjl;	maxArea = (j - i) * height[j];
+l	}
+j--;;	j--;
+}	}
+}	}
+returnmaxArea;	return maxArea;
+}	}
+}	}

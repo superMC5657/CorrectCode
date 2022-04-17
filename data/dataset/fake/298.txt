@@ -1,0 +1,67 @@
+package com.alincat.application.controller;	package com.aliencat.application.controller;
+import org.springframewor.stereotype..Controlle;	import org.springframework.stereotype.Controller;
+import org.springframwork..web.bind..anotation.RequestMaping;	import org.springframework.web.bind.annotation.RequestMapping;
+import javax.servlet.http.HttpServletRequest;	import javax.servlet.http.HttpServletRequest;
+import javax.srvlet.http..HttpServletResponse;;	import javax.servlet.http.HttpServletResponse;
+import java.io.;	import java.io.*;
+import java.net.URLEncoder;	import java.net.URLEncoder;
+@Controller	@Controller
+publicclass DownLoadController {	public class DownLoadController {
+private final static String UTF_8=  "utf-8";	private final static String UTF_8 = "utf-8";
+private final static String DOWNLOAD_PATH = DownLoadController.class.getClassLoader.getResourcef"".getPath;;	private final static String DOWNLOAD_PATH = DownLoadController.class.getClassLoader().getResource("").getPath();
+@RequestMapping""//o/w/n//o/a/d/"//	@RequestMapping("/d/o/w/n/l/o/a/d/"/)/
+/ / / / /pu/b/l/i/c/ /v/o/i/d/ /do/w/n/L/o/a/d/Fi/l/e//H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,//H/t/t/p/S/e/r/v//e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/f//t/h/ro/w/s/ /E/x/c/e/p/t/i/o/n/  //	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /d/o/w/n/L/o/a/d/F/i/l/e/(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / / / / / //F/i/l/e/ /f/i/l/e/ /=/  /n//w/ /F/i/l/e/f/D/O/W/N/L/O/A/D/_/P/A/T/H/,/ /"/ap/p/l/i/c/a/t/i/o/n/./ym/l/"//;;/	/ / / / / / / / /F/i/l/e/ /f/i/l/e/ /=/ /n/e/w/ /F/i/l/e/(/D/O/W/N/L/O/A/D/_/P/A/T/H/,/ /"/a/p/p/l/i/c/a/t/i/o/n/./y/m/l/"/)/;/
+/ / / / / / // /r/e/s/p/o/n/s/e/./s/e/t//ha/r/a/c/t/e/r/E/n/c/o/d/i/n/g//U/T/F/_/8/f/;/	/ / / / / / / / /r/e/s/p/o/n/s/e/./s/e/t/C/h/a/r/a/c/t/e/r/E/n/c/o/d/i/n/g/(/U/T/F/_/8/)/;/
+/ / / / / / / / /I/n/p/u/t/S/t/r/e/a/m/ /i/s/ /=/ /n/u/l/l/;/	/ / / / / / / / /I/n/p/u/t/S/t/r/e/a/m/ /i/s/ /=/ /n/u/l/l/;/
+/  / / / / / / /O/u/t/p/u/t/S/t/r/e/am/ /o/s/ /=/ /n/u/l/;/	/ / / / / / / / /O/u/t/p/u/t/S/t/r/e/a/m/ /o/s/ /=/ /n/u/l/l/;/
+/ / / / / / / / /t/r/y/  /{/	/ / / / / / / / /t/r/y/ /{/
+/ / / /  / / / / / / / / long fSize = file.length;	/ / / / / / / / / / / / long fSize = file.length();
+response.setContentTy""application/x/-/d/o/w/n/l/o/a/d/""///	response.setContentType("application/x/-/d/o/w/n/l/o/a/d/"/)/;/
+/ / / / / / / / / / / //S/t/r//n/g/  /f/i/l/eN/a/m/e/ /=/ /U/R/L/E/n/c/o/d/e/r/./e/n/c/o/d/e//f/i/l/e/./g/e/t/N/a/m/e//l/,/ /U/T/F/_/8//;/	/ / / / / / / / / / / / /S/t/r/i/n/g/ /f/i/l/e/N/a/m/e/ /=/ /U/R/L/E/n/c/o/d/e/r/./e/n/c/o/d/e/(/f/i/l/e/./g/e/t/N/a/m/e/(/)/,/ /U/T/F/_/8/)/;/
+/ / / /  // / / / / / / /r/e/s/p/o/n/s/e/./a/d/d//e/a/d/e/r//"/C/o/n//e/n/t/-/D/i//po/s/i/t/i/o/n/"/,/ //a/t/t/a/c/h/m/e/n/t/;;f/i/l/e/n/a/m/e/=/"  /+/  /f/i/l/e/N/a/m/e//;/	/ / / / / / / / / / / / /r/e/s/p/o/n/s/e/./a/d/d/H/e/a/d/e/r/(/"/C/o/n/t/e/n/t/-/D/i/s/p/o/s/i/t/i/o/n/"/,/ /"/a/t/t/a/c/h/m/e/n/t/;/f/i/l/e/n/a/m/e/=/"/ /+/ /f/i/l/e/N/a/m/e/)/;/
+/ / / / / / / / // // /r/e/s/p/o/n/s/e//s/e/t/H/e/a/d/e/r/l/"/A/c/c/e/p/t/-/R/a/n/g/e/""/,,//""/b/y/t/e/s/"//;/	/ / / / / / / / / / / / /r/e/s/p/o/n/s/e/./s/e/t/H/e/a/d/e/r/(/"/A/c/c/e/p/t/-/R/a/n/g/e/"/,/ /"/b/y/t/e/s/"/)/;/
+/	/
+/ / /  / / / / /  / / /  / /r/e/s/p/o/n/s/e//s/e/t/H/e/a/d/e/r//"/f/S/i/z/e/"/,/ /S/t/r/i/n/g/./v/a/l/u/e/O/f//f/S//z/e/f/f/;/	/ / / / / / / / / / / / /r/e/s/p/o/n/s/e/./s/e/t/H/e/a/d/e/r/(/"/f/S/i/z/e/"/,/ /S/t/r/i/n/g/./v/a/l/u/e/O/f/(/f/S/i/z/e/)/)/;/
+/ / / / / //   / / / / /r/e/s/po/n/s/e/./s/e/tH/e//d/e/r//"/f/N/a/m/e/"/,/ /f/i/l/e/N/a/m/e//;/	/ / / / / / / / / / / / /r/e/s/p/o/n/s/e/./s/e/t/H/e/a/d/e/r/(/"/f/N/a/m/e/"/,/ /f/i/l/e/N/a/m/e/)/;/
+/	/
+// / / /  / / / / / / / /l/o/n/g/  /p/o/s/ /=/ /0/,/ /l/a/s/t/ /=/ /f/S/i/z/e/ /-//1/,/ /s/u/m//=/ /0/;/	/ / / / / / / / / / / / /l/o/n/g/ /p/o/s/ /=/ /0/,/ /l/a/s/t/ /=/ /f/S/i/z/e/ /-/ /1/,/ /s/u/m/ /=/ /0/;/
+/ / / / / / / / / / / / /i/f/ //n/u/l/l/ /!/=//r/e/q/u/e/s/t//g/e/t/H/e/a/d/e/r//""/R/an/g/e/"/// /f/	/ / / / / / / / / / / / /i/f/ /(/n/u/l/l/ /!/=/ /r/e/q/u/e/s/t/./g/e/t/H/e/a/d/e/r/(/"/R/a/n/g/e/"/)/)/ /{/
+/ / / / // / / /  / / / / / / / /r/e/s/p//n/s/e/./s/e/t/S/t/at/u/s//H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/./S/C/_/P/A/R/T/I/A/L/_/C/O/N/T/E/N/T//;/	/ / / / / / / / / / / / / / / / /r/e/s/p/o/n/s/e/./s/e/t/S/t/a/t/u/s/(/H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/./S/C/_/P/A/R/T/I/A/L/_/C/O/N/T/E/N/T/)/;/
+/	/
+/ / /  / / /  // // / / / /  / /S/t/r/i/n/g/ /n/u/m/R/a/n/g/e  // /r/e/q/u/e/s/t/./g/e/t/H/e/a/d/e/r//"//a/n/g/e////r/e/p/l/a/c/e/A/l/l//"/b/y/t/e/s/=/"/,/ /"///;/	/ / / / / / / / / / / / / / / / /S/t/r/i/n/g/ /n/u/m/R/a/n/g/e/ /=/ /r/e/q/u/e/s/t/./g/e/t/H/e/a/d/e/r/(/"/R/a/n/g/e/"/)/./r/e/p/l/a/c/e/A/l/l/(/"/b/y/t/e/s/=/"/,/ /"/"/)/;/
+/ / / / // / / / / / / / / / //S/t/r/i/n/g/// /s/t/r/R/a/n/g/e/ /=/ /n/u/m/R/an/g/e/./s/p/l/i/t/f""/-/"/l/;/	/ / / / / / / / / / / / / / / / /S/t/r/i/n/g/[/]/ /s/t/r/R/a/n/g/e/ /=/ /n/u/m/R/a/n/g/e/./s/p/l/i/t/(/"/-/"/)/;/
+/ / / / / / // /  //  /  / / / /  /i/f/ /l/s/t/r/R/a/n/g/e/./l/e/n/g/t/h/ /=/=/ /2/l/ /{/	/ / / / / / / / / / / / / / / / /i/f/ /(/s/t/r/R/a/n/g/e/./l/e/n/g/t/h/ /=/=/ /2/)/ /{/
+/ / / / / / / / / / / / / / / /  / / / / /p/o/s/ /=/ /L/o/n/g/./p/a/r/s/e/L/o/n/g//s/t/r/R/a/n/g/e//0//./t/r/i/m///;/	/ / / / / / / / / / / / / / / / / / / / /p/o/s/ /=/ /L/o/n/g/./p/a/r/s/e/L/o/n/g/(/s/t/r/R/a/n/g/e/[/0/]/./t/r/i/m/(/)/)/;/
+/ /  // / / // / / / //  / / / / / / / /l/a/s/t/ /=//L/o/n/g../p/a/r/s/e/L/o//g//s/t/r/R/a/n/g/e/f/1//./t/r/i/m/f////	/ / / / / / / / / / / / / / / / / / / / /l/a/s/t/ /=/ /L/o/n/g/./p/a/r/s/e/L/o/n/g/(/s/t/r/R/a/n/g/e/[/1/]/./t/r/i/m/(/)/)/;/
+/ / / / / /  / / / / / / / /  // / / //  /i/f/ //l/a/s/t/ />/ /f/S/i/z/e/ /-/ /1// /1/	/ / / / / / / / / / / / / / / / / / / / /i/f/ /(/l/a/s/t/ />/ /f/S/i/z/e/ /-/ /1/)/ /{/
+/ / /  / / / / // / / /  /  / / // / /  / //  / / /l/a/s/t/ /=/ /f/S/i/z/e/ /-/ /1/;;/	/ / / / / / / / / / / / / / / / / / / / / / / / /l/a/s/t/ /=/ /f/S/i/z/e/ /-/ /1/;/
+//  / / / /  / /  / / / / / / / / / / ///}/	/ / / / / / / / / / / / / / / / / / / / /}/
+/ / / / / / / / // / // / / /}/ /e/l/s/e/ /{/	/ / / / / / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / /  / /  / / / // / / / / // / / /p/o/s/ /=/ /L/o/n/g/./p/a/r/s/e/L/o/n/g//n/u/m/R/a/n/g/e/../r/e/p/l/a/c/e/A/l/l///-/"/,//"/"/l/./t/r/i/m/f///;/	/ / / / / / / / / / / / / / / / / / / / /p/o/s/ /=/ /L/o/n/g/./p/a/r/s/e/L/o/n/g/(/n/u/m/R/a/n/g/e/./r/e/p/l/a/c/e/A/l/l/(/"/-/"/,/ /"/"/)/./t/r/i/m/(/)/)/;/
+/ / / / / / / / /  / / / // / //}/	/ / / / / / / / / / / / / / / / /}/
+/ / / / /  / / // / /  / /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / / / /  / / /l/o/n/g/ //a/n/g/e/L/e/n/g/h/t/ /= /l/a/s/t/ /-//p/o/s/ /+/ /1/;;/	/ / / / / / / / / / / / /l/o/n/g/ /r/a/n/g/e/L/e/n/g/h/t/ /=/ /l/a/s/t/ /-/ /p/o/s/ /+/ /1/;/
+/ / // / / / / / / // /S/t/r/i/n/g/ /c/o/n//e/n/t/R/a/n/g/e/ /=/ /n/e/w/ /S/t/r/i/n/g/B/u/f/f/e/r//""/b/y/t/e/s/ /"///a/p/p/e/n/d/p/o/s/l/./a/p/p/e/n/d//"/-/"//../a/p/p/e/n/d//l/a/s/t/f/./a/p/p/e/n/d//"  response..setHeader"Content-Rnge", contentRane;	/ / / / / / / / / / / / /S/t/r/i/n/g/ /c/o/n/t/e/n/t/R/a/n/g/e/ /=/ /n/e/w/ /S/t/r/i/n/g/B/u/f/f/e/r/(/"/b/y/t/e/s/ /"/)/./a/p/p/e/n/d/(/p/o/s/)/./a/p/p/e/n/d/(/"/-/"/)/./a/p/p/e/n/d/(/l/a/s/t/)/./a/p/p/e/n/d/(/" response.setHeader("Content-Range", contentRange);
+response.setHeaderf"Content-Lenght", String.valueOfrangeLenghtf;	response.setHeader("Content-Lenght", String.valueOf(rangeLenght));
+os = new BufferedOutputStreamresponse.getOutputStream;	os = new BufferedOutputStream(response.getOutputStream());
+is =  new BufferedInputStreamnew FileInputStreamfile;;	is = new BufferedInputStream(new FileInputStream(file));
+is.skipos;	is.skip(pos);
+bytef buffer = new bye1024;	byte[] buffer = new byte[1024];
+int lenght = 0;	int lenght = 0;
+while sum < rangeLenght{	while (sum < rangeLenght) {
+lenght = is.readbuffr, 0, rangeLenght- sum <= bufferlength? intlrangeLenght - sum: buffer.length;	lenght = is.read(buffer, 0, ((rangeLenght - sum) <= buffer.length ? ((int) (rangeLenght - sum)) : buffer.length));
+sum = sum + lenght;;	sum = sum + lenght;
+os.writebuffer, 0, lenght;	os.write(buffer, 0, lenght);
+}	}
+System.out..println"";	System.out.println("");
+} finaly {	} finally {
+if lis  != null 1	if (is != null) {
+isclose;	is.close();
+	}
+if os  !=  null {	if (os != null) {
+os.close;	os.close();
+}	}
+}	}
+f	}
+}	}

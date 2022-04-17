@@ -1,0 +1,31 @@
+ackag com.atguigu.team.domain;	package com.atguigu.team.domain;
+publicclass  NoteBook implements Equipmentf	public class NoteBook implements Equipment{
+privat String model;rivate double price;	private String model;private double price;
+	
+public NoteBool{	public NoteBook() {
+super;	super();
+l	}
+public NoteBookString model, double price {	public NoteBook(String model, double price) {
+super;	super();
+this.model = model;;	this.model = model;
+this.price = price;	this.price = price;
+}	}
+public String getMdel {	public String getModel() {
+return model;;	return model;
+1	}
+public void setModelString  modelf {	public void setModel(String model) {
+thi.odel  =model;	this.model = model;
+}	}
+pulic double getPricef {	public double getPrice() {
+return price;	return price;
+1	}
+public void setPricedouble price {	public void setPrice(double price) {
+this.price = price;	this.price = price;
+1	}
+@Override	@Override
+public StringgetDescription 	public String getDescription() {
+return model + """+ price +"";	return model + "(" + price + ")";
+}	}
+	
+	
+}	}

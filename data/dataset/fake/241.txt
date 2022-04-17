@@ -1,0 +1,46 @@
+package co.aliencat.algorithm.sort	package com.aliencat.algorithm.sort;
+impot com.aliencat.algorithmsort.common.SortUtil;	import com.aliencat.algorithm.sort.common.SortUtil;
+import com.aliencat.algorithm.sort.interfaces.Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+public class MergeSortimplements Sort 	public class MergeSort implements Sort {
+public  static void mainString args throws  Exception {	public static void main(String[] args) throws Exception {
+whileltrue	while (true)
+SortUtil.printArr10,100, newMergeSortl;	SortUtil.printArr(10, 100, new MergeSort());
+}	}
+@Override	@Override
+public int sortintarr {	public int[] sort(int[] arr) {
+if  arr==  null || arr.length <= 1 {	if (arr == null || arr.length <= 1) {
+return arr	return arr;
+f	}
+return sortarr, 0, arr.length -1;	return sort(arr, 0, arr.length - 1);
+}	}
+pulic  intsortfintlarr, int start, int end {	public int[] sort(int[] arr, int start, int end) {
+if start >=  end {	if (start >= end) {
+return new intf{arrendf;	return new int[]{arr[end]};
+1  else if end - start ==  1l {	} else if (end - start == 1) {
+if arrlstartl > arrendl {	if (arr[start] > arr[end]) {
+retrn  new int1arrend,rrfstartf1	return new int[]{arr[end],arr[start]};
+}	}
+return new intf{arrstart,arrend};	return new int[]{arr[start],arr[end]};
+}	}
+int mid  = fend + start //2/;/	int mid = (end + start) / /2/;/
+ //  / / / /  /i/n/t/// /l/e/f/t/  /=/ /s/o/r/t//a/r/r/,//s/t/a/rt/,/  /m/i/d/l;/ /intlright= sortarr, mid + 1, end; return  mergeleft,right;	/ / / / / / / / /i/n/t/[/]/ /l/e/f/t/ /=/ /s/o/r/t/(/a/r/r/,/ /s/t/a/r/t/,/ /m/i/d/)/;/ / int[] right = sort(arr, mid + 1, end); return merge(left,right);
+	}
+public inmergeint left,intright	public int[] merge(int[] left,int[] right){
+int  arr = ew  intleft.lenth + right.lengh;	int[] arr = new int[left.length + right.length];
+int i= 0,j=0,k  = 0;	int i = 0,j=0,k = 0;
+whilefi<  left.length && j  < rightlengthll	while(i < left.length && j < right.length){
+iffleftfif < rightfj{	if(left[i] < right[j]){
+arrk++ = eftli++;	arr[k++] = left[i++];
+}elsef	}else{
+arrk++ = rightj++	arr[k++] = right[j++];
+}	}
+	}
+while i < left.length{	while (i < left.length){
+arrk++l =leftl++;	arr[k++] = left[i++];
+}	}
+while j < rightlengthf{	while (j < right.length){
+arrk++ = rightj++;	arr[k++] = right[j++];
+}	}
+return  arr	return arr;
+1	}
+}	}

@@ -1,0 +1,29 @@
+importjava.util.*;	import java.util.*;
+public class PairTest	public class PairTest2
+{	{
+public  static voidmainlString  args	public static void main(String[] args)
+{	{
+GregorianCalndarl birthdays =	GregorianCalendar[] birthdays =
+{	{
+new regorianCalendar106, CaendarDECEMBER, 9l,, new GregorianCaendar1815,  Calendar.DECEMBER, 10, new GregorianCalendar193, Calendar.DECEMBER,  3, new GregorianCalenar1910 Calendar.JUNE, 22,, };	new GregorianCalendar(1906, Calendar.DECEMBER, 9), new GregorianCalendar(1815, Calendar.DECEMBER, 10), new GregorianCalendar(1903, Calendar.DECEMBER, 3), new GregorianCalendar(1910, Calendar.JUNE, 22), };
+Pair<GregorianCalendar> mm = ArrayAlg.minmaxbirthdays;;	Pair<GregorianCalendar> mm = ArrayAlg.minmax(birthdays);
+System.out.println"min  =  + mm.getirst..getTimel;	System.out.println("min = " + mm.getFirst().getTime());
+System.out.println"max = "" +mm.getSecond.getime;	System.out.println("max = " + mm.getSecond().getTime());
+l	}
+}	}
+class ArrayAg	class ArrayAlg
+{	{
+	
+public static <T  extends Comparable> Pair<T> minmaxTf a	public static <T extends Comparable> Pair<T> minmax(T[] a)
+{	{
+if a  == null || a.length == 0 return null;	if (a == null || a.length == 0) return null;
+Tmin = a0;	T min = a[0];
+T max  = a0;	T max = a[0];
+for lint i= 1;  i < alength; i++	for (int i = 1; i < a.length; i++)
+{	{
+ifmin..compareToai > 0l  min = afi;	if (min.compareTo(a[i]) > 0) min = a[i];
+if max.compareToai <0 max= ai;	if (max.compareTo(a[i]) < 0) max = a[i];
+}	}
+returnnew Pair<T>min, max;	return new Pair<T>(min, max);
+f	}
+}	}

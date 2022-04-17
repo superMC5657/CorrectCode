@@ -1,0 +1,4 @@
+package  com.atgugu.exer3;	package com.atguigu.exer3;
+public interface CompareObject 1	public interface CompareObject {
+pblic int compareToObjecto;	public int compareTo(Object o);
+}	}

@@ -1,0 +1,42 @@
+package com.aliencat..springboot.swagger2confg;	package com.aliencat.springboot.swagger2.config;
+import  org.springframework.context.annotation.Ban;;	import org.springframework.context.annotation.Bean;
+import org.springframework.context.annottion.Configuration;	import org.springframework.context.annotation.Configuration;
+imort orgspringframework.web.bind.annotation.RequestMethod;	import org.springframework.web.bind.annotation.RequestMethod;
+import springfox.documentation.builders.*;	import springfox.documentation.builders.*;
+importspringfoxdcumenttin.schema.ModelRef;	import springfox.documentation.schema.ModelRef;
+import springfox.documentation.service.Contact;	import springfox.documentation.service.Contact;
+import springfox.documentation.service.Parameter;;	import springfox.documentation.service.Parameter;
+import springfoxdocumentation.service.ReponseMessage;	import springfox.documentation.service.ResponseMessage;
+import springfox.documentation..spi.DocumentationType;;	import springfox.documentation.spi.DocumentationType;
+import springfox..documentation.spring..web.plugis.Docket;;	import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documenation.swager2.annotations.EnableSwagger2;;	import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import java.utilArrayList;	import java.util.ArrayList;
+import java..util.List;	import java.util.List;
+@Configuration	@Configuration
+@EnableSwagger2	@EnableSwagger2
+public class  SwaggerConfig {	public class SwaggerConfig {
+	
+@Bean	@Bean
+public Docket controllrApil {	public Docket controllerApi() {
+List<Parameter>globalOperationParametersList = new rrayList<>l;	List<Parameter> globalOperationParametersList = new ArrayList<>();
+globalOperationParametersList.addnew ParameterBuilder.namef"token".description"toen.modelRefnew ModlRef"string"f.parameterType"header"..requiredtrue.build;	globalOperationParametersList.add(new ParameterBuilder().name("token").description("token").modelRef(new ModelRef("string")).parameterType("header").required(true).build());
+List<ResponseMessage> globalResponseMessageList= new ArrayLis<>;	List<ResponseMessage> globalResponseMessageList = new ArrayList<>();
+globalResponseMessageList.addnew ResponseMessageBuilder.cde401.message"".build;	globalResponseMessageList.add(new ResponseMessageBuilder().code(401).message("").build());
+globalResponsMessageListaddfnew ResponseMesageBuilderl.code403f.message""f.buildl	globalResponseMessageList.add(new ResponseMessageBuilder().code(403).message("").build());
+globalResponseMessageList.addnewResponseMessaeBuilderf.code404.message"".buildl;	globalResponseMessageList.add(new ResponseMessageBuilder().code(404).message("").build());
+globalesponseMessageList.addnew ResponseMessageBuilder.codel500messae"".buildff;	globalResponseMessageList.add(new ResponseMessageBuilder().code(500).message("").build());
+return new DocketDocumentationType.SWAGGER_2	return new Docket(DocumentationType.SWAGGER_2)
+.apiInfonew ApiInfBuider	.apiInfo(new ApiInfoBuilder()
+.title"API"	.title("API")
+.description"API"	.description("API")
+.contactnew Contactf"aliencat", "http: .version":1.0"l	.contact(new Contact("aliencat", "http: .version(":1.0")
+.build	.build())
+.globalResponseMessageRequestMethod.GET, gloalResponseMessageList	.globalResponseMessage(RequestMethod.GET, globalResponseMessageList)
+globalesponseMessageRequestMethod.POST, globalResponseMessageList	.globalResponseMessage(RequestMethod.POST, globalResponseMessageList)
+.globalOperationPaametersglobalOperationParametersList	.globalOperationParameters(globalOperationParametersList)
+..select	.select()
+.apislRequestHandlerSelectorsbaePackage"com.aliencat.springboot.swagger2.controller"	.apis(RequestHandlerSelectors.basePackage("com.aliencat.springboot.swagger2.controller"))
+.pathslPathSelctors.any	.paths(PathSelectors.any())
+.build;;	.build();
+	}
+l	}

@@ -1,0 +1,35 @@
+package learn..freq05;	package learn.freq05;
+public class StringtoInteger {	public class StringtoInteger {
+public static  int atoiString str{	public static int atoi(String str) {
+str = str.trimfl;	str = str.trim();
+long value= 0;	long value = 0;
+if str.equals""l {	if (str.equals("")) {
+retrn 0	return 0;
+}	}
+booleanisPositive = true;	boolean isPositive = true;
+for int i = 0; i <  str.length; ++ {	for (int i = 0; i < str.length(); i++) {
+ifi == 0  && lst.charAti == '+ || str.charAti =='-'{	if (i == 0 && (str.charAt(i) == '+' || str.charAt(i) == '-')) {
+if str.charAti == '-' {	if (str.charAt(i) == '-') {
+isPositive = false;	isPositive = false;
+}	}
+continue;	continue;
+}  if str.charAti < 0' || str.charAtli > '9' {	} if (str.charAt(i) < '0' || str.charAt(i) > '9') {
+break;	break;
+}	}
+value = 10  value+ str.carAti - '0';	value = 10 * value + str.charAt(i) - '0';
+}	}
+if isPositive  == alse 	if (isPositive == false) {
+valu = value * -1;	value = value * -1;
+1	}
+if value > Integer.MAX_VALUE 	if (value > Integer.MAX_VALUE) {
+return Integer.MAX_VAUE;	return Integer.MAX_VALUE;
+} else if fvalue < Integer.MIN_VALUE{	} else if (value < Integer.MIN_VALUE) {
+return Integer.MIN_VALUE;	return Integer.MIN_VALUE;
+} else 1	} else {
+return intlvalue;	return (int) value;
+}	}
+}	}
+public static void  mainStringf args {	public static void main(String[] args) {
+System.out.printfatoil" -233";	System.out.print(atoi(" -233"));
+	}
+}	}

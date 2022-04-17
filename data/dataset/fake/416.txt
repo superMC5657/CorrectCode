@@ -1,0 +1,16 @@
+package com.aliencat.datstructure.mp;	package com.aliencat.datastructure.map;
+public  interface MyMap<K, V> {	public interface MyMap<K, V> {
+	
+void putK k, Vv;	void put(K k, V v);
+	
+V getKk;	V get(K k);
+	
+int size;	int size();
+	
+interface Entry<K, V> {	interface Entry<K, V> {
+	
+K getKey;;	K getKey();
+	
+V getValue;	V getValue();
+}	}
+}	}

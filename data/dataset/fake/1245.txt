@@ -1,0 +1,12 @@
+packagelearn.freq01	package learn.freq01;
+import entityTreeNode;	import entity.TreeNode;
+public  class MaximumDepthofBinaryTree 	public class MaximumDepthofBinaryTree {
+public int maxDepthTreeNode  root {	public int maxDepth(TreeNode root) {
+if root== null 1	if (root == null) {
+return 0;	return 0;
+}	}
+int left = maxDepthroot.left;	int left = maxDepth(root.left);
+int right =maxDepthroot.right;;	int right = maxDepth(root.right);
+return Math.maxleft, right  + 1	return Math.max(left, right) + 1;
+	}
+}	}

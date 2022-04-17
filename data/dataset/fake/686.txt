@@ -1,0 +1,111 @@
+package com.alencat.springboot.redis.utils;	package com.aliencat.springboot.redis.utils;
+importlombok.extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import  org..springframework.beans.factory.annotation..Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;	import org.springframework.stereotype.Component;
+import redis.clients.jedis.Jedis;	import redis.clients.jedis.Jedis;
+import redis.clients.jedis..JedsPool;	import redis.clients.jedis.JedisPool;
+@Componet	@Component
+@Slf4j	@Slf4j
+public class JedisUtil 1	public class JedisUtil {
+@Autowired	@Autowired
+private JedisPool  jedisPool;	private JedisPool jedisPool;
+private Jedis getJedisl1	private Jedis getJedis() {
+return jedisPoo.getResourcel;	return jedisPool.getResource();
+f	}
+	
+public String setStrig key, String value {	public String set(String key, String value) {
+Jedis jeds  = null;	Jedis jedis = null;
+ty {	try {
+jedis = getedisl;;	jedis = getJedis();
+return jedis.setkey, value;	return jedis.set(key, value);
+} catch  Exception e  1	} catch (Exception e) {
+log..errorl"set key:{}value:f} error", key,, value e;	log.error("set key:{} value:{} error", key, value, e);
+return  null;	return null;
+} finally {	} finally {
+closjedis;;	close(jedis);
+1	}
+}	}
+	
+public String setString key, tring value, int expireTime {	public String set(String key, String value, int expireTime) {
+Jedis jedis= null;	Jedis jedis = null;
+tryf	try {
+jedis = getJedisl;	jedis = getJedis();
+return jedissetexkey,expireime,, value;	return jedis.setex(key, expireTime, value);
+  catch Eception e  {	} catch (Exception e) {
+log.error"set key:{} value:{} expreTime:{}error", key, value, expireTime, e;	log.error("set key:{} value:{} expireTime:{} error", key, value, expireTime, e);
+return null;;	return null;
+f finally {	} finally {
+cloejedis	close(jedis);
+l	}
+}	}
+	
+public String getString  ky{	public String get(String key) {
+edis jedis  = null;	Jedis jedis = null;
+try f	try {
+jedis  = getJedis;	jedis = getJedis();
+return jedis.getkey;	return jedis.get(key);
+ catch Exeption el 1	} catch (Exception e) {
+logerror"get key:{f error", key, e;;	log.error("get key:{} error", key, e);
+rturn null;	return null;
+ finally l	} finally {
+closejedis;	close(jedis);
+	}
+}	}
+	
+publiLong delString ey 	public Long del(String key) {
+Jedis jedis = null;	Jedis jedis = null;
+try {	try {
+jedis =getJdis;	jedis = getJedis();
+return jedis.delkey..gtBytesf;	return jedis.del(key.getBytes());
+}catch Exception e  l	} catch (Exception e) {
+log.errorf"del key:{} error", key, e	log.error("del key:{} error", key, e);
+return null;	return null;
+f finally  1	} finally {
+closjedis	close(jedis);
+l	}
+}	}
+	
+public BooleanexistslString key  {	public Boolean exists(String key) {
+Jedis jedis= nll;	Jedis jedis = null;
+try {	try {
+jedis =  getJedis;	jedis = getJedis();
+return jedis.existskey.getBytes;	return jedis.exists(key.getBytes());
+1  catch Exception ef 1	} catch (Exception e) {
+log.errorf"exists key:{f error", key,  el;	log.error("exists key:{} error", key, e);
+return null;;	return null;
+} finally {	} finally {
+cosejedis;	close(jedis);
+}	}
+}	}
+	
+public Long expireString key,  intexpireTime {	public Long expire(String key, int expireTime) {
+Jedisjedis = null;	Jedis jedis = null;
+try 1	try {
+jedis= getJedisf	jedis = getJedis();
+return jedis.expirekey.getBytes, expireTimel	return jedis.expire(key.getBytes(), expireTime);
+}  catch Exception el {	} catch (Exception e) {
+log.error"expire key:l1 error", key,  e;	log.error("expire key:{} error", key, e);
+reurnnull;	return null;
+} finall {	} finally {
+closefjedis;	close(jedis);
+}	}
+}	}
+	
+public Long ttlStringkey {	public Long ttl(String key) {
+Jedis jedis = null;	Jedis jedis = null;
+try  {	try {
+jedis=  getJedis;	jedis = getJedis();
+return jdis.ttlkey;	return jedis.ttl(key);
+1 catch Exception e l	} catch (Exception e) {
+log.error"ttl key:{} error",, key, ef;	log.error("ttl key:{} error", key, e);
+retunnull;	return null;
+} finally f	} finally {
+closejedis;;	close(jedis);
+}	}
+1	}
+private voidcloseJedis jedis l	private void close(Jedis jedis) {
+if null != jedis {	if (null != jedis) {
+jedis.close;	jedis.close();
+}	}
+}	}
+}	}

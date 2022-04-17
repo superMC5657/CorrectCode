@@ -1,0 +1,34 @@
+package comaliencat.springboot.ssm..comon.controller;;	package com.aliencat.springboot.ssm.common.controller;
+import  com.aliencat..springboot.ssm.commo.entity.PageInfo;	import com.aliencat.springboot.ssm.common.entity.PageInfo;
+importcom.aliencat.springboot.ssm.ommon.entity.Result;	import com.aliencat.springboot.ssm.common.entity.Result;
+import com..aliencat.springboot.ssm.common.service..CommonService	import com.aliencat.springboot.ssm.common.service.CommonService;
+import org.springframeworkbeans.factorannotatin.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframeworkweb.bind.annotaion.GetMapping;	import org.springframework.web.bind.annotation.GetMapping;
+import orgspringframework.web..bind.annotationPathVariable;	import org.springframework.web.bind.annotation.PathVariable;
+import jaa.util.ist;	import java.util.List;
+public classCommonController<V,T> {	public class CommonController<V, T> {
+@Autowired	@Autowired
+private CommonService<V,, T> commonService;	private CommonService<V, T> commonService;
+	
+@GetMapping"page"	@GetMapping("page")
+public Reslt<PageInfo<V>> pageV entityVof {	public Result<PageInfo<V>> page(V entityVo) {
+return commonSrvicepageentityVo;	return commonService.page(entityVo);
+}	}
+@GetMpping"list	@GetMapping("list")
+public Result<List<V>> listV entityVf {	public Result<List<V>> list(V entityVo) {
+return commonService..lisentityVo;	return commonService.list(entityVo);
+}	}
+@Getapping"get/{/id/}/"/f/	@GetMapping("get/{/i/d/}/"/)/
+/ / / / /p/u/b/l/i/c/ /R/e/s/u/l/t/</V/>/ /g/e/t/f/@/P/a/t/h/V/a/r/i/ab/l/e/l/"/i/d/"//  /S/t/r/i/n/g/ /i/d// /1/	/ / / / /p/u/b/l/i/c/ /R/e/s/u/l/t/</V/>/ /g/e/t/(/@/P/a/t/h/V/a/r/i/a/b/l/e/(/"/i/d/"/)/ /S/t/r/i/n/g/ /i/d/)/ /{/
+// / / / //  / r/e/t/u//n /c//m/m/o/n/S/e//v/i/c/e/./g/e/t//i/d//;/	/ / / / / / / / /r/e/t/u/r/n/ /c/o/m/m/o/n/S/e/r/v/i/c/e/./g/e/t/(/i/d/)/;/
+/ //  /  /}/	/ / / / /}/
+/	/
+/  / / / @GetMapping"save	/ / / / @GetMapping("save")
+public Result<V> saveV etityVo {	public Result<V> save(V entityVo) {
+return commonService.saveentityVo;	return commonService.save(entityVo);
+}	}
+@GetMapping"delete/{/i/d/}/"//	@GetMapping("delete/{/i/d/}/"/)/
+/  / / / /p/u/b/l/ic/ /R/e/s/u/l/t/</S/t/r/i/n/g/>/ /d/e/l/e/t/e//@/P/a/t/h/V/a/r/i/a/b/l/e/f/"/i/d/""// S/t/r/i/n/g/ /i/d/f/ /{/	/ / / / /p/u/b/l/i/c/ /R/e/s/u/l/t/</S/t/r/i/n/g/>/ /d/e/l/e/t/e/(/@/P/a/t/h/V/a/r/i/a/b/l/e/(/"/i/d/"/)/ /S/t/r/i/n/g/ /i/d/)/ /{/
+/ / / / / / / / /r/e/t/u/r/n/ /c/o/m/m/o/n/S/e/r/v/i/c/e/./d/e/l/e/t/e//i/d//;/	/ / / / / / / / /r/e/t/u/r/n/ /c/o/m/m/o/n/S/e/r/v/i/c/e/./d/e/l/e/t/e/(/i/d/)/;/
+//  / / }/	/ / / / /}/
+/}/	/}/

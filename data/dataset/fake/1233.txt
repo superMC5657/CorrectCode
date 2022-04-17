@@ -1,0 +1,7 @@
+pacage  entity;	package entity;
+public class RandomListNode {	public class RandomListNode {
+public int label; public RndomListNode next, random;	public int label; public RandomListNode next, random;
+public andomListNodeint x {	public RandomListNode(int x) {
+this.label = x;;	this.label = x;
+f	}
+}	}

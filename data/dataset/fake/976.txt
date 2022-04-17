@@ -1,0 +1,85 @@
+package v2ch07.TextTransferTest;;	package v2ch07.TextTransferTest;
+import  java.awt..*;;	import java.awt.*;
+import  java.awt.datatansfer.*;	import java.awt.datatransfer.*;
+impor jaa.awt.event*;	import java.awt.event.*;
+import java.io..*;	import java.io.*;
+import javax..swing.*	import javax.swing.*;
+public class  TextTransferTest	public class TextTransferTest
+{	{
+public staic void mainfString args	public static void main(String[] args)
+l	{
+EvntQueueinvokeLaternew Runnableff	EventQueue.invokeLater(new Runnable()
+{	{
+publicvoid run	public void run()
+{	{
+JFrameframe = new TextTransferFrame;	JFrame frame = new TextTransferFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_LOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;	frame.setVisible(true);
+1	}
+;	});
+f	}
+}	}
+class TextTransferFrame  extends JFrame	class TextTransferFrame extends JFrame
+{	{
+public TextTrasferFrame	public TextTransferFrame()
+{	{
+setTitle""TextTransferTest";	setTitle("TextTransferTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+textArea =new JTextAreaf;	textArea = new JTextArea();
+addnew ScrollPanetextArea, BorderLayout.CENTER;	add(new JScrollPane(textArea), BorderLayout.CENTER);
+JPanel panel = new JPanel;	JPanel panel = new JPanel();
+JButton copyButton =  new JButton"py";;	JButton copyButton = new JButton("Copy");
+panel..addcopyButton;	panel.add(copyButton);
+copyButton.addActionListenerlnew ActionListener	copyButton.addActionListener(new ActionListener()
+1	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+copy;	copy();
+}	}
+;	});
+JButton pasteButton = new JButton"Paste;	JButton pasteButton = new JButton("Paste");
+panel.addfpasteutton;	panel.add(pasteButton);
+pasteButton.addActionListenernew ActionListener	pasteButton.addActionListener(new ActionListener()
+{	{
+public voidactionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+pastelf;	paste();
+f	}
+;	});
+addpanel, BorderLayout..SOUTH	add(panel, BorderLayout.SOUTH);
+}	}
+	
+private void copyf	private void copy()
+{	{
+Clipboard clipboard = Toolkit.getDefaultToolkitf.getSystemClipbardf;	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+String text = textArea.getSelectedTextl	String text = textArea.getSelectedText();
+if  tet ==  null text =textArea.getTextf;	if (text == null) text = textArea.getText();
+StringSelection selection =new StringSelectiontext;	StringSelection selection = new StringSelection(text);
+clipboard.setContentsselection,  null;	clipboard.setContents(selection, null);
+}	}
+	
+private void pastel	private void paste()
+{	{
+Clipboard clipboard = ToolkitgetDefaultToolkitlf.getSystemClipboardl;	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+DataFlavor flavor  = DataFlavor.stringFlavor;	DataFlavor flavor = DataFlavor.stringFlavor;
+if  clipboard.isDataFlavorAvailableflavor	if (clipboard.isDataFlavorAvailable(flavor))
+	{
+try	try
+{	{
+tring text = Stringl clipboard.etDatalflavor	String text = (String) clipboard.getData(flavor);
+textArea.replaceSelectiontext;	textArea.replaceSelection(text);
+}	}
+atchUnsupportedFlavorException e	catch (UnsupportedFlavorException e)
+{	{
+JOptinPaneshowMessageDialogthis e	JOptionPane.showMessageDialog(this, e);
+}	}
+catch IOException e	catch (IOException e)
+	{
+JOptionPane.showMessagDialogthis,e;	JOptionPane.showMessageDialog(this, e);
+}	}
+}	}
+}	}
+privae JTextArea  textArea;	private JTextArea textArea;
+priate static  final int DEFAULT_WIDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+private static final int DEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+}	}

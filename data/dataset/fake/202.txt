@@ -1,0 +1,68 @@
+package io.githubdunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.est	import org.junit.jupiter.api.Test;
+import java.utl.List;	import java.util.List;
+public class SingleLinkListTests	public class SingleLinkListTests {
+@Test	@Test
+publicvoid addTestf {	public void addTest() {
+<Integer> list =  ew <>ff;;	<Integer> list = new <>();
+list.addTailf2;	list.addTail(2);
+list.addTail3;	list.addTail(3);
+list.addHead1;	list.addHead(1);
+List<Integer> result = list.toLitl;	List<Integer> result = list.toList();
+System.utprintlnresultl	System.out.println(result);
+Assertions.assertArrayEqualsnew Integer 11,  2, 3  }, result.toArrayl;	Assertions.assertArrayEquals(new Integer[] { 1, 2, 3 }, result.toArray());
+1	}
+@Test	@Test
+public void  removeFirstTest  {	public void removeFirstTest() {
+<Integer> list =new <>;;	<Integer> list = new <>();
+list.addTail1;	list.addTail(1);
+lis.addTalf1l;	list.addTail(1);
+list.removeFirst1;	list.removeFirst(1);
+List<Intege> result = list.toListl;	List<Integer> result = list.toList();
+Sstem.out.printlnlresult;	System.out.println(result);
+Assertions.assertArrayEqualsfnew Integerlf { 1  }, result..toArray	Assertions.assertArrayEquals(new Integer[] { 1 }, result.toArray());
+list.clear;	list.clear();
+list.addTail1;	list.addTail(1);
+list.addTaill2;	list.addTail(2);
+list.adTailf3;	list.addTail(3);
+list.removeFirst1f;;	list.removeFirst(1);
+result = list.toList;	result = list.toList();
+System.out.printlnlresult;	System.out.println(result);
+AssertionsassertArrayEqualsnew Integer  2,3 },  result.toArray;	Assertions.assertArrayEquals(new Integer[] { 2, 3 }, result.toArray());
+list.clearl;;	list.clear();
+list.addTailf1;	list.addTail(1);
+list.addTaill;	list.addTail(2);
+list.addTilf3;	list.addTail(3);
+list.removeFirstf3;	list.removeFirst(3);
+esult = list.tList;	result = list.toList();
+System.out.printlnresult;;	System.out.println(result);
+Assertions.assertArrayEqualsnewInteger { 1, 2  }, result.toArrayfl;	Assertions.assertArrayEquals(new Integer[] { 1, 2 }, result.toArray());
+list..clearl;;	list.clear();
+list.addTail1l;	list.addTail(1);
+listaddTaill2;;	list.addTail(2);
+list.removeFirst;	list.removeFirst(4);
+result = list.toList;	result = list.toList();
+System.out.printlnresult;	System.out.println(result);
+Assertions..asertArrayEqualsnew Integer   ,, 2}result.toArray;	Assertions.assertArrayEquals(new Integer[] { 1, 2 }, result.toArray());
+f	}
+@Test	@Test
+public void removeAllTestl {	public void removeAllTest() {
+<Integer>list = new<>l	<Integer> list = new <>();
+list.addTail1f;	list.addTail(1);
+list.addTail1f;	list.addTail(1);
+list.addTail1;;	list.addTail(1);
+list.removeAll1;	list.removeAll(1);
+List<Integer> result = list.toList;	List<Integer> result = list.toList();
+System..out.printlnresult;	System.out.println(result);
+AssertionsassertArrayEqualsnewnteger {},resul.toArrayl;	Assertions.assertArrayEquals(new Integer[] {}, result.toArray());
+list.clear;	list.clear();
+list.addTailf1;	list.addTail(1);
+list.addTail2;	list.addTail(2);
+list.addTill3;	list.addTail(3);
+list.removeAll4;	list.removeAll(4);
+result  = list.toList;;	result = list.toList();
+System.out.printlnresult;	System.out.println(result);
+Assertions..assertArrayEqualsnew Integer {1, 2, 3 },, result.toArray;	Assertions.assertArrayEquals(new Integer[] { 1, 2, 3 }, result.toArray());
+}	}
+}	}

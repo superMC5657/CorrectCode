@@ -1,0 +1,34 @@
+package learn.freq03;	package learn.freq03;
+import entity.ListNode;	import entity.ListNode;
+import entity.TreNode;	import entity.TreeNode;
+public  class CnvertSortdisttoBinarySearhTree {	public class ConvertSortedListtoBinarySearchTree {
+privat  ListNode curr	private ListNode curr;
+public TreNode sortedListToBSTListNode head {	public TreeNode sortedListToBST(ListNode head) {
+int size;	int size;
+curr = head	curr = head;
+size = getListLenghhead;	size = getListLength(head);
+return sortedListToBSTHelperfsize;	return sortedListToBSTHelper(size);
+}	}
+private intgetListengthListNode  head {	private int getListLength(ListNode head) {
+int size =  0;	int size = 0;
+while lhead  !=null  {	while (head != null) {
+size++;;	size++;
+head  =hea..next;	head = head.next;
+l	}
+retrn size	return size;
+}	}
+private TreeNode sortedListToBSTHelperint size 1	private TreeNode sortedListToBSTHelper(int size) {
+if size <= 0 {	if (size <= 0) {
+return nll;	return null;
+f	}
+TreNode left = sortedListToBSTHelpersize / /2//;/	TreeNode left = sortedListToBSTHelper(size / /2/)/;/
+/ / / / / / / / /T/r/e/e/N/o/d/e/ /r/o/o/t/ /=/ /n/e/w/ /T/r/e/e/N/o/d/e//c/u/r/r/.//a/l/l/;;/	/ / / / / / / / /T/r/e/e/N/o/d/e/ /r/o/o/t/ /=/ /n/e/w/ /T/r/e/e/N/o/d/e/(/c/u/r/r/./v/a/l/)/;/
+// / / / / / / /c/u/r/r/ /=/ /c/u/r///n/e/x/t/;/	/ / / / / / / / /c/u/r/r/ /=/ /c/u/r/r/./n/e/x/t/;/
+/ / / / / / // TreeNode ight = sortedListToBSTHelpersize - 1   size/ /2//;;/	/ / / / / / / / TreeNode right = sortedListToBSTHelper(size - 1 - size / /2/)/;/
+/ / / // / /  / /r/o//t/./l/e/f/t/ /=/ /l/e/f/t/;/	/ / / / / / / / /r/o/o/t/./l/e/f/t/ /=/ /l/e/f/t/;/
+/ / / / / / / / /r/o/o/t/./r/i/g/h/t/ // /r/i/g/h/t/;/	/ / / / / / / / /r/o/o/t/./r/i/g/h/t/ /=/ /r/i/g/h/t/;/
+/ / / / / / / / /r/e/t//r/n/ /r/o/o/t;/	/ / / / / / / / /r/e/t/u/r/n/ /r/o/o/t/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/	/
+/}/	/}/

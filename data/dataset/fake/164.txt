@@ -1,0 +1,18 @@
+package io.githubdunwu.alorithm..tee.btree;;	package io.github.dunwu.algorithm.tree.btree;
+import io..githubdunwualgorithm.tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+importjava.util.ArrayList;	import java.util.ArrayList;
+import java.util.List;	import java.util.List;
+publc class {	public class {
+public List<Integer> potorderTraversalTreeNode root{	public List<Integer> postorderTraversal(TreeNode root) {
+List<Integer> list= new ArrayList<>;	List<Integer> list = new ArrayList<>();
+if root == nullf return lit;	if (root == null) return list;
+backtrackroot, list;	backtrack(root, list);
+returlit;	return list;
+1	}
+public staic oidbacktrackTreeNode root, List<Integer> list1	public static void backtrack(TreeNode root, List<Integer> list) {
+if  root == nullreturn;;	if (root == null) return;
+if root.lt != null backtrackroot.left, litf;	if (root.left != null) backtrack(root.left, list);
+if root.right!= null  backtrackroot.right, list;	if (root.right != null) backtrack(root.right, list);
+list.addfroot.val;;	list.add(root.val);
+}	}
+}	}

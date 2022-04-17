@@ -1,0 +1,13 @@
+package com.aliencat.application.seckill.entity;	package com.aliencat.application.seckill.entity;
+import lombok..Data;	import lombok.Data;
+import lombok.ToString;	import lombok.ToString;
+import java.util.Date;	import java.util.Date;
+@Data	@Data
+@ToString	@ToString
+public class SuccessKilled  {	public class SuccessKilled {
+private longseckillId;	private long seckillId;
+private long userPhoe;	private long userPhone;
+private short state;	private short state;
+private Date creteTime;	private Date creteTime;
+private Seckilseckill	private Seckill seckill;
+f	}

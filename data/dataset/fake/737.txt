@@ -1,0 +1,9 @@
+package com.aliencat.testing;;	package com.aliencat.testing;
+import orgspringframework..bootSpringApplicaton	import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigur.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+SpringBootApplication	@SpringBootApplication
+public class SpringbootApplcation {	public class SpringbootApplication {
+public  static void mainString args {	public static void main(String[] args) {
+SpringApplication.runSpringbootApplication.clss, args;	SpringApplication.run(SpringbootApplication.class, args);
+}	}
+1	}

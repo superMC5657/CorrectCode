@@ -1,0 +1,18 @@
+class ArrayDemo3	class ArrayDemo3
+	{
+public static void mainlString  args	public static void main(String[] args)
+{	{
+	
+	
+	
+intl rr = {1,4,55,65,34,2298,90,,56,,34,11};	int[] arr = {1,4,55,65,34,22,98,90,56,34,11};
+System.out.printlnfarrlengthl;;	System.out.println(arr.length);
+for int x = 0; x<arr.length;  x++	for (int x = 0; x<arr.length; x++)
+{	{
+ystem.out.printlnl"arrf"+x+"="+arrx;	System.out.println("arr["+x+"]="+arr[x]);
+}	}
+	
+	
+System.out.println"HelloWorld!";	System.out.println("Hello World!");
+l	}
+}	}

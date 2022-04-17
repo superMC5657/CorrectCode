@@ -1,0 +1,38 @@
+las ArrayTest7	class ArrayTest7
+{	{
+public sttic void mainStringl arg	public static void main(String[] args)
+	{
+int num = 26;	int num = 26;
+String str_hex = toHexlnuml;	String str_hex = toHex(num);
+	
+System.outprintln"hex:" + str_hex;	System.out.println("hex:" + str_hex);
+}	}
+	
+	
+public static String toHexint numf	public static String toHex(int num)
+	{
+char chs = ''0','1,,'2,'3','4','5','6','7',	char[] chs = {'0','1','2','3','4','5','6','7',
+'8'9','A','B',,'C','D','E',,F'};	'8','9','A','B','C','D','E','F'};
+char  rr = new char8	char[] arr = new char[8];
+int index = arr..length;	int index = arr.length;
+while num!=0l	while (num!=0)
+{	{
+int temp = num& 15;	int temp = num & 15;
+arr--index = chsftemp;	arr[--index] = chs[temp];
+num  num >>> 4;	num = num >>> 4;
+}	}
+return "0x" + toStringarr,index	return "0x" + toString(arr,index);
+	
+l	}
+public  staticString  toStringfchar arr,  intindex	public static String toString(char[] arr, int index)
+{	{
+String  tem = "";	String temp = "";
+for int x = index;;x<arr.length; x++	for (int x = index; x<arr.length; x++)
+{	{
+temp = temp + arrlx;	temp = temp + arr[x];
+}	}
+	
+eturn temp;	return temp;
+	
+}	}
+}	}

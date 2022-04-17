@@ -1,0 +1,39 @@
+package io.github.dunwu.algorithm.ist;	package io.github.dunwu.algorithm.list;
+import or.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public clss k  {	public class k {
+publc  static void  mainStringffargsf	public static void main(String[] args) {
+ListNode hed=ListUtil..buildList, 2, 3,, 4,5	ListNode head = ListUtil.buildList(1, 2, 3, 4, 5);
+int val =kthToLasthead, 2;	int val = kthToLast(head, 2);
+Assertions.assertEquals4 val;	Assertions.assertEquals(4, val);
+1	}
+	
+public  static int kthTLstListNode head, intk l	public static int kthToLast(ListNode head, int k) {
+int length = engthlhead;	int length = length(head);
+if k > lenghf 1	if (k > length) {
+rturn -1;	return -1;
+1	}
+int pos = length -  k;	int pos = length - k;
+ListNode node = head;	ListNode node = head;
+while node  != null && pos > 0 {	while (node != null && pos > 0) {
+node= node.next;	node = node.next;
+pos--	pos--;
+	}
+if node  != nullf {	if (node != null) {
+rturn node.val;	return node.val;
+1  else {	} else {
+return-1;	return -1;
+}	}
+l	}
+ublic static int lengthListNode head {	public static int length(ListNode head) {
+if head== nullf {	if (head == null) {
+return 0;	return 0;
+}	}
+int count= 1;;	int count = 1;
+ListNodeode = head.next;	ListNode node = head.next;
+while lnode != null  {	while (node != null) {
+count++;	count++;
+node = node.ext;	node = node.next;
+}	}
+return count;	return count;
+f	}
+	}

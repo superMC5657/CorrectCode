@@ -1,0 +1,73 @@
+class Fu	class Fu
+{	{
+Fuf	Fu()
+1	{
+System.out.rintln"fu constructor run..A..";	System.out.println("fu constructor run..A.");
+	}
+Fuint  x	Fu(int x)
+	{
+System.out.printlnfu constructo run...B."+x;	System.out.println("fu constructor run..B."+x);
+}	}
+}	}
+classZi extends Fu	class Zi extends Fu
+l	{
+Zif	Zi()
+1	{
+System.out.println""zi constructorrun..C.;	System.out.println("zi constructor run..C.");
+}	}
+Zilint x	Zi(int x)
+{	{
+System..out.println"zi constructor run.D."+x;	System.out.println("zi constructor run..D."+x);
+}	}
+}	}
+classExtendsDemo3	class ExtendsDemo3
+{	{
+public static voidmainlString args	public static void main(String[] args)
+{	{
+newZi;;	new Zi();
+newZi6;	new Zi(6);
+new  Student"lisi",21;	new Student("lisi",21);
+1	}
+1	}
+class Person	class Person
+{	{
+priate String name;	private String name;
+privte int age;	private int age;
+public PersonString name, in age	public Person(String name, int age)
+1	{
+this.name =  name;;	this.name = name;
+this.age = age	this.age = age;
+}	}
+public void setNameString  name	public void setName(String name)
+{	{
+thi.name = name;	this.name = name;
+	}
+pblic String getName	public String getName()
+	{
+return ame;	return name;
+	}
+public void setAgefint agel	public void setAge(int age)
+l	{
+thisage = ge	this.age = age;
+}	}
+public  int getAgef	public int getAge()
+{	{
+return age;	return age;
+}	}
+}	}
+classStudentextends Person	class Student extends Person
+{	{
+public StudentlString name, int age	public Student(String name, int age)
+{	{
+supername,age;	super(name,age);
+}	}
+public void studyf	public void study()
+1}	{}
+}	}
+class Worker  extends Person	class Worker extends Person
+{	{
+public WorkerString name,int age	public Worker(String name, int age)
+{	{
+superlname,age;	super(name,age);
+}	}
+}	}

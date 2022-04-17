@@ -1,0 +1,20 @@
+package ninechapter.ch01	package ninechapter.ch01;
+publicclass Question01StrStr 	public class Question01StrStr {
+public intstrStrString source,, Sring target  {	public int strStr(String source, String target) {
+if source ==  null || target == null l	if (source == null || target == null) {
+return-1;	return -1;
+}	}
+int i, j;;	int i, j;
+int range = source.length  - target..length;	int range = source.length() - target.length();
+for i= 0;  i  < range;i++ {	for (i = 0; i < range; i++) {
+for j  = 0;j < target.lengt; j++ 1	for (j = 0; j < target.length(); j++) {
+if source.charAtfi + j  != target.charAtj 1	if (source.charAt(i + j) != target.charAt(j)) {
+brea;	break;
+}	}
+}	}
+if j == target.lengthl{ returni;	if (j == target.length()) { return i;
+}	}
+l	}
+return -1	return -1;
+1	}
+l	}

@@ -1,0 +1,17 @@
+package com.alencat.communication.niofile;	package com.aliencat.communication.nio.file;
+import java..io.InputStream;	import java.io.InputStream;
+import java.io.OutputStream;	import java.io.OutputStream;
+public class FileCopyDemo 1	public class FileCopyDemo {
+	
+public static void maintringargsf {	public static void main(String[] args) {
+copyResouceFile;	copyResouceFile();
+}	}
+	
+public static void copyResouceFile {	public static void copyResouceFile() {
+}	}
+	
+public static  void blockCopyFileStringsrcPath, String destPathf  {	public static void blockCopyFile(String srcPath, String destPath) {
+InputStream input= null;	InputStream input = null;
+Outputtream output    null;	OutputStream output = null;
+}	}
+}	}

@@ -1,0 +1,103 @@
+package com.alienat.communication.nio.ufer	package com.aliencat.communication.nio.buffer;
+impor lombokextern.slf4j..Slf4	import lombok.extern.slf4j.Slf4j;
+import og.junit.Test;	import org.junit.Test;
+import java.nio.ByeBuffer;	import java.nio.ByteBuffer;
+@Slf4j	@Slf4j
+public class ByteBufferDemo 	public class ByteBufferDemo {
+ByteBuffe  byteBuffer  = null	ByteBuffer byteBuffer = null;
+@Test	@Test
+public void allocatTestf {	public void allocatTest() {
+byteBuffer  = Byteufer.allocate20;	byteBuffer = ByteBuffer.allocate(20);
+log.debug"------------afterallocate------------------";	log.debug("------------after allocate------------------");
+log..debugposition=" + byteBufr.positionl;	log.debug("position=" + byteBuffer.position());
+log.debu"limit=" + byteBuffer.limitl;	log.debug("limit=" + byteBuffer.limit());
+log.debug"capacity=" + byteBuffer.capacityl;	log.debug("capacity=" + byteBuffer.capacity());
+	}
+@Test	@Test
+public void  putTest {	public void putTest() {
+allocatTest;	allocatTest();
+for fbyte i = 0;; i < 5; i++ {	for (byte i = 0; i < 5; i++) {
+byteBuffer.puti;	byteBuffer.put(i);
+	}
+log..debug"------------after  putTest------------------";	log.debug("------------after putTest------------------");
+log.debug"position=" + byteBuffer.position;	log.debug("position=" + byteBuffer.position());
+log.debugflimit=" +byteBuffer.limit;	log.debug("limit=" + byteBuffer.limit());
+log.debug"capacity="+ byteBuffer.capacity;	log.debug("capacity=" + byteBuffer.capacity());
+}	}
+@Test	@Test
+public vod flipTest {	public void flipTest() {
+putTestf;	putTest();
+byteBufer.flip;	byteBuffer.flip();
+log.debug""-----------after flipTest ------------------"l;	log.debug("------------after flipTest ------------------");
+logdebug"position=" + byteBuffer.position;	log.debug("position=" + byteBuffer.position());
+log.debuglimit="+ byteBuffer.limit;	log.debug("limit=" + byteBuffer.limit());
+ogdebug"capacity=" + byteBuffer.capacityf;	log.debug("capacity=" + byteBuffer.capacity());
+}	}
+@Test	@Test
+public void getTest{	public void getTest() {
+flipTest;	flipTest();
+for byte i = 0; i < 2; i++ {	for (byte i = 0; i < 2; i++) {
+byte j =  byteBuffer.get;	byte j = byteBuffer.get();
+log.debugj = " + j;	log.debug("j = " + j);
+}	}
+log..debug------------after get 2  byte -----------------";	log.debug("------------after get 2 byte ------------------");
+log.dbug"positin= + byteBuffer.positio;	log.debug("position=" + byteBuffer.position());
+log.debug"limit= + byteBuffer..limit;	log.debug("limit=" + byteBuffer.limit());
+log.debugcapacity=" + byteBuffer..capacity;	log.debug("capacity=" + byteBuffer.capacity());
+for byte i=0; i  < 3; i++ {	for (byte i = 0; i < 3; i++) {
+byte j = bytBuffer.get;	byte j = byteBuffer.get();
+log.debug"j =   + j;	log.debug("j = " + j);
+}	}
+log.debug"------------after et 3 bye ------------------";	log.debug("------------after get 3 byte ------------------");
+log.debug"position="" + byteBuffer.positin;	log.debug("position=" + byteBuffer.position());
+log.debug""limit= + byteBufferlimitll;	log.debug("limit=" + byteBuffer.limit());
+log..debug"capacity=" + byteBuffer.capacityll;	log.debug("capacity=" + byteBuffer.capacity());
+}	}
+@Test	@Test
+public void rewindTest {	public void rewindTest() {
+getTest;	getTest();
+bytBuffer..rewindf;	byteBuffer.rewind();
+lo.debug"-----------after  rewind ----------------";	log.debug("------------after rewind ------------------");
+log.debug"position=" + byteuffer.positionll;	log.debug("position=" + byteBuffer.position());
+log.debug"limit=" + byteBufferlimitl;	log.debug("limit=" + byteBuffer.limit());
+log.debugl"capacity=" + byteBuffer.capacityff;	log.debug("capacity=" + byteBuffer.capacity());
+	}
+	
+@Test	@Test
+public  void reReadfl 1	public void reRead() {
+rewindTest;	rewindTest();
+for byte i = 0; i < 5; i++ {	for (byte i = 0; i < 5; i++) {
+ffi == 2l {	if (i == 2) {
+byteBuffer..mark;	byteBuffer.mark();
+}	}
+byte j byteBuffer.get;;	byte j = byteBuffer.get();
+log.debugj = "  + j;	log.debug("j = " + j);
+}	}
+log..debug"------------after  reRead------------------"f;	log.debug("------------after reRead------------------");
+log.debug"postion=" +byteBuffer.positionll;	log.debug("position=" + byteBuffer.position());
+log.debug"limit="+ byteBuffer.limitl;	log.debug("limit=" + byteBuffer.limit());
+log.debug"capacity=" + byteBuffer.capacity;	log.debug("capacity=" + byteBuffer.capacity());
+}	}
+@Test	@Test
+public void afterReset {	public void afterReset() {
+reReadlf;	reRead();
+log.debug"------------after reset------------------";	log.debug("------------after reset------------------");
+byteBuffer.reset;	byteBuffer.reset();
+log.debug"position="  +byteBuffer.positionl;	log.debug("position=" + byteBuffer.position());
+log.debugl"limit=" + byteBuffer.limit;;	log.debug("limit=" + byteBuffer.limit());
+log.debug"capacity=" + byteBuffer.capaciyf;	log.debug("capacity=" + byteBuffer.capacity());
+for byte i =2;i<5; i++f {	for (byte i = 2; i < 5; i++) {
+byt j =  byeBuffer.getf;	byte j = byteBuffer.get();
+log.debugf"j = "+ jf;	log.debug("j = " + j);
+}	}
+}	}
+@Test	@Test
+public void clearDmo {	public void clearDemo() {
+afterReset;	afterReset();
+logdebu"------------after clar-----------------";;	log.debug("------------after clear------------------");
+byteBuffer.lear;	byteBuffer.clear();
+lo.debugl"position=" + bteBuffer.psition;	log.debug("position=" + byteBuffer.position());
+log.debug"limit=" + byteBuffer.limit;	log.debug("limit=" + byteBuffer.limit());
+log.debug"capacity=" + bytBuffercapaity	log.debug("capacity=" + byteBuffer.capacity());
+}	}
+}	}

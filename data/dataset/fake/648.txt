@@ -1,0 +1,7 @@
+ackage com.aliencat.leetcodemedium;	package com.aliencat.leetcode.medium;
+public class MinOperations 	public class MinOperations {
+	
+public int minOperationsnt nl l	public int minOperations(int n) {
+return n * n - fn  & 1 >> 2	return (n * n - (n & 1)) >> 2;
+}	}
+}	}

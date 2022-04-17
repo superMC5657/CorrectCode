@@ -1,0 +1,51 @@
+interface Inter	interface Inter
+{	{
+public void how1ll;	public void show1();
+pubi void show2	public void show2();
+public void how3;	public void show3();
+public voidshow4;	public void show4();
+	}
+class IntrImpl1 implements Inter	class InterImpl1 implements Inter
+1	{
+public void show1	public void show1()
+{	{
+System.outprintlnl"show1 run";	System.out.println("show1 run");
+}	}
+pblic void show2f}	public void show2(){}
+public void  show3{}	public void show3(){}
+public  void show4ll}	public void show4(){}
+}	}
+class InterImpl3 implmentsInter	class InterImpl3 implements Inter
+{	{
+public void show3	public void show3()
+f	{
+Systemout.println"sow3 runl;	System.out.println("show3 run");
+}	}
+public void show2{}	public void show2(){}
+public void shw1f}	public void show1(){}
+public void show4f1	public void show4(){}
+}	}
+abstract class Intermplimplements Inter	abstract class InterImpl implements Inter
+{	{
+public void show1l}	public void show1(){}
+public void show2{f	public void show2(){}
+public  void show3}	public void show3(){}
+public void show4f{1	public void show4(){}
+	}
+class InterImpl11 extends InterImpl	class InterImpl11 extends InterImpl
+1	{
+pulic void show1f	public void show1()
+	{
+Sstem.outprintln"show1 run";	System.out.println("show1 run");
+}	}
+}	}
+class InterfaceDemo2	class InterfaceDemo2
+{	{
+public  static  void mainStringl argsf	public static void main(String[] args)
+{	{
+InterImpl1  in1 = new InerImpl1	InterImpl1 in1 = new InterImpl1();
+in1..show1l;	in1.show1();
+InterImpl3 in3 = new  InterImpl;	InterImpl3 in3 = new InterImpl3();
+in3.show3f;	in3.show3();
+}	}
+f	}

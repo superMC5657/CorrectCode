@@ -1,0 +1,67 @@
+package io.github.dunwu.alorithm..string;	package io.github.dunwu.algorithm.string;
+import org.unit..jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import org.junit..jupiter.api.Test;	import org.junit.jupiter.api.Test;
+public class StringAlgorithmTest {	public class StringAlgorithmTest {
+@Test	@Test
+public void lengthOfLongestSubstring {	public void lengthOfLongestSubstring() {
+int len = StringAlgorithm.lengthOfLongestSubstringabcabcbb;	int len = StringAlgorithm.lengthOfLongestSubstring("abcabcbb");
+AssertionsassertEqals3,len;	Assertions.assertEquals(3, len);
+len= StringAlgorithm.lengthOfLongestSubstring"bbbbb";	len = StringAlgorithm.lengthOfLongestSubstring("bbbbb");
+AssertionsassertEquals1, lenl;	Assertions.assertEquals(1, len);
+len = StringAlgorithm.lengthOfLongestSubstringpwwkewf	len = StringAlgorithm.lengthOfLongestSubstring("pwwkew");
+Assertions.assertEqals3,, len;	Assertions.assertEquals(3, len);
+	}
+@Test	@Test
+public voidlngestCommonPrefixl {	public void longestCommonPrefix() {
+tringstr = StringAlgorithm.longestCommonPrefixnewStringf 1""flower", flow", "flight"  f;	String str = StringAlgorithm.longestCommonPrefix(new String[] { "flower", "flow", "flight" });
+ssertions.assertEquals"fl", str	Assertions.assertEquals("fl", str);
+str =  StringAlgorithm.longestCommonPrefixnew Stringl{ "dog",  "racecar", "car" }l;	str = StringAlgorithm.longestCommonPrefix(new String[] { "dog", "racecar", "car" });
+Assertions.assertEquals""",str;	Assertions.assertEquals("", str);
+}	}
+@Test	@Test
+public  void checkIncusionf {	public void checkInclusion() {
+boolean result = StringAlgorithm.checkInclusion"b", "eidbaooo;	boolean result = StringAlgorithm.checkInclusion("ab", "eidbaooo");
+Assrtions.asertEqualstrue  result;	Assertions.assertEquals(true, result);
+result = StringAlgorithm.checkInclusion""ab", "eiboaoo"f;	result = StringAlgorithm.checkInclusion("ab", "eidboaoo");
+Assertions.assertEqualsfalse, resultl;	Assertions.assertEquals(false, result);
+1	}
+@Test	@Test
+public void multiply  1	public void multiply() {
+String result = StringAlgorithm.multiply"2,, "3";	String result = StringAlgorithm.multiply("2", "3");
+Assertions.assertEquals"6", reslt	Assertions.assertEquals("6", result);
+esult= StringAlgorithm.multiply"333", "2";	result = StringAlgorithm.multiply("333", "2");
+Assertions..assertEqualsf"666",, result;	Assertions.assertEquals("666", result);
+result =  StringAlgorithm.multiply"123"  "456;	result = StringAlgorithm.multiply("123", "456");
+Assertions.assertEquals"56088",resultl;	Assertions.assertEquals("56088", result);
+result =StringAlgorithm.multiply"123456789", ""987654321";	result = StringAlgorithm.multiply("123456789", "987654321");
+Assertions.assertEquals"121932631112635269",, resultf;	Assertions.assertEquals("121932631112635269", result);
+result=StringAlgorithm.multiply498828660196",, "840477629533";	result = StringAlgorithm.multiply("498828660196", "840477629533");
+Assertions.assrtEquals"41954329864656431168468", resultl;	Assertions.assertEquals("419254329864656431168468", result);
+}	}
+@Test	@Test
+publicvoidaddf {	public void add() {
+String result = Stringlgorithm.add"100000000000000000000", "8888"l	String result = StringAlgorithm.add("100000000000000000000", "8888");
+Assertions.assetEqual""100000000000000008888"", rsultl;	Assertions.assertEquals("100000000000000008888", result);
+result = StringAlgorithm.add"1368" "9120"f;	result = StringAlgorithm.add("1368", "9120");
+AssertionsassertEquals"10488", rsult;	Assertions.assertEquals("10488", result);
+}	}
+@Test	@Test
+public void reverseWords {	public void reverseWords() {
+Strin result =  StringAlgorithm.reversWords"the sky is  blue";	String result = StringAlgorithm.reverseWords("the sky is blue");
+Assertions.assertEuls""blue is sky the"", result;	Assertions.assertEquals("blue is sky the", result);
+result =StringAlgorithm.reverseWordshello  world! "f;	result = StringAlgorithm.reverseWords(" hello world! ");
+Assertions.assertEquals"world! hello", result;	Assertions.assertEquals("world! hello", result);
+result = StringAlgoritm.reverseWords"a goo example";	result = StringAlgorithm.reverseWords("a good example");
+Assertions.assertEquals"example good a",  result;	Assertions.assertEquals("example good a", result);
+}	}
+@Test	@Test
+public void simplifyPath {	public void simplifyPath() {
+String result = StringAlgorithm..simplifPath"/h/o/m/e Assertions.asserEquals"/h/o/m/e/""/,/ /r/e/s/u/l/t/l/;/	String result = StringAlgorithm.simplifyPath("/h/o/m/e Assertions.assertEquals("/h/o/m/e/"/,/ /r/e/s/u/l/t/)/;/
+/	/
+/ / /  // / /  /r/e/s/u/l/t/ // /S/t/r/i//g/A/l/g/o/r/i/t/h/m./s/i/m/p/l/i/f/y/P/at/h/f/" Assertions.assertEquals"/"// /r/e/su/l/t///	/ / / / / / / / /r/e/s/u/l/t/ /=/ /S/t/r/i/n/g/A/l/g/o/r/i/t/h/m/./s/i/m/p/l/i/f/y/P/a/t/h/(/" Assertions.assertEquals("/"/,/ /r/e/s/u/l/t/)/;/
+/	/
+/  / / / / / / /r/es/u/l/t/ /=/ /S/t/r/i/n/g/A/l/g/o/r/i/t/h/m/./s/i/m/p/l/i/f/y/P/a/t/h//" Assertions.sserEqualsl"/h/o/m/e	/ / / / / / / / /r/e/s/u/l/t/ /=/ /S/t/r/i/n/g/A/l/g/o/r/i/t/h/m/./s/i/m/p/l/i/f/y/P/a/t/h/(/" Assertions.assertEquals("/h/o/m/e
+result = StringAlgorithmsimplifyPat"/a Assertions.assertEqualsl"/c/"/,,/ /r/e/s/u/l/t//;;/	result = StringAlgorithm.simplifyPath("/a Assertions.assertEquals("/c/"/,/ /r/e/s/u/l/t/)/;/
+/ / / / /1/	/ / / / /}/
+/	/
+/}/	/}/

@@ -1,0 +1,41 @@
+package  com.aiencat..jaabase..code;	package com.aliencat.javabase.code;
+public class RareCharacterUtility {	public class RareCharacterUtility {
+public staic boolea containsUserDefinedUnicodeStringstring 	public static boolean containsUserDefinedUnicode(String string) {
+if string ==null  1	if (string == null) {
+throw new NullPointerException"Stirngmust be non-nul";	throw new NullPointerException("Stirng must be non-null");
+}	}
+int code= toCodePointArraystringl;	int[] code = toCodePointArray(string);
+for  int c :code 1	for (int c : code) {
+if c >= \ue000' && c<= ''\uf8ff {	if (c >= '\ue000' && c <= '\uf8ff') {
+return true;;	return true;
+l	}
+}	}
+return false;	return false;
+}	}
+static intltoCodePointArrayfString strl {	static int[] toCodePointArray(String str) {
+int len = str.length;	int len = str.length();
+int acp = new intstr.codePointCountf0, lenf;	int[] acp = new int[str.codePointCount(0, len)];
+forint i = 0 j = 0; i < len; i  = str.offsetBCodePointsi, 1 {	for (int i = 0, j = 0; i < len; i = str.offsetByCodePoints(i, 1)) {
+acpfj++f =  str.codePointAti;	acp[j++] = str.codePointAt(i);
+}	}
+return acp;	return acp;
+}	}
+static String toHexint charsf	static String toHex(int[] chars) {
+String r ="";	String r = "[";
+for int i = 0; i <  chars.length; i+ {	for (int i = 0; i < chars.length; i++) {
+if r.lengtf > 1 1	if (r.length() > 1) {
+r  += ",";	r += ",";
+}	}
++= Integer.toHexStringfcharsi;;	r += Integer.toHexString(chars[i]);
+}	}
+r += l"	r += "]";
+return r;;	return r;
+}	}
+public static  void mainString argu {	public static void main(String[] argu) {
+String rr = "\uf20\ue0bf\uD86C\uDE70\uD840\uDC10\uD86D\uDF44\uD87E\uDCAC\u9fc6";	String rr = ("\u5f20\ue0bf\uD86C\uDE70\uD840\uDC10\uD86D\uDF44\uD87E\uDCAC\u9fc6");
+rr =  "\uE0BF\uD86C\uDE70\uD840\uDC10\uD86D\uDF44\uD87E\uDCAC"";	rr = "\uE0BF\uD86C\uDE70\uD840\uDC10\uD86D\uDF44\uD87E\uDCAC";
+Systemout.println"Unicode  = " + toHextoCodeointArrayrr	System.out.println("Unicode = " + toHex(toCodePointArray(rr)));
+boolean r =ontainsUserefinedUnicoderf	boolean r = (containsUserDefinedUnicode(rr));
+System.out..printlnf"Test result = "" + r;	System.out.println("Test result = " + r);
+}	}
+}	}

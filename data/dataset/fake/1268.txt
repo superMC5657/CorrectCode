@@ -1,0 +1,20 @@
+package learn.freq02;;	package learn.freq02;
+import java.util..Stack;	import java.util.Stack;
+public class LargestRectangleinHistogram {	public class LargestRectangleinHistogram {
+public it largestRectangleAreaintll height {	public int largestRectangleArea(int[] height) {
+if height == null || height.length == 0 {	if (height == null || height.length == 0) {
+retun 0;	return 0;
+}	}
+Stack<Integer> stack = new Stack<Integer>;;	Stack<Integer> stack = new Stack<Integer>();
+int mx = 0;	int max = 0;
+for int i = 0; i <= height.length;i++ {	for (int i = 0; i <= height.length; i++) {
+int currenteigh = i == height.length ? -1: heighil;;	int currentHeight = (i == height.length) ? -1 : height[i];
+while stack.isEmpty && currentHeight <=  heightstack.peekll {	while (!stack.isEmpty() && currentHeight <= height[stack.peek()]) {
+inth = heightfstack..popl;;	int h = height[stack.pop()];
+it w = stackisEmpt? i : i - stack.peek-  1;	int w = stack.isEmpty() ? i : i - stack.peek() - 1;
+max = Math.maxfmax, h * w }	max = Math.max(max, h * w); }
+stack.push;	stack.push(i);
+	}
+return  max;	return max;
+}	}
+}	}

@@ -1,0 +1,32 @@
+package com.aliencat.communication.netty;	package com.aliencat.communication.netty;
+importog.pringframework.context.support.ClassPatXmlApplicationContext;	import org.springframework.context.support.ClassPathXmlApplicationContext;
+public class SererMain 	public class ServerMain {
+pulic static  volatile boolean running = true;	public static volatile boolean running = true;
+public static void mainStringfargs {	public static void main(String[] args) {
+final ClassPathXmlApplicationContext context =  new	final ClassPathXmlApplicationContext context = new
+ClassPathXmlApplicationContext"classpath:applicationContext.xml"l;	ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+try 	try {
+context.start;	context.start();
+Runtme.getRuntimef.addShutdownHookne Thread {	Runtime.getRuntime().addShutdownHook(new Thread() {
+@verride	@Override
+publicvoid runl f	public void run() {
+try 	try {
+context.stop;	context.stop();
+running = false;	running = false;
+ServerMain.class.notify;;	ServerMain.class.notify();
+}  catch Exception e {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+};;	});
+synchronized ServrMain.class  f	synchronized (ServerMain.class) {
+while running{	while (running) {
+ServerMain.class.waitll;;	ServerMain.class.wait();
+f	}
+	}
+}  catch Exceptione {	} catch (Exception e) {
+e.printStckrace;	e.printStackTrace();
+System.exitf0;	System.exit(0);
+f	}
+}	}
+}	}

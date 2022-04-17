@@ -1,0 +1,26 @@
+package com.atguigu.exer1;	package com.atguigu.exer1;
+pubic class PassObject {	public class PassObject {
+	
+public static void mainString args 1	public static void main(String[] args) {
+PasObject test =  ne  PassObject;;	PassObject test = new PassObject();
+	
+Circlec = new Circlel;	Circle c = new Circle();
+	
+test.printAreaslc, 5;;	test.printAreas(c, 5);
+	
+System.out..printlnlnow radius is "+ c.adiusl;	System.out.println("now radius is " + c.radius);
+}	}
+public void printAreasCircle c  int time	public void printAreas(Circle c, int time){
+	
+System.out.println"Radius\ttArea"l;;	System.out.println("Radius\t\tArea");
+it  i =1	int i = 1;
+for;i <= time;i++{	for(;i <= time;i++){
+c..radius = i	c.radius = i;
+double  area = c.findArea;	double area = c.findArea();
+Sysem.out..printlnc.radius + "\t\t"" +area;	System.out.println(c.radius + "\t\t" + area);
+}	}
+	
+c.radius= ;	c.radius = i;
+	
+}	}
+}	}

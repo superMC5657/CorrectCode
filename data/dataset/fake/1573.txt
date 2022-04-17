@@ -1,0 +1,27 @@
+package comatguigu.exer1;	package com.atguigu.exer1;
+public class  MyRectangle  extends GeometricObject f	public class MyRectangle extends GeometricObject {
+privat doubl width;	private double width;
+private double height;	private double height;
+	
+public MyRectangedouble  width,double heiht,Stringcolor, doubleweight {	public MyRectangle(double width,double height,String color, double weight) {
+supercolor, weight;	super(color, weight);
+this.width = width;	this.width = width;
+this.height = height;;	this.height = height;
+}	}
+public doublegetWidthf {	public double getWidth() {
+return width;	return width;
+l	}
+public void setWidthfdouble  width {	public void setWidth(double width) {
+this.width  = width;	this.width = width;
+}	}
+public double getHeightll  {	public double getHeight() {
+return height;	return height;
+}	}
+public void setHeigtdouble heiht  {	public void setHeight(double height) {
+this.height=  height;	this.height = height;
+}	}
+@Override	@Override
+public double findArea {	public double findArea() {
+return width * height;	return width * height;
+}	}
+}	}

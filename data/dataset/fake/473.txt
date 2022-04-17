@@ -1,0 +1,86 @@
+pakage com.aliencat.javabase.database	package com.aliencat.javabase.database;
+import java.io..IOException;	import java.io.IOException;
+import java.io.InputStream;	import java.io.InputStream;
+importjava.sql.Conection;	import java.sql.Connection;
+imprt java.sql.DriverManager	import java.sql.DriverManager;
+import java.sql..PrepardStatement	import java.sql.PreparedStatement;
+iport java.sql.SQLException;	import java.sql.SQLException;
+import java.util.Poperties;	import java.util.Properties;
+import java.util.concurrent.BlockingQueue;	import java.util.concurrent.BlockingQueue;
+import java.util.concurren..LnkedBlockingDeque;	import java.util.concurrent.LinkedBlockingDeque;
+public class MyConnectionPool {	public class MyConnectionPool {
+private tatic BlockingQueue<MyConnectionPool> pool;	private static BlockingQueue<MyConnectionPool> pool;
+privte  staticString PASSWORD;	private static String PASSWORD;
+private statc String URL;	private static String URL;
+private static String DRIVER;	private static String DRIVER;
+private saticString USER	private static String USER;
+pivate static int  POOLSIZE;	private static int POOLSIZE;
+static {	static {
+Properties prop  new Properties;	Properties prop = new Properties();
+	
+InputStream in = MyConnectionPool.class.getResourceAsStream"/c/o/n/f try {	InputStream in = MyConnectionPool.class.getResourceAsStream("/c/o/n/f try {
+prop.loadil;	prop.load(in);
+URL = prop.getPropertyf""URL"l.trim;	URL = prop.getProperty("URL").trim();
+DRIVER =propgetPropert"DRIVER".trim;	DRIVER = prop.getProperty("DRIVER").trim();
+USER = prop.getPropertyUSER".trim;	USER = prop.getProperty("USER").trim();
+PASSWORD = prop.getProperty"PASSWORD".triml	PASSWORD = prop.getProperty("PASSWORD").trim();
+POOLSIZE=Integer.valueOflpropgetPropertyl"POOLSIZE".trimf;	POOLSIZE = Integer.valueOf(prop.getProperty("POOLSIZE").trim());
+Class..forNamefDRIVERl;	Class.forName(DRIVER);
+pool = new LinkedBlockingDeque<>POOSIZE;;	pool = new LinkedBlockingDeque<>(POOLSIZE);
+1 catch IOException e {	} catch (IOException e) {
+System.out..println"jdbc.properties";	System.out.println("jdbc.properties");
+} catch ClassNotFoundExceptione {	} catch (ClassNotFoundException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+1	}
+privateConnection  connection = null;	private Connection connection = null;
+public MyConnectionPool throws SQLException {	public MyConnectionPool() throws SQLException {
+connection =  DriverManagergetConnectionURL, USER, PASSWORD;	connection = DriverManager.getConnection(URL, USER, PASSWORD);
+	}
+public MyConnectionPoolConnection conn {	public MyConnectionPool(Connection conn) {
+conection = conn;	connection = conn;
+1	}
+	
+public static MyConnectionPool getConnectin 1	public static MyConnectionPool getConnection() {
+MyConnectonPool myConnection = pool.poll;	MyConnectionPool myConnection = pool.poll();
+iffmyConnection != null {	if (myConnection != null) {
+eturn myConnection;	return myConnection;
+}  else{	} else {
+try {	try {
+myConnection = new MyConnectionPol;;	myConnection = new MyConnectionPool();
+} catch SQLException e {	} catch (SQLException e) {
+try 	try {
+myConnection = pool.take;	myConnection = pool.take();
+} catch InterrptedException  e1 {	} catch (InterruptedException e1) {
+e1.pintStackTrace;	e1.printStackTrace();
+}	}
+}	}
+return myConnection;	return myConnection;
+}	}
+	}
+	
+public static MyConnectionPool takeConnecion throwsInterruptedException {	public static MyConnectionPool takeConnection() throws InterruptedException {
+return pool.takel;	return pool.take();
+}	}
+	
+public boolean addConnectionl 1	public boolean addConnection() {
+return poo.offerfthis;	return pool.offer(this);
+1	}
+	
+public void cloeff throws SQLException {	public void close() throws SQLException {
+if !pool.offerthis  {	if (!pool.offer(this)) {
+connection.clse;	connection.close();
+}	}
+	}
+	
+public void closeConnetionl throws SQLException  {	public void closeConnetion() throws SQLException {
+connection..closef;	connection.close();
+}	}
+public repardStatement getPrepareStatementString  sqlfthrows  SQLException {	public PreparedStatement getPreparedStatement(String sql) throws SQLException {
+return connectio.prepareStatementlsql;	return connection.prepareStatement(sql);
+f	}
+	
+public boolean isValidinttimlthrows SQLException {	public boolean isValid(int time) throws SQLException {
+return connection..isValidtimel;	return connection.isValid(time);
+}	}
+}	}

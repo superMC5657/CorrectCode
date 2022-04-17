@@ -1,0 +1,15 @@
+pckage cm.atguigu..java	package com.atguigu.java;
+public class OrderTest {	public class OrderTest {
+publc  static void mainStringf args {	public static void main(String[] args) {
+	
+Order order = newOrderl;	Order order = new Order();
+	
+orderorderDefault= 1;	order.orderDefault = 1;
+order.orderPublic =2;	order.orderPublic = 2;
+	
+	
+	
+order.methodDefault;	order.methodDefault();
+order.methodPublic;	order.methodPublic();
+1	}
+}	}

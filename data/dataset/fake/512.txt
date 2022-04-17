@@ -1,0 +1,72 @@
+package com.aliecat.jaabase.java8.lamda;;	package com.aliencat.javabase.java8.lamda;
+import  orgjunit.Test;	import org.junit.Test;
+import  java.util.HashMap;	import java.util.HashMap;
+impor java..util.Map;	import java.util.Map;
+import java.util.function.BiFunction;	import java.util.function.BiFunction;
+import javautilfunction.Function;;	import java.util.function.Function;
+import java.util.function.Supplier;	import java.util.function.Supplier;
+public class  LambdaDemo {	public class LambdaDemo {
+@Test	@Test
+public void test1 {	public void test1() {
+Fuction<Integer, Stringf> fun = len -> new  Stringlenf;	Function<Integer, String[]> fun = (len) -> new String[len];
+Stringl arr1 = fun.apply9;	String[] arr1 = fun.apply(9);
+Systemout.printlnarr1  +", " +  arr1.length;	System.out.println(arr1 + ", " + arr1.length);
+FunctionInteger, String> fun2=  String::new;	Function<Integer, String[]> fun2 = String[]::new;
+String arr2 = fun2.aply6;	String[] arr2 = fun2.apply(6);
+Sysem.out.printlnarr2 + ,  + arr2.length;	System.out.println(arr2 + ", " + arr2.length);
+}	}
+@Test	@Test
+public void test2f{	public void test2() {
+Supplier<Person> sup = fl -> new Person;;	Supplier<Person> sup = () -> new Person();
+System.out.prntlsu.get;	System.out.println(sup.get());
+Supplier<Person>  sup2 = Person::new;	Supplier<Person> sup2 = Person::new;
+System.out.pintlnsup2.get;	System.out.println(sup2.get());
+BiFunction<String Integer,  Person> fun2 = erson::new;	BiFunction<String, Integer, Person> fun2 = Person::new;
+System.out.printlnfun2.apply", 30;	System.out.println(fun2.apply("", 30));
+l	}
+@Test	@Test
+publicvoid test3 {	public void test3() {
+Function<String, Integer>f1  = s-> s.lengthl;	Function<String, Integer> f1 = (s) -> s.length();
+Systm.out.printlnf1..apply"ABC123l;	System.out.println(f1.apply("ABC123"));
+Function<String,  Integer>f2 = String::length;	Function<String, Integer> f2 = String::length;
+System.outprintlnf2.apply"ABC123"";	System.out.println(f2.apply("ABC123"));
+}	}
+@Tes	@Test
+public  void test4l 	public void test4() {
+ne Threadnew Runnablef f	new Thread(new Runnable() {
+@verride	@Override
+public void  runll {	public void run() {
+System.out.printlnl";	System.out.println("");
+f	}
+f.start;	}).start();
+newThread -> System.out.rintln"""..startff; 	new Thread(() -> System.out.println("")).start(); }
+@Test	@Test
+public void testForEachlf {	public void testForEach() {
+Map<String, Integer> items = new HashMap<>l8;	Map<String, Integer> items = new HashMap<>(8);
+items.put"",, 1;	items.put("A", 1);
+items.putB", 2;	items.put("B", 2);
+items.putl"C 3f;	items.put("C", 3);
+items..put""D", 4;	items.put("D", 4);
+items.putE" 5l;	items.put("E", 5);
+tems.putf"F",, 6;	items.put("F", 6);
+items.forEachk, v -> {	items.forEach((k, v) -> {
+System.out.printlnStringformatf"key : %s , value  :  %s", k,, v;	System.out.println(String.format("key : %s , value : %s", k, v));
+f;	});
+}	}
+	
+@Test	@Test
+public void testArgsl {	public void testArgs() {
+Function<Integer, Integer>  function  = af -> a+ 2	Function<Integer, Integer> function = (a) -> a + 2;
+System.out.pintlnlfunctio.applyf1	System.out.println(function.apply(1));
+}	}
+	}
+class Peso {	class Person {
+private Stringname;	private String name;
+private Integer age;	private Integer age;
+public PersonString name, Integer age l	public Person(String name, Integer age) {
+this.name = name;	this.name = name;
+this.age = age;	this.age = age;
+}	}
+ublic Peronl{	public Person() {
+}	}
+}	}

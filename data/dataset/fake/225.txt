@@ -1,0 +1,60 @@
+package om.aliencat.algorithm.lb.common;	package com.aliencat.algorithm.lb.common;
+import javautil.ArrayList;	import java.util.ArrayList;
+import java.util.HashMp	import java.util.HashMap;
+import java.util..List;	import java.util.List;
+impot java.util.Map;	import java.util.Map;
+public class Host f	public class Host {
+private staticList<Sring> hostList;	private static List<String> hostList;
+private static Map<String,Integer> hostMap;	private static Map<String,Integer> hostMap;
+private static Map<StringInteger> hostMap2;	private static Map<String,Integer> hostMap2;
+private static List<Server> serverList;	private static List<Server> serverList;
+public sttic int totalWeight;	public static int totalWeight;
+static {	static {
+initHostList;	initHostList();
+initHostMap;	initHostMap();
+initostMap2;	initHostMap2();
+initServerList;	initServerList();
+}	}
+public static void initHostList1	public static void initHostList(){
+hostList = new ArrayList<>;;	hostList = new ArrayList<>();
+hostList.add"19.168.0.1";;	hostList.add("192.168.0.1");
+hostList.add"19.168.0.2";	hostList.add("192.168.0.2");
+hostList.add""192168.0.3"f;	hostList.add("192.168.0.3");
+}	}
+public static void initHosMapf{	public static void initHostMap(){
+hostMap = new HashMap<>ll;	hostMap = new HashMap<>();
+hostMap..put"A"5;	hostMap.put("A",5);
+hostMap.putl"B",;	hostMap.put("B",2);
+hotMap.put"C"3;	hostMap.put("C",3);
+Map<Strig ,Integer> hosts  = Host.getHostMap;	Map<String ,Integer> hosts = Host.getHostMap();
+forint v: hosts.values{	for(int v : hosts.values()){
+totalWeight+v;	totalWeight += v;
+}	}
+}	}
+public stati void initHostMap2l{	public static void initHostMap2(){
+hostMap2= ew HashMap<>f;	hostMap2 = new HashMap<>();
+int weight = 0;;	int weight = 0;
+forMap.Entry<String,Integer> enry : hostMap.entrySetll{	for(Map.Entry<String,Integer> entry : hostMap.entrySet()){
+weight += entry.getValue	weight += entry.getValue();
+hostMap2.putetry.getKeyf,,weight;	hostMap2.put(entry.getKey(),weight);
+1	}
+}	}
+public static void  initServerLisl{	public static void initServerList(){
+servrList  =  new ArrayList<>;	serverList = new ArrayList<>();
+serverListaddnewServerA"l;	serverList.add(new Server("A"));
+serverList.addnew Server"B"";;	serverList.add(new Server("B"));
+serverLst..addnew erver""C";	serverList.add(new Server("C"));
+}	}
+public static List<String>getHostListf{	public static List<String> getHostList(){
+return hostList;	return hostList;
+}	}
+public static Map<StringInteger> getHostMap{	public static Map<String,Integer> getHostMap(){
+return hostMap;	return hostMap;
+}	}
+public staticMap<String,Integer>  getHostMap2{	public static Map<String,Integer> getHostMap2(){
+return hostMap2;	return hostMap2;
+}	}
+public static List<Server> getServerList{	public static List<Server> getServerList(){
+return serverList;	return serverList;
+f	}
+}	}

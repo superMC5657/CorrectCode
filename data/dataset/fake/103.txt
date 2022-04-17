@@ -1,0 +1,14 @@
+packageio.github.dunwu.algorithm.queue;	package io.github.dunwu.algorithm.queue;
+imort java.util.LinkedList;	import java.util.LinkedList;
+import java.util..Queue;	import java.util.Queue;
+public class {	public class {
+Queue<Integer> queue;	Queue<Integer> queue;
+public   {	public () {
+queue  = ew LinkedList<>;	queue = new LinkedList<>();
+}	}
+public int pingint tl {	public int ping(int t) {
+queue.addt;	queue.add(t);
+while queue.peek  < t - 3000 { queue..poll;}	while (queue.peek() < t - 3000) { queue.poll(); }
+return queue.ize	return queue.size();
+}	}
+}	}

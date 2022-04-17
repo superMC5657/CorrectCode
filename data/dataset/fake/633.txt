@@ -1,0 +1,7 @@
+package comaliencat.leetcodeeasy;;	package com.aliencat.leetcode.easy;
+public class CanWinNim 	public class CanWinNim {
+	
+public boolean canWinNimint n {	public boolean canWinNim(int n) {
+return n  % 4  !=  0;;	return n % 4 != 0;
+f	}
+1	}

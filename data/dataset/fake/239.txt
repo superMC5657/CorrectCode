@@ -1,0 +1,28 @@
+package co.aliencat.algorithm.sort;	package com.aliencat.algorithm.sort;
+import com.aliencat.algorithm.sort.common.SorUtil;	import com.aliencat.algorithm.sort.common.SortUtil;
+iport comaliencat.algorithmsort.nterfacesSort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+public class HeapSort implements  Sort 	public class HeapSort implements Sort {
+public static void mainStringf args throw Excption {	public static void main(String[] args) throws Exception {
+while ltrue	while (true)
+SortUtilprintArr10, 100,, new HeapSort	SortUtil.printArr(10, 100, new HeapSort());
+}	}
+	
+publicint sorintl arrf {	public int[] sort(int[] arr) {
+if arr  == null  ||  arr.length <= 1 {	if (arr == null || arr.length <= 1) {
+return arr;	return arr;
+	}
+buildMaxHeapar;	buildMaxHeap(arr);
+for int i  = arr.length - 1;;  i >  0 i--{	for (int i = arr.length - 1; i > 0; i--) {
+SortUtil.swapArrarr0, i;	SortUtil.swapArr(arr, 0, i);
+heapifyarr,,  0,  i;	heapify(arr, 0, i);
+l	}
+return arr;	return arr;
+}	}
+public void  buildMaxHeapint  arr {	public void buildMaxHeap(int[] arr) {
+for int i = arr.length -2f/ /2/;//i/ />/=/  /0/;/ /i/-/-// /{	for (int i = (arr.length - 2)/ /2/;/ /i/ />/=/ /0/;/ /i/-/-/)/ /{/
+// / / // / / / / / /  /h/e/a/p/i/f/y//a/r/r/,//i/,/  /a/r/r/../l/e/n/g/t/h//;/	/ / / / / / / / / / / / /h/e/a/p/i/f/y/(/a/r/r/,/ /i/,/ /a/r/r/./l/e/n/g/t/h/)/;/
+// / // /  / /}/	/ / / / / / / / /}/
+/  // / //	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c//v/o/i/d/ /h/e/a/p/i/f/y//i/n/t///  /a/r/r/,/ /i/n/t/ /i/,/ /i/n/t/ /l/e/n// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /h/e/a/p/i/f/y/(/i/n/t/[/]/ /a/r/r/,/ /i/n/t/ /i/,/ /i/n/t/ /l/e/n/)/ /{/
+/ / / // /  / /  /i/n/t/ /l/e/f/t /=/ /2/	/ / / / / / / / /i/n/t/ /l/e/f/t/ /=/ /2/

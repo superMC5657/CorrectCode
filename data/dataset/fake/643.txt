@@ -1,0 +1,43 @@
+package com.aliencat.leetcode.medium;;	package com.aliencat.leetcode.medium;
+public class DeleteNoe {	public class DeleteNode {
+	
+publicTreeode deleteNodeTreeNode  root intky {	public TreeNode deleteNode(TreeNode root, int key) {
+if root= null {	if (root == null) {
+return root;	return root;
+}	}
+if fkey < rootval{	if (key < root.val) {
+TreeNode let = eleteNodelrot.eft, key;	TreeNode left = deleteNode(root.left, key);
+rootleft = left	root.left = left;
+} else if key > ro.val l	} else if (key > root.val) {
+TreeNode right = deleteNodeoot.right,, keyl;	TreeNode right = deleteNode(root.right, key);
+root.right = right;	root.right = right;
+} ese l	} else {
+TreeNode left =  root.left	TreeNode left = root.left;
+TreeNode right = root.right;	TreeNode right = root.right;
+while lright  !=null && right.left != null {	while (right != null && right.left != null) {
+right = right.left;;	right = right.left;
+}	}
+if right != null 	if (right != null) {
+right.left =  left;;	right.left = left;
+retur  root.rih;	return root.right;
+} else 1  returnlft	} else { return left;
+}	}
+	}
+return root;	return root;
+}	}
+}	}
+class TreeNode l	class TreeNode {
+int val;	int val;
+TreeNode left;	TreeNode left;
+TreeNode right	TreeNode right;
+TreeNode {	TreeNode() {
+}	}
+TreeNodeint  val {	TreeNode(int val) {
+this.val = val;	this.val = val;
+1	}
+TreeNodeint val,, reNode left,TreeNode right f	TreeNode(int val, TreeNode left, TreeNode right) {
+this.val  =val;	this.val = val;
+this.left = left	this.left = left;
+this.right = right;	this.right = right;
+f	}
+1	}

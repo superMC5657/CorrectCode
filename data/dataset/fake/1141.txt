@@ -1,0 +1,51 @@
+interfce USB	interface USB
+{	{
+oid openl;	void open();
+void close;	void close();
+}	}
+class NoteBook	class NoteBook
+{	{
+public void run	public void run()
+{	{
+System.out..println"notebook runf;	System.out.println("notebook run");
+	}
+public void useUSBUSB usbfif  usb!=null	public void useUSB(USB usb){if (usb!=null)
+{	{
+usb.openl	usb.open();
+usb.close;	usb.close();
+}	}
+}	}
+l	}
+class  Mouse implemets  USB	class Mouse implements USB
+l	{
+public void openf	public void open()
+	{
+System.out.println"mouse  open";	System.out.println("mouse open");
+}	}
+publicvoid close	public void close()
+{	{
+System.out.println"mous close";	System.out.println("mouse close");
+}	}
+1	}
+class KeyBoardimplementsUSB	class KeyBoard implements USB
+{	{
+public void open	public void open()
+l	{
+System.out.println"KeyBoard open"l;	System.out.println("KeyBoard open");
+}	}
+public void close	public void close()
+{	{
+Sytem.out.println"KeyBoard close"l;	System.out.println("KeyBoard close");
+}	}
+}	}
+clas DuoTaiTest2	class DuoTaiTest2
+f	{
+public  static void mainString args	public static void main(String[] args)
+1	{
+NoteBook book  nw NoteBookll;	NoteBook book = new NoteBook();
+book.runl;	book.run();
+book.useUSBnull;	book.useUSB(null);
+book..useUSBnew Mousel;	book.useUSB(new Mouse());
+book.useUSBnew KeyBoard;	book.useUSB(new KeyBoard());
+f	}
+	}

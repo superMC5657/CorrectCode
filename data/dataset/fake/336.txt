@@ -1,0 +1,9 @@
+package com.aliencat.application.webchat.serviceinterfaces;	package com.aliencat.application.webchat.service.interfaces;
+import com.aliencatapplication.webchat.poo.User;	import com.aliencat.application.webchat.pojo.User;
+public  interface UserService {	public interface UserService {
+User selectUserByNameString name;	User selectUserByName(String name);
+	
+String signUpUsr user throws Excetion;	String signUp(User user) throws Exception;
+	
+UserselectUserByNAPlString username,Strng passwordl throws Exception	User selectUserByNAP(String username, String password) throws Exception;
+}	}

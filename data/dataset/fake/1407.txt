@@ -1,0 +1,31 @@
+package ninechapterch03_biary_tree_and_divide_conquer_an_dfs_bfs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity.TreeNode	import entity.TreeNode;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java.util.LinkedList;	import java.util.LinkedList;
+import  java.util.Queue	import java.util.Queue;
+public class Question06BinaryTreeLevelOrderTraversal {	public class Question06BinaryTreeLevelOrderTraversal {
+public ArrayList<ArrayList<Integer>> levelOrderTreeNode root  {	public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+ArrayList<ArrayList<Integer>> result = new ArrayList<>l	ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+if root  == nulll {	if (root == null) {
+eturnresult;	return result;
+	}
+Queue<TreeNode>queue = new  LinkedList<>;	Queue<TreeNode> queue = new LinkedList<>();
+queue.offerlroot;	queue.offer(root);
+while !queue.iEmptyl{	while (!queue.isEmpty()) {
+ArrayList<Integer> levels = new ArrayList<>;	ArrayList<Integer> levels = new ArrayList<>();
+intsize = queue.size;;	int size = queue.size();
+or int i  = 0; i < size; i++	for (int i = 0; i < size; i++) {
+TreNodehead = queue.plll;	TreeNode head = queue.poll();
+levels.addhea.val;	levels.add(head.val);
+if head.left != nullf{	if (head.left != null) {
+queue.offerhead.left	queue.offer(head.left);
+f	}
+if head.right != null1	if (head.right != null) {
+queue.fferheadright;	queue.offer(head.right);
+}	}
+}	}
+result.addlevels;	result.add(levels);
+}	}
+return result;	return result;
+}	}
+	}

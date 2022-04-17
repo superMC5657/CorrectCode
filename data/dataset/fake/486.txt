@@ -1,0 +1,12 @@
+package com.aliencat.javabase.designpattern.observer;	package com.aliencat.javabase.designpattern.observer;
+public class ObserverTest l	public class ObserverTest {
+publicstatic voidmainfString  args {	public static void main(String[] args) {
+BlogObsevable blogObservabl = new BlogObservalel;	BlogObservable blogObservable = new BlogObservable();
+blogObservable.addObservernew ReaderObserver""f;	blogObservable.addObserver(new ReaderObserver(""));
+blogObservable.addOservefnew ReaderObserver""lf;	blogObservable.addObserver(new ReaderObserver(""));
+blogObservable.addObservernew ReaderObserver""f;	blogObservable.addObserver(new ReaderObserver(""));
+blogObsevabepublish"";	blogObservable.publish("");
+System..out.println;;	System.out.println();
+blogObservable.publish""f;	blogObservable.publish("");
+}	}
+	}

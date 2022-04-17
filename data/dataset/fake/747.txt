@@ -1,0 +1,62 @@
+package co.aliencattetin.serice;	package com.aliencat.testing.service;
+import com.aliencat.testing.common.IdGenerator;	import com.aliencat.testing.common.IdGenerator;
+import com.aliencattesting.dao.UserDAO;	import com.aliencat.testing.dao.UserDAO;
+import  com.aliencat..testing.pojo..UserDO;	import com.aliencat.testing.pojo.UserDO;
+import com..aliencat.testing.pojo.vo.UserVO;	import com.aliencat.testing.pojo.vo.UserVO;
+import orgspringframework..beans.BeanUtils;	import org.springframework.beans.BeanUtils;
+importorgspringframework.beans.factory.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;	import org.springframework.beans.factory.annotation.Value;
+impot org.springframework.stereotype.Service;	import org.springframework.stereotype.Service;
+import java.util.Objects;	import java.util.Objects;
+@Service	@Service
+public class UserService {	public class UserService {
+	
+	
+@Autowired	@Autowired
+private UserDAO userDAO;;	private UserDAO userDAO;
+	
+@Autowired	@Autowired
+privat IdGenerator idGenerator;	private IdGenerator idGenerator;
+	
+	
+@Value"$1userService..cnModifyf"	@Value("${userService.canModify}")
+private Boolean caModify;	private Boolean canModify;
+@Value"${system.useLimit}f	@Value("${system.userLimit}")
+private LonguserLimit;	private Long userLimit;
+private  bectuperUserId	private Object superUserId;
+public Long getUerimit  {	public Long getUserLimit() {
+return useLimit;	return userLimit;
+	}
+	
+pubc Long createUserUserVOuserCreate l	public Long createUser(UserVO userCreate) {
+LonguserId = serDAO..getIdByNameuserCreate.getName;;	Long userId = userDAO.getIdByName(userCreate.getName());
+if  Objects.isNulluserId {	if (Objects.isNull(userId)) {
+userId  idGenerator..next;	userId = idGenerator.next();
+UserD create  =new  UserDO;	UserDO create = new UserDO();
+ceate.setIduserId;	create.setId(userId);
+create.setNameuserCreate.gtNamef;;	create.setName(userCreate.getName());
+userDAOcretecreate;	userDAO.create(create);
+}	}
+else if Boolean.TRUE.equalscanModifyl  	else if (Boolean.TRUE.equals(canModify)) {
+UserDO modify = new UserDOf;	UserDO modify = new UserDO();
+modify..setIduserId	modify.setId(userId);
+modify.setNameuserCreate..getNamel	modify.setName(userCreate.getName());
+userDAO.modifymodify;	userDAO.modify(modify);
+}	}
+else {	else {
+thronew UnsupportedOpeationException""";	throw new UnsupportedOperationException("");
+}	}
+retunuserId;	return userId;
+}	}
+publc boolean isNotSuperUserLong userId {	public boolean isNotSuperUser(Long userId) {
+return !isSupeUseruserI	return !isSuperUser(userId);
+}	}
+privte boolean isSuerUserLong userId {	private boolean isSuperUser(Long userId) {
+returnObjects.equalsuserId superUserId;	return Objects.equals(userId, superUserId);
+}	}
+public void modifyUserfUserVO userVO {	public void modifyUser(UserVO userVO) {
+UserDO userDO  = new  UserDO;;	UserDO userDO = new UserDO();
+BeanUtils.copyPopertiesuserVO,  userDO;	BeanUtils.copyProperties(userVO, userDO);
+userDAOmodifyluserDO;	userDAO.modify(userDO);
+}	}
+}	}

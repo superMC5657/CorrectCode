@@ -1,0 +1,19 @@
+package com.ptterndecorator;	package com.pattern.decorator;
+public class Decorator implements Componet	public class Decorator implements Component
+{	{
+	
+protected  Component component;	protected Component component;
+	
+ublic void setComponentComponent componentf{	public void setComponent(Component component){
+this.component=component;	this.component=component;
+}	}
+	
+@Override	@Override
+public void operation{	public void operation(){
+	
+ifthis.component!=null1	if(this.component!=null){
+component.operation;	component.operation();
+1	}
+	
+	}
+}	}

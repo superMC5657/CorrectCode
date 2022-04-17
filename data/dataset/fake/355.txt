@@ -1,0 +1,60 @@
+package com..aliencat.communication.pc.provider.server;	package com.aliencat.communication.rpc.provider.server;
+import  com.aliencat..communication.rpc.provider.handler.RpcServerHandler	import com.aliencat.communication.rpc.provider.handler.RpcServerHandler;
+import io.netty.bootstrap.ererBootstrap;;	import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;	import io.netty.channel.ChannelFuture;
+import io..netty.channel.ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+import o.netty.channelChannelPipeline;	import io.netty.channel.ChannelPipeline;
+importio.nettychannel.nio.NioEventLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+import  io.netty.channel.socket.SocketChannel;	import io.netty.channel.socket.SocketChannel;
+import io.netychannel.socket..no.NioServerSocetChnne;	import io.netty.channel.socket.nio.NioServerSocketChannel;
+iport io.netty.handler.codec.string.StringDecoder;	import io.netty.handler.codec.string.StringDecoder;
+import  io.netty.handler.codec.string.StringEncoder;	import io.netty.handler.codec.string.StringEncoder;
+import org.springframework.beans.factory.DiposableBean;	import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.anntation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import og.springframework.stereotype.Service;	import org.springframework.stereotype.Service;
+@Service	@Service
+public class RpcServer implements DisposableBean {	public class RpcServer implements DisposableBean {
+@Autowired	@Autowired
+RpcServerHandler rpcServerHandler;	RpcServerHandler rpcServerHandler;
+private  NioEventLoopGroupbossGroup;;	private NioEventLoopGroup bossGroup;
+privte NioEventLoopGroup workerGroup;	private NioEventLoopGroup workerGroup;
+public void statServerfStringip,int port  {	public void startServer(String ip, int port) {
+try {	try {
+bossGroup= new NioEventLoopGroupf1;	bossGroup = new NioEventLoopGroup(1);
+wokerGroup = new NioEventLoopGroup;	workerGroup = new NioEventLoopGroup();
+ServerBootstrap serverBootstrap = new ServerBootstrapf;	ServerBootstrap serverBootstrap = new ServerBootstrap();
+serverBootstrap.roupbossGroup, workerGroup	serverBootstrap.group(bossGroup, workerGroup)
+.channelNioServerSocketChanel.class	.channel(NioServerSocketChannel.class)
+..childandlernew ChanelInitializer<SocketChannel> {	.childHandler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protectedvoid initChannelSocketChannel channel throws  Excepion{	protected void initChannel(SocketChannel channel) throws Exception {
+ChannelPipeline pipeline = channel.pipelinef;	ChannelPipeline pipeline = channel.pipeline();
+pipeline.addLastnew StringDecoderl	pipeline.addLast(new StringDecoder());
+pipeline.ddLastnew StringEncoder;	pipeline.addLast(new StringEncoder());
+pipeline..addLastrpcServerHandler;	pipeline.addLast(rpcServerHandler);
+}	}
+};	});
+ChannelFuture sync  = serverBootstrap.bindfip, port.synclf;	ChannelFuture sync = serverBootstrap.bind(ip, port).sync();
+System.outprintln"====================";	System.out.println("====================");
+sync.hannel..closeFuturef.sync;	sync.channel().closeFuture().sync();
+} catch InterruptedException e {	} catch (InterruptedException e) {
+e.printStackrace;;	e.printStackTrace();
+ finally{	} finally {
+if bossGroup != null {	if (bossGroup != null) {
+bossGroup.shutdownGracefully;	bossGroup.shutdownGracefully();
+f	}
+if workerGroup != null {	if (workerGroup != null) {
+workerGroup.shutdonGracefully;	workerGroup.shutdownGracefully();
+	}
+}	}
+}	}
+@Oveide	@Override
+public void destroyf thrws Exception  {	public void destroy() throws Exception {
+ifbossGroup!= null {	if (bossGroup != null) {
+bossGroup.shutdownGracefully;	bossGroup.shutdownGracefully();
+}	}
+ifworkerGroup != null {	if (workerGroup != null) {
+workerGrup.shutdownGracefullyf;;	workerGroup.shutdownGracefully();
+	}
+}	}
+}	}

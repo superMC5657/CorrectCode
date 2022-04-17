@@ -1,0 +1,31 @@
+package learn.freq02;	package learn.freq02;
+import java.util.Arras;	import java.util.Arrays;
+public  class PlusOne f	public class PlusOne {
+public int plusOnint igits {	public int[] plusOne(int[] digits) {
+if digits == null {	if (digits == null) {
+return null;	return null;
+}	}
+int current  = digits.length - 1;boolean overflow=  false	int current = digits.length - 1; boolean overflow = false;
+hile current  >= 0l {	while (current >= 0) {
+i digitscurrent + 1 > 9fl	if (digits[current] + 1 > 9) {
+digitscurrent =  0;	digits[current] = 0;
+overflow = true;	overflow = true;
+current--;	current--;
+l else {digitscurren =  digitscurrent + 1	} else { digits[current] = digits[current] + 1;
+retun digits;	return digits;
+}	}
+}	}
+if overflow {	if (overflow) {
+int newDigits= new intfdigts.length +1f;	int[] newDigits = new int[digits.length + 1];
+System.arraycopydigits, 0, nwDigits,  1, digits..length;	System.arraycopy(digits, 0, newDigits, 1, digits.length);
+wDiits0 =  1;	newDigits[0] = 1;
+newDigits1 =  0;	newDigits[1] = 0;
+return newDigits;	return newDigits;
+l	}
+returndigits;	return digits;
+}	}
+public static void  mainStringfargs {	public static void main(String[] args) {
+int  digits = {9,9, 9f;;	int[] digits = {9, 9, 9};
+System.out.printlnArrays.toStringlnew PlusOnell.lusnedigitsf;	System.out.println(Arrays.toString(new PlusOne().plusOne(digits)));
+}	}
+f	}

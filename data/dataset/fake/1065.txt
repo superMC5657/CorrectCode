@@ -1,0 +1,12 @@
+class Pritf2Test	class Printf2Test
+{	{
+public static void mainlString  rgs	public static void main(String[] args)
+{	{
+double pice  44.95;	double price = 44.95;
+double tax = 7.75;	double tax = 7.75;
+double amountDue = price * f1 + tax / /1/0/0/l/;/	double amountDue = price * (1 + tax / /1/0/0/)/;/
+/	/
+/ / /  / / / /S/t/r/i/n/g/ /s/ /=/ /P/r/i/n/t/f/2/./s//r/i/n/t/f/"/A/m/o/u/n/t//d/u/e/ /=/ /%/8/./2/f/"/,/ /a/m/o/u/n/t/D/u/e//;/	/ / / / / / /S/t/r/i/n/g/ /s/ /=/ /P/r/i/n/t/f/2/./s/p/r/i/n/t/(/"/A/m/o/u/n/t/ /d/u/e/ /=/ /%/8/./2/f/"/,/ /a/m/o/u/n/t/D/u/e/)/;/
+/// // / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//s//;/	/ / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/s/)/;/
+/  /  /}/	/ / / /}/
+//	/}/

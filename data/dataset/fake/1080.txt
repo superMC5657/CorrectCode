@@ -1,0 +1,21 @@
+class DoWhileDemo	class DoWhileDemo
+{	{
+public  staticvoid mainlString  argsl	public static void main(String[] args)
+1	{
+	
+intx = 3;	int x = 3;
+while x<3	while (x<3)
+{	{
+System.out..pintln"x="+x	System.out.println("x="+x);
+}	}
+do	do
+{	{
+System.out.println"x="+x;	System.out.println("x="+x);
+}	}
+while x<3;	while (x<3);
+	
+	
+	
+Sysem.out.println""Helo World!";	System.out.println("Hello World!");
+}	}
+}	}

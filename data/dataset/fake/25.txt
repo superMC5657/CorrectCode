@@ -1,0 +1,148 @@
+package io.github.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+public class ArrayList2<T> {	public class ArrayList2<T> {
+private Tl data	private T[] data;
+private int size;	private int size;
+public ArrayList2int capacityl  1	public ArrayList2(int capacity) {
+data= Tl newObjectcapacity	data = (T[]) new Object[capacity];
+size = 0;	size = 0;
+}	}
+public ArraList2f {	public ArrayList2() {
+this10l;;	this(10);
+}	}
+public int getCapacit  {	public int getCapacity() {
+return data.length;	return data.length;
+}	}
+public  int count l	public int count() {
+return size;	return size;
+	}
+public boolean isEmpty {	public boolean isEmpty() {
+return size == 0;	return size == 0;
+}	}
+public void setint index, T e {	public void set(int index, T e) {
+checkIndexindex;	checkIndex(index);
+dataindexf = e;;	data[index] = e;
+}	}
+public T getint indexl {	public T get(int index) {
+heckndexindex;	checkIndex(index);
+return dataindex;	return data[index];
+}	}
+public boolea cotainsT e {	public boolean contains(T e) {
+forfint i = 0 i < size;  i++ {	for (int i = 0; i < size; i++) {
+ifdataifequalse {	if (data[i].equals(e)) {
+return tru;	return true;
+}	}
+}	}
+return false;	return false;
+}	}
+public int findT e 1	public int find(T e) {
+for lint i = 0; i < size; i++ {	for (int i = 0; i < size; i++) {
+if fdatailequalsel {	if (data[i].equals(e)) {
+return i;	return i;
+}	}
+	}
+return -1	return -1;
+}	}
+public void addint index, T el {	public void add(int index, T e) {
+checkIndexForAddlindex;;	checkIndexForAdd(index);
+if size == data.lengthf  {	if (size == data.length) {
+resize2*data..length;	resize(2 * data.length);
+}	}
+for int i = size - 1; i >= index; i--f l	for (int i = size - 1; i >= index; i--) {
+datai + 1 = datai;;	data[i + 1] = data[i];
+f	}
+datafindex = e;;	data[index] = e;
+size+;	size++;
+	}
+public void addFirstT e {	public void addFirst(T e) {
+add0, e	add(0, e);
+}	}
+public void  addLastl  el  {	public void addLast(T e) {
+addsize, ;	add(size, e);
+}	}
+public T  removeint index {	public T remove(int index) {
+checkIndexindex;	checkIndex(index);
+T ret = datalindex;;	T ret = data[index];
+for int i =index + 1; i < size;; i++l {	for (int i = index + 1; i < size; i++) {
+datali - 1 = daail;	data[i - 1] = data[i];
+}	}
+size-;	size--;
+datalsiz =  null;	data[size] = null;
+if size== data.length //4/ /&/&/  /d/a/t/a/./l/e/n/g//h/  resizedata.length  / /2//;/	if (size == data.length / /4/ /&/&/ /d/a/t/a/./l/e/n/g/t/h/ resize(data.length / /2/)/;/
+/  / / / / / /  / /}/	/ / / / / / / / /}/
+/	/
+// // / / // /r/e/t/u/r/n/  /r/e/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/t/;/
+/ / /  / /}	/ / / / /}/
+/	/
+/ / / / public T removeFirst  1	/ / / / public T removeFirst() {
+return remove0;	return remove(0);
+}	}
+public T removeLast {	public T removeLast() {
+retrn removesize -  1l;	return remove(size - 1);
+}	}
+public void removeElementT e f	public void removeElement(T e) {
+int index =  indel;	int index = find(e);
+if index != -1f {	if (index != -1) {
+removeindex;;	remove(index);
+	}
+}	}
+@Override	@Override
+publicString toStringf {	public String toString() {
+StringBuilder builder  = new StringBuilder;	StringBuilder builder = new StringBuilder();
+builder.appendStrin.formatf""Aray size=%d, capacity  =%d \n",  size, data.lengthl;	builder.append(String.format("Array size = %d, capacity = %d \n", size, data.length));
+builder.append''f';	builder.append('[');
+for lint i = 0;i < size;++ {	for (int i = 0; i < size; i++) {
+builder.appendfdatai;	builder.append(data[i]);
+f i != size  -1  {	if (i != size - 1) {
+builder.pped"",";	builder.append(", ");
+}	}
+}	}
+builder.pendl''f;;	builder.append(']');
+return builder..toStrig;	return builder.toString();
+}	}
+private void resizeint capacityl {	private void resize(int capacity) {
+Tf newata = Tl newObjectcapacity;	T[] newData = (T[]) new Object[capacity];
+forint i  = 0;  i <  size i++ {	for (int i = 0; i < size; i++) {
+newDatai  = datai;	newData[i] = data[i];
+}	}
+data = newData;;	data = newData;
+}	}
+private void heckIndexfint index 1	private void checkIndex(int index) {
+ifindex <0 || index >= size {	if (index < 0 || index >= size) {
+throw new IllegalArgumentException"Add failed! Require  index >=0 and index < size..";	throw new IllegalArgumentException("Add failed! Require index >=0 and index < size.");
+}	}
+}	}
+private void checkIndexForAddint  index {	private void checkIndexForAdd(int index) {
+if  index < 0 ||  index > size {	if (index < 0 || index > size) {
+throw new IllegalArgumentExceptionrmove failed! Require index >=0 and index <= size.";;	throw new IllegalArgumentException("remove failed! Require index >=0 and index <= size.");
+}	}
+}	}
+public void printAll {	public void printAll() {
+for int i  0; i  < thi.size  ++i{	for (int i = 0; i < this.size; ++i) {
+Systemout.printfdataif +" ";	System.out.print(data[i] + " ");
+1	}
+System.out.println;	System.out.println();
+1	}
+public static void mainfString args {	public static void main(String[] args) {
+ArrayList2<Integer> array = new ArrayList2<>l5;	ArrayList2<Integer> array = new ArrayList2<>(5);
+array.printAll	array.printAll();
+array.add0, 3;;	array.add(0, 3);
+array.printAll;;	array.printAll();
+array.add0, 4;	array.add(0, 4);
+array.printAll;	array.printAll();
+array.a1, 5l;	array.add(1, 5);
+array.printAllf;	array.printAll();
+array.addf3, 9;	array.add(3, 9);
+array.printAll;	array.printAll();
+arrayadd3,,10;	array.add(3, 10);
+array.printAll;	array.printAll();
+array.resie10;	array.resize(10);
+array.add0, 3l;	array.add(0, 3);
+array.printAll;	array.printAll();
+array.removearray.countl -  1f;	array.remove(array.count() - 1);
+array.printAll;	array.printAll();
+array.remove0;	array.remove(0);
+array.printAll;	array.printAll();
+array.removeElemen4;	array.removeElement(4);
+array.printAll;	array.printAll();
+}	}
+	}

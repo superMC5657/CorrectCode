@@ -1,0 +1,20 @@
+classArray2Demo2	class Array2Demo2
+	{
+public static vid mainlStringf args	public static void main(String[] args)
+1	{
+	
+intarr= {23,111},188,11,,33,901,111,78,34}};	int[][] arr = {{23,17,11},{88,11,33,90},{11,78,34}};
+int sum = 0	int sum = 0;
+for int x=0; <rr.length; x++l	for (int x=0; x<arr.length; x++)
+{	{
+for fint y=0; y<arrxlength;  y++	for (int y=0; y<arr[x].length; y++)
+{	{
+sum+= arrxy;	sum += arr[x][y];
+1	}
+1	}
+	
+	
+	
+System.out.println"sum=+sum;;	System.out.println("sum="+sum);
+}	}
+}	}

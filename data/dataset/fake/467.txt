@@ -1,0 +1,75 @@
+packae com.aliencat.javabae.bit	package com.aliencat.javabase.bit;
+impr orgjunitTest;	import org.junit.Test;
+public class BitOperation1	public class BitOperation {
+@Test	@Test
+public voidtest1f {	public void test1() {
+int rgb = 1000;;	int rgb = 1000;
+System.ou.printllrgb / /2/5/6//  /%/ /2/5//f/;/	System.out.println((rgb / /2/5/6/)/ /%/ /2/5/6/)/;/
+/	/
+/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p//i/n/t/l/n//l/r/g/b/ />/>/ /8// /&/  /0/x/F/F/l/;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/(/r/g/b/ />/>/ /8/)/ /&/ /0/x/F/F/)/;/
+/ /  / / /}/	/ / / / /}/
+/	/
+/  / / / * AND&	/ / / / * AND&
+* 1	* 1
+* 10	* 10
+*/	*/
+/ // / /@/T//s/t/	/ / / / /@/T/e/s/t/
+/ // //p/u/b/l/i/c/ /v/o/i/d/ /t/e/s//2////1/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/2/(/)/ /{/
+/  / / / / /  /  / /i/n/t/ /x/ /=//9/;/	/ / / / / / / / /i/n/t/ /x/ /=/ /9/;/
+/ // / / / /  / /i/n/t/ /y/ /=/ /5/;/	/ / / / / / / / /i/n/t/ /y/ /=/ /5/;/
+/ / / / / /  / / /S///t/e/m/./o/u/t//p/r/i/n/t/l/n//"////// //"/  /+/x /+/ /"/ /&/ /"/ /+/ /y//+/ /"// /=/ /"/ /+/ //x/ /&/ /y///;;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"////// /(/"/ /+/ /x/ /+/ /"/ /&/ /"/ /+/ /y/ /+/ /"/)/ /=/ /"/ /+/ /(/x/ /&/ /y/)/)/;/
+/ // / /1/	/ / / / /}/
+/	/
+/ / / / *OR|AD	/ / / / * OR|AND
+* 110	* 110
+*/	*/
+/// / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/  / / //u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/3//l/ /l/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/3/(/)/ /{/
+/ / /  / / / / /i/n/t//x/ /=/ /9/;/	/ / / / / / / / /i/n/t/ /x/ /=/ /9/;/
+/ // / / / / / /i/n/t/ /y/ /=/ /5/	/ / / / / / / / /i/n/t/ /y/ /=/ /5/;/
+/ // / /  /  ///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//""///////"/ /+//x/ /+/ /"/ /|/  /"/ /+//y/ /+/ /"// /=/  /"/ /+/ //x/ /|/ /y/l//;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"////// /(/"/ /+/ /x/ /+/ /"/ /|/ /"/ /+/ /y/ /+/ /"/)/ /=/ /"/ /+/ /(/x/ /|/ /y/)/)/;/
+/ / /  / }/	/ / / / /}/
+/	/
+/ / //  * ^	/ / / / * ^
+* 10	* 10
+*/	*/
+/ / / //@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/  / / //p/u/b/l/i/c/  /v/o/i/d/ /t/e/s/t/4/// /1/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/4/(/)/ /{/
+/ / / // /  / / /i/n// /x/ /=/ /9/;/	/ / / / / / / / /i/n/t/ /x/ /=/ /9/;/
+/ / /  / / / / / /i/n/t/ /y/ /=/ ///	/ / / / / / / / /i/n/t/ /y/ /=/ /5/;/
+/ / / / // / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/l/"////// //"/ /+/ /x/ /+/ /"/ /^/ /"/ /+/ /y/ /+/ /"// /=//"/ /+/ //x/ /^/ /y/l//;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"////// /(/"/ /+/ /x/ /+/ /"/ /^/ /"/ /+/ /y/ /+/ /"/)/ /=/ /"/ /+/ /(/x/ /^/ /y/)/)/;/
+/ / / / }/	/ / / / /}/
+/	/
+/ /  / /  * NO~	/ / / / * NOT~
+*/	*/
+/ / / ///T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / //p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/5//l/ /l/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/5/(/)/ /{/
+/ /  / / /  / / / /i/n/t/ /x/ /=/ /9/;/	/ / / / / / / / /i/n/t/ /x/ /=/ /9/;/
+/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/l/"////// /f/ /~/"/ /+/ /x/ /+/ /""// /=/ /"/ /+/ //~/x/l//;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"////// /(/ /~/"/ /+/ /x/ /+/ /"/)/ /=/ /"/ /+/ /(/~/x/)/)/;/
+/ / / //1/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	* 
+* <<	* <<
+* ///////>/>////////////////	* ///////>/>////////////////
+/ / /  / /	/ / / / /
+@Test	@Test
+public void  test6 	public void test6() {
+int i= 1;	int i = 1;
+System.out.printlni << 9;	System.out.println(i << 9);
+Systm.out.printlnfi  >> 6;	System.out.println(i >> 6);
+}	}
+	
+@Test	@Test
+public void testToggleCasel {	public void testToggleCase() {
+char c ='c'	char c = 'c';
+System.outprintlnlcharc ^ 32; c = 'C';	System.out.println((char) (c ^ 32)); c = 'C';
+Systemout.printlnchar c ^32l; }	System.out.println((char) (c ^ 32)); }
+	
+@Test	@Test
+public void testParity {	public void testParity() {
+int x = 11;;	int x = 111;
+System.out.rintlnx + ""  + lx & 1 ==  0f	System.out.println(x + "" + ((x & 1) == 0));
+System.out.printlnx +  "" + x & 1== 1l;	System.out.println(x + "" + ((x & 1) == 1));
+}	}
+}	}

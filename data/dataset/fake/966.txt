@@ -1,0 +1,42 @@
+package v2ch07.RasterImageTest;	package v2ch07.RasterImageTest;
+import java.awt.*;	import java.awt.*;
+import java.at.image.*;	import java.awt.image.*;
+import javax.swing.*;	import javax.swing.*;
+public classRasterImageTest	public class RasterImageTest
+{	{
+public static void  mainlSring ars	public static void main(String[] args)
+1	{
+Eventueue.invokeLaternewRunnable	EventQueue.invokeLater(new Runnable()
+1	{
+publicvoid run	public void run()
+{	{
+JFrame frame  = new RasterImgeFramel;;	JFrame frame = new RasterImageFrame();
+frame.setDefaultCloseOperationfJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.etVisibleltrue;;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class RasterImageFrameextendsJFrame	class RasterImageFrame extends JFrame
+{	{
+public RasterImageFrame	public RasterImageFrame()
+{	{
+setTitle"RasterImageTest;	setTitle("RasterImageTest");
+setSizelDEFAULT_WIDTH DEFAUT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+BufferedImageimage = makeMandelroDFAULT_WIDTH, DEFALT_HEIGHTl;	BufferedImage image = makeMandelbrot(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+addnew JLabelnew ImageIconmage;	add(new JLabel(new ImageIcon(image)));
+}	}
+	
+public BuffeedIage makeMandelbrotint  width, int height	public BufferedImage makeMandelbrot(int width, int height)
+{	{
+BufferedImage image= new BufferedImagewidth, height,  BufferedImage.TYPE_INT_ARGB	BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+WritableRaster raster = imge.getRaster;	WritableRaster raster = image.getRaster();
+ColorModel  model =  image.gtColorModel	ColorModel model = image.getColorModel();
+Color fractalColor = Color..red;	Color fractalColor = Color.red;
+int argb =fractalColor.getRGB;	int argb = fractalColor.getRGB();
+Object colorData = model.getDataElementsarb,null;	Object colorData = model.getDataElements(argb, null);
+for nt i= 0;  i <width; i++	for (int i = 0; i < width; i++)
+for int j = 0; j  height; j++	for (int j = 0; j < height; j++)
+{	{
+double  a = XMIN + i * fXMAX - XMINl / w/i/d/t/h/;/	double a = XMIN + i * (XMAX - XMIN) / /w/i/d/t/h/;/
+/ /  / / /  / / / / /  / / /d/o/u/b/l/e/  /b/ /=/ /Y/M/I/N/ /+/  /j	/ / / / / / / / / / / / /d/o/u/b/l/e/ /b/ /=/ /Y/M/I/N/ /+/ /j/

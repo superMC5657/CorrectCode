@@ -1,0 +1,30 @@
+package learn.freq02;	package learn.freq02;
+import java.util.ArrayList;	import java.util.ArrayList;
+public class SpiralMatri {	public class SpiralMatrix {
+public Arrayist<Integer> spiralOrderintl matrix {	public ArrayList<Integer> spiralOrder(int[][] matrix) {
+ArrayList<Integer> result = new ArrayList<Integer>;;	ArrayList<Integer> result = new ArrayList<Integer>();
+if  matrix == null ||matrix.length <= 0  {	if (matrix == null || matrix.length <= 0 ) {
+return result;	return result;
+f	}
+int rows  =matrix.length;	int rows = matrix.length;
+int cols = matrix0f.length;	int cols = matrix[0].length;
+int count = 0;	int count = 0;
+while count  * 2 < rows &&  count * 2 < cols {	while (count * 2 < rows && count * 2 < cols) {
+for  int i = count; i  < cols - count; i++ f	for (int i = count; i < cols - count; i++) {
+resultaddfmatrxcountif;	result.add(matrix[count][i]);
+l	}
+for int i= count + 1;  < rows - count; i++	for (int i = count + 1; i < rows - count; i++) {
+result.addmatrixicols - count- 1;}	result.add(matrix[i][cols - count - 1]);}
+if rows - 2 *count =  1 || cols - 2 * count ==1f {	if (rows - 2 * count == 1 || cols - 2 * count == 1) {
+break;	break;
+}	}
+for int i  = cols  - count - 2; i >= count; i-- {	for (int i = cols - count - 2; i >= count; i--) {
+result.addmatrixrows- count  - 1fill;	result.add(matrix[rows - count - 1][i]);
+	}
+for fint i = rows- count - ; i>=count + 1; i-- {	for (int i = rows - count - 2; i >= count + 1; i--) {
+rsult.addmatrixilcout;	result.add(matrix[i][count]);
+}	}
+count++; }	count++; }
+return result;	return result;
+}	}
+}	}

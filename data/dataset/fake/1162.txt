@@ -1,0 +1,8 @@
+package pcka;	package packa;
+public class emoA extends packfu.DemoFu {	public class DemoA extends packfu.DemoFu {
+public void show	public void show()
+{	{
+showFu;;	showFu();
+System.out.println"demoa show run;	System.out.println("demoa show run");
+}	}
+}	}

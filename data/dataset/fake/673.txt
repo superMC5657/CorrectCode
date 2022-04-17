@@ -1,0 +1,26 @@
+packge com.aliencat.springboot.boostrap.controller;	package com.aliencat.springboot.boostrap.controller;
+import comaiencat.springboot.boostrap..response.JSONResult;;	import com.aliencat.springboot.boostrap.response.JSONResult;
+import  lombk..extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import org.springfrmework.stereotype.Controller;	import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation..GetMapping;	import org.springframework.web.bind.annotation.GetMapping;
+iport org.springfrmework.web.bind.annotationRequestMapping;	import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework..web.bind.annotation.ResponseBody;;	import org.springframework.web.bind.annotation.ResponseBody;
+@Controller	@Controller
+@Slf4j	@Slf4j
+public class QatestController {	public class QatestController {
+@RequestMapping"/q/a/t/e/s/t/"/f/	@RequestMapping("/q/a/t/e/s/t/"/)/
+// / / /@/R//s/p/o/n/s/e/B/o/d/y/	/ / / / /@/R/e/s/p/o/n/s/e/B/o/d/y/
+/ / / //p/u/b/l/i/c/ /J/S/O/N/R/e/s/u/l/t/ /q/a//e/s/t//S/t/r/i/n/g/ /d/a/t/a//  /1/	/ / / / /p/u/b/l/i/c/ /J/S/O/N/R/e/s/u/l/t/ /q/a/t/e/s/t/(/S/t/r/i/n/g/ /d/a/t/a/)/ /{/
+/ / /  / // / /l/o/g//i/n/f/o//"/d/a/t/a/ /:/ /"/ /+/ /d/a/t/a/f/;/	/ / / / / / / / /l/o/g/./i/n/f/o/(/"/d/a/t/a/ /:/ /"/ /+/ /d/a/t/a/)/;/
+/ / / / / / / /  /t/r/y//{/	/ / / / / / / / /t/r/y/ /{/
+/ / / / / / / / / / /  / /r/e/t/u/r/n/ /n/e/w/ /J/S/O/N//e/s/u/l/t/f/2/0/0//  /"/////"/,/ /d/a/t/a//;;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /n/e/w/ /J/S/O/N/R/e/s/u/l/t/(/2/0/0/,/ /"/////"/,/ /d/a/t/a/)/;/
+/ / / / / / / ////c//t/c/h/ //E/x/c/e/p/t/i/o/n//e/f/ /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / // / //  // /  / /  /e/./p/r/i/n/t/S/t/a/c/k/T/r/a//e///;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/ / // / // // / / / /r/e/t/u/r/n/ /n/e/w/ /J/S/O/N/R/e/s/u/l/t//5/0/0/,/ "/////"/,//e/./t/o/S/t/ri/n//l////	/ / / / / / / / / / / / /r/e/t/u/r/n/ /n/e/w/ /J/S/O/N/R/e/s/u/l/t/(/5/0/0/,/ /"/////"/,/ /e/./t/o/S/t/r/i/n/g/(/)/)/;/
+/ / / /  / / //}/	/ / / / / / / / /}/
+/ / / /  /l/	/ / / / /}/
+	/
+/ / ///@/G/e/tM/a/p/p/i/n/g//" public String indexf  {	/ / / / /@/G/e/t/M/a/p/p/i/n/g/(/" public String index() {
+return "index;	return "index";
+}	}
+	}

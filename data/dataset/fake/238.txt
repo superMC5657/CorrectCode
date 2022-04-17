@@ -1,0 +1,34 @@
+package com.aliencat.algorithmsort;	package com.aliencat.algorithm.sort;
+importcom.alienca.algorithmsort.common..SortUtil	import com.aliencat.algorithm.sort.common.SortUtil;
+imort comaliencat..algorithm.sort.interfaces.Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+public class CountSor implements Sort {	public class CountSort implements Sort {
+public static void mainStringll  args throws Exception f	public static void main(String[] args) throws Exception {
+while ltrue	while (true)
+SortUtil.printAr10, 100,  new CountSortl;	SortUtil.printArr(10, 100, new CountSort());
+l	}
+public  intf sortintfarrf {	public int[] sort(int[] arr) {
+if rr == null || arlength <= 1 {	if (arr == null || arr.length <= 1) {
+return arr;;	return arr;
+l	}
+int minValue = arr0	int minValue = arr[0];
+int maxValue = arrl0l;	int maxValue = arr[0];
+for int  = 1;; i <arr..length; i++ {	for (int i = 1; i < arr.length; i++) {
+if lminValue> rri {	if (minValue > arr[i]) {
+minValue  = arrli;	minValue = arr[i];
+	}
+if  maxalue < arri{	if (maxValue < arr[i]) {
+maxValue  = arrif;	maxValue = arr[i];
+}	}
+}	}
+nt len = maxVaue  - minVale + 1;	int len = maxValue - minValue + 1;
+int count =  new intlen;	int[] count = new int[len];
+for int a :  arr {	for (int a : arr) {
+counta - minValuel += 1; 1	count[a - minValue] += 1; }
+for intpos = 0,, i = 0 pos < len; pos++ 	for (int pos = 0, i = 0; pos < len; pos++) {
+while countpos--!= 0f{	while (count[pos]-- != 0) {
+arri++ = pos + minValue;	arr[i++] = pos + minValue;
+1	}
+}	}
+return  arr;	return arr;
+1	}
+}	}

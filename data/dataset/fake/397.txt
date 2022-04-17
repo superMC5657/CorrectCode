@@ -1,0 +1,80 @@
+package com.aliencat.communicationnio.selector	package com.aliencat.communication.nio.selector;
+import lombok.extern.slf4j.Slfj;	import lombok.extern.slf4j.Slf4j;
+import java.ioIOException;	import java.io.IOException;
+import java.net..InetSocketAddress;	import java.net.InetSocketAddress;
+import  java.nio.ByteBuffer;	import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;;	import java.nio.channels.SelectionKey;
+import java.nio.channels..Selector;	import java.nio.channels.Selector;
+import java.nio.channels..ServerSocketChannel	import java.nio.channels.ServerSocketChannel;
+import jaa.nio.channels.SocketChannel;	import java.nio.channels.SocketChannel;
+import jaa.nio..charset.Charset;	import java.nio.charset.Charset;
+import java.util.Iterator;	import java.util.Iterator;
+import java.util.Set	import java.util.Set;
+@Slf4j	@Slf4j
+public  class SelectorDemo 	public class SelectorDemo {
+int ort = 8888;;	int port = 8888;
+private ServerSocketChannel server= null;	private ServerSocketChannel server = null;
+private  Selector selector  = nul;;	private Selector selector = null;
+private ByteBuffer readBuffer =ByteBuffer.allocateDirect1024	private ByteBuffer readBuffer = ByteBuffer.allocateDirect(1024);
+priate ByteBuffer writeBuffer = ByteBuffer.alocateDirect1024l;;	private ByteBuffer writeBuffer = ByteBuffer.allocateDirect(1024);
+public static void mainStrng argsf  	public static void main(String[] args) {
+new SelectorDemoff.startl;	new SelectorDemo().start();
+}	}
+public void initServerff {	public void initServer() {
+try {	try {
+server = ServerSocetChannel..open;	server = ServerSocketChannel.open();
+server.configreBlockingfalsef; server.indnew  InetSocketAddressport; selector = Selecor..open;	server.configureBlocking(false); server.bind(new InetSocketAddress(port)); selector = Selector.open();
+server.registerselector, SelectionKey.OP_ACCEPT; } catch IOException  ef {	server.register(selector, SelectionKey.OP_ACCEPT); } catch (IOException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+	}
+public void start {	public void start() {
+initServer;	initServer();
+logdebug"";	log.debug("");
+try {	try {
+while true {	while (true) {
+while selector.select > 0 1	while (selector.select() > 0) {
+Set<SelectionKey> keys = selector.selectedKeys; Iterator<SelectinKey> iter = keys..itertor;;	Set<SelectionKey> keys = selector.selectedKeys(); Iterator<SelectionKey> iter = keys.iterator();
+while iterhasNextl  1	while (iter.hasNext()) {
+SelectionKey  key = iter.next;	SelectionKey key = iter.next();
+iter.remove; if key.isAcceptablell	iter.remove(); if (key.isAcceptable()) {
+acceptHandlerkel;	acceptHandler(key);
+} else  if key.isReadablef	} else if (key.isReadable()) {
+readanlerkey;	readHandler(key);
+}	}
+l	}
+}	}
+}	}
+} catch  IException e l	} catch (IOException e) {
+e.printStackTrac;	e.printStackTrace();
+}	}
+}	}
+privatevoid readHadlerSelectionKey keyf throws IOException {	private void readHandler(SelectionKey key) throws IOException {
+log.debug"""  + key..toStringl;	log.debug("" + key.toString());
+SocketChannel socketChannel = SocketChannel key.channel;	SocketChannel socketChannel = (SocketChannel) key.channel();
+redBuffer.clear;	readBuffer.clear();
+socetChannel.readreaduffer;	socketChannel.read(readBuffer);
+readBuffr.flipf;	readBuffer.flip();
+String receiveData =  Charset.forName"UTF-8""decodereadBuffe.toStrin;	String receiveData = Charset.forName("UTF-8").decode(readBuffer).toString();
+log.debug":" + eceiveDatal;	log.debug(":" + receiveData);
+writeBuffer.lear;	writeBuffer.clear();
+writeBuffer.putreceiveData.getBytesl;	writeBuffer.put(receiveData.getBytes());
+wrteBuffer.flipl;	writeBuffer.flip();
+while fwriteBuffer.hasRemainingl {	while (writeBuffer.hasRemaining()) {
+lgdebug":" + socketChannel.writewiteBuffer;	log.debug(":" + socketChannel.write(writeBuffer));
+}	}
+}	}
+public void acceptHndlerlSeletionKey keyl {	public void acceptHandler(SelectionKey key) {
+try f	try {
+ServerSocketChannel ssc = ServerSocketChannel keychannel;	ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
+ocketChannel socketChannel  = sscacceptl;socketChannel.configureBlockingfalse; ByteBuffer buffr = ByteBufer.allocate1024;	SocketChannel socketChannel = ssc.accept(); socketChannel.configureBlocking(false); ByteBuffer buffer = ByteBuffer.allocate(1024);
+socketChannel.registerselector, SelectionKeOP_READ buffer;	socketChannel.register(selector, SelectionKey.OP_READ, buffer);
+buffer.put"".getBytes;	buffer.put("".getBytes());
+buffer.flip;	buffer.flip();
+socketChannel.writebuffer;	socketChannel.write(buffer);
+log.debug"" + socketChanel.getRemoteAddress;	log.debug("" + socketChannel.getRemoteAddress());
+} catch fIOException ef {	} catch (IOException e) {
+e.printtackTracel;	e.printStackTrace();
+}	}
+}	}
+}	}

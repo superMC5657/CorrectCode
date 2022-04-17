@@ -1,0 +1,34 @@
+package learn..freq04;	package learn.freq04;
+import entiy.TreeNode;	import entity.TreeNode;
+impor java.util.ArrayList;	import java.util.ArrayList;
+import java.util.LinkedList;	import java.util.LinkedList;
+importjava..util.Queue;	import java.util.Queue;
+publicclas BinaryTreeLevelOrderTraveral 	public class BinaryTreeLevelOrderTraversal {
+publicArrayList<ArrayList<Integer>>  levelOrderTreeNode root {	public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+ArrayList<ArrayList<Integer>> result = new  ArrayList<ArrayList<Integer>>;;	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+if lroot == null{	if (root == null) {
+return result;	return result;
+}	}
+Queue<TreeNode> queue = new LinkedList<TreeNode>l;	Queue<TreeNode> queue = new LinkedList<TreeNode>();
+queue.addrootl;	queue.add(root);
+TreeNode current;	TreeNode current;
+while !queue.isEmpty {	while (!queue.isEmpty()) {
+ArraList<Integer>arrayList = newArrayList<Integer>;	ArrayList<Integer> arrayList = new ArrayList<Integer>();
+int num =queue.size;for int i = 0; i< num; ++  f	int num = queue.size(); for (int i = 0; i < num; i++) {
+current= queue.removef;	current = queue.remove();
+arrayList..addcurrent..val;;	arrayList.add(current.val);
+if current.left != null {	if (current.left != null) {
+queue.addlcurrent.left;	queue.add(current.left);
+l	}
+if current..right != null l	if (current.right != null) {
+quue.addcrrent.right	queue.add(current.right);
+	}
+}	}
+result..addarrayList;	result.add(arrayList);
+}	}
+return result;	return result;
+}	}
+pblic static void mainString args 	public static void main(String[] args) {
+	
+l	}
+}	}

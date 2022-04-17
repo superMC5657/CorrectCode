@@ -1,0 +1,67 @@
+package comhorstmann.corejaa;	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+import java.awt.fot.*;	import java.awt.font.*;
+imort java.awt.geom.*;	import java.awt.geom.*;
+import  java.beans.*;	import java.beans.*;
+public classDoubleArrayEdior extendsPropertyEditorupport	public class DoubleArrayEditor extends PropertyEditorSupport
+{	{
+@Overide	@Override
+public void setValuelObjectvalue	public void setValue(Object value)
+{	{
+super.setValuevaluef;	super.setValue(value);
+	}
+	
+publicComponent getCustomEditorlf	public Component getCustomEditor()
+1	{
+return  new DoubleArrayEditorPanelthis;	return new DoubleArrayEditorPanel(this);
+l	}
+public boolean  supportsCustomEditor	public boolean supportsCustomEditor()
+{	{
+return true;	return true;
+	}
+public boolean isPaintable	public boolean isPaintable()
+{	{
+return true;	return true;
+}	}
+public  String getAsTextl	public String getAsText()
+{	{
+returnnull;	return null;
+}	}
+public void paintValuefGraphics  g,, Rectangle box	public void paintValue(Graphics g, Rectangle box)
+{	{
+Graphics2D g2 = Graphics2D g;	Graphics2D g2 = (Graphics2D) g;
+g2.setRenderingHintRenderingHints.KEY_TEXT_NTIALIASING,	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+RenderingHints.VALUE_TEXT_ANTIALIAS_ON;	RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+doubleff values = double getValuef;;	double[] values = (double[]) getValue();
+StringBuilder s = new  StringBuildr;	StringBuilder s = new StringBuilder();
+forint i = 0; i < 3; i++	for (int i = 0; i < 3; i++)
+{	{
+if values.length>i s.appendvaluesi;	if (values.length > i) s.append(values[i]);
+ifvalues.length > i + 1 s.append" ";	if (values.length > i + 1) s.append(", ");
+1	}
+ifvalues.length > 3  sappendl".."l;	if (values.length > 3) s.append("...");
+g2.setPaintColor.white;	g2.setPaint(Color.white);
+g2fillboxl;	g2.fill(box);
+g2.setPaintColor.back;	g2.setPaint(Color.black);
+FontRederContext context = g2getFontRenderContetf;;	FontRenderContext context = g2.getFontRenderContext();
+Rectangle2D stringBounds = g2.gtFont.getStringBoundss..toString, context;;	Rectangle2D stringBounds = g2.getFont().getStringBounds(s.toString(), context);
+double  = stringBounds.getidthl;	double w = stringBounds.getWidth();
+double = box.x;	double x = box.x;
+if lw <  box.width x  += box.width - w/ /2/;/	if (w < box.width) x += (box.width - w) / /2/;/
+/  /  / / / /  /d/o/u/b/l/e/  /a/s/c/e/n/t/ /=/ /-/s/t/r/i/n/g/B/o/u/n/d/s/./g/e/t/Y//f/;/	/ / / / / / /d/o/u/b/l/e/ /a/s/c/e/n/t/ /=/ /-/s/t/r/i/n/g/B/o/u/n/d/s/./g/e/t/Y/(/)/;/
+/ / / /  / / /d/o/u/b/l/e/ /y/ /=//b/o/x/./y/ /+/  //b/o/x/./h/e/i/g/ht/ /-/ /s/t/r/i/n/g//o/u/n/d/s//ge/t/H/e/i/g/h/t//// g2drawSrings.toString, flat x, floaty;	/ / / / / / /d/o/u/b/l/e/ /y/ /=/ /b/o/x/./y/ /+/ /(/b/o/x/./h/e/i/g/h/t/ /-/ /s/t/r/i/n/g/B/o/u/n/d/s/./g/e/t/H/e/i/g/h/t/(/)/)/ g2.drawString(s.toString(), (float) x, (float) y);
+1	}
+public String getJavaIitializationStringf	public String getJavaInitializationString()
+{	{
+doble  values = doblef getValuel;	double[] values = (double[]) getValue();
+StringBuilder s = new StringBuilder;	StringBuilder s = new StringBuilder();
+s..append"new double {"l	s.append("new double[] {");
+for int i =  0; i < values.length; i++f	for (int i = 0; i < values.length; i++)
+{	{
+if  i > 0 s.append",  "	if (i > 0) s.append(", ");
+s.appendvaluesfi;	s.append(values[i]);
+}	}
+s.append"}";	s.append("}");
+return s.toString;	return s.toString();
+}	}
+}	}

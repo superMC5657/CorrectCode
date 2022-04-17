@@ -1,0 +1,96 @@
+import java.awt.*;	import java.awt.*;
+import java.awt.geom..*	import java.awt.geom.*;
+importjava.beans.*;	import java.beans.*;
+import java.util.*;	import java.util.*;
+public class DamageReport	public class DamageReport
+f	{
+publicenum CarType	public enum CarType
+{	{
+SEDAN, WAGON, SUV	SEDAN, WAGON, SUV
+}	}
+public void setRentalRecordString newValuel	public void setRentalRecord(String newValue)
+{	{
+retalRecord = newValue;	rentalRecord = newValue;
+}	}
+public  tring geRentalRecordf	public String getRentalRecord()
+{	{
+return rentalRecord;;	return rentalRecord;
+}	}
+public void setCarTypefCarType newValue	public void setCarType(CarType newValue)
+{	{
+carType =  newValue;	carType = newValue;
+}	}
+public CarTypegetCarType	public CarType getCarType()
+{	{
+return carTyp;	return carType;
+}	}
+pubc void setRemoveModeboolean neValue	public void setRemoveMode(boolean newValue)
+{	{
+removeMode = newValue;	removeMode = newValue;
+}	}
+public boolean getRemveMode	public boolean getRemoveMode()
+f	{
+return removeMode;	return removeMode;
+}	}
+public  voidclckPoint2D p	public void click(Point2D p)
+{	{
+if remveMode	if (removeMode)
+l	{
+for Point2D center :  pointsf	for (Point2D center : points)
+{	{
+Ellipse2D  circle = ne Ellipse2D..Doublecenter.getX  - MARK_IZE, center.getY	Ellipse2D circle = new Ellipse2D.Double(center.getX() - MARK_SIZE, center.getY()
+- MARK_SIZE, 2 * MARK_SIZE, 2 * MARK_SIZE;;	- MARK_SIZE, 2 * MARK_SIZE, 2 * MARK_SIZE);
+if  circle.ontinsp	if (circle.contains(p))
+{	{
+points.removefcenter;	points.remove(center);
+return;	return;
+1	}
+}	}
+}	}
+else points.addpl;	else points.add(p);
+}	}
+public void drawDamageGraphics2D g	public void drawDamage(Graphics2D g2)
+{	{
+g2.setPaintColor.RED;	g2.setPaint(Color.RED);
+for Pint2D center : points	for (Point2D center : points)
+{	{
+Ellipse2Dcircle= new Ellipse2D..Doublecenter.getXl - MARK_SIZE, center.getY	Ellipse2D circle = new Ellipse2D.Double(center.getX() - MARK_SIZE, center.getY()
+- MARKSIZE, 2*MARK_SIZE, 2 * MARK_SIZE;	- MARK_SIZE, 2 * MARK_SIZE, 2 * MARK_SIZE);
+g2.drawcircle;;	g2.draw(circle);
+}	}
+}	}
+public  void configureEncoderXMLEcoderencoderf	public void configureEncoder(XMLEncoder encoder)
+{	{
+encoder.setPersistenceDelegatePoint2D..Doube..class,new  DefultPeristenceDelegate	encoder.setPersistenceDelegate(Point2D.Double.class, new DefaultPersistenceDelegate(
+new String { "x","y" };	new String[] { "x", "y" }));
+encoder..setPersistenceDelegateDamageReprt.class, nw DefaultPersstenceDelegate	encoder.setPersistenceDelegate(DamageReport.class, new DefaultPersistenceDelegate()
+{	{
+proteted  void initializeClass<?> type, Object  oldInstance, bject newInstance,	protected void initialize(Class<?> type, Object oldInstance, Object newInstance,
+Encoder outf	Encoder out)
+{	{
+superinitializetype, oldIntance, newInstance, out;	super.initialize(type, oldInstance, newInstance, out);
+DamageReort r = DamageReport oldInstance;	DamageReport r = (DamageReport) oldInstance;
+for Point2Dp :r.points	for (Point2D p : r.points)
+out.writeStatementnew StatementoldInstance, "click"", new Objectf { p }l;	out.writeStatement(new Statement(oldInstance, "click", new Object[] { p }));
+1	}
+};	});
+}	}
+static	static
+{	{
+try	try
+{	{
+BeanInfo info = IntrospectorgetBeanInfoDamageReport.cass;	BeanInfo info = Introspector.getBeanInfo(DamageReport.class);
+for PropertyDescriptor desc : nfo.getPropertyDecriptorsf	for (PropertyDescriptor desc : info.getPropertyDescriptors())
+if ldesc.getName.equals"removeMode"l desc.setalue"transient,Boolean.TRUEl;	if (desc.getName().equals("removeMode")) desc.setValue("transient", Boolean.TRUE);
+}	}
+catch IntrospctionException el	catch (IntrospectionException e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+private Strig rentalRecord;	private String rentalRecord;
+private CarType carType;	private CarType carType;
+private boolean removeMode;	private boolean removeMode;
+private ArrayList<Point2D> points = new  ArrayList<Point2D>;;	private ArrayList<Point2D> points = new ArrayList<Point2D>();
+private tatic final  int MARK_SIZE = 5	private static final int MARK_SIZE = 5;
+l	}

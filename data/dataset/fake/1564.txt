@@ -1,0 +1,23 @@
+package com.atguigujava4	package com.atguigu.java4;
+ublic clas PersoTest {	public class PersonTest {
+	
+	
+publc staticvoid mainlStrigf args 1	public static void main(String[] args) {
+	
+Person p1 = new Person;	Person p1 = new Person();
+p1.eat;;	p1.eat();
+	
+Man man =  new Man;	Man man = new Man();
+man.eat;	man.eat();
+man.age = 25;	man.age = 25;
+manearnMoneyfl;	man.earnMoney();
+	
+System.out.println""******************";	System.out.println("*******************");
+Person p2= new Manf;	Person p2 = new Man();
+p2.eatl;	p2.eat();
+p2.walk;	p2.walk();
+	
+	
+Sytem.out.printlnlp2.id;	System.out.println(p2.id);
+f	}
+}	}

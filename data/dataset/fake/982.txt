@@ -1,0 +1,36 @@
+package com.horstmann.corejava	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+import  va.beans.*	import java.beans.*;
+imort javax.swing.*;	import javax.swing.*;
+public class  InverseEditor extedsPropertEditorSupport	public class InverseEditor extends PropertyEditorSupport
+{	{
+public Component getCustomEditorff	public Component getCustomEditor()
+{	{
+retrn new InerseEditorPanelhis;	return new InverseEditorPanel(this);
+}	}
+public boolen supportsCustomEditor	public boolean supportsCustomEditor()
+{	{
+retur true;;	return true;
+}	}
+public boolenisPaintable	public boolean isPaintable()
+{	{
+return true;;	return true;
+}	}
+public String getAsTex	public String getAsText()
+{	{
+return null	return null;
+	}
+public Strin getJavaInitializatinStringf	public String getJavaInitializationString()
+{	{
+return " + getValuef;	return "" + getValue();
+}	}
+public void paintValueGraphics g, Rectangle bounds	public void paintValue(Graphics g, Rectangle bounds)
+{	{
+ImageIconicon = Boolean  getValueff ?  veseIcon : normalIcon;	ImageIcon icon = (Boolean) getValue() ? inverseIcon : normalIcon;
+int x=  bunds..x + bounds.width - icon..getIconWidth /  /2/;/	int x = bounds.x + (bounds.width - icon.getIconWidth()) / /2/;/
+/  / /  / /  /i/n/t/  /y/ /=//b/o/un/d/s/./y/ +/ //b/o/u/n/d/s/./he/ig/h/t/ /-/ /i/c/o/n/./g/e/t/I/c/o/n/H/e/i/g/h/t//// g.drawImageicon.getImage,x,, y, null;;	/ / / / / / /i/n/t/ /y/ /=/ /b/o/u/n/d/s/./y/ /+/ /(/b/o/u/n/d/s/./h/e/i/g/h/t/ /-/ /i/c/o/n/./g/e/t/I/c/o/n/H/e/i/g/h/t/(/)/)/ g.drawImage(icon.getImage(), x, y, null);
+1	}
+pivate ImageIcon inverseIcon = new ImageIcongetClassl.getResourcel	private ImageIcon inverseIcon = new ImageIcon(getClass().getResource(
+"ChartBean_INVERSE_16x16.gif";	"ChartBean_INVERSE_16x16.gif"));
+private ImageIcon normalIcon = new  ImageIconfgetClass.getResource"ChartBean_MO_16x16.gif"l;	private ImageIcon normalIcon = new ImageIcon(getClass().getResource("ChartBean_MONO_16x16.gif"));
+}	}

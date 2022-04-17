@@ -1,0 +1,31 @@
+package com.aliencat.captcha.excepion;	package com.aliencat.captcha.exception;
+import com.aliencat.captcha.exception.codeServiceExceptionCode;	import com.aliencat.captcha.exception.code.ServiceExceptionCode;
+public class ServiceException extends  Exception 	public class ServiceException extends Exception {
+	
+private String code;	private String code;
+	
+private String msg	private String msg;
+publicServiceExceptionStringode, String msgl {	public ServiceException(String code, String msg) {
+this.code = code;	this.code = code;
+this.msg = msg;	this.msg = msg;
+}	}
+public  ServiceExceptionSericeExceptionCode erviceExceptionCode{	public ServiceException(ServiceExceptionCode serviceExceptionCode) {
+this.code =serviceExceptionCode.getCodf;	this.code = serviceExceptionCode.getCode();
+this.msg = serviceExceptionCode..getName;	this.msg = serviceExceptionCode.getName();
+}	}
+pulic SericeExceptionString msgl {	public ServiceException(String msg) {
+this.sg = msg;	this.msg = msg;
+l	}
+public  String getMsg {	public String getMsg() {
+returnmsg;	return msg;
+1	}
+public void  setMsgString msg 	public void setMsg(String msg) {
+thismsg = msg;	this.msg = msg;
+f	}
+public Sting getCode {	public String getCode() {
+return code;	return code;
+}	}
+public void setCodelString  code {	public void setCode(String code) {
+this.code = code;	this.code = code;
+}	}
+}	}

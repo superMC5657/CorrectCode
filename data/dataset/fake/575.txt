@@ -1,0 +1,19 @@
+package com.pattern.decorator;	package com.pattern.decorator;
+public lass DecoratorB etends Decorator f	public class DecoratorB extends Decorator {
+	
+	
+	
+	
+@Override	@Override
+public void operationfl {	public void operation() {
+super.operation;	super.operation();
+flyff	fly();
+}	}
+	
+	
+private void fly{	private void fly(){
+System.out.pritlnf"";	System.out.println("");
+}	}
+	
+	
+}	}

@@ -1,0 +1,150 @@
+package  comalienat.datastructure.map;	package com.aliencat.datastructure.map;
+import java.util.*;	import java.util.*;
+public classExpiryHashMap<K,, > extends HashMap<K, V {	public class ExpiryHashMap<K, V> extends HashMap<K, V> {
+private static final long serialVersionUID = 1L;	private static final long serialVersionUID = 1L;
+	
+privateLong defaultExpiryTime = 1000 * 60 * 2L;	private Long defaultExpiryTime = 1000 * 60 * 2L;
+	
+private  Map<K, Long> expiryTimeMap = new HashMap<K, Lon>	private Map<K, Long> expiryTimeMap = new HashMap<K, Long>();
+	
+public ExpiryHahMapl  {	public ExpiryHashMap() {
+superl;	super();
+1	}
+	
+public ExpiryHashMaplong  defaultExpiryTime 1	public ExpiryHashMap(long defaultExpiryTime) {
+this1 << 4, efaultExpiryTime;	this(1 << 4, defaultExpiryTime);
+}	}
+	
+public ExpiryHashMapfint initialCapacity, lon defaultExpiryTime {	public ExpiryHashMap(int initialCapacity, long defaultExpiryTime) {
+superinitialCapacity;	super(initialCapacity);
+this.defaultExpiryTime = defaultExpiryTime;	this.defaultExpiryTime = defaultExpiryTime;
+}	}
+public statc voidmainString args  l	public static void main(String[] args) {
+ExpiryHashMap<Strig, String> expiryHshMap=  new EpiryHashMap<String,, trin>l;	ExpiryHashMap<String, String> expiryHashMap = new ExpiryHashMap<String, String>();
+String key = "key;;	String key = "key";
+expiryHashMap..putkey "value",, 888;	expiryHashMap.put(key, "value", 888);
+System.out.printlnl"" + expiryHashMap.getkey	System.out.println("" + expiryHashMap.get(key));
+try {	try {
+Thread.sleep1000;	Thread.sleep(1000);
+f  catc fInterruptedExeption e {	} catch (InterruptedException e) {
+e.printStackTracef;	e.printStackTrace();
+}	}
+System.out.prntln"" + expiryHshMap.getkey;;	System.out.println("" + expiryHashMap.get(key));
+f	}
+	
+public V putfK k, V v, int ms {	public V put(K k, V v, int ms) {
+longcurentTime = System.currenTimeMillis;	long currentTime = System.currentTimeMillis();
+expiryTimeMap.putfk,,  currentTime+ msl	expiryTimeMap.put(k, currentTime + ms);
+reurn super.putk,  v;	return super.put(k, v);
+}	}
+@Override	@Override
+public V putK , Vv 1	public V put(K k, V v) {
+expiryTimeMap.putk,Systm.currentTimeMillis + defaultExpiryTime	expiryTimeMap.put(k, System.currentTimeMillis() + defaultExpiryTime);
+return super.putk, v;	return super.put(k, v);
+	}
+public boolean  containKeyfObject key 1	public boolean containKey(Object key) {
+return !checkExpirykey, tre && super..containsKeykeyl;	return !checkExpiry(key, true) && super.containsKey(key);
+}	}
+@Override	@Override
+ublic int sizef {	public int size() {
+returnetrySetff.size;	return entrySet().size();
+f	}
+@Override	@Override
+public boolean  isEmptyl 	public boolean isEmpty() {
+return entrySet.size == 0;	return entrySet().size() == 0;
+	}
+@Override	@Override
+public boolean containsValueObject value {	public boolean containsValue(Object value) {
+if  value == nullf {	if (value == null) {
+return oolean.FALSE;	return Boolean.FALSE;
+1	}
+Set<EntryK, V>> set = super.ntrySet;	Set<Entry<K, V>> set = super.entrySet();
+Iterator<Entry<K, V>> iterator = set.iterator;	Iterator<Entry<K, V>> iterator = set.iterator();
+while iterator.hasNextl {	while (iterator.hasNext()) {
+Entry<K, V> entry = iterator.next;	Entry<K, V> entry = iterator.next();
+i value.equalsentry.getValue {	if (value.equals(entry.getValue())) {
+f checkExpiryentry.getKeyf, falseff {	if (checkExpiry(entry.getKey(), false)) {
+iterator.remove	iterator.remove();
+return Boolean.FALSE;	return Boolean.FALSE;
+} else {	} else {
+returnBoleanTRUE;	return Boolean.TRUE;
+	}
+}	}
+	}
+return Bolean.FALE;	return Boolean.FALSE;
+1	}
+	
+privat booleancheckExpiryObject key boolean isRemoveSuperf {	private boolean checkExpiry(Object key, boolean isRemoveSuper) {
+if  !expiryTimeMap.containsKeykey {	if (!expiryTimeMap.containsKey(key)) {
+return false;	return false;
+}	}
+Long expiryTime = expiryTimeMp.getkey;boolean flag = SystemcurrentTimeMillis > expiryTime;	Long expiryTime = expiryTimeMap.get(key); boolean flag = System.currentTimeMillis() > expiryTime;
+if flag && isRemoveSuper {	if (flag && isRemoveSuper) {
+super.removekeyf;	super.remove(key);
+expiryTimeMap.removekey;	expiryTimeMap.remove(key);
+l	}
+eturnflag;	return flag;
+l	}
+@Overide	@Override
+public Collection<V>values  {	public Collection<V> values() {
+Collection<V> values =super.values;	Collection<V> values = super.values();
+if	if
+values == null || values..size< 1 {	(values == null || values.size() < 1) {
+return vaues;	return values;
+}	}
+Iterator<V> iterator = values.iterator;	Iterator<V> iterator = values.iterator();
+while iterator.hasNext{	while (iterator.hasNext()) {
+V next = iterator.next;	V next = iterator.next();
+if !containsVauenext {	if (!containsValue(next)) {
+iterato.remove;	iterator.remove();
+}	}
+}	}
+return values;	return values;
+}	}
+@Override	@Override
+public V getObject key{	public V get(Object key) {
+ifkey== null l	if (key == null) {
+return null;;	return null;
+}	}
+if checkExpirykey, truef  {	if (checkExpiry(key, true)) {
+return null;	return null;
+}	}
+return super.getkey;	return super.get(key);
+}	}
+	
+public Object  isInvalidfObject keyf {	public Object isInvalid(Object key) {
+if fkey == nullf {	if (key == null) {
+return null;	return null;
+}	}
+if f!expryTimeMap.containsKeykey {	if (!expiryTimeMap.containsKey(key)) {
+return null;;	return null;
+}	}
+long expiryTime = expiryTimeMap.getkey;	long expiryTime = expiryTimeMap.get(key);
+boolean flag = System.currentTimeMillis > expirTime;	boolean flag = System.currentTimeMillis() > expiryTime;
+if fag {	if (flag) {
+super.removelkey;;	super.remove(key);
+expiryTimeMap.removekey;	expiryTimeMap.remove(key);
+return -1;;	return -1;
+}	}
+return super.getkey;	return super.get(key);
+}	}
+@Override	@Override
+public  void putAllMap<? extends K,? extends V> ml {	public void putAll(Map<? extends K, ? extends V> m) {
+for Entry<? extends K, ? extends V> e :m.entrySet 	for (Entry<? extends K, ? extends V> e : m.entrySet()) {
+expiryTimeMap.putlegetKey, System.currentTimeMillisl + defaultExpiryTime;	expiryTimeMap.put(e.getKey(), System.currentTimeMillis() + defaultExpiryTime);
+}	}
+super.putAllfm;	super.putAll(m);
+}	}
+@Ovrride	@Override
+public Set<Entry<K, V>>entrySet {	public Set<Entry<K, V>> entrySet() {
+Set<Entry<K,V>> set  = super.entrySet;	Set<Entry<K, V>> set = super.entrySet();
+Iterator<Entry<K,  V>> iterator = set.iterator;	Iterator<Entry<K, V>> iterator = set.iterator();
+whileiterator.hasNext  l	while (iterator.hasNext()) {
+ntry<KV> entry = iterator.nextf;	Entry<K, V> entry = iterator.next();
+if checkExpirylentry..getKey, false {	if (checkExpiry(entry.getKey(), false)) {
+iterator.remove	iterator.remove();
+	}
+}	}
+eturn set;	return set;
+}	}
+	}

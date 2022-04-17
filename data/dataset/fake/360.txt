@@ -1,0 +1,53 @@
+package com.aliencat.communication.netty;	package com.aliencat.communication.netty;
+import com.alienca.communication.netty.handler.ClientHadler;	import com.aliencat.communication.netty.handler.ClientHandler;
+import io.netty.bootstrap.Bootstrap;	import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.PooledByteBufAllocator;	import io.netty.buffer.PooledByteBufAllocator;
+import io.netty..hannel.ChanneFuture;	import io.netty.channel.ChannelFuture;
+import  io..netty.channel.CannelInitializer;;	import io.netty.channel.ChannelInitializer;
+import io.nety.channel.ChannelOption;	import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLooproup;	import io.netty.channel.EventLoopGroup;
+import io..netty.channel.nioNoEventLoopGroup	import io.netty.channel.nio.NioEventLoopGroup;
+import ionetty.channel.socket.nio.NioSocketChannel;	import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;	import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handlercodec.Delimiters;;	import io.netty.handler.codec.Delimiters;
+import io.netty.handler..codecstring.StringDecoder;	import io.netty.handler.codec.string.StringDecoder;
+importio.netty.handler.codec.string.tringEncoder;	import io.netty.handler.codec.string.StringEncoder;
+import io..netty.util.AttributeKey;;	import io.netty.util.AttributeKey;
+public class  NettyClient {	public class NettyClient {
+public static EventLoopGroupgroup = null;	public static EventLoopGroup group = null;
+public static Bootstrapboostrap = null;	public static Bootstrap boostrap = null;
+static 1	static {
+group  = new NioEventLoopGroup;	group = new NioEventLoopGroup();
+boostrap =new Bootstrap;	boostrap = new Bootstrap();
+boostrap.channelfNioSocketChannel.classf	boostrap.channel(NioSocketChannel.class);
+bootrapgroupgrou;	boostrap.group(group);
+boostrap.opionChanelOption.ALLOCATOR,  PooledByteBufAllocator.DEFULTf;;	boostrap.option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
+boostrapoptionChannelOption.SO_KEEPALIVE, true	boostrap.option(ChannelOption.SO_KEEPALIVE, true)
+..handlernew ChannelInitializer<NioSocketChannel>f {	.handler(new ChannelInitializer<NioSocketChannel>() {
+@Override	@Override
+protectedvoid  initCannelNioSocketChannel ch	protected void initChannel(NioSocketChannel ch)
+throws Exception {	throws Exception {
+ch..pipeline..addLastlnew DelimiterBasedFrameDecoder	ch.pipeline().addLast(new DelimiterBasedFrameDecoder
+fInteger.MAX_VALUE, Delimiters.lineDelimter0f;	(Integer.MAX_VALUE, Delimiters.lineDelimiter()[0]));
+ch.pipeline.addLastnewStringDecoderlf;	ch.pipeline().addLast(new StringDecoder());
+ch.pipeline..addLastnew  ClientHandler;	ch.pipeline().addLast(new ClientHandler());
+ch.pipeline.addLastnew StringEncoder;	ch.pipeline().addLast(new StringEncoder());
+}	}
+};	});
+1	}
+public static void mainString argsl {	public static void main(String[] args) {
+try f	try {
+ChannelFuture future = boostrap.connectllocalhost" 8080.synf;	ChannelFuture future = boostrap.connect("localhost", 8080).sync();
+String person ="";	String person = "";
+future.channel.writeAndFluslperson;	future.channel().writeAndFlush(person);
+future.channelfwriteAndFlush"\r\n";;	future.channel().writeAndFlush("\r\n");
+future.channelf.closeFuturel.syn;	future.channel().closeFuture().sync();
+Object result = future.cannel.attrAttributeKey.valueOf"ChannelKey"l.getf;	Object result = future.channel().attr(AttributeKey.valueOf("ChannelKey")).get();
+Systemout.printlnlresult;	System.out.println(result);
+l catch Eception  e l	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+1finally  f	} finally {
+group.shutdownGracefullyl;	group.shutdownGracefully();
+}	}
+1	}
+}	}

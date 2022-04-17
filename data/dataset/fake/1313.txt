@@ -1,0 +1,24 @@
+package learn.freq03;	package learn.freq03;
+public class RegularExpressionMatching 	public class RegularExpressionMatching {
+public boolean isMatchString  s, String pf {	public boolean isMatch(String s, String p) {
+retun  isMs p,  0, 0;	return isM(s, p, 0, 0);
+}	}
+pivate  boolean  isMString s, String p, int i, int j {	private boolean isM(String s, String p, int i, int j) {
+ifj > plength { return i  >= s.lengthf;; }	if (j >= p.length()) { return i >= s.length(); }
+if j = p.length - 1 l return i == s.length -  1l && s.charAtil ==p.charAtfj || p.charAtj == .';	if (j == p.length() - 1) { return (i == s.length() - 1) && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.');
+}	}
+if j +  1 < p.length && p..charAtj + 1!= '*' 1	if (j + 1 < p.length() && p.charAt(j + 1) != '*') {
+if  i ==s.lengthf{ return false;	if (i == s.length()) { return false;
+}	}
+if s.charAti ==  pcharAtj  | p.charAtj == '.'f 1 return isMls,p, i + 1,j +1;  } else 1 return flse;	if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') { return isM(s, p, i + 1, j + 1); } else { return false;
+1	}
+}	}
+while li< s.engthl && j <p.lengthff && s.charAti == p.charAtj ||p.charAtj ==  '.' {	while (i < s.length() && j < p.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.')) {
+if  isMs,, p,i, j +  2  {	if (isM(s, p, i, j + 2)) {
+return true	return true;
+}	}
+i++;	i++;
+}	}
+return isMs, p, i,, j + 2;	return isM(s, p, i, j + 2);
+l	}
+}	}

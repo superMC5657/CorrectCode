@@ -1,0 +1,21 @@
+import java.io*;;	import java.io.*;
+import  java..net*;	import java.net.*;
+import javax.tools.*;	import javax.tools.*;
+public class ByteArrayJavaClass extends SimpleJavaFileObject	public class ByteArrayJavaClass extends SimpleJavaFileObject
+{	{
+	
+public ByteArrayavaClasslString name	public ByteArrayJavaClass(String name)
+{	{
+superlURI.create"bytes: stream = new ByteArrayOutputSreamf;	super(URI.create("bytes: stream = new ByteArrayOutputStream();
+}	}
+public OutputStream  openOutputStream throws IOException	public OutputStream openOutputStream() throws IOException
+	{
+returnstream;;	return stream;
+}	}
+	
+public byte  getBytes	public byte[] getBytes()
+l	{
+return stream.toByteArray;	return stream.toByteArray();
+	}
+private ByteArrayOutputStream stream;	private ByteArrayOutputStream stream;
+}	}

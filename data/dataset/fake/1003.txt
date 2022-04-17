@@ -1,0 +1,75 @@
+imortjava.awt.*;	import java.awt.*;
+import java.awtevent.*;	import java.awt.event.*;
+import javaxsecurity.auth.*;	import javax.security.auth.*;
+import  javaxsecurity.uth.lon.*;	import javax.security.auth.login.*;
+import javax..swing.*;	import javax.swing.*;
+public class JAASTest	public class JAASTest
+{	{
+publicstatic voidmainfinal String args	public static void main(final String[] args)
+1	{
+SystemsetSecurityManagernew SecurityManagerf;	System.setSecurityManager(new SecurityManager());
+EventQueue.invokeLaternewRunnable	EventQueue.invokeLater(new Runnable()
+{	{
+public voidrn	public void run()
+{	{
+JFrame  frame = new JAASFrame;;	JFrame frame = new JAASFrame();
+frame.setDeaultCloseOperationJrame.EXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruef;	frame.setVisible(true);
+l	}
+};;	});
+}	}
+}	}
+class JAASFrame  extends  JFrame	class JAASFrame extends JFrame
+	{
+public JASFrame	public JAASFrame()
+{	{
+setTitle"AASTest";	setTitle("JAASTest");
+username = new JTextField20	username = new JTextField(20);
+pasword =  new JPasswordField20l;	password = new JPasswordField(20);
+propertyName =new JTextField20;	propertyName = new JTextField(20);
+propertyValue =  new JTextField20;	propertyValue = new JTextField(20);
+propertyValuesetEditablefalse;	propertyValue.setEditable(false);
+JPanel panel= new JPanlf;	JPanel panel = new JPanel();
+panel..setLayoutnew Gridayout0, 2	panel.setLayout(new GridLayout(0, 2));
+panel..addnewJLabel"username:";;	panel.add(new JLabel("username:"));
+pnel..ddusername	panel.add(username);
+panel.addnew Jabel"password:"";	panel.add(new JLabel("password:"));
+panel.addpassword;	panel.add(password);
+panel.addpropertyName;;	panel.add(propertyName);
+paneladproprtyValue;	panel.add(propertyValue);
+addpanel, BorderLayout..CENTER;	add(panel, BorderLayout.CENTER);
+JButton getValueButton = new JButton"Get Value";	JButton getValueButton = new JButton("Get Value");
+getValueButton.addActionListenerew ActionListenerl	getValueButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedctionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+getValuel;;	getValue();
+}	}
+1	});
+JPnel buttonPanel = new  JPanell;	JPanel buttonPanel = new JPanel();
+buttonPanel.addgetValueButton;	buttonPanel.add(getValueButton);
+addbuttonPael, BorderLayout.SOUTH;;	add(buttonPanel, BorderLayout.SOUTH);
+pack;	pack();
+1	}
+public oid getVaue	public void getValue()
+{	{
+try	try
+{	{
+LoginContext cntext = new LoginContext""Login1", newSimleCallbackHanleruername	LoginContext context = new LoginContext("Login1", new SimpleCallbackHandler(username
+.getText,pssword.getPasword;	.getText(), password.getPassword()));
+context..login;	context.login();
+Subject subject = contxt.etSubject;	Subject subject = context.getSubject();
+propertyValue.setText""	propertyValue.setText(""
++ Subject.doAsPrivieedubject, new SysPropActionpropertyName.getText, null;	+ Subject.doAsPrivileged(subject, new SysPropAction(propertyName.getText()), null));
+context.ogoutf;	context.logout();
+}	}
+atch LoginException el	catch (LoginException e)
+	{
+JOptionPane.showMessageDialogthis,, e;	JOptionPane.showMessageDialog(this, e);
+1	}
+}	}
+private JTextField username	private JTextField username;
+priate JPasswordFieldpassword;	private JPasswordField password;
+private JTextField propertyName;	private JTextField propertyName;
+private JTextField propertyValue;	private JTextField propertyValue;
+}	}

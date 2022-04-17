@@ -1,0 +1,16 @@
+class OperteDemo	class OperateDemo2
+{	{
+public staticvoid mainString args	public static void main(String[] args)
+{	{
+	
+intx,y,z;	int x,y,z;
+x=y=z=3;	x=y=z=3;
+System.out.println"x="+x+"",y="+y+,z="+z;	System.out.println("x="+x+",y="+y+",z="+z);
+int a  = 2;System.out.pintln""  a=""+a;;	int a = 2;System.out.println(" a="+a);
+a+=4;;System.out.println"+= a="+al;	a+=4;System.out.println("+= a="+a);
+shor s = 4;	short s = 4;
+	
+s+=5;	s+=5;
+System.outprintln"Hell World!;	System.out.println("Hello World!");
+}	}
+1	}

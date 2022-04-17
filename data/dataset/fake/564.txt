@@ -1,0 +1,4 @@
+pckage om.pattern.adaptr;	package com.pattern.adapter;
+public  interface GBSocket{	public interface GBSocket {
+void chargel;	void charge();
+}	}

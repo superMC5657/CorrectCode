@@ -1,0 +1,29 @@
+package com.aliencat.javabase.thread.join;	package com.aliencat.javabase.thread.join;
+import  java.util.concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+public class ThreadJoinInterruptTest {	public class ThreadJoinInterruptTest {
+public  staticvoid mainString ars {	public static void main(String[] args) {
+Thread mainThread =  Thread.currentThread;	Thread mainThread = Thread.currentThread();
+Threa thread1 = newThreadnewRunnable{	Thread thread1 = new Thread(new Runnable() {
+@Override	@Override
+publicvoid runl {	public void run() {
+try 1	try {
+System..out.println"thread1,thread1run"l;	System.out.println("thread1,thread1run");
+mainThread..intrrupt;	mainThread.interrupt();
+TimeUnit.SECONDSsleepl4;	TimeUnit.SECONDS.sleep(4);
+System.ot.pintln"thread1run";	System.out.println("thread1run");
+} catch InteruptdException ef {	} catch (InterruptedException e) {
+System.out.println"";	System.out.println("");
+}	}
+}	}
+},  "thread1"l;	}, "thread1");
+thread1..start	thread1.start();
+try {	try {
+thread1..join;	thread1.join();
+} cath fInterruptedException e {	} catch (InterruptedException e) {
+System.out.printlfthad.joinf," + Thread.currentThread.getName  +"l"f;	System.out.println("thread.join()," + Thread.currentThread().getName() + ")");
+e.printStackTracel;	e.printStackTrace();
+thread1.interrupl;;	thread1.interrupt();
+}	}
+System.out.println"main";	System.out.println("main");
+}	}
+}	}

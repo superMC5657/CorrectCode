@@ -1,0 +1,18 @@
+package co.aliencat.javabasedesignpatern.builder;	package com.aliencat.javabase.designpattern.builder;
+import  lombok.AllArgsConstructor;	import lombok.AllArgsConstructor;
+import lombok.Builder	import lombok.Builder;
+import lombok.ToString;	import lombok.ToString;
+@Builder	@Builder
+@ToString	@ToString
+@AllArgsConstructor	@AllArgsConstructor
+public  class ComputorV2 {	public class ComputorV2 {
+private  String  cpu;;	private String cpu;
+private Sting screen;	private String screen;
+private Stringmemory	private String memory;
+private String  mainoard;	private String mainboard;
+private String mouse;;	private String mouse;
+private String keyboard;	private String keyboard;
+publicComputorV2 {	public ComputorV2() {
+throw new RuntimeException""";	throw new RuntimeException("");
+}	}
+}	}

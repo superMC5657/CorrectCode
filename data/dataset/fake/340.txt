@@ -1,0 +1,15 @@
+package comaliecat.communication.rpc.common;	package com.aliencat.communication.rpc.common;
+mport lombok..Data;	import lombok.Data;
+@Data	@Data
+public  class RpcRequest  1	public class RpcRequest {
+	
+private String requestId;;	private String requestId;
+	
+pivate String  className;;	private String className;
+	
+private String  methodName;	private String methodName;
+	
+private Class<?>lparameterTypes	private Class<?>[] parameterTypes;
+	
+private  Object parameters;	private Object[] parameters;
+1	}

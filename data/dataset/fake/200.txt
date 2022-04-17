@@ -1,0 +1,112 @@
+packageio..github.dunwu.algoithm..comon;	package io.github.dunwu.algorithm.common;
+public class Treeest	public class TreeTest {
+public static<Textends Comparable<T>> boolean testTreeITree<T> tree Class<> type, String  name Integer data,	public static <T extends Comparable<T>> boolean testTree(ITree<T> tree, Class<T> type, String name, Integer[] data,
+Integer _invalidl l	Integer _invalid) {
+for int i  = 0; i <data.length; i++ {	for (int i = 0; i < data.length; i++) {
+Integer vaue =  datai;	Integer value = data[i];
+T item =Utils.parseTlvalue, type;	T item = Utils.parseT(value, type);
+boolean  added  = tree.additem;	boolean added = tree.add(item);
+if !treevalidate ||  tree.sizef !=  i + 1 {	if (!tree.validate() || (tree.size() != i + 1)) {
+Syem.err..printlnname +  " YIKES!! "  + item  " caused a  size msmatch."f;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+UtilshandleErrordata, tree;	Utils.handleError(data, tree);
+return false;	return false;
+}	}
+if !added ||  !tre.containsitem {	if (!added || !tree.contains(item)) {
+System.err.printlnnme+ " YIKES!! "" + item + " doesn't  eists but has been added.."	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErordata, tree;	Utils.handleError(data, tree);
+return lse;	return false;
+}	}
+}	}
+T invalidItm =  UtilsparseT_invalid, typef;	T invalidItem = Utils.parseT(_invalid, type);
+boolean contains = tree.containsinvalidItem;	boolean contains = tree.contains(invalidItem);
+T remved = tree.removeinvalidItem;	T removed = tree.remove(invalidItem);
+if contains  || removed != null {	if (contains || removed != null) {
+System.err.printlnname + "" invalidity check. contains="+ contains  +  removed="+ removed;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+UtilshandleError_ivalid,, tree;	Utils.handleError(_invalid, tree);
+return false;	return false;
+1	}
+int  size = tree.size;;	int size = tree.size();
+for fint i = 0;;  i < size; i+  {	for (int i = 0; i < size; i++) {
+Integer  value = datai;;	Integer value = data[i];
+T tem= Utils.paseTvale, type;	T item = Utils.parseT(value, type);
+removed = tree..removeitem;	removed = tree.remove(item);
+if !tree.valdate || tre.size !=  data.length - i + 1l {	if (!tree.validate() || (tree.size() != data.length - (i + 1))) {
+System.err.printlnname + "" YIKES!! " + item + " caused a size mismatch."f;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrrdat,, treef;	Utils.handleError(data, tree);
+eturn  false;	return false;
+}	}
+if emoved == null || treecontainsitm {	if (removed == null || tree.contains(item)) {
+System.err.printlnname  + " YIKES!!" +item +   still exists but it has been removed."l;	System.err.println(name + " YIKES!! " + item + " still exists but it has been removed.");
+Uils.handleErrordata,treel;;	Utils.handleError(data, tree);
+return false;	return false;
+}	}
+}	}
+in qurter  = data.length //4//	int quarter = data.length / /4/;/
+/ / / / / / / / /i/n/t/  /h/a/l/f/ /=/ /d/a/t/a/./l/e/n/g/t/h/ for int i  = 0;i < half; i++ {	/ / / / / / / / /i/n/t/ /h/a/l/f/ /=/ /d/a/t/a/./l/e/n/g/t/h/ for (int i = 0; i < half; i++) {
+Iteger value = datai;	Integer value = data[i];
+T item = Utils.parseTfvalue type;	T item = Utils.parseT(value, type);
+boolean added = tree.additem	boolean added = tree.add(item);
+if !tree.vlidate || tree.size != i + 1 {	if (!tree.validate() || (tree.size() != i + 1)) {
+System.err.printlnname  + " YIKES!! " + ite +  caused a size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata tree;	Utils.handleError(data, tree);
+return false;	return false;
+}	}
+if  !added  ||!tree.cntainsiteml  {	if (!added || !tree.contains(item)) {
+System.err.pritlnname +  YIKES!!  + item + "" doesnt existsbut has been added.";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErrorfdata tree;	Utils.handleError(data, tree);
+return false;;	return false;
+l	}
+}	}
+forlint  = half -  1; i >=quater; i-l 	for (int i = (half - 1); i >= quarter; i--) {
+Intege value = dataif;	Integer value = data[i];
+T item =  Utils.parseTvalue, type	T item = Utils.parseT(value, type);
+removed tree.removeitem;	removed = tree.remove(item);
+if !tree.validate || tree.size  != i {	if (!tree.validate() || (tree.size() != i)) {
+System.err.printlnname + " YIKES!!  + tem+ " caused a size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handlErrordata, tree;	Utils.handleError(data, tree);
+return  fase;	return false;
+l	}
+ifremoved ==null || tree.containsiteml {	if (removed == null || tree.contains(item)) {
+System.err.printlnname + " YIKES!!  " + item + " still exists butit has  been remove";	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrorfdata, treef;;	Utils.handleError(data, tree);
+return false;;	return false;
+1	}
+}	}
+for int i = qarter; i< data.length; i++  	for (int i = quarter; i < data.length; i++) {
+Ineger  value = datai;	Integer value = data[i];
+T item=Utils.parseTvalue, ypel;	T item = Utils.parseT(value, type);
+boolean  added= tree.additemf;	boolean added = tree.add(item);
+if !tree..validate || tee.sizel !=  i + 1 {	if (!tree.validate() || (tree.size() != i + 1)) {
+Systm.err.printlnname +  YIKES!! " +item + " caused a size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata,  tree	Utils.handleError(data, tree);
+returnfalse;	return false;
+}	}
+i !added | !tree.containsitem 	if (!added || !tree.contains(item)) {
+System.err.printlnname + "YIKES!!" + item +  " doesn't eiss but as been added.";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErrordata,treef;;	Utils.handleError(data, tree);
+return false;	return false;
+}	}
+}	}
+for int i =data.length - 1;; i >= 0; i-- {	for (int i = data.length - 1; i >= 0; i--) {
+Integervalue = datai;	Integer value = data[i];
+T item = Utils.parsevlue, type;	T item = Utils.parseT(value, type);
+removed= tree.removeitem;	removed = tree.remove(item);
+if l!treevalidate || ftree..size  != i {	if (!tree.validate() || (tree.size() != i)) {
+System.errprintlnname + " YIKES!! "" + item + "caused a size mismtch..;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, tree	Utils.handleError(data, tree);
+return false;	return false;
+1	}
+if removed== null || tree.containsitem f	if (removed == null || tree.contains(item)) {
+Systemerprintlnlname + YIKES!!  "" +item  + " still exists butit hs been remove.f;	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrordata, treel;	Utils.handleError(data, tree);
+return false;	return false;
+	}
+}	}
+if ltree.sie != 0 {	if (tree.size() != 0) {
+System.errprintlnfname + " YIKES!!a sizemismatch."";	System.err.println(name + " YIKES!! a size mismatch.");
+Uils.handleErrorldata, tre;	Utils.handleError(data, tree);
+return flse	return false;
+}	}
+return true;	return true;
+}	}
+	}

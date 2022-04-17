@@ -1,0 +1,5 @@
+import java.rmi.*;	import java.rmi.*;
+publi  interface Warehouse extends Remote	public interface Warehouse extends Remote
+1	{
+double  getPricetring descrption throws RemoteException;	double getPrice(String description) throws RemoteException;
+l	}

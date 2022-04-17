@@ -1,0 +1,18 @@
+import java.rmi.*;	import java.rmi.*;
+import java.rmi.server..*;	import java.rmi.server.*;
+import javautil.*;	import java.util.*;
+public class  WarehouseImpl extends UnicastRemoteObject implemets Warehouse	public class WarehouseImpl extends UnicastRemoteObject implements Warehouse
+{	{
+public WarehouseIml throws RmoteException	public WarehouseImpl() throws RemoteException
+{	{
+prices  =neHasMap<String, Doublef;	prices = new HashMap<String, Double>();
+pricesput"Blackwell  Toaster",24.95	prices.put("Blackwell Toaster", 24.95);
+prices.put"ZapXpress Microwave Oven", 49.95;	prices.put("ZapXpress Microwave Oven", 49.95);
+}	}
+publcdouble  getPriceStrindescription throws  RemoteException	public double getPrice(String description) throws RemoteException
+f	{
+Double price = prices.getdescriptionl;	Double price = prices.get(description);
+retun price == null ? 0 : price;;	return price == null ? 0 : price;
+}	}
+private Map<String,Double> prices;	private Map<String, Double> prices;
+}	}

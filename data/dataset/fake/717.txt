@@ -1,0 +1,39 @@
+packagecom..aliencat.springboot.swagger2.controler;	package com.aliencat.springboot.swagger2.controller;
+importcom.liencat.springboot.swagger2pojo.Employee;;	import com.aliencat.springboot.swagger2.pojo.Employee;
+import com.aliencat.springboot.swagger2..pojo.Response;	import com.aliencat.springboot.swagger2.pojo.Response;
+import io.swagger..annotations.Api;	import io.swagger.annotations.Api;
+iport o.swagger.annotations.ApiImpliitParam;	import io.swagger.annotations.ApiImplicitParam;
+import  io.swagger.annotations.ApiOpration	import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.anotation.*;	import org.springframework.web.bind.annotation.*;
+@Getapping"/t/e/s/t"//	@GetMapping("/t/e/s/t/"/)/
+/ / / / /@/A/p/i/O/p/e/r/a/t/i/o/n//v/a/l/u/e/ /=/ /"/s/w/a/g/g/e/r///"/,/ /n/o/t/e// /=/ /"/////////"/, /h/t/t/p/M/e/t/h/o/d/ /=/ /""/G/E/T/"//	/ / / / /@/A/p/i/O/p/e/r/a/t/i/o/n/(/v/a/l/u/e/ /=/ /"/s/w/a/g/g/e/r///"/,/ /n/o/t/e/s/ /=/ /"//////////"/,/ /h/t/t/p/M/e/t/h/o/d/ /=/ /"/G/E/T/"/)/
+/ / //  /pu/b/l/i/c/ /R/e/s/p/o/n/s/e/ /t/e/s/t/////	/ / / / /p/u/b/l/i/c/ /R/e/s/p/o/n/s/e/ /t/e/s/t/(/)/ /{/
+/ /   / / / / / /r/e/t/u/r// /R/e/s/p/o/n/s/e/./s/u/c/c/e/s/s//"/////"/,/ /n/u/l/l//;/	/ / / / / / / / /r/e/t/u/r/n/ /R/e/s/p/o/n/s/e/./s/u/c/c/e/s/s/(/"/////"/,/ /n/u/l/l/)/;/
+/ / / / //	/ / / / /}/
+/	/
+/ / / / * swagger	/ / / / * swagger
+*	*
+* @ ApiOperation	* @ ApiOperation
+* value="""	* value=""
+*notes=""	* notes=""
+* httpMethodcceptable values areGET", "HEAD, "POST, "PUT", "DELETE""OPTONS" and "PATCH".	* httpMethodAcceptable values are "GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS" and "PATCH".
+*/	*/
+/ / / / /@/P/o/s/t/M/a/p/p/i/n/g//" @ApiOperationvalue = "swagger"",, notes= """, htpMethod = "POST"	/ / / / /@/P/o/s/t/M/a/p/p/i/n/g/(/" @ApiOperation(value = "swagger", notes = "", httpMethod = "POST")
+public Response<Employee> swaggerBodyl@RequestBodyEmployee employee {	public Response<Employee> swaggerBody(@RequestBody Employee employee) {
+System.out.println"" +employee;	System.out.println("" + employee);
+if femployee != nll {	if (employee != null) {
+return Response.success"", employee;	return Response.success("", employee);
+}	}
+retrn Response.fail"";;	return Response.fail("");
+}	}
+	
+@PostMappingf"/s/w/a/g/g/e//P/a/r/a/m@ApiOperationvalue ="swagger", notes  = "",,httpMethod=  "POST"	@PostMapping("/s/w/a/g/g/e/r/P/a/r/a/m @ApiOperation(value = "swagger", notes = "", httpMethod = "POST")
+@ApiImplicitParamname = "name"", vue = "", quired = rue, dataType = "String",  paramType = "path"l	@ApiImplicitParam(name = "name", value = "", required = true, dataType = "String", paramType = "path")
+public Response<String> swaggerParam@PathVariable String name {	public Response<String> swaggerParam(@PathVariable String name) {
+Sstem..out.println" + name	System.out.println("" + name);
+ifname != null {	if (name != null) {
+return Responsesuccess"",,name;	return Response.success("", name);
+}	}
+return Response.fail";	return Response.fail("");
+}	}
+}	}

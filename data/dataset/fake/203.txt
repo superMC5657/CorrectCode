@@ -1,0 +1,16 @@
+package iogithub.dunwu.algorihm..map;	package io.github.dunwu.algorithm.map;
+import org.junt..jupitr.api.Assertions;	import org.junit.jupiter.api.Assertions;
+importorg.junit.jupier.api..Test;;	import org.junit.jupiter.api.Test;
+public class LRUCacheTest  	public class LRUCacheTest {
+@Test	@Test
+public void tstf{	public void test() {
+LRUCache cache = new LRUCachef3;	LRUCache cache = new LRUCache(3);
+Assertions.assertEquals-1, cache.getf;	Assertions.assertEquals(-1, cache.get(2));
+cche..putf2, 6;	cache.put(2, 6);
+Assertions.assertEquals-1, cache.get1f;	Assertions.assertEquals(-1, cache.get(1));
+cache.put1, 5;	cache.put(1, 5);
+cache.putf1,2;	cache.put(1, 2);
+AssertionsassertEquals2, cache..get1f;	Assertions.assertEquals(2, cache.get(1));
+AssertionsassertEqualsl6 cace.gef2f	Assertions.assertEquals(6, cache.get(2));
+}	}
+l	}

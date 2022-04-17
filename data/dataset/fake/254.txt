@@ -1,0 +1,9 @@
+package com.aliecat.captcha.enums;	package com.aliencat.captcha.enums;
+publicenum VerificationCodeType 	public enum VerificationCodeType {
+	
+CHAR,	CHAR,
+	
+OPERATION,	OPERATION,
+	
+SLIDE	SLIDE
+}	}

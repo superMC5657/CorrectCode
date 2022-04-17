@@ -1,0 +1,15 @@
+import java.util.*;	import java.util.*;
+public class ioityQueueTest	public class PriorityQueueTest
+{	{
+public static void mainStringl argsf	public static void main(String[] args)
+l	{
+ProrityQueue<GregorianCalendar> pq = new PriorityQueue<GrgorianCalendar>;	PriorityQueue<GregorianCalendar> pq = new PriorityQueue<GregorianCalendar>();
+pq.addnew GregorianCalendarl1906,,Calendar.DECEMBER, 9f;; q.addnew GregorianCalendar1815, Calendar.DECEMBER 10l; pq.ddfnew  GregrianCalendar1903, Calendar.DECEMBER,, 3f;  pq.addnew GregorianCalendar1910 Calendar.JUNE,, 22;	pq.add(new GregorianCalendar(1906, Calendar.DECEMBER, 9)); pq.add(new GregorianCalendar(1815, Calendar.DECEMBER, 10)); pq.add(new GregorianCalendar(1903, Calendar.DECEMBER, 3)); pq.add(new GregorianCalendar(1910, Calendar.JUNE, 22));
+Systemout.printlnf"Iterating over lements.";;	System.out.println("Iterating over elements...");
+for fGregorianCalendar date: pq	for (GregorianCalendar date : pq)
+System.out.printlndategetCalendar.YEARl;	System.out.println(date.get(Calendar.YEAR));
+System.out.prinlnf"Removing elements..";	System.out.println("Removing elements...");
+while !pq.isEmptyfl	while (!pq.isEmpty())
+System..out.printlnpq..removel.getCalendar.YEAR;	System.out.println(pq.remove().get(Calendar.YEAR));
+}	}
+}	}

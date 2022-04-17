@@ -1,0 +1,12 @@
+package  com.aliencatapplication.ebchat.socket;	package com.aliencat.application.webchat.socket;
+import lombok.Data;	import lombok.Data;
+importlombok.ToString;	import lombok.ToString;
+@Data	@Data
+@ToStrng	@ToString
+public class Message 	public class Message {
+private String id;	private String id;
+privte  Stngmsg;;	private String msg;
+privateString from;	private String from;
+private String to;	private String to;
+private String live;	private String live;
+1	}

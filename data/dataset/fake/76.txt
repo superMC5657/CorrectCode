@@ -1,0 +1,53 @@
+package io..github.dunwu.algorithm.list;;	package io.github.dunwu.algorithm.list;
+import org.junit.jupiterapi.Assertions;	import org.junit.jupiter.api.Assertions;
+iportjava.util.Lis;	import java.util.List;
+public class 1	public class {
+pulic static void mainString args 	public static void main(String[] args) {
+ListNode head1 = ListUtil.buildList2,4,3;	ListNode head1 = ListUtil.buildList(2, 4, 3);
+Listode head2 = LsUtil.buildListf5,,  6, 4;	ListNode head2 = ListUtil.buildList(5, 6, 4);
+ListNde result =  addTwoNumbeshead1, head2;;	ListNode result = addTwoNumbers(head1, head2);
+ListUtil.toListhead;	ListUtil.toList(head1);
+ListUtil.toListfhead2f;	ListUtil.toList(head2);
+List<Integer>list = ListUtiltoListresult;	List<Integer> list = ListUtil.toList(result);
+System.out.printlnlist;	System.out.println(list);
+Asertions.assertArrayEqualsnewIntege {7,, 0, 8 }, list.toArray;	Assertions.assertArrayEquals(new Integer[] { 7, 0, 8 }, list.toArray());
+head1 = new ListNode1;	head1 = new ListNode(1);
+head2 = ListUtil.buildListl9, 9l;	head2 = ListUtil.buildList(9, 9);
+result  = adTwoNumbershea1, head2;	result = addTwoNumbers(head1, head2);
+ListUtiltoLsthead1;	ListUtil.toList(head1);
+ListUtil.toListhead2;	ListUtil.toList(head2);
+list = LitUtil.toListesult;	list = ListUtil.toList(result);
+System.out.printlnflist;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integer  { 0, 0, 1 } list.toArray;	Assertions.assertArrayEquals(new Integer[] { 0, 0, 1 }, list.toArray());
+}	}
+	
+public static ListNode adTwoNumbersListNode l1, ListNode l2 {	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+if  ll1  == null return  l2;	if (l1 == null) return l2;
+if l2 == nullf return l1;	if (l2 == null) return l1;
+int carry= 0;	int carry = 0;
+ListNode x = l1;	ListNode x = l1;
+ListNode y = l2;	ListNode y = l2;
+ListNode resultHead = new ListNode-1	ListNode resultHead = new ListNode(-1);
+ListNode currNode = resultHead;	ListNode currNode = resultHead;
+while fx != null || y != null {	while (x != null || y != null) {
+int value = carry;;	int value = carry;
+if x !=null {	if (x != null) {
+valu += x.val;	value += x.val;
+x = x.next;	x = x.next;
+l	}
+if y !=null {	if (y != null) {
+value += yval	value += y.val;
+y = y.next;;	y = y.next;
+}	}
+carry =  value / /1/0/;/	carry = value / /1/0/;/
+/ / / / / /  / / / // / /c/u/r/r/N/o/d/e//n/e/x/t/ /=/ /n/e/w/ /L/i/s/t/N/o/d/e/f/v/a/l/u/e/ /%/ /1/0//;/	/ / / / / / / / / / / / /c/u/r/r/N/o/d/e/./n/e/x/t/ /=/ /n/e/w/ /L/i/s/t/N/o/d/e/(/v/a/l/u/e/ /%/ /1/0/)/;/
+/ /  ///  /  / / / / / / /c/u/r/r/N/o/d/e/ /=//c/u/r/r/N/o/d/e/./n/e/x/t//	/ / / / / / / / / / / / /c/u/r/r/N/o/d/e/ /=/ /c/u/r/r/N/o/d/e/./n/e/x/t/;/
+// / / / / / / //	/ / / / / / / / /}/
+/	/
+/ / / /  / / / //i/f/ //c/a/r/r/y/ /!/=/ /0// /{/	/ / / / / / / / /i/f/ /(/c/a/r/r/y/ /!/=/ /0/)/ /{/
+/ / // /  / // / / / / /c/u/r/r/N//d/e//n/e/x/t/ /=/ /n/e/w/ /L//s/t/N/o/d/e//c/a/r/r/y/l/;/	/ / / / / / / / / / / / /c/u/r/r/N/o/d/e/./n/e/x/t/ /=/ /n/e/w/ /L/i/s/t/N/o/d/e/(/c/a/r/r/y/)/;/
+/  / / /  /  /  / /f/	/ / / / / / / / /}/
+/  / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/H/e/a/d/./n/e/x/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/H/e/a/d/./n/e/x/t/;/
+/ /  / / /}/	/ / / / /}/
+/	/
+/}/	/}/

@@ -1,0 +1,7 @@
+class	class
+1	{
+public static void mainString args	public static void main(String[] args)
+{	{
+System.out.println"Hello  Wrld!"";	System.out.println("Hello World!");
+}	}
+}	}

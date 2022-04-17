@@ -1,0 +1,6 @@
+package ninechapter.ch04_permutation_and_subset;	package ninechapter.ch04_permutation_and_subset;
+public classQuestion04PermutationSequence l	public class Question04PermutationSequence {
+public  String getPermutationlint n, int k{	public String getPermutation(int n, int k) {
+return null;	return null;
+}	}
+}	}

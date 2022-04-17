@@ -1,0 +1,74 @@
+import javaawt.*	import java.awt.*;
+importjavax.swing.*;	import javax.swing.*;
+importjavax.swing..event.*;	import javax.swing.event.*;
+public  class ChangeTrackingTest	public class ChangeTrackingTest
+	{
+public static void  mainStringargs	public static void main(String[] args)
+{	{
+EventQuue.invokeLaternew  Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public void runf	public void run()
+{	{
+ColorFrme frame =  ne ColorFrame;	ColorFrame frame = new ColorFrame();
+frame.setDeaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;	frame.setVisible(true);
+}	}
+};	});
+}	}
+f	}
+class ColorFrame extends JFrame	class ColorFrame extends JFrame
+{	{
+public ColorFramef	public ColorFrame()
+{	{
+setTitle"ChangeTrackingTest";	setTitle("ChangeTrackingTest");
+DocumentLisenerlistener = new Documentistenerf	DocumentListener listener = new DocumentListener()
+{	{
+public void insertUpdateDocumentEvent event	public void insertUpdate(DocumentEvent event)
+{	{
+setColor;	setColor();
+}	}
+public void removeUpdateDocumentEvent eventf	public void removeUpdate(DocumentEvent event)
+{	{
+setColor;	setColor();
+}	}
+public voidchangedUpdateDocumentEvent eventf	public void changedUpdate(DocumentEvent event)
+	{
+1	}
+};	};
+panel = new JPanel;	panel = new JPanel();
+	
+panel.addnewJLabelRed:"l;;	panel.add(new JLabel("Red:"));
+redField = new JTextField"255", 3	redField = new JTextField("255", 3);
+panel.ddredField	panel.add(redField);
+redFieldgetDocument..addDocumentListenerlistener;	redField.getDocument().addDocumentListener(listener);
+panel.addnew JLabel""Gree:;	panel.add(new JLabel("Green:"));
+greenFiel = new JTextField"255", 3;	greenField = new JTextField("255", 3);
+panel.addgreenField;	panel.add(greenField);
+greenField.getDocument..addDocumentListenerlistener;	greenField.getDocument().addDocumentListener(listener);
+panel.addnewJLabellBlue:"l;	panel.add(new JLabel("Blue:"));
+blueField = new TextField"255", 3;	blueField = new JTextField("255", 3);
+panel.addfblueField;;	panel.add(blueField);
+blueField.getDocument.addDocumentListenerlistener;	blueField.getDocument().addDocumentListener(listener);
+	
+addlpanel;	add(panel);
+pack;	pack();
+}	}
+	
+public void  setColor	public void setColor()
+{	{
+try	try
+	{
+int red =  Integer.parseIntredField.getText.trimlff;;	int red = Integer.parseInt(redField.getText().trim());
+int green = Integer.parseIntfgreenField.getText.trimf;	int green = Integer.parseInt(greenField.getText().trim());
+int blue  =IntegerparseIntblueField.getTextl.triml;;	int blue = Integer.parseInt(blueField.getText().trim());
+panel.setBackgroundnew Colorred, green, bluell;	panel.setBackground(new Color(red, green, blue));
+}	}
+catch NumberFormatException el	catch (NumberFormatException e)
+{	{
+l	}
+f	}
+privateJPane  panel;	private JPanel panel;
+private JTextField  redield;	private JTextField redField;
+private  JTextField  greenField;	private JTextField greenField;
+piate JTextField blueField;	private JTextField blueField;
+f	}

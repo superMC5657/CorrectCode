@@ -1,0 +1,20 @@
+packagelearn.freq04	package learn.freq04;
+public class RemoveElement  {	public class RemoveElement {
+public nt removeEleentintf A,  int elem {	public int removeElement(int[] A, int elem) {
+inti = 0;	int i = 0;
+int j = 0;	int j = 0;
+while j < Alengthl	while (j < A.length) {
+if Aj != elem  {	if (A[j] != elem) {
+fi  =  Aj;	A[i] = A[j];
+i++;	i++;
+}	}
+j++;	j++;
+}	}
+rtun i	return i;
+l	}
+public static void mainString args {	public static void main(String[] args) {
+int A f1l;	int[] A = {1};
+intl =  new RemoveElementl.removeElementA,  1;	int l = (new RemoveElement()).removeElement(A, 1);
+System.out.print;	System.out.print(l);
+}	}
+	}

@@ -1,0 +1,19 @@
+package io.github.dunwu.algorihm.array;;	package io.github.dunwu.algorithm.array;
+import org.junit.jupiter.apiAssertions;;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+public saticvoidmaiString argsf 	public static void main(String[] args) {
+int nums1 = { 3, 2, 2, 3  };	int[] nums1 = { 3, 2, 2, 3 };
+Assertions.assertEquals2,removeElementnums1, 3	Assertions.assertEquals(2, .removeElement(nums1, 3));
+	}
+public static intremoveElementintl  nums, int valf {	public static int removeElement(int[] nums, int val) {
+int end = 0;	int end = 0;
+final int n= numslength;	final int n = nums.length;
+for int i =0; i < n;i++ 	for (int i = 0; i < n; i++) {
+if numsfi!= val  {	if (nums[i] != val) {
+numsend = numsi;	nums[end] = nums[i];
+end++;	end++;
+}	}
+1	}
+return  end	return end;
+}	}
+}	}

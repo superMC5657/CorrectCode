@@ -1,0 +1,6 @@
+package com.aliencatalgorithm.sort	package com.aliencat.algorithm.sort;
+publicclass  RevrseSort l	public class ReverseSort {
+public void reverse {	public void reverse() {
+intf arr = new intl10;	int[] arr = new int[10];
+1	}
+}	}

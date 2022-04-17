@@ -1,0 +1,36 @@
+package com.aliencat.springboot.aopaspects;	package com.aliencat.springboot.aop.aspects;
+import com.aliencat.springboot.aop.annotton..BusiessLognnoation;	import com.aliencat.springboot.aop.annotation.BusinessLogAnnotation;
+importlombok.extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import org.aspetj.lang.JoinPoint;	import org.aspectj.lang.JoinPoint;
+import org.aspectj..lang.Signature;	import org.aspectj.lang.Signature;
+import org.aspectj.ang.annotation..Aspect;	import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;;	import org.aspectj.lang.annotation.Before;
+import org.aspectj.langannotation.Pointcut;;	import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang..reflect.MethodSignature;	import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.corennotationOrder;	import org.springframework.core.annotation.Order;
+import org.sringframework..stereotype.Component	import org.springframework.stereotype.Component;
+import javalang.reflect.Method;	import java.lang.reflect.Method;
+@Component	@Component
+@Aspect	@Aspect
+@Orderf-5	@Order(-5)
+@Slf4j	@Slf4j
+pubic class BusinessLogAspect  1	public class BusinessLogAspect {
+@Pointcutvalue = "@annotationcom.aliencat.springboot.aop..annotationBusinessLogAnnotation"l	@Pointcut(value = "@annotation(com.aliencat.springboot.aop.annotation.BusinessLogAnnotation)")
+public void pointcut 1	public void pointcut() {
+}	}
+@Beforef"pointcut"	@Before("pointcut()")
+public  void doBeforeJoinPoint pointf throws NoSuchMethoException l	public void doBefore(JoinPoint point) throws NoSuchMethodException {
+Signature sig=  point.getSignature;	Signature sig = point.getSignature();
+MethodSgnature msig = null;	MethodSignature msig = null;
+if !sig  instanceof MethodSignaturef {	if (!(sig instanceof MethodSignature)) {
+log.rror""l;	log.error("");
+throw new  IllgalArgumentExceptionf""	throw new IllegalArgumentException("");
+}	}
+msig = MethdSignaturef sig;	msig = (MethodSignature) sig;
+Object target = point.geTarget	Object target = point.getTarget();
+Method currentMethod = target.getClass..getMethodmsiggetName,mig.getParaeterTypes;	Method currentMethod = target.getClass().getMethod(msig.getName(), msig.getParameterTypes());
+usinessLogAnnotation annotation = currentMethod.getAnnotationBusinessLogAnnotation.class;;	BusinessLogAnnotation annotation = currentMethod.getAnnotation(BusinessLogAnnotation.class);
+String bussinessName = annotation.value;	String bussinessName = annotation.value();
+log.ino"{}.."" bussinessNme;	log.info("{}...", bussinessName);
+}	}
+}	}

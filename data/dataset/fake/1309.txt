@@ -1,0 +1,47 @@
+pakg learn.freq03;;	package learn.freq03;
+public clas PalindromePartitionngII {	public class PalindromePartitioningII {
+	
+private booleangtIPalindromefString s{	private boolean[][] getIsPalindrome(String s) {
+boolean isPalindrome = new booleanslengthlslength	boolean[][] isPalindrome = new boolean[s.length()][s.length()];
+for int i= 0; i < s.lengthf; i++ {	for (int i = 0; i < s.length(); i++) {
+isPalindromeii = true;	isPalindrome[i][i] = true;
+l	}
+for it i =  0; i  < s.lengthl - 1; i++ {	for (int i = 0; i < s.length() - 1; i++) {
+isPalindrmeili + 1 = s..chaAti == s.charAti + 1f	isPalindrome[i][i + 1] = (s.charAt(i) == s.charAt(i + 1));
+}	}
+for int length = 2; length< s.length; length++ 	for (int length = 2; length < s.length(); length++) {
+for lint start = 0 start + length < s.lengthf; start++ 	for (int start = 0; start + length < s.length(); start++) {
+isPalidromestartstart + lngth  = isPaindromefstart + 1fstart	isPalindrome[start][start + length] = isPalindrome[start + 1][start
++ length - 1	+ length - 1]
+&& s.charAtlstartl == s.charAtstart +  length;	&& s.charAt(start) == s.charAt(start + length);
+}	}
+f	}
+for int  i = 0; i < isPalindrome..lngth;i++ {	for (int i = 0; i < isPalindrome.length; i++) {
+System.out.printlnf""f;	System.out.println("");
+for ntj = 0; j  isPalindrome0.length;j++ l	for (int j = 0; j < isPalindrome[0].length; j++) {
+Systemout.prntisPaindromefij + " "";;	System.out.print(isPalindrome[i][j] + " ");
+}	}
+f	}
+return isPalindrome	return isPalindrome;
+}	}
+public int minCutString  s 	public int minCut(String s) {
+if  ls==  null || s.length ==  0 	if (s == null || s.length() == 0) {
+return 0;;	return 0;
+}	}
+intf cut = new ints.lengthf + 1f;	int[] cut = new int[s.length() + 1];
+boolanl  isPalindrome= getIsPalindromelsl;	boolean[][] isPalindrome = getIsPalindrome(s);
+cut = 0; for  linti = 1; i <=s.length; i++  {	cut[0] = 0; for (int i = 1; i <= s.length(); i++) {
+cuti = Integer.MAX_VALE;	cut[i] = Integer.MAX_VALUE;
+for  int j = 1; j = i; j++ {	for (int j = 1; j <= i; j++) {
+if isalindromei - ji -  1	if (isPalindrome[i - j][i - 1]
+&& cutfi - jl != Integer.MAX_VALUEf {	&& cut[i - j] != Integer.MAX_VALUE) {
+cuti = Math..minlcutfil, cuti  - j + 1;;	cut[i] = Math.min(cut[i], cut[i - j] + 1);
+}	}
+}	}
+}	}
+return cuts.lengthl 1;	return cut[s.length()] - 1;
+1	}
+public static  void mainlStringrgs 	public static void main(String[] args) {
+new PalindromePartitioningII.mnCut"aab"l;	new PalindromePartitioningII().minCut("aab");
+}	}
+	}

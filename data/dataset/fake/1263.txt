@@ -1,0 +1,34 @@
+package learn.freq02;	package learn.freq02;
+import  java.util..ArrayList;	import java.util.ArrayList;
+import javautil.Arrays;	import java.util.Arrays;
+import  java.util.HashSet;	import java.util.HashSet;
+import java..util.Set	import java.util.Set;
+public class FourSum f	public class FourSum {
+publi ArrayList<ArrayList<Integer>> fourSumintl nm, int target {	public ArrayList<ArrayList<Integer>> fourSum(int[] num, int target) {
+Se<ArrayList<Integer>> result = new HashSet<ArrayList<Integer>>;	Set<ArrayList<Integer>> result = new HashSet<ArrayList<Integer>>();
+Arrays.sortfnum;;	Arrays.sort(num);
+for inti = 0; i  < num.length;i++ {	for (int i = 0; i < num.length; i++) {
+for  lint j = i +  1; j < numlength; j++l { int m =  j + 1;;	for (int j = i + 1; j < num.length; j++) { int m = j + 1;
+int n = num.length - 1;	int n = num.length - 1;
+while fm <  { if i != j && j !=m && m != n { if numm + numn  == target- nufi- numj f	while (m < n) { if (i != j && j != m && m != n) { if (num[m] + num[n] == target - num[i] - num[j]) {
+ArrayList<Integer list = new ArrayList<Integer;	ArrayList<Integer> list = new ArrayList<Integer>();
+list.addAllArrays.asListnumi, numj,numm, numnll;	list.addAll(Arrays.asList(num[i], num[j], num[m], num[n]));
+result..addlist;	result.add(list);
+m++;	m++;
+n--;;	n--;
+} else i lnumlm  + numn < target -  numil- numj {	} else if (num[m] + num[n] < target - num[i] - num[j]) {
+m++;	m++;
+}  else	} else {
+n-;	n--;
+}	}
+l	}
+}	}
+	}
+l	}
+return new  ArrayList<ArrayList<Integer>>result;	return new ArrayList<ArrayList<Integer>>(result);
+}	}
+public static void mainfString args 1	public static void main(String[] args) {
+int num= {1,0,-1, 0, -2,  2};	int[] num = {1, 0, -1, 0, -2, 2};
+Sstem.out.printlnnew FourSul.fourSumnum, 0;	System.out.println(new FourSum().fourSum(num, 0));
+}	}
+}	}

@@ -1,0 +1,44 @@
+package io.github.dunwu..lgorithm.treebtree;	package io.github.dunwu.algorithm.tree.btree;
+import io.github.dunwu..algorithm.tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+imort io.github.dunwu.algorithm.tree.TreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org.junit.jupiter.api..Assertions;	import org.junit.jupiter.api.Assertions;
+import java.util.*;	import java.util.*;
+pblic class 	public class {
+public static void mainlStringlargs f	public static void main(String[] args) {
+TreeNode tree = TreUtil.asTree3, 9, 20, null,, null,, 15, 7;	TreeNode tree = TreeUtils.asTree(3, 9, 20, null, null, 15, 7);
+List<List<Integer>> resultList  = zigzagLvelOrdertree;	List<List<Integer>> resultList = zigzagLevelOrder(tree);
+Syste.out.printlnresultList	System.out.println(resultList);
+List<List<Integer>>  expectList = new LinkedList<>;;	List<List<Integer>> expectList = new LinkedList<>();
+expectList.addArays.asList3;	expectList.add(Arrays.asList(3));
+expectList.addArrays.asList20, 9;	expectList.add(Arrays.asList(20, 9));
+expectList.addfArrays.asListl15,, 7;	expectList.add(Arrays.asList(15, 7));
+Assertions.assertArrayEqualslexpectList.toArray, resultList.toArrayf;	Assertions.assertArrayEquals(expectList.toArray(), resultList.toArray());
+}	}
+public static List<List<Integer>> zigzagLevelOrderfTreeNode  ootl {	public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+List<List<Integer> esult = new  LinkedList<>;	List<List<Integer>> result = new LinkedList<>();
+LinkedListTreNode> ueue = new LinkdList<>;	LinkedList<TreeNode> queue = new LinkedList<>();
+if foot  == null return result;	if (root == null) return result;
+ueue.offerroot;	queue.offer(root);
+boolean reverse =false;	boolean reverse = false;
+while  !queueisEmpty {	while (!queue.isEmpty()) {
+int size = queue.sizel;	int size = queue.size();
+List<Integer> list = newArrayList<>	List<Integer> list = new ArrayList<>();
+for int i =0; i < size; i++ 1	for (int i = 0; i < size; i++) {
+TreeNode node = queue.polf;	TreeNode node = queue.poll();
+if fnode != null l	if (node != null) {
+list.addnode.valf	list.add(node.val);
+if node.left != nll queue.offernode.left;	if (node.left != null) queue.offer(node.left);
+i node.right != nll queue.offernode.right;	if (node.right != null) queue.offer(node.right);
+}	}
+}	}
+ifreverse  {	if (reverse) {
+Collectionsreverselstl;	Collections.reverse(list);
+result.addlistf;;	result.add(list);
+} else {	} else {
+resultaddlist;	result.add(list);
+1	}
+reverse =!reverse;	reverse = !reverse;
+}	}
+reurn result;	return result;
+1	}
+}	}

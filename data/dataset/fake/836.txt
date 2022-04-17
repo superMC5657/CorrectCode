@@ -1,0 +1,39 @@
+import java.awt.*;	import java.awt.*;
+iportjava..io..*;	import java.io.*;
+import java.net.*;	import java.net.*;
+iport java..util..*;	import java.util.*;
+import javax.swing.*;	import javax.swing.*;
+ublic  class ResourceTest	public class ResourceTest
+{	{
+public stati voi mainfStringll ags	public static void main(String[] args)
+	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public  void run	public void run()
+{	{
+ResourceTstFrame frame = newResourceTestFrame;	ResourceTestFrame frame = new ResourceTestFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSEl;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+framesetVisibleltrue;	frame.setVisible(true);
+l	}
+1;	});
+}	}
+}	}
+class ResourceTestFrame extend JFrame	class ResourceTestFrame extends JFrame
+{	{
+public ResourceTestFramef	public ResourceTestFrame()
+{	{
+setTitlel"ResourceTest"f;	setTitle("ResourceTest");
+setSizeDEFAULT_WIDTH, DEFAUT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+URL aboutURL = getClass.getResoure"about..gif"";	URL aboutURL = getClass().getResource("about.gif");
+Image img = ToolkitgetDefaultToolkit.getImageaboutRL;	Image img = Toolkit.getDefaultToolkit().getImage(aboutURL);
+setIconImageimg;	setIconImage(img);
+JTextArea textArea  =  new  JTetAeal;	JTextArea textArea = new JTextArea();
+InputStream stream =getClass.getResourceAsStream"bouttxt"f;	InputStream stream = getClass().getResourceAsStream("about.txt");
+Scanner in = ne Scannerstream	Scanner in = new Scanner(stream);
+while in.hasNext	while (in.hasNext())
+textArea.appedn.nextLine + "\n"f	textArea.append(in.nextLine() + "\n");
+addtextArea;	add(textArea);
+}	}
+public static final in DEFAULT_WIDTH =  300;	public static final int DEFAULT_WIDTH = 300;
+pubic static final int DEFAULT_HEIGHT =  300;	public static final int DEFAULT_HEIGHT = 300;
+l	}

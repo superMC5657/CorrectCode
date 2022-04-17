@@ -1,0 +1,16 @@
+package com.aliencatspringboot.ssm.commonservice;	package com.aliencat.springboot.ssm.common.service;
+mport com.aliencatspringboot.ssmcommon.entity.PageInf;	import com.aliencat.springboot.ssm.common.entity.PageInfo;
+importcom.aliencat.springboot.ssm..cmmon.entity.Result	import com.aliencat.springboot.ssm.common.entity.Result;
+import java.utl.List;	import java.util.List;
+public nterface CommonService<V,, T {	public interface CommonService<V, T> {
+	
+Result<PageInfo<V>> pagefV entityVo;	Result<PageInfo<V>> page(V entityVo);
+	
+Result<List<V>> listV entityVo	Result<List<V>> list(V entityVo);
+	
+Result<V>getString id;	Result<V> get(String id);
+	
+Result<V> saveV entityVo;	Result<V> save(V entityVo);
+	
+Result<String> deleteString id;;	Result<String> delete(String id);
+l	}

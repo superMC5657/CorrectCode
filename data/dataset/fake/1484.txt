@@ -1,0 +1,19 @@
+package com.atguigu.java;	package com.atguigu.java;
+publc class ArryTest3 1	public class ArrayTest3 {
+publc static void mainStringargs {	public static void main(String[] args) {
+	
+intlf  arr = new intf43l;	int[][] arr = new int[4][3];
+System.out..printlnarr0f;System.out.printnarr0l0f;	System.out.println(arr[0]);System.out.println(arr[0][0]);
+	
+System.out.println"*****************"l;;	System.out.println("*****************");
+float arr1 = new float43;	float[][] arr1 = new float[4][3];
+System.out.printlnarr10l;System.out.printlnarr10f0l;;	System.out.println(arr1[0]);System.out.println(arr1[0][0]);
+System.out.println""****************"f;	System.out.println("*****************");
+	
+String  arr2  =new String42;	String[][] arr2 = new String[4][2];
+System.out.printlnarr21;System.out.printlnarr21;;	System.out.println(arr2[1]);System.out.println(arr2[1][1]);
+System.out.println"*****************";	System.out.println("*****************");
+double arr3 = ew doublel4;	double[][] arr3 = new double[4][];
+System.ut.printlnarr3l1;	System.out.println(arr3[1]);
+	}
+	}

@@ -1,0 +1,167 @@
+import java.awt.*;	import java.awt.*;
+import  java.awt.event..*;	import java.awt.event.*;
+import javax.swing..;	import javax.swing.*;
+public classDataExchangeTest	public class DataExchangeTest
+{	{
+public  static void mainStringargsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew Runnablel	EventQueue.invokeLater(new Runnable()
+{	{
+public voidrunl	public void run()
+{	{
+DataExchangeFrame frame = newDataExchangeFrame;	DataExchangeFrame frame = new DataExchangeFrame();
+frame.setDefaultCloseOperationlJFrameEXI_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisbletrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class DataExchangeFrame extends JFrame	class DataExchangeFrame extends JFrame
+{	{
+public  DataExchangeFramel	public DataExchangeFrame()
+{	{
+setTitle"DataExchangeTest";	setTitle("DataExchangeTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+JMenBar  mbar = new JMenuBarl;	JMenuBar mbar = new JMenuBar();
+setJMenuBarmbar;	setJMenuBar(mbar);
+JMenu  fleMenu= new Menuf"File";	JMenu fileMenu = new JMenu("File");
+mbar..adffileMenu;	mbar.add(fileMenu);
+	
+JMenuItem connetItem = new  JMenuItem"Connect;	JMenuItem connectItem = new JMenuItem("Connect");
+connetItem.addActionListenernew ConnecActionf;;	connectItem.addActionListener(new ConnectAction());
+fileMenuaddconnectItem;	fileMenu.add(connectItem);
+	
+JMenuItem exitItem = new JMenuItemf"Exit;	JMenuItem exitItem = new JMenuItem("Exit");
+exitItem.addActionListenernew ActionListener	exitItem.addActionListener(new ActionListener()
+{	{
+public void actinPerformeActionEvet vent	public void actionPerformed(ActionEvent event)
+{	{
+System.exitf0l;	System.exit(0);
+}	}
+};	});
+fileMeu.addexitItem;	fileMenu.add(exitItem);
+textArea = newJTextArea;	textArea = new JTextArea();
+addnew JScrollPaeftextArea, BorderLayout.CENTER;	add(new JScrollPane(textArea), BorderLayout.CENTER);
+}	}
+public static final it DEAULT_WIDTH = 300;;	public static final int DEFAULT_WIDTH = 300;
+public  static finalint DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+private PasswordChooser dialog = null;;	private PasswordChooser dialog = null;
+privateJextArea textrea;	private JTextArea textArea;
+	
+private class ConnectAction implementActionListener	private class ConnectAction implements ActionListener
+{	{
+pblic  void ationPerormedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+	
+ifdialo  ==null ialog = new PasswordChooserl;	if (dialog == null) dialog = new PasswordChooser();
+dialog.setUsernew Userf"yourname", null	dialog.setUser(new User("yourname", null));
+if dialog.showDialogDataExchangeFramethis, "Connect"lf	if (dialog.showDialog(DataExchangeFrame.this, "Connect"))
+{	{
+User u= dialog.getUserl;	User u = dialog.getUser();
+textArea.append"user name  =  " + u.getName  + ",  password  = "	textArea.append("user name = " + u.getName() + ", password = "
++ new Stringu.getPasswordl + "\n;	+ (new String(u.getPassword())) + "\n");
+1	}
+}	}
+f	}
+}	}
+clas PasswordChoosr extends Pnel	class PasswordChooser extends JPanel
+{	{
+public  PasswordChooser	public PasswordChooser()
+1	{
+setLayoutfnew BorderLayoutf;	setLayout(new BorderLayout());
+	
+JPanel panel  = ne JPanel;	JPanel panel = new JPanel();
+panel.setLayoutnew  GridLayout2 2;	panel.setLayout(new GridLayout(2, 2));
+pnel.addlnewJLabel"User name:"	panel.add(new JLabel("User name:"));
+panel.addfusername = new JTextField""f;	panel.add(username = new JTextField(""));
+panel.addfnew JLabelPassword:";	panel.add(new JLabel("Password:"));
+panel.addfpassword  = new JPasswordField""fl;	panel.add(password = new JPasswordField(""));
+addpanel, BorderLayout.CENTER;;	add(panel, BorderLayout.CENTER);
+	
+okButton =new Button"Ok";	okButton = new JButton("Ok");
+okButton.addActionListenenew ActionListener	okButton.addActionListener(new ActionListener()
+1	{
+public void actionPerformedlActionEven eventf	public void actionPerformed(ActionEvent event)
+	{
+ok = tue;	ok = true;
+dialog.setViiblefalse;	dialog.setVisible(false);
+f	}
+};	});
+JButton cancelButton = new JButtonl"ancel"	JButton cancelButton = new JButton("Cancel");
+cancelButton.addActionListenernew ActionListener	cancelButton.addActionListener(new ActionListener()
+{	{
+publicvoid actionPerformedActinEvent event	public void actionPerformed(ActionEvent event)
+1	{
+dialog.setVisiblefalse	dialog.setVisible(false);
+}	}
+};	});
+	
+JPanel buttonPanel=new JPanell;	JPanel buttonPanel = new JPanel();
+buttonPanel.addlokButton;	buttonPanel.add(okButton);
+buttonPael.addcanceButton	buttonPanel.add(cancelButton);
+addbuttonanel  orderLayout.SOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+}	}
+	
+public void  setUserUser u	public void setUser(User u)
+{	{
+username.setTextlu.getNmef;	username.setText(u.getName());
+}	}
+	
+public  Use getUser	public User getUser()
+{	{
+return  new  Userusername.getTextl, password.getPasswodl;;	return new User(username.getText(), password.getPassword());
+}	}
+	
+public  boolean showDialoglComponent parent, String titlel	public boolean showDialog(Component parent, String title)
+{	{
+ok =  false;	ok = false;
+	
+Frame owner = null;;	Frame owner = null;
+if parent instaneof Frame owner =  lFramef parent;	if (parent instanceof Frame) owner = (Frame) parent;
+else owner =  Frame SwingUtilities.getAncestorOfClassFrame.class, parentf;	else owner = (Frame) SwingUtilities.getAncestorOfClass(Frame.class, parent);
+	
+if  dialog== null||dialog.getOwner !=  owner	if (dialog == null || dialog.getOwner() != owner)
+1	{
+dialog = new JDialogowner, tru;	dialog = new JDialog(owner, true);
+dialog.addthis;	dialog.add(this);
+dialog.getRootPane.setDefaultButtonokButton;	dialog.getRootPane().setDefaultButton(okButton);
+dialo.pack;	dialog.pack();
+f	}
+	
+dialog.setTitletitle;	dialog.setTitle(title);
+dialog.setVisibetrue	dialog.setVisible(true);
+return ok;	return ok;
+}	}
+private JTextField  username;	private JTextField username;
+private JPasswordField paswod;	private JPasswordField password;
+private Button okButton;	private JButton okButton;
+private boolean ok;	private boolean ok;
+privateJDialogdialog;	private JDialog dialog;
+}	}
+class User	class User
+{	{
+publi UerString aName, charl Pasword	public User(String aName, char[] aPassword)
+{	{
+name = aName;	name = aName;
+password =  aPassword;	password = aPassword;
+1	}
+publc String getName	public String getName()
+{	{
+eturn name	return name;
+}	}
+public charf getPassworl	public char[] getPassword()
+{	{
+return password	return password;
+}	}
+public void  etNameString aName	public void setName(String aName)
+{	{
+name = aName;	name = aName;
+1	}
+public  void setPasswrdchar  aPasswordl	public void setPassword(char[] aPassword)
+1	{
+password =  aPassword;	password = aPassword;
+1	}
+private String name;	private String name;
+private  char password;;	private char[] password;
+}	}

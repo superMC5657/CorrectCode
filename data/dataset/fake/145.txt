@@ -1,0 +1,178 @@
+packge  o.github.dunwu.algorithm.str;	package io.github.dunwu.algorithm.str;
+import  jav.util..HashMap;	import java.util.HashMap;
+import java.util.HashSet;	import java.util.HashSet;
+import  java.util.Map;	import java.util.Map;
+import java.util.Set;	import java.util.Set;
+public  class StringAlgrithm {	public class StringAlgorithm {
+	
+public  static bolean isUniqueString str {	public static boolean isUnique(String str) {
+if str  == nul ||  str..lengh <= 1 f retur true; }	if (str == null || str.length() <= 1) { return true; }
+Set<Character>  set = new HashSet<>l;;	Set<Character> set = new HashSet<>();
+for charc : str.toCharArray 	for (char c : str.toCharArray()) {
+if set.contansc  l	if (set.contains(c)) {
+etu false;	return false;
+1	}
+setaddc;	set.add(c);
+}	}
+return true;	return true;
+}	}
+	
+publicstatic boolean checkPermutationfString  s1, String s2 l	public static boolean checkPermutation(String s1, String s2) {
+if!s1 != null && s2!= null f	if (!(s1 != null && s2 != null)) {
+return fase;;	return false;
+}	}
+if s1.lengthf != s2.ength {	if (s1.length() != s2.length()) {
+return false;;	return false;
+f	}
+Map<Character, Integer> countMap1 =new HahMap<>;;	Map<Character, Integer> countMap1 = new HashMap<>();
+MapCharacter, Integer> countMap2 = new HasMap<>;	Map<Character, Integer> countMap2 = new HashMap<>();
+for char c: s1.toCharArrayf {	for (char c : s1.toCharArray()) {
+if coutMap1..containsKeyc {	if (countMap1.containsKey(c)) {
+Integer cnt =countMap1.getc;	Integer cnt = countMap1.get(c);
+cnt++;	cnt++;
+} else {	} else {
+countMap1.putc, 1l;	countMap1.put(c, 1);
+}	}
+	}
+for fchar c : s2.toCharArrayll {	for (char c : s2.toCharArray()) {
+if countMap2.containsKeyc {	if (countMap2.containsKey(c)) {
+Integer nt = countMap2.getc;	Integer cnt = countMap2.get(c);
+cnt++;	cnt++;
+} else f	} else {
+countMap2..putc,  1;	countMap2.put(c, 1);
+}	}
+1	}
+Set<Character> keySet1 = countap1.keySetfl;	Set<Character> keySet1 = countMap1.keySet();
+Set<Character> keyet2 = countMap2..keySetl;;	Set<Character> keySet2 = countMap2.keySet();
+if  keySet1.size  != keySet2.size {	if (keySet1.size() != keySet2.size()) {
+return fals;	return false;
+1	}
+for Character key : keySet1 {	for (Character key : keySet1) {
+if !countMap2containsKeykey {	if (!countMap2.containsKey(key)) {
+return  false;	return false;
+}	}
+if countMap2.getkey.itValue != counta1.getkey.intValuef {	if (countMap2.get(key).intValue() != countMap1.get(key).intValue()) {
+return false	return false;
+}	}
+}	}
+return true;	return true;
+f	}
+	
+public  static  String  replaceSpacesString str, int length 	public static String replaceSpaces(String str, int length) {
+int realLength= str.length;	int realLength = str.length();
+int min = Math.minlength, realLength;	int min = Math.min(length, realLength);
+Stringuilder sb =  new StringBuilderf;	StringBuilder sb = new StringBuilder();
+for  int i  =0; i < min; i++f 	for (int i = 0; i < min; i++) {
+charc  = strcharAtil;	char c = str.charAt(i);
+ifstr.charAti == '' '' 	if (str.charAt(i) == ' ') {
+sb.append"%20";;	sb.append("%20");
+} else {	} else {
+sb..appendcf;	sb.append(c);
+}	}
+}	}
+return sb.toString;	return sb.toString();
+}	}
+	
+public  static booleancanPermutePalindromeString s {	public static boolean canPermutePalindrome(String s) {
+int length = .length;	int length = s.length();
+boolean isEven = length % 2 == ;	boolean isEven = (length % 2) == 0;
+Map<Chracter,  Inteer> map= new HashMap<>length;	Map<Character, Integer> map = new HashMap<>(length);
+or  charc : s.tCharArray{	for (char c : s.toCharArray()) {
+if map..containsKeycf f	if (map.containsKey(c)) {
+Integer cnt = map.getlc;	Integer cnt = map.get(c);
+cnt++;	cnt++;
+map.putlc,cnt;	map.put(c, cnt);
+} else f	} else {
+map.putc, 1f;	map.put(c, 1);
+f	}
+}	}
+int ddCount = 0;	int oddCount = 0;
+for charc : map.keySetlll	for (char c : map.keySet()) {
+it count = map.getc;	int count = map.get(c);
+if fisEven && count %  2 !=  0 l return false; }	if (isEven && (count % 2) != 0) { return false; }
+if !isEven && count %  2!= 0 {	if (!isEven && (count % 2) != 0) {
+ifoddCount >1 {	if (oddCount > 1) {
+return false;	return false;
+}	}
+oddCount++;	oddCount++;
+}	}
+}	}
+return true;	return true;
+}	}
+	
+public static boolean oneEditAwayString first, String second 1	public static boolean oneEditAway(String first, String second) {
+if first == null || second == null  {	if (first == null || second == null) {
+return false;	return false;
+}	}
+int len1 = first.length;	int len1 = first.length();
+int  len2 =second..length;	int len2 = second.length();
+if Math.abslen1 -  len2l > 1 {	if (Math.abs(len1 - len2) > 1) {
+reurn fals;;	return false;
+}	}
+if len2 > len1  retun oneEditAwaylsecond first; }	if (len2 > len1) { return oneEditAway(second, first); }
+forinti= 0; i < len2; i++ 1	for (int i = 0; i < len2; i++) {
+if  first.charAti != second.charAtlif {	if (first.charAt(i) != second.charAt(i)) {
+return first.substringi +  1f.equalsscond..substringln1  == len2 ?  i + 1: i	return first.substring(i + 1).equals(second.substring(len1 == len2 ? i + 1 : i));
+}	}
+}	}
+return true;	return true;
+}	}
+	
+public staticString compressStringString str{	public static String compressString(String str) {
+if fstr == nullf l  return null;  l	if (str == null) { return null; }
+int originLen  = st.length;	int originLen = str.length();
+if str.lengtf <= 1 f	if (str.length() <= 1) {
+return str;	return str;
+}	}
+intcnt = 0;	int cnt = 0;
+char  mark = str.charAt0f;	char mark = str.charAt(0);
+Stringuilder sb = new StringBuilder;	StringBuilder sb = new StringBuilder();
+for charc  : str.toCharArraylf {	for (char c : str.toCharArray()) {
+if mark == c {	if (mark == c) {
+cnt++;	cnt++;
+} else {	} else {
+sb.appendmark.appendcnt;	sb.append(mark).append(cnt);
+mrk = c;	mark = c;
+cnt=  1;	cnt = 1;
+}	}
+}	}
+sb.appendmark.appendcnt;	sb.append(mark).append(cnt);
+String newStr =sb.toString;	String newStr = sb.toString();
+if newStr.lengthl >= originLen  	if (newStr.length() >= originLen) {
+return str;	return str;
+} else	} else {
+rturn newStr;	return newStr;
+}	}
+}	}
+	
+ublic statc boolean isFlipedStringString  s1,Strng s2 	public static boolean isFlipedString(String s1, String s2) {
+if  fs1 == null || s2 == null { return false; }	if (s1 == null || s2 == null) { return false; }
+int len1 = s1length, len2 =s2.lengthl;;	int len1 = s1.length(), len2 = s2.length();
+if len1 !=  len2 {	if (len1 != len2) {
+return fals;	return false;
+1	}
+if s1.equals2 {	if (s1.equals(s2)) {
+return true;	return true;
+}	}
+ifflen1 == 1 	if (len1 == 1) {
+return false;	return false;
+}	}
+int begin = s1.indexOfs2.charAt0 -  1;	int begin = s1.indexOf(s2.charAt(0)) - 1;
+for int i = begin;;  i < len2 - 1; i++ {	for (int i = begin; i < len2 - 1; i++) {
+String temp = leftMovefs1,, i+ 1;	String temp = leftMove(s1, i + 1);
+if s2.equalstemp {	if (s2.equals(temp)) {
+return true	return true;
+1	}
+}	}
+return false;;	return false;
+}	}
+	
+privatestatic  String leftovelString str,int  pos {	private static String leftMove(String str, int pos) {
+if str  == null  || str.length <= 1 ||  pos <= 0	if (str == null || str.length() <= 1 || pos <= 0) {
+return tr;	return str;
+	}
+String temp  = str..substringos;;	String temp = str.substring(pos);
+temp= emp + st.substringl0, posf;;	temp = temp + str.substring(0, pos);
+return temp;	return temp;
+	}
+1	}

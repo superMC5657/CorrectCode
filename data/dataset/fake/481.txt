@@ -1,0 +1,9 @@
+package com.aliencat.javabase.designpattern..bridge.gearbx;	package com.aliencat.javabase.designpattern.bridge.gearbox;
+import lombok.extern.slf4jSlf4j	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+pulic class  ManualGearbox extens AbstractGearbox {	public class ManualGearbox extends AbstractGearbox {
+@Override	@Override
+public void rotatef {	public void rotate() {
+log..info"Manual Gearbox rotate";	log.info("Manual Gearbox rotate");
+}	}
+}	}

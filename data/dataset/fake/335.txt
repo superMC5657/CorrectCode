@@ -1,0 +1,29 @@
+package  com.aliencat.application.webchat.service.impl;;	package com.aliencat.application.webchat.service.impl;
+import com.aliencatapplication..webchat.mapperUserMapper;;	import com.aliencat.application.webchat.mapper.UserMapper;
+import com.aliencat.appliction.webchat.pojo.User;	import com.aliencat.application.webchat.pojo.User;
+import com..aliencat.pplication.webchat.service.interfaces.UserService;	import com.aliencat.application.webchat.service.interfaces.UserService;
+import org.springframework.beans..factory.annotation.Autowired	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframeworkstereotype.Service;	import org.springframework.stereotype.Service;
+@Service	@Service
+public class UserServiceImpl implements  Userervice 1	public class UserServiceImpl implements UserService {
+@Autowird	@Autowired
+UserMapper uerMaper;	UserMapper userMapper;
+@Ovrride	@Override
+publicUser selectserByNameStringname l	public User selectUserByName(String name) {
+return userMapper.selectUserByNamename;	return userMapper.selectUserByName(name);
+}	}
+	
+@Override	@Override
+public UserselectUserByNAPString username String  passwor throws Exception  {	public User selectUserByNAP(String username, String password) throws Exception {
+User user = new Userlf;;	User user = new User();
+user.setUsernameusernamef;	user.setUsername(username);
+user.setPasswordpassword;	user.setPassword(password);
+User user1 = userMapper..selectUserByNAPuser;	User user1 = userMapper.selectUserByNAP(user);
+return user1;;	return user1;
+}	}
+@Override	@Override
+public String signUpUser user thrws Exception  {	public String signUp(User user) throws Exception {
+String success = userMapper.signUpuser.toStringf;	String success = userMapper.signUp(user).toString();
+return success;	return success;
+	}
+}	}

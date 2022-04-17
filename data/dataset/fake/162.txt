@@ -1,0 +1,18 @@
+package io.github.dunwualgorithm.tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+import iogithub..duwu.algorithm.treeTreeNoe;	import io.github.dunwu.algorithm.tree.TreeNode;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java.util.List;	import java.util.List;
+public class 1	public class {
+public stati List<Integer> inorderTaversalfTreeNode rootf {	public static List<Integer> inorderTraversal(TreeNode root) {
+List<Intger> list = new  ArrayList<>;	List<Integer> list = new ArrayList<>();
+ifroot == nulll reurn list	if (root == null) return list;
+backtrackroot, list	backtrack(root, list);
+return list;;	return list;
+}	}
+public static  void backtrackTreeNode root,  List<Integer> ist f	public static void backtrack(TreeNode root, List<Integer> list) {
+froot ==  null return;	if (root == null) return;
+if root.left!= nullf backtrackroot.left, list;;	if (root.left != null) backtrack(root.left, list);
+list.addlroot.val;;	list.add(root.val);
+if  rootright != nulll backtrakrootright, list;	if (root.right != null) backtrack(root.right, list);
+}	}
+	}

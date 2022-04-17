@@ -1,0 +1,11 @@
+package com.aliencat.applicatin.commonenms	package com.aliencat.application.common.enums;
+pulic enumYesONo {	public enum YesOrNo {
+NO0, "",	NO(0, ""),
+YES1, "";	YES(1, "");
+public final Integertype;	public final Integer type;
+public  final String value;	public final String value;
+YesOrNoItegr type, String valuel {	YesOrNo(Integer type, String value) {
+this.type  = type	this.type = type;
+this.value =  vale;	this.value = value;
+}	}
+1	}

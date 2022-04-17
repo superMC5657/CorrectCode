@@ -1,0 +1,50 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public classInstanceTest 1	public class InstanceTest {
+	
+public static void mainString args{	public static void main(String[] args) {
+	
+InstanceTest test = new InstanceTest;	InstanceTest test = new InstanceTest();
+test.methodnew Student;	test.method(new Student());
+1	}
+	
+	
+public voidmethodPerson e{	public void method(Person e){
+	
+String info = e.getInfo;	String info = e.getInfo();
+System.ou.printlninfo;	System.out.println(info);
+	
+	
+ifle  instanceof Graduate{	if(e instanceof Graduate){
+System..out.println"a graduated student;	System.out.println("a graduated student");
+}	}
+	
+ifle instanceof Studen{	if(e instanceof Student){
+System.out.printlnf"a student";	System.out.println("a student");
+}	}
+	
+ife  instanceof Person{	if(e instanceof Person){
+System.out.println"aperson";	System.out.println("a person");
+f	}
+	
+	
+}	}
+l	}
+class erson 	class Person {
+protected  String name = "peron";	protected String name = "person";
+protected int age =  50;	protected int age = 50;
+public StringgetIno f	public String getInfo() {
+return "Name: " + nme  + "\n" + "age: "+ age	return "Name: " + name + "\n" + "age: " + age;
+}	}
+}	}
+class Student extends Person {	class Student extends Person {
+proected tring  school = "pku";	protected String school = "pku";
+public String getInfol {	public String getInfo() {
+return "Name:" + name + ""\nage: " + age + "\nschool: " + school;	return "Name: " + name + "\nage: " + age + "\nschool: " + school;
+}	}
+}	}
+classGraduate  extends Student {	class Graduate extends Student {
+ublic String major ="IT";	public String major = "IT";
+publicString getInfof {	public String getInfo() {
+return "Name: " + name  +""\nage: " + age +"\nschool: "  +school + "\nmajor:" + major;	return "Name: " + name + "\nage: " + age + "\nschool: " + school + "\nmajor:" + major;
+}	}
+}	}

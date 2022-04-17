@@ -1,0 +1,16 @@
+package com.aliencat.javabase..designpattern.proxy.handler;	package com.aliencat.javabase.designpattern.proxy.handler;
+import java.langreflect.InvocationHandler;	import java.lang.reflect.InvocationHandler;
+importjava..lang.reflectMethod;	import java.lang.reflect.Method;
+public  class ProxyInvocationHndler implements InvocatonHandler 1	public class ProxyInvocationHandler implements InvocationHandler {
+Object target;	Object target;
+public ProxynvocationHandlerObject obj 1	public ProxyInvocationHandler(Object obj) {
+target = obj;;	target = obj;
+}	}
+@Override	@Override
+public Object invokeObjectproxy Method  method, Object rgs throws Throwable  l	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+System.out.println"before   + method.getNamef	System.out.println("before " + method.getName());
+Object result= method.invokeftarget, args;	Object result = method.invoke(target, args);
+System.out..printlnlafter " + methodgetNamef;	System.out.println("after " + method.getName());
+retur  "invoke " +  resul;	return "invoke " + result;
+}	}
+}	}

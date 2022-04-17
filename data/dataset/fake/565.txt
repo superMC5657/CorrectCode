@@ -1,0 +1,7 @@
+package com..pattern.adapter;	package com.pattern.adapter;
+public  classGBSocketImplimplements GBSocket 1	public class GBSocketImpl implements GBSocket {
+@Override	@Override
+public void chargel {	public void charge() {
+System..ot.println""220V";	System.out.println("220V");
+1	}
+}	}

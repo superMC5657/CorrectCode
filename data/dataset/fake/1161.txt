@@ -1,0 +1,14 @@
+class  Demo	class Demo
+	{
+voidshowthrows Exceptio	void show()throws Exception
+{	{
+thow new Exception;	throw new Exception();
+}	}
+}	}
+class	class
+{	{
+public  statc void  mainStringf  args	public static void main(String[] args)
+f	{
+System.out.println"Hello World!";	System.out.println("Hello World!");
+}	}
+l	}

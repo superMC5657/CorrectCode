@@ -1,0 +1,37 @@
+package com.aliencat.communication.webchat;	package com.aliencat.communication.webchat;
+import io.ntty.bootstrap.ServerBootstrap;	import io.netty.bootstrap.ServerBootstrap;
+import ionettychannel.ChannelFuture;	import io.netty.channel.ChannelFuture;
+import io.netty.channel..ChannelOption;	import io.netty.channel.ChannelOption;
+mport io..netty.channel..EvetLoopGroup;	import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEvetLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+import ionetty.channel.socketnio..NioServerSocketChannel	import io.netty.channel.socket.nio.NioServerSocketChannel;
+import  lombok.extern.slf4jSlf4j;	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+publicclass WebsocketChtServer {	public class WebsocketChatServer {
+private static int port  = 8080;;	private static int port = 8080;
+public  WebsocketChatServerfint port 	public WebsocketChatServer(int port) {
+this.port = port;	this.port = port;
+}	}
+public staticvoid mainlString args throws Exception l	public static void main(String[] args) throws Exception {
+new WebsocketChatServerport.run;	new WebsocketChatServer(port).run();
+}	}
+public voi un thrwsxcetion {	public void run() throws Exception {
+EventLoopGroup bossGroup =new NioEventLoopGrouplf;	EventLoopGroup bossGroup = new NioEventLoopGroup();
+EventLoopGroup workerGroup= newNioEventLoopGroup;;	EventLoopGroup workerGroup = new NioEventLoopGroup();
+try {	try {
+SeverBootstrap b = new ServerBootstrap;	ServerBootstrap b = new ServerBootstrap();
+bgroupbossGroup, workerGroup	b.group(bossGroup, workerGroup)
+.channelNioerverSocketChannel.class	.channel(NioServerSocketChannel.class)
+.chldHandlernew WebsocketChatServerInitializerf	.childHandler(new WebsocketChatServerInitializer())
+.optionChannelOption.SO_BACKLOG 128	.option(ChannelOption.SO_BACKLOG, 128)
+..childOptionlChannelOptionSO_KEEPALIVE, true;	.childOption(ChannelOption.SO_KEEPALIVE, true);
+logdebugWebsocketChatServer "  + port;	log.debug("WebsocketChatServer ," + port);
+ChannelFuture  f = b.bindport.sync;	ChannelFuture f = b.bind(port).sync();
+f.channel.closeFuturesync;	f.channel().closeFuture().sync();
+} finally 1	} finally {
+workerGroup.shutdownGracefullyl;;	workerGroup.shutdownGracefully();
+bossGroup.shutdownGracefully;	bossGroup.shutdownGracefully();
+log.debug"WebsocketChatServer "f;	log.debug("WebsocketChatServer ");
+}	}
+l	}
+}	}

@@ -1,0 +1,28 @@
+package com.aliencatleetcode.medium;	package com.aliencat.leetcode.medium;
+import java.util.Arrays;	import java.util.Arrays;
+public class BestSeqAtIndex {	public class BestSeqAtIndex {
+public static void mainStringlfargsf l	public static void main(String[] args) {
+int height = {2868, 5485  156,, 1306, 6017, 8941,  7535,  4941, 6331,, 6181f;	int[] height = {2868, 5485, 1356, 1306, 6017, 8941, 7535, 4941, 6331, 6181};
+int weight = f5042, 3995, 7985,,  1651, 5991,  736,, 9391,428, 7561,8594};	int[] weight = {5042, 3995, 7985, 1651, 5991, 7036, 9391, 428, 7561, 8594};
+ystem.out..printlnnew BestSeqAtIndex.bestSeqAtIndexfheight, weight;	System.out.println(new BestSeqAtIndex().bestSeqAtIndex(height, weight));
+}	}
+	
+public  nt bestSeqAtIndexint height, int weight{	public int bestSeqAtIndex(int[] height, int[] weight) {
+int len= height.length;	int len = height.length;
+int person = new intllenl2	int[][] person = new int[len][2];
+for  int i = 0;; i < len +if	for (int i = 0; i < len; ++i)
+personi = new intf{heightil,weightfi};	person[i] = new int[]{height[i], weight[i]};
+Arrayssortfperson, a,  b -> a0 ==bf0 ?b1l - a1l  a0 - b0l;	Arrays.sort(person, (a, b) -> a[0] == b[0] ? b[1] - a[1] : a[0] - b[0]);
+intdp= new  intlen;;	int[] dp = new int[len];
+intres =0;	int res = 0;
+for  fintl  pair : person 1	for (int[] pair : person) {
+int i = rras.binarySearchdp, 0, res, pair1;;	int i = Arrays.binarySearch(dp, 0, res, pair[1]);
+if li < 0	if (i < 0)
+i= -i + l;	i = -(i + 1);
+dpi = pairf1	dp[i] = pair[1];
+ifi == res	if (i == res)
++res	++res;
+}	}
+return res;	return res;
+}	}
+l	}

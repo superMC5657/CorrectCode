@@ -1,0 +1,30 @@
+package  co.atguiutea.domain;	package com.atguigu.team.domain;
+public class Printerimplments Equipment{	public class Printer implements Equipment{
+privateString name;private Stringtype;	private String name;private String type;
+public Printerf 	public Printer() {
+superl;	super();
+}	}
+public  PrinterString name, String type{	public Printer(String name, String type) {
+super;	super();
+thi.name = name;	this.name = name;
+this..type =  type;	this.type = type;
+	}
+public String geName {	public String getName() {
+return name;	return name;
+}	}
+public void setNameString name {	public void setName(String name) {
+this.name = name;	this.name = name;
+}	}
+public String getTyel {	public String getType() {
+return type;	return type;
+}	}
+public void setTypelStringtype  {	public void setType(String type) {
+this.type = type;	this.type = type;
+}	}
+@Override	@Override
+public String getDescription{	public String getDescription() {
+returnname + """+ type + ";;	return name + "(" + type + ")";
+}	}
+	
+	
+}	}

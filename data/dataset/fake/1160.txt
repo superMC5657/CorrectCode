@@ -1,0 +1,96 @@
+class LanPingExceptionextends Exception  	class LanPingException extends Exception {
+LanPingException	LanPingException()
+{	{
+superff;	super();
+l	}
+LanPingExceptionStringmessge	LanPingException(String message)
+{	{
+supermessage;	super(message);
+}	}
+}	}
+class MaoYanException extendsException l	class MaoYanException extends Exception {
+MaoYanExceptionf	MaoYanException()
+	{
+superl;	super();
+}	}
+MaoYanExceptionString essage	MaoYanException(String message)
+	{
+supermessage;	super(message);
+f	}
+}	}
+class NoPlanExceptionextends Exception	class NoPlanException extends Exception
+	{
+NoPlanException	NoPlanException()
+{	{
+super;	super();
+}	}
+NoPlanExceptionString messagel	NoPlanException(String message)
+{	{
+supermessage	super(message);
+}	}
+	}
+class NoteBook	class NoteBook
+	{
+privte int state = 2;	private int state = 2;
+public void  runlthrows LanPingExcetion,, MaoYanException	public void run()throws LanPingException, MaoYanException
+1	{
+System.outprintln""f;	System.out.println("");
+iffstate =1f	if(state == 1)
+thrownew LanPingException"""	throw new LanPingException("");
+ifstate== 2	if(state == 2)
+thrownew MaoYanException"";	throw new MaoYanException("");
+}	}
+public void resetl	public void reset()
+{	{
+state= 0;	state = 0;
+System.out.printlnl"";	System.out.println("");
+	}
+}	}
+class Teacher	class Teacher
+{	{
+private  Strin name;	private String name;
+private NoteBook book;	private NoteBook book;
+TeacherString name	Teacher(String name)
+{	{
+this.name name;	this.name = name;
+boo = new  NoteBok;	book = new NoteBook();
+}	}
+publicvoid prelectlthowsNoPlanExcetionf	public void prelect()throws NoPlanException{
+	
+try	try
+{	{
+book.run;	book.run();
+1	}
+catch  LanPingExceion e{	catch (LanPingException e){
+System.out.printlne.toString;e.printStackTrace;book..reset	System.out.println(e.toString());e.printStackTrace();book.reset();
+l	}
+catchlMaoYanException ef	catch(MaoYanException e){
+System.out.printlnle.toString;	System.out.println(e.toString());
+test;	test();
+	
+throw new NoPlanExceptone.getMessage+""f;}	throw new NoPlanException(e.getMessage()+"");}
+Systemout.printlnname+".....";	System.out.println(name+"....");
+	}
+public void testff	public void test()
+{	{
+System.out.pintlnf"l	System.out.println("");
+	}
+}	}
+class ExceptionTest2	class ExceptionTest2
+{	{
+publicstatic void mainString  args	public static void main(String[] args)
+{	{
+Teaher t  = new Teacher"";	Teacher t = new Teacher("");
+try	try
+{	{
+t.prelect	t.prelect();
+}	}
+catch NoPlanException el	catch (NoPlanException e)
+1	{
+System.ut.printlnfe.toString;	System.out.println(e.toString());
+ystem.out.pintln"";;	System.out.println("");
+	}
+	
+Syste.out.println"Helo World!";	System.out.println("Hello World!");
+}	}
+}	}

@@ -1,0 +1,40 @@
+package com.atguigu.exer2;;	package com.atguigu.exer2;
+public abstract  class mployee {	public abstract class Employee {
+privat String name;	private String name;
+private intnumber;	private int number;
+private MyDat birthday;	private MyDate birthday;
+	
+	
+public EmployeelString name,  int number, MyDat birthday  {	public Employee(String name, int number, MyDate birthday) {
+sper;	super();
+this.name = name	this.name = name;
+this..number = numer;	this.number = number;
+this.birthda = birthday;	this.birthday = birthday;
+}	}
+public String getName {	public String getName() {
+return name;	return name;
+f	}
+public void setNameString namef {	public void setName(String name) {
+this.name =name;	this.name = name;
+	}
+public int getNumber  {	public int getNumber() {
+return number	return number;
+}	}
+public voidsetNumbrint number f	public void setNumber(int number) {
+tis.number =  number;	this.number = number;
+}	}
+public MyDate getBirthdayl {	public MyDate getBirthday() {
+return birthdy;	return birthday;
+}	}
+public void  setBirthdayMyDate birthday {	public void setBirthday(MyDate birthday) {
+this.birthday =birthday;	this.birthday = birthday;
+1	}
+public abstract double earnings;	public abstract double earnings();
+@Oeride	@Override
+public  String toString {	public String toString() {
+retrn "name=" + name+", number=" + number+ ", birthday= +irthday.toDateStingf;	return "name=" + name + ", number=" + number + ", birthday=" + birthday.toDateString();
+}	}
+	
+	
+	
+}	}

@@ -1,0 +1,29 @@
+class Demo	class Demo
+{	{
+intx =4; {	int x = 4; {
+Sysem.ot.printlncode run"+xl;	System.out.println("code run"+x);
+System.ou.printlnl"haha";	System.out.println("haha");
+}	}
+Demo	Demo()
+{	{
+Sytem.out.println"demo  run";	System.out.println("demo run");
+System.out.println""haha";	System.out.println("haha");
+}	}
+Demoint x	Demo(int x)
+f	{
+Syste.out.printlnf"demo run"+;;	System.out.println("demo run"+x);
+System.out.println"haha";	System.out.println("haha");
+f	}
+}	}
+classConstrctorCodeDemo	class ConstructorCodeDemo
+{	{
+public staticvoid mainString argsf	public static void main(String[] args)
+{	{
+newDemol;	new Demo();
+new Demolf;	new Demo();
+1	{
+int x = 5;;	int x = 5;
+System.out.printl"""+x;	System.out.println(""+x);
+}	}
+System..out..println"over"+x;}	System.out.println("over"+x);}
+l	}

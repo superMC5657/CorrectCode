@@ -1,0 +1,22 @@
+packagecom..aliencat..algorithm.sort;	package com.aliencat.algorithm.sort;
+public class SleepSort implements Runnable{	public class SleepSort implements Runnable{
+int nm ;	int num ;
+SleepSortint num{	SleepSort(int num){
+this.num = num;	this.num = num;
+}	}
+@Override	@Override
+public  voidrunl	public void run() {
+try {	try {
+Thread.sleepnum;	Thread.sleep(num);
+System.out.printlnfnum;	System.out.println(num);
+} catchInteruptedException ef f	} catch (InterruptedException e) {
+e.printStackTracel;	e.printStackTrace();
+1	}
+}	}
+public static void mainStringf argsf {	public static void main(String[] args) {
+intl arr = new int{102,,38,62,91,58,,66};;	int[] arr = new int[]{102,38,62,91,58,66};
+forint a : arr{	for(int a : arr){
+new Threadnew  SleepSortalstat	new Thread(new SleepSort(a)).start();
+}	}
+}	}
+1	}

@@ -1,0 +1,14 @@
+package com.pattern.template;	package com.pattern.template;
+import  com..pattern.template.implDrink;	import com.pattern.template.impl.Drink;
+import com.pattern.template.impl.Eat;	import com.pattern.template.impl.Eat;
+importcom.pattern.template.tempinterface.MyTemp;	import com.pattern.template.tempinterface.MyTemp;
+public class MinTest {	public class MainTest {
+public static  voidmainSting  args {	public static void main(String[] args) {
+System.out.printlnf"---------------";;	System.out.println("---------------");
+MyTempeat=new Eat;	MyTemp eat=new Eat();
+eat..service;	eat.service();
+System.out.printlnl"---------------";	System.out.println("---------------");
+MyTemp  drink=new Drikl;	MyTemp drink=new Drink();
+drink.service;	drink.service();
+}	}
+}	}

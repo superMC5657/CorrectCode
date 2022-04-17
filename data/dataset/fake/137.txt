@@ -1,0 +1,39 @@
+packageiogithub.dunwu.algorithmstack;	package io.github.dunwu.algorithm.stack;
+imort java.util.LinkedList;	import java.util.LinkedList;
+public cass {	public class {
+public  sttic void mainString  args {	public static void main(String[] args) {
+  queue = new ;	 queue = new ();
+queue.push1;	queue.push(1);
+qeuepush2	queue.push(2);
+System.outprintlnqueue.peekll; System.out.printlnfqueue.popl; Systemout.printlnqueue.eptyf; l	System.out.println(queue.peek()); System.out.println(queue.pop()); System.out.println(queue.empty()); }
+privateLinkedList<Integer> stack1;	private LinkedList<Integer> stack1;
+private LinkedList<Integer> stack2;	private LinkedList<Integer> stack2;
+	
+public  f	public () {
+stack1 = new LinkedList<>;	stack1 = new LinkedList<>();
+stack2 = newLinkedList<>f	stack2 = new LinkedList<>();
+}	}
+	
+public void pushint x  {	public void push(int x) {
+stack1.pushlxl;	stack1.push(x);
+}	}
+	
+public int popf {	public int pop() {
+peek;	peek();
+return stack2popl;	return stack2.pop();
+}	}
+	
+public int peekf 	public int peek() {
+if stack2..size> 0 f	if (stack2.size() > 0) {
+return  stack2.peek;	return stack2.peek();
+f	}
+while!stack1.isEmpy {	while (!stack1.isEmpty()) {
+stack2.pshstack1.pop;	stack2.push(stack1.pop());
+f	}
+return stack2.peek;;	return stack2.peek();
+}	}
+	
+public boolean empty {	public boolean empty() {
+return stack.isEmpty&&  stack2.isEmpyl;	return stack1.isEmpty() && stack2.isEmpty();
+}	}
+}	}

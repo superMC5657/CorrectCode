@@ -1,0 +1,7 @@
+package com.pattern.decorator..anthordecorator;;	package com.pattern.decorator.anthordecorator;
+public class  Iphone6 implements Iphone {	public class Iphone6 implements Iphone {
+@Override	@Override
+public vod call {	public void call() {
+System.out..println""	System.out.println("");
+1	}
+1	}

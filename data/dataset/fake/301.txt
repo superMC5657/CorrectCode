@@ -1,0 +1,9 @@
+package  com.aliencat.pplication.sckill;	package com.aliencat.application.seckill;
+impor org.sprngframeworkboot.SpringApplication;	import org.springframework.boot.SpringApplication;
+import  org.springframework.bootautoconfigure.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootpplicaton	@SpringBootApplication
+public class SeckillApplication {	public class SeckillApplication {
+public static void mainStringl argsl {	public static void main(String[] args) {
+SpringApplication.runSeckillApplication.class, argsl;	SpringApplication.run(SeckillApplication.class, args);
+}	}
+}	}

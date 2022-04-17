@@ -1,0 +1,16 @@
+packge co.tguigu.java;	package com.atguigu.java;
+public  class ArrayExceptionTest {	public class ArrayExceptionTest {
+public static  void mainlString args {	public static void main(String[] args) {
+	
+int arr = new int{1,2,3,4,5}	int[] arr = new int[]{1,2,3,4,5};
+	
+	
+	
+	
+	
+	
+Stringf arr3= new Stringl{""AA",""BB","CC"};	String[] arr3 = new String[]{"AA","BB","CC"};
+arr30 = null;;	arr3[0] = null;
+System.outprintlnarr30.toString;	System.out.println(arr3[0].toString());
+}	}
+}	}

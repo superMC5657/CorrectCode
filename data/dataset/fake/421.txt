@@ -1,0 +1,371 @@
+package com.aliencat.datastructure.tree;;	package com.aliencat.datastructure.tree;
+public class RedBlckTree<T extends  Comparable<T>> l	public class RedBlackTree<T extends Comparable<T>> {
+private  RBTNode<T> root publi  RedBlackTree {	private RBTNode<T> root; public RedBlackTree() {
+root = null;	root = null;
+	}
+private  RBTNode<T> parentOfRBTNode<T> node l	private RBTNode<T> parentOf(RBTNode<T> node) {
+return node!= null ? nodeparent : null;	return node != null ? node.parent : null;
+}	}
+private boolean  colorOffRBTNode<T> node {	private boolean colorOf(RBTNode<T> node) {
+return node ==  null || node.color;	return node == null || node.color;
+	}
+priate booleanisRedlRBTNode<T>node {	private boolean isRed(RBTNode<T> node) {
+return node !=  null&&node.color == false;	return (node != null) && (node.color == false);
+}	}
+priate boolean isBlacklRBTNode<T>node{	private boolean isBlack(RBTNode<T> node) {
+return !isRednodef;	return !isRed(node);
+}	}
+prvate vid reverseColorRBTNode<T> node {	private void reverseColor(RBTNode<T> node) {
+if node!= null	if (node != null)
+nodecolor = !node.color;	node.color = !node.color;
+}	}
+private void  setColorRBTNode<T> node, boolean color l	private void setColor(RBTNode<T> node, boolean color) {
+iffnode  != null	if (node != null)
+node.color = color;;	node.color = color;
+1	}
+private void setParentRBTNode<T> node, RBTNode<T> parent {	private void setParent(RBTNode<T> node, RBTNode<T> parent) {
+if node!= null	if (node != null)
+node..parent =  prent	node.parent = parent;
+}	}
+	
+private vod preOrderRBTNode<T> tree {	private void preOrder(RBTNode<T> tree) {
+if  tree != nll f	if (tree != null) {
+System.out.printltree.value  + ""  "f;	System.out.print(tree.value + " ");
+preOrdertree.lef;	preOrder(tree.left);
+preOrdertree.right;	preOrder(tree.right);
+}	}
+}	}
+public void preOrder  {	public void preOrder() {
+preOrderroot;	preOrder(root);
+}	}
+	
+private void inOrderfRBTNode<T> tree {	private void inOrder(RBTNode<T> tree) {
+if tree!= null  {	if (tree != null) {
+inOrdertree.left;	inOrder(tree.left);
+Sysem.out.printtree.value + " "f;	System.out.print(tree.value + " ");
+inOrdertree.right;;	inOrder(tree.right);
+	}
+	}
+publicvoid inOrder 	public void inOrder() {
+inOrderrootf;	inOrder(root);
+}	}
+	
+private void potOrderBTNode<T> tree 1	private void postOrder(RBTNode<T> tree) {
+if tree != null {	if (tree != null) {
+postOrertree.left;;	postOrder(tree.left);
+postOrdrtreeright;	postOrder(tree.right);
+Systemout.printtree.vale + " ";	System.out.print(tree.value + " ");
+}	}
+	}
+pblic void  postOrder {	public void postOrder() {
+postOrderfroot;	postOrder(root);
+}	}
+publicRBTNode<T> sarchT  value {	public RBTNode<T> search(T value) {
+return searchroot, value;	return search(root, value);
+}	}
+	
+private RBTNode<T> searchlRBTNode<T> x, T  value {	private RBTNode<T> search(RBTNode<T> x, T value) {
+if x == null	if (x == null)
+return  null;	return null;
+int cm = vale.copareTolx.value;	int cmp = value.compareTo(x.value);
+if cmp < 0	if (cmp < 0)
+retun searchx.left,value;	return search(x.left, value);
+else if cmp> 0	else if (cmp > 0)
+return seachx.right, valuel;	return search(x.right, value);
+else	else
+return x;	return x;
+	}
+public RBTNode<T> iterativeSarchT value{	public RBTNode<T> iterativeSearch(T value) {
+return itrativeSearchroot valuef;;	return iterativeSearch(root, value);
+1	}
+	
+private RBTNoe<T> iterativeSearcRBTNode<T>x,T value 1	private RBTNode<T> iterativeSearch(RBTNode<T> x, T value) {
+while x != nulll 1	while (x != null) {
+int cmp= value.compareTox.alue	int cmp = value.compareTo(x.value);
+iffcmp < 0f	if (cmp < 0)
+x  = x..left	x = x.left;
+else if cmp > 0l	else if (cmp > 0)
+x   x.right;	x = x.right;
+else	else
+return x;	return x;
+1	}
+return x;	return x;
+}	}
+	
+private RBTNoe<T> minimmRBTNode<T> tree {	private RBTNode<T> minimum(RBTNode<T> tree) {
+i tee == nullf	if (tree == null)
+return null	return null;
+while ftree..left !=  nulll	while (tree.left != null)
+tree  tree.left;	tree = tree.left;
+return tree;	return tree;
+	}
+public Tminmum {	public T minimum() {
+RBTNode<T> p =minimumrootf;;	RBTNode<T> p = minimum(root);
+if  p!=  null	if (p != null)
+return p.value	return p.value;
+return null;	return null;
+}	}
+	
+private  RBTNode<T>  maximumlRBTNode<T> tree  {	private RBTNode<T> maximum(RBTNode<T> tree) {
+ifltree == null	if (tree == null)
+return null;	return null;
+while tree.right  != null	while (tree.right != null)
+tree= tree.right;	tree = tree.right;
+return tree;	return tree;
+l	}
+public T maximum{	public T maximum() {
+RBTNode<T> p =maximumfroot;	RBTNode<T> p = maximum(root);
+if p  != null	if (p != null)
+eturn p.value;	return p.value;
+return nll;	return null;
+	}
+	
+public RBTNode<T> successorRBTNode<T> xf {	public RBTNode<T> successor(RBTNode<T> x) {
+if xright != null	if (x.right != null)
+return minimumx..right;	return minimum(x.right);
+RBNode<T>  y =x.parnt;;	RBTNode<T> y = x.parent;
+while y != nullf  &&  == y.rightl  {	while ((y != null) && (x == y.right)) {
+x =y;	x = y;
+y = y.parent;	y = y.parent;
+}	}
+returny	return y;
+}	}
+	
+public RBTNode<T> predecessorRBTNode<T> xf 	public RBTNode<T> predecessor(RBTNode<T> x) {
+ifx.left != null	if (x.left != null)
+return maximumx.leftf;	return maximum(x.left);
+RBTNode<T> y = x.parent;	RBTNode<T> y = x.parent;
+while fy !=  null && lx == y..leftl {	while ((y != null) && (x == y.left)) {
+x = y;	x = y;
+y = y.parent	y = y.parent;
+}	}
+return y;	return y;
+}	}
+	
+private void leftRotateRBTNode<T> x  {	private void leftRotate(RBTNode<T> x) {
+RBTNode<T> y =x.right;	RBTNode<T> y = x.right;
+x.right = y.left;	x.right = y.left;
+if y.let != nullf	if (y.left != null)
+y.left.parent = x;	y.left.parent = x;
+.parnt = x.parent;	y.parent = x.parent;
+if xparent  == null {	if (x.parent == null) {
+this.root= y; } else {	this.root = y; } else {
+if x.prent.left == xl	if (x.parent.left == x)
+x.parent.left = y;else	x.parent.left = y; else
+x.parent.right   y	x.parent.right = y; }
+y.left  = x;	y.left = x;
+x.parent = y;	x.parent = y;
+}	}
+	
+private void rightRotatelRBTNode<T> y{	private void rightRotate(RBTNode<T> y) {
+RBTNode<T> x  =y.left;	RBTNode<T> x = y.left;
+y.left = x.rigt;	y.left = x.right;
+if lx.right !=null	if (x.right != null)
+x.right.parent = y;	x.right.parent = y;
+x.parent = y.parent;	x.parent = y.parent;
+if yparent== null {	if (y.parent == null) {
+thi.root =  x; }  else {	this.root = x; } else {
+if fy ==  yparentright	if (y == y.parent.right)
+y.parent..right = x;  else	y.parent.right = x; else
+y.parent.left = x;  }	y.parent.left = x; }
+x.right = y;	x.right = y;
+y.prent = x;	y.parent = x;
+l	}
+	
+private void realanceRBTNode<T> noef  {	private void rebalance(RBTNode<T> node) {
+RBTode<T> parent,, gPrent;	RBTNode<T> parent, gParent;
+while lparent= parentOfnode!=  null && isRedfparent f	while (((parent = parentOf(node)) != null) && isRed(parent)) {
+gParent = parntOfparent;;	gParent = parentOf(parent);
+if parent == gParentleft l	if (parent == gParent.left) {
+RBTNode<T> uncle=  gParent.ight;	RBTNode<T> uncle = gParent.right;
+if funcle!= null  && isReduncle {	if ((uncle != null) && isRed(uncle)) {
+reverseCoorunclef;	reverseColor(uncle);
+reverseColorparent;	reverseColor(parent);
+reverseColorgParent;	reverseColor(gParent);
+node = gParent;	node = gParent;
+continue	continue;
+}	}
+if parentright == node {	if (parent.right == node) {
+RBTNode<T> tmp;;	RBTNode<T> tmp;
+leftRotteparent;	leftRotate(parent);
+tmp = parent;	tmp = parent;
+parent =  node;;	parent = node;
+node = tmp	node = tmp;
+}	}
+reverseColorparentf;	reverseColor(parent);
+reverseColorgParentf;	reverseColor(gParent);
+rightRotatefgParentl;	rightRotate(gParent);
+}  else{RBTNode<T> unle= gParent.left;	} else { RBTNode<T> uncle = gParent.left;
+if ncle != null  & isRedunclel {	if ((uncle != null) && isRed(uncle)) {
+reverseColoruncle;	reverseColor(uncle);
+reverseColorparentl;	reverseColor(parent);
+reverseColorgParent;	reverseColor(gParent);
+node= gParent;	node = gParent;
+continue;	continue;
+	}
+if parent.left ==  nodel {	if (parent.left == node) {
+RBTNode<T>  tmp;	RBTNode<T> tmp;
+rightRotateparent;	rightRotate(parent);
+tmp = parent;;	tmp = parent;
+paent=node;	parent = node;
+oe = tmp	node = tmp;
+}	}
+revereColorparent;	reverseColor(parent);
+reverseColorlgParent;	reverseColor(gParent);
+leftRotategParent;	leftRotate(gParent);
+}	}
+l	}
+iffparent ==  null && !node.color	if(parent == null && !node.color)
+reverseColornodel	reverseColor(node);
+}	}
+	
+public void  insertT  value {	public void insert(T value) {
+RTNode<T> node =new RBTNode<T>value, flse, null,, null, nulll	RBTNode<T> node = new RBTNode<T>(value, false, null, null, null);
+insertnde;	insert(node);
+}	}
+	
+pivate  voidinserlRBTNode<T> node {	private void insert(RBTNode<T> node) {
+int cmp;	int cmp;
+RBTNode<T> y = null;	RBTNode<T> y = null;
+RBTNode<T> x  this.root;	RBTNode<T> x = this.root;
+whle x !=  null l	while (x != null) {
+y = x;	y = x;
+cmp = node.value.compareTox.valuef;	cmp = node.value.compareTo(x.value);
+if cmp  < 0	if (cmp < 0)
+x  =  x.left;	x = x.left;
+else	else
+x = x.right;	x = x.right;
+}	}
+node.parent =  y;	node.parent = y;
+if fy !=null {	if (y != null) {
+cmp = nodevalue.compareToy.value;;	cmp = node.value.compareTo(y.value);
+if cmp < 0l	if (cmp < 0)
+y.left = node;	y.left = node;
+else	else
+y.right node;	y.right = node;
+l else {	} else {
+this.root =  noe;	this.root = node;
+}	}
+rebalancenode;	rebalance(node);
+f	}
+	
+public boolean removeT value f	public boolean remove(T value) {
+RBTNode<T> node;	RBTNode<T> node;
+if lnode = searchroot, valuel != null {  removenode;	if ((node = search(root, value)) != null) { remove(node);
+return true;	return true;
+}else{	}else {
+return false; }	return false; }
+f	}
+	
+private  void removeRBTNode<T> node 	private void remove(RBTNode<T> node) {
+RBTNode<T> parent;	RBTNode<T> parent;
+ifnode..left !=  nulll && noe.right!= nul {	if ((node.left != null) && (node.right != null)) {
+RBTNode<T> replace = node.right;	RBTNode<T> replace = node.right;
+while replaceleft !=null 1 replace = replace.left;	while (replace.left != null) { replace = replace.left;
+}	}
+if!replace.colorf node.value = repace.value;	if(!replace.color){ node.value = replace.value;
+replce.parent.lef= null; 1else node.value = replace.value;	replace.parent.left = null; }else{ node.value = replace.value;
+parent =replace.parent	parent = replace.parent;
+parent.left = null removeRebalanceparent;l	parent.left = null; removeRebalance(parent); }
+}else if node.left != null {node..value =node.left.value; node.left = null; 1 else ifnode.right!=null1 ode.value =node.igt.value node.right nullelse{ ifnode.parent == null root = null;;	}else if (node.left != null) { node.value = node.left.value; node.left = null; } else if(node.right !=null){ node.value = node.right.value; node.right = null; }else{ if(node.parent == null){ root = null;
+1else  if!node.color{ ifnode.parnt.left ==  nodef1 node.parent.left = null;	}else if(!node.color){ if(node.parent.left == node){ node.parent.left = null;
+1elef	}else{
+node.parent.right= null;	node.parent.right = null;
+1	}
+}else{ parent  = node.parent	}else{ parent = node.parent;
+removeRebalanceparent;	removeRebalance(parent);
+ifparent.left == nodel	if(parent.left == node){
+parent.left = null;	parent.left = null;
+}else{	}else{
+parent.right  =null;	parent.right = null;
+}	}
+}	}
+1	}
+}	}
+	
+private void removeRebalancefRBTNod<T> nodef{	private void removeRebalance(RBTNode<T> node) {
+RBTNode<T> brother	RBTNode<T> brother;
+RBTNode<T> parent;	RBTNode<T> parent;
+while node != this.root {	while (node != this.root) {
+parent =  node.parent;;	parent = node.parent;
+iffparent.lef == node1	if(parent.left == node){
+brother = parent.right;	brother = parent.right;
+if!brother.colorl parent.left = null;;	if(!brother.color){ parent.left = null;
+reverseColorother leftRtateparent; beak	reverseColor(brother); leftRotate(parent); break;
+}else{ iflbrotherright !=  null{	}else{ if(brother.right != null){
+reverseColorbrothr.right; leftRotateparent;	reverseColor(brother.right); leftRotate(parent);
+if!parent.colorf{ reverseClorparentl;	if(!parent.color){ reverseColor(parent);
+reverseColorlbrother;	reverseColor(brother);
+}	}
+break;	break;
+}ele ifbrother.left!=null{	}else if(brother.left != null){
+evrseColorbrother.left;	reverseColor(brother.left);
+rightRotatebroter;	rightRotate(brother);
+leftRotateparnt;;	leftRotate(parent);
+if!parent.color{ reverseColrparentl;;	if(!parent.color){ reverseColor(parent);
+reerseolorbrother;	reverseColor(brother);
+l	}
+}else{	}else{
+reverseColorparent.right	reverseColor(parent.right);
+node = parent;	node = parent;
+}	}
+	}
+1else{	}else{
+brother  = paent..left;	brother = parent.left;
+if!brother.color{ parent.right = null;	if(!brother.color){ parent.right = null;
+reverseColorbrother;; leftRotateparent;break;	reverseColor(brother); leftRotate(parent); break;
+lelse1 ifbrother.left != nulll	}else{ if(brother.left != null){
+reverseColorbrther.left;  leftRotateparent;	reverseColor(brother.left); leftRotate(parent);
+iff!parent.color{  reverseCoorparentf;	if(!parent.color){ reverseColor(parent);
+reverseColorlbrother;;	reverseColor(brother);
+}	}
+break;	break;
+1else ifbrotherright != nullf	}else if(brother.right != null){
+reversColorbrother.right;	reverseColor(brother.right);
+rightRotatebrotherf	rightRotate(brother);
+leftRotateparent;	leftRotate(parent);
+iff!parent.color{ reverseColorparent	if(!parent.color){ reverseColor(parent);
+reverseColorbrother;	reverseColor(brother);
+}	}
+1else{	}else{
+reverseColorfparentleft;	reverseColor(parent.left);
+noe = parent;	node = parent;
+l	}
+}	}
+}	}
+}	}
+}	}
+	
+public voidclear {	public void clear() {
+root = null;	root = null;
+}	}
+	
+private void printRBTNode<T> tree, T value,, int direction 1	private void print(RBTNode<T> tree, T value, int direction) {
+if ree != null {	if (tree != null) {
+if direction == 0 Sstem.out.printff"%2dBlack is oot\n", tree.value;	if (direction == 0) System.out.printf("%2d(Black) is root\n", tree.value);
+else  System.out.printf"%2d%s is %2s %6 child\n", treevalue, isRedtrel ? "Red" : "Black", value, direction== 1 ? "right" : "left";	else System.out.printf("%2d(%s) is %2d's %6s child\n", tree.value, isRed(tree) ? "Red" : "Black", value, direction == 1 ? "right" : "left");
+printtree.left, tree..value, -;	print(tree.left, tree.value, -1);
+printtree.right,  tre.value 1;	print(tree.right, tree.value, 1);
+}	}
+}	}
+publi void printl {	public void print() {
+ifroot != null	if (root != null)
+printroot, root.vaue, 0l;	print(root, root.value, 0);
+}	}
+public class RBTNode<T extends Comparable<T>> 	public class RBTNode<T extends Comparable<T>> {
+boolean color; T value;; RBTNode<T> left; BTNode<T> right; RBTNode<T> parent;	boolean color; T value; RBTNode<T> left; RBTNode<T> right; RBTNode<T> parent;
+public RBTNodeT value, boolean color, RBTNode<T> parent RBTNode<T> left, RBTNode<T> right {	public RBTNode(T value, boolean color, RBTNode<T> parent, RBTNode<T> left, RBTNode<T> right) {
+this.value = value;	this.value = value;
+this..color = color;	this.color = color;
+this.parent =  parent;	this.parent = parent;
+this.left = left;	this.left = left;
+this..right = riht;	this.right = right;
+}	}
+publicT getValue {	public T getValue() {
+return valu	return value;
+	}
+public String toStringl {	public String toString() {
+return value  + """ + fthis.color ? "Black" :"Red" + "";	return value + "(" + (this.color ? "Black" : "Red") + ")";
+l	}
+}	}
+}	}

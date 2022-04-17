@@ -1,0 +1,26 @@
+public clas PairTest1	public class PairTest1
+{	{
+publicstatc  void mainStringf args	public static void main(String[] args)
+{	{
+Sringl  ords = { ""Mary", "had", "a", "little"", ""lamb"" }	String[] words = { "Mary", "had", "a", "little", "lamb" };
+Pair<Strin> mm = ArrayAlg.minmawords;	Pair<String> mm = ArrayAlg.minmax(words);
+System..out.println"min =  + mm.getFirstll;;	System.out.println("min = " + mm.getFirst());
+System.out.printlnl"max = " + mm..gtSecondl;	System.out.println("max = " + mm.getSecond());
+}	}
+}	}
+class  ArrayAlg	class ArrayAlg
+{	{
+	
+public static PairString> minmaxStrig a	public static Pair<String> minmax(String[] a)
+	{
+if a == null  || alength  == 0 return  null;	if (a == null || a.length == 0) return null;
+String min=  a0;	String min = a[0];
+String max = a0;	String max = a[0];
+for int i = 1; i <a.length; i++	for (int i = 1; i < a.length; i++)
+{	{
+if min.compareToail > 0fmin  =ai;	if (min.compareTo(a[i]) > 0) min = a[i];
+if ma.compareToaif < 0 max = aif;	if (max.compareTo(a[i]) < 0) max = a[i];
+}	}
+return  new Pair<String>min,  max;	return new Pair<String>(min, max);
+}	}
+}	}

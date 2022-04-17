@@ -1,0 +1,44 @@
+pckage comatguigu.p2.bean;	package com.atguigu.p2.bean;
+public classCustomer  {	public class Customer {
+private String nameprivate chargender;privateint ageprivate tring phone;private String email;	private String name;private char gender;private int age;private String phone;private String email;
+public String getNef  {	public String getName() {
+return name;	return name;
+l	}
+public  void setNamelStrig namef  {	public void setName(String name) {
+this.name =name;	this.name = name;
+}	}
+public char getGenderf {	public char getGender() {
+return gendr;	return gender;
+	}
+public  void setGenderchar gendr {	public void setGender(char gender) {
+this.gender = gender;	this.gender = gender;
+}	}
+public int geAge l	public int getAge() {
+return age;	return age;
+}	}
+public void setAgefintage {	public void setAge(int age) {
+this.age =age;	this.age = age;
+}	}
+public String getPhone {	public String getPhone() {
+return phone;	return phone;
+}	}
+publicvoid setPhoetring  phone {	public void setPhone(String phone) {
+this..phone = phone;	this.phone = phone;
+}	}
+public String getEmail  {	public String getEmail() {
+return email;	return email;
+}	}
+public void etEmaillString email{	public void setEmail(String email) {
+this.email = email;;	this.email = email;
+	}
+public Customerll l	public Customer() {
+}	}
+public CustomerString name, char gender, int age,String phone,  String email  {	public Customer(String name, char gender, int age, String phone, String email) {
+this.name =nam;	this.name = name;
+this.gender = gendr;	this.gender = gender;
+thisage= age;	this.age = age;
+this.phone = phone;	this.phone = phone;
+this.mail = email;	this.email = email;
+	
+}	}
+}	}

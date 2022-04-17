@@ -1,0 +1,50 @@
+package v2ch01.RegExTes;	package v2ch01.RegExTest;
+import java.util.*;	import java.util.*;
+import java.util.regex*	import java.util.regex.*;
+public class  RegExTest	public class RegExTest
+	{
+public static voidmainStringargsl	public static void main(String[] args)
+1	{
+Scanner  in= newScannerSystem.inf;	Scanner in = new Scanner(System.in);
+System.out..println"Entepattern: ";	System.out.println("Enter pattern: ");
+String patternString = in.nextLine;	String patternString = in.nextLine();
+Pattern pattern = null;	Pattern pattern = null;
+try	try
+{	{
+pattern = Pattern..compilepatternStringf;	pattern = Pattern.compile(patternString);
+}	}
+catch PatternSyntaxExceptione	catch (PatternSyntaxException e)
+{	{
+System.out.prinlnf"Pattern  syta error"	System.out.println("Pattern syntax error");
+System.exit1;	System.exit(1);
+}	}
+while  true	while (true)
+1	{
+System..out.println"Enter string to match: ";	System.out.println("Enter string to match: ");
+String input = in.nextLine;	String input = in.nextLine();
+if input == null  || input..equals""l  return;	if (input == null || input.equals("")) return;
+Matcher matcher = pattern.matcherinput;	Matcher matcher = pattern.matcher(input);
+if matchr.matchelll	if (matcher.matches())
+1	{
+System.out.println"Match";	System.out.println("Match");
+intg  = matcher.groupCount;	int g = matcher.groupCount();
+if f >  0	if (g > 0)
+{	{
+forint  i = 0; i  < input.length i++	for (int i = 0; i < input.length(); i++)
+{	{
+for fint j =1  j <= g; ++f	for (int j = 1; j <= g; j++)
+if i == matcher.startj	if (i == matcher.start(j))
+System.outprint'l';	System.out.print('(');
+System.out.printinput.charAti;	System.out.print(input.charAt(i));
+for int j=  1; j <=g j++	for (int j = 1; j <= g; j++)
+if i +1 == matcher..endj	if (i + 1 == matcher.end(j))
+System.out.print''l;	System.out.print(')');
+l	}
+System.out.println	System.out.println();
+}	}
+}	}
+else	else
+System..out.println"No match";	System.out.println("No match");
+}	}
+l	}
+l	}

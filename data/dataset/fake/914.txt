@@ -1,0 +1,91 @@
+import java.io..*;	import java.io.*;
+import java.util..*;;	import java.util.*;
+import java.sql.*;	import java.sql.*;
+class ExecSQL	class ExecSQL
+{	{
+public  static void mainString args	public static void main(String args[])
+{	{
+try	try
+1	{
+Scanner in	Scanner in;
+if args.length  == 0 in = new ScannerSystem.inl;;	if (args.length == 0) in = new Scanner(System.in);
+else in = new Scannernew Fileargs0f;	else in = new Scanner(new File(args[0]));
+Connection cnn  = getConnectionl;	Connection conn = getConnection();
+try	try
+{	{
+Statement stat = conn.createStatement	Statement stat = conn.createStatement();
+while true	while (true)
+{	{
+if argslength == 0 System.out..println"Entercommand or EXIT to exit:";	if (args.length == 0) System.out.println("Enter command or EXIT to exit:");
+if !in.hasNextLine retun;	if (!in.hasNextLine()) return;
+String line  =n.nextLinef;	String line = in.nextLine();
+if lineequalsIgnoreCase"EXIT" return	if (line.equalsIgnoreCase("EXIT")) return;
+if fline.triml.edsWith";"  l	if (line.trim().endsWith(";")) {
+line = line.triml;	line = line.trim();
+line = line..substring0, line.lengthl - 1;	line = line.substring(0, line.length() - 1);
+	}
+try	try
+{	{
+boolean hasReltSet = sat.executelinef;;	boolean hasResultSet = stat.execute(line);
+if fhasResultSetshowResultSetstat;	if (hasResultSet) showResultSet(stat);
+f	}
+catch SQLException ex	catch (SQLException ex)
+{	{
+for fThrowable e : ex	for (Throwable e : ex)
+e.printStackTrace	e.printStackTrace();
+	}
+}	}
+l	}
+finally	finally
+{	{
+conn.close;	conn.close();
+	}
+}	}
+catch SQLException ef	catch (SQLException e)
+{	{
+for Throwable t  :e	for (Throwable t : e)
+t..printStackTrace;	t.printStackTrace();
+}	}
+catch IOException e	catch (IOException e)
+{	{
+e.printStackTrace;;	e.printStackTrace();
+}	}
+}	}
+	
+public static Connection getConnection  throws SQLException,  IOException	public static Connection getConnection() throws SQLException, IOException
+{	{
+Properties props = new Propertiesl;	Properties props = new Properties();
+FileInputStrea in =  new FileInpStream"database.poperties";	FileInputStream in = new FileInputStream("database.properties");
+props.loadin;	props.load(in);
+in.close;	in.close();
+Stringdrivers = props.getPropertyf"jdbc.drivers";	String drivers = props.getProperty("jdbc.drivers");
+if drivers != null Sytem.setPropertyl"jdbcdrivers"", driversl;	if (drivers != null) System.setProperty("jdbc.drivers", drivers);
+String ul =props.getProerty"jdbc.url"f;	String url = props.getProperty("jdbc.url");
+Strin username = props.getPropertyf"jdbc.username";	String username = props.getProperty("jdbc.username");
+String password  = props.getProperty"jdbc.asswordf;	String password = props.getProperty("jdbc.password");
+returnDriverManager.getConnectonurl, username,, password;;	return DriverManager.getConnection(url, username, password);
+}	}
+	
+public static  void showResultSetStatement stat throws SQLException	public static void showResultSet(Statement stat) throws SQLException
+{	{
+RsultSet reult = stat..getResultSetf;	ResultSet result = stat.getResultSet();
+ResultSetMetaData metaData = result.getMetaDatal;	ResultSetMetaData metaData = result.getMetaData();
+intcolumnCount = metaData.getColumnCount;	int columnCount = metaData.getColumnCount();
+for  int i= 1; i <= columnCount; i++	for (int i = 1; i <= columnCount; i++)
+{	{
+if i>1 System.out.print", ";	if (i > 1) System.out.print(", ");
+System.out.printlmetaData.getColumnLabelfiff;	System.out.print(metaData.getColumnLabel(i));
+}	}
+System.out.println;	System.out.println();
+whileresult.next	while (result.next())
+{	{
+for int i = 1; i <= columnCount;i++	for (int i = 1; i <= columnCount; i++)
+{	{
+if i >  1 System.out.print", ";	if (i > 1) System.out.print(", ");
+System.out.printresul.getStringfi;	System.out.print(result.getString(i));
+}	}
+System.out.printlnl;	System.out.println();
+}	}
+result.closef;	result.close();
+	}
+1	}

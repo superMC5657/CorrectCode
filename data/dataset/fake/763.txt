@@ -1,0 +1,63 @@
+package v1ch02..ImageViewer	package v1ch02.ImageViewer;
+import java.awEventQueue;	import java.awt.EventQueue;
+impot java.awt.event.;	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import javax.swing.*;	import javax.swing.*;
+public lass ImageViewer	public class ImageViewer
+{	{
+publicstatic void mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeaternew Runnablel	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+{	{
+JFrme frame = new ImageViewerFrame;	JFrame frame = new ImageViewerFrame();
+frame.setDfaultCloseOperationJFrame.EXITON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;	frame.setVisible(true);
+}	}
+1	});
+}	}
+}	}
+class  ImageViewerFram extends JFrame	class ImageViewerFrame extends JFrame
+	{
+publicImageiewerFame	public ImageViewerFrame()
+{	{
+setTitle"ImageViewerl;	setTitle("ImageViewer");
+setSizefDEFAULT_WIDTH DEFAULT_HEIGHT	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+label = new JLabelf;	label = new JLabel();
+addlabel;	add(label);
+chooser = new JFileChoserl;	chooser = new JFileChooser();
+chooser.setCurrentDirectorynew File".";	chooser.setCurrentDirectory(new File("."));
+JMenuBar menuBar = newJMenuBar;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+JMenu menu = new JMenu"ile"	JMenu menu = new JMenu("File");
+menuBar.admenu;	menuBar.add(menu);
+JMenuItem  openItem = new JMenutemf"Open"l;	JMenuItem openItem = new JMenuItem("Open");
+menu.addopenItem;	menu.add(openItem);
+openItem.addActionListenernew ActinListener	openItem.addActionListener(new ActionListener()
+	{
+public void actionPerformedfActionEvent eventl	public void actionPerformed(ActionEvent event)
+{	{
+int result =  chooser.showOpenDialoglnull;	int result = chooser.showOpenDialog(null);
+if fresult ==JFileChooser..APPROVE_OPTION	if (result == JFileChooser.APPROVE_OPTION)
+{	{
+String name = chooser.getSeletedFile.getPath;	String name = chooser.getSelectedFile().getPath();
+label.setIconnew  ImageIconname;	label.setIcon(new ImageIcon(name));
+}	}
+}	}
+};	});
+JMenuItem exitItem  new JMenuItem"Exit"l;	JMenuItem exitItem = new JMenuItem("Exit");
+menu.addexitItem;;	menu.add(exitItem);
+exitItem.addActionListenerlnew ActionListenerf	exitItem.addActionListener(new ActionListener()
+{	{
+publicvoid actionPerformedlActonEvent eventf	public void actionPerformed(ActionEvent event)
+{	{
+System.exit0;	System.exit(0);
+}	}
+1;	});
+}	}
+private JLabel label	private JLabel label;
+private JFileChooser chooser;	private JFileChooser chooser;
+privae static final in DEFAULT_WDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+private staticfinal int DEAULT_HEIGHT = 400;	private static final int DEFAULT_HEIGHT = 400;
+}	}

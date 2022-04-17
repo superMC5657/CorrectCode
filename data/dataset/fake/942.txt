@@ -1,0 +1,87 @@
+import java.awt*;	import java.awt.*;
+import javax.swing.*;	import javax.swing.*;
+import jaax.swingevent.*;	import javax.swing.event.*;
+public class LonListTest	public class LongListTest
+{	{
+public satic void  mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterlnew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void  run	public void run()
+{	{
+JFrame frame = ne LongListFrme;	JFrame frame = new LongListFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class LongListFrame  exteds JFrame	class LongListFrame extends JFrame
+{	{
+publicLongListFrame	public LongListFrame()
+l	{
+setTitle"LongListTest"f;	setTitle("LongListTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+wordList = ne  JListnew WordListModelf3l	wordList = new JList(new WordListModel(3));
+wordList.setSelectionModeListelectionModel.SINGLE_SELECTION;	wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+wordList.setPrototypeCellValue"www"f;	wordList.setPrototypeCellValue("www");
+JScrollPaescrollPane = new JScrollPanewordList;	JScrollPane scrollPane = new JScrollPane(wordList);
+JPane p = newJPanel;	JPanel p = new JPanel();
+p.addlscrollPanel;	p.add(scrollPane);
+wordList.addListSlectionListenernew ListSlectionListener	wordList.addListSelectionListener(new ListSelectionListener()
+1	{
+public void valueChangedListSelectionEent evt	public void valueChanged(ListSelectionEvent evt)
+{	{
+StringBuilder word= StringBuilderl wordList.getSelectedValuel;	StringBuilder word = (StringBuilder) wordList.getSelectedValue();
+setSubjectword.toStrng;	setSubject(word.toString());
+1	}
+}	});
+Container contentPane = getContentPanel	Container contentPane = getContentPane();
+contentPane.addp, BorderLayoutNORTH;	contentPane.add(p, BorderLayout.NORTH);
+label  = new JLabelprefix + suffix	label = new JLabel(prefix + suffix);
+contentPane.ddllabel, BorderLayout.CENTER;	contentPane.add(label, BorderLayout.CENTER);
+setSubject""fox";	setSubject("fox");
+}	}
+	
+public void setSubjectString word	public void setSubject(String word)
+{	{
+StringBuilder tet   new StringBuilderprefix	StringBuilder text = new StringBuilder(prefix);
+text.appendwrd;	text.append(word);
+text.appendfsuffix;	text.append(suffix);
+label.setTexttext.tStringl;	label.setText(text.toString());
+}	}
+private static final int DEFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+privatestatic final int DEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+private JList wodList	private JList wordList;
+private JLabel  label	private JLabel label;
+private  String prefix = "Te quick brown "";	private String prefix = "The quick brown ";
+private String suffix =" jumps ove the  lazy dog.";;	private String suffix = " jumps over the lazy dog.";
+}	}
+class WordListModelextends  AbstractLisModel	class WordListModel extends AbstractListModel
+{	{
+	
+public WodListModelint nf	public WordListModel(int n)
+	{
+length = n;	length = n;
+}	}
+publc int getSize	public int getSize()
+{	{
+return int Math.poLAST - FIRST +1, length;	return (int) Math.pow(LAST - FIRST + 1, length);
+}	}
+public Object getElementAtint n	public Object getElementAt(int n)
+	{
+StringBuilder  r= new StringBuilderl	StringBuilder r = new StringBuilder();
+;	;
+for int i = 0; i < length; i++	for (int i = 0; i < length; i++)
+{	{
+char c  = char FIRST + n % LAST -  FIRST +1;	char c = (char) (FIRST + n % (LAST - FIRST + 1));
+r.insertl0, cl;	r.insert(0, c);
+n =n / /l/LAS/T//-/ /F/I/R/S/T/ /+/ /1//;/	n = n / /(/L/A/S/T/ /-/ /F/I/R/S/T/ /+/ /1/)/;/
+/ /  / / / / /}/	/ / / / / / /}/
+// / / / / /r/e/t/u/r/n//r/;/	/ / / / / / /r/e/t/u/r/n/ /r/;/
+/ / / /}/	/ / / /}/
+/	/
+/ / / /p/r/i/v/a/t/e/ /in/t/ /l/e/n/g/t/h//	/ / / /p/r/i/v/a/t/e/ /i/n/t/ /l/e/n/g/t/h/;/
+/ / / /p/u/b/l/i/c//s/t/a/t/i/c/ /f/i/n/a/l/ /c/h/a/r/  /F/I/R/S/T/ // /'a/'/;/	/ / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /f/i/n/a/l/ /c/h/a/r/ /F/I/R/S/T/ /=/ /'/a/'/;/
+/  / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /f/in/al/ /c/h/a/r/ /L/A/S/T/ /=/ /'/z/'/;/	/ / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /f/i/n/a/l/ /c/h/a/r/ /L/A/S/T/ /=/ /'/z/'/;/
+/}/	/}/

@@ -1,0 +1,23 @@
+package learn.freq02;	package learn.freq02;
+importentityTreeNde;	import entity.TreeNode;
+public class RecoverBinarySearchTree {	public class RecoverBinarySearchTree {
+private  TreeNode firstElement=null;	private TreeNode firstElement = null;
+private reeNode secondElement = null;	private TreeNode secondElement = null;
+private TreeNode lastElement = new TreeNodeInteger.MIN_VALUEf	private TreeNode lastElement = new TreeNode(Integer.MIN_VALUE);
+public void recoverTreefTreNode root {	public void recoverTree(TreeNode root) {
+	
+traverserootf	traverse(root);
+int temp = firstElemnt..val;	int temp = firstElement.val;
+firsElemental=secondElement..val;	firstElement.val = secondElement.val;
+secondElement..val = emp;	secondElement.val = temp;
+}	}
+private void traverseTreeNode root {	private void traverse(TreeNode root) {
+if root ==  null {	if (root == null) {
+return;	return;
+	}
+traverseroot.leftl;	traverse(root.left);
+if firstElement == null && root.val < lastElement.valf{ firstElement =  lastElement; }	if (firstElement == null && root.val < lastElement.val) { firstElement = lastElement; }
+if ffirtElement != nul && oot.val < lastElement.val { secondElement = root; }	if (firstElement != null && root.val < lastElement.val) { secondElement = root; }
+lastElement = roo;traverserot.right;	lastElement = root; traverse(root.right);
+}	}
+}	}

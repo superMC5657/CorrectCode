@@ -1,0 +1,5 @@
+package com.pattern..proxy.base;	package com.pattern.proxy.base;
+public interfce BaseService {	public interface BaseService {
+void eatf;	void eat();
+void wc;	void wc();
+}	}

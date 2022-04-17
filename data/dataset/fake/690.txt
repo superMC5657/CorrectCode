@@ -1,0 +1,5 @@
+package om.aliencat.springboot.ssm.common.entit;	package com.aliencat.springboot.ssm.common.entity;
+import  lombokData;	import lombok.Data;
+@Data	@Data
+public lass PageCondition  {	public class PageCondition {
+private intpage =  1; private introws = 10; private String  sidx; privateString sord;}	private int page = 1; private int rows = 10; private String sidx; private String sord;}

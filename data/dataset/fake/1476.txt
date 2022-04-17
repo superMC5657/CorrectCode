@@ -1,0 +1,8 @@
+package com.atguigu.contact;	package com.atguigu.contact;
+public clas Hello{	public class Hello {
+	
+	
+public int  getNumberintn1	public int getNumber(int n){
+return 0;	return 0;
+}	}
+l	}

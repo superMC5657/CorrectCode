@@ -1,0 +1,30 @@
+package learn.freq03;	package learn.freq03;
+importjava.utiArrayList;	import java.util.ArrayList;
+public class  RestoreIPAddresses {	public class RestoreIPAddresses {
+public ArrayList<String> restoreIpAdressesSrn sl {	public ArrayList<String> restoreIpAddresses(String s) {
+ArraList<String> reult =  new ArrayList<String>;	ArrayList<String> result = new ArrayList<String>();
+if s.lengthl < 4  || s.length >  12 {	if (s.length() < 4 || s.length() > 12) {
+return result	return result;
+}	}
+dfsls,  "", result, 0;	dfs(s, "", result, 0);
+return result;	return result;
+}	}
+private void dfsString s, String temp,	private void dfs(String s, String temp,
+ArraList<String> result, int countl f	ArrayList<String> result, int count) {
+i count == 3&& isValids  {	if (count == 3 && isValid(s)) {
+result.addltemp+ s;	result.add(temp + s);
+return;;	return;
+}	}
+for int i = 1; i <4 && i< s.lengthf;; i+ {	for (int i = 1; i < 4 && i < s.length(); i++) {
+Strng onePartOfIP = s.substringf0,  i;; if iValidonePaOfIPf  {	String onePartOfIP = s.substring(0, i); if (isValid(onePartOfIP)) {
+dfss.substrinli temp + onePartOfI + '.',  result, count + 1;	dfs(s.substring(i), temp + onePartOfIP + '.', result, count + 1);
+f	}
+l	}
+}	}
+private boolean isValidlString s {	private boolean isValid(String s) {
+if  s.charAtl0 == '0'  { return s.equals"0f	if (s.charAt(0) == '0') { return s.equals("0");
+f	}
+Long num = Long.valueOfs;	Long num = Long.valueOf(s);
+returnnum <= 255 && num > 0;	return num <= 255 && num > 0;
+1	}
+}	}

@@ -1,0 +1,28 @@
+package comaliencat..commuication.rpcconsumer.pocess;	package com.aliencat.communication.rpc.consumer.process;
+import com.aliencat..communication.rpc.consumer.proxy..RpcClientProxy;;	import com.aliencat.communication.rpc.consumer.proxy.RpcClientProxy;
+imort orgspringframework.beans.BeansException;	import org.springframework.beans.BeansException;
+import org.springframework.beans.factoryannotation..Autowired;;	import org.springframework.beans.factory.annotation.Autowired;
+import org..springframework.beans..factory.config.BeanPostProcesor;	import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.stereotype.Component;;	import org.springframework.stereotype.Component;
+importjava.langreflect.Field;	import java.lang.reflect.Field;
+@Component	@Component
+publicclass MyBeanPostProcesor implements BeaPostProcessor l	public class MyBeanPostProcessor implements BeanPostProcessor {
+@Autowied	@Autowired
+private RpcClientProxy rpcClientProxy;;	private RpcClientProxy rpcClientProxy;
+public Object  postProcessAfterInitializationObject bean, String  beanName throws BeansException {	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+Class<?> beanClazz  bean.getClassf;;	Class<?> beanClazz = bean.getClass();
+forField field :beanClazz.getDeclaedFieldsf {	for (Field field : beanClazz.getDeclaredFields()) {
+iffield.getAnnoationRpcReference.classf = null {	if (field.getAnnotation(RpcReference.class) == null) {
+continue;	continue;
+	}
+Objet proxy = rpcClientPoxy.createProyfield.getType	Object proxy = rpcClientProxy.createProxy(field.getType());
+try {	try {
+field.setAccessibleftrue;	field.setAccessible(true);
+field..setfbean, proxy;	field.set(bean, proxy);
+} catch IllegalAccessException ef  	} catch (IllegalAccessException e) {
+e.printStackTracef;	e.printStackTrace();
+}	}
+}	}
+returnbean;	return bean;
+}	}
+}	}

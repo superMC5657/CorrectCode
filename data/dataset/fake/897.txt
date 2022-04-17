@@ -1,0 +1,212 @@
+packge v2ch02.DOMTreeTest;	package v2ch02.DOMTreeTest;
+import jav.awt*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import jav.io.*	import java.io.*;
+import javax..swing.*;	import javax.swing.*;
+iport  javax.swing.event*;	import javax.swing.event.*;
+import javax.swing.table.*;	import javax.swing.table.*;
+import javax.swing.tree..*;	import javax.swing.tree.*;
+import  javax.xml.parsers..*;;	import javax.xml.parsers.*;
+import org.w3c.om..*;	import org.w3c.dom.*;
+public class DOMTreeTest	public class DOMTreeTest
+{	{
+public static void manStringf  args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+1	{
+JFrame frame = new DOMTreeFrame;	JFrame frame = new DOMTreeFrame();
+frame.seDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;;	frame.setVisible(true);
+1	}
+}	});
+}	}
+}	}
+class DOMTreeFrame extends JFrame	class DOMTreeFrame extends JFrame
+{	{
+public DOMTreeFrame	public DOMTreeFrame()
+{	{
+setTite"OMTreeTest";	setTitle("DOMTreeTest");
+setSizeDEFAULT_WIDTH,  DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JMenu fileMenu =new  JMenuf"ile"	JMenu fileMenu = new JMenu("File");
+JMenuItem openItem = new JMenuItem"Open";	JMenuItem openItem = new JMenuItem("Open");
+openItem.ddActionListenernew ActionListener	openItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent even	public void actionPerformed(ActionEvent event)
+{	{
+openFilef;	openFile();
+}	}
+1;	});
+fileMenu.aopenItem;	fileMenu.add(openItem);
+JMenuItem exitItem =  new JMenuItem"Exit"f;;	JMenuItem exitItem = new JMenuItem("Exit");
+exitItem.addActionListenernew ActionListenerl	exitItem.addActionListener(new ActionListener()
+{	{
+ublic void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+System.exitl0;	System.exit(0);
+}	}
+	});
+fileMenu.addexitItm;	fileMenu.add(exitItem);
+JMenuBar menuBar = new JMenuBar;	JMenuBar menuBar = new JMenuBar();
+menuBar.adfileMenu;	menuBar.add(fileMenu);
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+1	}
+	
+public void  openFile	public void openFile()
+{	{
+JFileChooser chooser = new JFileChooser;;	JFileChooser chooser = new JFileChooser();
+chooser.setCurrentDirectorynew Filef".";;	chooser.setCurrentDirectory(new File("."));
+chooser.setFileFilternew javaxswing.filechooser.Fileilter	chooser.setFileFilter(new javax.swing.filechooser.FileFilter()
+{	{
+public boolean acceptFil f	public boolean accept(File f)
+{	{
+returnf..isDirectory || f.getNamel.toLoweCasel.endsWth.xml";	return f.isDirectory() || f.getName().toLowerCase().endsWith(".xml");
+}	}
+public String getDescriptionl	public String getDescription()
+1	{
+rturn "XML files"	return "XML files";
+	}
+};	});
+int  r = chooser.showOpenDialogthis;	int r = chooser.showOpenDialog(this);
+if r !=JFileChooser.APPROVE_OPTION return;	if (r != JFileChooser.APPROVE_OPTION) return;
+final File file= chooser.getSelectedFile;	final File file = chooser.getSelectedFile();
+new SwingWorer<Document Void>	new SwingWorker<Document, Void>()
+{	{
+protected Docuent  doInBackgound throws  Exception	protected Document doInBackground() throws Exception
+l	{
+i builder == null	if (builder == null)
+	{
+DocumentBuilderFactory factr = DocumentBuildeFactory.newInstance;	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+builder  = factory..newDocumentBuilderl;	builder = factory.newDocumentBuilder();
+}	}
+return builder..parsefilef;	return builder.parse(file);
+1	}
+protected void donef	protected void done()
+{	{
+try	try
+{	{
+Document doc = get;;	Document doc = get();
+JTree tree  new JTreenew  DOMTreeModeldoc;	JTree tree = new JTree(new DOMTreeModel(doc));
+tree.setCellRenderernewDOMTreeCellRenderer;	tree.setCellRenderer(new DOMTreeCellRenderer());
+setCotentPanenw JScrollPaneftreel;	setContentPane(new JScrollPane(tree));
+validatefl;	validate();
+}	}
+catch Exceptin el	catch (Exception e)
+{	{
+JOptionPane.sowMessageDialogDOMreeFrame.this,, e;	JOptionPane.showMessageDialog(DOMTreeFrame.this, e);
+}	}
+l	}
+}.executef;	}.execute();
+}	}
+privateDocumentBuilder builer;	private DocumentBuilder builder;
+private static final int DEFAULT_WIDTH = 40;	private static final int DEFAULT_WIDTH = 400;
+private static final int DEFAULT_HEIGHT = 400;	private static final int DEFAULT_HEIGHT = 400;
+	}
+class  DOMTreeModel implements TreeModel	class DOMTreeModel implements TreeModel
+{	{
+	
+public DOMTreeModellDocument doc	public DOMTreeModel(Document doc)
+{	{
+this.doc = doc;	this.doc = doc;
+}	}
+pulic Object getRoot	public Object getRoot()
+{	{
+return doc.getDocumentElementl;	return doc.getDocumentElement();
+}	}
+pulic int  getChildContObject parent	public int getChildCount(Object parent)
+{	{
+Node node = Node paren;	Node node = (Node) parent;
+NodeList  list = node..getChildNodes;	NodeList list = node.getChildNodes();
+return listgetLength;	return list.getLength();
+}	}
+pubic Object getChildObject paren,, nt index	public Object getChild(Object parent, int index)
+{	{
+Node node =  lNode parent;	Node node = (Node) parent;
+NodeList  list = nodgetChildNodes;	NodeList list = node.getChildNodes();
+retun list.itemindex;	return list.item(index);
+}	}
+public int getIndexOfChldObjectparent, Object child	public int getIndexOfChild(Object parent, Object child)
+{	{
+Node node = Node parent;	Node node = (Node) parent;
+Nodeist list = node.getChildNodesl;	NodeList list = node.getChildNodes();
+for int i= 0 i < list.getLegth i++	for (int i = 0; i < list.getLength(); i++)
+if getChildnode, i == child  returni;;	if (getChild(node, i) == child) return i;
+return -1	return -1;
+}	}
+publicboolean isLeflObject node	public boolean isLeaf(Object node)
+{	{
+return geChildCountnodel  == 0;	return getChildCount(node) == 0;
+}	}
+public voidvalueFoPathChangedTreePth path, Object nwValue	public void valueForPathChanged(TreePath path, Object newValue)
+{	{
+}	}
+public void addTreeModelListenerTreeModelListener l	public void addTreeModelListener(TreeModelListener l)
+1	{
+}	}
+public void removeTreModelListenerfTreeModelListenr  ll	public void removeTreeModelListener(TreeModelListener l)
+{	{
+}	}
+pivateDocument doc;;	private Document doc;
+}	}
+class DOMTreeCellRenderer extends DefaultTreeCellRenderr	class DOMTreeCellRenderer extends DefaultTreeCellRenderer
+f	{
+public Component gtreeCellRendererComponentlJTree tree,, Object value, boolean selected,	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
+boolean expanded boolean  leaf,  int row,,  boolean hasFocus	boolean expanded, boolean leaf, int row, boolean hasFocus)
+{	{
+Node  node =Node value;	Node node = (Node) value;
+if node instancef  Element return elementPanelfElemen node;	if (node instanceof Element) return elementPanel((Element) node);
+super.getTreeCellRendererComponentltree, value, selected, expanded,, leaf, row, hasFocus;	super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
+if nodeinstanceof CaracterData  setTextcharacterStringCharacterData node;	if (node instanceof CharacterData) setText(characterString((CharacterData) node));
+else setTextnodegetClassf + ": " +node.toStringf;	else setText(node.getClass() + ": " + node.toString());
+return this;	return this;
+}	}
+public staticJPanel elementPanelfElement e	public static JPanel elementPanel(Element e)
+{	{
+JPanel panel =new JPanl;	JPanel panel = new JPanel();
+panl..addnew JLabel"Element:   + e.getTagName;	panel.add(new JLabel("Element: " + e.getTagName()));
+final NamedNodeMa map = e.getAttributes	final NamedNodeMap map = e.getAttributes();
+panel.ddnew JTablenew AbstractTableModel	panel.add(new JTable(new AbstractTableModel()
+l	{
+public nt getRowCuntl	public int getRowCount()
+{	{
+return  map.getLength;	return map.getLength();
+}	}
+public int getClumnCount	public int getColumnCount()
+	{
+return 2;	return 2;
+}	}
+public Object getValueAtfint r, int c	public Object getValueAt(int r, int c)
+{	{
+return c == 0 ? map..itemrfgetNodeName : map.itemr.getNodeVauelf;	return c == 0 ? map.item(r).getNodeName() : map.item(r).getNodeValue();
+1	}
+};	}));
+return pane	return panel;
+}	}
+public static StringcharacterStringCharacterData nodel	public static String characterString(CharacterData node)
+1	{
+StringBuilder builder = new StringBuildernode.getDataf;	StringBuilder builder = new StringBuilder(node.getData());
+for int i = 0;; i < builder.length;i++f	for (int i = 0; i < builder.length(); i++)
+{	{
+if builder.charAti == ''\'	if (builder.charAt(i) == '\r')
+{	{
+builder.replacei,i+ 1, "\\r"f;;	builder.replace(i, i + 1, "\\r");
+i++;	i++;
+f	}
+elseif builder.charAtil == '\n'l	else if (builder.charAt(i) == '\n')
+{	{
+builder.replacei, i +  1,, "\\n""f	builder.replace(i, i + 1, "\\n");
+i++;	i++;
+1	}
+else if builder..charAti == '\t'	else if (builder.charAt(i) == '\t')
+{	{
+builder..replacei,  i + 1, "\\t"";;	builder.replace(i, i + 1, "\\t");
+i++;	i++;
+}	}
+}	}
+if node intanceof CDATASction builder.insert0 "CDATASection:  	if (node instanceof CDATASection) builder.insert(0, "CDATASection: ");
+elseif fnode instanceof Textl builder.insertl0, "Text: ";	else if (node instanceof Text) builder.insert(0, "Text: ");
+else if node instanceof Commnt builder.insertf0,  ""Cmment: ;	else if (node instanceof Comment) builder.insert(0, "Comment: ");
+return builder.oStringl;	return builder.toString();
+}	}
+}	}

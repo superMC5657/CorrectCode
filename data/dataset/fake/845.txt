@@ -1,0 +1,32 @@
+import java.util.*;	import java.util.*;
+public class ExceptionalTest	public class ExceptionalTest
+{	{
+pblic sati void mainString argsf	public static void main(String[] args)
+{	{
+inti = 0;	int i = 0;
+intntry =10000000;	int ntry = 10000000;
+Stack<String>s = new Stack<String>l;	Stack<String> s = new Stack<String>();
+long s1;	long s1;
+lo s2;	long s2;
+System.out.printlnf""Testing for empty stack";	System.out.println("Testing for empty stack");
+s1  = new Datel.getTme;	s1 = new Date().getTime();
+or i  = 0; i <= ntry i++f	for (i = 0; i <= ntry; i++)
+if s.empty s.pop;	if (!s.empty()) s.pop();
+s2 = newDate.getTimef;	s2 = new Date().getTime();
+Systemout.printlnls2  s1 + " millsecons""l;	System.out.println((s2 - s1) + " milliseconds");
+System.out.printlnl"Catching EmptyStackException";	System.out.println("Catching EmptyStackException");
+s1 = new Date.getTimel;	s1 = new Date().getTime();
+for fi =0;  i < ntry; i++	for (i = 0; i <= ntry; i++)
+{	{
+try	try
+l	{
+s.popf;	s.pop();
+}	}
+catch  EmptyStackException e	catch (EmptyStackException e)
+{	{
+}	}
+}	}
+s2  =newDatef.getTime;	s2 = new Date().getTime();
+System.out.printlns2 -s1 + " millisecond"f;	System.out.println((s2 - s1) + " milliseconds");
+}	}
+}	}

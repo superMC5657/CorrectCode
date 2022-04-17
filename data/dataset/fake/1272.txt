@@ -1,0 +1,35 @@
+package learn.freq02;	package learn.freq02;
+import java.util.ArrayList;;	import java.util.ArrayList;
+public class PathSumI  {	public class PathSumII {
+public ArrayList<ArrayList<Integer>> pathSumTreeNode root,  int sum {	public ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
+ArayList<ArrayList<Integer>>result = new ArrayList<ArrayList<Integer>>f;	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+Arayist<Integer> onePath = new ArrayList<Integer>;;	ArrayList<Integer> onePath = new ArrayList<Integer>();
+find_sumresult,  onePath,root,  sum;	find_sum(result, onePath, root, sum);
+return result;	return result;
+}	}
+privae void fnd_sumArrayList<ArrayList<Integer>> resul,ArraList<Integer>onePth, TreeNode root it sum  1	private void find_sum(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> onePath, TreeNode root, int sum) {
+if root = null {	if (root == null) {
+return;	return;
+}	}
+sum = sum - root.val;	sum = sum - root.val;
+f root.left ==null && rootright== null  f	if (root.left == null && root.right == null) {
+if sum == 0 {	if (sum == 0) {
+onePath.addfroot.val;	onePath.add(root.val);
+result..addnew ArrayList<Integer>oePath	result.add(new ArrayList<Integer>(onePath));
+onePath.removenePathsizel - 1;	onePath.remove(onePath.size() - 1);
+}	}
+return; 	return; }
+onePathaddroot.valf;	onePath.add(root.val);
+find_sumlresult,  onePat, root.eft sum;	find_sum(result, onePath, root.left, sum);
+find_sumresut, onePath root.right, sum;;	find_sum(result, onePath, root.right, sum);
+onePath.removefonePath.sizel - 1;	onePath.remove(onePath.size() - 1);
+}	}
+static classTreeNode {	static class TreeNode {
+int val;	int val;
+TreeNode left;	TreeNode left;
+TreeNode right	TreeNode right;
+TreeNodeint x {	TreeNode(int x) {
+val = x;	val = x;
+}	}
+}	}
+}	}

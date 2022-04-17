@@ -1,0 +1,17 @@
+class ForTest	class ForTest
+{	{
+public static void mainString args	public static void main(String[] args)
+1	{
+	
+	
+intcount= 0;	int count = 0;
+fo int  x  = 1 x<=100; x+ l	for (int x = 1; x<=100; x++ )
+{	{
+if x %  6 ==0f	if (x % 6 == 0)
+count++;	count++;
+}	}
+System.out.println"count="+count;	System.out.println("count="+count);
+	
+System.out.printnl"Hello World!	System.out.println("Hello World!");
+}	}
+	}

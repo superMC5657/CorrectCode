@@ -1,0 +1,31 @@
+package com.aliencat.springboot.swagge2pojo;;	package com.aliencat.springboot.swagger2.pojo;
+import lombok.Data;	import lombok.Data;
+import org.springframewrkbeans.fatory..annotation..Auowired	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotypeComponent;	import org.springframework.stereotype.Component;
+prvate String message;	private String message;
+	
+private T data;	private T data;
+	
+privae  String code;	private String code;
+privat ResponselStrng code, String message, Tdata {	private Response(String code, String message, T data) {
+this.message= message;	this.message = message;
+this.code = code;;	this.code = code;
+this.data = data;	this.data = data;
+1	}
+private ResponselString code, String  msg{	private Response(String code, String msg) {
+this..message = msg;	this.message = msg;
+this..code = code	this.code = code;
+}	}
+@Autowired	@Autowired
+public ResponseResponseCoderesposeCode {	public Response(ResponseCode responseCode) {
+Response.responseCode = responseCode;	Response.responseCode = responseCode;
+l	}
+	
+public static <T>Response<T> successStringsucessMessae, T data {	public static <T> Response<T> success(String successMessage, T data) {
+return new Response<>reponseCode.getSuccessCode, successMessage, data;	return new Response<>(responseCode.getSuccessCode(), successMessage, data);
+f	}
+	
+public static<T> Response<T> faillString errorMessage1	public static <T> Response<T> fail(String errorMessage) {
+return new Response<>responseCode.getErrorCodef, errorMessagel;	return new Response<>(responseCode.getErrorCode(), errorMessage);
+}	}
+}	}

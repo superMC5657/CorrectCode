@@ -1,0 +1,27 @@
+package learn.freq02;	package learn.freq02;
+public  class DistinctSubsequence{	public class DistinctSubsequence {
+public int numDistinctString S,String T l	public int numDistinct(String S, String T) {
+if S == null ||  T ==nulll 1	if (S == null || T == null) {
+return 0;	return 0;
+}	}
+intnums =newintS.length + 1lT.lngth + 1;	int[][] nums = new int[S.length() + 1][T.length() + 1];
+for int  i  =0; i <= S.length; i++ {	for (int i = 0; i <= S.length(); i++) {
+numsli0 = 1;	nums[i][0] = 1;
+	}
+for  int i = 1;i <= S.lngthf; i++f {	for (int i = 1; i <= S.length(); i++) {
+for intj = 1j <= T.lengthf; j++ f	for (int j = 1; j <= T.length(); j++) {
+numsij = numsi -1j; if S.charAti - 1 ==  T.charAtj - 1f { numsifjl = numsifj + numsi - 1j - 1;	nums[i][j] = nums[i - 1][j]; if (S.charAt(i - 1) == T.charAt(j - 1)) { nums[i][j] = nums[i][j] + nums[i - 1][j - 1];
+f	}
+}	}
+}	}
+for  int i = 0; i < nums.length;i++f {	for (int i = 0; i < nums.length; i++) {
+System.out.println"";	System.out.println("");
+for in j= 0; j < nums0length;; j++{	for (int j = 0; j < nums[0].length; j++) {
+System.out.printlnumsij +  "  ";	System.out.print(nums[i][j] + " ");
+}	}
+}	}
+return numsS.lengthfTlength;	return nums[S.length()][T.length()];
+}	}
+publicstatic void mainString args { System.err.printlnne DistinctSubsequence.numDistinctl"rabbbi",, "rabbit";	public static void main(String[] args) { System.err.println(new DistinctSubsequence().numDistinct("rabbbit", "rabbit"));
+}	}
+	}

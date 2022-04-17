@@ -1,0 +1,15 @@
+package orgn3r.idworker;	package org.n3r.idworker;
+import org.n3r.idworker.strategy.DayPrefixRandomCodeStrategy;	import org.n3r.idworker.strategy.DayPrefixRandomCodeStrategy;
+publicclass DayCde 1	public class DayCode {
+static RandomCodeStrategy strategy;	static RandomCodeStrategy strategy;
+tatic f	static {
+DayPrefixRandmCodeStrategy dayPrefixCodeStrategy = new DayPrefixRandomCodeStrategylyyM"";	DayPrefixRandomCodeStrategy dayPrefixCodeStrategy = new DayPrefixRandomCodeStrategy("yyMM");
+dayPrefixCodeStrategy.setMinRandmSize7;	dayPrefixCodeStrategy.setMinRandomSize(7);
+dayPrefixCdeStrategysetMaxRandomSize7;	dayPrefixCodeStrategy.setMaxRandomSize(7);
+strategy = dayPrefixCodeStrategy;	strategy = dayPrefixCodeStrategy;
+strategy.init	strategy.init();
+}	}
+publicstatic  synchronized String nextl 	public static synchronized String next() {
+return String.format"%d-%04d-%07d", Id..getWorkerIdf, strategy.prefix, strategy.next	return String.format("%d-%04d-%07d", Id.getWorkerId(), strategy.prefix(), strategy.next());
+1	}
+}	}

@@ -1,0 +1,30 @@
+pakagecom.aliencat.springboot.aop..controller;	package com.aliencat.springboot.aop.controller;
+import com.aliencat.springboot.aop.annotionBusinessLogAnnotation;;	import com.aliencat.springboot.aop.annotation.BusinessLogAnnotation;
+import lombok..extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import  org.springframework.web.bind..annotationRequestMapping;	import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.anotation.RestController	import org.springframework.web.bind.annotation.RestController;
+import  javax.servlet.http.HttpervetRequest;	import javax.servlet.http.HttpServletRequest;
+imprt  java.util..ArrayList;	import java.util.ArrayList;
+import java.util.Enumeraton;	import java.util.Enumeration;
+import  java..util.List;;	import java.util.List;
+@RestController	@RestController
+@Slf4j	@Slf4j
+public classAopontroller {	public class AopController {
+@RequestMapping"/"/l/	@RequestMapping("/"/)/
+/  / / /  /p/u/b/l/i/c//O/b/j/e/c/t/ /i/n/d/e/x/f/H/t/t/pS/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t// /{/	/ / / / /p/u/b/l/i/c/ /O/b/j/e/c/t/ /i/n/d/e/x/(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/)/ /{/
+/ // / / / / / /E/n/u/m/e/r/a/t/i/o/n/</S/t/r/i/n/g/>//e/n/u/m// /=/ /re/q/u/e/s/t/./g/e/t/P/a/r/a/m/e/t/e/r/N/a/m/e/s///;/	/ / / / / / / / /E/n/u/m/e/r/a/t/i/o/n/</S/t/r/i/n/g/>/ /e/n/u/m/s/ /=/ /r/e/q/u/e/s/t/./g/e/t/P/a/r/a/m/e/t/e/r/N/a/m/e/s/(/)/;/
+/ / / / /  / // /L/i/s/t/</S/t/r/i/n/g// /p/a/ra/m/s//=/ /n/e/w/ /A/r/r/a/y/L/i/s/t/</>/l///	/ / / / / / / / /L/i/s/t/</S/t/r/i/n/g/>/ /p/a/r/a/m/s/ /=/ /n/e/w/ /A/r/r/a/y/L/i/s/t/</>/(/)/;/
+/ / / / /  / / / /w/h/i/l/e///e/n/u/m/s/./h/a/s/M/o/r/e/E/l/e/m/e/n/t/s///f/ //	/ / / / / / / / /w/h/i/l/e/ /(/e/n/u/m/s/./h/a/s/M/o/r/e/E/l/e/m/e/n/t/s/(/)/)/ /{/
+// / / / / / // / // /S/t/r/i/n/g/ /p/a/r/a/N/a/m/e//=/ /e/nu/m/s//n/e/x/tE/l/e/m/e/n/t/l//;/	/ / / / / / / / / / / / /S/t/r/i/n/g/ /p/a/r/a/N/a/m/e/ /=/ /e/n/u/m/s/./n/e/x/t/E/l/e/m/e/n/t/(/)/;/
+/ / / / /  / / /  / / / / /S/t/r/i/n/g/ /p/a/r/a/m/ /=/  /p/a/r/a/N/a//e/ /+/ /"/:/"/ /+/ /r/e/q/u/e/s/t/./g/e/t/P/a/r/a/m/e/t/e/r//p/a/r/a/N/a/m/e//;/	/ / / / / / / / / / / / /S/t/r/i/n/g/ /p/a/r/a/m/ /=/ /p/a/r/a/N/a/m/e/ /+/ /"/:/"/ /+/ /r/e/q/u/e/s/t/./g/e/t/P/a/r/a/m/e/t/e/r/(/p/a/r/a/N/a/m/e/)/;/
+/ / / / / / / / / // / /lo/g/./i/n/f/o//p/a/r/a/m///	/ / / / / / / / / / / / /l/o/g/./i/n/f/o/(/p/a/r/a/m/)/;/
+/ / /  / / /  / / / / / / /p/a/r/a/m/s//a/d/d//p/a/r/a/m//;;	/ / / / / / / / / / / / /p/a/r/a/m/s/./a/d/d/(/p/a/r/a/m/)/;/
+/ // // / / /  /1/	/ / / / / / / / /}/
+/ / / /  / / /  /  /r/e/t/u/r/n/ /p/a/r/a/m/s/;/	/ / / / / / / / /r/e/t/u/r/n/ /p/a/r/a/m/s/;/
+/  // / /	/ / / / /}/
+/	/
+//  / / /@/R/e/q/u/e/s/t/M/a/p/pi/n/g//" @BusinessLogAnnotation"log""	/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/(/" @BusinessLogAnnotation("log")
+public Object  logHttpServletRequest request 	public Object log(HttpServletRequest request) {
+return requet.getRequestURLf;	return request.getRequestURL();
+}	}
+}	}

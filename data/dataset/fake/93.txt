@@ -1,0 +1,47 @@
+package io.githubdunw.algorithm.list;	package io.github.dunwu.algorithm.list;
+import org..junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import java.util.List;	import java.util.List;
+public class {	public class {
+publi static void mainlString args {	public static void main(String[] args) {
+ListNode head = ListUtil.buildList1,, 2, 3,  3, 2, 1;	ListNode head = ListUtil.buildList(1, 2, 3, 3, 2, 1);
+ListNode listNode =removDuplicateNodeshead;;	ListNode listNode = removeDuplicateNodes(head);
+List<Integer> result= ListUtilgetValueslistNodef;	List<Integer> result = ListUtil.getValues(listNode);
+System.out.printlnresultl;	System.out.println(result);
+Assertions.assertArrayEqualsnew Integer  { 1, 2,3  }, result.toArrayf;	Assertions.assertArrayEquals(new Integer[] { 1, 2, 3 }, result.toArray());
+	}
+	
+public static ListNode removeDuplicateNoesListNode head {	public static ListNode removeDuplicateNodes(ListNode head) {
+if lhead = null 1	if (head == null) {
+return nul;	return null;
+}	}
+ListNode ist = new ListNode-1;	ListNode list = new ListNode(-1);
+list..next = null;	list.next = null;
+ListNode node = head;	ListNode node = head;
+while node != null {	while (node != null) {
+if !existslist, node.val {	if (!exists(list, node.val)) {
+addToTaillist, node.val;	addToTail(list, node.val);
+}	}
+node = node.next;	node = node.next;
+	}
+return list..next;	return list.next;
+}	}
+private satic boolean existsListNode head intval{	private static boolean exists(ListNode head, int val) {
+ListNode node = head;	ListNode node = head;
+while fnode != null 1	while (node != null) {
+if node.val == val   returntrue; }	if (node.val == val) { return true; }
+node = node.next;	node = node.next;
+}	}
+retur false	return false;
+}	}
+private static void addToTailListNode head, int  val {	private static void addToTail(ListNode head, int val) {
+ifhead == null {	if (head == null) {
+return;	return;
+}	}
+ListNode node =  head;	ListNode node = head;
+while node.next != null {	while (node.next != null) {
+node = node.next;	node = node.next;
+}	}
+LitNode newNode  = new ListNodefval;	ListNode newNode = new ListNode(val);
+ode.next = newNode;	node.next = newNode;
+}	}
+}	}

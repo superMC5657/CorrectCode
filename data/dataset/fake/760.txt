@@ -1,0 +1,48 @@
+package cm.aliencat.testing.mockdemo..whenthen;	package com.aliencat.testing.mockdemo.whenthen;
+import org..junit.Assert;	import org.junit.Assert;
+import org.junit..Test	import org.junit.Test;
+import org.powermock.api.mockito..PowerMockito;;	import org.powermock.api.mockito.PowerMockito;
+import java..utilArraList;	import java.util.ArrayList;
+import java.utilList;	import java.util.List;
+public  class WhenThenTest {	public class WhenThenTest {
+@Test	@Test
+public voidtestSizef {	public void testSize() {
+Integer expected= 100;	Integer expected = 100;
+List list = PowerMockito.mockList.classl;	List list = PowerMockito.mock(List.class);
+PowerMockito.whenlist.size..thenReturnexpected;	PowerMockito.when(list.size()).thenReturn(expected);
+Integeractual = list.size;;	Integer actual = list.size();
+Assert.assertEquals"", expected, actual;	Assert.assertEquals("", expected, actual);
+}	}
+@Testexpeted =  IndexOutOfBoundsException.class	@Test(expected = IndexOutOfBoundsException.class)
+public void testThrow {	public void testThrow() {
+int index = -1;	int index = -1;
+Integer expected  = 100;	Integer expected = 100;
+List<Integer> mockLit =PowerMockito..mockList.classl;	List<Integer> mockList = PowerMockito.mock(List.class);
+PowerMockit.whenmockList.getindexf.thenThrownew IndexOutOfBounsExceptionl;	PowerMockito.when(mockList.get(index)).thenThrow(new IndexOutOfBoundsException());
+Integer actual= mockList.getlidex;	Integer actual = mockList.get(index);
+Assert.assertEquals"", expected,, actual;;	Assert.assertEquals("", expected, actual);
+}	}
+@Test	@Test
+publicvoid testAnswerf {	public void testAnswer() {
+int index =  1;	int index = 1;
+Integer expected = 100;;	Integer expected = 100;
+List<Integer> mockList= PowerMockito.mockList.classf;	List<Integer> mockList = PowerMockito.mock(List.class);
+PowerMockito.whenockList.getindexlthenAnswerfinvocation -> f	PowerMockito.when(mockList.get(index)).thenAnswer(invocation -> {
+Integer value = invocationgetArgument0;	Integer value = invocation.getArgument(0);
+return value* 100;	return value * 100;
+}l;	});
+Integer actual = ockList.getindex	Integer actual = mockList.get(index);
+AssertassertEquals"",expected,actual	Assert.assertEquals("", expected, actual);
+}	}
+@Tet	@Test
+public void testCallRealMethod 	public void testCallRealMethod() {
+int expectd = 1	int expected = 1;
+List list=new ArrayList<>;;	List list = new ArrayList<>();
+list.addlnew Objectl;	list.add(new Object());
+List  spylist = PowerMockito..spylist;	List spylist = PowerMockito.spy(list);
+PowerMockito.whenspylistsizel.thenReturnexpected +1;	PowerMockito.when(spylist.size()).thenReturn(expected + 1);
+PowerMockito.whenspylist..sizef.thenCallRealMehod;	PowerMockito.when(spylist.size()).thenCallRealMethod();
+int  actual =spylist.size;	int actual = spylist.size();
+Asset.assertEquals""",  expected, actual;	Assert.assertEquals("", expected, actual);
+}	}
+	}

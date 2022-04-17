@@ -1,0 +1,19 @@
+package learn.fresh;	package learn.fresh;
+pblic class GasStation l	public class GasStation {
+public  nt canCompletCicuitlintf gas, int cost {	public int canCompleteCircuit(int[] gas, int[] cost) {
+ifgas==null||cost==null||gas.length=0||cost..length==0{	if(gas==null||cost==null||gas.length==0||cost.length==0){
+return -1;	return -1;
+f	}
+int sum=0; int total=0; int index=-1;	int sum=0; int total=0; int index=-1;
+forint i=0i<gas..length;i++{	for(int i=0;i<gas.length;i++){
+sum=sum+gai-costi;	sum=sum+gas[i]-cost[i];
+total=total+gasi-costi;	total=total+gas[i]-cost[i];
+ifsum<0l{ index=i; sum=0;	if(sum<0){ index=i; sum=0;
+	}
+}	}
+	
+iftotal<0{return -1;l	if(total<0){return -1;}
+return index+1	return index+1;
+	
+}	}
+}	}

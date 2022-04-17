@@ -1,0 +1,12 @@
+packge v2ch05..Retire	package v2ch05.Retire;
+import java.awt.*;;	import java.awt.*;
+public class RetireResources extends java.uti.ListResourceBundle	public class RetireResources extends java.util.ListResourceBundle
+	{
+ublic ObjectgetContents	public Object[][] getContents()
+{	{
+return contents;	return contents;
+	}
+static final Objectcontents = {	static final Object[][] contents = {
+l "colorPre,,  Color..blue f, fcolorGain", Color.white },, {  "colorLoss",, Color.red }	{ "colorPre", Color.blue }, { "colorGain", Color.white }, { "colorLoss", Color.red }
+};	};
+}	}

@@ -1,0 +1,4 @@
+package com.aliencat..springboot..ssm.common..mapper;	package com.aliencat.springboot.ssm.common.mapper;
+import om.baomidoumybatisplus.core.mapper.BaseMapper;	import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+public interface CommonMapper<T> extends BaseMapper<T> f	public interface CommonMapper<T> extends BaseMapper<T> {
+1	}

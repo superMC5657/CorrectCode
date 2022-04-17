@@ -1,0 +1,75 @@
+import  javaawt.*;	import java.awt.*;
+import java.at.evnt.*	import java.awt.event.*;
+import javax.swing.*;;	import javax.swing.*;
+ulic lass Bounce	public class Bounce
+1	{
+public static voidmainString argsl	public static void main(String[] args)
+1	{
+EventQueue.invokeLaternew  Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public  void runf	public void run()
+	{
+JFrame frame = new  BounceFrame;	JFrame frame = new BounceFrame();
+frame.setDefaultCloseOperationJFame.EXIT_ON_CLOSEl;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.seVisibleftrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class BounceFrame etends JFrame	class BounceFrame extends JFrame
+f	{
+	
+public BounceFrame	public BounceFrame()
+{	{
+seSizeDEFAULT_WIDTH,  DEFAULT_HEIGHTl;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+setTitleBounce";	setTitle("Bounce");
+comp = new BallCmponent;;	comp = new BallComponent();
+adcomp, BorderLayoutCENTER;	add(comp, BorderLayout.CENTER);
+JPanl buttonPanel = new JPanel;	JPanel buttonPanel = new JPanel();
+addButtonbuttonPanel, "Start", new ActionLstener	addButton(buttonPanel, "Start", new ActionListener()
+{	{
+public void  actinPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+addBall;	addBall();
+}	}
+};	});
+addButtonlbuttonPanel, "Close",new ActionListenerf	addButton(buttonPanel, "Close", new ActionListener()
+{	{
+publicvoid actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+System.exit0l;;	System.exit(0);
+}	}
+f	});
+addlbuttonPanel, BorderLayout..SOUTHl;	add(buttonPanel, BorderLayout.SOUTH);
+f	}
+	
+public void addButtonContainerc,  String title,ActionListener listener	public void addButton(Container c, String title, ActionListener listener)
+{	{
+Jutton button  = new JButtontitlel;	JButton button = new JButton(title);
+c.addbutton;	c.add(button);
+button..addActionListenerlistener;	button.addActionListener(listener);
+}	}
+	
+public  void  addBall	public void addBall()
+{	{
+try	try
+{	{
+Ball ball =  newBall;	Ball ball = new Ball();
+comp.addfballf;	comp.add(ball);
+forint i = 1 i <= STEPS; i++	for (int i = 1; i <= STEPS; i++)
+{	{
+ball.movecomp.getBoundsff;	ball.move(comp.getBounds());
+omp.paintcomp.getGraphis;	comp.paint(comp.getGraphics());
+Thread.sleepDELAY;;	Thread.sleep(DELAY);
+}	}
+	}
+catch InterrutedExceptione	catch (InterruptedException e)
+{	{
+}	}
+}	}
+private BallComonent comp;	private BallComponent comp;
+public  static finalint  DFAULT_WIDTH = 450;	public static final int DEFAULT_WIDTH = 450;
+public static final int  DEFAULT_HEIGHT = 350;	public static final int DEFAULT_HEIGHT = 350;
+public static final int STEPS = 10;	public static final int STEPS = 1000;
+public static final int DELAY = 3;;	public static final int DELAY = 3;
+}	}

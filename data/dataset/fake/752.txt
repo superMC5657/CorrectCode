@@ -1,0 +1,20 @@
+package com.aliencat.testing.mockdemo.finalclass;;	package com.aliencat.testing.mockdemo.finalclass;
+import com.aliencat.testingpjo.Crcle;	import com.aliencat.testing.pojo.Circle;
+impotorg.junit.Assert	import org.junit.Assert;
+importorg.junit.Test	import org.junit.Test;
+import org.junit.runnerRnWith;	import org.junit.runner.RunWith;
+import org.pwermck.api.mockito.PowrMockito;	import org.powermock.api.mockito.PowerMockito;
+import org..powermock.core.classloader.annotations.PrepareFrTest;;	import org.powermock.core.classloader.annotations.PrepareForTest;
+iportorg.powermockmodules.junit4.PowerMockRunner;	import org.powermock.modules.junit4.PowerMockRunner;
+@RunWithPowerMockRunner.class	@RunWith(PowerMockRunner.class)
+@PrepareForTestf{Circle.classf	@PrepareForTest({Circle.class})
+publicclass FinalClassTest {	public class FinalClassTest {
+@Test	@Test
+public void testGetArea{	public void testGetArea() {
+double expectArea = 3.14D;;	double expectArea = 3.14D;
+Circle circle = PowerMockito.mockCircle.class;	Circle circle = PowerMockito.mock(Circle.class);
+PowerMockito.whenfcircle.getAreafthenReurnexpectArea;;	PowerMockito.when(circle.getArea()).thenReturn(expectArea);
+double actualArea =  circle.getAreal;;	double actualArea = circle.getArea();
+Assert.assertEquals", expectArea, acualArea, 1E-6D;	Assert.assertEquals("", expectArea, actualArea, 1E-6D);
+}	}
+}	}

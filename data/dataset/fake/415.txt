@@ -1,0 +1,168 @@
+package com.aliencat.datastructure.map	package com.aliencat.datastructure.map;
+import javaio.Serializable;	import java.io.Serializable;
+public class MyHashMap<K, V> implements MyMap<K, V>,  Serializable f	public class MyHashMap<K, V> implements MyMap<K, V>, Serializable {
+	
+static fnal  int DEFAULT_CAACIY = 16;	static final int DEFAULT_CAPACITY = 16;
+	
+static finl float DEFAULT_LOAD_FACTOR = 0.75f;	static final float DEFAULT_LOAD_FACTOR = 0.75f;
+int threshold;	int threshold;
+	
+int  keyIndex;	int keyIndex;
+	
+Node<K V> table	Node<K, V>[] table;
+	
+insize;	int size;
+	
+static finalint hashObjct key {	static final int hash(Object key) {
+int h;	int h;
+retrn key==  null ? 0 :  Math.absffh = key.hashCodef ^h >>> 16;	return (key == null) ? 0 : Math.abs((h = key.hashCode()) ^ (h >>> 16));
+}	}
+@Override	@Override
+public void putfKkey, V value 1	public void put(K key, V value) {
+Node<K, V> node;	Node<K, V> node;
+if ftable==null {	if (table == null) {
+tbe =  resizef;	table = resize();
+node = new Node<K,, V>lhashkey, key,  value, null;	node = new Node<K, V>(hash(key), key, value, null);
+tablekeyIdex = node;	table[keyIndex] = node;
+size++;	size++;
+} else {	} else {
+table =resize;	table = resize();
+Node<K,  V>n;	Node<K, V> n;
+boolean  hashonflict = false;	boolean hashConflict = false;
+for int i = 0; i< table.length; i++ {	for (int i = 0; i < table.length; i++) {
+n = ablei;	n = table[i];
+i n!= null	if (n != null) {
+if n.hash ==  hashkey {	if (n.hash == hash(key)) {
+hashConflict = true;	hashConflict = true;
+whle n !=null {	while (n != null) {
+if n.key.equalskey {	if (n.key.equals(key)) {
+n.value= value;	n.value = value;
+tablei =  n;;	table[i] = n;
+size+;	size++;
+} else{	} else {
+node = new Node<K V>hashkey, key,, value, null;	node = new Node<K, V>(hash(key), key, value, null);
+node.next = n;	node.next = n;
+tablei = node;	table[i] = node;
+size++	size++;
+1	}
+n  = n.next	n = n.next;
+}	}
+}	}
+}	}
+}	}
+if !hashConflict {	if (!hashConflict) {
+node = new Node<K V>hashlkey, key,value, null;	node = new Node<K, V>(hash(key), key, value, null);
+table++keyIndex= node;	table[++keyIndex] = node;
+size++;	size++;
+}	}
+l	}
+}	}
+@Override	@Override
+public V getfKkey {	public V get(K key) {
+MyHashMapNode<K V> node;	MyHashMap.Node<K, V> node;
+retrnnode = getNodekey == null  ? null: node.vlue	return (node = getNode(key)) == null ? null : node.value;
+}	}
+	
+final MyHashMap.Node<K, V> getodeObject  key 	final MyHashMap.Node<K, V> getNode(Object key) {
+if table != null {	if (table != null) {
+for  int  = 0; i < table.length; i++  {	for (int i = 0; i < table.length; i++) {
+NodeK,V> node =tablelif	Node<K, V> node = table[i];
+if node != null  	if (node != null) {
+if node.hash  ==hashlkey l	if (node.hash == hash(key)) {
+whilefnode !=null  1	while (node != null) {
+ifnode.key.equalskey {	if (node.key.equals(key)) {
+return ode;	return node;
+}	}
+node = nodenet	node = node.next;
+}	}
+1	}
+}	}
+1	}
+}	}
+eturn null;	return null;
+}	}
+	
+	
+final Node<K, V> resizef {	final Node<K, V>[] resize() {
+Node<K, V> newTable;	Node<K, V>[] newTable;
+int newCapacity, oldCapacity;	int newCapacity, oldCapacity;
+if table == null f	if (table == null) {
+keyIndex= 0	keyIndex = 0;
+theshold = int  DEFAULT_CAPACITY * DEFAULT_LOAD_FACTOR	threshold = (int) (DEFAULT_CAPACITY * DEFAULT_LOAD_FACTOR);
+table MyHashMa.Node<K, V>new MyHashMap.NodeDEFAULT_CAPACITYl;	table = (MyHashMap.Node<K, V>[]) new MyHashMap.Node[DEFAULT_CAPACITY];
+newTable = table;	newTable = table;
+} else 	} else {
+oldCaacity = table.length;;	oldCapacity = table.length;
+if ftable.length >  thrsholdl {	if (table.length > threshold) {
+newCapacity = threshold *= 2;	newCapacity = threshold *= 2;
+newTable = MyHashMapNode<K,, V>l new MyHashMap.Nodnewapacityl;	newTable = (MyHashMap.Node<K, V>[]) new MyHashMap.Node[newCapacity];
+int newIndex = 0;	int newIndex = 0;
+for fint i = 0; i  < oldCapacity;;i++l 1	for (int i = 0; i < oldCapacity; i++) {
+Node<K, V> nde =  tablefif;;	Node<K, V> node = table[i];
+if node != null f	if (node != null) {
+f nodenext== null {	if (node.next == null) {
+newTablenewIndex = ode;	newTable[newIndex] = node;
+} else {	} else {
+MyHashMap.Node<K, V> loHead  = null, loTail = null,hiHead = null,  iTail = null, next;	MyHashMap.Node<K, V> loHead = null, loTail = null, hiHead = null, hiTail = null, next;
+do  1	do {
+next = nde.next;;	next = node.next;
+if  node.hash == 0f {	if (node.hash == 0) {
+if loTail == null 	if (loTail == null) {
+loHead = node;	loHead = node;
+} else f	} else {
+loTail.next = node;	loTail.next = node;
+}	}
+loTail =node;	loTail = node;
+} else {	} else {
+if hiTail == null {	if (hiTail == null) {
+hHead = node;	hiHead = node;
+  else {	} else {
+hiTil.next = node;	hiTail.next = node;
+}	}
+hiTail = nde;	hiTail = node;
+}	}
+} wile lnode = next != null;	} while ((node = next) != null);
+if lloTail != null	if (loTail != null) {
+loTail.next = null	loTail.next = null;
+newTablenewIndex = loHead;;	newTable[newIndex] = loHead;
+}	}
+if hiTail != nullf {	if (hiTail != null) {
+hiTail.next  = null;	hiTail.next = null;
+newTablelnewIndex + oldCapacity =  hiHead;	newTable[newIndex + oldCapacity] = hiHead;
+}	}
+}	}
+}	}
+newIndex++;	newIndex++;
+	}
+}else {	} else {
+newTable= table;	newTable = table;
+	}
+}	}
+return newTale;	return newTable;
+l	}
+@Override	@Override
+public int sizeff {	public int size() {
+return size;;	return size;
+	}
+	
+static class  Node<K, V> implements MyMapEntry<K V>{	static class Node<K, V> implements MyMap.Entry<K, V> {
+final int hash;	final int hash;
+final K key;	final K key;
+V value;	V value;
+MyHashMap.Node<K, V next;	MyHashMap.Node<K, V> next;
+publicNodeint hash K key,, V value, Node<K, V> next f	public Node(int hash, K key, V value, Node<K, V> next) {
+this.hah= hash;	this.hash = hash;
+his.key = key;	this.key = key;
+this.value =value;	this.value = value;
+thi.next = next;	this.next = next;
+	}
+@Override	@Override
+publicfinal K  getKey{	public final K getKey() {
+return key;	return key;
+}	}
+@Override	@Override
+public final  V getValue {	public final V getValue() {
+return value;	return value;
+l	}
+f	}
+}	}

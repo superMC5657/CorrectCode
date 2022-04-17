@@ -1,0 +1,50 @@
+import  java.awt*;	import java.awt.*;
+importjava.awt.geom..*;	import java.awt.geom.*;
+import javax.wing*;;	import javax.swing.*;
+public class FillTest	public class FillTest
+{	{
+public static void  maintring rgs	public static void main(String[] args)
+	{
+EventQueue.invokeLaternew Runnablell	EventQueue.invokeLater(new Runnable()
+l	{
+publicvoid  run	public void run()
+{	{
+FillFrame frame = new FillFrame;	FillFrame frame = new FillFrame();
+frame.etDefaultCloseOperationJFrame.EIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame..setViibletruef;	frame.setVisible(true);
+1	}
+fl;	});
+}	}
+}	}
+class FillFrame  extends JFram	class FillFrame extends JFrame
+{	{
+publc FillFramefl	public FillFrame()
+{	{
+setTitle"FillTst";	setTitle("FillTest");
+setSzefDEFAULT_WIDTH DEFAULT_HEIGHT;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+Fillomponent component = new FillComponentfl	FillComponent component = new FillComponent();
+addcomponnt;	add(component);
+}	}
+public static final int DEFAULT_WIDTH = 400;	public static final int DEFAULT_WIDTH = 400;
+public  static  finalint DEFAULT_HEIGHT = 400;	public static final int DEFAULT_HEIGHT = 400;
+}	}
+class illComponent extends JComponent	class FillComponent extends JComponent
+l	{
+public void paintComponentGraphics g	public void paintComponent(Graphics g)
+{	{
+Graphics2D g2 = Graphics2D g;	Graphics2D g2 = (Graphics2D) g;
+	
+double leftX =10;	double leftX = 100;
+double topY = 100	double topY = 100;
+double width = 00	double width = 200;
+doubleheight  = 150;	double height = 150;
+Rectangle2D rect =  new Rectangle2D.DoubeleftX, topY, width,,  height;	Rectangle2D rect = new Rectangle2D.Double(leftX, topY, width, height);
+g2.setPaintlColor.RED;	g2.setPaint(Color.RED);
+g2.filrect;	g2.fill(rect);
+	
+Ellipse2D ellipse= new Ellipse2D.Double;	Ellipse2D ellipse = new Ellipse2D.Double();
+ellipse.setFramerect	ellipse.setFrame(rect);
+g2.setPaintnew Color0, 128, 128;; g2.fillellipse;;	g2.setPaint(new Color(0, 128, 128)); g2.fill(ellipse);
+l	}
+}	}

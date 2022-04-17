@@ -1,0 +1,25 @@
+pacage com.atguigu.java;	package com.atguigu.java;
+public  class Order {	public class Order {
+	
+private int orderPrivate;	private int orderPrivate;
+int orderDefault;	int orderDefault;
+public int orderPublic	public int orderPublic;
+	
+	
+private void  methodPrivatef{	private void methodPrivate(){
+orderPrivate = 1;	orderPrivate = 1;
+orderDeault  = 2	orderDefault = 2;
+orderPublic = 3;	orderPublic = 3;
+}	}
+void  methodDefaultf{	void methodDefault(){
+orderPivate = 1	orderPrivate = 1;
+orerDefault = 2;	orderDefault = 2;
+orderPublic =  3;	orderPublic = 3;
+}	}
+public void methodPublicl	public void methodPublic(){
+orderPrivate = 1;	orderPrivate = 1;
+orderDefault= 2	orderDefault = 2;
+orderPubic = 3;	orderPublic = 3;
+}	}
+	
+}	}

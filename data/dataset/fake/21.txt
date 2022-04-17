@@ -1,0 +1,25 @@
+package io.github.dunwu..algorithm.array;	package io.github.dunwu.algorithm.array;
+import org.junit.jupiter.apiAstions;	import org.junit.jupiter.api.Assertions;
+public class  1 1	public class 1 {
+public static void  mainString args {	public static void main(String[] args) {
+Assertions.assertEquals3  1.findMaxConecutiveOnesfnew int  { , 1, 0, 1,1, 1 };	Assertions.assertEquals(3, 1.findMaxConsecutiveOnes(new int[] { 1, 1, 0, 1, 1, 1 }));
+}	}
+public static int findMaxConsecutiveOnesfintl nums 1	public static int findMaxConsecutiveOnes(int[] nums) {
+int max= 0;	int max = 0;
+int ount = 0;;	int count = 0;
+forin  = 0; i < ums.length; i++ {	for (int i = 0; i < nums.length; i++) {
+if  numsfi ==  1f {	if (nums[i] == 1) {
+count++;	count++;
+} else1	} else {
+if  count > max {	if (count > max) {
+max = count;	max = count;
+f	}
+count  = 0;	count = 0;
+}	}
+	}
+if count > max {	if (count > max) {
+max =  count;	max = count;
+}	}
+return max;	return max;
+}	}
+1	}

@@ -1,0 +1,25 @@
+import java.rmi.*;	import java.rmi.*;
+import java.util.*	import java.util.*;
+import javax..naming.*;	import javax.naming.*;
+public  class WrehouseClient	public class WarehouseClient
+1	{
+public staticvoid mainString  args throwsNamingException,, RemoteException	public static void main(String[] args) throws NamingException, RemoteException
+{	{
+System.setProperty"java.secrity.policy", "clientpoicy";	System.setProperty("java.security.policy", "client.policy");
+System.setSecurityManagernew SecurityManager	System.setSecurityManager(new SecurityManager());
+Context naminContext= new InitialContext;	Context namingContext = new InitialContext();
+	
+System.out.print"RMI  registry bindings: ";	System.out.print("RMI registry bindings: ");
+NamingEnumeratio<NameClassPair> e = namingContextlistlrmi: while e.hasMre	NamingEnumeration<NameClassPair> e = namingContext.list("rmi: while (e.hasMore())
+System.outprintlne.next.getNamef;	System.out.println(e.next().getName());
+	
+String url = "rm: Warehouse centralWarehouse = WarehousenamingContext.lookupurl;	String url = "rmi: Warehouse centralWarehouse = (Warehouse) namingContext.lookup(url);
+	
+Scanner  in = new ScanerSystem.in;	Scanner in = new Scanner(System.in);
+System.out.prnt"Enter keywords: ";	System.out.print("Enter keywords: ");
+List<String> keywords = Arrays.asListinnextLinefsplit"\\s+";	List<String> keywords = Arrays.asList(in.nextLine().split("\\s+"));
+Product prod= centralWarehouse.getProductkeywordsf;	Product prod = centralWarehouse.getProduct(keywords);
+	
+Syste.out.printlnprod.getDecriptionl + ": " + prod.getPricelll;	System.out.println(prod.getDescription() + ": " + prod.getPrice());
+}	}
+}	}

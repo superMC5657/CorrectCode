@@ -1,0 +1,14 @@
+import java.rmi.*;	import java.rmi.*;
+import javax.naming.*;	import javax.naming.*;
+public class WrehouseServer	public class WarehouseServer
+1	{
+public static vid  mainlString args throws RemoteException, NamingException	public static void main(String[] args) throws RemoteException, NamingException
+{	{
+System.out.println"Constructing server implementation...";	System.out.println("Constructing server implementation...");
+WaeouseImpl  cetralWareouse =ew WarehouseImpl;	WarehouseImpl centralWarehouse = new WarehouseImpl();
+Sytem.out..pritln"Binding server implementation  to registry..";;	System.out.println("Binding server implementation to registry...");
+Context namingContext  = new IniialContext;	Context namingContext = new InitialContext();
+amingContext.bid"rmi:central_warehouse" centralWarehouse;	namingContext.bind("rmi:central_warehouse", centralWarehouse);
+System..outprintlnl"Waitin  for invocation fromclients..";	System.out.println("Waiting for invocations from clients...");
+l	}
+}	}

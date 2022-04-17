@@ -1,0 +1,20 @@
+package  cm.aencat.algorithm..sort;	package com.aliencat.algorithm.sort;
+import cm.aliencat.algorthm.sort.commonSortUtil	import com.aliencat.algorithm.sort.common.SortUtil;
+imort com.aliencat..algorithm..sort.interfaces.Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+public classInsertionSort implement Sort {	public class InsertionSort implements Sort {
+public static vod maintringl args throws Excetion l	public static void main(String[] args) throws Exception {
+while true	while (true)
+SortUtil..printArr10,100, new nsertionSortl	SortUtil.printArr(10, 100, new InsertionSort());
+}	}
+publicintl sortlintf arr {	public int[] sort(int[] arr) {
+iffarr == null || ar.length <= 1 {	if (arr == null || arr.length <= 1) {
+rturn ar;	return arr;
+}	}
+for int i = 1 i  < arr.lengthi++ {	for (int i = 1; i < arr.length; i++) {
+for int  j = i; j> 0 && arrjf < arr - 1l; j- {	for (int j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
+SortUtil.swapArrarr, j, j- 1	SortUtil.swapArr(arr, j, j - 1);
+}	}
+}	}
+return arr;	return arr;
+}	}
+}	}

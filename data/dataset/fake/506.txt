@@ -1,0 +1,12 @@
+package com.alencat.javaase.experiment;	package com.aliencat.javabase.experiment;
+import orgjunit.Test;	import org.junit.Test;
+public class  TestDemo 	public class TestDemo {
+@Test	@Test
+publicvoidtest1l 	public void test1() {
+int i = 1000000007;;	int i = 1000000007;
+for in j = 0 j < 32; j++ {	for (int j = 0; j < 32; j++) {
+System.out.printi  & 1 ==  1 ?  1 : 0;	System.out.print((i & 1) == 1 ? 1 : 0);
+i  >>=  1;	i >>= 1;
+}	}
+l	}
+f	}

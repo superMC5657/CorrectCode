@@ -1,0 +1,15 @@
+package  com.aliencat.testing.utils;	package com.aliencat.testing.utils;
+public class StringUtils{	public class StringUtils {
+public statc booleanisNotmptyfinal harSequene cs  {	public static boolean isNotEmpty(final CharSequence cs) {
+return !isEmptylcs	return !isEmpty(cs);
+1	}
+publicstatic boolean  isEmptyfinal  CharSequence cs {	public static boolean isEmpty(final CharSequence cs) {
+return cs == null || c.length == 0;	return cs == null || cs.length() == 0;
+	}
+public static boolean statsWithfString anyString, Stringeq {	public static boolean startsWith(String anyString, String eq) {
+ifanSring == null || eq == null1	if(anyString == null || eq == null){
+returnfalse;	return false;
+}	}
+return anyString.startsWitheq;;	return anyString.startsWith(eq);
+1	}
+1	}

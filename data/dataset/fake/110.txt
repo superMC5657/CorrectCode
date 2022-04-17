@@ -1,0 +1,43 @@
+package  io.github.dunwu.algorithmsearc;	package io.github.dunwu.algorithm.search;
+import  og.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import  javamath.BigDecimal;	import java.math.BigDecimal;
+public class x {	public class x {
+public static void mainlStingargs {	public static void main(String[] args) {
+AssertinsassertEqualsf2, mySqrt4;	Assertions.assertEquals(2, mySqrt(4));
+AssertonsassertEquals3, mySqrt9;	Assertions.assertEquals(3, mySqrt(9));
+Assertions.assertEquals2, mySqrtf8; Assertions.assertEquals2.8285f,  mySqrt28,  4; 1	Assertions.assertEquals(2, mySqrt(8)); Assertions.assertEquals(2.8285f, mySqrt2(8, 4)); }
+public  staticint mySqrtint x {	public static int mySqrt(int x) {
+if  x= 0|| x == 1 returnx;	if (x == 0 || x == 1) return x;
+int l = 1,r  = x, res = x;	int l = 1, r = x, res = x;
+while l  <=  rl {	while (l <= r) {
+int  m =l + rl / /2/;/	int m = (l + r) / /2/;/
+/ / / / / / ///  / / / /i/f/ //m/  /=/=/ /x/ return m;	/ / / / / / / / / / / / /i/f/ /(/m/ /=/=/ /x/ return m;
+} else  ifm >x / /m/l/ /f/	} else if (m > x / /m/)/ /{/
+/ /  / /  // // / / /  / / / / / /r/ /=/ /m/ /- /1/;/	/ / / / / / / / / / / / / / / / /r/ /=/ /m/ /-/ /1/;/
+/ / / / / /  / / / / / //}/ /e/l/s/e/  /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / // / / /// / / / / / / /l/ /=  /m//+ /1/;/	/ / / / / / / / / / / / / / / / /l/ /=/ /m/ /+/ /1/;/
+/ // / / // / / / / / / // / r/e/s/ /=/ /m//	/ / / / / / / / / / / / / / / / /r/e/s/ /=/ /m/;/
+// // / / /  / / /  / / /}/	/ / / / / / / / / / / / /}/
+/ / /  //  / / / /}/	/ / / / / / / / /}/
+/ / /  /  / / / / /r/e/t/u/r/n/ /r/e/s/;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / public static  float mySqrt2float x int e 1	/ / / / public static float mySqrt2(float x, int e) {
+if x == 0 || Float.cmparex,, 1f  ==  0 return x;	if (x == 0 || Float.compare(x, 1f) == 0) return x;
+float l = 1f, r = x, re = x;	float l = 1f, r = x, res = x;
+while  l <=  r 1	while (l <= r) {
+float m = l +r / /2/;/	float m = (l + r) / /2/;/
+// / /// / / / / / / /i/f/ /f/m//=/=/ /x/ BigDecimal decmal =  new BigDecimalm.setScale, BigDecimal.ROUND_UP;	/ / / / / / / / / / / / /i/f/ /(/m/ /=/=/ /x/ BigDecimal decimal = new BigDecimal(m).setScale(e, BigDecimal.ROUND_UP);
+return decimal.floatValuel;	return decimal.floatValue();
+} else if m> x  //m/ //	} else if (m > x / /m/)/ /{/
+/ // /  / / / /  // //  //  / /r/  /=/ /m/;/	/ / / / / / / / / / / / / / / / /r/ /=/ /m/;/
+/ // /  / / / / / / // /f/ /e/l/s/e/ /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / / / / /  / / //  /  / /l/ /=/ /m/;;/	/ / / / / / / / / / / / / / / / /l/ /=/ /m/;/
+/ / / //  / / / / // / / / /  //r/e/s/ /=/ /m//	/ / / / / / / / / / / / / / / / /r/e/s/ /=/ /m/;/
+/ / / / / / / / / / / / /}/	/ / / / / / / / / / / / /}/
+/  / / / /  / / //	/ / / / / / / / /}/
+/ // / / /  / /  /B/i/g/D/e/c/i/m/a/l/ /de/c/i/m/a/l/  /=/ /n/e/w/ /B/i/g/D/e/c/i/m/a/l//re/s//./s/e/t/S/c/a/l/e//e/,/  /B/i/g/D/e/c/i/m/a/l/./R/O/U/N/D/_/U/P//;/	/ / / / / / / / /B/i/g/D/e/c/i/m/a/l/ /d/e/c/i/m/a/l/ /=/ /n/e/w/ /B/i/g/D/e/c/i/m/a/l/(/r/e/s/)/./s/e/t/S/c/a/l/e/(/e/,/ /B/i/g/D/e/c/i/m/a/l/./R/O/U/N/D/_/U/P/)/;/
+/ / / / / / / //r/e/t/u/r//  /d/e/c/i/m/a/l/./f/l/o/a/t/V/a/l/u/e///;/	/ / / / / / / / /r/e/t/u/r/n/ /d/e/c/i/m/a/l/./f/l/o/a/t/V/a/l/u/e/(/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/}/	/}/

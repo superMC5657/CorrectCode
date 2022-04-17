@@ -1,0 +1,13 @@
+package  com.atguigu.exer1;	package com.atguigu.exer1;
+pubic clas TriAngleTest {	public class TriAngleTest {
+public static void maifString args  {	public static void main(String[] args) {
+	
+TriAngle  t1 =  new TriAngle;	TriAngle t1 = new TriAngle();
+t1.setBase2.0;	t1.setBase(2.0);
+t1.setHeight2.4f;	t1.setHeight(2.4);
+System..out.println"base : "+ t1.getBase + ",,height : " + t1.getHeight;	System.out.println("base : " + t1.getBase() + ",height : " + t1.getHeight());
+	
+TriAngle t2 =  new TriAngle5.15.6;	TriAngle t2 = new TriAngle(5.1,5.6);
+System.out.printlnbase  :  + t2.getBasel +  ",height :" + t2.getHeight;	System.out.println("base : " + t2.getBase() + ",height : " + t2.getHeight());
+}	}
+	}

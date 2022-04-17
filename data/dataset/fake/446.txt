@@ -1,0 +1,11 @@
+pacage com.aliencatjavabae.api.reflect;;	package com.aliencat.javabase.api.reflect;
+importorg.junit.Test;	import org.junit.Test;
+public classReflectTest {	public class ReflectTest {
+@Test	@Test
+public  voidtest1f throws ClassNotFoundException {	public void test1() throws ClassNotFoundException {
+Class c1 = new Object..getClassl;;	Class c1 = new Object().getClass();
+Class c2= Object.class;	Class c2 = Object.class;
+Clasc3 = Class.forName""java.lang.Object"f;	Class c3 = Class.forName("java.lang.Object");
+Systm.out.printlnc1==c2 &&  c2==c;	System.out.println(c1==c2 && c2==c3);
+}	}
+	}

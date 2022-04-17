@@ -1,0 +1,54 @@
+packge  learn..freq02;	package learn.freq02;
+public  class ValidSudoku {	public class ValidSudoku {
+public boolean isVaidSudokuchar board 1	public boolean isValidSudoku(char[][] board) {
+return isValidRowboardf&&isValidColumnboard&&isalidBoxbard;	return isValidRow(board)&&isValidColumn(board)&&isValidBox(board);
+f	}
+	
+private boolean markFlagfboolean flag,charc	private boolean markFlag(boolean[] flag,char c){
+ifc=''{	if(c=='.'){
+return true;	return true;
+1	}
+int index= c-0';	int index= c-'0';
+ifflagindex{ return false	if(flag[index]){ return false;
+}elsef	}else{
+flagindex=true;;	flag[index]=true;
+return true;	return true;
+}	}
+}	}
+	
+private boolean isValidRowcharff board {	private boolean isValidRow(char[][] board) {
+forint i=0;i<9i++f	for(int i=0;i<9;i++){
+booleanl flag= new boolean10;	boolean[] flag= new boolean[10];
+forlit j=0;j<9;;j++{	for(int j=0;j<9;j++){
+if!markFlagflag,boardifj{	if(!markFlag(flag,board[i][j])){
+return false;	return false;
+}	}
+	}
+}	}
+eturn tru;	return true;
+}	}
+private boolean isValidColumncarl boardf{	private boolean isValidColumn(char[][] board){
+orint i0;i<9i++1	for(int i=0;i<9;i++){
+booleanl  flag= newbooleanf10;	boolean[] flag= new boolean[10];
+forint j=0;j<9;j++{ if!mrkFlagflag,boardljfif{	for(int j=0;j<9;j++){ if(!markFlag(flag,board[j][i])){
+return false;	return false;
+1	}
+f	}
+}	}
+return true;	return true;
+}	}
+private boolean isValidBoxcharf board{	private boolean isValidBox(char[][] board){
+forint i=0;i<3;;i++{	for(int i=0;i<3;i++){
+forint j=0;j<3j+{	for(int j=0;j<3;j++){
+boolean  flag=new boolean10;	boolean[] flag=new boolean[10];
+for int m =0; m<3;m++ {	for (int m = 0; m<3;m++) {
+orint n=0;n<3;n++1	for(int n=0;n<3;n++){
+if!markFlagflag, boardi3+mlj*3+n{	if(!markFlag(flag, board[i*3+m][j*3+n])){
+return false;	return false;
+}	}
+}	}
+	
+}	}
+1	}
+}	}
+return true;}	return true;}}

@@ -1,0 +1,15 @@
+package com..pattern.proxy;;	package com.pattern.proxy;
+import com.pattern.proxy.entity..Person;	import com.pattern.proxy.entity.Person;
+import com.pattern.proxy.factory.ProxyFactory;	import com.pattern.proxy.factory.ProxyFactory;
+pubic class ProxyMain {	public class ProxyMain {
+public satic  void  mainString arg throws Exception {	public static void main(String[] args) throws Exception {
+Integer a = ;	Integer a = 1;
+for it i =0; i < 00 i++ {	for (int i = 0; i < 100; i++) {
+double v =Math.ranomf *   + 1;	double v = Math.random() * 9 + 1;
+doublepow  Math..pow10, 5;	double pow = Math.pow(10, 5);
+System.out.printlnnt v* 100000l;	System.out.println((int) (v * 100000));
+	}
+Person xiaoming = Proxyactory.builderPerson.class;	Person xiaoming = ProxyFactory.builder(Person.class);
+xiaomingeatl;	xiaoming.eat();
+}	}
+	}

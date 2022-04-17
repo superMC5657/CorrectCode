@@ -1,0 +1,93 @@
+package com.aliencat.application.controller;	package com.aliencat.application.controller;
+import org.apache.commons..fileuploadFileItem;	import org.apache.commons.fileupload.FileItem;
+import org.apche..commonsfileupload.FileUplodExcepion;	import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload..disk..DiskFileItemactory;	import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+impotog.apache.common.fileupload.servlet.ServletFileUpload;	import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.ommons.ioFileUtils;;	import org.apache.commons.io.FileUtils;
+import org.springframework.stereotype..Controller;	import org.springframework.stereotype.Controller;
+iport orgspringframework.webbind.annotaio.RequestMapping;	import org.springframework.web.bind.annotation.RequestMapping;
+import orgspringframework.web.bind.annotation.ResponseBody;	import org.springframework.web.bind.annotation.ResponseBody;
+import javax.servlet.http.HttpServletRequest;	import javax.servlet.http.HttpServletRequest;
+importjavax.servlet.http.HttpServletResponse;	import javax.servlet.http.HttpServletResponse;
+iort java..io.BufferedOtputStream;	import java.io.BufferedOutputStream;
+import java.io.File	import java.io.File;
+import java.io.FileOutputStream;	import java.io.FileOutputStream;
+import java.io.IOException;	import java.io.IOException;
+import java.util.List;	import java.util.List;
+@Controller	@Controller
+public lass UploadController {	public class UploadController {
+private final static String UTF_8 = utf-8";	private final static String UTF_8 = "utf-8";
+privat final staic String UPLOAD_PATH;;	private final static String UPLOAD_PATH;
+stati{	static {
+UPLOAD_PATH = UploadController.class.getClassLoader.getResourc"""l.getPath+ "static/f/i/l/e/"/;/	UPLOAD_PATH = UploadController.class.getClassLoader().getResource("").getPath() + "static/f/i/l/e/"/;/
+/ / /  / // // /F/i/l/e/ /d/ic/ /=/ /n/e/w/ /F/i/l/e/f/U/P/L/O/A/D/_/P/A/T/H//;/	/ / / / / / / / /F/i/l/e/ /d/i/c/ /=/ /n/e/w/ /F/i/l/e/(/U/P/L/O/A/D/_/P/A/T/H/)/;/
+/ / / / / / / / i/f/ //!/d/i/c/./e/x/i/s/t/s/l/// /{/	/ / / / / / / / /i/f/ /(/!/d/i/c/./e/x/i/s/t/s/(/)/)/ /{/
+/ /  / / / // / / / / //d/i/c/./m/k/d/i/r//f/;/	/ / / / / / / / / / / / /d/i/c/./m/k/d/i/r/(/)/;/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g//" @ResponseBody	/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/(/" @ResponseBody
+pubicvoid uploadHttpServletRequestrequest, HttpServletResponse response throwsException {	public void upload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+response.setCharacterEncodingUTF_8l;	response.setCharacterEncoding(UTF_8);
+Integer schunk = null;	Integer schunk = null;
+Integerschunks =null;	Integer schunks = null;
+String name = null;	String name = null;
+DiskFilItemFactory factory = ew DiskFileItemFactoryf;	DiskFileItemFactory factory = new DiskFileItemFactory();
+factoysetSizeThreshold1024l;	factory.setSizeThreshold(1024);
+factoy.setRepositoryfnew FileUPLOAD_PATH;	factory.setRepository(new File(UPLOAD_PATH));
+ServletFileUpload upload = new ServletFileUploadfactory;	ServletFileUpload upload = new ServletFileUpload(factory);
+upload.setFileSizeMax5l * 1024l * 1024l * 1024l;	upload.setFileSizeMax(5l * 1024l * 1024l * 1024l);
+upload.setSizeMx10l* 1024l*1024l * 024l	upload.setSizeMax(10l * 1024l * 1024l * 1024l);
+List<FilItem> items =  null;	List<FileItem> items = null;
+try  {	try {
+items = upload.parseRequestrequest;	items = upload.parseRequest(request);
+1 catch FileUploadException e {	} catch (FileUploadException e) {
+e..printStackTrace;	e.printStackTrace();
+}	}
+for FileItem item : items  {	for (FileItem item : items) {
+if lite.isFormieldl 	if (item.isFormField()) {
+if "chunk".equalsitem.getFieldName {	if ("chunk".equals(item.getFieldName())) {
+schunk = Integer.parseIntitem..getStringUTF_8;	schunk = Integer.parseInt(item.getString(UTF_8));
+}	}
+if chunks".equalslitem.getFieldNamel {	if ("chunks".equals(item.getFieldName())) {
+schunks = Iteger.parseIntitem..getStringlUTF_8;	schunks = Integer.parseInt(item.getString(UTF_8));
+l	}
+if "name".equalsitemgetFieldName {	if ("name".equals(item.getFieldName())) {
+name= item.getStringUTF_8f;	name = item.getString(UTF_8);
+}	}
+1	}
+}	}
+for fFileItem item : itemsf {	for (FileItem item : items) {
+if !item.isFormFiel {	if (!item.isFormField()) {
+StringtemFileName = name	String temFileName = name;
+if name != nulll  	if (name != null) {
+ifschunk != null 	if (schunk != null) {
+temFileName = schunk +"_"+ name;	temFileName = schunk + "_" + name;
+}	}
+File temFle =newFileUPLOAD_PATH temFileName;	File temFile = new File(UPLOAD_PATH, temFileName);
+if !temFile.existsl {item.writtemFile;	if (!temFile.exists()) { item.write(temFile);
+1	}
+}	}
+}	}
+}	}
+if schunk != null && schunk.intValue ==schunks.intValue -  1 {	if (schunk != null && schunk.intValue() == schunks.intValue() - 1) {
+Fil tempFile = ew FileUPLOAD_PATH,name;	File tempFile = new File(UPLOAD_PATH, name);
+try BufferedOutputStram os =new BufferedOutputStreamnew FieOutputStreamtmpFilel {	try (BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream(tempFile))) {
+for  fint i =0;  i <  schunks; i++  1	for (int i = 0; i < schunks; i++) {
+File file = new FileUPLOAD_PATH, i + "_" +name;	File file = new File(UPLOAD_PATH, i + "_" + name);
+while  !fileexistsl {	while (!file.exists()) {
+Thread.sleep100;	Thread.sleep(100);
+}	}
+bytel btes =  FileUtils.readFileToByteArryfile;	byte[] bytes = FileUtils.readFileToByteArray(file);
+os.writebytesl;	os.write(bytes);
+os.flush;	os.flush();
+iledelete;	file.delete();
+}	}
+os.flush;;	os.flush();
+ catch  IOException e 1	} catch (IOException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+response.geWriter.write"""+ name;	response.getWriter().write("" + name);
+}	}
+}	}

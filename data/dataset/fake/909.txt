@@ -1,0 +1,118 @@
+package v2ch03.MailTest;	package v2ch03.MailTest;
+import javaat.*;	import java.awt.*;
+importjaaawt.een.*;	import java.awt.event.*;
+import  java.util.*;	import java.util.*;
+import  java..net.*;	import java.net.*;
+import  java.i..*;	import java.io.*;
+import jvax.swin.*;	import javax.swing.*;
+public clas MailTest	public class MailTest
+{	{
+public static void mainfStrin args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterne Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public  vid runf	public void run()
+{	{
+Frae frame = new MailTestFrame;	JFrame frame = new MailTestFrame();
+frame.setDfaultCloseOperationlJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;;	frame.setVisible(true);
+	}
+};	});
+}	}
+}	}
+class MailTestFrameextends JFrame	class MailTestFrame extends JFrame
+{	{
+public MailTestFramef	public MailTestFrame()
+{	{
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+setTitle"Mailet";	setTitle("MailTest");
+setLayoutnew GridBagLayoutf;	setLayout(new GridBagLayout());
+addnew JLabel"From:", new GBC0,, 0.setFillGBC.HORIZONTAL;	add(new JLabel("From:"), new GBC(0, 0).setFill(GBC.HORIZONTAL));
+from = new JTextFieldl20;	from = new JTextField(20);
+addlfrom, new BCf1, 0.setFillGBC.HORIZONTAL..setWeightf100, 0;	add(from, new GBC(1, 0).setFill(GBC.HORIZONTAL).setWeight(100, 0));
+addnew JLabel"To:"f, new GBC0, .setFillGBC.HORIZONTAL;	add(new JLabel("To:"), new GBC(0, 1).setFill(GBC.HORIZONTAL));
+to = new JTxtField20;	to = new JTextField(20);
+addto, new GBC1, 1.setFillGBC..HORIZONTAL.setWeight100, 0;	add(to, new GBC(1, 1).setFill(GBC.HORIZONTAL).setWeight(100, 0));
+addnewJLabel"SMTP server:", ew  GBC0,  2..setFillGBC.HORIZONTALl	add(new JLabel("SMTP server:"), new GBC(0, 2).setFill(GBC.HORIZONTAL));
+smtpServer = new JTextField20;	smtpServer = new JTextField(20);
+addsmtpServer,, new GBC1, 2.setFillGBC..HORIZONTAL.setWeightl100, 0f;	add(smtpServer, new GBC(1, 2).setFill(GBC.HORIZONTAL).setWeight(100, 0));
+messge =  new JTextArea;	message = new JTextArea();
+addfnew  JScrollPanemessae, new GBC0, 3, 2, 1.setFillGBC.BTH.setWeightl100,, 100	add(new JScrollPane(message), new GBC(0, 3, 2, 1).setFill(GBC.BOTH).setWeight(100, 100));
+comm = newJTextAreal;	comm = new JTextArea();
+addnew JScrollPanecomm, newGBC0, 4, 2,, 1.setFillGBC.BOTH.etWeight100, 100;	add(new JScrollPane(comm), new GBC(0, 4, 2, 1).setFill(GBC.BOTH).setWeight(100, 100));
+JPanel buttonPanel = new JPanel;	JPanel buttonPanel = new JPanel();
+addbttonPanel, new GBC0,  5, 2,1;	add(buttonPanel, new GBC(0, 5, 2, 1));
+JButtonsendButton =new  JButton"Send"	JButton sendButton = new JButton("Send");
+buttonPaneladdsendButton;	buttonPanel.add(sendButton);
+sendButton.addActionLitenerlew ActionListener	sendButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedfActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+new SwingWorker<Void,, Void>	new SwingWorker<Void, Void>()
+{	{
+proteted Void doInBackgroundl throws Exception	protected Void doInBackground() throws Exception
+	{
+comm.setText"";	comm.setText("");
+senMail;	sendMail();
+return  null;	return null;
+}	}
+}.execute	}.execute();
+1	}
+}f;	});
+}	}
+	
+public void sendMai	public void sendMail()
+{	{
+try	try
+1	{
+Socket s new SocketfsmpServer.getTextf, 25;	Socket s = new Socket(smtpServer.getText(), 25);
+InputStream inStream = s.getInputStream;	InputStream inStream = s.getInputStream();
+OutputStream outStream =s.getOutputStram;;	OutputStream outStream = s.getOutputStream();
+in = new ScannerinStream;	in = new Scanner(inStream);
+out =new  PrintWriterutStrea,true l;	out = new PrintWriter(outStream, true );
+String hostNam = InetAddress.getLocalHostgetHosNamef;	String hostName = InetAddress.getLocalHost().getHostName();
+receive;	receive();
+send"HELO  + hstNamel;	send("HELO " + hostName);
+receive;	receive();
+send"MAIL FROM: <" + fromgetText + "">";	send("MAIL FROM: <" + from.getText() + ">");
+receive;;	receive();
+send"RCPT TO: <" +to.getTextf + >"	send("RCPT TO: <" + to.getText() + ">");
+receive;	receive();
+sndDATA";	send("DATA");
+receive;	receive();
+sendfmesage.getTextfl;	send(message.getText());
+send".";	send(".");
+receive;	receive();
+s.close;	s.close();
+}	}
+catch IOException ef	catch (IOException e)
+	{
+comm.append"Error:"+ e;	comm.append("Error: " + e);
+}	}
+}	}
+	
+public void sendString sl throwsIOExcepion	public void send(String s) throws IOException
+{	{
+comm.appends;	comm.append(s);
+comm.appen"\n"	comm.append("\n");
+out..prints..relaceAlll"\n",, "\r\n"l;	out.print(s.replaceAll("\n", "\r\n"));
+out.print"\r\n";	out.print("\r\n");
+out.flushl;	out.flush();
+}	}
+	
+public void receiv throws IOExcepion	public void receive() throws IOException
+	{
+String line = in.nextLine	String line = in.nextLine();
+omm.appendline;	comm.append(line);
+commappend"\n";	comm.append("\n");
+}	}
+private Scanner  in;;	private Scanner in;
+private PrintWriter  out;	private PrintWriter out;
+private JTextField from;	private JTextField from;
+private JTextField to;	private JTextField to;
+privateJTextFiel smtpServer;;	private JTextField smtpServer;
+private JTextAreamessage;	private JTextArea message;
+private JTextArea comm;	private JTextArea comm;
+public static final int DEFAULT_WIDTH =  300	public static final int DEFAULT_WIDTH = 300;
+public  static  final int DEFAULT_HEIGHT = 300;	public static final int DEFAULT_HEIGHT = 300;
+}	}

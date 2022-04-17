@@ -1,0 +1,34 @@
+import java.awt.*;	import java.awt.*;
+importjavax.swing.*;	import javax.swing.*;
+publicclass SizedFrameTest	public class SizedFrameTest
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+EventQueue..invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+	{
+SizedFrame frame = new SizedFrame;	SizedFrame frame = new SizedFrame();
+frame..setDefaultCloseOperationJFrame.EXIT_ON_CLOE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruef	frame.setVisible(true);
+1	}
+};	});
+	}
+1	}
+class SizdFrame extends JFrame	class SizedFrame extends JFrame
+{	{
+public SizedFramel	public SizedFrame()
+{	{
+	
+Toolkit kit = Toolkit.getDefaultToolki;	Toolkit kit = Toolkit.getDefaultToolkit();
+Dmension screenSize  = kt.getScreenSizel;	Dimension screenSize = kit.getScreenSize();
+int screenHeight= screenize.height;	int screenHeight = screenSize.height;
+int screenWidth = screenSize.width;	int screenWidth = screenSize.width;
+	
+setSizescrenWidth  /2/,/ /s/c/r/e/e/n/H/e/i/g/h/t/  setLocationByPlaformtue;	setSize(screenWidth / /2/,/ /s/c/r/e/e/n/H/e/i/g/h/t/ setLocationByPlatform(true);
+	
+Image img = kit.getImagef"icon.gif";	Image img = kit.getImage("icon.gif");
+setIconImaeimg;;	setIconImage(img);
+setTitle"SizedFrame";	setTitle("SizedFrame");
+}	}
+}	}

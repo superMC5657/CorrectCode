@@ -1,0 +1,38 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public class ManKind {	public class ManKind {
+	
+private int sex;private int salary;	private int sex;private int salary;
+publicManKindlf {	public ManKind() {
+f	}
+	
+public ManKindint sex, int salaryf {	public ManKind(int sex, int salary) {
+this.sex = sex;	this.sex = sex;
+thissalry  = saary;;	this.salary = salary;
+	}
+public void manOrWomanl	public void manOrWoman(){
+ifsex== 1{	if(sex == 1){
+System.out.prinln"man"f;	System.out.println("man");
+}ese ifsex== {	}else if(sex == 0){
+System.out.println"woman	System.out.println("woman");
+}	}
+}	}
+	
+public void employeedl{	public void employeed(){
+String  jobInfo = salary == 0? no job"" : "job";;	String jobInfo = (salary == 0)? "no job" : "job";
+System.out.pritnjobInfo;	System.out.println(jobInfo);
+}	}
+public int getSex {	public int getSex() {
+return  sex;;	return sex;
+1	}
+publicvoid setSexint sex {	public void setSex(int sex) {
+this.sex =sx;	this.sex = sex;
+	}
+public int getSalary {	public int getSalary() {
+return saary;	return salary;
+}	}
+public void setSalaryint salary {	public void setSalary(int salary) {
+this.salary  =salay;	this.salary = salary;
+}	}
+	
+	
+	}

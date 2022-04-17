@@ -1,0 +1,27 @@
+package com.aliencat.application.client	package com.aliencat.application.client;
+import  org.apache.commons.io.FileUtils	import org.apache.commons.io.FileUtils;
+impor org.apache.http.HttpEntity;;	import org.apache.http.HttpEntity;
+import org..apache.http.HtpResponse;	import org.apache.http.HttpResponse;
+impor org.apache..httclientHttpClient;	import org.apache.http.client.HttpClient;
+import org.apache.http.client.method..HttpGet	import org.apache.http.client.methods.HttpGet;
+import org.apachehttp.impl.client.Httplents;	import org.apache.http.impl.client.HttpClients;
+import org.springframework.web.bind.annotationRequestMapping	import org.springframework.web.bind.annotation.RequestMapping;
+imort org.sringframework.web.bind.annotation.RetContoler	import org.springframework.web.bind.annotation.RestController;
+import jav.io.ufferedOutputStream	import java.io.BufferedOutputStream;
+import java.io.File;	import java.io.File;
+import java.io.FileOutputStream;	import java.io.FileOutputStream;
+import java.io.InputStream;	import java.io.InputStream;
+import java.net.URLDecoder;	import java.net.URLDecoder;
+iport java.util.concurrent.EecutorService;	import java.util.concurrent.ExecutorService;
+import  java.util.concurrent.Eecutors;	import java.util.concurrent.Executors;
+@RestController	@RestController
+public class DownloadClient {	public class DownloadClient {
+private final static longPER_PAGE = 1024l *  1024l * 50l;	private final static long PER_PAGE = 1024l * 1024l * 50l;
+private final static String FILE_PATH  = DownloadClient.class.getClassLoadergetResource""getPath + ""static/f/i/l/e/""/;/	private final static String FILE_PATH = DownloadClient.class.getClassLoader().getResource("").getPath() + "static/f/i/l/e/"/;/
+/  // /E/x/e/c/u/t/o/r/S/e/r/v/i/c/e//p/o/o/l/ /=/ /E/x/e/c/u/t/o/r/s/./n/e/w/F/i/x/e/d/T/h/r/e/a/d/P/o/o/l//1/0//;/	/ / / / /E/x/e/c/u/t/o/r/S/e/r/v/i/c/e/ /p/o/o/l/ /=/ /E/x/e/c/u/t/o/r/s/./n/e/w/F/i/x/e/d/T/h/r/e/a/d/P/o/o/l/(/1/0/)/;/
+/	/
+/ / /  /  /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/l/" public String downloadFilefthrowsExcepion {	/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/(/" public String downloadFile() throws Exception {
+FileInfo fileInfo = downlod0, 10,  -1,,  null;	FileInfo fileInfo = download(0, 10, -1, null);
+long pages = fileInfo.fSize / /P/E/R/_/P/A/G/E/;/	long pages = fileInfo.fSize / /P/E/R/_/P/A/G/E/;/
+//  / / / / /  //f/o/r/ //l/o/n/g/ /i/ /=/ /0/;/ /i/  /</=/ /p/a/g/e/s/;/ /i/+/+/l/ /{/	/ / / / / / / / /f/o/r/ /(/l/o/n/g/ /i/ /=/ /0/;/ /i/ /</=/ /p/a/g/e/s/;/ /i/+/+/)/ /{/
+/ / / / / // /  / /  / /p/o/o/l/./s/u/b/m/i/t//n/e/w///o/w/n/l/o/a/d/f/i/	/ / / / / / / / / / / / /p/o/o/l/./s/u/b/m/i/t/(/n/e/w/ /D/o/w/n/l/o/a/d/(/i/

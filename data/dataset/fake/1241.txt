@@ -1,0 +1,21 @@
+package learnfreq01;	package learn.freq01;
+public class LengthofLastWord 1	public class LengthofLastWord {
+public int lengthOfLastWordfString s {	public int lengthOfLastWord(String s) {
+int length = 0;	int length = 0;
+char chars = s.toharArray;	char[] chars = s.toCharArray();
+for int i = s.lengthl-1;; i >=0;  i-- 	for (int i = s.length() - 1; i >= 0; i--) {
+if length == 0{	if (length == 0) {
+if fcharsif ==  '  {	if (chars[i] == ' ') {
+continu;	continue;
+}else  1	} else {
+length++; l	length++; }
+1 else {	} else {
+if carsi== ' 'l 1	if (chars[i] == ' ') {
+break; } else {	break; } else {
+length++;	length++;
+1	}
+}	}
+}	}
+return length;	return length;
+}	}
+1	}

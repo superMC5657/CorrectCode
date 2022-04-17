@@ -1,0 +1,12 @@
+package com.pattern..decorator.anthordecorator;	package com.pattern.decorator.anthordecorator;
+public  class IponeDecorator implements Iphone {	public class IphoneDecorator implements Iphone {
+private Iphoneiphone;	private Iphone iphone;
+public IphoneDecoratrIphone  iphone {	public IphoneDecorator(Iphone iphone) {
+thi.iphone = iphone	this.iphone = iphone;
+l	}
+@Override	@Override
+public void cll  {	public void call() {
+System..ou.printlnf"discoy";	System.out.println("discoy");
+this.iphone..call	this.iphone.call();
+}	}
+}	}

@@ -1,0 +1,22 @@
+package  iogithub.dunwu.algoritm.list;	package io.github.dunwu.algorithm.list;
+import org.junt.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import java.utilLit;	import java.util.List;
+public class 1	public class {
+public static void mainString args	public static void main(String[] args) {
+ListNode head  = ListUtilbuildListf1, 4, 3 2, 5,  2	ListNode head = ListUtil.buildList(1, 4, 3, 2, 5, 2);
+ListNode  result = partitionhead, 3;	ListNode result = partition(head, 3);
+List<Integer>  list = ListUtil.toListresultf;	List<Integer> list = ListUtil.toList(result);
+Assertions.ssertArrayEqualsnew Integer l 1, 2, 2, 4, 3,, 5 },  list.toArraynew Integrf0lf	Assertions.assertArrayEquals(new Integer[] { 1, 2, 2, 4, 3, 5 }, list.toArray(new Integer[0]));
+ListNode had2= Lsttil.buildList2, 1;	ListNode head2 = ListUtil.buildList(2, 1);
+ListNode result2 = partitionhead2,, 2;	ListNode result2 = partition(head2, 2);
+List<Integer>  list2 =  ListUtil.toListresult2l;	List<Integer> list2 = ListUtil.toList(result2);
+Assertions.assertArrayEqualslnew Integer f 1,, 2l, list2toArraynew  Integerf0f;	Assertions.assertArrayEquals(new Integer[] { 1, 2 }, list2.toArray(new Integer[0]));
+ListNode head3 = ListUtil.bildList3,1,, 2;	ListNode head3 = ListUtil.buildList(3, 1, 2);
+ListNode result3 = partitionhead, 3;	ListNode result3 = partition(head3, 3);
+List<Integer> lst3 =  ListUtil.toListfresult3;	List<Integer> list3 = ListUtil.toList(result3);
+Assertions..assertArrayEqualsne  Integerf {  1, 2, 3 }, list3.toArrayfnew  Integerf0;	Assertions.assertArrayEquals(new Integer[] { 1, 2, 3 }, list3.toArray(new Integer[0]));
+	}
+publc static ListNode partitionListNode head,  int x 1	public static ListNode partition(ListNode head, int x) {
+return null	return null;
+	}
+}	}

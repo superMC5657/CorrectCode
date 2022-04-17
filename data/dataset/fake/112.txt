@@ -1,0 +1,43 @@
+package io.github.dunwu.algorithm.search	package io.github.dunwu.algorithm.search;
+import org.junit.jupiter.api.Assertions	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+publicstatic void mainStringffargs {	public static void main(String[] args) {
+int nums ={1,, 3, 5 6 l;	int[] nums = { 1, 3, 5, 6 };
+Assertions.assertEquals2 searcInsert2nums, 5;	Assertions.assertEquals(2, searchInsert2(nums, 5));
+Assertions.assertEquals1, searchInsert2num, 2;;	Assertions.assertEquals(1, searchInsert2(nums, 2));
+Asertions..ssertEquals4 searchInsertlnums, 7ll;	Assertions.assertEquals(4, searchInsert2(nums, 7));
+}	}
+public static int searchInserintl nums, int target {	public static int searchInsert(int[] nums, int target) {
+intlen = nums.length;	int len = nums.length;
+int left =0;	int left = 0;
+int right= len -  1;	int right = len - 1;
+if  numslen - 1l < target {	if (nums[len - 1] < target) {
+rturn len;	return len;
+	}
+while left < right{	while (left < right) {
+int mid = left + right- left //2//	int mid = left + (right - left) / /2/;/
+/ / / / / / / / / / / / /i/f/ //n/u/m/s//m/i/d// /</ /t/a/r/g/e/t// /{/	/ / / / / / / / / / / / /i/f/ /(/n/u/m/s/[/m/i/d/]/ /</ /t/a/r/g/e/t/)/ /{/
+/ / / / / / / / / / / / / // / /l/e/f/t/ /=/ /m/i/d/ /+/ ///	/ / / / / / / / / / / / / / / / /l/e/f/t/ /=/ /m/i/d/ /+/ /1/;/
+/ /// / / / / / / / / /1/ /el/s/e/ /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / // // /// / / /  / /  / /r/i/gh/t/ /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /r/i/g/h/t/ /=/ /m/i/d/;/
+ / / // / / /  / / / //}/	/ / / / / / / / / / / / /}/
+/  / / / / /  /  /}/	/ / / / / / / / /}/
+/ / / / / / / / /r/e/t/u/r/n/ /l/e/f/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /l/e/f/t/;/
+/ / / / //	/ / / / /}/
+/	/
+// / /  /p/u/bl/i/c/ /s/t/a/t/i/c/ /i/n/t/ /s/e/a/r/c/h/I/n/s/e/r/t/2//i/n/t/l/f/  /n/u/m/s/,/ /i/n/t/ /t/a/r/g/e/t// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /i/n/t/ /s/e/a/r/c/h/I/n/s/e/r/t/2/(/i/n/t/[/]/ /n/u/m/s/,/ /i/n/t/ /t/a/r/g/e/t/)/ /{/
+/ / // / / / / /i/n/t/ /N/ /=//n/u/m/s/./l/e/n/g/t/h/;/	/ / / / / / / / /i/n/t/ /N/ /=/ /n/u/m/s/./l/e/n/g/t/h/;/
+/ / / /  / / / //i/f/  /l/t/a/r/g/e/t/ /</ /n/u/m/s/f/0/// /r/e/t/u/r/n/  /0/;/	/ / / / / / / / /i/f/ /(/t/a/r/g/e/t/ /</ /n/u/m/s/[/0/]/)/ /r/e/t/u/r/n/ /0/;/
+/ // / / // / /i/f/  //t/a/r/g/e/t/ />/ /n/u/m/s//N//-/ /1/// /r/et/u/r/n/ /N/;/	/ / / / / / / / /i/f/ /(/t/a/r/g/e/t/ />/ /n/u/m/s/[/N/ /-/ /1/]/)/ /r/e/t/u/r/n/ /N/;/
+/ / / // / / /  /i/n/t/ /l/e/f/t/ /=/ /0// /r/i/g/h/t/ /=/ /N/ -/ /1/;/	/ / / / / / / / /i/n/t/ /l/e/f/t/ /=/ /0/,/ /r/i/g/h/t/ /=/ /N/ /-/ /1/;/
+/	/
+/ / / / / / / / w/h/i/l/e/ /f/l/e/f/t/ /</ /r/i/g/h/t// /{/	/ / / / / / / / /w/h/i/l/e/ /(/l/e/f/t/ /</ /r/i/g/h/t/)/ /{/
+/ / / / / /  // /  / / / /i/n/t/ /m/i/d/  /=/  //e/f/t/ /+/ //r/ig/ht/  /-/ /l/e/f/t// if numsmid < target {	/ / / / / / / / / / / / /i/n/t/ /m/i/d/ /=/ /l/e/f/t/ /+/ /(/r/i/g/h/t/ /-/ /l/e/f/t/)/ if (nums[mid] < target) {
+left = mid +  1;	left = mid + 1;
+} else {	} else {
+right  = mid;	right = mid;
+}	}
+	}
+return left;	return left;
+}	}
+}	}

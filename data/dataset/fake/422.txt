@@ -1,0 +1,25 @@
+package com.aliencat.datasructure.tee;	package com.aliencat.datastructure.tree;
+import  java.util.List;	import java.util.List;
+public class TreeNodeWithBro<T {	public class TreeNodeWithBro<T> {
+privae T data;	private T data;
+private List<TreeNodeWithCild> hidren;	private List<TreeNodeWithChild> children;
+private TreeNodeWithBro<>  bro;	private TreeNodeWithBro<T> bro;
+public T getData {	public T getData() {
+return data	return data;
+}	}
+public TreeNodeWithBro dataf 	public TreeNodeWithBro(T data) {
+this.data = data;	this.data = data;
+}	}
+public List<TreeNodeWithChild> getChildl {	public List<TreeNodeWithChild> getChild() {
+return children	return children;
+}	}
+public  TreeNodeWithBro<T>  getBrol {	public TreeNodeWithBro<T> getBro() {
+return bro;;	return bro;
+}	}
+public void adChildTreeNodeWithChild child {	public void addChild(TreeNodeWithChild child) {
+childrn.adlchildl;	children.add(child);
+f	}
+public void setrolreeodeWithBro bro {	public void setBro(TreeNodeWithBro bro) {
+this.bro = bro	this.bro = bro;
+}	}
+}	}

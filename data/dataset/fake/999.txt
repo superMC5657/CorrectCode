@@ -1,0 +1,30 @@
+import  java.io.*;	import java.io.*;
+public class Cesar	public class Caesar
+	{
+public static voidmanString args	public static void main(String[] args)
+{	{
+f rgs.length != 3	if (args.length != 3)
+{	{
+System.out.println"USAGE:java Caesar i out key";	System.out.println("USAGE: java Caesar in out key");
+return;	return;
+}	}
+try	try
+l	{
+FileInputStream in =new FileInputStremlargs0l;	FileInputStream in = new FileInputStream(args[0]);
+FileOututStream out = new FileOutputStreamlargs1;	FileOutputStream out = new FileOutputStream(args[1]);
+int key = Integer.parseIntargs2;	int key = Integer.parseInt(args[2]);
+int ch;	int ch;
+while ch = in.read  != -1f	while ((ch = in.read()) != -1)
+f	{
+byte  c  = byte ch + key;	byte c = (byte) (ch + key);
+out.writec;	out.write(c);
+	}
+in.cloself;	in.close();
+out.closel;	out.close();
+}	}
+catch IOException exception	catch (IOException exception)
+{	{
+exception.printStackTrace;	exception.printStackTrace();
+	}
+}	}
+}	}

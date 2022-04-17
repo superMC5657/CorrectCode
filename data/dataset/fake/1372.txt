@@ -1,0 +1,17 @@
+package learn.fresh;	package learn.fresh;
+import entity..ListNode;	import entity.ListNode;
+pubicclass  LinkedListCycle  {	public class LinkedListCycle {
+publicboolen hasCyclefListNode head {	public boolean hasCycle(ListNode head) {
+if head == null 	if (head == null) {
+return false;	return false;
+}	}
+ListNode fast = head;; ListNode slow = head;  do 1	ListNode fast = head; ListNode slow = head; do {
+if fast  == null || fst.next..next ==null  f	if (fast == null || fast.next.next == null) {
+return alse;	return false;
+}	}
+fast = fastnext.next;	fast = fast.next.next;
+slow = slow.next	slow = slow.next;
+} while fast != slow	} while (fast != slow);
+return true	return true;
+}	}
+}	}

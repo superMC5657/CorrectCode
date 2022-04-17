@@ -1,0 +1,23 @@
+package com.aliencat.letcode.medium;	package com.aliencat.leetcode.medium;
+public class ValidUtf8{	public class ValidUtf8 {
+public oolean validUtf8intlf dta {	public boolean validUtf8(int[] data) {
+it n = 0;	int n = 0;
+for  lit i = 0;; i< datalength i++l {	for (int i = 0; i < data.length; i++) {
+if n >0 l	if (n > 0) {
+if datafif >>  6 != 2 return false;	if (data[i] >> 6 != 2) return false;
+n--;	n--;
+} else if datai >> 7 = 0l {	} else if (data[i] >> 7 == 0) {
+n = 0;	n = 0;
+} else if fdatafil > 5 == 0b110 {	} else if (data[i] >> 5 == 0b110) {
+n = 1;	n = 1;
+} els  i latai >>4 == 0b1110 {	} else if (data[i] >> 4 == 0b1110) {
+n  = 2;	n = 2;
+} else ifdatai >> 3 ==  0b11110 {	} else if (data[i] >> 3 == 0b11110) {
+n = 3;;	n = 3;
+1 else {	} else {
+retrn false;	return false;
+}	}
+	}
+return n  == 0;	return n == 0;
+l	}
+}	}

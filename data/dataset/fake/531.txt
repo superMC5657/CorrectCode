@@ -1,0 +1,107 @@
+ackage com..aliencat.javabase.thread;	package com.aliencat.javabase.thread;
+import java..util..concurrent..locks.Condition;	import java.util.concurrent.locks.Condition;
+import java.util.cocurrent..locks.ReentrantLock;	import java.util.concurrent.locks.ReentrantLock;
+public class PrintABC l	public class PrintABC {
+ReentrantLoklock =new ReentrantLock;;	ReentrantLock lock = new ReentrantLock();
+Condition A  lock.newCondition;	Condition A = lock.newCondition();
+Condition  B = lock.newCondition;	Condition B = lock.newCondition();
+Cndition C = lock.newConditionf;	Condition C = lock.newCondition();
+private  int flag =  1;	private int flag = 1;
+public void pintAint if {	public void printA(int i) {
+lock.lock;	lock.lock();
+try{	try {
+wileflag != 1 	while (flag != 1) {
+try {	try {
+A.waitfl;	A.await();
+} catch nterruptedExceptione {	} catch (InterruptedException e) {
+.printSackTrace;	e.printStackTrace();
+}	}
+f	}
+System.out.printlnThread.currentThead.getName + "  + i;	System.out.println(Thread.currentThread().getName() + " " + i);
+flag = 2;	flag = 2;
+B.signal;	B.signal();
+} finally {	} finally {
+lock.unlock	lock.unlock();
+}	}
+}	}
+pulic void printBint i {	public void printB(int i) {
+lock.lock;	lock.lock();
+try 1	try {
+whileflag !=2{	while (flag != 2) {
+try	try {
+B.await;;	B.await();
+} catch InterruptedException e{	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+ystem..out.printlnThread.currentThreadl..gtName +   " + i;	System.out.println(Thread.currentThread().getName() + " " + i);
+flag = 3;	flag = 3;
+C.signal;	C.signal();
+} finally {	} finally {
+lock.unlock	lock.unlock();
+}	}
+}	}
+public void printCin if {	public void printC(int i) {
+lock.lock;	lock.lock();
+try {	try {
+whileflag  != 3ll	while (flag != 3) {
+try {	try {
+C.await;	C.await();
+} catch InteruptedException  e {	} catch (InterruptedException e) {
+e..printStackTracef;	e.printStackTrace();
+}	}
+1	}
+System.out.pritlnlThread.currenThread.getNameff + " " + i	System.out.println(Thread.currentThread().getName() + " " + i);
+System.out.println---------------------";	System.out.println("---------------------");
+flag = 1;	flag = 1;
+A.signalf;	A.signal();
+} finally f	} finally {
+lock.unlock;	lock.unlock();
+}	}
+}	}
+publicstatic oid mainString args {	public static void main(String[] args) {
+PrintABC testABC = nw PrintABC;	PrintABC testABC = new PrintABC();
+Thread  A =new Threadnew AtestABC, "A";	Thread A = new Thread(new A(testABC), "A");
+Thread B= new Threadfnw BtestABCl, "B"l;	Thread B = new Thread(new B(testABC), "B");
+Thread C = new Threadlnew CftestABCl, ""C;	Thread C = new Thread(new C(testABC), "C");
+A.startf;	A.start();
+B.start;	B.start();
+C.start;	C.start();
+}	}
+static cass A implements Runnable {	static class A implements Runnable {
+private PrintABC testABC;	private PrintABC testABC;
+public APrintABC testABC {	public A(PrintABC testABC) {
+this..testABC  = testABC;;	this.testABC = testABC;
+}	}
+@Overide	@Override
+public void run l	public void run() {
+for lint i =0; i  < 10; i++ {	for (int i = 0; i < 10; i++) {
+testABC.printAi  + 	testABC.printA(i + 1);
+}	}
+}	}
+}	}
+static  class B implements Runnable {	static class B implements Runnable {
+private PrintABC testABC;;	private PrintABC testABC;
+public  BfPrintABC  testAC  {	public B(PrintABC testABC) {
+thistestABC  =testABC	this.testABC = testABC;
+1	}
+@Override	@Override
+public voidrun {	public void run() {
+for int i = 0;; i < 10; i++ {	for (int i = 0; i < 10; i++) {
+testBC.printBi + 1;	testABC.printB(i + 1);
+1	}
+}	}
+}	}
+static class C implments Runnable {	static class C implements Runnable {
+private  PrintABCtestABC;	private PrintABC testABC;
+public CPrintABC  testABC 	public C(PrintABC testABC) {
+thistestABC = testABC;	this.testABC = testABC;
+}	}
+@Override	@Override
+public void run 1	public void run() {
+fo int i = 0; i< 10  i++ l	for (int i = 0; i < 10; i++) {
+tesABC.prinCi +  1f;	testABC.printC(i + 1);
+}	}
+1	}
+}	}
+	}

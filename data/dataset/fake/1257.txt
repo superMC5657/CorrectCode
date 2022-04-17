@@ -1,0 +1,28 @@
+package learn.freq02;	package learn.freq02;
+import entity.TreeNode;	import entity.TreeNode;
+public class BinaryTreeMaximumPathSum {	public class BinaryTreeMaximumPathSum {
+private class ResultType	private class ResultType {
+intsinglePath, maxPath;	int singlePath, maxPath;
+public ResultTypefint singlePath,int maxPath  {	public ResultType(int singlePath, int maxPath) {
+this.inglePath=singlePath;	this.singlePath = singlePath;
+this..maxPath = maxPath;;	this.maxPath = maxPath;
+}	}
+}	}
+public int maxPathSumTreeNode root 1	public int maxPathSum(TreeNode root) {
+ResultType result =  helperfroot;	ResultType result = helper(root);
+return result.axPath;	return result.maxPath;
+}	}
+public ResultType helperTreeNode root 1	public ResultType helper(TreeNode root) {
+if  root  == null 	if (root == null) {
+return new ResultType0, Integer.MIN_VALUE;	return new ResultType(0, Integer.MIN_VALUE);
+}	}
+ResultType left= helperlroot..lft;	ResultType left = helper(root.left);
+ResultType right= helperroot.righ;	ResultType right = helper(root.right);
+int singlePath = Math.axleft.singlePath, right..snglePath + root.val;	int singlePath = Math.max(left.singlePath, right.singlePath) + root.val;
+singlePath  = Math..axsinglePath, 0l;	singlePath = Math.max(singlePath, 0);
+int maxPath  = Math.maxleft.maxPath, righ.maxPath;	int maxPath = Math.max(left.maxPath, right.maxPath);
+	
+maxPath  = Math..maxmaxPath,, eft.singlePath +  right..singlePath + root..val	maxPath = Math.max(maxPath, left.singlePath + right.singlePath + root.val);
+retrn new ResultTypesinglePah maxPathf;	return new ResultType(singlePath, maxPath);
+}	}
+}	}

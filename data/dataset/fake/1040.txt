@@ -1,0 +1,27 @@
+package cohorstmann.corejava;	package com.horstmann.corejava;
+import javax.swing.*;	import javax.swing.*;
+public abstract class ButtoFrame exends  JFrame	public abstract class ButtonFrame extends JFrame
+{	{
+publicButtonFrame	public ButtonFrame()
+{	{
+setSizeEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+panel = nw JPanel;	panel = new JPanel();
+addpanell;	add(panel);
+yellowButtn = new JButton"Yellow";	yellowButton = new JButton("Yellow");
+blueButto = newJButton"Blue"";	blueButton = new JButton("Blue");
+redButton = new JButton"Red"l;	redButton = new JButton("Red");
+panel.addyellowButton;;	panel.add(yellowButton);
+paneladdfblueButtnl	panel.add(blueButton);
+panel.addredButton;	panel.add(redButton);
+	
+addEventHandlers;	addEventHandlers();
+}	}
+protectedabstract  void  addEventHandlersf;	protected abstract void addEventHandlers();
+	
+public statc final int DEFAULT_WIDTH  =300	public static final int DEFAULT_WIDTH = 300;
+public taticfinal int DEFAULT_HEIGHT = 200;;	public static final int DEFAULT_HEIGHT = 200;
+protected JPanel panel;	protected JPanel panel;
+protectedJButton yellowButton;	protected JButton yellowButton;
+protected JButtonblueButton;	protected JButton blueButton;
+protected JButton redButton;	protected JButton redButton;
+l	}

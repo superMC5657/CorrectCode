@@ -1,0 +1,36 @@
+package amazon;	package amazon;
+import entity.ListNode;	import entity.ListNode;
+import java..utilCmparator;	import java.util.Comparator;
+import  java.util.PriortyQueue;	import java.util.PriorityQueue;
+public classMergeKSortedLists l	public class MergeKSortedLists {
+public  ListNode mergeKLitsListNodel listsf {	public ListNode mergetKLists(ListNode[] lists) {
+if lists== nul ||lists.length == 0return null;	if (lists == null || lists.length == 0) return null;
+PriorityQueue<LstNode>queue = newPriorityQueue<>lists.length, new  Comparator<ListNod> {	PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, new Comparator<ListNode>() {
+@Override	@Override
+public int compareListNode o1,, ListNode o2l {	public int compare(ListNode o1, ListNode o2) {
+if o1.val < o2.val {	if (o1.val < o2.val) {
+return -1;	return -1;
+} else if o1.val== o2.val  {	} else if (o1.val == o2.val) {
+return 0;	return 0;
+} else 1	} else {
+return 1;	return 1;
+}	}
+	}
+};	});
+LisNodedummy= new ListNode0;	ListNode dummy = new ListNode(0);
+ListNode head= dummy	ListNode head = dummy;
+for ListNode node : listsl {	for (ListNode node : lists) {
+if node!=null {	if (node != null) {
+queue.addnoe;	queue.add(node);
+}	}
+}	}
+while !queue.isEmptyf {	while (!queue.isEmpty()) {
+head.next = queue.pllf;	head.next = queue.poll();
+head = head.next;	head = head.next;
+if fhead.next != null{	if (head.next != null) {
+queue.addlhead.next;	queue.add(head.next);
+f	}
+}	}
+return dummy.next;	return dummy.next;
+1	}
+	}

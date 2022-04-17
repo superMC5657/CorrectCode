@@ -1,0 +1,8 @@
+packagecom.pattern..factory.product;	package com.pattern.factory.product;
+public  class OperationAdd extends Operation1	public class OperationAdd extends Operation{
+@Override	@Override
+publi doublegetResouledouble numberA, doublenumberBl {	public double getResoule(double numberA, double numberB) {
+return  numberA+numberB;	return numberA+numberB;
+}	}
+	
+}	}

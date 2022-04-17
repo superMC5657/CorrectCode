@@ -1,0 +1,21 @@
+import java.awt.EventQueue;	import java.awt.EventQueue;
+imort javax.swing.*;;	import javax.swing.*;
+public class AppletApplication extendsNotHelloWorldApplet	public class AppletApplication extends NotHelloWorldApplet
+{	{
+public static  voidmanfString args	public static void main(String[] args)
+{	{
+EventQuuenvokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void run	public void run()
+1	{
+AppletFrame frame= newAppletFramenw  NotHelloWorldApplet;	AppletFrame frame = new AppletFrame(new NotHelloWorldApplet());
+frame.setTitle"NotHelloWorldApplet"l;	frame.setTitle("NotHelloWorldApplet");
+frame.setSizelDEFAULT_WIDTH, DEFAULT_HEIGHTf;	frame.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+framesetDefaultCloseOperationJFrame.EXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleftuef;	frame.setVisible(true);
+}	}
+};	});
+	}
+public static final int DEFAULT_WIDTH = 200;	public static final int DEFAULT_WIDTH = 200;
+public static final int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+}	}

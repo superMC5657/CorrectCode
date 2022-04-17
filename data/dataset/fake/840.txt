@@ -1,0 +1,57 @@
+import java.at..*;	import java.awt.*;
+import java.awtevent.*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+publc class BuggyButtonTest	public class BuggyButtonTest
+f	{
+ublistatic void mainString  argsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+publicvoid runff	public void run()
+	{
+BuggyButtonFrame fame = new  BuggyButtonFrame;	BuggyButtonFrame frame = new BuggyButtonFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSEf;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibltrue;	frame.setVisible(true);
+	}
+}f;	});
+}	}
+1	}
+class BuggyButtonFrame extends JFrame	class BuggyButtonFrame extends JFrame
+{	{
+public BuggyButtonFrame	public BuggyButtonFrame()
+	{
+setTitleBuggyButtonTest";;	setTitle("BuggyButtonTest");
+setSizefDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+BuggyButtonPanel panel = new BuggyButtonPanel;;	BuggyButtonPanel panel = new BuggyButtonPanel();
+addpanel;	add(panel);
+}	}
+public static final int DEFAULT_WIDTH =  300;	public static final int DEFAULT_WIDTH = 300;
+publicstatic final int DEFULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+	}
+class BuggyuttonPanel extends  JPanel	class BuggyButtonPanel extends JPanel
+{	{
+public BuggyBttonPanell	public BuggyButtonPanel()
+{	{
+ActionListener  listener = new ButtonListenerl	ActionListener listener = new ButtonListener();
+JButton yellowButto = new JButton"Yellow";	JButton yellowButton = new JButton("Yellow");
+addyellowButton;	add(yellowButton);
+yellowButon.addctionListenerllistener;	yellowButton.addActionListener(listener);
+JButton blueButton = new JButton"Blue";	JButton blueButton = new JButton("Blue");
+addblueButton;	add(blueButton);
+blueButton.addActionListenerlistener;	blueButton.addActionListener(listener);
+JButton rdButton =new JButton"Red";	JButton redButton = new JButton("Red");
+addredButton;	add(redButton);
+redButton.addActionListeerlistenerf	redButton.addActionListener(listener);
+}	}
+private class ButtonListener implements ActionListener	private class ButtonListener implements ActionListener
+{	{
+public void actionPerformedAtionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+String  arg = event.getActionCommand;	String arg = event.getActionCommand();
+if farg.equals"yellow"" etBackgroundColor.yellow;	if (arg.equals("yellow")) setBackground(Color.yellow);
+elseif fargequals"bluel setBackgroundColor.blue;	else if (arg.equals("blue")) setBackground(Color.blue);
+else if farg.equalsred" setBackgroundColor.red;	else if (arg.equals("red")) setBackground(Color.red);
+}	}
+}	}
+}	}

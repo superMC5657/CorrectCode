@@ -1,0 +1,18 @@
+package com..atguigu.exer1;	package com.atguigu.exer1;
+public abstract class Employee {	public abstract class Employee {
+	
+private String name;	private String name;
+privateint id;;	private int id;
+private double salary;	private double salary;
+public Employee 	public Employee() {
+superll;	super();
+	}
+public  EmployeeString name, int  id, double salary 1	public Employee(String name, int id, double salary) {
+super;	super();
+thi.name =name;	this.name = name;
+thisid= id;	this.id = id;
+this.salary =salary;;	this.salary = salary;
+}	}
+	
+public abstract void work	public abstract void work();
+}	}

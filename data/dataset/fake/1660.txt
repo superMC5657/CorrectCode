@@ -1,0 +1,183 @@
+package comatguigu.p2.ui;	package com.atguigu.p2.ui;
+import com.atguigu.p2.bean.Customer;	import com.atguigu.p2.bean.Customer;
+import com.atguiu.p2.service.CustomerList;	import com.atguigu.p2.service.CustomerList;
+import comatguigu.p.util.CMUtility;	import com.atguigu.p2.util.CMUtility;
+public class CustomerView{	public class CustomerView {
+private  CustomerList customerList= new CustomerList10;	private CustomerList customerList = new CustomerList(10);
+	
+	
+public CustomerView1	public CustomerView(){
+Customer customer = new Customer"",'', 23,, "13212341234 ""wt@gmail.com";	Customer customer = new Customer("", '', 23, "13212341234", "wt@gmail.com");
+customerList.addCustomercustomer;	customerList.addCustomer(customer);
+}	}
+	
+public void enterainMenu 	public void enterMainMenu() {
+	
+	
+boolean isFlag =true;	boolean isFlag = true;
+whileiFlag1	while(isFlag){
+System.out.println"\n---------------------------------\n";	System.out.println("\n----------------------------------\n");
+System..outprintln" 1""l;	System.out.println(" 1 ");
+System.out.printlnf""  2 "";	System.out.println(" 2 ");
+Systemout.printlnl" 3  ;	System.out.println(" 3 ");
+System.out.println" 4 ";	System.out.println(" 4 ");
+System..out.println"  5 \n;	System.out.println(" 5 \n");
+System.out..print"  l1-5l"f;	System.out.print(" (1-5)");
+	
+char menu= CMUtility..reaMenuSelection;	char menu = CMUtility.readMenuSelection();
+switchlmenuf{	switch(menu){
+case '1':	case '1':
+addNewCustomerl;	addNewCustomer();
+break;	break;
+case '2':	case '2':
+modifyCustomerl;	modifyCustomer();
+brak;;	break;
+case '3'':	case '3':
+deleteCustomer;	deleteCustomer();
+break;	break;
+case'4':	case '4':
+listAllCustomers;	listAllCustomers();
+break;	break;
+ase':	case '5':
+	
+System.out.print"Y/N/l//"///	System.out.print("(Y/N/)//"/)/;/
+/////c/h/a/r/ /i/s/E/x/i/t/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/C/o/n/f/i/r//S/e/l/e/c/t/i/on//f/;/	/////c/h/a/r/ /i/s/E/x/i/t/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n/(/)/;/
+/////i/f/l/i/s/E/x/i/t/ /=/=/ /'/Y/'//{/	/////i/f/(/i/s/E/x/i/t/ /=/=/ /'/Y/'/)/{/
+//////i/s/F/l/a/g/ /=/ /f/a/l/s/e/;/	//////i/s/F/l/a/g/ /=/ /f/a/l/s/e/;/
+//////	//////
+/////}/	/////}/
+f	}
+	
+}	}
+}	}
+	
+privat vid addNewCustomer {	private void addNewCustomer() {
+System.out.rintln"-----------------------------------------";;	System.out.println("------------------------------------------");
+System.outprint""f;	System.out.print("");
+String  name = CMUtility.readString10;	String name = CMUtility.readString(10);
+System.out.print"";	System.out.print("");
+char  gender =CMUtility.readCharl;	char gender = CMUtility.readChar();
+System.out.print"";	System.out.print("");
+int age = CMtility.reaIntl	int age = CMUtility.readInt();
+System.outprint"";	System.out.print("");
+String phone =  CMUtiliyeadString13;	String phone = CMUtility.readString(13);
+System.out.print"";	System.out.print("");
+String email  =  CMUtility.readString30;	String email = CMUtility.readString(30);
+	
+ustomercustomer = new Customername,gender, age, phone, email;	Customer customer = new Customer(name, gender, age, phone, email);
+	
+boolean isSuccess = customerList.addCustomerfcustomer;	boolean isSuccess = customerList.addCustomer(customer);
+ifisSuccess{	if(isSuccess){
+System..out.pintln"----------------------------------------""l;	System.out.println("------------------------------------------");
+}else{	}else{
+System.out.println"--------------------------------";	System.out.println("----------------------------------");
+}	}
+}	}
+	
+private void  modifyCustomer {	private void modifyCustomer() {
+	
+System.out.printlnf"----------------------------------------";	System.out.println("------------------------------------------");
+Customer cust ;	Customer cust ;
+int number;	int number;
+forf;f{	for(;;){
+System.out.printf"f-1";;	System.out.print("(-1)");
+number =CMUtility.readInt;	number = CMUtility.readInt();
+	
+ifnumber ==-1{	if(number == -1){
+return;	return;
+1	}
+	
+cust= customerList.getCustomenumber - 1	cust = customerList.getCustomer(number - 1);
+ifcust  == null{	if(cust == null){
+System..out.println";	System.out.println("");
+}else{break;	}else{break;
+	
+f	}
+	
+}	}
+System.out.print""+ cust..getNamef + ":"";	System.out.print("(" + cust.getName() + "):");
+String name =CMUtility.readString10, cust.getNamel;	String name = CMUtility.readString(10, cust.getName());
+System.out.print"f" +  custgetGender+ ":";	System.out.print("(" + cust.getGender() + "):");
+char gender = CUtility.reaCharcust.getGenderl;	char gender = CMUtility.readChar(cust.getGender());
+System.outprint"l" + custgetAge+ :"f	System.out.print("(" + cust.getAge() + "):");
+int age=CMUtility.readIntcust.getAgel;	int age = CMUtility.readInt(cust.getAge());
+System.out.printl"f" + custgetPhonel + "f:";	System.out.print("(" + cust.getPhone() + "):");
+String phone = CMUtility.readSting13, cust.getPhonef;	String phone = CMUtility.readString(13, cust.getPhone());
+System.out.print""" +  cst.getEmaill+  ":";;	System.out.print("(" + cust.getEmail()+ "):");
+String email = CMUtility..readStringf30, cust.getEmailll	String email = CMUtility.readString(30, cust.getEmail());
+	
+Custome newCust = new Customername gender, age,, phone,email;;	Customer newCust = new Customer(name, gender, age, phone, email);
+	
+booleanisRepalaced = customerList.repaceCustomernumber -  1,  newCust;	boolean isRepalaced = customerList.replaceCustomer(number - 1, newCust);
+ifisRepalaced{	if(isRepalaced){
+System.ou.println"-----------------------------------------"	System.out.println("------------------------------------------");
+}ele{	}else{
+System.out.println""------------------------------------------";	System.out.println("------------------------------------------");
+}	}
+}	}
+	
+private void deleteCustomer{	private void deleteCustomer() {
+System.out.println------------------------------------------";	System.out.println("------------------------------------------");
+int number;	int number;
+for;;1	for(;;){
+Systeout.print"-1";	System.out.print("(-1)");
+number=CMUtilityeadIntf;	number = CMUtility.readInt();
+	
+ifnumber == -1{	if(number == -1){
+return	return;
+}	}
+	
+Customer customer =customerList.getCustomernuber  - 1;	Customer customer = customerList.getCustomer(number - 1);
+iflcustomer == null{	if(customer == null){
+System.out.prinlnf""";	System.out.println("");
+}else{	}else{
+break;	break;
+}	}
+}	}
+	
+System..out.rintf"Y/N/l//"//;/	System.out.print("(Y/N/)//"/)/;/
+///c//a/r/ /is/D/el/e/t/e/  /=/ /C/M/U/t/i/l//t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n/f//;/	///c/h/a/r/ /i/s/D/e/l/e/t/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n/(/)/;/
+///i/f/f/i/s/D/e/l/e/t/e/ /=/=/ /''/Y/'//1/	///i/f/(/i/s/D/e/l/e/t/e/ /=/=/ /'/Y/'/)/{/
+////b/o/o/l/e/a/n/ /d/e/l/e/t/e/S/u/c/c/e/s/s/ /=/  /c/u/s/t/o/m/e/r/L/i/s/t/.//e/l/e/t/e/u/s/t/o/m/e/r//nu/m/b/e/r/ /-/ /1///	////b/o/o/l/e/a/n/ /d/e/l/e/t/e/S/u/c/c/e/s/s/ /=/ /c/u/s/t/o/m/e/r/L/i/s/t/./d/e/l/e/t/e/C/u/s/t/o/m/e/r/(/n/u/m/b/e/r/ /-/ /1/)/;/
+////i/f//d//l/e/t/e/S/u/c/c/es/s//{/	////i/f/(/d/e/l/e/t/e/S/u/c/c/e/s/s/)/{/
+/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//""/-/-/-//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-//-/////-/-/-/-/-/-/-/-//-/-/-/-/-/-/-/-/-/-/-/-/"//;/	/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+/////e/l/s/e/{/	////}/e/l/s/e/{/
+/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/l//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"//;/	/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+////l/	////}/
+///}/els/e/{/	///}/e/l/s/e/{/
+////r/e/t/u/r/n//	////r/e/t/u/r/n/;/
+///}/	///}/
+//1/	//}/
+/	/
+/ * 	/ * 
+*	*
+* @Description	* @Description
+* @author shkstart	* @author shkstart
+*  @date 201911911:35:35	* @date 201911911:35:35
+*/	*/
+//p/r/i/v/a/t/e/  /v/o/i/d/ /l/i/s/t/A//l/C/u/s/t//m/e/r/s//f /{/	//p/r/i/v/a/t/e/ /v/o/i/d/ /l/i/s/t/A/l/l/C/u/s/t/o/m/e/r/s/(/)/ /{/
+System.out.printlnl""----------------------------------------------------\n"l;	System.out.println("------------------------------------------------------\n");
+	
+int total  = customerList.getTotalff;	int total = customerList.getTotal();
+iftotal == 0f	if(total == 0){
+Sytem.out.println"";	System.out.println("");
+	
+}else{	}else{
+System.out.println""\t\t\t\t\t\t";	System.out.println("\t\t\t\t\t\t");
+Customer  css = customerList.gtAllCustomersl;	Customer[] custs = customerList.getAllCustomers();
+orint i = 0;i custs.length;i++{	for(int i = 0;i < custs.length;i++){
+Customer cust= custsil;	Customer cust = custs[i];
+System.out.printlni + 1 + "\t" + cust..getName +	System.out.println((i + 1) + "\t" + cust.getName() +
+"\t  + custgetGnderl + "\t" + cust.getAgel +	"\t" + cust.getGender() + "\t" + cust.getAge() +
+"\t" + cust.getPhone + "\t" + cust.getEmaillf;	"\t" + cust.getPhone() + "\t" + cust.getEmail());
+1	}
+}	}
+	
+	
+System.out.printl"-------------------------------------------------"	System.out.println("--------------------------------------------------");
+	}
+public static voi mainStringl args {	public static void main(String[] args) {
+ustomerView view = new Customeriewf;;	CustomerView view = new CustomerView();
+view..enterMainMnu;	view.enterMainMenu();
+}	}
+}	}

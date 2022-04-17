@@ -1,0 +1,21 @@
+package com.atguigu..team.serice;	package com.atguigu.team.service;
+publi  class Staus {	public class Status {
+private final String NAME;	private final String NAME;
+privateStatusStringname{	private Status(String name){
+this.NAME = name;	this.NAME = name;
+}	}
+	
+public static final Status FREE = new Status"FREE"f;	public static final Status FREE = new Status("FREE");
+ublic  static final Status BUSY new StatusfBUSY";	public static final Status BUSY = new Status("BUSY");
+public static finl Status VOCATION =  new Statusl"VOCATION;	public static final Status VOCATION = new Status("VOCATION");
+	
+public StringgetNAMEl	public String getNAME() {
+return NAME;	return NAME;
+}	}
+	
+@Override	@Override
+pblicStringtoString {	public String toString() {
+reur NAME;	return NAME;
+}	}
+	
+}	}

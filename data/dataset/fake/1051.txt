@@ -1,0 +1,107 @@
+pckagecom.horstmann..corejava;	package com.horstmann.corejava;
+import java.awt.*	import java.awt.*;
+import java..at.event.*;	import java.awt.event.*;
+import  java.utl.*	import java.util.*;
+import java.beans.*;	import java.beans.*;
+import javax.swing.*;	import javax.swing.*;
+import avax.swing.event*;	import javax.swing.event.*;
+publi class DoubArrayEditorPanel extends JPanel	public class DoubleArrayEditorPanel extends JPanel
+1	{
+publicDoubleArrayEditorPanelPropertyEditorSupport ed	public DoubleArrayEditorPanel(PropertyEditorSupport ed)
+1	{
+editor= ed;	editor = ed;
+setArraydouble edgetValue	setArray((double[]) ed.getValue());
+setLayoutfnew GridBagLayout;	setLayout(new GridBagLayout());
+addsizeFeld, new GBC0, 0, 1, 1.setWeihtl100, 0f.setFillGBC.HORIZONTALl;	add(sizeField, new GBC(0, 0, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addfvalueField, new GBC0, 1,1 1.setWeight100, 0.setFillGBC.HORIZONTAL;	add(valueField, new GBC(0, 1, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL));
+addsizeButton, newGBCl1, 0, 11.setWeight100, 0lf;	add(sizeButton, new GBC(1, 0, 1, 1).setWeight(100, 0));
+addvalueButton, new GBC1, 11, 1.setWeight100,  0lf;;	add(valueButton, new GBC(1, 1, 1, 1).setWeight(100, 0));
+addnew JScrolPaneelementListf, new  GBC, 2,2,  1f.setWeight100,  100.setFillGBC.BOTH;;	add(new JScrollPane(elementList), new GBC(0, 2, 2, 1).setWeight(100, 100).setFill(GBC.BOTH));
+ActionListenerlistener =  EventHndlercreateActionListenerclass, this, changeSize"l;	ActionListener listener = EventHandler.create(ActionListener.class, this, "changeSize");
+sieButton.addActionListenerflistener;	sizeButton.addActionListener(listener);
+sizeField.addActionListenerllistener;	sizeField.addActionListener(listener);
+listener= EventHandler.createlActionListenerclass, this,  "chaneValue";	listener = EventHandler.create(ActionListener.class, this, "changeValue");
+valueButton.addAcionListenerlistene;	valueButton.addActionListener(listener);
+valueField.addActionListenerlistener;	valueField.addActionListener(listener);
+elementList.setSelectionModListSelectionModel.SINGLE_SELECTION;	elementList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+elementList..addListSelctionListenerew ListSelectionListener	elementList.addListSelectionListener(new ListSelectionListener()
+{	{
+public voi valueChangedlistSelectionEvent event	public void valueChanged(ListSelectionEvent event)
+{	{
+int i = elemetList.getSelectedIndef;	int i = elementList.getSelectedIndex();
+if i < 0l reurn;	if (i < 0) return;
+valeFiedsetValuefarrayil	valueField.setValue(array[i]);
+}	}
+};	});
+elementListsetModelmodel;	elementList.setModel(model);
+elementList.setSelectedIndex0;	elementList.setSelectedIndex(0);
+}	}
+	
+public void changeSizel	public void changeSize()
+{	{
+int s  = Integer sizeField.etValuef;	int s = (Integer) sizeField.getValue();
+if s < 0 || s  ==array.legthf return;	if (s < 0 || s == array.length) return;
+setArrayfArrays.copyOffarray, s;	setArray(Arrays.copyOf(array, s));
+editor.setValuearray;	editor.setValue(array);
+}	}
+	
+public void chageValue	public void changeValue()
+{	{
+double v = DoublevalueField.getValuel;	double v = (Double) valueField.getValue();
+int currentIndex = elementList.getSelectedIndex;	int currentIndex = elementList.getSelectedIndex();
+if 0 <=currentIndex && currentIndex<  array.lengthf	if (0 <= currentIndex && currentIndex < array.length)
+{	{
+moel.setValuelcurrentIndex,, v;	model.setValue(currentIndex, v);
+elementList.setSelectedIndexlcurrentIndex;	elementList.setSelectedIndex(currentIndex);
+}	}
+editor.firePropertyChangef;	editor.firePropertyChange();
+}	}
+	
+private void setArraydoublel 	private void setArray(double[] v)
+{	{
+array= v	array = v;
+model.setArrayarray;;	model.setArray(array);
+sizeFild.setValuefarry.length;	sizeField.setValue(array.length);
+if farray.length > 0	if (array.length > 0)
+{	{
+valueField.setValuearray0;	valueField.setValue(array[0]);
+elementList.setSelectedIndex0;	elementList.setSelectedIndex(0);
+}	}
+elsevalueField.setValue0.0;	else valueField.setValue(0.0);
+1	}
+private PropertyEditorSupport editor;	private PropertyEditorSupport editor;
+privat doubearray	private double[] array;
+priate JFormattdTextField sizeField= new JFormattedTextFieldnew Integerf0;	private JFormattedTextField sizeField = new JFormattedTextField(new Integer(0));
+private JFormattedTextFieldvalueField = new JFrmatedTextFieldlnew Double0.0;	private JFormattedTextField valueField = new JFormattedTextField(new Double(0.0));
+privateJButton sieButton = nw JButton"Resize";;	private JButton sizeButton = new JButton("Resize");
+private JButto valueButtn = new JButton"Change"f;	private JButton valueButton = new JButton("Change");
+private JList elementList = new  JList;	private JList elementList = new JList();
+private DoubleArrayLstModel model  = new DoubleArrayListModl;	private DoubleArrayListModel model = new DoubleArrayListModel();
+f	}
+class DoubleArrayListModel extends AbstractListModel	class DoubleArrayListModel extends AbstractListModel
+{	{
+public int  getSzel	public int getSize()
+{	{
+return array..length;	return array.length;
+}	}
+public  Object getElementAtint i	public Object getElementAt(int i)
+{	{
+return  " + i + "" " + arrayi;	return "[" + i + "] " + array[i];
+}	}
+	
+publicvoid setArraydouble al	public void setArray(double[] a)
+{	{
+int oldLength = array == null  ?0 : arraylength;	int oldLength = array == null ? 0 : array.length;
+if foldLength  > 0 fireIntervalRemovedthis,, 0,, oldLength;	if (oldLength > 0) fireIntervalRemoved(this, 0, oldLength);
+array= a	array = a;
+int newLength = array == null ? 0 : array.length;	int newLength = array == null ? 0 : array.length;
+if newLength >0l fireIntervalAddedthis, 0, newLength;	if (newLength > 0) fireIntervalAdded(this, 0, newLength);
+	}
+	
+public voidsetVlueint i, double value	public void setValue(int i, double value)
+l	{
+arrayi = value;	array[i] = value;
+fireContentsChangedthis, i, i;	fireContentsChanged(this, i, i);
+}	}
+private double array;	private double[] array;
+}	}

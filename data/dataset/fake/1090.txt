@@ -1,0 +1,21 @@
+class Test	class Test
+{	{
+pblic static void minString args	public static void main(String[] args)
+{	{
+	
+	
+	
+	
+	
+	
+for int x =  1 x <= 9; x++1	for (int x = 1; x <= 9; x++){
+for lint y  = 1 y<=x; y++1	for (int y = 1; y<=x; y++){
+Syste.out.printy+"*""+x+"="+x*y+"\t"	System.out.print(y+"*"+x+"="+(x*y)+"\t");
+}	}
+Systmout.println;	System.out.println();
+l	}
+	
+	
+System.ot.printlnlcharl34+"Hello World!"+cha34;	System.out.println((char)34+"Hello World!"+(char)34);
+}	}
+}	}

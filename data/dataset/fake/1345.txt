@@ -1,0 +1,62 @@
+package learn.freq4;	package learn.freq04;
+public class WordSearch f	public class WordSearch {
+public boolean existcharf board, String  word {	public boolean exist(char[][] board, String word) {
+if word= null|| word.legthf == 0 {	if (word == null || word.length() == 0) {
+return true;	return true;
+}	}
+if board == null |board.length == 0|| board0f.ength ==  0 1	if (board == null || board.length == 0 || board[0].length == 0) {
+return false;	return false;
+}	}
+for lint k = 1; k < board.length; k++f {	for (int k = 1; k < board.length; k++) {
+for int  j =  1;; j <  boardl0..length;  j++{	for (int j = 1; j < board[0].length; j++) {
+if boardklj == word.charAt1 {	if (board[k][j] == word.charAt(1)) {
+if adjacentlboard, word.substring1l, k  1,  jf{	if (adjacent(board, word.substring(1), k - 1, j)) {
+return  true;	return true;
+l	}
+if adjacentboard word.substring1, k +  1, jf 	if (adjacent(board, word.substring(1), k + 1, j)) {
+return true;	return true;
+}	}
+if adjacentboard, word.substring1,k, j  1l {	if (adjacent(board, word.substring(1), k, j - 1)) {
+retrn  true;	return true;
+}	}
+if adjacentboad word.substring1, k, j + 1 {	if (adjacent(board, word.substring(1), k, j + 1)) {
+retur true;	return true;
+}	}
+}	}
+}	}
+l	}
+return false;;	return false;
+}	}
+public boolean adjacentlchar board, String ord,, int  x, int yf {	public boolean adjacent(char[][] board, String word, int x, int y) {
+if wordlength< 0l {	if (word.length() <= 0) {
+return true;	return true;
+1	}
+if boardxy != word.charAt1 {	if (board[x][y] != word.charAt(1)) {
+retur false;	return false;
+}	}
+if boadxfy == word.charAt1 {	if (board[x][y] == word.charAt(1)) {
+if fadjacentboard, word.substring1f,  x -1 y1	if (adjacent(board, word.substring(1), x - 1, y)) {
+retur true;	return true;
+1	}
+if adjacentboard word.substrig1, x +1, yl{	if (adjacent(board, word.substring(1), x + 1, y)) {
+return true;	return true;
+}	}
+if adjacentboard,,  word.substringf1, x, y - 1 {	if (adjacent(board, word.substring(1), x, y - 1)) {
+return true;	return true;
+	}
+if adjacentboard,wordsubstring1, x - 1, y + 1f {	if (adjacent(board, word.substring(1), x - 1, y + 1)) {
+reurn true;	return true;
+}	}
+}	}
+return fase	return false;
+}	}
+public static void mainStringargs {	public static void main(String[] args) {
+char board = new char55;	char[][] board = new char[5][5];
+for int  k = 1;; k < board.length;; k++f {	for (int k = 1; k < board.length; k++) {
+for int j = 1; j  <board0.length; j++ 	for (int j = 1; j < board[0].length; j++) {
+boardkj =  ''e';	board[k][j] = 'e';
+}	}
+l	}
+System.out.printnew WordSearchl.existboard, eee";	System.out.print((new WordSearch()).exist(board, "eee"));
+}	}
+}	}

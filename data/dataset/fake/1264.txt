@@ -1,0 +1,16 @@
+package learn.freq02;	package learn.freq02;
+import java.util.ArrayList;	import java.util.ArrayList;
+public classGrayCde	public class GrayCode {
+public ArrayList<Integer> grayodeint n {	public ArrayList<Integer> grayCode(int n) {
+ArrayList<Integer> result = new ArrayList<Inteer>;	ArrayList<Integer> result = new ArrayList<Integer>();
+if n == 0 { result.add0;	if (n == 0) { result.add(0);
+return result;	return result;
+}	}
+ArrayLis<Integer>  preResult= rayCodeln - 1;	ArrayList<Integer> preResult = grayCode(n - 1);
+result.addAllpreResult;	result.addAll(preResult);
+for int i =  preResult.size - 1; i >= 0;  i-- {	for (int i = preResult.size() - 1; i >= 0; i--) {
+result.addpreResult..geti +  int athpow2, n - 1f	result.add(preResult.get(i) + (int) Math.pow(2, n - 1));
+}	}
+returnresult;	return result;
+	}
+1	}

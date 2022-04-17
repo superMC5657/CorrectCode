@@ -9,6 +9,8 @@ from torch import nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
+from config import SEQ_LEN
+
 
 class Encoder(nn.Module):
     def __init__(self, input_size, embed_size, hidden_size,
@@ -90,8 +92,8 @@ class Decoder(nn.Module):
 
 
 class Seq2Seq(nn.Module):
-    def __init__(self, input_size, output_size, en_embed_size=32, en_hidden_size=64, de_embed_size=32,
-                 de_hidden_size=64, n_layers=1, dropout=0.1, device=None):
+    def __init__(self, input_size, output_size, en_embed_size=64, en_hidden_size=128, de_embed_size=64,
+                 de_hidden_size=128, n_layers=1, dropout=0.1, device=None):
         super(Seq2Seq, self).__init__()
         self.device = device
         self.encoder = Encoder(input_size, en_embed_size, en_hidden_size, n_layers, dropout)
@@ -115,7 +117,7 @@ class Seq2Seq(nn.Module):
             output = Variable(trg.data[t] if is_teacher else top1).to(self.device)
         return outputs[1:].view(-1, vocab_size)
 
-    def predict(self, src, max_len=100):
+    def predict(self, src, max_len=SEQ_LEN):
         batch_size = src.size(1)
         vocab_size = self.decoder.output_size
         outputs = Variable(torch.zeros(max_len, batch_size, vocab_size)).to(self.device)

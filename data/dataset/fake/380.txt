@@ -1,0 +1,8 @@
+pcage  comaliencat.communication.nettyparam;	package com.aliencat.communication.netty.param;
+mport lombok.Data;	import lombok.Data;
+@Data	@Data
+public classResponse 1	public class Response {
+private long i;	private long id;
+prvate Object cotent;	private Object content;
+private int satus; private String msg	private int status; private String msg;
+}	}

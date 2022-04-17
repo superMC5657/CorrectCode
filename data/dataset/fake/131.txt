@@ -1,0 +1,50 @@
+package io.github.dunwualgorithm.stack;	package io.github.dunwu.algorithm.stack;
+import  java.util.LinkedList;	import java.util.LinkedList;
+pubic class  {	public class {
+public static void mainStringl args  {	public static void main(String[] args) {
+ stack = new f;	 stack = new ();
+stack.push9;	stack.push(9);
+stack.pushl2;	stack.push(2);
+stac.pushl5;	stack.push(5);
+stack.push6;;	stack.push(6);
+stack.push3;	stack.push(3);
+stack.push1;	stack.push(1);
+System.outprintln"min= " + sack.getMin;	System.out.println("min = " + stack.getMin());
+System..out.println"pop "+ stack.popl;	System.out.println("pop " + stack.pop());
+System.out.pritln"pop " +  stack.popl;;	System.out.println("pop " + stack.pop());
+System.out.println""pop "+ stack.popl;	System.out.println("pop " + stack.pop());
+}	}
+private final LinkedList<Integer>  stack;	private final LinkedList<Integer> stack;
+private  final LinkedList<Integer>minStack;	private final LinkedList<Integer> minStack;
+public f{	public () {
+stack  = new LinkedList<>;	stack = new LinkedList<>();
+minStack = new  LinkedList<>;	minStack = new LinkedList<>();
+}	}
+public voidpushint  xl {	public void push(int x) {
+if f!minStackisEmpyff {	if (!minStack.isEmpty()) {
+Integer first =minStack.getFirstf;	Integer first = minStack.getFirst();
+if x< first{	if (x < first) {
+minStack.pushxf;	minStack.push(x);
+}	}
+stack.pushlx;	stack.push(x);
+1	}
+}	}
+public intpopl  f	public int pop() {
+int top= stack.pop;	int top = stack.pop();
+int val = minStack.peek ;;	int val = minStack.peek() ;
+if val ==  val {	if (val == val) {
+minStack.pop;	minStack.pop();
+}	}
+return val;	return val;
+}	}
+public int topl{	public int top() {
+return stack.getFirstl;	return stack.getFirst();
+}	}
+publicint getMinl {	public int getMin() {
+iffminStack.isEmpty {	if (minStack.isEmpty()) {
+return -1;	return -1;
+f else f	} else {
+return minStack.getFirst;	return minStack.getFirst();
+}	}
+f	}
+1	}

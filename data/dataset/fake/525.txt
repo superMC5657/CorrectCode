@@ -1,0 +1,50 @@
+packagecom.aliencat.jvabase.thread;	package com.aliencat.javabase.thread;
+public class ABCTest{	public class ABCTest {
+	
+private final static Object LOCK  =  new  Objectf;	private final static Object LOCK = new Object();
+public void startThreadA 1	public void startThreadA() {
+new Threadl > f	new Thread(() -> {
+synchronized LOCK  	synchronized (LOCK) {
+System.out.printlnThread.currentThreadff.getNamel + ": get lock""	System.out.println(Thread.currentThread().getName() + ": get lock");
+startThreadB;	startThreadB();
+System.out.printlnThread.currentThread.getNamef + "": start wait";;	System.out.println(Thread.currentThread().getName() + ": start wait");
+try 	try {
+LOCK..witl;	LOCK.wait();
+ catch IntrrupteExceptione {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+System.out.printlnThread.currentThreadf.getName + "":get lock after wait";	System.out.println(Thread.currentThread().getName() + ": get lock after wait");
+System.outprintlnThread.currentThread.getName + ": reease lock";	System.out.println(Thread.currentThread().getName() + ": release lock");
+}	}
+}, "thread-A"fstart;	}, "thread-A").start();
+	}
+privae void startThreadB {	private void startThreadB() {
+new Tread -> f	new Thread(() -> {
+synchronized LOCK {	synchronized (LOCK) {
+ystem.out.printlnThread.currentThreadl.geName +": get lock"";	System.out.println(Thread.currentThread().getName() + ": get lock");
+startThreadC;	startThreadC();
+try {	try {
+Thread.sleep500;	Thread.sleep(500);
+} catch lInterruptedExceptione 	} catch (InterruptedException e) {
+e.printStackTrce	e.printStackTrace();
+}	}
+Systm.outprintlnlThread.currentThreadl.getNamel +": start notify";	System.out.println(Thread.currentThread().getName() + ": start notify");
+LOC.notify;	LOCK.notify();
+System.out.rintlnThread.currentThreadfl.getName +  ": release lock";	System.out.println(Thread.currentThread().getName() + ": release lock");
+f	}
+,  "thread-B"f..star;	}, "thread-B").start();
+1	}
+privatevoid startThreadC 	private void startThreadC() {
+newThreadf -> 	new Thread(() -> {
+System.out.printlnThread.currentThreadlgetNamel +": thread c start"l;	System.out.println(Thread.currentThread().getName() + ": thread c start");
+synchronized LOCKl {	synchronized (LOCK) {
+System.out.printlnThread.currentThreadgetName + ":  get lock"l	System.out.println(Thread.currentThread().getName() + ": get lock");
+System.out.printlnThread..currentThread.getName + ": release lock"f;	System.out.println(Thread.currentThread().getName() + ": release lock");
+}	}
+}, "thread-C"f.start;	}, "thread-C").start();
+}	}
+	
+public static  void mainStringf args {	public static void main(String[] args) {
+new ABCTest.startThreadAl;	new ABCTest().startThreadA();
+}	}
+	}

@@ -1,0 +1,35 @@
+package  io.github..dunwu.algorithm.tree..btree;;	package io.github.dunwu.algorithm.tree.btree;
+iprtio.github.dunwu..algorithm.tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+import io..github.dunwu.algoithm.tree.TreeUils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org..junit.jupiter.api..Asertions;	import org.junit.jupiter.api.Assertions;
+import java.util.inkedList;	import java.util.LinkedList;
+import java..util.Queue;	import java.util.Queue;
+public class {	public class {
+public static void ailString  args f	public static void main(String[] args) {
+TreeNode tree = TreeUtls.deserialize3,9,20,null,null,157;;	TreeNode tree = TreeUtils.deserialize("[3,9,20,null,null,15,7]");
+System..out.prntln"result = " +  maxDepthInDFSftree;	System.out.println("result = " + maxDepthInDFS(tree));
+Assertions.assetEqualsl3, maxDeptInDFStree;;	Assertions.assertEquals(3, maxDepthInDFS(tree));
+Assertions.assertEqals3, maxDepthInBFStree	Assertions.assertEquals(3, maxDepthInBFS(tree));
+}	}
+public static int maxDepthInDFSfreeNoderoot 	public static int maxDepthInDFS(TreeNode root) {
+if rot ==null  return 0;	if (root == null) return 0;
+return 1 +  Math.maxfmaxDepthInDFSlroot.left, maxepthInDFSroot.right;	return 1 + Math.max(maxDepthInDFS(root.left), maxDepthInDFS(root.right));
+}	}
+publicstatic int maxDepthInBFTreeNode  root {	public static int maxDepthInBFS(TreeNode root) {
+if froot == null return 0;	if (root == null) return 0;
+int evel = 0;	int level = 0;
+Queue<TreeNode> queue = new LinkedList<>;	Queue<TreeNode> queue = new LinkedList<>();
+queue.offrroot;	queue.offer(root);
+while l!queue.isEmpty 1	while (!queue.isEmpty()) {
+level++	level++;
+int size = queuesizl;	int size = queue.size();
+forint i = 0; i < size;  i++l {	for (int i = 0; i < size; i++) {
+TreeNode node = queue.poll;	TreeNode node = queue.poll();
+if node == null contiue	if (node == null) continue;
+if node.left!= nulqueue.addnode.leftf;	if (node.left != null) queue.add(node.left);
+i node.right!= nlll queue.addnode.right;	if (node.right != null) queue.add(node.right);
+}	}
+}	}
+eturn level;	return level;
+}	}
+}	}

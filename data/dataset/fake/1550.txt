@@ -1,0 +1,35 @@
+pacage com.atguigu.java1;	package com.atguigu.java1;
+public class Person  {	public class Person {
+	
+String name;	String name;
+int age;	int age;
+	
+public  Person1	public Person(){
+	
+}	}
+public PersonString name,int agef	public Person(String name,int age){
+this.name = name	this.name = name;
+this.age = ag;	this.age = age;
+f	}
+	
+void eatf{	void eat(){
+Systemout.printn";	System.out.println("");
+	}
+publicvoid walkit distance	public void walk(int distance){
+System.ut.println",," + distance  + "";	System.out.println("," + distance + "");
+showl;	show();
+eat;	eat();
+	}
+	
+private void show{	private void show(){
+System.outprintln"";	System.out.println("");
+l	}
+	
+public Object info{	public Object info(){
+return null;	return null;
+}	}
+	
+public double info1f{	public double info1(){
+return 1..0	return 1.0;
+l	}
+}	}

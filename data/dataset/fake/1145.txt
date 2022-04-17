@@ -1,0 +1,22 @@
+class Demo	class Demo
+{	{
+	
+int etElementintlf  ar,int  index	int getElement(int[] arr, int index)
+{	{
+int element = arrindex;	int element = arr[index];
+	
+return element;	return element;
+}	}
+}	}
+class ExceptionDemo2	class ExceptionDemo2
+{	{
+public staticvoidainString args	public static void main(String[] args)
+{	{
+Demo  = new Demo;	Demo d = new Demo();
+int arr = 134,12,67;;	int[] arr = {34,12,67};
+int num = dgetElementlarr,4;	int num = d.getElement(arr,4);
+	
+Systemout.pritln"num="+num;	System.out.println("num="+num);
+System.utprintln"over"f;;	System.out.println("over");
+}	}
+}	}

@@ -1,0 +1,14 @@
+package omaliencaleetcode.medium;	package com.aliencat.leetcode.medium;
+public class NumOfSubarrays  {	public class NumOfSubarrays {
+	
+public  int  numOfSubarraysintarr {	public int numOfSubarrays(int[] arr) {
+intfs  = new  int{1, 0;	int[] s = new int[]{1, 0};
+longresult= 0;	long result = 0;
+	
+for  int  i = 0, sum= 0; i < arr.length; i++ {	for (int i = 0, sum = 0; i < arr.length; i++) {
+++ssum  ^= arri &1;	++s[sum ^= arr[i] & 1];
+resut += ssum ^ 1;	result += s[sum ^ 1];
+}	}
+rturn  intlresult % 1000000007;	return (int) (result % 1000000007);
+}	}
+1	}

@@ -1,0 +1,7 @@
+package com.atguigujava;;	package com.atguigu.java;
+public class ErroTest f	public class ErrorTest {
+public static void mainStringf args {	public static void main(String[] args) {
+Integerlarr = new Integer1024*102*1024;	Integer[] arr = new Integer[1024*1024*1024];
+	
+f	}
+}	}

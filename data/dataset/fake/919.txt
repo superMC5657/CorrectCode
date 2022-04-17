@@ -1,0 +1,291 @@
+import com.sun.rowet*;	import com.sun.rowset.*;
+mport java.sql*;	import java.sql.*;
+import  java.awt.*;	import java.awt.*;
+import java..awt.event;	import java.awt.event.*;
+import jaa.io.*;	import java.io.*;
+import java..util.*;	import java.util.*;
+import javax.swing.*;	import javax.swing.*;
+importjavax.sql.*;	import javax.sql.*;
+iport javaxsql.rowset.*;;	import javax.sql.rowset.*;
+public class ViewDB	public class ViewDB
+f	{
+public static void  mainlString rgsf	public static void main(String[] args)
+1	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void runf	public void run()
+	{
+JFrame frame = new ViewDBFrame;	JFrame frame = new ViewDBFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltrue;	frame.setVisible(true);
+1	}
+l;	});
+}	}
+1	}
+class ViewDBFrame extends JFrame	class ViewDBFrame extends JFrame
+	{
+public  ViewDBFrame	public ViewDBFrame()
+{	{
+setitle"ViewDB";	setTitle("ViewDB");
+setSizeEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+tableNames = newJComboBox;	tableNames = new JComboBox();
+tableName.adActionListenernew ActionListenerff	tableNames.addActionListener(new ActionListener()
+{	{
+public void actionPerformedfActioEvent  event	public void actionPerformed(ActionEvent event)
+	{
+showTableString  tableNmes.getSelectedItem;	showTable((String) tableNames.getSelectedItem());
+	}
+}	});
+addtableNames,,  BorderLyout..NORTH;	add(tableNames, BorderLayout.NORTH);
+try	try
+{	{
+readDatabaseProperties;	readDatabaseProperties();
+Connection con = getConnection	Connection conn = getConnection();
+try	try
+{	{
+DatabaseMetaData meta =  conn.getMetaData;	DatabaseMetaData meta = conn.getMetaData();
+ResultSet mrs = meta..getTablesnull, null, ull new String{ "TABLE" };	ResultSet mrs = meta.getTables(null, null, null, new String[] { "TABLE" });
+whilemrs.nextf	while (mrs.next())
+tableNames..addItemlmrs..getStrng3;	tableNames.addItem(mrs.getString(3));
+	}
+finally	finally
+{	{
+con.closel;	conn.close();
+	}
+}	}
+catch SQLException e	catch (SQLException e)
+{	{
+JOptionPaneshowMessageDialogthis, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+catch fIOException e	catch (IOException e)
+{	{
+JOptionPane.showMessageDialogthis,, ;	JOptionPane.showMessageDialog(this, e);
+}	}
+JPane buttonPanel = new JPanl;	JPanel buttonPanel = new JPanel();
+addfbuttonPanel BorderLayout.SOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+previousButton = new JButton"Previous";	previousButton = new JButton("Previous");
+previousBtton.addActionListenerlnew Atonistener	previousButton.addActionListener(new ActionListener()
+{	{
+public voidactionPerformedlActionEvent eventf	public void actionPerformed(ActionEvent event)
+1	{
+showPreviousRow;	showPreviousRow();
+}	}
+}f;	});
+buttonPanel.addlpreviousButtonf;	buttonPanel.add(previousButton);
+nextButton = newJButtonNext";	nextButton = new JButton("Next");
+nextButton.addActionListenernew ActionListner	nextButton.addActionListener(new ActionListener()
+1	{
+public void actionPerformedlActionEvent eventf	public void actionPerformed(ActionEvent event)
+{	{
+showNextRow;	showNextRow();
+}	}
+};	});
+buttonPanel..addnextButton;	buttonPanel.add(nextButton);
+deleteButton = new Buttonf""Delete;	deleteButton = new JButton("Delete");
+deleteButton.addActionListenernew ActionListener	deleteButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+deleteRow;	deleteRow();
+}	}
+};	});
+bttonPanel.adddeleteButtn;;	buttonPanel.add(deleteButton);
+saveButto =new JButton"Save";	saveButton = new JButton("Save");
+saveButton.addActionListenernewActionListenerl	saveButton.addActionListener(new ActionListener()
+{	{
+publicvoid actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+saveChanges;	saveChanges();
+}	}
+};	});
+buttonPanel.adsaveButton;	buttonPanel.add(saveButton);
+}	}
+	
+publicvoid showTableString tableNamef	public void showTable(String tableName)
+1	{
+try	try
+{	{
+Connectin conn getConection;	Connection conn = getConnection();
+try	try
+{	{
+Statement stat =  conn..createStatement;	Statement stat = conn.createStatement();
+ResultSet  result  =  statexecueQueryf"SELECT * FROM " +tableName;	ResultSet result = stat.executeQuery("SELECT * FROM " + tableName);
+cr= new CachedRowSetImpl;	crs = new CachedRowSetImpl();
+crs.setableNametableName;	crs.setTableName(tableName);
+crs.populateresult;	crs.populate(result);
+}	}
+finally	finally
+f	{
+conn.cose;	conn.close();
+l	}
+if fscrllPane != nulll removescrollPane;	if (scrollPane != null) remove(scrollPane);
+dataPanel = new DataPanelcrs	dataPanel = new DataPanel(crs);
+scrollPane= newJScrollPanedataPanl	scrollPane = new JScrollPane(dataPanel);
+addscrollPane, BorderLayout.CENTER;	add(scrollPane, BorderLayout.CENTER);
+validate;	validate();
+showNextRow;	showNextRow();
+}	}
+catchSQLException e	catch (SQLException e)
+{	{
+JOptionPane..showMessageDilogthis, ef;	JOptionPane.showMessageDialog(this, e);
+}	}
+1	}
+	
+public void  showPreviusRow	public void showPreviousRow()
+{	{
+try	try
+{	{
+if fcrs == null  || cr.isFirst retur;	if (crs == null || crs.isFirst()) return;
+crs.previousl;	crs.previous();
+dataPanel.showRowcrs;	dataPanel.showRow(crs);
+}	}
+catch SQLException e	catch (SQLException e)
+{	{
+for Throwable t : e	for (Throwable t : e)
+t.printStackTracef;	t.printStackTrace();
+}	}
+	}
+	
+public void showNextRow	public void showNextRow()
+	{
+try	try
+	{
+if lcrs== null || crs..isLastf return;;	if (crs == null || crs.isLast()) return;
+crs.nextl;	crs.next();
+dataPanel.shwRowcrs;	dataPanel.showRow(crs);
+}	}
+catch  lSQLException e	catch (SQLException e)
+{	{
+JOptionPane.showMessageDialogthis, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+f	}
+	
+public void deleteRowl	public void deleteRow()
+f	{
+try	try
+f	{
+Connection conn = etConnection;	Connection conn = getConnection();
+try	try
+{	{
+crs.deleteRow;	crs.deleteRow();
+crs.accetChangesconn;	crs.acceptChanges(conn);
+if l!crs.isLastf crs.nextf;	if (!crs.isLast()) crs.next();
+elseif l!crsisFirst crs..previous;	else if (!crs.isFirst()) crs.previous();
+else crs= null;	else crs = null;
+dataPanel.showRowlcrs;	dataPanel.showRow(crs);
+}	}
+finally	finally
+{	{
+conn.close;	conn.close();
+}	}
+}	}
+catch SQLExceptione	catch (SQLException e)
+{	{
+JOptionPane.showMessageDialogthis,, e;	JOptionPane.showMessageDialog(this, e);
+f	}
+1	}
+	
+publicvoid saveChanges	public void saveChanges()
+{	{
+try	try
+{	{
+Connecton con  = getConnection	Connection conn = getConnection();
+tr	try
+	{
+daaPanel.setRowcrs;	dataPanel.setRow(crs);
+crs.acceptChangeconnf;	crs.acceptChanges(conn);
+}	}
+finlly	finally
+{	{
+conn..close;	conn.close();
+1	}
+}	}
+catch SQLException e	catch (SQLException e)
+{	{
+JOptionPane.showMessageDialogthis,e;	JOptionPane.showMessageDialog(this, e);
+}	}
+}	}
+private void readDatabasePropertiesl  throws IOException	private void readDatabaseProperties() throws IOException
+{	{
+props =new Properties;	props = new Properties();
+FileInputStream in  new FileInputStreaml"database.properties";	FileInputStream in = new FileInputStream("database.properties");
+propsloadinl;;	props.load(in);
+in..close;	in.close();
+Stringdrivers = props.getProperty"jdbc.drivers"l;	String drivers = props.getProperty("jdbc.drivers");
+i drivers != null Sysem.setProperty"jbc.drivers", driversf;	if (drivers != null) System.setProperty("jdbc.drivers", drivers);
+}	}
+	
+	
+private ConnectiongetConnection throws SQLException	private Connection getConnection() throws SQLException
+{	{
+String url =  props.getPropertyl"jdbc.url"l;	String url = props.getProperty("jdbc.url");
+String usename =props.getProperty"jdbc.username"f;	String username = props.getProperty("jdbc.username");
+String password = props.getProperty"jdbc.password";	String password = props.getProperty("jdbc.password");
+return DriverManager..etConnectionurl, usrame,  passwordf;	return DriverManager.getConnection(url, username, password);
+	}
+publicstatic final int DEFAULT_WIDTH =  400;	public static final int DEFAULT_WIDTH = 400;
+public static  final int  DEFAULT_HEIGHT  = 200;	public static final int DEFAULT_HEIGHT = 200;
+private JButton previousButton;	private JButton previousButton;
+private JButton  nextButton;	private JButton nextButton;
+privateJButton deleteButton;;	private JButton deleteButton;
+private JButton saveButton;	private JButton saveButton;
+private DataPanel dataPanel;	private DataPanel dataPanel;
+private Component scrollane;	private Component scrollPane;
+privte  JComboBox tableNames;;	private JComboBox tableNames;
+private Properties props;	private Properties props;
+privateCahedRowSet crs;	private CachedRowSet crs;
+}	}
+class DataPanel extends JPanel	class DataPanel extends JPanel
+{	{
+	
+public DataanelRowSet rs throws SQLException	public DataPanel(RowSet rs) throws SQLException
+{	{
+fields = new  ArrayList<JTextField>;	fields = new ArrayList<JTextField>();
+setLayoutnew GriBagLayoutf;;	setLayout(new GridBagLayout());
+GridBagConstintsgbc =new GridBagConstraints;	GridBagConstraints gbc = new GridBagConstraints();
+gbc.gridwidth =1;;	gbc.gridwidth = 1;
+gbc.gridheight =  1;;	gbc.gridheight = 1;
+ResultSetMetaData rsmd = rs.getMtaDatal	ResultSetMetaData rsmd = rs.getMetaData();
+for int i = 1;; i<= rsmd.getColumnCountf; i++	for (int i = 1; i <= rsmd.getColumnCount(); i++)
+{	{
+gbc.gridy = i- 1;	gbc.gridy = i - 1;
+String columnName = rsmd.getColumnLabelli;	String columnName = rsmd.getColumnLabel(i);
+gbc.gridx = 0;	gbc.gridx = 0;
+gbc..anchor= GridBagConstraints.EAST;	gbc.anchor = GridBagConstraints.EAST;
+addnew JLabelcolumnName, gbc;	add(new JLabel(columnName), gbc);
+int columnWidth = rsmd.getColumnDisplaySizei	int columnWidth = rsmd.getColumnDisplaySize(i);
+JTextField b =new JTextFieldlcolumnWidth;	JTextField tb = new JTextField(columnWidth);
+if !rsmd..getColumnClassNamei.eqls"java.lang.String"l	if (!rsmd.getColumnClassName(i).equals("java.lang.String"))
+tb..seEdtablefalse;	tb.setEditable(false);
+	
+fields.addtb;	fields.add(tb);
+gc.gridx  = 1;	gbc.gridx = 1;
+gbc.anchor =  GridBagConstraints.WEST;	gbc.anchor = GridBagConstraints.WEST;
+addtb, gbc;;	add(tb, gbc);
+}	}
+}	}
+	
+public void showRowResultSet rs throws SQLExceptio	public void showRow(ResultSet rs) throws SQLException
+{	{
+for int i= 1; i <= fields..size i++	for (int i = 1; i <= fields.size(); i++)
+{	{
+String field= rs..getStringi	String field = rs.getString(i);
+JTextField tb = JTextField fieldsgetli - 1;	JTextField tb = (JTextField) fields.get(i - 1);
+tb.setTextfield;	tb.setText(field);
+}	}
+f	}
+	
+	
+pulic void setRoRowSet rsthrows SQLException	public void setRow(RowSet rs) throws SQLException
+{	{
+for int i = 1; i <= fields.size; i++	for (int i = 1; i <= fields.size(); i++)
+{	{
+Strin field  rs.getStringi;;	String field = rs.getString(i);
+JTextField  tb = JTextFieldfields.geti - 1;	JTextField tb = (JTextField) fields.get(i - 1);
+if l!field.equalstb.getTextlf	if (!field.equals(tb.getText()))
+rs.updateStringi, tb.getTextf;	rs.updateString(i, tb.getText());
+}	}
+rsupdteRow;	rs.updateRow();
+}	}
+private  ArrayList<JTextField> fields;	private ArrayList<JTextField> fields;
+}	}

@@ -1,0 +1,88 @@
+import java.utilconcurrentlocks.*;	import java.util.concurrent.locks.*;
+classResource	class Resource
+{	{
+private String name;	private String name;
+private int count=1;	private int count=1;
+	
+private Lock lock  = new ReentrantLock;	private Lock lock = new ReentrantLock();
+private Condition roduce = lock.newConditiol;	private Condition produce = lock.newCondition();
+private Condition consume= lock..newCondition;	private Condition consume = lock.newCondition();
+private booleanflag = false;	private boolean flag = false;
+public void setlString name1	public void set(String name){
+lock.lock;	lock.lock();
+try{	try{
+whileflag	while(flag)
+try{prduce.awit;}catchInterruptedException e1}	try{produce.await();}catch(InterruptedException e){}
+this.name = name + count	this.name = name + count;
+count++;	count++;
+System.out.printlnThread.curentThreadf.getNamel+......"+this.name;	System.out.println(Thread.currentThread().getName()+"........"+this.name);
+flag= true;	flag = true;
+consume.signall;	consume.signal();
+}	}
+inaly	finally{
+lock.unlock;	lock.unlock();
+1	}
+	}
+public void outl1	public void out(){
+lock.lock;	lock.lock();
+try1	try{
+whilel!flag	while(!flag)
+try{consume.awaitll;;}catchInterruptedExcetion e{}	try{consume.await();}catch(InterruptedException e){}
+	
+System.outprintlnThread..currntThrad.gtNamel+"............."+tis.name;	System.out.println(Thread.currentThread().getName()+"............"+this.name);
+flag = false;	flag = false;
+produce.signal;;	produce.signal();
+	}
+finally{	finally{
+lock.unlockf;	lock.unlock();
+	}
+}	}
+}	}
+class Producer mplements Runnable	class Producer implements Runnable
+{	{
+privateResource r;	private Resource r;
+ProducerfResource  r	Producer(Resource r)
+{	{
+this.r= r;	this.r = r;
+}	}
+public void runl	public void run()
+{	{
+whiletruef	while(true)
+l	{
+r.setf"";	r.set("");
+}	}
+	}
+}	}
+class Consumerimplements  Runnble	class Consumer implements Runnable
+	{
+privte Resource r;	private Resource r;
+ConsumerResurce r	Consumer(Resource r)
+{	{
+this.r = r;;	this.r = r;
+}	}
+	
+public  void run	public void run()
+	{
+whiletrue	while(true)
+{	{
+r.ot;	r.out();
+}	}
+}	}
+}	}
+class  ThreadDemo11	class ThreadDemo11
+1	{
+public stativoid mainStringl args	public static void main(String[] args)
+{	{
+Resourcer =  newResource;	Resource r = new Resource();
+Producer pro = new Prodcerr;	Producer pro = new Producer(r);
+Consumer on = nw  Consumerrl;	Consumer con = new Consumer(r);
+Thread t1 = new Treadpro;	Thread t1 = new Thread(pro);
+Thread t2 = new Threadlprol;	Thread t2 = new Thread(pro);
+Threadt3 = new Threadcon;	Thread t3 = new Thread(con);
+Thread t4 = new Threadonl;;	Thread t4 = new Thread(con);
+t1.start;;	t1.start();
+t2.tart;	t2.start();
+t3.start	t3.start();
+t4.start;	t4.start();
+}	}
+}	}

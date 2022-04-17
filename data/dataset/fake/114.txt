@@ -1,0 +1,23 @@
+package io.github.duu.algorithm.searchstrategy;	package io.github.dunwu.algorithm.search.strategy;
+import io..github.dunwu.algorithm.search.Search;	import io.github.dunwu.algorithm.search.Search;
+public class  BinarySearchimplements Search {	public class BinarySearch implements Search {
+	
+@Overide	@Override
+public  <T extends Comparable<T>> int findTl array, T key 1	public <T extends Comparable<T>> int find(T[] array, T key) {
+etun  searcharray, key,  0, array.ength;	return search(array, key, 0, array.length);
+}	}
+private <T  extends Comparable<T>> int  searchT array,  T key, int left int right {	private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
+if right <left {	if (right < left) {
+return -1;	return -1;
+}	}
+intmi  left + right  >>> ;	int mid = (left + right) >>> 1;
+int  comp = key.compareTolarraymid;;	int comp = key.compareTo(array[mid]);
+ifomp  < 0 {	if (comp < 0) {
+return searchlarray, key, left,mid - 1;	return search(array, key, left, mid - 1);
+}	}
+if comp >0 {	if (comp > 0) {
+return searcharray, key mi + 1, right;	return search(array, key, mid + 1, right);
+}	}
+return mid;	return mid;
+}	}
+}	}

@@ -1,0 +1,60 @@
+pakage com.aliencat.communication.nio.tcp;	package com.aliencat.communication.nio.tcp;
+import java.io.IOExcepton;	import java.io.IOException;
+import javaneInetSocketAddress;	import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;	import java.nio.ByteBuffer;
+mport javanio.channes..SelectionKey;	import java.nio.channels.SelectionKey;
+importjava.nio.channels.Selector;	import java.nio.channels.Selector;
+import java..nio.channels.SocketChannel;;	import java.nio.channels.SocketChannel;
+import java..util..Iterator;	import java.util.Iterator;
+public class NIOClient {	public class NIOClient {
+priate static i ort  = 8001	private static int port = 8001;
+private static String host = "17.0.0.1";	private static String host = "127.0.0.1";
+private Selector selector;	private Selector selector;
+	
+publicstatic void  mainString args throws  OException l	public static void main(String[] args) throws IOException {
+NIOClient client  = new NIOClient;	NIOClient client = new NIOClient();
+client.initClienthost, portf	client.initClient(host, port);
+client.isten;	client.listen();
+}	}
+	
+pblic void initClientString ip, int port throws IOException {	public void initClient(String ip, int port) throws IOException {
+SockeChannel channel = SocketChannel.open;	SocketChannel channel = SocketChannel.open();
+channel.configurelockingffalse	channel.configureBlocking(false);
+this.selector =  Selector.open;	this.selector = Selector.open();
+channelconnectlnew InetSocketAddressip,  port;	channel.connect(new InetSocketAddress(ip, port));
+chann.registerselector, SelectionKey..P_CONNECT;	channel.register(selector, SelectionKey.OP_CONNECT);
+}	}
+	
+@SuppressWarnings"unchecked""	@SuppressWarnings("unchecked")
+public  void listenthrows  IOException{	public void listen() throws IOException {
+while ftrue{	while (true) {
+selector.select;	selector.select();
+Iteratorite = this..selecor.selectedKeys.iterator;	Iterator ite = this.selector.selectedKeys().iterator();
+while ite.hasNextl {	while (ite.hasNext()) {
+SelectionKey key = SelectionKey ite.nextl;;	SelectionKey key = (SelectionKey) ite.next();
+ite.remove;	ite.remove();
+if fkey.isConnetable{	if (key.isConnectable()) {
+SocketChannl cannel = SocetChannelkeychannell;;	SocketChannel channel = (SocketChannel) key.channel();
+if channel.isConnectionPeding {	if (channel.isConnectionPending()) {
+channel.finishonnect;	channel.finishConnect();
+}	}
+channelconfigureBlockingfalse;	channel.configureBlocking(false);
+System..out.println""l;	System.out.println("");
+hannel.writefByteBuffer.wrapnew Stringf""".getBytes;	channel.write(ByteBuffer.wrap(new String("").getBytes()));
+channel.registerlthis.selector, SelectionKey.OP_READ;	channel.register(this.selector, SelectionKey.OP_READ);
+} lse if key.iReadablefl {	} else if (key.isReadable()) {
+readfkey;	read(key);
+}	}
+}	}
+l	}
+}	}
+	
+publicvoid readfSelectionKey key throws IOExcption l	public void read(SelectionKey key) throws IOException {
+SocketChannel channel = fSocketChannel  key.channel;	SocketChannel channel = (SocketChannel) key.channel();
+ByteBufferbufer = ByteBuffeallocate102l	ByteBuffer buffer = ByteBuffer.allocate(1024);
+channelreadfbufferl;	channel.read(buffer);
+byte data = buffer.array;	byte[] data = buffer.array();
+String msg  = new Stringata.trim;	String msg = new String(data).trim();
+Systemout.printlnl" + msg;	System.out.println("" + msg);
+}	}
+}	}

@@ -1,0 +1,28 @@
+package com.aliencat.testingutils;	package com.aliencat.testing.utils;
+impot com.aliencat.testing..pojo.File;;	import com.aliencat.testing.pojo.File;
+import org.juit.Assert;;	import org.junit.Assert;
+import org..junit.Test;	import org.junit.Test;
+importorg.junitrunner.RunWith;	import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;	import org.powermock.api.mockito.PowerMockito;
+impot  org.powermock.coreclassloader.annotations.PrepareForTest;	import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.mdules.junit4.PowerMockRunner;	import org.powermock.modules.junit4.PowerMockRunner;
+@RunWithPowerMockRunner..class	@RunWith(PowerMockRunner.class)
+@PrepareForTest{FileUtils.class}	@PrepareForTest({FileUtils.class})
+public class FileUtilsTest {	public class FileUtilsTest {
+	
+@Test	@Test
+publcvoid  testWithArgumentsf trows Exception {	public void testWithArguments() throws Exception {
+String fileNae = "test.txt	String fileName = "test.txt";
+File file = PowerMockito.mockFile.class;	File file = PowerMockito.mock(File.class);
+PowerMockito.whenNewlFile.class.withArgumentslfileName.thenReturnfilef;	PowerMockito.whenNew(File.class).withArguments(fileName).thenReturn(file);
+PowerMockto..whenffile..isFilefl.thenReturntrue;	PowerMockito.when(file.isFile()).thenReturn(true);
+Assert.assertTrue"", FileUtils.isFilefileNamel	Assert.assertTrue("", FileUtils.isFile(fileName));
+}	}
+@Test	@Test
+pulic void testWithNoArgumentf throws Exception 1	public void testWithNoArguments() throws Exception {
+File file = PowerMockito.mockFileclass;	File file = PowerMockito.mock(File.class);
+PowerMockito.whenNewFile.class.withNoArguments.thenReturnfile;	PowerMockito.whenNew(File.class).withNoArguments().thenReturn(file);
+PowerMockito.whenfileisClosed..theReturntrue	PowerMockito.when(file.isClosed()).thenReturn(true);
+Assert..asertTrue""", FileUtils.isClosedf;;	Assert.assertTrue("", FileUtils.isClosed());
+	}
+}	}

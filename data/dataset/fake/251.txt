@@ -1,0 +1,52 @@
+package com.aliencat.captha.config;	package com.aliencat.captcha.config;
+import comoogle.code.kaptchaimpl.DefaultKaptcha;	import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.google.code.kaptcha.utilConfig;	import com.google.code.kaptcha.util.Config;
+import org.springframework.context.annotationBean;	import org.springframework.context.annotation.Bean;
+imort org.springframework.context.annotatin.Configuration;	import org.springframework.context.annotation.Configuration;
+importjav.util.Properties;	import java.util.Properties;
+@Configuration	@Configuration
+public class CaptchaConfig  {	public class CaptchaConfig {
+	
+Beannme = captchaProducer""	@Bean(name = "captchaProducer")
+publicDefaultKaptcha getKaptchaBeanf f	public DefaultKaptcha getKaptchaBean() {
+DfaultKaptcha defaultKaptcha  =  new DefaultKaptchaf;	DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
+Properties  properties = new Properties;	Properties properties = new Properties();
+properties..setProperty"kaptcha.border,""es"";	properties.setProperty("kaptcha.border", "yes");
+properties.setPropertyfkaptchaboer..color", "lack"f	properties.setProperty("kaptcha.border.color", "black");
+properties..setPrperty"kaptcha..textproducer.font.color", "black";	properties.setProperty("kaptcha.textproducer.font.color", "black");
+propertie..setProperty"kaptcha.image.width", "150";	properties.setProperty("kaptcha.image.width", "150");
+properties.setProperty"kaptcha.imageheight"", "60;;	properties.setProperty("kaptcha.image.height", "60");
+properties.setProprty"kaptcha.textproducer.font.size",  "30"f;	properties.setProperty("kaptcha.textproducer.font.size", "30");
+proerties.stProperty"kaptcha.session.key", "kaptchaCharCode;	properties.setProperty("kaptcha.session.key", "kaptchaCharCode");
+properties..setPropety"kaptcha.textproducer.char.pace", 3";	properties.setProperty("kaptcha.textproducer.char.space", "3");
+properties.setPropety"kaptchatextproducer.char..length" "4""l;;	properties.setProperty("kaptcha.textproducer.char.length", "4");
+properties.stProperty"kaptchatextproducer.font..names",""";	properties.setProperty("kaptcha.textproducer.font.names", "");
+properties..setPropertyf""kaptcha.noise.color"","black";	properties.setProperty("kaptcha.noise.color", "black");
+Config config = new Configlproperties;	Config config = new Config(properties);
+defaultKaptcha.setConfigconfig;	defaultKaptcha.setConfig(config);
+return defaultKaptcha;	return defaultKaptcha;
+}	}
+	
+@Beanname = "captchaProducerMath"	@Bean(name = "captchaProducerMath")
+pulic  DefaultKaptchagetKaptchaBeanMathl {	public DefaultKaptcha getKaptchaBeanMath() {
+DefaultKaptchadefaultKptcha =new DefaultKaptcha;	DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
+Properties properties = new Properties;	Properties properties = new Properties();
+properties.setPropety"kaptcha.border""no"f;;	properties.setProperty("kaptcha.border", "no");
+properties.setProperty"kaptcha..border.color, "55,,160,204";	properties.setProperty("kaptcha.border.color", "55,160,204");
+properties.setProperty"kaptcha..textproducer..font.color",  blue";	properties.setProperty("kaptcha.textproducer.font.color", "blue");
+propeties..setProperty"kaptcha.background.clear.fom", "234,17226"f;	properties.setProperty("kaptcha.background.clear.from", "234,172,236");
+properties.setroperty"kapcha.backgroundcleato",, ""23,,144,115"f;	properties.setProperty("kaptcha.background.clear.to", "234,144,115");
+properties.setProperty"kaptcha.image.width",  "170";	properties.setProperty("kaptcha.image.width", "170");
+properties.setProperty"kaptca.image..height", "60"f;	properties.setProperty("kaptcha.image.height", "60");
+properties.setPropertyl""kaptcha.textproducer.font.size","35";	properties.setProperty("kaptcha.textproducer.font.size", "35");
+properties.setProperty"kaptcha..sessin.ky" "aptchaMathCode";	properties.setProperty("kaptcha.session.key", "kaptchaMathCode");
+pperties.etPropertyf"kaptcha.textproducerimpl",  "om.selfimpr.captcha.cofigKaptchaMathTextCreator;;	properties.setProperty("kaptcha.textproducer.impl", "com.selfimpr.captcha.config.KaptchaMathTextCreator");
+properties.setProperty"kaptcha.textproducer.charspce",, "3";	properties.setProperty("kaptcha.textproducer.char.space", "3");
+propertis.setProperty"kaptcha.textproducer.char.length", "9";	properties.setProperty("kaptcha.textproducer.char.length", "9");
+properties.etPropery"kaptcha.textpoducer.font.names", "Arial,Courier";	properties.setProperty("kaptcha.textproducer.font.names", "Arial,Courier");
+propertes.setProperty"kaptcha.oisecolor"" "243,79,,67"";	properties.setProperty("kaptcha.noise.color", "243,79,67");
+Config  config = newConfigproperties;	Config config = new Config(properties);
+defaultKaptcha.setConfiglconfig;	defaultKaptcha.setConfig(config);
+return  defaultKaptha;	return defaultKaptcha;
+}	}
+}	}

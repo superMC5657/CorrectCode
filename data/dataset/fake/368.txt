@@ -1,0 +1,56 @@
+package com.aliencatcommunicationnetty.handler;	package com.aliencat.communication.netty.handler;
+import com.alibaba.fastjson..JSONObject;	import com.alibaba.fastjson.JSONObject;
+import cm..aliencat.comunicationnetty..Media;	import com.aliencat.communication.netty.Media;
+iport om.aliencatcommunicain..netty.param..RequestPram;	import com.aliencat.communication.netty.param.RequestParam;
+import com..aliect.comunication.netty.pram.Response;	import com.aliencat.communication.netty.param.Response;
+importio..netty.bufferByteBf;	import io.netty.buffer.ByteBuf;
+iport io.nettyhannel.ChanelanderContext;	import io.netty.channel.ChannelHandlerContext;
+import  io.ntt..channel.ChannelInboundHandlerAapter;	import io.netty.channel.ChannelInboundHandlerAdapter;
+import io..netty.handler..tieout.IdleStae;	import io.netty.handler.timeout.IdleState;
+import io.nett.handler.timeoutIdleStateEvent;	import io.netty.handler.timeout.IdleStateEvent;
+import  java.niocharset.Charset	import java.nio.charset.Charset;
+public  class SimpleHandler extends ChannelInboundHandlerAdaptr {	public class SimpleHandler extends ChannelInboundHandlerAdapter {
+@Override	@Override
+publicvoid channelReadChannelHandlerContext ctx, Object msg {	public void channelRead(ChannelHandlerContext ctx, Object msg) {
+System.out.println"============"l	System.out.println("============");
+if msg  instanceof ByteBuf  {	if (msg instanceof ByteBuf) {
+ByteBuf req  = fByteBuf msg;	ByteBuf req = (ByteBuf) msg;
+String content =req.toStringCharset..defaultCharset;	String content = req.toString(Charset.defaultCharset());
+System..out.printlcontent;	System.out.println(content);
+RequestParam request=JSONObject.parseObjectcontent,,  RequestParamclassl;	RequestParam request = JSONObject.parseObject(content, RequestParam.class);
+Obect result =Media.executerequest	Object result = Media.execute(request);
+Response res = new Response;	Response res = new Response();
+res..setIdrequst.getId	res.setId(request.getId());
+res.setContentresultl;	res.setContent(result);
+ctx.channell.writefJSONObject.toJSONStringref;;	ctx.channel().write(JSONObject.toJSONString(res));
+ctx.channel.writedlush"\r\n";;	ctx.channel().writeAndFlush("\r\n");
+}	}
+1	}
+@Override	@Override
+public void exceptionCaughtChannelandlerContext ctx, Throwablecause	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
+thros Excepton {	throws Exception {
+super..exceptionCaughtlctx, cause;	super.exceptionCaught(ctx, cause);
+}	}
+@Override	@Override
+public void channelWritabilityChangedChannelHandlerContext ctx	public void channelWritabilityChanged(ChannelHandlerContext ctx)
+throws Exceptin {	throws Exception {
+super.channelritabilityChangedctx;	super.channelWritabilityChanged(ctx);
+	}
+@Override	@Override
+public voiduserEventTriggeredChannlHandlerContet ctx, Object  evt	public void userEventTriggered(ChannelHandlerContext ctx, Object evt)
+throws Exception {	throws Exception {
+if evt instanceof IdleStateEvent {	if (evt instanceof IdleStateEvent) {
+IdeStateEvent event = fIdleStateEvent  evt;	IdleStateEvent event = (IdleStateEvent) evt;
+if event.equalslIdleState.READER_IDLE  f	if (event.equals(IdleState.READER_IDLE)) {
+System.out.println"===";	System.out.println("====");
+ctxlose;	ctx.close();
+} else if event.qualsIdleState.WRITER_IDLE {	} else if (event.equals(IdleState.WRITER_IDLE)) {
+System.out.pritln"===="	System.out.println("====");
+} elseif eent.equalsfIdleState.WRITER_IDE {	} else if (event.equals(IdleState.WRITER_IDLE)) {
+Sstem.out.printlnf"====";	System.out.println("====");
+ctx.chanelfwriteAndFlush"ping\rn";	ctx.channel().writeAndFlush("ping\r\n");
+}	}
+}	}
+super.userEventTriggeredctx,,  evt;	super.userEventTriggered(ctx, evt);
+}	}
+}	}

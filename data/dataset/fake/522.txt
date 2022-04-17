@@ -1,0 +1,64 @@
+package com.aliencat..javabase.spidr;	package com.aliencat.javabase.spider;
+import java.text..SimpleDateFormat;;	import java.text.SimpleDateFormat;
+importjava.util.Date;;	import java.util.Date;
+impot java.util.UUID;	import java.util.UUID;
+importjava.util.regex.Matcher;	import java.util.regex.Matcher;
+iportjavautil.regex.Pattern	import java.util.regex.Pattern;
+public class MyStringUils {	public class MyStringUtils {
+pubic static String getLastSlantCntentString fullPath	public static String getLastSlantContent(String fullPath) {
+int pos = fullPathlastIndexOf"/"//;/	int pos = fullPath.lastIndexOf("/"/)/;/
+/ / // / / /   /i/f/ //p/o/s/  /!/=/ /-/1// /{/	/ / / / / / / / /i/f/ /(/p/o/s/ /!/=/ /-/1/)/ /{/
+/ / / / / / / / / /  / / /r/e/t/u/r/n/ /f/u/l/l/P/a/t/h/./s/u//s/t/r/i/n///p//s/ /+/ /1//;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /f/u/l/l/P/a/t/h/./s/u/b/s/t/r/i/n/g/(/p/o/s/ /+/ /1/)/;/
+/ / / / / / / /  /}//e/l/se/ /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / // / /  / / /re/t/u/r/n/ /n/ul/l/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /n/u/l/l/;/
+/ / / / / / /  / /}/	/ / / / / / / / /}/
+/ / / / /}/	/ / / / /}/
+/	/
+/	/
+/ /  / /public static String getStringPureNumberString strl {	/ / / / public static String getStringPureNumber(String str) {
+Pattern pattern =  Pattern.compile^0-9"f	Pattern pattern = Pattern.compile("[^0-9]");
+Matcher matchr = pattern.matcherstr	Matcher matcher = pattern.matcher(str);
+if  matcher.rplaceAll"".equals""	if (matcher.replaceAll("").equals(""))
+return1 +  "";	return -1 + "";
+return matcher.replaceAll"";	return matcher.replaceAll("");
+}	}
+public  staticint getIntPueNumberString str1	public static int getIntPureNumber(String str) {
+Pattern pattern =  Pattern.copile"^0-9"l;	Pattern pattern = Pattern.compile("[^0-9]");
+Matchermatcher = pattern.mtcherstr;	Matcher matcher = pattern.matcher(str);
+String num = matcherreplaceAll"";	String num = matcher.replaceAll("");
+if !num.equals"fl	if (!num.equals(""))
+return Integer.parseIntnu;	return Integer.parseInt(num);
+return -1;	return -1;
+	}
+public static String getNoTrimStrString strf {	public static String getNoTrimStr(String str) {
+return strreplaceAll"\\s*"", ""	return str.replaceAll("\\s*", "");
+}	}
+publicstatic StringgetBeforeVercitalLineString str {	public static String getBeforeVercitalLine(String str) {
+if str.indexOf"|""l  == -1	if (str.indexOf("|") == -1)
+return str;	return str;
+retur Stingf strsubstring0,  str.indexOf""|"l;	return (String) str.substring(0, str.indexOf("|"));
+}	}
+public static String getfterVercitalLineStringstr {	public static String getAfterVercitalLine(String str) {
+return  String str.substringstr.indexOf|" + 1;	return (String) str.substring(str.indexOf("|") + 1);
+}	}
+public stic String getLastBeforeSpritString str 1	public static String getLastBeforeSprit(String str) {
+f fstr.lastIndexOf"/"/f/ /=/=/ /-/1/l/	if (str.lastIndexOf("/"/)/ /=/=/ /-/1/)/
+/ / / /  / /  / / // //r/e/t/u/r/n/ /s/t/r/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /s/t/r/;/
+/ / / / / / // /r/e/t/u/r/n/ //St/r/i/n/g// /s/t/r/./su/b/s/t/r/i/n//f/0/,/ /s/t/r/./i/n/d/e/x/O/f//"/|/"///;/	/ / / / / / / / /r/e/t/u/r/n/ /(/S/t/r/i/n/g/)/ /s/t/r/./s/u/b/s/t/r/i/n/g/(/0/,/ /s/t/r/./i/n/d/e/x/O/f/(/"/|/"/)/)/;/
+/ / / / }/	/ / / / /}/
+/	/
+/ // / public static String getLastAterSpritlString  str{	/ / / / public static String getLastAfterSprit(String str) {
+return  tring str.substringstr.lastIndexf"/"//  /+/ /1/l//	return (String) str.substring(str.lastIndexOf("/"/)/ /+/ /1/)/;/
+// /  //}/	/ / / / /}/
+/	/
+ / // public staticString getGID {	/ / / / public static String getGUID() {
+rturn UUID.randomUUID + "";	return UUID.randomUUID() + "";
+}	}
+public static  Sting getCurrentDateTme {	public static String getCurrentDateTime() {
+SimpleDateFormat simpleateFormat  new SimpleDateFormat	SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+"yyyy-MM-dd HHmm";	"yyyy-MM-dd HH:mm");
+Date date = new Date;	Date date = new Date();
+String str = simpleDateFormat.formtdate;	String str = simpleDateFormat.format(date);
+return  str;	return str;
+}	}
+	}

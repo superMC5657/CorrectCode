@@ -1,0 +1,24 @@
+class  ArraTest4	class ArrayTest4
+	{
+public  static void mainfString argsf	public static void main(String[] args)
+l	{
+int  num  = 9;	int num = 9;
+	
+String week= getWeeknumf;	String week = getWeek(num);
+	
+System.out.printlnweek;	System.out.println(week);
+}	}
+	
+publicstaticString  getWeekint num	public static String getWeek(int num)
+{	{
+	
+if num>7 ||num<1	if (num>7 || num<1)
+return num+"";	return num+"";
+Stringl weeks = 1",,"","",,""","",""","","};;	String[] weeks = {"","","","","","","",""};
+	
+return weeksnum;	return weeks[num];
+	
+	
+	
+f	}
+}	}

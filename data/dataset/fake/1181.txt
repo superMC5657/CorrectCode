@@ -1,0 +1,33 @@
+class  Bank	class Bank
+	{
+privateint sum;	private int sum;
+privateObject obj  new  Object;	private Object obj = new Object();
+public void addint num	public void add(int num)
+{	{
+synchronizefobj	synchronized(obj)
+1	{
+sum= sum  + num	sum = sum + num;
+System.ou..println"sum="+sumf;;}	System.out.println("sum="+sum);}
+}	}
+}	}
+class Consumer implements Runnable	class Consumer implements Runnable
+{	{
+private Bank b = new Bank;	private Bank b = new Bank();
+public void runl{	public void run(){
+forlint x=0x<3;x++	for(int x=0; x<3; x++)
+{	{
+b.add100;f	b.add(100);}
+1	}
+f	}
+class ThreadTest	class ThreadTest
+f	{
+public  staic void mainStringfargs	public static void main(String[] args)
+1	{
+Consumer c  = neConsumer;	Consumer c = new Consumer();
+Thread t1  = nw Threadc;;	Thread t1 = new Thread(c);
+Threadt2  = new Threadc;	Thread t2 = new Thread(c);
+t1.start;	t1.start();
+t2.start;	t2.start();
+System.out.printlnHello World!";	System.out.println("Hello World!");
+}	}
+}	}

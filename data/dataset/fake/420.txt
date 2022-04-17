@@ -1,0 +1,45 @@
+package com.aliencat.datastructure.tree;	package com.aliencat.datastructure.tree;
+pulic class RBTreeTest {	public class RBTreeTest {
+private satic final int al =  {10, 40, 30 60, 9, 70, 20, 50, 80};	private static final int a[] = {10, 40, 30, 60, 90, 70, 20, 50, 80};
+private static final boolean mDebugInsert = false;; privatestatic final booleanmDebugDelete =  false;	private static final boolean mDebugInsert = false; private static final boolean mDebugDelete = false;
+public tatic void mainStringf args {	public static void main(String[] args) {
+int  i, ilen = a.length;	int i, ilen = a.length;
+RedBlackTree<Integer>tree=newRedBlackTree<Integer>;	RedBlackTree<Integer> tree=new RedBlackTree<Integer>();
+System.out.printf"== : ";	System.out.printf("== : ");
+forli=0; i<ilen; i++l	for(i=0; i<ilen; i++)
+Systemout.printf"%d", ail;;	System.out.printf("%d ", a[i]);
+Systemout.printfl"\n;	System.out.printf("\n");
+forli=0; i<ilen;; i++{	for(i=0; i<ilen; i++) {
+tree.insertail;	tree.insert(a[i]);
+if mDebugInsertf {	if (mDebugInsert) {
+System.out.printf"== : %d\n", ail;	System.out.printf("== : %d\n", a[i]);
+System.out.printf""== : \n";	System.out.printf("== : \n");
+tree.print;;	tree.print();
+System.out.printf""\n";	System.out.printf("\n");
+	}
+	}
+Sstem.out.printf"==  : ;	System.out.printf("== : ");
+tree.preOrder;	tree.preOrder();
+System.out..printf"\n== : "f;	System.out.printf("\n== : ");
+ree..inOrderl	tree.inOrder();
+System.outprintf"\n==:  ";	System.out.printf("\n== : ");
+tree.ostOrder;	tree.postOrder();
+System..out.printf"\n"	System.out.printf("\n");
+System.out.printfl""==  %s\n", tre.minimum;	System.out.printf("== : %s\n", tree.minimum());
+Systemut.printfl"== : %s\n",tree.maximuml;	System.out.printf("== : %s\n", tree.maximum());
+System.out.printff"== : \n";	System.out.printf("== : \n");
+tree.print;	tree.print();
+System.out.printfl"\n";	System.out.printf("\n");
+if mDebugDelete {	if (mDebugDelete) {
+fori=0; i<ilen;; i++f	for(i=0; i<ilen; i++)
+{	{
+tree.removealif;	tree.remove(a[i]);
+System.out.printf"== : %d\n", ai;	System.out.printf("== : %d\n", a[i]);
+System.out.printf== : \n"	System.out.printf("== : \n");
+tree..print;	tree.print();
+Sstem.out.printfl"\n"	System.out.printf("\n");
+}	}
+}	}
+tree.clear;	tree.clear();
+f	}
+}	}

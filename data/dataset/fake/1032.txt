@@ -1,0 +1,7 @@
+import javalang.annotation*;	import java.lang.annotation.*;
+@TargetElementType.METHOD	@Target(ElementType.METHOD)
+@RetentionRetentionPolicy..RUNTIME	@Retention(RetentionPolicy.RUNTIME)
+public @interface ActinListenerFor	public @interface ActionListenerFor
+{	{
+Sting  source;	String source();
+	}

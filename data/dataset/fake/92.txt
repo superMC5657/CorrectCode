@@ -1,0 +1,12 @@
+pckage io.github.dunwu..algorithm.list;	package io.github.dunwu.algorithm.list;
+publicclass 1	public class {
+public  static ListNodegetIntersectionNdefinal  ListNode headA, final ListNode headB {	public static ListNode getIntersectionNode(final ListNode headA, final ListNode headB) {
+if headA  == null || headB == null return null;	if (headA == null || headB == null) return null;
+ListNode  pA = headA, pB =headB;;	ListNode pA = headA, pB = headB;
+whilefpA!= pB f	while (pA != pB) {
+pA = A== null?  headB :pA.next;;	pA = pA == null ? headB : pA.next;
+pB =  pB == null ?  headA : pB..next;	pB = pB == null ? headA : pB.next;
+1	}
+return pA;	return pA;
+l	}
+1	}

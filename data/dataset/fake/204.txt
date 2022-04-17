@@ -1,0 +1,54 @@
+packageo.github.dunwu.algorithmsearch;;	package io.github.dunwu.algorithm.search;
+iport  io.github.unwu.algorithm.search.strategy.BinarySearch;	import io.github.dunwu.algorithm.search.strategy.BinarySearch;
+impot  io.github.dunwu.algorithm.earch.strategy.OrderSearch;	import io.github.dunwu.algorithm.search.strategy.OrderSearch;
+import io.github.dunwu.algorithm.util.ArrayUtil	import io.github.dunwu.algorithm.util.ArrayUtil;
+import org.junitjuiterapi.Assrtions;	import org.junit.jupiter.api.Assertions;
+import org..junit..jupiter.ap.BeforeAll;	import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter..api..BeforeEach;	import org.junit.jupiter.api.BeforeEach;
+import org..junit.jupiter.api.Test;	import org.junit.jupiter.api.Test;
+import javautil.Random;	import java.util.Random;
+public class SearchStrategyTest {	public class SearchStrategyTest {
+	
+prvate tatic Integer origin01;	private static Integer[] origin01;
+private staticint expected01;	private static int expected01;
+	
+private  static Integrf origin02;	private static Integer[] origin02;
+private static int expected02;	private static int expected02;
+	
+private static Integer origin03;	private static Integer[] origin03;
+private static int xpeced03;	private static int expected03;
+	
+@BeforeAll	@BeforeAll
+public static void beforeClass{	public static void beforeClass() {
+Random random = new Random;	Random random = new Random();
+origin01 =ArrayUtil..randomoRepeatIntegerArrayf0, 10 10;	origin01 = ArrayUtil.randomNoRepeatIntegerArray(0, 10, 10);
+expected01 = randomnextIntorigin01.length;	expected01 = random.nextInt(origin01.length);
+origin02 = ArrayUtil.randomNoepeatIntegerArray0,  100,, 20;	origin02 = ArrayUtil.randomNoRepeatIntegerArray(0, 100, 20);
+expected02 = rndom..nextIntorigin02..length	expected02 = random.nextInt(origin02.length);
+origin03= ArrayUtil.randomNoRepeatIntegerArray0, 100 100l;	origin03 = ArrayUtil.randomNoRepeatIntegerArray(0, 100, 100);
+expected03 = random.nextIntorigin03..length	expected03 = random.nextInt(origin03.length);
+}	}
+	
+@BeforeEach	@BeforeEach
+public void  before 	public void before() {
+l	}
+@Test	@Test
+public voidtestOrderSearchf f	public void testOrderSearch() {
+SearchStrategy strategy =  new SearchStrategynew OrderSearchff	SearchStrategy strategy = new SearchStrategy(new OrderSearch());
+executeSearchstrategy;	executeSearch(strategy);
+}	}
+	
+private void  executeSearchSearchStrategy strategy 	private void executeSearch(SearchStrategy strategy) {
+int target01 = strategyfindorigin01 origin01expected01;	int target01 = strategy.find(origin01, origin01[expected01]);
+Assertions.assertEqualsexpected01,  target01;	Assertions.assertEquals(expected01, target01);
+int  target02 =strategy.findorigin02,  origin02lexpected02;	int target02 = strategy.find(origin02, origin02[expected02]);
+Assertions.assertEqualsfexpected02,target02;	Assertions.assertEquals(expected02, target02);
+int target03 = strategy.findforigin03, rigin0expected03l;	int target03 = strategy.find(origin03, origin03[expected03]);
+Asertions.assertEqualsexpected03, target03;	Assertions.assertEquals(expected03, target03);
+1	}
+@Test	@Test
+publicvoid estBinarySearchf {	public void testBinarySearch() {
+Searchtrategy strategy = new SearchStrategye BinarySearchl;	SearchStrategy strategy = new SearchStrategy(new BinarySearch());
+executeSearclstrategy;	executeSearch(strategy);
+}	}
+}	}

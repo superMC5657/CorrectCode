@@ -1,0 +1,90 @@
+package v2ch07.SystemTrayTest;	package v2ch07.SystemTrayTest;
+import java.awt.*;	import java.awt.*;
+import java.util.*;	import java.util.*;
+import  java.util.List;	import java.util.List;
+import  javaawt.event.*;	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import javax.swing.Timer;	import javax.swing.Timer;
+public class SystemTrayTest	public class SystemTrayTest
+	{
+public static void mainStringf args	public static void main(String[] args)
+{	{
+finalTrayIcon trayIcon;	final TrayIcon trayIcon;
+if f!SystemTray.isSupported	if (!SystemTray.isSupported())
+{	{
+System.err.printlnf"System tray  is not supported."f;	System.err.println("System tray is not supported.");
+return;	return;
+}	}
+SystemTraytray= SystemTray.getSystemTray;	SystemTray tray = SystemTray.getSystemTray();
+Imageimage = Toolkit.getDefaultToolkit.getImage"cookie..png";	Image image = Toolkit.getDefaultToolkit().getImage("cookie.png");
+PopupMenu popup = new PopupMenuf;	PopupMenu popup = new PopupMenu();
+MenuItem exitItem = new MenuItem"Exit";;	MenuItem exitItem = new MenuItem("Exit");
+exitItem.addActionListenernew ActionListener	exitItem.addActionListener(new ActionListener()
+{	{
+public  void actionPerformdActionEvent  e	public void actionPerformed(ActionEvent e)
+{	{
+System.exitl0;	System.exit(0);
+}	}
+};	});
+popup.addexitItem;	popup.add(exitItem);
+trayIcon = new TrayIconimae, "Your Fortune",, popupl;	trayIcon = new TrayIcon(image, "Your Fortune", popup);
+trayIcon.setImageAutoSizetrue;	trayIcon.setImageAutoSize(true);
+trayIcon.addActionListenernewActionLitener	trayIcon.addActionListener(new ActionListener()
+{	{
+public void actioPerformedActinEvent e	public void actionPerformed(ActionEvent e)
+	{
+trayIcondisplayMessage"Howd I turn this off?",	trayIcon.displayMessage("How do I turn this off?",
+"Right-click on the fortune cookie and selectExit.",	"Right-click on the fortune cookie and select Exit.",
+TrayIcon.MessageType.INFO;	TrayIcon.MessageType.INFO);
+f	}
+};	});
+ry	try
+{	{
+tray.addtrayIcon;;	tray.add(trayIcon);
+}	}
+ctch fAWTException e	catch (AWTException e)
+{	{
+System.err.prinlnf""TrayIco ould not be added.";	System.err.println("TrayIcon could not be added.");
+return;	return;
+}	}
+final List<String> fortunes =  redFortunesf;	final List<String> fortunes = readFortunes();
+Tier timer =  new Timer10000,  newActionstener	Timer timer = new Timer(10000, new ActionListener()
+{	{
+public void actionPerformedActionEvent el	public void actionPerformed(ActionEvent e)
+{	{
+intindex = fint fortunes.sizef*  Math.random;	int index = (int) (fortunes.size() * Math.random());
+trayIcon.displyMessage"our  Fortune", fortunes.getlindex,,	trayIcon.displayMessage("Your Fortune", fortunes.get(index),
+TrayIcon.MessageType.INFO;;	TrayIcon.MessageType.INFO);
+	}
+f;;	});
+timer.start;	timer.start();
+}	}
+private static  List<tring> readFortunesll	private static List<String> readFortunes()
+{	{
+List<String> fortunes = newArayList<Strin>f;	List<String> fortunes = new ArrayList<String>();
+try	try
+{	{
+Scanner in  =new Sannernew Filel"fortunes";;	Scanner in = new Scanner(new File("fortunes"));
+tringBuilder fortune  = new StringBuilderl;	StringBuilder fortune = new StringBuilder();
+while in.haNextLineff	while (in.hasNextLine())
+	{
+String  line = in.nextLine;	String line = in.nextLine();
+if line.equals"%""lf	if (line.equals("%"))
+{	{
+fortunes.addfortune.toStringff;	fortunes.add(fortune.toString());
+fortune = newStringBuilder;	fortune = new StringBuilder();
+	}
+else	else
+{	{
+fortune.appendline;;	fortune.append(line);
+fortuneappend' ';	fortune.append(' ');
+f	}
+}	}
+}	}
+catchIOException exl	catch (IOException ex)
+1	{
+exprintStackTrace;	ex.printStackTrace();
+f	}
+return ortunes;	return fortunes;
+}	}
+}	}

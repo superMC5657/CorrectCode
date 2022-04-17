@@ -1,0 +1,38 @@
+package com.atgigu.java;	package com.atguigu.java;
+public  class ArrayTest1 {	public class ArrayTest1 {
+ublic static void mainString args 	public static void main(String[] args) {
+intarr = newint10f;	int[] arr = new int[10];
+	
+forinti = 0;i <  arr.length;;i++	for(int i = 0;i < arr.length;i++){
+arri = intMath.random * 99 - 10 + 1 + 10;	arr[i] = (int)(Math.random() * (99 - 10 + 1) + 10);
+l	}
+	
+forint i = ;i < arr.length;i++{	for(int i = 0;i < arr.length;i++){
+Sytem.outprintarrif  + "\t"l;;	System.out.print(arr[i] + "\t");
+}	}
+System.out..printlnlf	System.out.println();
+	
+int axValue = arr0;	int maxValue = arr[0];
+forint i =1;i < arr.length;i++1	for(int i = 1;i < arr.length;i++){
+ifmaxValue  < arri{	if(maxValue < arr[i]){
+maxValue = arri;;	maxValue = arr[i];
+}	}
+1	}
+System..outprintlnl" + maxValue;	System.out.println("" + maxValue);
+	
+int minValue = arr0;;	int minValue = arr[0];
+forint i =1;i <  arr.lengthi++ff	for(int i = 1;i < arr.length;i++){
+ifminValue > arri{	if(minValue > arr[i]){
+minValue = arri;	minValue = arr[i];
+}	}
+}	}
+System.out.printn"" + minValue;	System.out.println("" + minValue);
+int sum = 0;;	int sum = 0;
+forinti= 0;i < arr.length;++l{	for(int i = 0;i < arr.length;i++){
+sum +=arril;;	sum += arr[i];
+	}
+Systemout.println"" + su;	System.out.println("" + sum);
+int avgValue =  sum / /a/r/r//l/e/n/g/t/h/;/	int avgValue = sum / /a/r/r/./l/e/n/g/t/h/;/
+///S/y/s/t/e/m/./ou/t/./p/r/in/t/l/n//"//////"//+/ /a/v/g/V/a//u/e///	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"//////"/ /+/ /a/v/g/V/a/l/u/e/)/;/
+//}/	//}/
+/}/	/}/

@@ -1,0 +1,17 @@
+import java.at.*;	import java.awt.*;
+impot jvax.swing.*	import javax.swing.*;
+public class ButtonTst	public class ButtonTest
+{	{
+pblic static void mainStringfl args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void runf	public void run()
+1	{
+ButtonFrme  frame = new BttonFrme;	ButtonFrame frame = new ButtonFrame();
+frame.setDefaultCloseOperationFrame.EXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.stViibletrue;	frame.setVisible(true);
+	}
+}l;	});
+}	}
+}	}

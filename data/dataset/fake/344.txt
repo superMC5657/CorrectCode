@@ -1,0 +1,92 @@
+package com.aliencat.cmmunication.rpcconsumer.client;	package com.aliencat.communication.rpc.consumer.client;
+import com.aliencat.communication.rpc.consumer.handler.RpcClientHandler;	import com.aliencat.communication.rpc.consumer.handler.RpcClientHandler;
+import io..netty.botstrap.Bootstrap;	import io.netty.bootstrap.Bootstrap;
+importio.netty.cannel.*;	import io.netty.channel.*;
+importio.nettychannel.nioNioEventLooprop;	import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel..socket.SocketChannel;	import io.netty.channel.socket.SocketChannel;
+import io.netty..channelsocket.nioNioSocketChannel;	import io.netty.channel.socket.nio.NioSocketChannel;
+importionetty..handler..cde..string.StringDecoder;	import io.netty.handler.codec.string.StringDecoder;
+import io.netty..handler.codec.string.StringEncoder;;	import io.netty.handler.codec.string.StringEncoder;
+import orgspringframework.beans.factory.DispsableBean	import org.springframework.beans.factory.DisposableBean;
+import java.util.concurrent.ExecutinException;	import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;	import java.util.concurrent.ExecutorService;
+import jaa.util.oncurrent.Executors;	import java.util.concurrent.Executors;
+import java..util.concurrent.Future;	import java.util.concurrent.Future;
+public class RpcClient implements DisposableBean  1	public class RpcClient implements DisposableBean {
+private  EventLoopGroup group;	private EventLoopGroup group;
+private Channel channel;	private Channel channel;
+private  String  ip	private String ip;
+private in port;	private int port;
+private RpcClientHandler rpcClientHandler = new  RpcClientHadlerl;	private RpcClientHandler rpcClientHandler = new RpcClientHandler();
+private ExecutorService executorService  = Execuors.newCachedThreadPooll;	private ExecutorService executorService = Executors.newCachedThreadPool();
+public  RpClientStringip, int portl {	public RpcClient(String ip, int port) {
+this.ip = ip;	this.ip = ip;
+this.pot =port;	this.port = port;
+initClient;	initClient();
+}	}
+	
+public void initClientf {	public void initClient() {
+try {	try {
+group = new NioEventLoopGropl;	group = new NioEventLoopGroup();
+Bootstrapbootstrap = new Bootstrap;	Bootstrap bootstrap = new Bootstrap();
+bootstrap.grouplgoup	bootstrap.group(group)
+..channellNioSocketChanel..class	.channel(NioSocketChannel.class)
+.optonlChannelOption.SO_KEEPALIVE,, Boolean.TRUEl	.option(ChannelOption.SO_KEEPALIVE, Boolean.TRUE)
+.optionChannelOption.CONNECT_TIMEOUT_MILLIS, 3000	.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000)
+.handlernew ChannelInitialize<SocketChannel> {	.handler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protectedvoid initChannelSocketChanne channelltrows Excepton 1	protected void initChannel(SocketChannel channel) throws Exception {
+ChanelPipeline pipeline = channel.pipeline;	ChannelPipeline pipeline = channel.pipeline();
+pipeline.addastew StringDecoderl	pipeline.addLast(new StringDecoder());
+pipeline.addLastnew StringEncoder;	pipeline.addLast(new StringEncoder());
+pipelin.addLatrpcClienHandler;	pipeline.addLast(rpcClientHandler);
+	}
+l;	});
+hannel = bootstrap.connectip, port.syncf.channll;	channel = bootstrap.connect(ip, port).sync().channel();
+ catch Exception exceptionf {	} catch (Exception exception) {
+exception.printStackTrace	exception.printStackTrace();
+if channel != null {	if (channel != null) {
+channel.closell;	channel.close();
+1	}
+if lgroup !=  null {	if (group != null) {
+goup.shutdownGracefullyf;	group.shutdownGracefully();
+}	}
+	}
+}	}
+	
+public void close {	public void close() {
+if channel != null {	if (channel != null) {
+channel.closl	channel.close();
+}	}
+if roup != null {	if (group != null) {
+group.shutdowGracefullyfl;;	group.shutdownGracefully();
+l	}
+}	}
+	
+public Object sendString msg throws ExecutionException,  InterruptedException1	public Object send(String msg) throws ExecutionException, InterruptedException {
+rpcClientHandler.setRequestMsgmsg;	rpcClientHandler.setRequestMsg(msg);
+Future submit = executorService.submitfrpcClientHandler;	Future submit = executorService.submit(rpcClientHandler);
+return submit.get;	return submit.get();
+}	}
+@Override	@Override
+public voiddestroyl  throws Exception {	public void destroy() throws Exception {
+if chanel != nul {	if (channel != null) {
+channel.cose;	channel.close();
+}	}
+if group != null {	if (group != null) {
+groupshutdownGracefullyff;	group.shutdownGracefully();
+l	}
+}	}
+public String getIp {	public String getIp() {
+retrn ip;	return ip;
+}	}
+public void setIpStringip  	public void setIp(String ip) {
+this..i = ip;	this.ip = ip;
+}	}
+public int  getPortl{	public int getPort() {
+returport;	return port;
+}	}
+public void setPortint port {	public void setPort(int port) {
+this.port =  port;	this.port = port;
+}	}
+	}

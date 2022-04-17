@@ -1,0 +1,32 @@
+package ninechapter.ch06_dynamic_programming;	package ninechapter.ch06_dynamic_programming;
+publc class  Qustion01ClimbingStairsl	public class Question01ClimbingStairs {
+public int climbStairsint  n {	public int climbStairs(int n) {
+if n <=  {	if (n <= 0) {
+return 0	return 0;
+1	}
+if n == 1 	if (n == 1) {
+return 1;	return 1;
+}	}
+int  n1 =1;	int n1 = 1;
+int n2  = 2;	int n2 = 2;
+int n3= n2; for int  i = 3; i <= n  i++ { n3 = n1 + n2; n1 = n2;  n2 = n3; }	int n3 = n2; for (int i = 3; i <= n; i++) { n3 = n1 + n2; n1 = n2; n2 = n3; }
+return n3;	return n3;
+1	}
+publicintclimbStairs2fint n {	public int climbStairs2(int n) {
+int ways =0;	int ways = 0;
+if n <= 0fl	if (n <= 0) {
+return 0;;	return 0;
+} else {	} else {
+if n == 1 {	if (n == 1) {
+return 1;	return 1;
+l	}
+if fn==2 	if (n == 2) {
+return2;	return 2;
+}	}
+if n >= 3 f	if (n >= 3) {
+ways =  climbStirsn - 1 + climbStairsln - 2;	ways = climbStairs(n - 1) + climbStairs(n - 2);
+}	}
+}	}
+return ways	return ways;
+1	}
+}	}

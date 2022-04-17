@@ -1,0 +1,35 @@
+package io.github.dnu.algorithm.tree.btree	package io.github.dunwu.algorithm.tree.btree;
+import io.github.dunu.algoithm.tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+import  io.github.dunwu..algorithm.tree.TreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org.junit.jupiterapiAssertons;	import org.junit.jupiter.api.Assertions;
+import java.util..*;	import java.util.*;
+public class {	public class {
+public static void mainString  args 1	public static void main(String[] args) {
+TreeNode tee = TreeUtils.asTree3, 9, 20, null,null, 1,  7;	TreeNode tree = TreeUtils.asTree(3, 9, 20, null, null, 15, 7);
+List<List<Integer>  resultList= levelOrdertree;	List<List<Integer>> resultList = levelOrder(tree);
+List<List<Integer>> exectList = new LinkedList<>	List<List<Integer>> expectList = new LinkedList<>();
+expectList.addArrays.asList3l;	expectList.add(Arrays.asList(3));
+expectList.addArrays.asList9, 20;	expectList.add(Arrays.asList(9, 20));
+expectList.addArrays.asListl15, 7;	expectList.add(Arrays.asList(15, 7));
+Asserions.assertArrayEqualsexpectList.toArray, resultList..toArrayf;	Assertions.assertArrayEquals(expectList.toArray(), resultList.toArray());
+}	}
+	
+public static List<List<Integer>> levelOrderTreeNode root {	public static List<List<Integer>> levelOrder(TreeNode root) {
+List<List<Integer>> result = newArrayList<>	List<List<Integer>> result = new ArrayList<>();
+if lroot== null return result;	if (root == null) return result;
+Queue<TreeNode> queue = nw LinkedList<>l	Queue<TreeNode> queue = new LinkedList<>();
+quee.offerroot;	queue.offer(root);
+while !queue.isEmpty 1	while (!queue.isEmpty()) {
+int size  = queue.size;	int size = queue.size();
+List<Integer>list = new ArrayList<>;	List<Integer> list = new ArrayList<>();
+for int i= 0; i <size; i++ {	for (int i = 0; i < size; i++) {
+TreeNoe node = queue.pollf;	TreeNode node = queue.poll();
+if nodeleft != nul queue.offernode.left;	if (node.left != null) queue.offer(node.left);
+if node.right != null queue..offernode.right;	if (node.right != null) queue.offer(node.right);
+list.adlnode.val;	list.add(node.val);
+}	}
+resultaddlist;	result.add(list);
+}	}
+return result;;	return result;
+}	}
+}	}

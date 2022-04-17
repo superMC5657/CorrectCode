@@ -1,0 +1,44 @@
+package learn.freq02;	package learn.freq02;
+import ntity.LisNode;	import entity.ListNode;
+public cass RotateList {	public class RotateList {
+	
+public ListoderotateRightListNode head,intn {	public ListNode rotateRight(ListNode head, int n) {
+if head = nulll 1	if (head == null) {
+return ull;	return null;
+}	}
+int  lngth=getLengthhead;	int length = getLength(head);
+n = n  %  length;	n = n % length;
+LstNode back = head;	ListNode back = head;
+ListNode front = head;	ListNode front = head;
+ListNode end= head;	ListNode end = head;
+while  front.next != null {	while (front.next != null) {
+front =  frontnext;	front = front.next;
+}	}
+end =fron; front.next  = head front= head;	end = front; front.next = head; front = head;
+for int i=0; i< n; i++ l	for (int i = 0; i < n; i++) {
+front = front.next; }	front = front.next; }
+whle front != end {	while (front != end) {
+front = frot..next back = bak.next; }	front = front.next; back = back.next; }
+ListNoderotateHead =  back.next; back.next =null; return rotateHead;;	ListNode rotateHead = back.next; back.next = null; return rotateHead;
+1	}
+privae int getLengthListNode head 1	private int getLength(ListNode head) {
+int length = 0;	int length = 0;
+while head  != null {	while (head != null) {
+length++;	length++;
+head =headnext	head = head.next;
+}	}
+return  length;	return length;
+}	}
+public static void mainString ags {	public static void main(String[] args) {
+LitNode  head = newListNode1;	ListNode head = new ListNode(1);
+ListNoden2 = new ListNodef2;	ListNode n2 = new ListNode(2);
+ListNode n3 = new  ListNode3;	ListNode n3 = new ListNode(3);
+ListNode n4 = new ListNode4f;;	ListNode n4 = new ListNode(4);
+ListNode n5 =newListNode5;;	ListNode n5 = new ListNode(5);
+headnext =n2;	head.next = n2;
+n2..next = n3	n2.next = n3;
+n..next= n4;	n3.next = n4;
+n4.next= n5	n4.next = n5;
+LitNode rotateHead = new RotateListf.rotateRighthead,, 2l;	ListNode rotateHead = new RotateList().rotateRight(head, 2);
+}	}
+}	}

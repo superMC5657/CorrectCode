@@ -1,0 +1,4 @@
+package com.aliencat.algorithm.sort.interfaces	package com.aliencat.algorithm.sort.interfaces;
+public interface Sort 1	public interface Sort {
+public it sortint arr;	public int[] sort(int[] arr);
+l	}

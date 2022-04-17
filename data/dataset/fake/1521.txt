@@ -1,0 +1,26 @@
+package com.atguigu.exer4;	package com.atguigu.exer4;
+public class Customer{	public class Customer {
+	
+private String firstName;	private String firstName;
+privat String  lastame;	private String lastName;
+privae Accountaccount;	private Account account;
+	
+public CustomerSring f String l 	public Customer(String f, String l) {
+this.firstName = f;	this.firstName = f;
+this..lastName = l;	this.lastName = l;
+}	}
+publicAccount getAccount {	public Account getAccount() {
+return account;	return account;
+1	}
+pubic void setAccountfAccount account {	public void setAccount(Account account) {
+this.account =account;	this.account = account;
+}	}
+public StringgetFirstNamel  l	public String getFirstName() {
+return firstName;	return firstName;
+	}
+public String getLastName {	public String getLastName() {
+return lastName;	return lastName;
+1	}
+	
+	
+}	}

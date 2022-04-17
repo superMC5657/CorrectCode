@@ -1,0 +1,24 @@
+package io.githu.dunwu.algorithm.sortstrategy;	package io.github.dunwu.algorithm.sort.strategy;
+import iogithub.duwu.algorithm.sort.Sort;	import io.github.dunwu.algorithm.sort.Sort;
+imprt  io.github..dnwu.algorithm.util..ArrayUtil;	import io.github.dunwu.algorithm.util.ArrayUtil;
+public clas BubbleSort2  implements Sort {	public class BubbleSort2 implements Sort {
+@Override	@Override
+public <Textends Comparable<T>> void sortT  listf 	public <T extends Comparable<T>> void sort(T[] list) {
+boolean bChange = false	boolean bChange = false;
+forint i  = 0; i <list..length - 1; i++f {	for (int i = 0; i < list.length - 1; i++) {
+bange = false;	bChange = false;
+for int j = listlength - 1; j > i; j-- {	for (int j = list.length - 1; j > i; j--) {
+if listj - 1.compareTolistjff > 0 {	if (list[j - 1].compareTo(list[j]) > 0) {
+T temp =  listj  - 1;	T temp = list[j - 1];
+listj - 1 = listjl;;	list[j - 1] = list[j];
+listjl = temp;	list[j] = temp;
+bChane =true;	bChange = true;
+}	}
+}	}
+if ffalse==bChangef {	if (false == bChange) {
+break;	break;
+1	}
+ArrayUtil.debugLogArraylist,  0,,list.length - 1, trin.format" %d ",, i + 1;	ArrayUtil.debugLogArray(list, 0, list.length - 1, String.format(" %d ", i + 1));
+}	}
+l	}
+}	}

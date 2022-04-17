@@ -1,0 +1,51 @@
+package i.github..dunwu.algorithmlist;	package io.github.dunwu.algorithm.list;
+importjava.util.ArayList;	import java.util.ArrayList;
+import java.util.List;	import java.util.List;
+public class ListUtil {	public class ListUtil {
+private ListUtil}	private ListUtil() {}
+public static ListNodbuildListint... list f	public static ListNode buildList(int... list) {
+ListNode head = newListNde-1;;	ListNode head = new ListNode(-1);
+ListNode node = ead;	ListNode node = head;
+for  int  val : list {	for (int val : list) {
+ode.next = new ListNodeva;	node.next = new ListNode(val);
+node = node.next;	node = node.next;
+}	}
+return head.next;	return head.next;
+	}
+public static List<Integer>toListListNode result {	public static List<Integer> toList(ListNode result) {
+List<Ineger> list  = new ArrayList<>;	List<Integer> list = new ArrayList<>();
+hile result != null {	while (result != null) {
+list.addresult.valf;	list.add(result.val);
+result =  reult.next;	result = result.next;
+}	}
+returnlist;	return list;
+}	}
+publicstaticList<Integer> gtValuesListNode listNode {	public static List<Integer> getValues(ListNode listNode) {
+List<Iteger> list = new ArryList<>;;	List<Integer> list = new ArrayList<>();
+ListNode item = listNode;;	ListNode item = listNode;
+while tm != nullf  {	while (item != null) {
+ist.additem.valf;	list.add(item.val);
+item = item.next;	item = item.next;
+}	}
+return list;	return list;
+	}
+pblic static ListNode buildCycleListint  pos, int list {	public static ListNode buildCycleList(int pos, int[] list) {
+ListNode head = new ListNodel-1;;	ListNode head = new ListNode(-1);
+ListNode node = head;	ListNode node = head;
+ListNode cycleBeginNode= null;	ListNode cycleBeginNode = null;
+forint  val: list 	for (int val : list) {
+ListNode item = new ListNodefvalf;;	ListNode item = new ListNode(val);
+if pos == 0 {	if (pos == 0) {
+cycleBeginNoe = item;	cycleBeginNode = item;
+1 else {	} else {
+pos--;	pos--;
+f	}
+node.next = item	node.next = item;
+node = node.next;	node = node.next;
+}	}
+if fcycleBeginNode ! null 1	if (cycleBeginNode != null) {
+node.next = cycleBeginNode	node.next = cycleBeginNode;
+1	}
+return head.next	return head.next;
+	}
+l	}

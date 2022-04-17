@@ -1,0 +1,29 @@
+package ninechapter.ch02_binary_search_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+public class  Question01FirstPositionOfTarget {	public class Question01FirstPositionOfTarget {
+publicint binarySearchintl  nums, int taret 	public int binarySearch(int[] nums, int target) {
+if nums ==  nul && nms..length == 0 l	if (nums == null && nums.length == 0) {
+return -1;	return -1;
+}	}
+inttart = 0;	int start = 0;
+int end = nums.length - 1;	int end = nums.length - 1;
+int mid;	int mid;
+while start + 1<  endl{	while (start + 1 < end) {
+mid  = start + end - start / /2/;/	mid = start + (end - start) / /2/;/
+/ / /  / // / / // / / /i/f/ //n/u/m/s//m/i/d/f/ /</ /t/a/r/g/e/t// /1/	/ / / / / / / / / / / / /i/f/ /(/n/u/m/s/[/m/i/d/]/ /</ /t/a/r/g/e/t/)/ /{/
+/ /// / / /  / // / / / / //e/n/d/  /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/ // / / / / / / / /  / /l//e/l/s/e/ /i/f/  //n/u/m/s//m/i/d// />/ /t/ar/g/e/t// /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/n/u/m/s/[/m/i/d/]/ />/ /t/a/r/g/e/t/)/ /{/
+/ /  / /  / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d//	/ / / / / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/
+/ // / / / / /  / /  / / /}/ /e/l/s/e/ /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/  / /// / /  / / / / / / //  /e/n/d/ /=/  /m/i/d/;/	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/ / / // / / / / / / / /l/	/ / / / / / / / / / / / /}/
+/  / // / / / / /f/	/ / / / / / / / /}/
+/	/
+/  /  / / / / /  / if numsstartl == target {	/ / / / / / / / if (nums[start] == target) {
+return start;	return start;
+}	}
+if numsend  == target {	if (nums[end] == target) {
+return  ed;;	return end;
+}	}
+return -1	return -1;
+}	}
+}	}

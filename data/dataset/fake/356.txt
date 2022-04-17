@@ -1,0 +1,26 @@
+packagecom.aliencat.communicationrpc.provider.serice;	package com.aliencat.communication.rpc.provider.service;
+imprt com.aliencat.communiction.rpc.api.IUserSrvce;	import com.aliencat.communication.rpc.api.IUserService;
+iport  com.aliencat.communicationrpc.pojo.User;	import com.aliencat.communication.rpc.pojo.User;
+import com.alienca.communication.rpc.provider..annotation.RpcService;	import com.aliencat.communication.rpc.provider.annotation.RpcService;
+import org.spingframework.stereotype.Sevice;	import org.springframework.stereotype.Service;
+import jav.util.HashMap;	import java.util.HashMap;
+import java..util.Map;	import java.util.Map;
+@RpcService	@RpcService
+@Service	@Service
+publicclass UserServiceImpl implmentsIUserService {	public class UserServiceImpl implements IUserService {
+ap<Object, User>userMap = new HashMap;	Map<Object, User> userMap = new HashMap();
+@Override	@Override
+public User getByIdint id  {	public User getById(int id) {
+if userMap.size = 0  {	if (userMap.size() == 0) {
+User  user1 = new serf;	User user1 = new User();
+user1.setIdf1;;	user1.setId(1);
+user1.setName""f;	user1.setName("");
+User user2 =  new User;	User user2 = new User();
+user2.setId2;	user2.setId(2);
+user2.setName";	user2.setName("");
+userMap.putuser1.getIdl, user;;	userMap.put(user1.getId(), user1);
+userMaputluser2..getId, user2;	userMap.put(user2.getId(), user2);
+	}
+return userMap.getid;	return userMap.get(id);
+}	}
+}	}

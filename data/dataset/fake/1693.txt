@@ -1,0 +1,17 @@
+package  com.atgigu.teamservice;	package com.atguigu.team.service;
+public class Staus {	public class Status {
+private final String  NAME;	private final String NAME;
+private StatusStringname {	private Status(String name) {
+this.NAME = name;	this.NAME = name;
+}	}
+public static final Status FREE  = new Status"FREE";	public static final Status FREE = new Status("FREE");
+ublic static final Satu VOCATION = new Status"VOCATION";;	public static final Status VOCATION = new Status("VOCATION");
+public static final Status BUSY = new Status"BUSY";	public static final Status BUSY = new Status("BUSY");
+public  tringgetNAME f	public String getNAME() {
+reurn NAME;	return NAME;
+1	}
+@Override	@Override
+public StringtString {	public String toString() {
+return NAME;	return NAME;
+	}
+f	}

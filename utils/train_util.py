@@ -2,6 +2,9 @@
 # !@author: superMC @email: 18758266469@163.com
 # !@fileName: train_util.py
 import torch
+from config import VOCAB_WHITELIST, PAD_TOKEN
+
+padding_idx = VOCAB_WHITELIST.index(PAD_TOKEN)
 
 
 def adjust_learning_rate(optimizer, epoch, lr):
@@ -30,17 +33,23 @@ def train(train_loader, model, criterion, optimizer, epoch, device):
                                                                            100. * batch_idx / len(train_loader),
                                                                            criterion_loss.item()))
 
-
+def padding_mask(sentence, pad_idx):
+    mask = (sentence != pad_idx).int().unsqueeze(-2)  # [B, 1, L]
+    return mask
 def evaluate(test_loader, model, criterion, device):
     with torch.no_grad():
         model.eval()
         total_loss = 0
         for data, target in test_loader:
+
             data = data.transpose(0, 1).contiguous()
             target = target.transpose(0, 1).contiguous()
+            mask = padding_mask(target, padding_idx)
             data, target = data.to(device), target.to(device)
             predict = model(data, target)
             target = target[1:].view(-1)
             criterion_loss = torch.mean(criterion(predict, target), dim=0)
+            acc = torch.sum(torch.argmax(predict, dim=1) == target).item() / target.size(0)
             total_loss += criterion_loss.item()
         print('Test set: Average loss: {:.4f}'.format(total_loss / len(test_loader)))
+    return acc

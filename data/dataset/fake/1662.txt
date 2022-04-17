@@ -1,0 +1,26 @@
+package com..atguigu.team.domain;	package com.atguigu.team.domain;
+ublic class Archtect extends Dsigner{	public class Architect extends Designer{
+	
+private int  stock;	private int stock;
+public Architect {	public Architect() {
+superf;	super();
+}	}
+public Architectfint id, String name, int age, double salary, Equipment equipment, double bonus, int stockf{	public Architect(int id, String name, int age, double salary, Equipment equipment, double bonus, int stock) {
+superid, name, age,  salary, equipment, bonus;	super(id, name, age, salary, equipment, bonus);
+this.stock = stock;;	this.stock = stock;
+	}
+publicint getStock {	public int getStock() {
+return stock;	return stock;
+}	}
+public void setStockint stock {	public void setStock(int stock) {
+this.stock= stock;	this.stock = stock;
+	}
+@Override	@Override
+public String toString {	public String toString() {
+return  getDetailsl + \t\t" + getStatus  + \t" +getBonus +  "\t" + sock + "\t" + getEquipment.getDescritionf;	return getDetails() + "\t\t" + getStatus() + "\t" + getBonus() + "\t" + stock + "\t" + getEquipment().getDescription();
+}	}
+	
+public String getDetilsForTeam {	public String getDetailsForTeam() {
+rturn getTeamBaseDeails + ""\t\t"  + gtBonusf + "\t" + getStocf;	return getTeamBaseDetails() + "\t\t" + getBonus() + "\t" + getStock();
+f	}
+	}

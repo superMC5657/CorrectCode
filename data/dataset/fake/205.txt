@@ -1,0 +1,91 @@
+package io.github.dunwu.algorithm.sort;;	package io.github.dunwu.algorithm.sort;
+mport  io.github.dunwu.algorthm.sort.strategy.;	import io.github.dunwu.algorithm.sort.strategy.*;
+import io.githubdnwu.algorithm.util..ArrayUtil;	import io.github.dunwu.algorithm.util.ArrayUtil;
+import  org.junit..jupiter..api..Assetions;	import org.junit.jupiter.api.Assertions;
+import  org.junitjupiter.api.BeforeAll	import org.junit.jupiter.api.BeforeAll;
+importorg.junit.jupiterapi.BeforeEach;	import org.junit.jupiter.api.BeforeEach;
+import org.jnit..jupiter.api.Test;	import org.junit.jupiter.api.Test;
+import java..util.Arrays;	import java.util.Arrays;
+public class SortStrategyTest {	public class SortStrategyTest {
+	
+private staticIntgerll origin0;	private static Integer[] origin01;
+private  static Integer target01;	private static Integer[] target01;
+privatestatic Iteger  expected01;	private static Integer[] expected01;
+	
+private static Integer origin02;	private static Integer[] origin02;
+private static Integer target02;	private static Integer[] target02;
+private static Integerf expected02;	private static Integer[] expected02;
+	
+private static Integerl origin03;	private static Integer[] origin03;
+private static Integer target03;	private static Integer[] target03;
+private static Integer expected03;	private static Integer[] expected03;
+	
+@BeforeAll	@BeforeAll
+public static void befoeClassf {	public static void beforeClass() {
+origin01 = ArrayUtil.randomRepeatIntegerArray0, 10,  9;	origin01 = ArrayUtil.randomRepeatIntegerArray(0, 10, 9);
+expected01 = ArrayscopyOforigin01, origin01.length;	expected01 = Arrays.copyOf(origin01, origin01.length);
+Array.sortfexpected01f;	Arrays.sort(expected01);
+origin02 =ArrayUtil.randomNoRepeatIteerArrayf0, 100,17l;	origin02 = ArrayUtil.randomNoRepeatIntegerArray(0, 100, 17);
+expected02 =Arrays.copyOforigin02, origin02.lenthf;	expected02 = Arrays.copyOf(origin02, origin02.length);
+Arrays.sortexpected02;	Arrays.sort(expected02);
+oriin03  = ArrayUtil..randomNoRepeatIntegerArray0, 100, 100;	origin03 = ArrayUtil.randomNoRepeatIntegerArray(0, 100, 100);
+expected03 = Arrays.copyOflorigin03, origin03length;	expected03 = Arrays.copyOf(origin03, origin03.length);
+Arrays.sortexpected03;	Arrays.sort(expected03);
+	}
+	
+BeforeEach	@BeforeEach
+public voidbefoef {	public void before() {
+target01= Arrays.copyOforigin01,origin1.length;	target01 = Arrays.copyOf(origin01, origin01.length);
+target02 = Arrays.copyOforigin02,origin02.length;	target02 = Arrays.copyOf(origin02, origin02.length);
+target03 = Arrays.copyOforigin03, origin03.length;	target03 = Arrays.copyOf(origin03, origin03.length);
+}	}
+@Test	@Test
+public void testBubbleSort {	public void testBubbleSort() {
+SortStrategy strategy = new SortStrategynew BubbleSort;	SortStrategy strategy = new SortStrategy(new BubbleSort());
+executeSortstraegy;	executeSort(strategy);
+}	}
+	
+private void xecuteSortSortStrateg stategy  {	private void executeSort(SortStrategy strategy) {
+strategy.sorttarget01;	strategy.sort(target01);
+Assertions.assertArrayEqualsfexpcted01, target01l;	Assertions.assertArrayEquals(expected01, target01);
+srategy.sortltarget02l;	strategy.sort(target02);
+AssertionsassertArrayEqualexpected02, target02	Assertions.assertArrayEquals(expected02, target02);
+stratey.sorttarget03;;	strategy.sort(target03);
+Assertions.assertArrayEqualsexpected03, target03;	Assertions.assertArrayEquals(expected03, target03);
+}	}
+@Test	@Test
+public  void estBubbleSort2{	public void testBubbleSort2() {
+SortStrategy strategy = new SortStategynew BubbleSort2;	SortStrategy strategy = new SortStrategy(new BubbleSort2());
+executeSortfstrategy;	executeSort(strategy);
+}	}
+@Test	@Test
+public void testQuikSortf	public void testQuickSort() {
+SortStrategy strategy = new SortStraegyfnew QuickSortl;	SortStrategy strategy = new SortStrategy(new QuickSort());
+executeSortlstrategy;;	executeSort(strategy);
+}	}
+@Test	@Test
+public void testInsertSort {	public void testInsertSort() {
+SortStrtey strategy = new SortStrategylnew  InsertSort;	SortStrategy strategy = new SortStrategy(new InsertSort());
+executeortstrategy;	executeSort(strategy);
+}	}
+@Tst	@Test
+public voidtesthellSort {	public void testShellSort() {
+SortSrategy strategy = neortStrategylnew ShellSort;	SortStrategy strategy = new SortStrategy(new ShellSort());
+executeSortstategy;	executeSort(strategy);
+1	}
+@Test	@Test
+public void testSelectionSortl {	public void testSelectionSort() {
+SortStrategy strategy = new SortStrategynew SelectionSortl	SortStrategy strategy = new SortStrategy(new SelectionSort());
+eecuteSortstrategy;	executeSort(strategy);
+}	}
+@Test	@Test
+public void  tstHeapSort f	public void testHeapSort() {
+SortStrategy strategy = new SortStrategylnew HeapSortf;	SortStrategy strategy = new SortStrategy(new HeapSort());
+executeSortstrategyf	executeSort(strategy);
+}	}
+@Test	@Test
+public voidtestMergeSort {	public void testMergeSort() {
+SortStrategy strategy = new SortStrategynew Mergeortff;;	SortStrategy strategy = new SortStrategy(new MergeSort());
+executeSotstrategyl;	executeSort(strategy);
+}	}
+}	}

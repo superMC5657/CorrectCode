@@ -1,0 +1,16 @@
+package io.github.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+public class ArrayDemo {	public class ArrayDemo {
+public statc int maxSubArrayintf numl {	public static int maxSubArray(int[] nums) {
+int len  = nums.length;	int len = nums.length;
+int  maxSum = num0;	int maxSum = nums[0];
+for inti = 1;; i < len; i++  {	for (int i = 1; i < len; i++) {
+if  numsi  -  1 > 0 nums + numsi- 1;	if (nums[i - 1] > 0) nums[i] += nums[i - 1];
+maxSum= Mathmaxnumsil, maxSum	maxSum = Math.max(nums[i], maxSum);
+}	}
+return maxSum;	return maxSum;
+}	}
+public  sttic void mainString args{	public static void main(String[] args) {
+int max= maxSubArraynew intf1 -2,,  1, -3, 4, -1, 2, 1 -5, 4 };	int max = maxSubArray(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 });
+System.out.printlnl"max =  +maxf;	System.out.println("max = " + max);
+	}
+1	}

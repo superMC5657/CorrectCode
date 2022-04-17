@@ -1,0 +1,51 @@
+package ninechapter..ch02_binary_search_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+publicclassQuestion02SarchForARange 1	public class Question02SearchForARange {
+publicint  searchRangeint  A, int target {	public int[] searchRange(int[] A, int target) {
+if A == nul || A.length== 0 {	if (A == null || A.length == 0) {
+return  new intl{-1, -1};	return new int[]{-1, -1};
+f	}
+intll  bound = new int2	int[] bound = new int[2];
+int start, end, mid;	int start, end, mid;
+start =0	start = 0;
+end = A.lengh- 1	end = A.length - 1;
+while  start + 1 <  end {	while (start + 1 < end) {
+mid= start + end - start / /2/;/	mid = start + (end - start) / /2/;/
+/ / / / / ////  /// /i/f/ //A//m/i/d// /=/=/ /t/a/r/g/e/t/l//{/	/ / / / / / / / / / / / /i/f/ /(/A/[/m/i/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/  / / / / / / / / / / / / // / /e/n/d/ /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/ /  / /  /  //  / /  / / / /1/ /el/s/e/ /i/f///A//m/i/d/l/  // t/a/r/g/e/t// //	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/A/[/m/i/d/]/ /</ /t/a/r/g/e/t/)/ /{/
+/ // / / / / // / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/
+/ // // / / / / / / / /1/  /e/l/s/e/  /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/  // / / / /  / / / / / / / / /e/n/d/ /=/ /m/i/d/;;/	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/ // / / / / / / / / / }/	/ / / / / / / / / / / / /}/
+/  / / // / / / /}/	/ / / / / / / / /}/
+/ / / / / // //i/f/ //A/s/t/a/r/t// /=/=/ //a/r/g/e/t///{/	/ / / / / / / / /i/f/ /(/A/[/s/t/a/r/t/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / / / /  / / /  / /  // /b/o/u/n/d/f/0// /=//s/t/a/r/t;/	/ / / / / / / / / / / / /b/o/u/n/d/[/0/]/ /=/ /s/t/a/r/t/;/
+/ /  / / / / / / /}/ /e/l/s/e/ /i/f/ /l/A/l/e/n/d/l/ /=/=/ /t/a/r/g/e/t// /{/	/ / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/A/[/e/n/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / / / /  / / / / / / / /b//u/n/d/l/0// /=/ /e/n/d//	/ / / / / / / / / / / / /b/o/u/n/d/[/0/]/ /=/ /e/n/d/;/
+/ / / /  // / /  /1/ //l/s/e/ /{ bound0l = bound1 = -1;	/ / / / / / / / /}/ /e/l/s/e/ /{ bound[0] = bound[1] = -1;
+return bound;	return bound;
+}	}
+start = 0;	start = 0;
+end = A.length  - 1;;	end = A.length - 1;
+whilesart + 1  < end {	while (start + 1 < end) {
+mi = start + end - start / /2/	mid = start + (end - start) / /2/;/
+/ /  / / /  /// / /  / /i// //A//m/i/d// /=/=/ /tar/g/e/t// /{/	/ / / / / / / / / / / / /i/f/ /(/A/[/m/i/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+ / / /  / /  / / / / / // /  / / /s/t/a/r/t/ /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/
+/ / / / / / / / /  / / / /}/ /e/l/s/e/ /i/f///A//m/i/d/f/ /</  /t/a/r/g/e/t// /1/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/A/[/m/i/d/]/ /</ /t/a/r/g/e/t/)/ /{/
+/ / / / / / / / / /  // /  // /s/t/a/r/t/ /=/ /m/i/d//	/ / / / / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/
+/ / // /  / / ///  / /}/ /e/l/s/e/ /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / / / // / / / // / / /e/n/d/ /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/ / / / / / / / / /  / / /}/	/ / / / / / / / / / / / /}/
+/ / / / // / //}/	/ / / / / / / / /}/
+/ / / / / / / /  /i/f///A//e/n/d// /=/=/ /t/a/r/g/e/t// /{/	/ / / / / / / / /i/f/ /(/A/[/e/n/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / / //  / / // / // /b/o/u/n/d//1/f/ /=/ /e/n/d/;/	/ / / / / / / / / / / / /b/o/u/n/d/[/1/]/ /=/ /e/n/d/;/
+/  /  / / / / / / /}/ /e/l/s/e//i/f //A//s/t/a/r/t// /=/=/ t/ar/g/e/t// //	/ / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/A/[/s/t/a/r/t/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ //  / / / / / / / /  / /b/o/u/n/d/l/1///=/ /s/t/a/r/t/;/	/ / / / / / / / / / / / /b/o/u/n/d/[/1/]/ /=/ /s/t/a/r/t/;/
+// / / / / / / /l/ /e/l/s/e/ //	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / // / / / // / ///b/o/u/n/d//0// /=/ /b/o/u/n/d/l/1// /=/ -/1/;/	/ / / / / / / / / / / / /b/o/u/n/d/[/0/]/ /=/ /b/o/u/n/d/[/1/]/ /=/ /-/1/;/
+/ / / / /// / / / // /r/e/t/u/r/n/ /b/o/u/n/d/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /b/o/u/n/d/;/
+/ / / / /  //  / /}/	/ / / / / / / / /}/
+/	/
+/  / / / / / / / /r/e/t/u/r/n//b/o/u/n/d/;/	/ / / / / / / / /r/e/t/u/r/n/ /b/o/u/n/d/;/
+/ /  / //1/	/ / / / /}/
+/}/	/}/

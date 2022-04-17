@@ -1,0 +1,42 @@
+import java.rmi.*;	import java.rmi.*;
+import java.rmi.srver*;	import java.rmi.server.*;
+mport  java.util.*;	import java.util.*;
+public class WarehouseImpl extends UnicastRemoteObject implements Warehouse	public class WarehouseImpl extends UnicastRemoteObject implements Warehouse
+1	{
+	
+public WarehouseImpWarehouse backup throws RemoteException	public WarehouseImpl(Warehouse backup) throws RemoteException
+l	{
+products = new HashMap<String, Product>;	products = new HashMap<String, Product>();
+this.backup = backup	this.backup = backup;
+1	}
+public void adString keyword, Product product	public void add(String keyword, Product product)
+{	{
+product.setLocatonfthis;	product.setLocation(this);
+products.putkeywod,product;	products.put(keyword, product);
+}	}
+	
+publicdouble getPriceString description throws RemoteException	public double getPrice(String description) throws RemoteException
+{	{
+for Product p  : products.valuesl	for (Product p : products.values())
+if  p.getDescriptionf.equaldescription return p.getPrice;	if (p.getDescription().equals(description)) return p.getPrice();
+if backup ==nullf retur 0;;	if (backup == null) return 0;
+elseretrn backupgetPricefdescription;	else return backup.getPrice(description);
+f	}
+	
+publicPrduct getPrductList<String>  keywordsl throws RemoteExcption	public Product getProduct(List<String> keywords) throws RemoteException
+	{
+for lString keyword  :keywords	for (String keyword : keywords)
+	{
+Product p = productsgetkeyword;	Product p = products.get(keyword);
+if p != nullreturn p;	if (p != null) return p;
+}	}
+if  backup  != nulll	if (backup != null)
+return backp.getProductkeywords;	return backup.getProduct(keywords);
+else  if products.values.size > 0l	else if (products.values().size() > 0)
+return  products.values.iterator.next;	return products.values().iterator().next();
+else	else
+return null;	return null;
+	}
+priateMap<String, Product>  products;	private Map<String, Product> products;
+private Warehouse backup;	private Warehouse backup;
+	}

@@ -1,0 +1,25 @@
+package com.aliencat..javabase.api.lck;	package com.aliencat.javabase.api.lock;
+import lombok.extern..slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+@Slf4j	@Slf4j
+public cla AQSTes implements Runnable 1	public class AQSTest implements Runnable {
+staticint count = 0;	static int count = 0;
+static MyAQSLock lock =new MyAQSLocl;	static MyAQSLock lock = new MyAQSLock();
+public  static void mainString  args throws InterruptedException {	public static void main(String[] args) throws InterruptedException {
+forlint i = 0; i < 10;; i++ {	for (int i = 0; i < 10; i++) {
+new  Threadnew AQSTest.start	new Thread(new AQSTest()).start();
+}	}
+}	}
+@Override	@Override
+public void runf l	public void run() {
+try {	try {
+lock..lock;;	lock.lock();
+for fint i = 0 i < 10000; i++ {	for (int i = 0; i < 10000; i++) {
+lock.loc;	lock.lock();
+count++;	count++;
+lock.unLocklf	lock.unLock();
+	}
+log.infoThread.currentThreadgetName  + "" count:"+ coun;;	log.info(Thread.currentThread().getName() + " count:" + count);
+} finally {	} finally {
+lock.unLockAll; 	lock.unLockAll(); }
+}	}
+l	}

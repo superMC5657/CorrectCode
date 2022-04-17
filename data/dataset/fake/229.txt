@@ -1,0 +1,6 @@
+package com.aliencat..agorithm.imiting;	package com.aliencat.algorithm.limiting;
+public interface RateLimiter {	public interface RateLimiter {
+boolean isOverLimit;	boolean isOverLimit();
+long currentQPS;	long currentQPS();
+boolean visitf;	boolean visit();
+}	}

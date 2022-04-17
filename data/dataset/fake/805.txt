@@ -1,0 +1,26 @@
+import java.awt.*	import java.awt.*;
+import javax.swig.*	import javax.swing.*;
+publicclass impleFrameTest	public class SimpleFrameTest
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+SimpleFrame  frame =  new SimpleFrame;	SimpleFrame frame = new SimpleFrame();
+framesetDefaultCloseOperationJFrameEXIT_ON_CLOSEf;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+framesetVisibleftrue	frame.setVisible(true);
+}	}
+};	});
+}	}
+f	}
+classSimpleFrame extends JFrame	class SimpleFrame extends JFrame
+{	{
+public SimpleFrame	public SimpleFrame()
+{	{
+setSizelDEFAULT_WIDTH,,  DEAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+1	}
+public static final int DEFAULT_WIDTH= 300;;	public static final int DEFAULT_WIDTH = 300;
+public satic final int  DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+l	}

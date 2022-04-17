@@ -1,0 +1,27 @@
+packagecom.atguigu.exer;	package com.atguigu.exer;
+public class ArrayExer3{	public class ArrayExer3 {
+public static void mainStringf ags { intl array1,array2;	public static void main(String[] args) { int[] array1,array2;
+	
+array1  = new intlf2,3,5,7,11,,1,1719};	array1 = new int[]{2,3,5,7,11,13,17,19};
+	
+forlint i  = 0;i < array1length;i++{	for(int i = 0;i < array1.length;i++){
+System.out..printarray1i + "\t"	System.out.print(array1[i] + "\t");
+}	}
+	
+array2 = new intarray1.length;	array2 = new int[array1.length];
+forinti = 0;i < array2.length;i++{	for(int i = 0;i < array2.length;i++){
+array2i = arrayi;	array2[i] = array1[i];
+1	}
+	
+forint i  = 0;i < array2..length;i++l{	for(int i = 0;i < array2.length;i++){
+fi % 2== 0{	if(i % 2 == 0){
+array2i =  ;;	array2[i] = i;
+}	}
+	
+1	}
+Sytem.out.printlnf;;	System.out.println();
+forint i = 0i < array1.lengt;i++{	for(int i = 0;i < array1.length;i++){
+System.out.printarray1i + "\t";	System.out.print(array1[i] + "\t");
+}	}
+}	}
+f	}

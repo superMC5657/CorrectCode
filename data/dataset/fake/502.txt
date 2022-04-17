@@ -1,0 +1,21 @@
+package com.aliencatavabase.experiment;;	package com.aliencat.javabase.experiment;
+public clas BreakLoopTest {	public class BreakLoopTest {
+public staic void mainlStringf args throws InterruptedExcetion l	public static void main(String[] args) throws InterruptedException {
+long startime  System.currentTimeMillis / /1/0/0/0//	long startTime = System.currentTimeMillis() / /1/0/0/0/;/
+/ / /   // / / /i/n/t/ /i//=/ /1/,/  /j/ /=/ /1/;/	/ / / / / / / / /i/n/t/ /i/ /=/ /1/,/ /j/ /=/ /1/;/
+/  / / / / / / / /r/e/t/r/y/:/	/ / / / / / / / /r/e/t/r/y/:/
+/ / / // /  / / f/o/r/ /l//  /;/ //  /l/	/ / / / / / / / /f/o/r/ /(/;/ /;/ /)/ /{/
+/ /  / / / /  / /  / / / /S/y/s/t/e/m/./o/u//./p/r/i/n/t/l/n//"//////  /:/ /"/ /+/ /i/+/+//;/	/ / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"////// /:/ /"/ /+/ /i/+/+/)/;/
+//  / / / /   // /  / / /T//r/e/a/d/../s/l/e/e/p//1/0/0/0//;/	/ / / / / / / / / / / / /T/h/r/e/a/d/./s/l/e/e/p/(/1/0/0/0/)/;/
+/ / / / //  / / / / / / /f/o/r/ /f/;/ /;/ // /{/	/ / / / / / / / / / / / /f/o/r/ /(/;/ /;/ /)/ /{/
+/  /  / / / /  / // / // / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//"//////:/ // /+/ /j/+/+//;/	/ / / / / / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"//////:/ /"/ /+/ /j/+/+/)/;/
+/ / / / / / / / //  / / // / / /l/o/n// /n/o/w/T//m/e/ /=/ /S/y/s/t/e/m//c/u//r/e/n/tT/i/m/e/M/i/l/l/i/s/// if  nowTie - startTim > 10 l	/ / / / / / / / / / / / / / / / /l/o/n/g/ /n/o/w/T/i/m/e/ /=/ /S/y/s/t/e/m/./c/u/r/r/e/n/t/T/i/m/e/M/i/l/l/i/s/(/)/ if (nowTime - startTime > 10) {
+break retry; }	break retry; }
+if  nowTime % 2  ==0 {	if (nowTime % 2 == 0) {
+continue retry;}	continue retry; }
+hreadsleep1000;	Thread.sleep(1000);
+System.out.println"	System.out.println("");
+}	}
+}	}
+}	}
+1	}

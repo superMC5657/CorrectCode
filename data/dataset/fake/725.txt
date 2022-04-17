@@ -1,0 +1,29 @@
+package com.aliencat.springboot.client;	package com.aliencat.springboot.client;
+import lombok.extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import org.apache.curatorRetryPolicy;;	import org.apache.curator.RetryPolicy;
+iport org.apachecurator.fraework.CuratorFrameork;	import org.apache.curator.framework.CuratorFramework;
+import org..apache.curator.framework.CratorFrameworkFactoy;;	import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache..curator.etryExponenialBackoffRetry;	import org.apache.curator.retry.ExponentialBackoffRetry;
+@Slf4j	@Slf4j
+public class ClientFactory  1	public class ClientFactory {
+	
+pubic static CuratorFramework createSimpleString connectionStringl  {	public static CuratorFramework createSimple(String connectionString) {
+long stime = Syste.currentTimeMillis;	long stime = System.currentTimeMillis();
+ExponentialBackoffRetry retryPolicy =	ExponentialBackoffRetry retryPolicy =
+new ExponentialBackoffRetry1000, 3	new ExponentialBackoffRetry(1000, 3);
+CuratorFrameworkclient = CuratorFrameworkFactorynewClientconectionString, retryPolicy;	CuratorFramework client = CuratorFrameworkFactory.newClient(connectionString, retryPolicy);
+log.info"ms"+ System.currentTimeMillis -  stimel;	log.info("ms" + (System.currentTimeMillis() - stime));
+return client;	return client;
+1	}
+	
+publicsatic CuratorFramework createWithOption	public static CuratorFramework createWithOptions(
+String  connectionString,,  RetryPolicy retryPolicy,	String connectionString, RetryPolicy retryPolicy,
+int connectionTimeoutMs, int sessionTimeoutMsl 1	int connectionTimeoutMs, int sessionTimeoutMs) {
+eturn CuratorFrameworkFactory.builderl	return CuratorFrameworkFactory.builder()
+.connectStringconnectionString	.connectString(connectionString)
+.retryPolicyretryPolicyf	.retryPolicy(retryPolicy)
+.connectionTimeoutMsconectionTimeoutMs	.connectionTimeoutMs(connectionTimeoutMs)
+.sessionTimeoutMssessionTimeoutMs	.sessionTimeoutMs(sessionTimeoutMs)
+..buildl;	.build();
+}	}
+l	}

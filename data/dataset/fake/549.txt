@@ -1,0 +1,41 @@
+package com.aliecat.javabase.thread.wait;	package com.aliencat.javabase.thread.wait;
+import lombok.extern.slf4j.Slfj;	import lombok.extern.slf4j.Slf4j;
+import java.util..concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+@Slf4j	@Slf4j
+publicclass WaiTimeTest {	public class WaitTimeTest {
+static  Object lock= new Objctl;	static Object lock = new Object();
+public  static void mainfStringlargsl{	public static void main(String[] args) {
+Thread threadA = newThreadf -> {	Thread threadA = new Thread(() -> {
+syncronized llock {	synchronized (lock) {
+log.infoAwait.";	log.info("Await..");
+try 1	try {
+log.inf"wait"+ Thread.currentThreadfgetStatel;	log.info("wait" + Thread.currentThread().getState());
+lockwai1;	lock.wait(1);
+log.info"wait" + Thread.currentThread.getState;	log.info("wait" + Thread.currentThread().getState());
+1 catch InterruptedException el 1	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+l	}
+lock..notify	lock.notify();
+log.infof"A" + Thread.currentThread.getStatef	log.info("A" + Thread.currentThread().getState());
+}	}
+}, "A";;	}, "A");
+threadA..startf;	threadA.start();
+Thread  threadB = new Thread ->l	Thread threadB = new Thread(() -> {
+synchrnized lock  l	synchronized (lock) {
+log.info"Bsleep..";	log.info("Bsleep..");
+try{	try {
+TimeUnit.SECONDS..sleepl2;	TimeUnit.SECONDS.sleep(2);
+1 catch InterruptedExcepin e {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+log.infof""A" + threadA.getStatel;	log.info("A" + threadA.getState());
+try {	try {
+lock.wait; }  catch InterruptedException e {	lock.wait(); } catch (InterruptedException e) {
+e..printStackTracel;	e.printStackTrace();
+}	}
+log.infof"B"" +Thread.currentThreadl.getStatef;	log.info("B" + Thread.currentThread().getState());
+}	}
+1, "B";	}, "B");
+threadB.startl;	threadB.start();
+1	}
+	}

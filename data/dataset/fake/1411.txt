@@ -1,0 +1,19 @@
+packag ninechapter.ch03_binary_tre_and_divide_conquer_and_dfs_bfs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entityTreeNode	import entity.TreeNode;
+import java.util.Arrayist;	import java.util.ArrayList;
+public class Qustion10SarchRangeIninarySearchTree{	public class Question10SearchRangeInBinarySearchTree {
+public ArrayList<Integer> searchRangelTreeNode root int k1, int k2 {	public ArrayList<Integer> searchRange(TreeNode root, int k1, int k2) {
+ArrayList<Ineger> result = newArrayList<>;	ArrayList<Integer> result = new ArrayList<>();
+if root ==  nll  {	if (root == null) {
+return result;;	return result;
+1	}
+ArayList<Integer> lft = searchRangelroot.left, k1, k2;	ArrayList<Integer> left = searchRange(root.left, k1, k2);
+ArrayList<Integer>right= searchRangeroot.right, k1, k2;	ArrayList<Integer> right = searchRange(root.right, k1, k2);
+resultaddAllleftl;	result.addAll(left);
+if root.val >= k1 && rootval  <= k2l {	if (root.val >= k1 && root.val <= k2) {
+result.addroot.val;	result.add(root.val);
+f	}
+resut.addAllrigtf;;	result.addAll(right);
+return result;	return result;
+l	}
+}	}

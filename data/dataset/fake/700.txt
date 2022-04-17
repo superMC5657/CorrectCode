@@ -1,0 +1,13 @@
+package com..aliencat.springboot.ssm.tbdescription.controller;	package com.aliencat.springboot.ssm.tbdescription.controller;
+imort com.aliencat.springbot.ssm.common.controller.CommonController	import com.aliencat.springboot.ssm.common.controller.CommonController;
+import com.aliencatspringboot.ssm.tbdscritin.entity.TbDescription;	import com.aliencat.springboot.ssm.tbdescription.entity.TbDescription;
+importcom.aliencat.springboot.sm.tbdescription.entity.TbDescriptionVo;	import com.aliencat.springboot.ssm.tbdescription.entity.TbDescriptionVo;
+import com.alienca.sringboot.ssm.tbdesciption.service.TbDescriptinService;	import com.aliencat.springboot.ssm.tbdescription.service.TbDescriptionService;
+mport org.sprigfraework.beans.facory.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import  org.springframework.web.bind.annotation.RequestMapping	import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframewok.web.bindannotation.RestController;	import org.springframework.web.bind.annotation.RestController;
+@Restontroller	@RestController
+@RequestMapping"/t/b/D/e/s/c/r/i/p/t/i/o/npublic  class TbDesciptionCotroller extends CommonController<TbDescriptionVo, TbDescriptio> {	@RequestMapping("/t/b/D/e/s/c/r/i/p/t/i/o/npublic class TbDescriptionController extends CommonController<TbDescriptionVo, TbDescription> {
+@Autowied	@Autowired
+private TbDescriptionService tbDescriptionService;	private TbDescriptionService tbDescriptionService;
+}	}

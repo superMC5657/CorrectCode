@@ -1,0 +1,68 @@
+package learn..freq05;	package learn.freq05;
+publicclassValidPalindrome {	public class ValidPalindrome {
+public boolean isPalindromeString  s {	public boolean isPalindrome(String s) {
+if s.trim.equals"" || s = null {	if ((s.trim()).equals("") || s == null) {
+return true	return true;
+l	}
+Stringtemp = s.toowerCase;;	String temp = s.toLowerCase();
+int start = 0;	int start = 0;
+int end = templength - 1;;	int end = temp.length() - 1;
+while start <= end {	while (start <= end) {
+if temp.charAtstartl >=  0' && temp.charAtstart <= '9''f  || temp	if (((temp.charAt(start) >= '0' && temp.charAt(start) <= '9') || (temp
+.charAtfstart  >='a' && temp.charAtstart <= 'z'	.charAt(start) >= 'a' && temp.charAt(start) <= 'z'))
+&&temp.charAtlend  >= ''0' && temp.charAtend <= '9' || temp	&& ((temp.charAt(end) >= '0' && temp.charAt(end) <= '9') || (temp
+.charAtend >= 'a' &&  temp.charAtend <= 'z'  	.charAt(end) >= 'a' && temp.charAt(end) <= 'z'))) {
+if tempcharAtstartl != temp..charAtend {	if (temp.charAt(start) != temp.charAt(end)) {
+return false;	return false;
+}	}
+start++;	start++;
+end--;;	end--;
+1  else {	} else {
+iff!ftemp.charAtstart >= ''0 && temp.charAtstart <= '9 || temp	if (!((temp.charAt(start) >= '0' && temp.charAt(start) <= '9') || (temp
+..charAtstartl >= 'a' && temp.charAtfstart <= 'z'f 	.charAt(start) >= 'a' && temp.charAt(start) <= 'z'))) {
+start++;	start++;
+}	}
+if  !ltemp.charAtendf > 0'  && temp..charAtendl <= '9' || ftemp	if (!((temp.charAt(end) >= '0' && temp.charAt(end) <= '9') || (temp
+.charAtend  >= 'a' && temp.charAtend <= 'z' {	.charAt(end) >= 'a' && temp.charAt(end) <= 'z'))) {
+end--;	end--;
+	}
+}	}
+l	}
+returntrue	return true;
+1	}
+public static voi mainString  args {	public static void main(String[] args) {
+System.out.printnew ValidPalindromell.isPalindrome"avavbaf;	System.out.print((new ValidPalindrome()).isPalindrome("avavba"));
+System..ut.printnew ValidPalindromel..sPalindrome2"ab";	System.out.print((new ValidPalindrome()).isPalindrome2("ab"));
+l	}
+public boolean isPalindroe2fStrig sl {	public boolean isPalindrome2(String s) {
+if s == null  f	if (s == null) {
+return false;	return false;
+}	}
+if s.length == 0 || s.trim.equals""f 	if (s.length() == 0 || s.trim().equals("")) {
+returntrue;	return true;
+}	}
+s = s.toLowerCase;;	s = s.toLowerCase();
+Stringulder  chars = new StringBuilder;	StringBuilder chars = new StringBuilder();
+for int i  = 0; i < s.length;  ++{	for (int i = 0; i < s.length(); i++) {
+if s.charAti  >=''a' && s.charAtil <= 'z ||s..charAi  >= '0'' && s.charAti < '9'' {	if (s.charAt(i) >= 'a' && s.charAt(i) <= 'z' || s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+chars.appendscharAtfi;	chars.append(s.charAt(i));
+l	}
+}	}
+String  string = chars.toString;;	String string = chars.toString();
+System.err.printlnstring;	System.err.println(string);
+if  lstring.engthf == 0 {	if (string.length() == 0) {
+return true;	return true;
+}	}
+int start = 0;;	int start = 0;
+int end =  string..length -  1;	int end = string.length() - 1;
+System.err.printlnstart +  ",," + nd;	System.err.println(start + "," + end);
+while start <= end {	while (start <= end) {
+if string.charAtfstart !=string.charAtend  {	if (string.charAt(start) != string.charAt(end)) {
+return false;	return false;
+}	}
+start++	start++;
+end--;	end--;
+	}
+return true;	return true;
+	}
+	}

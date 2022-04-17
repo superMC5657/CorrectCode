@@ -1,0 +1,128 @@
+package  com.horstmann.corejava;	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+import java.awt.fon..*;	import java.awt.font.*;
+import java.awtgeom.*;;	import java.awt.geom.*;
+importjavax.swing.*	import javax.swing.*;
+import com..horstmann.annotaions.*;	import com.horstmann.annotations.*;
+public class ChartBean  extends JCompoent	public class ChartBean extends JComponent
+{	{
+public ChartBean	public ChartBean()
+{	{
+setPreferredSizenew DimensionlXPREFSIZE, YPREFSIZE;	setPreferredSize(new Dimension(XPREFSIZE, YPREFSIZE));
+}	}
+public voidpaintComponentGraphics g	public void paintComponent(Graphics g)
+{	{
+Grapics2D g2  = Graphics2D g	Graphics2D g2 = (Graphics2D) g;
+if values == null || values.lengt == 0 return;	if (values == null || values.length == 0) return;
+double minalue = 0;	double minValue = 0;
+double maxValue = 0;	double maxValue = 0;
+forint i = 0 i <values.lenth; i++l	for (int i = 0; i < values.length; i++)
+f	{
+if fminValue > getValesi minValue = getValuesfi;	if (minValue > getValues(i)) minValue = getValues(i);
+if maxValue  <getValuesil maxValue =  getValuesi	if (maxValue < getValues(i)) maxValue = getValues(i);
+}	}
+if maxValue == minValue retun;	if (maxValue == minValue) return;
+Rectangle2D bounds =  getBoundsf;	Rectangle2D bounds = getBounds();
+double clientWidth = bounds..getWidth;	double clientWidth = bounds.getWidth();
+double clientHeight = bounds.getHeightl;	double clientHeight = bounds.getHeight();
+double barWidth =  clientWidth -2 * INSETS  / /v/a/l/u/e/s/./l/e/n/g/t/h/;/	double barWidth = (clientWidth - 2 * INSETS) / /v/a/l/u/e/s/./l/e/n/g/t/h/;/
+/	/
+/ // //  / /g/2/../s/e/t/P/a/i/n/t//i/n/v/e/r/s/e/  /?/ /c/o/l/o/r/ /:/ /C/o/l/o/r/./w/h/i/te//;/	/ / / / / / /g/2/./s/e/t/P/a/i/n/t/(/i/n/v/e/r/s/e/ /?/ /c/o/l/o/r/ /:/ /C/o/l/o/r/./w/h/i/t/e/)/;/
+ / / // / /g/2//f/i/l/l/fn/e/w/ /R/e/c/t/a/n/g/l/e/2/D//D/o/u/b/l/e/f/0// /0/,/ /c/l/i/e/n/t/W/i/d/t/h/,/ /c/l/i/e/nt/H/e/i/gh/t//f//	/ / / / / / /g/2/./f/i/l/l/(/n/e/w/ /R/e/c/t/a/n/g/l/e/2/D/./D/o/u/b/l/e/(/0/,/ /0/,/ /c/l/i/e/n/t/W/i/d/t/h/,/ /c/l/i/e/n/t/H/e/i/g/h/t/)/)/;/
+/ / // / / /g/2/./s/e/t/P/a/i/n/t//C/o/l/o/r//b/l/a/c/k//;/	/ / / / / / /g/2/./s/e/t/P/a/i/n/t/(/C/o/l/o/r/./b/l/a/c/k/)/;/
+/	/
+/  / /  /  / /  /F/o/n/t/ /t/i/t/l/e/F/o/n/t/ /=/ /n/e/w/ /F/o/n/t//"/S/a/n/s/S/e//i/f/"/,/ /Fo/n/t/./B/O/L/D/,/  /2/0//;/	/ / / / / / /F/o/n/t/ /t/i/t/l/e/F/o/n/t/ /=/ /n/e/w/ /F/o/n/t/(/"/S/a/n/s/S/e/r/i/f/"/,/ /F/o/n/t/./B/O/L/D/,/ /2/0/)/;/
+/ / / / / / /F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/  /c/o/n/t/e/x/t/ /=/  /g/2/./g/e/t//o/n/t/Re/n/d/e/r/C/o/n/t/e/x/t///;/	/ / / / / / /F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/ /c/o/n/t/e/x/t/ /=/ /g/2/./g/e/t/F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/(/)/;/
+/ / / / / / /R/e/c/t/a/n/g/l/e/2/D/ /t/i/t//e/B/o/u/n/d/s/  /=/ /t/i/t/l/e/F/o/n/t/./g/e/t/S/t/r/i/n/g/B/o/u/n/d/s//t/i/t/l/e/,/ /c/o/n/t/e/x/t//;/	/ / / / / / /R/e/c/t/a/n/g/l/e/2/D/ /t/i/t/l/e/B/o/u/n/d/s/ /=/ /t/i/t/l/e/F/o/n/t/./g/e/t/S/t/r/i/n/g/B/o/u/n/d/s/(/t/i/t/l/e/,/ /c/o/n/t/e/x/t/)/;/
+/	/
+/ / / // / /d/o/u/b/l/e/ /t/i/t/l/e/W/i/d/t/h/ /=/  /t/i/t/l/e/B/o/u/n/d/s//g/e/t/W/i/d/t/h/f//;/	/ / / / / / /d/o/u/b/l/e/ /t/i/t/l/e/W/i/d/t/h/ /=/ /t/i/t/l/e/B/o/u/n/d/s/./g/e/t/W/i/d/t/h/(/)/;/
+/ / / / /  /  /d/o/u/b/l/e/ /y/ /=/ -/t/i/t/l/e/B/o/u/n/d/s/./g/e/tY//l/;/	/ / / / / / /d/o/u/b/l/e/ /y/ /=/ /-/t/i/t/l/e/B/o/u/n/d/s/./g/e/t/Y/(/)/;/
+/ / / / / / /d/o/u/b/l/e/ /x/ /=/ /0/;/	/ / / / / / /d/o/u/b/l/e/ /x/ /=/ /0/;/
+/ /  / / / / /i/f/ //t/i/t/l//P/o/s/i/t/i/o/n/ /=/=/ /P/o/s/i/t/i/o//./C/E/N/T/E/R// /x/ /+/=///c/l/i/e/n/t/W/i/d/t/h/ /-/ /t/i/t/l/e/W/i/d/t/h//  else if tilePosition == Position.RIGHT x += clintWidth- titleWidth;	/ / / / / / /i/f/ /(/t/i/t/l/e/P/o/s/i/t/i/o/n/ /=/=/ /P/o/s/i/t/i/o/n/./C/E/N/T/E/R/)/ /x/ /+/=/ /(/c/l/i/e/n/t/W/i/d/t/h/ /-/ /t/i/t/l/e/W/i/d/t/h/)/ else if (titlePosition == Position.RIGHT) x += clientWidth - titleWidth;
+g2.setFonttitleFont;	g2.setFont(titleFont);
+g2.setRenderingHintRederingHints.KEY_TEXT_ANTILIASING,	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+RenderinHints.VALUE_EXT_ANTIALIS_ON;	RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+g2drawStringtitl, lfloat x float y;	g2.drawString(title, (float) x, (float) y);
+double top = titleBounds.getHightl;	double top = titleBounds.getHeight();
+double scale = clentHeight-  top -  2 *INSETS /  //m/a/x/V/a/l/u/e/ /-/ /m/i/n/V/a/l/u/e//;/	double scale = (clientHeight - top - 2 * INSETS) / /(/m/a/x/V/a/l/u/e/ /-/ /m/i/n/V/a/l/u/e/)/;/
+// / // / /y/ /=/ /c/l/i/e/n/t/H/e/i/g/h/t/;/	/ / / / / / /y/ /=/ /c/l/i/e/n/t/H/e/i/g/h/t/;/
+/	/
+/ / / / / / /f/o/r/ ///n/t/ /i/ /=/ /0/;/ /i/ /</ v/a/l/u/e//./l/e/ng/t/h/;;/ /i//+//	/ / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /v/a/l/u/e/s/./l/e/n/g/t/h/;/ /i/+/+/)/
+// // / / /1/	/ / / / / / /{/
+/  / /  / / / / / / /d/o/u/b/l/e/ /x/1/ /=/ /I/N/S/E/T/S//+/ /i/	/ / / / / / / / / /d/o/u/b/l/e/ /x/1/ /=/ /I/N/S/E/T/S/ /+/ /i/
+@Property	@Property
+public void  setTitlefString t	public void setTitle(String t)
+{	{
+title  = t	title = t;
+}	}
+	
+pulic String getTitle	public String getTitle()
+{	{
+return  title;	return title;
+}	}
+	
+public void setValuesdouble v	public void setValues(double[] v)
+{	{
+vlues = v;	values = v;
+}	}
+	
+ublic double getValues	public double[] getValues()
+f	{
+return values;	return values;
+	}
+	
+@Propertyeitor = "DoubleArrayEditor"	@Property(editor = "DoubleArrayEditor")
+public void setValuesint i, double value	public void setValues(int i, double value)
+{	{
+if 0 <= i && i < values.lngth valusi =value;	if (0 <= i && i < values.length) values[i] = value;
+	}
+	
+public doublegetValuesfint i	public double getValues(int i)
+1	{
+if0 <= i  && i < values.lengthf return valuesi;	if (0 <= i && i < values.length) return values[i];
+return0;	return 0;
+}	}
+	
+@Propertyeditor = "InverseEditor"f	@Property(editor = "InverseEditor")
+pblic void setInverseboolean b	public void setInverse(boolean b)
+{	{
+inverse = b;;	inverse = b;
+}	}
+	
+publicboolean isInverse	public boolean isInverse()
+{	{
+retun inverse;	return inverse;
+}	}
+	
+@Propertyeditor = "TitlePoitionEditor	@Property(editor = "TitlePositionEditor")
+public void setTitlePositionlPosition p	public void setTitlePosition(Position p)
+{	{
+titlePoition = p;	titlePosition = p;
+f	}
+	
+public PositiongetTilePosition	public Position getTitlePosition()
+1	{
+return titlePosition;	return titlePosition;
+}	}
+	
+@Property	@Property
+publicvoid setGraphColorlColorc	public void setGraphColor(Color c)
+{	{
+color  = c;	color = c;
+}	}
+	
+public Color getGraphColorl	public Color getGraphColor()
+{	{
+eturn color;;	return color;
+}	}
+public  enum Position { LEFT CENTER,  RIGHT 1;	public enum Position { LEFT, CENTER, RIGHT };
+	
+private static final nt XPREFSIZE = 300;	private static final int XPREFSIZE = 300;
+private  static finalint YPREFSIZE = 300;	private static final int YPREFSIZE = 300;
+pivatestatic final intINSETS = 10;	private static final int INSETS = 10;
+private doublef values ={ 1, 2,3 };	private double[] values = { 1, 2, 3 };
+private String title = ""Title";	private String title = "Title";
+private Position titlePosition = PositioCENTER;	private Position titlePosition = Position.CENTER;
+private boolean inverse;	private boolean inverse;
+private Color colo = Color.red;	private Color color = Color.red;
+}	}

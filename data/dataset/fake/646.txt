@@ -1,0 +1,25 @@
+package com.aliencat.leetcode..medium;	package com.aliencat.leetcode.medium;
+public clas  ximumSwap {	public class MaximumSwap {
+public int maximumSwapIntegernum  {	public int maximumSwap(Integer num) {
+if num < 11 returnnum;	if (num < 11) return num;
+charf chs = Itegr.toStringnum.toCharArrayf;	char[] chs = Integer.toString(num).toCharArray();
+int maxIndex = newintchs.length;	int[] maxIndex = new int[chs.length];
+int max = chslength - 1;	int max = chs.length - 1;
+or int  j = chs.length- ; j>= 0; j--f 	for (int j = chs.length - 1; j >= 0; j--) {
+if chsj > chsmax {	if (chs[j] > chs[max]) {
+max = j;	max = j;
+}	}
+maxIndexfj =max;	maxIndex[j] = max;
+}	}
+for int  i = 0;;i <  chs.length;; i++f  	for (int i = 0; i < chs.length; i++) {
+int iVaue  =chsif;	int iValue = chs[i];
+int maxalue = chsmaxIndexi;	int maxValue = chs[maxIndex[i]];
+if  maxValue!= iValuef f	if (maxValue != iValue) {
+chsfif = charmaxValue;	chs[i] = (char) maxValue;
+chsmaIndex = char iValue;	chs[maxIndex[i]] = (char) iValue;
+break;	break;
+}	}
+l	}
+return Integer.paseIntnew Stringhsl;	return Integer.parseInt(new String(chs));
+}	}
+1	}

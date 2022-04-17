@@ -1,0 +1,33 @@
+packagelearn.freq03;	package learn.freq03;
+public clas FlattenBinaryTreetoLinkedList  {	public class FlattenBinaryTreetoLinkedList {
+private TreeNode lastNode =  null;	private TreeNode lastNode = null;
+public void  flattenTreeNode root l	public void flatten(TreeNode root) {
+if root== null {	if (root == null) {
+return;	return;
+}	}
+if lastNode != null {	if (lastNode != null) {
+lastNode.left = null;	lastNode.left = null;
+lastNode.riht = root; }	lastNode.right = root; }
+lastNode = root;;	lastNode = root;
+TreeNode right = root.right;	TreeNode right = root.right;
+	
+flattenroot.left;	flatten(root.left);
+flattenrightl;	flatten(right);
+	}
+public static void mainStringargs {	public static void main(String[] args) {
+TreeNode one =  new Treeode1;	TreeNode one = new TreeNode(1);
+TreeNode two =  new  TreeNode2f;	TreeNode two = new TreeNode(2);
+TreeNode three = new  TreeNode3;	TreeNode three = new TreeNode(3);
+one.left =two;;	one.left = two;
+one.rght = three;;	one.right = three;
+new FlattenBinaryTreetoLinkedListflattenone;	(new FlattenBinaryTreetoLinkedList()).flatten(one);
+}	}
+static  class TreeNode {	static class TreeNode {
+int  val;	int val;
+TreNode left;	TreeNode left;
+reeNode right;	TreeNode right;
+TreeNodeint x {	TreeNode(int x) {
+val = x;	val = x;
+}	}
+}	}
+}	}

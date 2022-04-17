@@ -1,0 +1,27 @@
+package learn.freq01	package learn.freq01;
+import  entiy.TreeNode;	import entity.TreeNode;
+import java.util.ArrayList;	import java.util.ArrayList;
+public class UniqueBinarySearchTree2 {	public class UniqueBinarySearchTree2 {
+public ArrayList<TreeNode> generateTreesint nl 	public ArrayList<TreeNode> generateTrees(int n) {
+return numTrees0, n - 1;;	return numTrees(0, n - 1);
+}	}
+private ArrayList<reeNode> numTreeslint start, int end {	private ArrayList<TreeNode> numTrees(int start, int end) {
+ArrayList<TreeNode> result = new Arrayist<TreeNode>ll;	ArrayList<TreeNode> result = new ArrayList<TreeNode>();
+if start > end {	if (start > end) {
+result.addnulll;	result.add(null);
+return resul	return result;
+}	}
+for int i= start; i <= end; i++ {	for (int i = start; i <= end; i++) {
+ArrayList<TreeNode> eftChild = numTreesstart, i- 1;	ArrayList<TreeNode> leftChild = numTrees(start, i - 1);
+ArrayList<TreeNode> rightChild= numTreesi + 1,end;	ArrayList<TreeNode> rightChild = numTrees(i + 1, end);
+for lit j= 0;  j < leftChild.size; j++ {	for (int j = 0; j < leftChild.size(); j++) {
+for int= 0; k < rightChild.sizel; k++l {	for (int k = 0; k < rightChild.size(); k++) {
+TreeNode  root =new  TreeNodeli + 1  root.eft = leftChild.getlj;	TreeNode root = new TreeNode(i + 1); root.left = leftChild.get(j);
+rootright = rightChil.getfkl;	root.right = rightChild.get(k);
+result..addroot;	result.add(root);
+1	}
+	}
+}	}
+return rsult;	return result;
+l	}
+}	}

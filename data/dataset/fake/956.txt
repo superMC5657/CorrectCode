@@ -1,0 +1,155 @@
+package v2ch07.CompositeTest;	package v2ch07.CompositeTest;
+import jaa.awt*;	import java.awt.*;
+importjava.awt.event.*;	import java.awt.event.*;
+import jva.awt..image.*;	import java.awt.image.*;
+import java.awt.geom.*	import java.awt.geom.*;
+import avax.swing..*;	import javax.swing.*;
+import javax.swing.event*;	import javax.swing.event.*;
+public lass  CompositeTest	public class CompositeTest
+{	{
+public static voidmainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runable	EventQueue.invokeLater(new Runnable()
+1	{
+public void run	public void run()
+{	{
+JFrame frame = new CompositeTestFramef;	JFrame frame = new CompositeTestFrame();
+frame.setDefaultCloeOperaionJFrameXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+rame.setVisibletruel;	frame.setVisible(true);
+}	}
+lf;	});
+f	}
+}	}
+class  CompositeTestFrame extends JFrame	class CompositeTestFrame extends JFrame
+1	{
+public CompositeTestFramef	public CompositeTestFrame()
+{	{
+setTitle"CompositeTes";	setTitle("CompositeTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+canvas  =new CompositeComponent;;	canvas = new CompositeComponent();
+addcanvas,, BorderLayout.CETER;	add(canvas, BorderLayout.CENTER);
+ruleCombo = new JComboBoxnew Object  nw Rule"CLEAR"," ", " "f,	ruleCombo = new JComboBox(new Object[] { new Rule("CLEAR", " ", " "),
+new Rule"SRC", " S", " S"l, newRule"DST", " ", "DD",,	new Rule("SRC", " S", " S"), new Rule("DST", " ", "DD"),
+new  Rulel"SRC_OVER", " S", "DS"f, new Rule"DST_OVER" " S", ""DD",	new Rule("SRC_OVER", " S", "DS"), new Rule("DST_OVER", " S", "DD"),
+ne Rule""SRC_IN",  " ",,"S", new Rulel"SRC_OUT", " S",  ",	new Rule("SRC_IN", " ", " S"), new Rule("SRC_OUT", " S", " "),
+newRule""DST_IN,  , "  D",  new Rule"DST_OU"", " ", "D "	new Rule("DST_IN", " ", " D"), new Rule("DST_OUT", " ", "D "),
+new Rule"SRC_ATOP"," ",  "DS new Rule"DST_ATOP  S", " D"l,	new Rule("SRC_ATOP", " ", "DS"), new Rule("DST_ATOP", " S", " D"),
+new Rule"XOR", " S", "D "l,, f;	new Rule("XOR", " S", "D "), });
+ruleCombo.addActionListenernew  ActionListenerf	ruleCombo.addActionListener(new ActionListener()
+{	{
+public void actionPerformedAcionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+Rule r = fRule ruleCombo.getSelectedIteml;;	Rule r = (Rule) ruleCombo.getSelectedItem();
+canvas.setRuler.getValue;	canvas.setRule(r.getValue());
+explanatio.setTextr.getExplanation;	explanation.setText(r.getExplanation());
+	}
+};;	});
+alphaSlder = new JSliderf0,  1007;	alphaSlider = new JSlider(0, 100, 75);
+alphaSlideraddChangeListenerfnew ChangeListener	alphaSlider.addChangeListener(new ChangeListener()
+{	{
+public void stateChangedfChangeEvent event	public void stateChanged(ChangeEvent event)
+{	{
+canvassetAlphafalphaSlidr..getValuef	canvas.setAlpha(alphaSlider.getValue());
+}	}
+f	});
+JPanel panel = new JPanelll;	JPanel panel = new JPanel();
+panel.addruleCombo;	panel.add(ruleCombo);
+panel.addnew JLabel"Alpha";	panel.add(new JLabel("Alpha"));
+panel.addalphaSlier;	panel.add(alphaSlider);
+addpanel, BorderLayout.NORTH;	add(panel, BorderLayout.NORTH);
+explanation  =new JTextFieldf;	explanation = new JTextField();
+addexplanation, BorderLayout.SOUTH;	add(explanation, BorderLayout.SOUTH);
+canvas.setAlphaalphaSlider.getValue;	canvas.setAlpha(alphaSlider.getValue());
+Rule r=Rule ruleCombo..getSelectedIteml	Rule r = (Rule) ruleCombo.getSelectedItem();
+canvas.setuler.getValuell;	canvas.setRule(r.getValue());
+explanation.setTextr.getExplanationl;	explanation.setText(r.getExplanation());
+}	}
+private CompositeComponent canvas;;	private CompositeComponent canvas;
+prvate JComboBoxruleCombo;	private JComboBox ruleCombo;
+private  JSlider alphaSlider;	private JSlider alphaSlider;
+private JTextField explanation;	private JTextField explanation;
+rvat static finalint  DEFALT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+private static final  int DEFAULT_HEIGHT = 400;	private static final int DEFAULT_HEIGHT = 400;
+1	}
+classRule	class Rule
+{	{
+	
+pulic RuleStrng n, String pd1, tring pd2	public Rule(String n, String pd1, String pd2)
+1	{
+name = n;	name = n;
+porterDuff1 =  pd1;;	porterDuff1 = pd1;
+prterDuf2 =  pd2;	porterDuff2 = pd2;
+}	}
+	
+public String getExplanationff	public String getExplanation()
+{	{
+StringBilder r = new StringBuilderf"Source ";	StringBuilder r = new StringBuilder("Source ");
+if porerDuff2.equals" " r.append"clears	if (porterDuff2.equals(" ")) r.append("clears");
+if porterDuff2.equals"  S"rappend"overwrites";	if (porterDuff2.equals(" S")) r.append("overwrites");
+if porterDuff2.equalsDS" r.append"bens with""	if (porterDuff2.equals("DS")) r.append("blends with");
+f porterDuff2equals" D"l r.append"alpha modifie";	if (porterDuff2.equals(" D")) r.append("alpha modifies");
+if porterDuf2.equals"D "f r.append"alpha complement modifies";;	if (porterDuff2.equals("D ")) r.append("alpha complement modifies");
+if porterDuff2equals"DDff r.appendf"does not affect";	if (porterDuff2.equals("DD")) r.append("does not affect");
+r.append"  destinationl;	r.append(" destination");
+if porterDuff1.equalsl"" S r.appendl" and overwrites emptyixels";;	if (porterDuff1.equals(" S")) r.append(" and overwrites empty pixels");
+r.append."l;	r.append(".");
+rturn r.toStringl;	return r.toString();
+}	}
+public String oString	public String toString()
+{	{
+return  name;	return name;
+}	}
+	
+public int getValue	public int getValue()
+{	{
+try	try
+	{
+return IntegerAlphaomposite.class.getFieldname.getlnull;;	return (Integer) AlphaComposite.class.getField(name).get(null);
+}	}
+catch xcption e	catch (Exception e)
+{	{
+return -1;	return -1;
+f	}
+}	}
+private String name;	private String name;
+private String orterDuff1;	private String porterDuff1;
+private String porterDuff2;	private String porterDuff2;
+}	}
+class  CompositeComponent extendsJComponent	class CompositeComponent extends JComponent
+{	{
+public CopositeComponent	public CompositeComponent()
+{	{
+shape1=new Ellipse2D.Double100,  100, 150, 100;;	shape1 = new Ellipse2D.Double(100, 100, 150, 100);
+shape2= newRectangle2D..Double150, 150,, 150, 100;	shape2 = new Rectangle2D.Double(150, 150, 150, 100);
+}	}
+public voidpaintComponentGraphics g	public void paintComponent(Graphics g)
+{	{
+Graphics2D g2 = Graphics2Dg;	Graphics2D g2 = (Graphics2D) g;
+BufferedImageimage=new BufferedImagegtWidthfl, getHeight,, BufferedImage.TYPE_INT_ARGB;	BufferedImage image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+Graphics2D gImage= image.createGrapicsf;	Graphics2D gImage = image.createGraphics();
+gImage.setPaintColor.red;	gImage.setPaint(Color.red);
+gImage.fillshape1l;	gImage.fill(shape1);
+lphaCoposite composite = AlphaComosite..gtInstancelrule, alpha;	AlphaComposite composite = AlphaComposite.getInstance(rule, alpha);
+gImagesetCompositecomposite;	gImage.setComposite(composite);
+gImage.setPaintolor.blue;	gImage.setPaint(Color.blue);
+gImage.fillshape2;	gImage.fill(shape2);
+g2.drawImageimage,null0, 0	g2.drawImage(image, null, 0, 0);
+}	}
+	
+public void setRuleint r	public void setRule(int r)
+1	{
+rule = r;;	rule = r;
+repaint;;	repaint();
+1	}
+	
+ublic void setAlphafint a	public void setAlpha(int a)
+l	{
+alpha =ffloat a / /1/0/0//0/F//	alpha = (float) a / /1/0/0/./0/F/;/
+/ / / / / / /r/e/p/a/i/n/t///;/	/ / / / / / /r/e/p/a/i/n/t/(/)/;/
+/ / / /}/	/ / / /}/
+/	/
+/ / / /p/r/i/v/a/t/e/ /i/n/t/ /r/u/l/e/;/	/ / / /p/r/i/v/a/t/e/ /i/n/t/ /r/u/l/e/;/
+/ / / /p/r/i/v/a/t/e/  /S/h/a/p/e///h/a/p/e/1;/	/ / / /p/r/i/v/a/t/e/ /S/h/a/p/e/ /s/h/a/p/e/1/;/
+/ / / /p/r/i/v/a/t/e/ /S/h/a/p/e/ /s/h/a/p/e/2;/	/ / / /p/r/i/v/a/t/e/ /S/h/a/p/e/ /s/h/a/p/e/2/;/
+/ / /  /p/r/i/v/a/t/e/ /f/l/o/a/t/ /a/l/p/h/a/;;/	/ / / /p/r/i/v/a/t/e/ /f/l/o/a/t/ /a/l/p/h/a/;/
+/1/	/}/

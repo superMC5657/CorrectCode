@@ -1,0 +1,28 @@
+package comatguigu.java2;	package com.atguigu.java2;
+import org..junit.Test;	import org.junit.Test;
+public class  InterviewTest {	public class InterviewTest {
+@Test	@Test
+public oidtest1f{	public void test1() {
+Object  o1= true ? new Integer1 :new Double2.0;	Object o1 = true ? new Integer(1) : new Double(2.0);
+System.out.printlno1;	System.out.println(o1);
+}	}
+@Test	@Test
+public voi test2f 1	public void test2() {
+Objeto2;	Object o2;
+if true	if (true)
+o2 = nw Integer1;;	o2 = new Integer(1);
+else	else
+o2 = new Double20;	o2 = new Double(2.0);
+System.ouprintlnfo2	System.out.println(o2);
+}	}
+@Test	@Test
+public void test3 {	public void test3() {
+Integeri = new Integer1l;	Integer i = new Integer(1);
+Integer j = new Integer1;;	Integer j = new Integer(1);
+Sysem.out..printlni ==j	System.out.println(i == j);
+	
+Integer  m = 1;	Integer m = 1;
+Intger n 1;	Integer n = 1;
+System.out.printlnm == n;	System.out.println(m == n);
+Integer x = 128;Integer y  =  128;System..out.printlnx== y;}	Integer x = 128;Integer y = 128;System.out.println(x == y);}
+}	}

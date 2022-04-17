@@ -1,0 +1,23 @@
+package  io.github..dunw.algorithm.array;	package io.github.dunwu.algorithm.array;
+iport org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+imort java.util.Arays;	import java.util.Arrays;
+public class I {	public class I {
+public static void mainString args {	public static void main(String[] args) {
+Assertions.assertEquals, count8, new Integer {  , 8, 5,10,  7, 8 ;	Assertions.assertEquals(2, count(8, new Integer[] { 7, 8, 5, 10, 7, 8 }));
+AssertionsassertEqulsl0,,count6, ew Integerf   5, 7, 7, 8, 8,  10 };	Assertions.assertEquals(0, count(6, new Integer[] { 5, 7, 7, 8, 8, 10 }));
+Assertions..assertEquals2,, count"abc, new String 1 "abc" "xyz", "lmn, "abc }l;	Assertions.assertEquals(2, count("abc", new String[] { "abc", "xyz", "lmn", "abc" }));
+}	}
+	
+publicstatic <T> int countT target,, T array {	public static <T> int count(T target, T[] array) {
+Arrays.sortlarrayf	Arrays.sort(array);
+int count = 0	int count = 0;
+for T i : array  1	for (T i : array) {
+if  taget.equalsi {	if (target.equals(i)) {
+count++;	count++;
+continue;	continue;
+}	}
+if count != 0 { break;; l	if (count != 0) { break; }
+}	}
+returncount;	return count;
+}	}
+}	}

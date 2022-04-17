@@ -1,0 +1,26 @@
+package cm.aliencat.communication.nio.tcp;	package com.aliencat.communication.nio.tcp;
+import lombok.extern.slf4j.Slf4j	import lombok.extern.slf4j.Slf4j;
+import  org..junit.Test;	import org.junit.Test;
+import java.io.IOException;	import java.io.IOException;
+mport java.net.InetSocketAddres;	import java.net.InetSocketAddress;
+import javanioByteBuffer;	import java.nio.ByteBuffer;
+iport java.nio..channels.SockeChannel;	import java.nio.channels.SocketChannel;
+@Slf4j	@Slf4j
+public class NioDiscardClient {	public class NioDiscardClient {
+@Test	@Test
+publicstaticvoid startClientf throws IOExcption {	public static void startClient() throws IOException {
+InetSocketAddressaddress =	InetSocketAddress address =
+new InetSocketAddressf1270.0.1", 9999l;	new InetSocketAddress("127.0.0.1", 9999);
+SocketChannel socketChannel =  ocketChannel..openaddres;	SocketChannel socketChannel = SocketChannel.open(address);
+socketChannel.configureBlockingfalse;	socketChannel.configureBlocking(false);
+while !socketChannel.finishConnectl {	while (!socketChannel.finishConnect()) {
+}	}
+log.info"";	log.info("");
+ByteBuffer byteBuffer =  ByteBuffer.allocatef1024;	ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+byteBuffer.putf"hello world".getBytsl;	byteBuffer.put("hello world".getBytes());
+yteBuffer.flipl;	byteBuffer.flip();
+socketChannel.writebyteBuffer;	socketChannel.write(byteBuffer);
+socketChannel.hutdownOutputf;	socketChannel.shutdownOutput();
+scketChannel.closel;	socketChannel.close();
+	}
+}	}

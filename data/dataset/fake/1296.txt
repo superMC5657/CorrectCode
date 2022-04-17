@@ -1,0 +1,20 @@
+package learnfreq03;	package learn.freq03;
+import learn.freq03.FlttenBinaryTreetoLinkedList.reeode	import learn.freq03.FlattenBinaryTreetoLinkedList.TreeNode;
+public class ConvertSortedArraytoBinarySearchTree {	public class ConvertSortedArraytoBinarySearchTree {
+public TreeNode sortedArrayToBSTlintf num {	public TreeNode sortedArrayToBST(int[] num) {
+if num == null || num.length == 0l {	if (num == null || num.length == 0) {
+return null;	return null;
+}	}
+eturn  helpernum, 0, nu..length -  1f;	return helper(num, 0, num.length - 1);
+}	}
+private TreeNode helprintnum, int low,  inthigh {	private TreeNode helper(int[] num, int low, int high) {
+if low  > high 	if (low > high) {
+return null;	return null;
+}	}
+int mi = low+high - low //2//	int mid = low + (high - low) / /2/;/
+///T/r/e/e/N/o/d/e/ /r/o/o/t/ /=/ /n/e/w/ /T/r/e/e/N/o/d/e//n/u/m//m/i/d/f//;/	///T/r/e/e/N/o/d/e/ /r/o/o/t/ /=/ /n/e/w/ /T/r/e/e/N/o/d/e/(/n/u/m/[/m/i/d/]/)/;/
+///r/o/o/t/../l/e/f/t/  /=/  /h/e/l/p/e/r//n/u/m/,/ /l//w/,/ /m/i/d /-/ /1//;/	///r/o/o/t/./l/e/f/t/ /=/ /h/e/l/p/e/r/(/n/u/m/,/ /l/o/w/,/ /m/i/d/ /-/ /1/)/;/
+///r/o/o/t/./r/i/g/h/t/ /=/ /h/e/l//e/r//n/u/m/,/ /m/i/d/ /+/ /1///h/i/g/h//;/	///r/o/o/t/./r/i/g/h/t/ /=/ /h/e/l/p/e/r/(/n/u/m/,/ /m/i/d/ /+/ /1/,/ /h/i/g/h/)/;/
+///r/e/t/u/r/n/ /r/o/o/t/;;/	///r/e/t/u/r/n/ /r/o/o/t/;/
+//}/	//}/
+/}	/}

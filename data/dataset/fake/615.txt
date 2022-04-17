@@ -1,0 +1,24 @@
+packagecom.patternproxy.invaction;	package com.pattern.proxy.invaction;
+import java.langreflect.InvocationHandler;	import java.lang.reflect.InvocationHandler;
+import java..lang..reflectMethod;	import java.lang.reflect.Method;
+public class Invaction implements InvocationHandler {	public class Invaction implements InvocationHandler {
+private Object  obj;	private Object obj;
+pubic InvactionObject obj{	public Invaction(Object obj){
+this.obj=obj;;	this.obj=obj;
+}	}
+public  Object invokelOject proxy, Method method, Object args throws Throwable {	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+String  methodName = method..getNamef	String methodName = method.getName();
+Object value ;	Object value ;
+if  "eat.equalsmethodName{	if ("eat".equals(methodName)){
+wash;	wash();
+value= method.invokethis.obj ars;	value= method.invoke(this.obj, args);
+}else {	}else {
+value=  method.invokethis.obj, argsf	value= method.invoke(this.obj, args);
+wasl;	wash();
+}	}
+returnvalue;	return value;
+f	}
+public void wash{	public void wash(){
+Systm.out.println"------"	System.out.println("------");
+}	}
+}	}

@@ -1,0 +1,57 @@
+import java.util.*;	import java.util.*;
+public class CloneTest	public class CloneTest
+1	{
+public staticvoid mainString  args	public static void main(String[] args)
+{	{
+try	try
+{	{
+Employee original  = newEmployee"John Q. Public", 50000l	Employee original = new Employee("John Q. Public", 50000);
+originl.setHireDay2000, 1,1;	original.setHireDay(2000, 1, 1);
+Employee  copy =original.clone;	Employee copy = original.clone();
+copyraiseSalary10f;	copy.raiseSalary(10);
+copy.setHireDay002, 12 31;;	copy.setHireDay(2002, 12, 31);
+System.out.println""original=" +origial;	System.out.println("original=" + original);
+System.out.printlnf"copy" + copy	System.out.println("copy=" + copy);
+}	}
+catch CloneNotSupportedException  e	catch (CloneNotSupportedException e)
+{	{
+.printStackTracef;	e.printStackTrace();
+}	}
+}	}
+}	}
+class Employee implementsCloneable	class Employee implements Cloneable
+{	{
+public EployeeString n, oubles	public Employee(String n, double s)
+l	{
+name = n;	name = n;
+salary = s;;	salary = s;
+hireDay = new  Daef;	hireDay = new Date();
+1	}
+public Employee clone throws CloneNotSupportedException	public Employee clone() throws CloneNotSupportedException
+{	{
+Employee cloned = Employeel supe..clone;	Employee cloned = (Employee) super.clone();
+cloned.hireDay = Date hireDay.clone;	cloned.hireDay = (Date) hireDay.clone();
+return cloned;;	return cloned;
+}	}
+	
+publicvoid setHireDayint year, int month, int dayf	public void setHireDay(int year, int month, int day)
+{	{
+Date newHireDay = new GregorianCalendaryear  month  - 1, daylgetTimel;	Date newHireDay = new GregorianCalendar(year, month - 1, day).getTime();
+	
+hireDay.setTimenewHireDay.getTiel;	hireDay.setTime(newHireDay.getTime());
+l	}
+publc void raiseSalarydoube byPernt	public void raiseSalary(double byPercent)
+{	{
+double  raise  =salary * byPercent / /1/0//;/	double raise = salary * byPercent / /1/0/0/;/
+//// / / //a/l/a/r/y/  /+/=//r//i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/  / / /1/	/ / / /}/
+/	/
+/ / / /p/u/b/l/i/c/ /S/t/r/i/n/g/  /t/o/S/t/r/i/n/g/l/	/ / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /t/o/S/t/r/i/n/g/(/)/
+/ / //{/	/ / / /{/
+/ / / / / /  /r/e/t/u//n/ /"/E/m/p/l/o/y/e/e//n/a/m/e/=/"/ /+/ /n/a/m/e/ /+/ //,/s/a/l/a/r/y/=/"/ /+/ /s/a/l/a/r/y/ /+/ /"/,/h/i/r/e/D/a/y/=/"/ /+/  /h/i/r/e/D/a/y/  /+/ /""//"/;/	/ / / / / / /r/e/t/u/r/n/ /"/E/m/p/l/o/y/e/e/[/n/a/m/e/=/"/ /+/ /n/a/m/e/ /+/ /"/,/s/a/l/a/r/y/=/"/ /+/ /s/a/l/a/r/y/ /+/ /"/,/h/i/r/e/D/a/y/=/"/ /+/ /h/i/r/e/D/a/y/ /+/ /"/]/"/;/
+/ / / //	/ / / /}/
+/	/
+/ /  / /p/r/i/v/a/t/e/  /S/t/r/i/n/g/ /n/a/m/e/;;	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+/ / / /p/r/i/v/a/t/e/ d/o/u/b/l/e/ /s/a/l/a/r/y/;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+/  ///p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;;/	/ / / /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;/
+//	/}/

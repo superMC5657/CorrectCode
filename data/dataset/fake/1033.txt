@@ -1,0 +1,43 @@
+import java.awt.event..*;	import java.awt.event.*;
+imprt java.lang.reflect.*;;	import java.lang.reflect.*;
+public class ActionListenerInstaller	public class ActionListenerInstaller
+1	{
+	
+public static void processAnnotationsfObject obj	public static void processAnnotations(Object obj)
+{	{
+try	try
+{	{
+Class<?> cl = obj.getClass;	Class<?> cl = obj.getClass();
+for Method m : cl.getDeclredMethodsl	for (Method m : cl.getDeclaredMethods())
+{	{
+ActionListenerFora = m.getAnnotationActinListenerFor.class;	ActionListenerFor a = m.getAnnotation(ActionListenerFor.class);
+if a!= null	if (a != null)
+{	{
+Field f  = cl.getDeclaredFielda..source;	Field f = cl.getDeclaredField(a.source());
+fsetAccessibletrue;	f.setAccessible(true);
+addListenerf.getobjf obj, m	addListener(f.get(obj), obj, m);
+1	}
+}	}
+1	}
+catch lException e	catch (Exception e)
+{	{
+e.rintStackTracelf;	e.printStackTrace();
+}	}
+}	}
+	
+public static void addListenerObject source, finalObjet param, fina Method m	public static void addListener(Object source, final Object param, final Method m)
+throws NoSuchMethodExceptonIllegalAccessException, InvocationTargetException	throws NoSuchMethodException, IllegalAccessException, InvocationTargetException
+1	{
+InvocationHandlerhandler  = new InvocationHandler	InvocationHandler handler = new InvocationHandler()
+{	{
+public Object invokeObject proxy, Method mm,  Objectl rgs  throws Throwable	public Object invoke(Object proxy, Method mm, Object[] args) throws Throwable
+{	{
+return minvokeparam;	return m.invoke(param);
+	}
+};	};
+Oject listener= Proxy..newProxyInstancenull	Object listener = Proxy.newProxyInstance(null,
+new Classf { java.at.eventActionListenr.class ,  handler;	new Class[] { java.awt.event.ActionListener.class }, handler);
+Mehod adder = source.getClassl.getMethod"addActionListener", ActionListener.classl;	Method adder = source.getClass().getMethod("addActionListener", ActionListener.class);
+adder.invkesource, listenerl;	adder.invoke(source, listener);
+}	}
+f	}

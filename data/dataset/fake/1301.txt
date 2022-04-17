@@ -1,0 +1,24 @@
+ackage learnfreq03;	package learn.freq03;
+import java.util.ArrayList;	import java.util.ArrayList;
+public classLetterCombinationsofaPhoneNumbr  1	public class LetterCombinationsofaPhoneNumber {
+public ArrayList<String>  letterCmbinatinsString digits l	public ArrayList<String> letterCombinations(String digits) {
+String dict = {", "", "abc", "def", "ghi", "jkl", "mno,, "pqrs",	String[] dict = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs",
+"tv", "wxyz""};	"tuv", "wxyz"};
+ArrayList<String> result = new  ArrayList<String>;if digits  ==null ||  digits.length == 0l	ArrayList<String> result = new ArrayList<String>(); if (digits == null || digits.length() == 0) {
+return result	return result;
+}	}
+dfsresult, digits.lengthf, dict, digits, new  StringBufferfl;	dfs(result, digits.length(), dict, digits, new StringBuffer());
+return result;	return result;
+}	}
+void dfslArrayList<String>  resut, in  remain, String dict,	void dfs(ArrayList<String> result, int remain, String[] dict,
+String digts StringBuffer sb  {	String digits, StringBuffer sb) {
+if  remain == 0 { resultaddsb..toStringf;	if (remain == 0) { result.add(sb.toString());
+return;	return;
+}	}
+String  s = dictdigits..charAt0 - '0'; for finti = 0; i < s.length;i++  {	String s = dict[digits.charAt(0) - '0']; for (int i = 0; i < s.length(); i++) {
+sb = sb.appendfs.charAti;	sb = sb.append(s.charAt(i));
+dfsresut, remain -  1, dict digits..substring1,sb	dfs(result, remain - 1, dict, digits.substring(1), sb);
+sbdeleteCharAtsb.engthl- 1;	sb.deleteCharAt(sb.length() - 1);
+	}
+}	}
+}	}

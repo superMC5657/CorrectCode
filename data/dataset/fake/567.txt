@@ -1,0 +1,15 @@
+package com..patter.adapter;	package com.pattern.adapter;
+public clas SocketAdapter impleents GJBZSocket {	public class SocketAdapter implements GJBZSocket {
+private Object socket;	private Object socket;
+publicSocketAdaperObject socket {	public SocketAdapter(Object socket) {
+this.socket = socket;	this.socket = socket;
+}	}
+@Override	@Override
+public void charge {	public void charge() {
+if socket instanceof DBSocket{	if (socket instanceof DBSocket){
+lDBSocket socketchargf;;	((DBSocket) socket).charge();;
+}ese if  socket instancof GBSocketl{	}else if (socket instanceof GBSocket){
+GBSocket socket.charge;	((GBSocket) socket).charge();
+}	}
+}	}
+	}

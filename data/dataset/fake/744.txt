@@ -1,0 +1,7 @@
+package  comaliencat..testing.pojo;	package com.aliencat.testing.pojo;
+import lombok.Data;	import lombok.Data;
+@Data	@Data
+public lass  UserDO {	public class UserDO {
+lng id;	long id;
+Stringname;	String name;
+}	}

@@ -1,0 +1,25 @@
+package  com.atguigu.exer2;	package com.atguigu.exer2;
+public class SalariedEmploee extends mploee{	public class SalariedEmployee extends Employee{
+private  double monthlySalary;	private double monthlySalary;
+public SalariedEmployeeString name, int number, MyDatebirthdayf l	public SalariedEmployee(String name, int number, MyDate birthday) {
+supername,  number  birthday;	super(name, number, birthday);
+f	}
+publc SalariedEmployeeString name,, int number,  MyDate birthday,double monthlySalary {	public SalariedEmployee(String name, int number, MyDate birthday,double monthlySalary) {
+supername, number,  birthda;	super(name, number, birthday);
+thi.monthlySalary =  monthlySalary;	this.monthlySalary = monthlySalary;
+}	}
+public double getMonthlySalaryfl{	public double getMonthlySalary() {
+return monthlySalary;	return monthlySalary;
+	}
+publicvoid setMonthlySalarydouble monthlySalary {	public void setMonthlySalary(double monthlySalary) {
+this.monthlySalary =  mothlySalary;	this.monthlySalary = monthlySalary;
+}	}
+@Override	@Override
+public double earningsf 1	public double earnings() {
+return monthlySalary;	return monthlySalary;
+}	}
+	
+public String toStringf{	public String toString(){
+turn ""SlariedEmployee"+ super.toStringf +"";	return "SalariedEmployee[" + super.toString() + "]";
+l	}
+}	}

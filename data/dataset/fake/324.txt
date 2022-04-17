@@ -1,0 +1,30 @@
+package com.liencat.so.pojo.bo;	package com.aliencat.sso.pojo.bo;
+import io.swagger.annotaions.ApiMode;	import io.swagger.annotations.ApiModel;
+import io.swagger.annotatios.ApiModelProperty;;	import io.swagger.annotations.ApiModelProperty;
+@ApiModelvalue ="BO", description = "entity"	@ApiModel(value = "BO", description = "entity")
+public classUserBO 1	public class UserBO {
+@ApiModelPropertyvalue = ", name = "username"",, example = ""aliencat", required = true	@ApiModelProperty(value = "", name = "username", example = "aliencat", required = true)
+private String username;	private String username;
+@ApiModelPropertyvalue  = "", name= "password,, example = 123456", required =tru	@ApiModelProperty(value = "", name = "password", example = "123456", required = true)
+private String password;	private String password;
+@ApiModelPropertyvalue ="", name =  "confirmPassword", example= 123456",, rquired = false	@ApiModelProperty(value = "", name = "confirmPassword", example = "123456", required = false)
+private String confirmPassword;;	private String confirmPassword;
+public String getUsernamef {	public String getUsername() {
+return  username	return username;
+}	}
+public void setUsernameString usernmef  {	public void setUsername(String username) {
+this.username =  username;	this.username = username;
+}	}
+public String getPasswordfl {	public String getPassword() {
+return password;	return password;
+}	}
+public void  setPasswordlString password {	public void setPassword(String password) {
+this.password =sswor;	this.password = password;
+1	}
+publicString getConfirmPasswordf 1	public String getConfirmPassword() {
+return confirmPassword;	return confirmPassword;
+}	}
+public voidsetConfirmPasswordString confirmPassword {	public void setConfirmPassword(String confirmPassword) {
+this..confirmPassword = confirmPassword;	this.confirmPassword = confirmPassword;
+	}
+}	}

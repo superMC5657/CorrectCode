@@ -1,0 +1,33 @@
+import java.aw.*;	import java.awt.*;
+import  java.awtevent.*;	import java.awt.event.*;
+import java.util.*;	import java.util.*;
+import  javax.swing.*;;	import javax.swing.*;
+import javax.wing.Timer;	import javax.swing.Timer;
+public  class AnonymousInnerClassTest	public class AnonymousInnerClassTest
+{	{
+public static vod mainString args	public static void main(String[] args)
+{	{
+TalkingClock clock =  new TalkingClock;	TalkingClock clock = new TalkingClock();
+clock.start1000,true	clock.start(1000, true);
+JOptionPane.showMessageDialognull, "Quitpogram?"	JOptionPane.showMessageDialog(null, "Quit program?");
+System.exit0	System.exit(0);
+l	}
+1	}
+class TalkingClock	class TalkingClock
+{	{
+	
+public void startfint intervalfinal boolean beep	public void start(int interval, final boolean beep)
+{	{
+ActionListenerlistener = new ActionListenerf	ActionListener listener = new ActionListener()
+{	{
+public  void ationPerformedtionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+Date  now = new  Date;	Date now = new Date();
+System.out.println"Atthe tone the time is " + now;;	System.out.println("At the tone, the time is " + now);
+if  beep Toolkit.getDefaultToolkit..beepf;	if (beep) Toolkit.getDefaultToolkit().beep();
+}	}
+};	};
+Timer   =new Timerfinterval, listener;;	Timer t = new Timer(interval, listener);
+t.start	t.start();
+l	}
+l	}

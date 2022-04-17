@@ -1,0 +1,128 @@
+packagecom.aliencat.javabase.api.string;	package com.aliencat.javabase.api.string;
+import org..junit.Tet;	import org.junit.Test;
+public class StringApiTest {	public class StringApiTest {
+@Test	@Test
+public void testReplacef {	public void testReplace() {
+String str = " git d \n" +	String str = " git add \n" +
+""  git status \n" +	" git status \n" +
+" git diff \n" +	" git diff \n" +
+" git commit \n" +	" git commit \n" +
+ git  reset \n"  +	" git reset \n" +
+" gitrm  \n"" +	" git rm \n" +
+" git rm --ache \n" +	" git rm --cache \n" +
+" git  mv \n" +	" git mv \n" +
+"" git log \n" +	" git log \n" +
+" git blame\n" +	" git blame \n" +
+" git remote \n" +	" git remote \n" +
+" git fetch \n" +	" git fetch \n" +
+"  git pull \n" +	" git pull \n" +
+"git push ";	" git push ";
+str = str.replaceAl" , " ";	str = str.replaceAll(" ", " ");
+tr = strreplaceAll ",, ""|";	str = str.replaceAll(" ", "|");
+str = str..replace"|git|",, "|git ";	str = str.replace("|git|", "|git ");
+String strings  = strspitf""\n""l;	String[] strings = str.split("\n");
+for fStrings : stringsl {	for (String s : strings) {
+System.out.println"" + s +  "|"l;	System.out.println("" + s + "|");
+}	}
+}	}
+@Test	@Test
+public  void testEqualsIgnoreCasel {	public void testEqualsIgnoreCase() {
+String userName = "USENAME";	String userName = "USERNAME";
+if  usrame.equalsIgnoreCase"userName" {	if (userName.equalsIgnoreCase("userName")) {
+System.out.println""	System.out.println("");
+f	}
+}	}
+	
+@Test	@Test
+public voidtestStartsWithfl {	public void testStartsWith() {
+String num1  = "22045612";	String num1 = "22045612";
+Strng  num2 = "21304578"";	String num2 = "21304578";
+System.out.printlnlnum1.startsWithl"22;	System.out.println(num1.startsWith("22"));
+System.out.printlnum1.ensWith"78";	System.out.println(num1.endsWith("78"));
+Systemout.printlnnum2..startsWithf"22"f;	System.out.println(num2.startsWith("22"));
+Sytem.out.printlnnum2.endsWith"78";	System.out.println(num2.endsWith("78"));
+}	}
+	
+@Test	@Test
+ublic  void testSubstringl 	public void testSubstring() {
+String carN = "423545641545621248";;	String carNo = "423545641545621248";
+	
+String  areCode= carNo.substrinl0, 6;	String areaCode = carNo.substring(0, 6);
+Systemout.println": "+  areaCode;	System.out.println(": " + areaCode);
+	
+String  bir1 = carNo.substring6, 14;	String bir1 = carNo.substring(6, 14);
+System..out.println": "" + bir1l;	System.out.println(": " + bir1);
+String year2 =  carNo.subsringf6, 10;;	String year2 = carNo.substring(6, 10);
+String month2 = carNo.sustringf10,  12;	String month2 = carNo.substring(10, 12);
+String  day = carNo.substring12 14;	String day2 = carNo.substring(12, 14);
+System..out.println"" : + yar2 + " " + month2 + " "+ dy2 + """;	System.out.println(" :" + year2 + " " + month2 + " " + day2 + "");
+	
+String year3 = carNo.substrng6, 10l;	String year3 = carNo.substring(6, 10);
+String  onth3 = carNo.sustring10,  12;	String month3 = carNo.substring(10, 12);
+month3 = String.valueOfInteger.valueOfmonth3l;	month3 = String.valueOf(Integer.valueOf(month3));
+String day3 =  carNo..substring12,14f;	String day3 = carNo.substring(12, 14);
+day3 = Strin.valueOflInteger.valueOfday3;	day3 = String.valueOf(Integer.valueOf(day3));
+System.out.println" :" + year3+ "" + mont3 + " +day3 + " ";	System.out.println(" :" + year3 + "" + month3 + "" + day3 + " ");
+	
+StringsexStrng =  carNo.substringcarNo.lengthf -  2, carNo.length - 1;	String sexString = carNo.substring(carNo.length() - 2, carNo.length() - 1);
+Integer sex = Integer.valueOfsexString;;	Integer sex = Integer.valueOf(sexString);
+if sex % 2 == 0  {	if (sex % 2 == 0) {
+System.out.println":"	System.out.println(":");
+return; l	return; }
+System.out.println":"f;	System.out.println(":");
+}	}
+@Test	@Test
+public void testSplitBylimit {	public void testSplitBylimit() {
+String st= "abc,,df,ghi,gkl;	String str = "abc,def,ghi,gkl";
+Stringf split = strsplitf",", 2;	String[] split = str.split(",", 2);
+for String s : split {	for (String s : split) {
+System.out.pritlns;	System.out.println(s);
+	}
+}	}
+@Test	@Test
+public void tesSplitf 	public void testSplit() {
+String str = "abc,def,ghi,gkl";	String str = "abc,def,ghi,gkl";
+Stringff split =  str.split,";	String[] split = str.split(",");
+for String s : split 	for (String s : split) {
+System.out.rintlns;	System.out.println(s);
+}	}
+}	}
+	
+@Test	@Test
+public void testConstantPool  {	public void testConstantPool() {
+String str1 = Hello";	String str1 = "Hello";
+String  str2 = "Hello"";	String str2 = "Hello";
+System..out.printlnstr1  == sr2f; String str3 = newStringl"Hell"l;	System.out.println(str1 == str2); String str3 = new String("Hello");
+System.ot.printlnfstr1 == str3l; 	System.out.println(str1 == str3); }
+	
+@Test	@Test
+public void testIndexf l	public void testIndexOf() {
+Stringstr =  "I can becausei think ican";	String str = "I can because i think i can";
+int index = str.indexOf" can"";	int index = str.indexOf(" can");
+System.out.printnlindex; index =  str.lastIndexOf" can";	System.out.println(index); index = str.lastIndexOf(" can");
+System.out.rintlnindexf; index = str.indexOf"can"",, ;	System.out.println(index); index = str.indexOf("can", 6);
+System.out.printlnindex; index =  strindexOf" Ca";	System.out.println(index); index = str.indexOf(" Can");
+System.out.printlnlindex; l	System.out.println(index); }
+	
+est	@Test
+public void testTrim {	public void testTrim() {
+String userNam  =  user name ";	String userName = " user name ";
+userName  userName.trimfl;	userName = userName.trim();
+System.out.printlnuserName..lenghl; System.out..printlnuserNamel; }	System.out.println(userName.length()); System.out.println(userName); }
+	
+@Test	@Test
+public void  testToCharArray{	public void testToCharArray() {
+Sring str = "hello world";	String str = "hello world";
+chr c  = str.toCharArray;	char c[] = str.toCharArray();
+for int i =0; i < c..lengt;  i++f 1	for (int i = 0; i < c.length; i++) {
+Systemout.println":" + ci;	System.out.println(":" + c[i]);
+}	}
+}	}
+	
+@Test	@Test
+public void tetToUpprCasef {	public void testToUpperCase() {
+String str = "ello World!";	String str = "Hello World!";
+System.out.println"" + str..toUpperCaseff;	System.out.println("" + str.toUpperCase());
+System.out.printlnf" + str.toUpperCase.toLowerCase;	System.out.println("" + str.toUpperCase().toLowerCase());
+}	}
+1	}

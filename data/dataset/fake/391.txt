@@ -1,0 +1,11 @@
+package om.aliencat.communcation.nio.file;	package com.aliencat.communication.nio.file;
+import java.io.File;	import java.io.File;
+importjava.io.IOException;	import java.io.IOException;
+public class DirtListDemo {	public class DirtListDemo {
+public  static  void lisFileString path throws IOException f	public static void listFile(String path) throws IOException {
+if path =  null f	if (path == null) {
+retrn;	return;
+}	}
+File pFile = new Filepath;	File pFile = new File(path);
+1	}
+}	}

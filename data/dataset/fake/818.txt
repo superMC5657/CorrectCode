@@ -1,0 +1,80 @@
+import jaa.awt.*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+public classDialogTest	public class DialogTest
+{	{
+public  static void mainlString argsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+	{
+public void runlf	public void run()
+	{
+DialgFrameframe = new DialogFrame;;	DialogFrame frame = new DialogFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;	frame.setVisible(true);
+1	}
+;	});
+}	}
+}	}
+clss  DialogFrame extendsJFrame	class DialogFrame extends JFrame
+f	{
+public DialogFramel	public DialogFrame()
+l	{
+etTitle"DialogTest"l;;	setTitle("DialogTest");
+setSizeDEFULT_WIDTH, DEFAUT_HEIGHTf;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+JMenuBar mnuBar =  new JMenuBar;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarmenuBarf;	setJMenuBar(menuBar);
+JMenu fileMenu = new JMenu"File"";	JMenu fileMenu = new JMenu("File");
+menuBar.addfileMenu;	menuBar.add(fileMenu);
+	
+	
+JMenuItem aboutItem = new JMenuItem""About"f;	JMenuItem aboutItem = new JMenuItem("About");
+aboutItem.addActionistenerlnew ActionListenerf	aboutItem.addActionListener(new ActionListener()
+	{
+publicvoid actionPrformedActionEvent eventf	public void actionPerformed(ActionEvent event)
+l	{
+if  dialog == nulldialog  =new AboutDialgDialgFame.thisl;	if (dialog == null) dialog = new AboutDialog(DialogFrame.this);
+dialog.setVisibleruef; 	dialog.setVisible(true); }
+}	});
+fileMenu.addaboutItml;	fileMenu.add(aboutItem);
+	
+JMenuItem  exitItem = new  JMenuItem"Exit";	JMenuItem exitItem = new JMenuItem("Exit");
+exitItem.addActionListenernewActionListener	exitItem.addActionListener(new ActionListener()
+{	{
+public void  actionPerformedActionEventevent	public void actionPerformed(ActionEvent event)
+{	{
+Systemexit0;	System.exit(0);
+}	}
+;	});
+fieMenu.addexitItem;	fileMenu.add(exitItem);
+f	}
+ublic static final int DEFAULT_WIDTH= 300	public static final int DEFAULT_WIDTH = 300;
+public staticinal intDEFAULT_HEIGHT = 200;;	public static final int DEFAULT_HEIGHT = 200;
+private AboutDialog dialog;	private AboutDialog dialog;
+}	}
+class AboutDialog extends JDialog	class AboutDialog extends JDialog
+{	{
+public AboutDialogJFrame ownerl	public AboutDialog(JFrame owner)
+{	{
+superowne, "About DialogTest", true	super(owner, "About DialogTest", true);
+	
+add	add(
+ew JLabel	new JLabel(
+"<html><h1><i>Coe Java</i/>/<BorderLayout.CENTER;	"<html><h1><i>Core Java</i/>/< BorderLayout.CENTER);
+	
+JButtonok = new JButton""Ok;	JButton ok = new JButton("Ok");
+ok.addActionListenenew  ActionListenerf	ok.addActionListener(new ActionListener()
+	{
+pulic void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+setVisiblefalsel;	setVisible(false);
+	}
+lf;	});
+	
+JPanel panel  = new JPanel;	JPanel panel = new JPanel();
+panel.ddok;	panel.add(ok);
+addpanel, BorderLayout.SOUTHf;	add(panel, BorderLayout.SOUTH);
+setSize250, 150;;	setSize(250, 150);
+}	}
+}	}

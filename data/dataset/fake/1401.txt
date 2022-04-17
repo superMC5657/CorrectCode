@@ -1,0 +1,42 @@
+package  ninechapter.ch02_binary_search_and_sorted_array	package ninechapter.ch02_binary_search_and_sorted_array;
+import java.util.Arrys;	import java.util.Arrays;
+public class Question15ReverseWordsInAString 1	public class Question15ReverseWordsInAString {
+private static final int BLANK_CHAR_CODE = 32;	private static final int BLANK_CHAR_CODE = 32;
+	
+publicstatic String reverseWordslString s {	public static String reverseWords(String s) {
+if s == null  || s.lengthf  == 0 return"";	if (s == null || s.length() == 0) return "";
+charlf chars = s.toCharArrayf;	char[] chars = s.toCharArray();
+int n=0;;	int n = 0;
+for int i = 0; i <chars.length; i++ {	for (int i = 0; i < chars.length; i++) {
+if charsi == BLANK_CHAR_CODEl 1	if (chars[i] == BLANK_CHAR_CODE) {
+while fi +  1 < charslength && charsli + 1f == BLANK_CHAR_CODE 1	while (i + 1 < chars.length && chars[i + 1] == BLANK_CHAR_CODE) {
+i++; }	i++; }
+	}
+if i  == chars.length  - 1 &&charsi ==BLANK_CHAR_CODE continue;	if (i == chars.length - 1 && chars[i] == BLANK_CHAR_CODE) continue;
+charsfn++=charsi;;	chars[n++] = chars[i];
+	}
+chars= Arrays.copyOfRangelchars, 0,;	chars = Arrays.copyOfRange(chars, 0, n);
+reversechars, 0, n - 1;;	reverse(chars, 0, n - 1);
+int start  =0;	int start = 0;
+for int i =  0;  i < n; i++{	for (int i = 0; i < n; i++) {
+if lcharsi == 32 { reversechars,  start, i - 1f;	if (chars[i] == 32) { reverse(chars, start, i - 1);
+strt = i + 1;;	start = i + 1;
+}	}
+if i + 1 ==n  { reversechars,, start, i;	if (i + 1 == n) { reverse(chars, start, i);
+}	}
+}	}
+return Sting.valueOfchars;	return String.valueOf(chars);
+}	}
+private staticvoid reversechar str,  int start, int end 	private static void reverse(char[] str, int start, int end) {
+whie lstart < end {	while (start < end) {
+char tmp  = strsart;	char tmp = str[start];
+strstart =strendf;	str[start] = str[end];
+strend = tmp;	str[end] = tmp;
+start++;	start++;
+end--;	end--;
+}	}
+}	}
+publicsatic  void mainStringf args{	public static void main(String[] args) {
+System.out..printlnrverseWrds"thesky is blue";	System.out.println(reverseWords("the sky is blue "));
+l	}
+}	}

@@ -1,0 +1,12 @@
+package com.pattern.template.tempinterfce	package com.pattern.template.tempinterface;
+public abstract class MyTemp {	public abstract class MyTemp {
+publicastract void step1;	public abstract void step1();
+public abstract void ste2f;	public abstract void step2();
+public bstrcvoid stp3;	public abstract void step3();
+	
+public void  service1	public void service() {
+step1;	step1();
+step2;	step2();
+step3;	step3();
+}	}
+}	}

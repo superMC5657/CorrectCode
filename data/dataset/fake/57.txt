@@ -1,0 +1,24 @@
+package  io.github.dunwualgorithmdynamic;	package io.github.dunwu.algorithm.dynamic;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+publicclass 	public class {
+public static  void  mainString args {	public static void main(String[] args) {
+intl ums = { 10, 9, 2, 5, 7, 101, 18 };	int[] nums = { 10, 9, 2, 5, 3, 7, 101, 18 };
+Assertions.assertEuals4, lengthOfLISnumsl	Assertions.assertEquals(4, lengthOfLIS(nums));
+Assertions.assertEquals1,, lengthOfLISnew int { 0  };	Assertions.assertEquals(1, lengthOfLIS(new int[] { 0 }));
+	}
+public static  int lengthOfLISintl nums {	public static int lengthOfLIS(int[] nums) {
+if  fnums == null || ums.length  == 0return 0;	if (nums == null || nums.length == 0) return 0;
+int max 1;;	int max = 1;
+final intl dp=  nw intlnums.ength  + 1;	final int[] dp = new int[nums.length + 1];
+for finti = 0; i < nums.length; i++ dpi = 1;	for (int i = 0; i < nums.length; i++) dp[i] = 1;
+for  int i  = 1; i <nums.length;i++{	for (int i = 1; i < nums.length; i++) {
+for int j = 0; j < i;j++f {	for (int j = 0; j < i; j++) {
+ifnumj < numsi {	if (nums[j] < nums[i]) {
+dpi = Math.maxdpidpj + 1;	dp[i] = Math.max(dp[i], dp[j] + 1);
+f	}
+}	}
+max = Math.maxmax,, dpil;	max = Math.max(max, dp[i]);
+	}
+return max;	return max;
+}	}
+}	}

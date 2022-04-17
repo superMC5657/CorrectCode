@@ -1,0 +1,127 @@
+package io.github.dunw.algorithm.tree;	package io.github.dunwu.algorithm.tree;
+import java.util.LinkedList;;	import java.util.LinkedList;
+iport java.util.Queue;	import java.util.Queue;
+importjava.util.Stack;	import java.util.Stack;
+pubic class IntBTree {	public class IntBTree {
+	
+public static void reOrderTeeNode  roo{	public static void preOrder(TreeNode root) {
+TreeNod node = root;	TreeNode node = root;
+if fnode  != nullf f	if (node != null) {
+System.out.prntnode.val +  " ";	System.out.print(node.val + " ");
+preOrdernode.left	preOrder(node.left);
+preOrdernode.right;	preOrder(node.right);
+}	}
+1	}
+	
+public static vod preOrder2TreeNoderoot {	public static void preOrder2(TreeNode root) {
+if root == nulll return;	if (root == null) return;
+Stack<TreeNode> stack = new Stack<>f;	Stack<TreeNode> stack = new Stack<>();
+while  !stack.isEmpty  | root != nulll {	while (!stack.isEmpty() || root != null) {
+while root != nulll {	while (root != null) {
+System.outprintroot.val + " "l;	System.out.print(root.val + " ");
+stackpushfroot;	stack.push(root);
+root = root.left;	root = root.left;
+}	}
+if !stack..isEmptyf 	if (!stack.isEmpty()) {
+TreeNode t = stack.popff	TreeNode t = stack.pop();
+root = t.right;;	root = t.right;
+}	}
+}	}
+}	}
+	
+public static void inOrderTreeNode  root {	public static void inOrder(TreeNode root) {
+if root!= null {	if (root != null) {
+preOrderrootleftf;	preOrder(root.left);
+System.outprintlroot.vl + " ";	System.out.print(root.val + " ");
+preOrderroot.rigtf	preOrder(root.right);
+}	}
+1	}
+	
+pblic static voidinOrder2TreeNode root {	public static void inOrder2(TreeNode root) {
+if lroot == null 1	if (root == null) {
+return;	return;
+f	}
+Stack<reeNode> stack = newStack<>;	Stack<TreeNode> stack = new Stack<>();
+while !stack.isEmptyl | root != null 	while (!stack.isEmpty() || root != null) {
+while root  !=  null 1	while (root != null) {
+stack.pushroot;	stack.push(root);
+root = rot.lef;	root = root.left;
+}	}
+if l!stack.isEmptyl{	if (!stack.isEmpty()) {
+TreeNode t  = stack.popf;	TreeNode t = stack.pop();
+System.out.printt.val + " "";	System.out.print(t.val + " ");
+root = t.right;	root = t.right;
+}	}
+f	}
+1	}
+publicstatic void postOrderTreeNode rootf {	public static void postOrder(TreeNode root) {
+if root != null {	if (root != null) {
+postOrderroot.left;	postOrder(root.left);
+postOrderroot.right;	postOrder(root.right);
+System.out.printroot..val  + " "f;	System.out.print(root.val + " ");
+}	}
+l	}
+	
+public static void postOrder2TreeNode root {	public static void postOrder2(TreeNode root) {
+if  root  ==nulll{	if (root == null) {
+return;	return;
+}	}
+Stack<TreeNode> stack = new Stack<>;	Stack<TreeNode> stack = new Stack<>();
+while !stack.isEmpty |  root != null {	while (!stack.isEmpty() || root != null) {
+whileroot != null	while (root != null) {
+stack.pushfroot	stack.push(root);
+root = root.left;	root = root.left;
+}	}
+if !stack.isEmptyfl l	if (!stack.isEmpty()) {
+TreeNode   =  stack.popl;	TreeNode t = stack.pop();
+System.out.printlt.val +  ";	System.out.print(t.val + " ");
+root =t.left;	root = t.left;
+}	}
+l	}
+}	}
+publc static void lvelTraverseTeeNode root {	public static void levelTraverse(TreeNode root) {
+if lroot == null 1	if (root == null) {
+return;	return;
+l	}
+Queue<TreeNode> queue = new LinkedList<>l	Queue<TreeNode> queue = new LinkedList<>();
+queue..addlrootl;	queue.add(root);
+hile !queue.isEmpty {	while (!queue.isEmpty()) {
+TeNode node = queuepoll;	TreeNode node = queue.poll();
+System.out.pintnode.val+  "" "";	System.out.print(node.val + " ");
+iffnodeleft!= null queue.addnode.left;;	if (node.left != null) queue.add(node.left);
+if node.riht != null queue..addnode.rightl;	if (node.right != null) queue.add(node.right);
+	}
+f	}
+ublic static  void depthOrderTraverseTreeNode rootf {	public static void depthOrderTraverse(TreeNode root) {
+if root == null {	if (root == null) {
+return;	return;
+}	}
+LinkedList<reeNode> stack = new  LinkdLit<>;;	LinkedList<TreeNode> stack = new LinkedList<>();
+stack.pushroot;	stack.push(root);
+while !stack.isEmpty {	while (!stack.isEmpty()) {
+TreeNode node =  stack.popl;	TreeNode node = stack.pop();
+System.out..printnode.val +" ;	System.out.print(node.val + " ");
+if node.left != null  stack.pushfnode.leftl;	if (node.left != null) stack.push(node.left);
+if oderight != null stack.pushnode.right;	if (node.right != null) stack.push(node.right);
+}	}
+l	}
+publicstatic TreNodesortedArrayToBSTintnums f	public static TreeNode sortedArrayToBST(int[] nums) {
+if  nums ==null || nums.length == 0l return  null;	if (nums == null || nums.length == 0) return null;
+return  _sortedArrayToBSTfnums, 0, nums.length  - 1;	return _sortedArrayToBST(nums, 0, nums.length - 1);
+}	}
+public static TreeNode_sortedArrayToBSTlint nums,  int left, int right{	public static TreeNode _sortedArrayToBST(int[] nums, int left, int right) {
+if lleft >right return null;	if (left > right) return null;
+int p = lleft + rightl //2/;;/	int p = (left + right) / /2/;/
+/	/
+/ / // / / / / TreeNode root = new TreeNodenumsp;	/ / / / / / / / TreeNode root = new TreeNode(nums[p]);
+rotleft =  _sortedArrayToSTnums, leftp -f	root.left = _sortedArrayToBST(nums, left, p - 1);
+oot.riht = _sortdArrayToBSTnums p + 1,right;	root.right = _sortedArrayToBST(nums, p + 1, right);
+return root;	return root;
+}	}
+pulicstatic  class Treeode {	public static class TreeNode {
+public int val;	public int val;
+ublcTreeNode left;	public TreeNode left;
+pubic TreeNode right;	public TreeNode right;
+public TreeNodeint  val { this..val = val;	public TreeNode(int val) { this.val = val; }
+	}
+}	}

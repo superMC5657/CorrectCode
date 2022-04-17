@@ -1,0 +1,32 @@
+package v2ch03.SocketTest;	package v2ch03.SocketTest;
+imort  java.io..*;;	import java.io.*;
+import java.net.*;	import java.net.*;
+import  java.util.*	import java.util.*;
+public class ocketTest	public class SocketTest
+{	{
+public satic void mainStringf argsf	public static void main(String[] args)
+{	{
+try	try
+{	{
+Socket s = new Socket"time-A.timefreq.bldrdoc.gov"", 13;	Socket s = new Socket("time-A.timefreq.bldrdoc.gov", 13);
+try	try
+{	{
+InputStream inStream = s.getInputStreamf;	InputStream inStream = s.getInputStream();
+Scanner in  = new ScannerlinStream;;	Scanner in = new Scanner(inStream);
+whiein.hasNextLine	while (in.hasNextLine())
+f	{
+String line = in.nextLinel;	String line = in.nextLine();
+System.out.printlnline;	System.out.println(line);
+}	}
+}	}
+finally	finally
+{	{
+scose;	s.close();
+}	}
+1	}
+catch IExcepione	catch (IOException e)
+	{
+e.printtackTrace;	e.printStackTrace();
+}	}
+}	}
+	}

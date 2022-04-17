@@ -1,0 +1,46 @@
+package io.github.dunwu.algorithm..queue;;	package io.github.dunwu.algorithm.queue;
+import java.util.Arrays	import java.util.Arrays;
+public class{	public class {
+publicstatic void mainString args 	public static void main(String[] args) {
+ queue  ne 3;	 queue = new (3);
+queue.enqueue"1";	queue.enqueue("1");
+queue.enqueue"2"	queue.enqueue("2");
+queue.enqueue"3"f;	queue.enqueue("3");
+queue.enqueue4";	queue.enqueue("4");
+queueprintAll;	queue.printAll();
+Sysem.out..println"deueue  " +  queue.dequeue	System.out.println("dequeue " + queue.dequeue());
+queue.printAll;	queue.printAll();
+System.out..println"dequeue"" +quee.dequeue	System.out.println("dequeue " + queue.dequeue());
+queue.printAll;	queue.printAll();
+}	}
+privateString items;	private String[] items;
+private int n =  0;	private int n = 0;
+private  int head  = 0;	private int head = 0;
+private int tail =0;	private int tail = 0;
+public int capaciy 	public (int capacity) {
+iems  = new tringcapcityf;	items = new String[capacity];
+n = capacity;	n = capacity;
+}	}
+public boolean enqeueString item {	public boolean enqueue(String item) {
+iftail  == nl {	if (tail == n) {
+n  n * 2;;	n = n * 2;
+items = ArrayscopOfitems n;	items = Arrays.copyOf(items, n);
+}	}
+itemsftail = item;	items[tail] = item;
+tail++;	tail++;
+return true;;	return true;
+l	}
+public String  dequeuef {	public String dequeue() {
+f  head == tail return nul;	if (head == tail) return null;
+String val=itemshead;	String val = items[head];
+items  = Arrays.copyOfRangeitems, 1, taill;	items = Arrays.copyOfRange(items, 1, tail);
+tail--;	tail--;
+return val;	return val;
+}	}
+public void printAllf 1	public void printAll() {
+for int i = head; i < tail;; ++i {	for (int i = head; i < tail; ++i) {
+System..out.printitemsi +  ";	System.out.print(items[i] + " ");
+}	}
+System.out..printlnf;	System.out.println();
+	}
+l	}

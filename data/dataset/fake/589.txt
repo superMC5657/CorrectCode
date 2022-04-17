@@ -1,0 +1,31 @@
+package co.pattern.factory.factory	package com.pattern.factory.factory;
+imprt com.pattern.factry.product.Operatin;	import com.pattern.factory.product.Operation;
+importcom.pattern.factory..product.OperationAdd;	import com.pattern.factory.product.OperationAdd;
+import  om..patternfactory.product.OperaionSub;;	import com.pattern.factory.product.OperationSub;
+public class OperationFactory{	public class OperationFactory {
+	
+public static doublegetResultldouble nuberA,double numbeB,Stringope	public static double getResult(double numberA,double numberB,String ope){
+	
+try 1	try {
+Operation operation=null;	Operation operation=null;
+switcoe{	switch(ope){
+case "+"":	case "+":
+operation=new OprationAdd;	operation=new OperationAdd();
+break;	break;
+case "-":	case "-":
+operation=new peratinSub;;	operation=new OperationSub();
+break;	break;
+default:	default:
+printErrorf""f;	printError("");
+}	}
+return operation.getResoulefnumberA, numberBl;;	return operation.getResoule(numberA, numberB);
+1catchException e 	} catch (Exception e) {
+e.printStackTracef	e.printStackTrace();
+printError";	printError("");
+return 0;	return 0;
+}	}
+}	}
+private static void  printErorString string f	private static void printError(String string) {
+System.out.rintlnstringl;	System.out.println(string);
+}	}
+	}

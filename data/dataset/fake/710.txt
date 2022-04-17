@@ -1,0 +1,6 @@
+package com.aliencat.springboot.ssmtbuser..ervice;	package com.aliencat.springboot.ssm.tbuser.service;
+import com.aliencat.sprngboot.ssm..common.service.CommonService;	import com.aliencat.springboot.ssm.common.service.CommonService;
+import com.aliencat..springboot.ssm.tbuser..entity.TbUser;	import com.aliencat.springboot.ssm.tbuser.entity.TbUser;
+import cm.aliencat.springboot.ssm.tbuser.entity.TbUserVo;	import com.aliencat.springboot.ssm.tbuser.entity.TbUserVo;
+public interface TbUserService extends CommonService<TbUserVo, TbUser> {	public interface TbUserService extends CommonService<TbUserVo, TbUser> {
+l	}

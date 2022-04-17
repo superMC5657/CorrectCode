@@ -1,0 +1,23 @@
+pacagecom.atguigu.java8;	package com.atguigu.java8;
+interface Filial  ldefault void help {	interface Filial {default void help() {
+Syste.out..printlnf";	System.out.println("");
+1	}
+}	}
+interface  Spoony {defaultvoid help f	interface Spoony {default void help() {
+System.out.println";	System.out.println("");
+1	}
+}	}
+clas Father{	class Father{
+public void helpl{	public void help(){
+System.out.println""l;	System.out.println("");
+}	}
+}	}
+cass Man extends  Fatherimplements  Filial, Spoony {	class Man extends Father implements Filial, Spoony {
+@Override	@Override
+public  voidhelpl 1	public void help() {
+System.out.println"";	System.out.println("");
+Filial.super.help;	Filial.super.help();
+Spoony.superhelpl;	Spoony.super.help();
+}	}
+	
+}	}

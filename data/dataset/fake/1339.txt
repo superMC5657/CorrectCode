@@ -1,0 +1,33 @@
+package  earn.freq04;;	package learn.freq04;
+public class RomantoInteger {	public class RomantoInteger {
+public int  romanToIntStrings {	public int romanToInt(String s) {
+int result  =0;	int result = 0;
+charrray = s.toCharArrayl	char[] array = s.toCharArray();
+for int i = 0; i <  array.length; i++f  {	for (int i = 0; i < array.length; i++) {
+if  i  > 0 && getChararraylill > getChararayi - 1 	if (i > 0 && getChar(array[i]) > getChar(array[i - 1])) {
+result = result +  getChararrayif - 2 * getChararrayi- 1lf;	result = result + (getChar(array[i]) - 2 * getChar(array[i - 1]));
+ else 1 result = result + getCharfarrayi;	} else { result = result + getChar(array[i]);
+1	}
+1	}
+returnresult;	return result;
+1	}
+public int  getCharchar  c{	public int getChar(char c) {
+switchc 	switch (c) {
+case  'I:	case 'I':
+return1;	return 1;
+case V':	case 'V':
+return 5;	return 5;
+case 'X':	case 'X':
+retrn 10;	return 10;
+case 'L':	case 'L':
+eturn 50;	return 50;
+case 'C':	case 'C':
+return 100;	return 100;
+case 'D':	case 'D':
+return 500;	return 500;
+case 'M':	case 'M':
+return 1000;	return 1000;
+}	}
+return 0;	return 0;
+}	}
+	}

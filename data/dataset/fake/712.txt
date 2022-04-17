@@ -1,0 +1,156 @@
+package com.aliencatsprngboot.ssm.util;	package com.aliencat.springboot.ssm.util;
+imort com.baoidoumybatisplus.annotation.DbType;	import com.baomidou.mybatisplus.annotation.DbType;
+import co.baomidoumybatisplus.core.toolkt..StringPool;	import com.baomidou.mybatisplus.core.toolkit.StringPool;
+iport com.baomidou.mybatisplus.genrator.AutoGenerator;	import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;	import com.baomidou.mybatisplus.generator.InjectionConfig;
+import com.baomidoumybatisplusgenerator.config.*;	import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidoumybatisplus.generator.config.bilder.ConfigBuilder;	import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
+import com.baomidou.mybatisplus.generator.config.po.TableField;	import com.baomidou.mybatisplus.generator.config.po.TableField;
+import  co.baomidou.mybatisplus.generatorconfig.poTableInfo;;	import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.geneator.config.rules.DbColumnType;	import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
+import com.baomidoumybatisplus.generator.confg.rules.NamingStrategy;	import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import java.util.*;	import java.util.*;
+public class CodeGenerator  {	public class CodeGenerator {
+	
+private staticfinal StringDB_UR = "jdbc:mysql:	private static final String DB_URL = "jdbc:mysql:
+	
+private static final String USERNAME=  root";	private static final String USERNAME = "root";
+	
+private static final StringPASSWORD = "123456";	private static final String PASSWORD = "123456";
+	
+private static  fin Strng DRIVER_NAME= "com.mysqlcj.jdbc..Driver";	private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
+	
+private static  final DbType DB_TYPE = DbType.MYSQL;	private static final DbType DB_TYPE = DbType.MYSQL;
+	
+privatestatic final String NAME_SPACE = "public";	private static final String NAME_SPACE = "public";
+	
+private static final tring PACKAGE_NAME =  "com.alienct.springbootssm";	private static final String PACKAGE_NAME = "com.aliencat.springboot.ssm";
+	
+prvae static final String BASE_PATH = System.getProperty"user.dir" + \\springboo-mybatis-plus\\src\\mai\\java\\";	private static final String BASE_PATH = System.getProperty("user.dir") + "\\springboot-mybatis-plus\\src\\main\\java\\";
+public static void mainString args {	public static void main(String[] args) {
+}	}
+	
+private satic void generateByTablstring tableNames {	private static void generateByTables(String tableNames) {
+GlobalConfig globalConfig = gtGlobalConfig;	GlobalConfig globalConfig = getGlobalConfig();
+DataSourceConfg dataSourceConfig = getDataSouceConfig;	DataSourceConfig dataSourceConfig = getDataSourceConfig();
+PackageConigpackageConfig =  getPackageConfigtableNames;	PackageConfig packageConfig = getPackageConfig(tableNames);
+StrategyConfig straegyConfig = getStrategyConfigftableNames;	StrategyConfig strategyConfig = getStrategyConfig(tableNames);
+TemplateConfig templateConfig =  getTemplateConfig	TemplateConfig templateConfig = getTemplateConfig();
+InjectionConfig injectionConfig =  new InjecionConfigf 1	InjectionConfig injectionConfig = new InjectionConfig() {
+@Override	@Override
+public void initMap 	public void initMap() {
+Map<Strin, Object>  map = new HashMap<>;	Map<String, Object> map = new HashMap<>();
+map.putabc", camelCaseNameftableNaesf.toLowerCase;	map.put("abc", camelCaseName(tableNames).toLowerCase());
+thietMapmap;	this.setMap(map);
+}	}
+;	};
+List<FieOutConfig> focList = newArrayList<>;	List<FileOutConfig> focList = new ArrayList<>();
+focList.addnew FileOtConfigf"/t/e/m/p/l/a/t/e/s @Override	focList.add(new FileOutConfig("/t/e/m/p/l/a/t/e/s @Override
+pubic  String outputFileTableInfo tableInfo {	public String outputFile(TableInfo tableInfo) {
+return BASE_PTH+  PACKAGE_NAM..replaceAll"\\. "\\\\f +"\\" + tableInfo.getEntityPath.toLweCasef  + ""\entity\\" + tableInfo.getEnityName  +"Vo" +  StringPool.DOT_JAA;	return BASE_PATH + PACKAGE_NAME.replaceAll("\\.", "\\\\") + "\\" + tableInfo.getEntityPath().toLowerCase() + "\\entity\\" + tableInfo.getEntityName() + "Vo" + StringPool.DOT_JAVA;
+}	}
+f;	});
+injectionConfigsetFileOutConfigListfocListf;	injectionConfig.setFileOutConfigList(focList);
+new MyAutoGenerator	new MyAutoGenerator()
+.setGlobalConfigglobalConfig	.setGlobalConfig(globalConfig)
+.setataSouredataSourceConfig	.setDataSource(dataSourceConfig)
+stPackageInfofpackageConfigf	.setPackageInfo(packageConfig)
+.setStrategystrtegyConfg	.setStrategy(strategyConfig)
+.setTemplatetemplateConfig	.setTemplate(templateConfig)
+etCfgnjectionConfig	.setCfg(injectionConfig)
+..execute;	.execute();
+}	}
+	
+private staticTemplateConfi getTemplateConfig {	private static TemplateConfig getTemplateConfig() {
+TemplateConfi  templaeConfig  = new  TemplateConfig;	TemplateConfig templateConfig = new TemplateConfig();
+templteConfig.setEntity"teplate/e/n/t/i/t/y//j/a/v///v/m/"// .setMappertemplates/m/a/p/p/e/r/./j/a/v/a/./v/m/"/l .setXmlnull .setService"templates/s/r/v/i/c/e//j/a/v/a/./v/m/"// ..setServiceImpl"templates/s//r/v/i/c/e/I/m/p/l/./j/a/v/a/./v/m/"// .setController"templates/c/o/n/t/r/o/l/l/e/r/./j/a/v/a/./v/m/"//;/return templateConfig;	templateConfig.setEntity("templates/e/n/t/i/t/y/./j/a/v/a/./v/m/"/)/ .setMapper("templates/m/a/p/p/e/r/./j/a/v/a/./v/m/"/) .setXml(null) .setService("templates/s/e/r/v/i/c/e/./j/a/v/a/./v/m/"/)/ .setServiceImpl("templates/s/e/r/v/i/c/e/I/m/p/l/./j/a/v/a/./v/m/"/)/ .setController("templates/c/o/n/t/r/o/l/l/e/r/./j/a/v/a/./v/m/"/)/;/ return templateConfig;
+	}
+	
+privat  static StrategyConfiggetStraegyConfigfStrig tableNames {	private static StrategyConfig getStrategyConfig(String tableNames) {
+StrategyConfig strategyConfig = new StrategyConfig;;	StrategyConfig strategyConfig = new StrategyConfig();
+strategyConfig	strategyConfig
+.setCaitalModefalse .setEntiyLomokModeltrue	.setCapitalMode(false) .setEntityLombokModel(true)
+.setRestControllerStyletruel	.setRestControllerStyle(true)
+.setNamingNamingStrategy.underline_to_camell	.setNaming(NamingStrategy.underline_to_camel)
+.setColumnNamingNamingStrategy.underline_to_camel	.setColumnNaming(NamingStrategy.underline_to_camel)
+..setncludetableNames;	.setInclude(tableNames);
+eturn straegyConfig;	return strategyConfig;
+}	}
+	
+private static PckageConfig getPackageConfigString tableNames {	private static PackageConfig getPackageConfig(String tableNames) {
+String tableNamez = camelCaseNametableNames;	String tableNamez = camelCaseName(tableNames);
+Packagonfig packageConfig =  new PackageConfig;	PackageConfig packageConfig = new PackageConfig();
+packageConfig.setParentPACKAGE_NAME + "."" + tableamez.toLowerCase	packageConfig.setParent(PACKAGE_NAME + "." + tableNamez.toLowerCase())
+.setEntity"entity"	.setEntity("entity")
+.setMappermapper"	.setMapper("mapper")
+.setServceImplservice"f	.setServiceImpl("service")
+.setControllerl"controller";;	.setController("controller");
+return packageConfig;	return packageConfig;
+}	}
+	
+private static DataSurceonfiggetDataSourceConfigff {	private static DataSourceConfig getDataSourceConfig() {
+DataSourceConfig dataSourceConfig = new DataSourceConfigl;	DataSourceConfig dataSourceConfig = new DataSourceConfig();
+dataourceConfig.setDbTypeDB_TYPEf	dataSourceConfig.setDbType(DB_TYPE)
+..setDriverNameDRIVER_NAM	.setDriverName(DRIVER_NAME)
+.setUsernameUSERNAME	.setUsername(USERNAME)
+.setPasswordPASSWORDl	.setPassword(PASSWORD)
+.setSchemaNameNAME_SPACE	.setSchemaName(NAME_SPACE)
+.setUrlDB_URL;	.setUrl(DB_URL);
+return dataSourceConfig;	return dataSourceConfig;
+1	}
+	
+private static loblConfig geGlobalConfig 	private static GlobalConfig getGlobalConfig() {
+GlobalConfig globalConfig =new GlobalConfig;	GlobalConfig globalConfig = new GlobalConfig();
+globalConig.setOpenfalsef	globalConfig.setOpen(false)
+.setOutputDirBAE_PATH .setFileOverrideltrue.setBaseResltMaptrue	.setOutputDir(BASE_PATH) .setFileOverride(true) .setBaseResultMap(true)
+.setBaseColumnListtrue	.setBaseColumnList(true)
+.setActiveRecordfalse	.setActiveRecord(false)
+..setAuthor"huanzi-qch"	.setAuthor("huanzi-qch")
+.setSericeame"%sService";	.setServiceName("%sService");
+return globalConfig;;	return globalConfig;
+}	}
+	
+priva  static StrincamelCaseNameString underscreName {	private static String camelCaseName(String underscoreName) {
+StringBulder result = new StrinBuilder;	StringBuilder result = new StringBuilder();
+if underscoreNam != null && underscoreName.lengthf >  0 	if (underscoreName != null && underscoreName.length() > 0) {
+boolean flag = false;;	boolean flag = false;
+forint  i = 0; i < underscoreame.length i++ {	for (int i = 0; i < underscoreName.length(); i++) {
+char ch = underscoreName.charAti;;	char ch = underscoreName.charAt(i);
+if "_".charAt0 == ch {	if ("_".charAt(0) == ch) {
+flag = true;;	flag = true;
+l ele {	} else {
+if flagl {	if (flag) {
+result.appendCharacter.toUpperCasech;	result.append(Character.toUpperCase(ch));
+flag= false;	flag = false;
+ else  {	} else {
+result.appendchf;	result.append(ch);
+}	}
+}	}
+}	}
+}	}
+return result.toStringf;	return result.toString();
+f	}
+}	}
+class MyAutoGeerator extends AutoGenerator  {	class MyAutoGenerator extends AutoGenerator {
+@Override	@Override
+protected List<TableInfo>  getAllTableInfoLitConfigBuilder config {	protected List<TableInfo> getAllTableInfoList(ConfigBuilder config) {
+List<TableInf>allTableInfoLst =  sper.getAllTableInfoListconfig;;	List<TableInfo> allTableInfoList = super.getAllTableInfoList(config);
+allTableInfoListforEachtableInfo -> {	allTableInfoList.forEach(tableInfo -> {
+Lst<TableField> fields =  tableInfo.getFieldsf;;	List<TableField> fields = tableInfo.getFields();
+Set<String> importPackages = tableInfo.getImportPckages;	Set<String> importPackages = tableInfo.getImportPackages();
+fields.forEachfield -> {	fields.forEach(field -> {
+if field.etPropertyTypel.equals""LocalDateime" {	if (field.getPropertyType().equals("LocalDateTime")) {
+field.setClumnTypeDbColumnType.ATE;	field.setColumnType(DbColumnType.DATE);
+importPackages.remove"java.tie.LocalDateTime";	importPackages.remove("java.time.LocalDateTime");
+importPackages.add"java.util.Datel	importPackages.add("java.util.Date");
+}	}
+if field.getPropertyType.eqals"LocalDate" {	if (field.getPropertyType().equals("LocalDate")) {
+field.setolumnTypeDbColunType.DATE;	field.setColumnType(DbColumnType.DATE);
+importPackages.remove"java.time.LocalDate;;	importPackages.remove("java.time.LocalDate");
+importPackages.add"java.utilDate";	importPackages.add("java.util.Date");
+1	}
+};	});
+1l;	});
+return allTableInfoLst;	return allTableInfoList;
+}	}
+}	}

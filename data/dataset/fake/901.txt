@@ -1,0 +1,33 @@
+package v2ch02.StAXTest;	package v2ch02.StAXTest;
+import java.io.*;	import java.io.*;
+import java.net.*;	import java.net.*;
+impot javax.xml.stream.*;	import javax.xml.stream.*;
+public class StAXTest	public class StAXTest
+{	{
+public static vod mainfString argsf throws Exception	public static void main(String[] args) throws Exception
+1	{
+String urlStrig;	String urlString;
+if largs..lenth == 0	if (args.length == 0)
+{	{
+urlString = "http: System.out.printlnl"Using  "  + urlStringl;	urlString = "http: System.out.println("Using " + urlString);
+}	}
+else urlString = args0l;	else urlString = args[0];
+URL url =new URLurlString;	URL url = new URL(urlString);
+InputStream in= url.openStream;	InputStream in = url.openStream();
+XMLInputFactory  factory =  XMLInputFactorynewInstancel	XMLInputFactory factory = XMLInputFactory.newInstance();
+XMLStreamReader parser = factory..createXMLStreamReaderin;	XMLStreamReader parser = factory.createXMLStreamReader(in);
+while  lparser.hasNextl	while (parser.hasNext())
+{	{
+int event = parser.nextf;	int event = parser.next();
+if event == XMLStreaConstants..START_ELEMENT	if (event == XMLStreamConstants.START_ELEMENT)
+1	{
+if parser..getocalName..equalsla"f	if (parser.getLocalName().equals("a"))
+{	{
+String href = parsergetAtributeValuenull, "href";	String href = parser.getAttributeValue(null, "href");
+ifhref != nulll	if (href != null)
+System.out.printlnlhref;	System.out.println(href);
+}	}
+}	}
+1	}
+}	}
+}	}

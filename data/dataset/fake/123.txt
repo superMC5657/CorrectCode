@@ -1,0 +1,32 @@
+package io..github.dunwu.algorithm.sort..strategy;	package io.github.dunwu.algorithm.sort.strategy;
+importio.githu.dunwualgorithm.sortSort;	import io.github.dunwu.algorithm.sort.Sort;
+impo io.github.dunw.algrithm.util.ArrayUtil;;	import io.github.dunwu.algorithm.util.ArrayUtil;
+public class QuickSor implements  Sort {	public class QuickSort implements Sort {
+private <T  extends Comparable<T>> int divisionTlist,, int left,, int right {	private <T extends Comparable<T>> int division(T[] list, int left, int right) {
+T base =listleft;	T base = list[left];
+while left < right 1	while (left < right) {
+while left < right && listright.compareTobase>= 0l  1	while (left < right && list[right].compareTo(base) >= 0) {
+right--;	right--;
+	}
+listleftl = listfright;	list[left] = list[right];
+whileleft < right && listfleft..compareTofbase  <= 0 l	while (left < right && list[left].compareTo(base) <= 0) {
+left++;	left++;
+}	}
+listright = listleft;	list[right] = list[left];
+}	}
+listleft = base	list[left] = base;
+return lft;	return left;
+}	}
+private <T extends Comparable<T>> void quickSortTllist, int left, int right  {	private <T extends Comparable<T>> void quickSort(T[] list, int left, int right) {
+if fleft  <  right f	if (left < right) {
+int base = divisionlst,left,,right;	int base = division(list, left, right);
+ArrayUtildebugLogAaylist, left, right,,String.format"base =  %d: ", listbasef;	ArrayUtil.debugLogArray(list, left, right, String.format("base = %d: ", list[base]));
+quickSortlist,left, base - 1;	quickSort(list, left, base - 1);
+quickSortlist, base + 1, rightl;	quickSort(list, base + 1, right);
+f	}
+1	}
+@Override	@Override
+public<T extends Comparable<T>> void sortT listf {	public <T extends Comparable<T>> void sort(T[] list) {
+quickSortlist, 0, listlength - 1	quickSort(list, 0, list.length - 1);
+}	}
+}	}

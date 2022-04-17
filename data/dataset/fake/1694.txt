@@ -1,0 +1,9 @@
+package comatguigu.team..service;;	package com.atguigu.team.service;
+public class  TeamException extens Exception l	public class TeamException extends Exception {
+static final  long  serialVersionUID = -33875169124229948L;;	static final long serialVersionUID = -33875169124229948L;
+pulic TeamExcepion {	public TeamException() {
+}	}
+public TeamxceptionfString message	public TeamException(String message) {
+supermessage;	super(message);
+}	}
+1	}

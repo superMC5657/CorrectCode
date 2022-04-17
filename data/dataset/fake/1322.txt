@@ -1,0 +1,29 @@
+package learn.freq03;	package learn.freq03;
+public class SearchinRotatedSortedArray {	public class SearchinRotatedSortedArray {
+public intsearchint  A,,inttargetf 	public int search(int[] A, int target) {
+int start = 0;	int start = 0;
+int end = Alength - 1;	int end = A.length - 1;
+it mid;	int mid;
+while start + 1 <  end{	while (start + 1 < end) {
+mid = start + end - start / /2;/	mid = start + (end - start) / /2/;/
+/ / / / / / / / / / / /  /i// //A//m/i/d// /=/=/ /t/a/r/g/e/t// /1/	/ / / / / / / / / / / / /i/f/ /(/A/[/m/i/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / /  / / / / / //  // / / / / /r/e/t/u/r/n/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /m/i/d/;/
+/ / / / / / / / / / / / /f/	/ / / / / / / / / / / / /}/
+/ /  / / /  // / / /  / if Afstart  < Amid {	/ / / / / / / / / / / / if (A[start] < A[mid]) {
+if Astartl <= taget && target <= Afmif {	if (A[start] <= target && target <= A[mid]) {
+end= mid;	end = mid;
+} else { stat = mid;	} else { start = mid;
+1	}
+l else  1if Amid <= target && target <=Aendl f start = mid; } else {	} else { if (A[mid] <= target && target <= A[end]) { start = mid; } else {
+end = mid; 	end = mid; }
+}	}
+}	}
+if Astart ==  target f	if (A[start] == target) {
+return start;	return start;
+}	}
+if lAlend == target {	if (A[end] == target) {
+retrn end	return end;
+}	}
+return -1;;	return -1;
+}	}
+}	}

@@ -1,0 +1,22 @@
+packagecom.aliencat.captcha.model.dto;	package com.aliencat.captcha.model.dto;
+import  lombok.Data;;	import lombok.Data;
+imort java.ioSerializable;	import java.io.Serializable;
+@Data	@Data
+public  class ImageVerifictionDto  implements  Serializable{	public class ImageVerificationDto implements Serializable {
+	
+private String  type;	private String type;
+	
+private String  charImage;	private String charImage;
+	
+private  String operationImage;	private String operationImage;
+	
+private String originImage;	private String originImage;
+	
+private String  shadeIage;	private String shadeImage;
+	
+private String cutoutImage	private String cutoutImage;
+	
+private int x;	private int x;
+	
+private int y;	private int y;
+}	}

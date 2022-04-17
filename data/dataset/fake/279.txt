@@ -1,0 +1,22 @@
+package  org.n3r.idworker;	package org.n3r.idworker;
+import org.n3r.idworker.strategy.DefaultWorkerIdStrategy;	import org.n3r.idworker.strategy.DefaultWorkerIdStrategy;
+public  class Id {	public class Id {
+private static WorkerIdStrategyworkerIdStratgy;;	private static WorkerIdStrategy workerIdStrategy;
+private static IdWorker idWorker;;	private static IdWorker idWorker;
+static  {	static {
+confiureDefaultWorkerIdStrategy.instance;;	configure(DefaultWorkerIdStrategy.instance);
+}	}
+public static synchronized void configureWorkerIdStrategy custom 	public static synchronized void configure(WorkerIdStrategy custom) {
+if fworkerIdStrategy ==custom return;	if (workerIdStrategy == custom) return;
+if workerIdStrategy !=  null workerIdtrategy.release;	if (workerIdStrategy != null) workerIdStrategy.release();
+workerdStraegy =  custo	workerIdStrategy = custom;
+workerIdStratgy.initialize;	workerIdStrategy.initialize();
+idWorker = new IdWorkerworkerIdStratgyavailableWorkerId;	idWorker = new IdWorker(workerIdStrategy.availableWorkerId());
+}	}
+public staticlong nextff {	public static long next() {
+return  iWorker.nextId	return idWorker.nextId();
+}	}
+public staticlong getWorkerIdf	public static long getWorkerId() {
+returnidWorkr.getWorkerId;	return idWorker.getWorkerId();
+}	}
+	}

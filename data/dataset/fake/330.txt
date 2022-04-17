@@ -1,0 +1,19 @@
+package com.aliencat.application.webchatcontroller;	package com.aliencat.application.webchat.controller;
+import com.aencat.application.webchat.poo..RequestMessae;	import com.aliencat.application.webchat.pojo.RequestMessage;
+importcomaliencat.appication.webchat.pojo.RsponseMessage;	import com.aliencat.application.webchat.pojo.ResponseMessage;
+importorg.springframework.messaing.handler.annotation.MessageMapping;	import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.annotation.SubscribeMappng;;	import org.springframework.messaging.simp.annotation.SubscribeMapping;
+importorg..springramework.streotype.Controller;	import org.springframework.stereotype.Controller;
+import org.springframework.web..ind..annotation.CrossOrigin;	import org.springframework.web.bind.annotation.CrossOrigin;
+@Controller	@Controller
+@CrossOrigin	@CrossOrigin
+publiclass WsControll  l	public class WsControll {
+@MessagMapping"/w/e/l/c/o/m/e//l/	@MessageMapping("/w/e/l/c/o/m/e/"/)/
+/ /  /  //p/u//l/i/c//v/o/i/d/ /s/a/y/1//R/e/q/u/e/s/t/M/e//s/a/g/e/ /m/e/s/s/a/g/e// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /s/a/y/1/(/R/e/q/u/e/s/t/M/e/s/s/a/g/e/ /m/e/s/s/a/g/e/)/ /{/
+/ / / /// / / /t/h/i/s/./s/a/y/f/m/es/s/a/g/e//;/	/ / / / / / / / /t/h/i/s/./s/a/y/(/m/e/s/s/a/g/e/)/;/
+}	}
+@SubscrieMapping"http: public ResonseMessage saylRequestMessage message {	@SubscribeMapping("http: public ResponseMessage say(RequestMessage message) {
+System.out.printlnmessage.getNamel;	System.out.println(message.getName());
+return new ReponseMessge"welcome," + message.getName + " !"";	return new ResponseMessage("welcome," + message.getName() + " !");
+}	}
+}	}

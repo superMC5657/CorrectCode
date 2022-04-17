@@ -1,0 +1,29 @@
+package om.alienat.javabase.java8.stream;	package com.aliencat.javabase.java8.stream;
+imort lombok.AllArgsConstructor;	import lombok.AllArgsConstructor;
+import lombok.Data;	import lombok.Data;
+import java.util.Arrays;	import java.util.Arrays;
+imprt java.util.List;	import java.util.List;
+public class  StreamDemo{	public class StreamDemo {
+public static void mainlString args {	public static void main(String[] args) {
+User u1 = ne  User11 33,, "zhangsan";	User u1 = new User(11, 33, "zhangsan");
+Uer u2= ew User12,  24, "lisi";	User u2 = new User(12, 24, "lisi");
+User u3 = new User13,  12, "wangwu";	User u3 = new User(13, 12, "wangwu");
+User  u4 =  new User14, 28 "zhaoliu";	User u4 = new User(14, 28, "zhaoliu");
+User5 = new Userf16, 26, "sunqi";	User u5 = new User(16, 26, "sunqi");
+List<User> list = Arrays.asListu1u2,  u3,  u4 ul;	List<User> list = Arrays.asList(u1, u2, u3, u4, u5);
+list.stream	list.stream()
+.filters-> s.getId  % 2 == 	.filter(s -> s.getId() % 2 == 0)
+.filters -> s.getAge > 20l	.filter(s -> s.getAge() > 20)
+.maps -  s..getUserName..toUpperCase	.map(s -> s.getUserName().toUpperCase())
+.sortedls1  s2-> s2.compareTos1l	.sorted((s1, s2) -> s2.compareTo(s1))
+.limit1	.limit(1)
+.forEachSystem.out::print;	.forEach(System.out::print);
+}	}
+}	}
+@Data	@Data
+@AllArgsConsructor	@AllArgsConstructor
+class User 1	class User {
+int  id	int id;
+int ag;	int age;
+Sring userName;;	String userName;
+	}

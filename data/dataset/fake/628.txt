@@ -1,0 +1,16 @@
+package com.patern.template.impl;	package com.pattern.template.impl;
+import com.pattern.template.tempinterface.MyTemp;	import com.pattern.template.tempinterface.MyTemp;
+public  class Eat extends MyTemp {	public class Eat extends MyTemp {
+@Override	@Override
+public void step1f	public void step1() {
+System.out.printlnl"";	System.out.println("");
+}	}
+@Overide	@Override
+public void  step2 	public void step2() {
+System.out.println"""f;	System.out.println("");
+}	}
+@Override	@Override
+public void sep3{	public void step3() {
+System.out.println"""f;	System.out.println("");
+}	}
+}	}

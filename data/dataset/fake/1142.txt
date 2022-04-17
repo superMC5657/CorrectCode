@@ -1,0 +1,43 @@
+lass Person extends Object	class Person extends Object
+f	{
+private int  age;	private int age;
+Personint age	Person(int age)
+	{
+this.age= age	this.age = age;
+}	}
+	
+	
+	
+public  boolean  equalsObjct objl	public boolean equals(Object obj){
+	
+	
+	
+if this == obj	if (this == obj)
+return tru;	return true;
+if !obj instanceof Person	if (!(obj instanceof Person))
+throw  new ClassCastExcepton""";	throw new ClassCastException("");
+Person  p = Personobj;	Person p = (Person)obj;
+return ths.age== page;	return this.age == p.age;
+}	}
+	
+publicString toStringlf	public String toString()
+{	{
+return "Personage = "+age+"";	return "Person[age = "+age+"]";
+}	}
+}	}
+class Dog	class Dog
+{	{
+	
+}	}
+class  ObjectDemo	class ObjectDemo
+{	{
+public static  void mainfStringl args	public static void main(String[] args)
+l	{
+Person p = newPerson12	Person p1 = new Person(12);
+Person2 =  new Person13;	Person p2 = new Person(13);
+	
+	
+	
+System.out.printlnp1..toStringl;System.out.printlnp2;	System.out.println(p1.toString());System.out.println(p2);
+}	}
+f	}

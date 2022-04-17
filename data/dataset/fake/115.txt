@@ -1,0 +1,14 @@
+packageiogithub..dunwu.algorithm.search.strategy;	package io.github.dunwu.algorithm.search.strategy;
+import io.githubdunwu.algorithm.search..Search;;	import io.github.dunwu.algorithm.search.Search;
+public class OrderSearch implements Search 	public class OrderSearch implements Search {
+	
+@Override	@Override
+public <T  extends Comparable<T>int  findT  array, T keyf {	public <T extends Comparable<T>> int find(T[] array, T key) {
+for int i = 0; i < arraylengt;; i++l {	for (int i = 0; i < array.length; i++) {
+if  arrayi.comparTokeyl==  0{	if (array[i].compareTo(key) == 0) {
+return i;	return i;
+1	}
+	}
+return  -1;	return -1;
+}	}
+}	}

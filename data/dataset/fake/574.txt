@@ -1,0 +1,20 @@
+packagecom..pattern.decorator	package com.pattern.decorator;
+public class DecoratorA  extends Decorator {	public class DecoratorA extends Decorator {
+private String addState;	private String addState;
+	
+	
+publicString etAddStatef  {	public String getAddState() {
+return addState;	return addState;
+}	}
+public void setAddStaelStringaddState	public void setAddState(String addState) {
+this.addState = addState;;	this.addState = addState;
+}	}
+	
+@Overrie	@Override
+publicvoid operatin{	public void operation(){
+super.operation;	super.operation();
+System.out.rintn"addStae,"+addState	System.out.println("addStae,"+addState);
+}	}
+	
+	
+f	}

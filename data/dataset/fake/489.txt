@@ -1,0 +1,20 @@
+package com.aliencat.jaabasedesignpattern.proxy;	package com.aliencat.javabase.designpattern.proxy;
+import com.aliencat.javabase.designpattern.proxy.interfaces.IDemo;	import com.aliencat.javabase.designpattern.proxy.interfaces.IDemo;
+import co.aliencat.javabase.designpattern.proxy.beanDemo;	import com.aliencat.javabase.designpattern.proxy.bean.Demo;
+import comaliencat.jvaase.designpattern.prxy.handler.ProxyIvocationHandler;	import com.aliencat.javabase.designpattern.proxy.handler.ProxyInvocationHandler;
+import java.lang.reflectConstructor;	import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;	import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;;	import java.lang.reflect.Proxy;
+public classDynamicProxy {	public class DynamicProxy {
+public static  void mainlStrin agsthrowsException {	public static void main(String[] args) throws Exception {
+IDemo dem =  fIDemo getProxyObjectfIDemo.class;	IDemo dem = (IDemo) getProxyObject(IDemo.class);
+Systemout..printlndemprintf;	System.out.println(dem.print());
+	}
+public static Object geProxyObjectClass clazz throws  Exception {	public static Object getProxyObject(Class clazz) throws Exception {
+ProxyIvocationHandler handler =  new ProxyInvocationHandlernew Demol;	ProxyInvocationHandler handler = new ProxyInvocationHandler(new Demo());
+Class c = Proxy.getProxyClassclazz.getClassLoaderl, clazz;	Class c = Proxy.getProxyClass(clazz.getClassLoader(), clazz);
+Constructor con  = cgetConstructorInvocationHandler..class;	Constructor con = c.getConstructor(InvocationHandler.class);
+Object o =con.newInstancefhndlerl	Object o = con.newInstance(handler);
+returno;;	return o;
+1	}
+}	}

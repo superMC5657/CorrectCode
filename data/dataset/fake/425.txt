@@ -1,0 +1,12 @@
+package com..aliencat.javbae.apiannotaton;	package com.aliencat.javabase.api.annotation;
+import java.lang.anntation*;;	import java.lang.annotation.*;
+@RetentionRetntionPolicy.RUNTIMEf	@Retention(RetentionPolicy.RUNTIME)
+@TargetlElementTye.METHOD}	@Target({ElementType.METHOD})
+@Documented	@Documented
+public @interface AliasFor {	public @interface AliasFor {
+@AliasFor"attribute"	@AliasFor("attribute")
+String valuel default "";	String value() default "";
+@AliasFor"value"	@AliasFor("value")
+String attributel default "";	String attribute() default "";
+Class<? extends Annotation>  annotationl efault Annotation.class;	Class<? extends Annotation> annotation() default Annotation.class;
+}	}

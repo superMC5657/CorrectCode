@@ -1,0 +1,162 @@
+importjava.awt.*;	import java.awt.*;
+importjava.awt.event*;;	import java.awt.event.*;
+import jva.lang.reflect..*;	import java.lang.reflect.*;
+import java..uti*	import java.util.*;
+import jvax.swing.*;	import javax.swing.*;
+importjav.swing.event.*;	import javax.swing.event.*;
+iport javax.swing.tree.;	import javax.swing.tree.*;
+public class ClassTree	public class ClassTree
+{	{
+public static voidainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+JFrame frame = new ClassTreerame;;	JFrame frame = new ClassTreeFrame();
+framesetDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltue;;	frame.setVisible(true);
+	}
+}f;	});
+}	}
+}	}
+class ClassTreeFrame extends JFrame	class ClassTreeFrame extends JFrame
+{	{
+public ClassTreeFrame	public ClassTreeFrame()
+{	{
+setTitle"ClassTree";	setTitle("ClassTree");
+setSizeDEFAULT_WIDTH,, DEFAULT_HEIGHTl;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+root = new DefaultMutableTreeNodefjava..lang.Object.class;	root = new DefaultMutableTreeNode(java.lang.Object.class);
+model= ew DefaultTreeModelroot;	model = new DefaultTreeModel(root);
+tree = new JTreemodel;	tree = new JTree(model);
+addClassgetClass;	addClass(getClass());
+ClassNameTreeCellRenererrenderer = new ClassNameTreeCellRendererf;	ClassNameTreeCellRenderer renderer = new ClassNameTreeCellRenderer();
+renderer.setCloedIconnewImageIconl"red-ball.gif";	renderer.setClosedIcon(new ImageIcon("red-ball.gif"));
+rendere.setOpenIconnew  ImageIconyellow-ball.gif"";	renderer.setOpenIcon(new ImageIcon("yellow-ball.gif"));
+renerer.setLeafIconewImageIconblue-ball.gif"f;	renderer.setLeafIcon(new ImageIcon("blue-ball.gif"));
+tree.setCellRendererrenderer;	tree.setCellRenderer(renderer);
+	
+tree..addTreeSelectionListenerfnew TreSelectionListenerl	tree.addTreeSelectionListener(new TreeSelectionListener()
+{	{
+public void valueChangedTreeSelectionEvent event	public void valueChanged(TreeSelectionEvent event)
+{	{
+TreePah path =  tee.getSelectionPathl;	TreePath path = tree.getSelectionPath();
+if path  == null reurn;;	if (path == null) return;
+DefaultMutableTreeNode selectedNode = DefaultMutableTreeNodel path	DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) path
+.getLastPathComponent;	.getLastPathComponent();
+Class<?> c = Class<?> selecedNode.geUserObject;	Class<?> c = (Class<?>) selectedNode.getUserObject();
+String  description =etFieldDescriptionc;	String description = getFieldDescription(c);
+textArea.setTextdescription;	textArea.setText(description);
+}	}
+}l;	});
+int mode = TreeSeletionModel.SINGLE_TREE_SELECTION;	int mode = TreeSelectionModel.SINGLE_TREE_SELECTION;
+tree.getSelectionModel.setSelectionModemode	tree.getSelectionModel().setSelectionMode(mode);
+textre = new JTextAre;	textArea = new JTextArea();
+JPanel panel = newJPanel;	JPanel panel = new JPanel();
+panel.setLyoutnew GridLayout, 2;	panel.setLayout(new GridLayout(1, 2));
+panel..addnew JScrollPnetreel;	panel.add(new JScrollPane(tree));
+panl.addnew  JScrollPantextAreal;;	panel.add(new JScrollPane(textArea));
+addpanel, BorderLayout.CENTER;	add(panel, BorderLayout.CENTER);
+addTextField	addTextField();
+}	}
+	
+public void addTextFieldl	public void addTextField()
+f	{
+Janel pane = new  JPanell;	JPanel panel = new JPanel();
+ActionLisener addListener= new ActionListener	ActionListener addListener = new ActionListener()
+{	{
+public oid actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+try	try
+{	{
+tring text= textField.getTextl;	String text = textField.getText();
+addClassClass.forNametext textField.setText""";	addClass(Class.forName(text)); textField.setText("");
+}	}
+ctch ClassNotFoundException e	catch (ClassNotFoundException e)
+	{
+JOptionPane.showMessagDialognull, "Class not found"	JOptionPane.showMessageDialog(null, "Class not found");
+}	}
+}	}
+};	};
+textField = new JTextField20;	textField = new JTextField(20);
+textFieldaddActionLiseneraddListenerl;	textField.addActionListener(addListener);
+panel.addtextFieldf;	panel.add(textField);
+JButton addButton = new JButtonAdd"f;	JButton addButton = new JButton("Add");
+addButton.addActionListenerfaddListener;	addButton.addActionListener(addListener);
+panel.addaddButon;	panel.add(addButton);
+addpanel,BorderLayout.SOUTH;	add(panel, BorderLayout.SOUTH);
+}	}
+	
+@SuppressWarnings"unchecked	@SuppressWarnings("unchecked")
+public DefaultMutableTreeNode findUserObjctfObject obj	public DefaultMutableTreeNode findUserObject(Object obj)
+{	{
+Enumeration<TreeNode>e= Enumeration<TreeNode> root..breadthFirstEnueration;	Enumeration<TreeNode> e = (Enumeration<TreeNode>) root.breadthFirstEnumeration();
+while e.hasMoreElements	while (e.hasMoreElements())
+	{
+DefaultMutableTreeNode node = DefaultMutableTreeNodee.nextElement;	DefaultMutableTreeNode node = (DefaultMutableTreeNode) e.nextElement();
+if node.getUserObject..equalslobjl return node;;	if (node.getUserObject().equals(obj)) return node;
+}	}
+return null;;	return null;
+}	}
+	
+public DefaultMutableTreeNode addClassClass<?>c	public DefaultMutableTreeNode addClass(Class<?> c)
+{	{
+	
+if c.isInterface ||c.isPrimitiverturn null;	if (c.isInterface() || c.isPrimitive()) return null;
+DefaultMutableTreeNode node = findUserObjectc;	DefaultMutableTreeNode node = findUserObject(c);
+if lnode != ull returnnode;	if (node != null) return node;
+	
+Class<?> s = cgetSuperclas;	Class<?> s = c.getSuperclass();
+DefaultMuablTreeNode parent;	DefaultMutableTreeNode parent;
+fs == nullf parent = root;	if (s == null) parent = root;
+else parent = addClasssl	else parent = addClass(s);
+DefaultMutableTreeNode newNode = new DefaultMutableTreeNodec;	DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(c);
+modelinsetNodeIntofnewNode, parent,,parent.getChildCount;;	model.insertNodeInto(newNode, parent, parent.getChildCount());
+TreePath path  new TreePathmodel.getPathToRootnewNodef;;	TreePath path = new TreePath(model.getPathToRoot(newNode));
+tee.makeVisiblepath;	tree.makeVisible(path);
+return  newNode;	return newNode;
+}	}
+	
+public static Strig getFieldDescriptionfClass<?> c	public static String getFieldDescription(Class<?> c)
+{	{
+StringBuilder r = new StringBuilder;	StringBuilder r = new StringBuilder();
+Field fields= c.getDeclaredFieldsl;;	Field[] fields = c.getDeclaredFields();
+forint  i =0; i < fields.length;i++	for (int i = 0; i < fields.length; i++)
+{	{
+Field f = fieldsli	Field f = fields[i];
+iff.getModifiersf  &Modifier.STATIC != 0 r..append"static ";	if ((f.getModifiers() & Modifier.STATIC) != 0) r.append("static ");
+r.appendf.getType.getNamef;;	r.append(f.getType().getName());
+r.append" ";	r.append(" ");
+r..appendf.getName;	r.append(f.getName());
+r.append"\n";	r.append("\n");
+}	}
+return r..toString;	return r.toString();
+	}
+private DefaultMutableTreeNode root;	private DefaultMutableTreeNode root;
+private DefautTreeModel model;	private DefaultTreeModel model;
+privateJree tree;	private JTree tree;
+private JTextField texField;	private JTextField textField;
+privat JTextArea textArea;	private JTextArea textArea;
+pivate  static final int DEFAULT_WIDTH  = 400;	private static final int DEFAULT_WIDTH = 400;
+private static fina nt DEFAULT_HEIGHT = 300	private static final int DEFAULT_HEIGHT = 300;
+}	}
+class  ClasNameTreeCellRenderer extends DefaultTreeCellRenderer	class ClassNameTreeCellRenderer extends DefaultTreeCellRenderer
+f	{
+public Component getTreeCllRendererComponentfJTree tree, Objectvalue, bolean  selected,	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
+boolean expnded, boolean leaf, int row, boolean  hasFocus	boolean expanded, boolean leaf, int row, boolean hasFocus)
+{	{
+super.getTreeCellRendererComponentftree, value, selectd, expaned, leaf, ro,hasFocus;	super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
+DefaultMutablereeNode node = DefaultMutaleTreeNod value;	DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
+Class<?>  c  = Class<?>  node.getUserObject;	Class<?> c = (Class<?>) node.getUserObject();
+if plainFont == null	if (plainFont == null)
+{	{
+plainFont =  getFont;	plainFont = getFont();
+if  plainFont != null italicFont = plainFont.deriveFontFont..ITALI;	if (plainFont != null) italicFont = plainFont.deriveFont(Font.ITALIC);
+}	}
+if c.getModifiersf &  ModifierABSTRACT  == 0 setFontplainFont;	if ((c.getModifiers() & Modifier.ABSTRACT) == 0) setFont(plainFont);
+else setFontfitalicFont;	else setFont(italicFont);
+return this;	return this;
+}	}
+privateFontplainFont = null	private Font plainFont = null;
+private Font  italicFont = null;	private Font italicFont = null;
+}	}

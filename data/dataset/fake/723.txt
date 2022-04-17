@@ -1,0 +1,12 @@
+package  com.aliencat.springboot.swagger2pojo;	package com.aliencat.springboot.swagger2.pojo;
+import io.swagger.annotations.ApiModel;	import io.swagger.annotations.ApiModel;
+import  io.swagger.annotations.ApiModelPrperty	import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;	import lombok.Data;
+@Data	@Data
+@ApiModeldescription = "User"f	@ApiModel(description = "User")
+public class User1	public class User {
+@ApiModelProperty"id"	@ApiModelProperty("id")
+private nteger id;;	private Integer id;
+@ApiModelProperty""	@ApiModelProperty("")
+privateString userName;	private String userName;
+}	}

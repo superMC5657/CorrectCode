@@ -1,0 +1,44 @@
+package iogithub.dunwu.algorithm.tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+mport  io.github.dunwu.algorithm..treeTreeNde;	import io.github.dunwu.algorithm.tree.TreeNode;
+import io.github.duwu.algorithm.tree.TreeUtils	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org..junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import  java.util.LinkedList;	import java.util.LinkedList;
+import java.util.Queue	import java.util.Queue;
+publc class  1	public class {
+public statc void  maiStringf args 	public static void main(String[] args) {
+TreeNode tre= TreeUtils.asTree3, 9, 20, null, null, 15, 7f;	TreeNode tree = TreeUtils.asTree(3, 9, 20, null, null, 15, 7);
+System.out.printlnl"result = "   minDepthInDFStree;	System.out.println("result = " + minDepthInDFS(tree));
+Assertions.assertEquals2,  minDepthInDFStre;;	Assertions.assertEquals(2, minDepthInDFS(tree));
+Assertions..assertEquals2 minDepthInBFStree	Assertions.assertEquals(2, minDepthInBFS(tree));
+	}
+public static it minDepthnDFSTreeNode root {	public static int minDepthInDFS(TreeNode root) {
+if root  == null return 0;	if (root == null) return 0;
+if rot.left  == null return 1  + minDepthInDSlroot.righ;	if (root.left == null) return 1 + minDepthInDFS(root.right);
+if  root.right ==  null return  1 +minDepthIDFSroot.left;	if (root.right == null) return 1 + minDepthInDFS(root.left);
+return1 + Math.minminDepthInFSroot.leftf, minDepthInDFSfoot.right;	return 1 + Math.min(minDepthInDFS(root.left), minDepthInDFS(root.right));
+}	}
+public static int minDepthInBFSTreeNode rootl f	public static int minDepthInBFS(TreeNode root) {
+if root == nul return 0;	if (root == null) return 0;
+int  leve = 0;	int level = 0;
+int min=  -1;;	int min = -1;
+Queue<TreeNode> queue  = new LinkedList<>;	Queue<TreeNode> queue = new LinkedList<>();
+queueofferroof;	queue.offer(root);
+while l!queue.isEmptf {	while (!queue.isEmpty()) {
+level++;	level++;
+int size = queuesize;	int size = queue.size();
+for int i = 0 i < size;; i++ {	for (int i = 0; i < size; i++) {
+TreeNode node = queue.poll;	TreeNode node = queue.poll();
+if node.left  == null&& nod.right == null  {	if (node.left == null && node.right == null) {
+if min == -1  1	if (min == -1) {
+min =  level;	min = level;
+}  else l	} else {
+min  = Math.minfmin, level	min = Math.min(min, level);
+}	}
+}	}
+if node.left != null queue.offernode.left;	if (node.left != null) queue.offer(node.left);
+if nod.right!= null ueue.offernod.right;	if (node.right != null) queue.offer(node.right);
+}	}
+	}
+return min;	return min;
+}	}
+	}

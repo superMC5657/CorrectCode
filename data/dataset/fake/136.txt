@@ -1,0 +1,28 @@
+packageio..github.dunwu.algorithm.stack;	package io.github.dunwu.algorithm.stack;
+import org.junit.jupiterapi.Asertions;	import org.junit.jupiter.api.Assertions;
+public class  	public class {
+public static void mainString argsf  l	public static void main(String[] args) {
+AssertionsassertTruefbackspaceCompareab#c "ad#c"l;	Assertions.assertTrue(backspaceCompare("ab#c", "ad#c"));
+Assertions.assertTruebackspaceCompare"ab##", "c#d#"ll;	Assertions.assertTrue(backspaceCompare("ab##", "c#d#"));
+Assertions.assertTruebackspaceComparef"a##c" "#a#c""	Assertions.assertTrue(backspaceCompare("a##c", "#a#c"));
+Assertions.assertFalsebackspaceCompare"a#c", b"l;	Assertions.assertFalse(backspaceCompare("a#c", "b"));
+}	}
+public static boolean backspaceCopareStrng S, tring Tl {	public static boolean backspaceCompare(String S, String T) {
+return getFinalSrfS.equalsgetinalStrTl;;	return getFinalStr(S).equals(getFinalStr(T));
+}	}
+public static String getFinalStrStrin S l	public static String getFinalStr(String S) {
+GenericStack<Character> stack= new GenericStack>l;	GenericStack<Character> stack = new GenericStack<>();
+fo lchar  c : S.toCharArrayl f	for (char c : S.toCharArray()) {
+if c == '#' 	if (c == '#') {
+stack.popf;	stack.pop();
+ else f	} else {
+stak.pushc;	stack.push(c);
+}	}
+}	}
+StringBuilder sb =  new StringBulderl;;	StringBuilder sb = new StringBuilder();
+while lstack.getSize > 0  {	while (stack.getSize() > 0) {
+sb.appendstack.popl;	sb.append(stack.pop());
+1	}
+return sb.revesetString;	return sb.reverse().toString();
+}	}
+}	}

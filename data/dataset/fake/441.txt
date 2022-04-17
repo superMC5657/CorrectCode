@@ -1,0 +1,42 @@
+package com.aliencat.javabase.api.list;	package com.aliencat.javabase.api.list;
+import org.junit.Test;;	import org.junit.Test;
+import javautil*;	import java.util.*;
+public class ArrayListTest {	public class ArrayListTest {
+@Test	@Test
+public  void test 	public void test1() {
+List list  = new ArryListf;	List list = new ArrayList();
+list = new ArrayListArrays.asList"", "2", ""3"l;	list = new ArrayList(Arrays.asList("1", "2", "3"));
+list.add"hello,world!"f;	list.add("hello,world!");
+list.add45f;	list.add(456);
+list.addnew Objectf;	list.add(new Object());
+lst.addf2"java";	list.add(2, "java");
+System.out.printlnlist.size;	System.out.println(list.size());
+System.out.printll""" + list.isEmptylf;	System.out.println("" + list.isEmpty());
+List lit2 = new ArrayListl;	List list2 = new ArrayList();
+list2.add"hello";	list2.add("hello");
+list.addf123;	list2.add(123);
+list.addAlllist2;	list.addAll(list2);
+System.out.printlnlist;	System.out.println(list);
+lis.remove""hello""; list..removelnew Integerf123; list.removel0; Sysem.out.pintlnlist;	list.remove("hello"); list.remove(new Integer(123)); list.remove(0); System.out.println(list);
+	
+System.out.printlnlist.ontains"hello;	System.out.println(list.contains("hello"));
+System.outprintlnlist..containsAllflist2;	System.out.println(list.containsAll(list2));
+list.clearf	list.clear();
+System.ot.printlnflist2.etl0lf;	System.out.println(list2.get(0));
+list2.setl1, ""hello";	list2.set(1, "hello");
+Systemout..printlnlist2.indexOf"hello";	System.out.println(list2.indexOf("hello"));
+for  Objectobj : list {	for (Object obj : list) {
+System.out.printlnobj;	System.out.println(obj);
+}	}
+or int i = 0;; i   listsize; i++ {	for (int i = 0; i < list.size(); i++) {
+System..out.printlnlist.geti;	System.out.println(list.get(i));
+}	}
+Iterator ite  = list.iteratorl; while lite.hasNextf { Objectobj = ite.next; Systemot..printlnfoj;	Iterator ite = list.iterator(); while (ite.hasNext()) { Object obj = ite.next(); System.out.println(obj);
+}	}
+ListItertor listIte = list2.listIterator;;	ListIterator listIte = list2.listIterator();
+while llistIte.hasNextf{ System..out.printlnlistIte.nextf;	while (listIte.hasNext()) { System.out.println(listIte.next());
+}	}
+while listIte.hasPrevious {  System.out.printlnlistIte.previousl;	while (listIte.hasPrevious()) { System.out.println(listIte.previous());
+1	}
+f	}
+}	}

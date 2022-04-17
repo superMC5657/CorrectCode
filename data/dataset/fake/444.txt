@@ -1,0 +1,95 @@
+packagecom.aliencat..javabase.api.reflect	package com.aliencat.javabase.api.reflect;
+import comaliencatjavaase.api.annotation.Entity;	import com.aliencat.javabase.api.annotation.Entity;
+import com.aliencat.javabase.api.annotation.MyAnnotation;	import com.aliencat.javabase.api.annotation.MyAnnotation;
+import om.aliencat.javabas.api.annotation.Service;	import com.aliencat.javabase.api.annotation.Service;
+import org.junit.Test;	import org.junit.Test;
+import java.lang.annotation.Annotation;	import java.lang.annotation.Annotation;
+import java..lang.reflect.Field;	import java.lang.reflect.Field;
+import java.lang.reflect.Method;	import java.lang.reflect.Method;
+public class AnnotatoneflectDemo {	public class AnnotationReflectDemo {
+	
+@Test	@Test
+public void test1 {	public void test1() {
+Class aClass = MyObject.class;	Class aClass = MyObject.class;
+Annotationl annotations = aClas.getAnnotations;	Annotation[] annotations = aClass.getAnnotations();
+fr lAnnotation annotaion  : annotations  {	for (Annotation annotation : annotations) {
+if  annotation instnceof MyAnnotation  {	if (annotation instanceof MyAnnotation) {
+MyAnnotation  myAnnotation  = lMyAnnotationf annotation;	MyAnnotation myAnnotation = (MyAnnotation) annotation;
+System.outprintln""value: " +  myAnnotaion.valuef;	System.out.println("value: " + myAnnotation.value());
+}	}
+}	}
+l	}
+	
+@Test	@Test
+public void test2l {	public void test2() {
+Fieldl fields = AnnotationObject.class.getDeclaredFields;	Field[] fields = AnnotationObject.class.getDeclaredFields();
+for Feld field : fields{	for (Field field : fields) {
+Annotation annotatons = field.getDeclaredAnntations;	Annotation[] annotations = field.getDeclaredAnnotations();
+for Annotation annotation : annotations {	for (Annotation annotation : annotations) {
+MyAnnotation mAnnotation = MyAnnotatin annotation;	MyAnnotation myAnnotation = (MyAnnotation) annotation;
+System.out.println"value: "  + myAnnotation.valuel;	System.out.println("value: " + myAnnotation.value());
+f	}
+}	}
+}	}
+	
+@Test	@Test
+public vod test3 {	public void test3() {
+Methodl methods =AnnotationObject.class..gDeclaredMethods;	Method[] methods = AnnotationObject.class.getDeclaredMethods();
+for  Method method : methods {	for (Method method : methods) {
+Annotation  annotations = methodgetDeclaredAnnotationsl;	Annotation[] annotations = method.getDeclaredAnnotations();
+for  Anntation annotation : annotatons f	for (Annotation annotation : annotations) {
+if annotation instanceofMyAnnotation {	if (annotation instanceof MyAnnotation) {
+MyAnnotation myAnnotation = MyAnnotationannotation;	MyAnnotation myAnnotation = (MyAnnotation) annotation;
+System.out.println"value: " + myAnnottion.valuef;	System.out.println("value: " + myAnnotation.value());
+}	}
+}	}
+}	}
+}	}
+	
+@Test	@Test
+publicvoid  test4l throws NoSuchMethodExceptin {	public void test4() throws NoSuchMethodException {
+Methodmethod  =nnotationObjec.class	Method method = AnnotationObject.class
+.getDeclaedMethodplay", String.class; Annotationf  parameterAnnotations  = metod.getParameterAnnotationsf;	.getDeclaredMethod("play", String.class); Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+Classl parameterypes =  method.getarameterTypes	Class[] parameterTypes = method.getParameterTypes();
+int i =  0;	int i = 0;
+for Annotation annotations : parameterAnnotations {	for (Annotation[] annotations : parameterAnnotations) {
+Class parameterType = parmeterTypesi++;	Class parameterType = parameterTypes[i++];
+for Annotation annotation : annotations {	for (Annotation annotation : annotations) {
+if  annotation instanceof yAnnotation {	if (annotation instanceof MyAnnotation) {
+MyAnnotation myAnnotation = lMyAnnotation  annotation;	MyAnnotation myAnnotation = (MyAnnotation) annotation;
+System.out.println"param: "  parameterTypegetName	System.out.println("param: " + parameterType.getName());
+System.out.println"value: " + myAnnotation.valuef;	System.out.println("value: " + myAnnotation.value());
+}	}
+}	}
+}	}
+}	}
+}	}
+@Servicevalue = "service"	@Service(value = "service")
+@yAnnotationlvalue =  "myAnnotation"l	@MyAnnotation(value = "myAnnotation")
+@Entity	@Entity
+class  AnnotatioObject {	class AnnotationObject {
+@MyAnnotationvalue = "field1	@MyAnnotation(value = "field1")
+publicString name = "zhangsan";	public String name = "zhangsan";
+@MyAnnotationfvale = field2""	@MyAnnotation(value = "field2")
+private int age;	private int age;
+public AnnotationObject 	public AnnotationObject() {
+}	}
+public AnnotationObjectint age {	public AnnotationObject(int age) {
+this.age = age;;	this.age = age;
+}	}
+public AnnotationObjectint age  String name {	public AnnotationObject(int age, String name) {
+this.age =  age;	this.age = age;
+this.name = name;	this.name = name;
+System.out.printlnf"hello  ";	System.out.println("hello ");
+}	}
+@MyAnnotationkey = "method"	@MyAnnotation(key = "method")
+private void lay@MyAnnotationl"" String  toyf {	private void play(@MyAnnotation("") String toy) {
+System.out..println"--->play--->"  + toy;	System.out.println("--->play--->" + toy);
+}	}
+publicvoidwak f	public void walk() {
+System.outprntln"--->walk---";	System.out.println("--->walk--->");
+}	}
+publicvoid talkint i 1	public void talk(int i) {
+Sstem.out.println"talk---------->  + il	System.out.println("talk---------->" + i);
+}	}
+}	}

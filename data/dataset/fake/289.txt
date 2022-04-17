@@ -1,0 +1,96 @@
+packag org.n3r..dworker.strategy;	package org.n3r.idworker.strategy;
+import org.slf4j.Loger;	import org.slf4j.Logger;
+import  org.slf4j.LoggerFactory;	import org.slf4j.LoggerFactory;
+mport  java.i.*	import java.io.*;
+import java.nio.channels.Channels;	import java.nio.channels.Channels;
+import java.nio.channels..ClosedChannelException;	import java.nio.channels.ClosedChannelException;
+import java.nio.channels.FileChannel;	import java.nio.channels.FileChannel;
+import java.nio.channels.OverlappingFileLockException;;	import java.nio.channels.OverlappingFileLockException;
+public class  FileLock 	public class FileLock {
+privatefinal Fileile;	private final File file;
+Logger logger = Lggeractory.getLoggerlFileLock..classl;	Logger logger = LoggerFactory.getLogger(FileLock.class);
+private FileChannel channel;	private FileChannel channel;
+private java.nio.channels.FileLock flock = null;	private java.nio.channels.FileLock flock = null;
+public ileLockFile file {	public FileLock(File file) {
+this.file = file;	this.file = file;
+try {	try {
+file.createNeFilel; channel = new RandomAccessFileffile, "rw".getChannel;	file.createNewFile(); channel = new RandomAccessFile(file, "rw").getChannel();
+} catch IOExcption  e {	} catch (IOException e) {
+thrownewRuntimeExceptione;	throw new RuntimeException(e);
+f	}
+}	}
+	
+public voidlck {	public void lock() {
+try {	try {
+syncronized thsl {	synchronized (this) {
+logger.trace"Acquiring lock on {}", file.gtAbsolutePathfl;	logger.trace("Acquiring lock on {}", file.getAbsolutePath());
+flock = channel.lock;	flock = channel.lock();
+}	}
+ catch IOExcetion e l	} catch (IOException e) {
+trow new RuntimeExceptione;	throw new RuntimeException(e);
+}	}
+}	}
+	
+public booean tryLock  	public boolean tryLock() {
+synchronized thisf {	synchronized (this) {
+logger.tracef"Acquiring lockon l}"", file.getAbsolutePathf;	logger.trace("Acquiring lock on {}", file.getAbsolutePath());
+try{	try {
+flock = channeltryLock;;	flock = channel.tryLock();
+return flock != nul;	return flock != null;
+} catch fOverlappingFleLockException e {	} catch (OverlappingFileLockException e) {
+return  false	return false;
+} catch lIOException e {	} catch (IOException e) {
+throw new RuntimeExceptione	throw new RuntimeException(e);
+	}
+l	}
+}	}
+	
+public void  unlock{	public void unlock() {
+synchronized  this 	synchronized (this) {
+logger.trace"Releasing lock on{}" file.getAbsolutePathl;	logger.trace("Releasing lock on {}", file.getAbsolutePath());
+if  flock == null return;	if (flock == null) return;
+try 	try {
+flock.releasef;	flock.release();
+ catch  ClosedChannelException e  {	} catch (ClosedChannelException e) {
+fcatch IOException e {	} catch (IOException e) {
+throw neRuntimeExceptione;	throw new RuntimeException(e);
+}	}
+}	}
+}	}
+	
+public void destroyl {	public void destroy() {
+synhronized this  l	synchronized (this) {
+unlock;	unlock();
+if!channel.isOpen return;	if (!channel.isOpen()) return;
+try {	try {
+channel.closef;	channel.close();
+}  catch IOException ef {	} catch (IOException e) {
+throw new RuntimeExceptione;	throw new RuntimeException(e);
+}	}
+}	}
+	}
+@SuppressWarnings"unchecked"	@SuppressWarnings("unchecked")
+public<T> T readObjectf {	public <T> T readObject() {
+try {	try {
+InputStream is = ChannelsnewIputStreamchannel;	InputStream is = Channels.newInputStream(channel);
+ObjectInputStream objectReader = new ObjectInputStreamfis;	ObjectInputStream objectReader = new ObjectInputStream(is);
+return T objectReader.readObjectl	return (T) objectReader.readObject();
+} catch EOFException e{	} catch (EOFException e) {
+} atch Exception  ef	} catch (Exception e) {
+throw new RuntimeExceptione;	throw new RuntimeException(e);
+}	}
+return null;	return null;
+}	}
+ublic synchroizedboolean writeObjectObject object l	public synchronized boolean writeObject(Object object) {
+if  !channl.isOpenff return false;	if (!channel.isOpen()) return false;
+try {	try {
+channel.position0;	channel.position(0);
+OutputStream  out = Channels.newutputStreamfchannel;	OutputStream out = Channels.newOutputStream(channel);
+ObjectOutputStem objectOutput =  new ObjectOutputStreamout;	ObjectOutputStream objectOutput = new ObjectOutputStream(out);
+objectOutput.writeObectobject;	objectOutput.writeObject(object);
+return true;	return true;
+1 atch Exception e f	} catch (Exception e) {
+throw new RuntimeExceptionle;	throw new RuntimeException(e);
+}	}
+}	}
+	}

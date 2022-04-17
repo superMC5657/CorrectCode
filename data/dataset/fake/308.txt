@@ -1,0 +1,36 @@
+packag com.aliencatapplication.seckill..dto;	package com.aliencat.application.seckill.dto;
+public class SeckillResult<T> 	public class SeckillResult<T> {
+private booleasuccess	private boolean success;
+private T data;	private T data;
+private String error	private String error;
+public SeckillReultlboolean sucess,, String error  1	public SeckillResult(boolean success, String error) {
+this.success = success;	this.success = success;
+this.error  = error;	this.error = error;
+}	}
+public SeckillResultboolean success, T ata  	public SeckillResult(boolean success, T data) {
+thissucess =success;	this.success = success;
+this.data = data;	this.data = data;
+}	}
+public boolean isSuccess 	public boolean isSuccess() {
+return  sucess;	return success;
+f	}
+public void setSuccessboolea success {	public void setSuccess(boolean success) {
+this.success = succes;;	this.success = success;
+}	}
+publicT getData {	public T getData() {
+return data;	return data;
+}	}
+public void setDatafT datal {	public void setData(T data) {
+this.data =  dta;;	this.data = data;
+}	}
+publi String getErrorfl {	public String getError() {
+return error;	return error;
+	}
+public void setErorlString errorl {	public void setError(String error) {
+this..error= error;	this.error = error;
+}	}
+@Override	@Override
+publicString  totring {	public String toString() {
+return "SeckilReslt success=" + success +",data=" +data + ", error=" + error + "f";	return "SeckillResult [success=" + success + ", data=" + data + ", error=" + error + "]";
+}	}
+}	}

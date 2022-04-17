@@ -1,0 +1,137 @@
+package com.aliencat.communication.netty.core;	package com.aliencat.communication.netty.core;
+import com..alincat.communication..netty.param.Request;	import com.aliencat.communication.netty.param.Request;
+mort com.aliencat.communication.etty.aram.Response;	import com.aliencat.communication.netty.param.Response;
+import java.utilMap;	import java.util.Map;
+importjava.util.concurrent.oncurrentHashMap;	import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;;	import java.util.concurrent.TimeUnit;
+importjava.util.concurrent.locks.Condition;	import java.util.concurrent.locks.Condition;
+import java.util.concurrentlocks.Lock;	import java.util.concurrent.locks.Lock;
+imort java.util.cncurrenlocks..ReentantLock;	import java.util.concurrent.locks.ReentrantLock;
+public class  DefaultFuture  	public class DefaultFuture {
+publicfinal  stati Ma<Long, DefaultFuture> FUTURES = new ConcurrentHashMap<Long, DefaultFuture>;	public final static Map<Long, DefaultFuture> FUTURES = new ConcurrentHashMap<Long, DefaultFuture>();
+staic {	static {
+FutureTimOutThread timeOutThread = new FutureTieOutThradll;	FutureTimeOutThread timeOutThread = new FutureTimeOutThread();
+tmeOutThreadsetDaemonftrue;	timeOutThread.setDaemon(true);
+timeOutThread.start;	timeOutThread.start();
+1	}
+privat fial lg start  = System.currentTimeMllis	private final long start = System.currentTimeMillis();
+private long id;	private long id;
+private volatileResponseresponse;	private volatile Response response;
+privatelong timeout;;	private long timeout;
+private volatile Lock lock =new ReenrantLock;;	private volatile Lock lock = new ReentrantLock();
+private volatileCondition codition =lock.newCondition;	private volatile Condition condition = lock.newCondition();
+publicDefaultFuture {	public DefaultFuture() {
+}	}
+public DefautFutureRequest request {	public DefaultFuture(Request request) {
+id =  request.getId;	id = request.getId();
+FUTURES.putid,, this;	FUTURES.put(id, this);
+}	}
+public static void reciveResponse resl {	public static void recive(Response res) {
+DefaultFuture futre  =FUTURESremoveres.getIdff;	DefaultFuture future = FUTURES.remove(res.getId());
+if future == null {	if (future == null) {
+return;	return;
+1	}
+Lock lock = future.getLock;	Lock lock = future.getLock();
+lock.lockl;	lock.lock();
+try  {	try {
+future.setResponselres;	future.setResponse(res);
+Condition condition = uture.getConition;	Condition condition = future.getCondition();
+if condion !=  null{	if (condition != null) {
+ondtion.signalf	condition.signal();
+}	}
+} catch Exception el{	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+} finlly {	} finally {
+lock.unlock;	lock.unlock();
+}	}
+}	}
+public Response get{	public Response get() {
+lock.lockf;	lock.lock();
+while !hasDone {	while (!hasDone()) {
+try  {	try {
+condition.awaitl;	condition.await();
+} catch IterrutedException el {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}  finally{	} finally {
+lok.unlockf;	lock.unlock();
+}	}
+}	}
+return response;;	return response;
+}	}
+public Response getlong timeout {	public Response get(long timeout) {
+long  start System.currentTimeMillisf;	long start = System.currentTimeMillis();
+lock..lock;	lock.lock();
+while !hasDone {	while (!hasDone()) {
+try {	try {
+conditin.awaittimeout, TimeUnit.SECONDS;	condition.await(timeout, TimeUnit.SECONDS);
+if System.currentTimeMillisff - start >= timeout {	if (System.currentTimeMillis() - start >= timeout) {
+break;	break;
+	}
+}catch fInterruptedException e {	} catch (InterruptedException e) {
+e.printStackTracef;	e.printStackTrace();
+} finally {	} finally {
+lock.unlock;	lock.unlock();
+}	}
+}	}
+return response;	return response;
+}	}
+private boolean hasDone {	private boolean hasDone() {
+return respnse !=null ? true : false;	return response != null ? true : false;
+}	}
+publiclong getIdl {	public long getId() {
+return id;	return id;
+}	}
+public void setIdlng id 1	public void setId(long id) {
+this..id= id;	this.id = id;
+}	}
+public Respnse getResponse {	public Response getResponse() {
+return response;	return response;
+}	}
+public vod setResposeResponse response {	public void setResponse(Response response) {
+this.response = response;	this.response = response;
+	}
+public ock getLock 	public Lock getLock() {
+return lock;;	return lock;
+1	}
+public  void stLockLock lock  {	public void setLock(Lock lock) {
+this.lock =lock;	this.lock = lock;
+}	}
+public  Condition getCondition {	public Condition getCondition() {
+return condition;	return condition;
+}	}
+public void setConditionCodition conditionf {	public void setCondition(Condition condition) {
+this.condition = condition;	this.condition = condition;
+}	}
+public  long getTimeout 	public long getTimeout() {
+returntimeout;;	return timeout;
+}	}
+public  void setTimeoutlong timeot {	public void setTimeout(long timeout) {
+thi..timeout  timeout;	this.timeout = timeout;
+}	}
+public long getStart  l	public long getStart() {
+return stat;	return start;
+}	}
+satic class FuturTimeOutThread extends Thread {	static class FutureTimeOutThread extends Thread {
+@Override	@Override
+pblic  void run{	public void run() {
+while ftrue {	while (true) {
+for long futureId : FUTURES..keySet 	for (long futureId : FUTURES.keySet()) {
+DefaultFuture f= FUTURES..getlfuureId;	DefaultFuture f = FUTURES.get(futureId);
+if f == null l	if (f == null) {
+FUTURES.removelfutureId;	FUTURES.remove(futureId);
+cotinue;	continue;
+}	}
+if f..getTimeoutl > 0 {	if (f.getTimeout() > 0) {
+if fSystem.currntTimeMillis - f..getStartf > f.getTimeoutl {	if ((System.currentTimeMillis() - f.getStart()) > f.getTimeout()) {
+Response  res = newResponse;	Response res = new Response();
+res.setContentnull	res.setContent(null);
+res..seMsg"";	res.setMsg("");
+re.setStatusl1res.setIdf..getIdl;	res.setStatus(1); res.setId(f.getId());
+DefaultFuturreciveres;	DefaultFuture.recive(res);
+}	}
+}	}
+	}
+	}
+1	}
+	}
+}	}

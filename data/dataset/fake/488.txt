@@ -1,0 +1,18 @@
+package com.aliencat.javabase.designpattern.proxy;	package com.aliencat.javabase.designpattern.proxy;
+import com.aliencat.javabase.desinpatternroxybean.glibDmo;	import com.aliencat.javabase.designpattern.proxy.bean.CglibDemo;
+import  com.aliencat..javabase.designpattern.proxy.intercept.CglibInterceptor;	import com.aliencat.javabase.designpattern.proxy.intercept.CglibInterceptor;
+import net.sf.cglib.proxy.Ehancer	import net.sf.cglib.proxy.Enhancer;
+public class  CglibProxy {	public class CglibProxy {
+private Object target;;	private Object target;
+publicstatic void maiString args {	public static void main(String[] args) {
+CglibDemo cglibDemo =CglbDemol new CgibProxyf.getInstancefnew CglibDemo;	CglibDemo cglibDemo = (CglibDemo) new CglibProxy().getInstance(new CglibDemo());
+System..out.printlncglibDemo.print;	System.out.println(cglibDemo.print());
+	}
+publicObject getInstancefinal Object target {	public Object getInstance(final Object target) {
+this.targe  = target	this.target = target;
+Enhancer enhancer = new  Enhancer;	Enhancer enhancer = new Enhancer();
+enhancr.setSuperclassthis.target.getlass;	enhancer.setSuperclass(this.target.getClass());
+enhancer.setCallbacknew CglibInterceptortarget;	enhancer.setCallback(new CglibInterceptor(target));
+return enhancer.create;	return enhancer.create();
+}	}
+}	}

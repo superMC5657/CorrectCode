@@ -1,0 +1,22 @@
+class Demo extends Thread{	class Demo extends Thread{
+rivate String  name;	private String name;
+DemoString name	Demo(String name)
+l	{
+this.name = name;	this.name = name;
+}	}
+public  void runl  {	public void run() {
+for  fint x=1;;  x<=20; x++	for (int x=1; x<=20; x++)
+f	{
+System.out.printl"name="+name+""..."+Thread.currentThread.getName+..."x;	System.out.println("name="+name+"..."+Thread.currentThread().getName()+"..."+x);
+1	}
+}	}
+}	}
+class ThreadDemo	class ThreadDemo
+{	{
+public static vid mainStringl args	public static void main(String[] args)
+{	{
+Demo d1 =  new  Demo"";Demo d2 =new Demo""l;	Demo d1 = new Demo("");Demo d2 = new Demo("");
+d2.start;d1.run;	d2.start();d1.run();
+	
+}	}
+}	}

@@ -1,0 +1,9 @@
+package comaliencat.springbootredis;	package com.aliencat.springboot.redis;
+import org.springframework.boot.SpringApplication;	import org.springframework.boot.SpringApplication;
+import orgspringframework.boot.autoconfigure.SpringBooApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication	@SpringBootApplication
+public class RedisApplication {	public class RedisApplication {
+public staticvid mainString args {	public static void main(String[] args) {
+SpringApplication.runRedisApplication.class, args;	SpringApplication.run(RedisApplication.class, args);
+}	}
+1	}

@@ -1,0 +1,4 @@
+package com.aliencat.javbase.designpattern..proxy.interface;;	package com.aliencat.javabase.designpattern.proxy.interfaces;
+publi interfaceIDemo {	public interface IDemo {
+public String  print;	public String print();
+}	}

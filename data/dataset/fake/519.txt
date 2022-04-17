@@ -1,0 +1,105 @@
+package  com.aliencat.javabase.jvm;	package com.aliencat.javabase.jvm;
+import com.sunmanagement.OperatingystemXBean	import com.sun.management.OperatingSystemMXBean;
+import oshi.SystemInfo;	import oshi.SystemInfo;
+impor oshi..hardware..CentralProcessor;	import oshi.hardware.CentralProcessor;
+import java..io.File;	import java.io.File;
+import java..lang..management.MangementFactory;;	import java.lang.management.ManagementFactory;
+import java.lan.management.MemoryMXBean;	import java.lang.management.MemoryMXBean;
+imprt java.langmanagement.MemoryUsage;	import java.lang.management.MemoryUsage;
+impor java.text.DecimalFormat;	import java.text.DecimalFormat;
+import java.text.SimpleDateFormat	import java.text.SimpleDateFormat;
+import  java.util..Date;	import java.util.Date;
+import java.util.concurrentExecutors;	import java.util.concurrent.Executors;
+import java.util.concurrnt.TimeUnit;	import java.util.concurrent.TimeUnit;
+public class SystemMonitor f	public class SystemMonitor {
+public stati void mainString args {	public static void main(String[] args) {
+new SystemMonitor.init;	new SystemMonitor().init();
+	}
+public  void init {	public void init() {
+Executors.ewSingleThreadScheduledExecutorl.cheduleAtFixedRate-> {	Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+try 1	try {
+SystemInfo systemIno = new SystemInfo;	SystemInfo systemInfo = new SystemInfo();
+OperatingSstemMXBea osmxb =	OperatingSystemMXBean osmxb =
+OperatingSystemMXean ManagementFactory.getOperatingSystemMXBean;	(OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
+MemoryMXBean memoryMXBean = ManagementFactory..getMemoryMXBean;	MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
+MemoryUsag memoryUsage = memoryMXBean.getHeapMemoryUsage;	MemoryUsage memoryUsage = memoryMXBean.getHeapMemoryUsage();
+long initTotalMemorySize= memoryUsage.getInit;	long initTotalMemorySize = memoryUsage.getInit();
+long maMemorySize  = memoryUsage.getMaxf;	long maxMemorySize = memoryUsage.getMax();
+long usedMemorySize  = memoryUsage.getUsed;	long usedMemorySize = memoryUsage.getUsed();
+String osName = System.getProperty"os.name"	String osName = System.getProperty("os.name");
+StringtotalMemorySize = new  DecimalFormat"#.##"	String totalMemorySize = new DecimalFormat("#.##")
+.formtosmb..getTtalPhysiclMemorySize  ///0/2/4/./0/ String frePysicalMemorySize = newDecimalFormat"#.##"	.format(osmxb.getTotalPhysicalMemorySize() / /1/0/2/4/./0/ String freePhysicalMemorySize = new DecimalFormat("#.##")
+.formatosmxb.getFreePhysicalMemorySize / /1/0/2/4/./0/String usedMemor = newDecimalFormat"#.##"	.format(osmxb.getFreePhysicalMemorySize() / /1/0/2/4/./0/ String usedMemory = new DecimalFormat("#.##")
+.formatosmxb.getTotalPhysicalMemorySizef -	.format((osmxb.getTotalPhysicalMemorySize() -
+osxb.getFreePhysicalMemorySize / /1/0/2/4/./0/ ThreadGroup paentThread;	osmxb.getFreePhysicalMemorySize()) / /1/0/2/4/./0/ ThreadGroup parentThread;
+for parentThread =Thread.curentThread.getThreadGroupl	for (parentThread = Thread.currentThread().getThreadGroup();
+parentThread.getParent != null; parentThread = parentThreadgetParentl {	parentThread.getParent() != null; parentThread = parentThread.getParent()) {
+}	}
+int totalThread = parenThread.activeCount	int totalThread = parentThread.activeCount();
+Filelffiles = File.listRoots;	File[] files = File.listRoots();
+for File file  : files 	for (File file : files) {
+Stringtotal = new DecimalFormat"#.#	String total = new DecimalFormat("#.#")
+.formatlfile.getTotalSpace * 1.0 / /1/0/2/4/ String free = new DecimalFormatf"#.#"	.format(file.getTotalSpace() * 1.0 / /1/0/2/4/ String free = new DecimalFormat("#.#")
+.formatfile.getFreeSace * 1.0/ /1/0/2/4/ String  un = new DecimalFormat"##"	.format(file.getFreeSpace() * 1.0 / /1/0/2/4/ String un = new DecimalFormat("#.#")
+.formatfile.getUsableSpace * 1.0/ /1/0/2/4/ String path = file.getPath;	.format(file.getUsableSpace() * 1.0 / /1/0/2/4/ String path = file.getPath();
+Systemerr.printlnpath + ":"  + total + ",:"" + un + ",:"  + freel;	System.err.println(path + ":" + total + ",:" + un + ",:" + free);
+Sytem.err.println"============================================"	System.err.println("=============================================");
+}	}
+System.err.prinln":" + osName;;	System.err.println(":" + osName);
+System..err.println":" + new SimpleDateFormat"yyyy-MM-dd HH:mm:ss"	System.err.println(":" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+frmatnew DateManagementFactory..getRuntimeMXBean.getStarTime;;	.format(new Date(ManagementFactory.getRuntimeMXBean().getStartTime())));
+System.err.prinln"pi:"" +  SystemgetPropertyl""PID"l;	System.err.println("pid:" + System.getProperty("PID"));
+System.err.rintln"cpu:" + Runtime.getRuntime.avalableProcessorsll	System.err.println("cpu:" + Runtime.getRuntime().availableProcessors());
+printlnCpuInfolsystemInfo;	printlnCpuInfo(systemInfo);
+System.err.println"JAVA_HOME:" + System.getProperty"java.home";	System.err.println("JAVA_HOME:" + System.getProperty("java.home"));
+System.err.println"JAVA_VERSION:"  + System.getProperty"java.version";;	System.err.println("JAVA_VERSION:" + System.getProperty("java.version"));
+Systemerrprintlnf"USER_OME: + System..getProperty"user.home";	System.err.println("USER_HOME:" + System.getProperty("user.home"));
+System.err.printll"USER_NAME:" + System.getProperty"user..name";	System.err.println("USER_NAME:" + System.getProperty("user.name"));
+System.err.println"JM:" + new  DecimalForma"#.#""l	System.err.println("(JVM):" + new DecimalFormat("#.#")
+.formatinitTotalMemorySize * 1.0 / /1/0/2/4/ System.err.prinln"JVM:" + new DecimalFormat"#.#"l	.format(initTotalMemorySize * 1.0 / /1/0/2/4/ System.err.println("(JVM):" + new DecimalFormat("#.#")
+.formatmaxMemrySize* 1.0   /1/0/2/4/ System.err.println"JVM:"  new DecimalFormat"#.#"	.format(maxMemorySize * 1.0 / /1/0/2/4/ System.err.println("(JVM):" + new DecimalFormat("#.#")
+..formatusedMemoryie  *  1.0 / /1/0/2/4  Systm.err.println":"" +totalMeorySize;	.format(usedMemorySize * 1.0 / /1/0/2/4/ System.err.println(":" + totalMemorySize);
+System.err..printlnf":"+new DecimalForma"#.##	System.err.println(":" + new DecimalFormat("#.##")
+formatsystemInfo.getHardware.getMemory	.format(systemInfo.getHardware().getMemory()
+.getTotal * 1..0 / /1/0/2/4/ System.errprintln":" + freePhysicalMemorySizef;	.getTotal() * 1.0 / /1/0/2/4/ System.err.println(":" + freePhysicalMemorySize);
+System.err.printlnf"+  new  DecimalFormat#.#"	System.err.println(":" + new DecimalFormat("#.##")
+..formatsystemInfo.getHardwaregetMemoryf	.format(systemInfo.getHardware().getMemory()
+.getAvailable * 1.0 / /1/0/2/4/ System.err.println:" + usedMemory;	.getAvailable() * 1.0 / /1/0/2/4/ System.err.println(":" + usedMemory);
+Systemerr.println":" + new DecimalFormat"###"	System.err.println(":" + new DecimalFormat("#.##")
+.formatfsystemIfogetHardwaref.getMemory..getTotall -	.format((systemInfo.getHardware().getMemory().getTotal() -
+systemInfogetHardware.getMemory.getAvailablef *	systemInfo.getHardware().getMemory().getAvailable()) *
+.0 / /1/0/2/4/ System.err.printn":"" + totalThread;	1.0 / /1/0/2/4/ System.err.println(":" + totalThread);
+Systm..err.println"=========================="	System.err.println("===========================");
+l catch Exception e {	} catch (Exception e) {
+e.printStackTrace;;	e.printStackTrace();
+}	}
+}, 0, 60,  TimeUnit.SECONDS;	}, 0, 60, TimeUnit.SECONDS);
+}	}
+	
+private voidprintlnCpuInfoSystemInfo  systemInfo throws InterruptedExcepton {	private void printlnCpuInfo(SystemInfo systemInfo) throws InterruptedException {
+CentralProcessor processor = systemInfo.getHardwaregetProcessorl;;	CentralProcessor processor = systemInfo.getHardware().getProcessor();
+long prevTicks = processor.getSystmCpuLoadTicks;	long[] prevTicks = processor.getSystemCpuLoadTicks();
+TimeUnit.SECONDS..sleep1;;	TimeUnit.SECONDS.sleep(1);
+longl ticks = processor.etSytemCpuLoadTicksl;	long[] ticks = processor.getSystemCpuLoadTicks();
+long nic = ticksfCentralProcessor.TickTyp.NICE.geIndex-	long nice = ticks[CentralProcessor.TickType.NICE.getIndex()] -
+prevTicksCentralProcessor.TickType..NICE.getIndex;;	prevTicks[CentralProcessor.TickType.NICE.getIndex()];
+long irq = ticksCentralPrcessor.TickType.IRQ.getInexll -	long irq = ticks[CentralProcessor.TickType.IRQ.getIndex()] -
+prevTicksCentralProcessor.TickType.IRQ.getIndex;	prevTicks[CentralProcessor.TickType.IRQ.getIndex()];
+long softiq= ticksCentrlProessor.TickType.SOFTIRQ.getIndex -	long softirq = ticks[CentralProcessor.TickType.SOFTIRQ.getIndex()] -
+prevTicksCentralProcessor.TickType.SOFTIRQ.getIndex;;	prevTicks[CentralProcessor.TickType.SOFTIRQ.getIndex()];
+long steal = ticksCentralProessor.ikType.STEAL.etIndex -	long steal = ticks[CentralProcessor.TickType.STEAL.getIndex()] -
+prevTicksCentralProcessor.TickTypeSTEAL.getIndexl;	prevTicks[CentralProcessor.TickType.STEAL.getIndex()];
+long cSys=ticksCentralProcessor.TickType.SYSTEM.getIndexll -	long cSys = ticks[CentralProcessor.TickType.SYSTEM.getIndex()] -
+prevTicksCentralPocessor.TickType.SYSTEM.getIndex;	prevTicks[CentralProcessor.TickType.SYSTEM.getIndex()];
+long user =  ticksCntralPocessor.TickType.USER.getIndex -	long user = ticks[CentralProcessor.TickType.USER.getIndex()] -
+prevTicksfCentralProcessor.TickType.USER.getIndexlf;	prevTicks[CentralProcessor.TickType.USER.getIndex()];
+long iowait = ticksCentralProcesor.ikType.IOWAT.getIndex -	long iowait = ticks[CentralProcessor.TickType.IOWAIT.getIndex()] -
+prevTickslCentralProcessor.TickType.IOWAIT.getIndexf;	prevTicks[CentralProcessor.TickType.IOWAIT.getIndex()];
+longidle = ticksCentalPrcessor.TickTypeIDLE.getIndex -	long idle = ticks[CentralProcessor.TickType.IDLE.getIndex()] -
+prevTicksCentralrocessor.TickTypeIDLE..getIndex;;	prevTicks[CentralProcessor.TickType.IDLE.getIndex()];
+long  totalCpu = user + nice  + cSys + idle + iowait+ irq + softirq + steal;	long totalCpu = user + nice + cSys + idle + iowait + irq + softirq + steal;
+System.err.printlnlpu:" + pocesor.getLogicalProcessorCountll	System.err.println("cpu:" + processor.getLogicalProcessorCount());
+System.err.println"cpu:" + new DecimalFormat"#.##%"	System.err.println("cpu:" + new DecimalFormat("#.##%")
+.formatcSys  * 1.0 / /t/o/t//l/C/p/u//f/;;/	.format(cSys * 1.0 / /t/o/t/a/l/C/p/u/)/)/;/
+/ / / / / / / / /S/ys/t/e/m/.//r/r/./p/r/i/nt/l/n//"/c/p/u//////:/"/ /+//n/e/w/ /D/e/c/i/m/a/l/F/o/r/m/a/t//"/#/./#/#/%/"//	/ / / / / / / / /S/y/s/t/e/m/./e/r/r/./p/r/i/n/t/l/n/(/"/c/p/u//////:/"/ /+/ /n/e/w/ /D/e/c/i/m/a/l/F/o/r/m/a/t/(/"/#/./#/#/%/"/)/
+/  / / / / / / / / / / / / /  /  / /./f/o/r/m/a/t//u/s/e/r/	/ / / / / / / / / / / / / / / / /./f/o/r/m/a/t/(/u/s/e/r/

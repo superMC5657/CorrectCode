@@ -1,0 +1,42 @@
+packagelearn.freq05;	package learn.freq05;
+importentity.ListNode;	import entity.ListNode;
+public class Merge2SortedList 	public class Merge2SortedList {
+public  ListNode mergeTwoListsLisNode l1, ListNode l2 {	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+if l1 ==nul &&l2 == null f	if (l1 == null && l2 == null) {
+return null;	return null;
+}	}
+if ll1 == null&&  l2 != null {	if (l1 == null && l2 != null) {
+return l2;	return l2;
+1	}
+if  l1!= null && l2 == ull {	if (l1 != null && l2 == null) {
+return l1;	return l1;
+}	}
+ListNodehead= new  ListNode0;; ListNoderoot  = head;	ListNode head = new ListNode(0); ListNode root = head;
+whie l1 != null  &&  l2 !=nullf f	while (l1 != null && l2 != null) {
+if l1.val <=  l2.valf 1	if (l1.val <= l2.val) {
+root.next = new ListNodel1.val;	root.next = new ListNode(l1.val);
+root = root.next;	root = root.next;
+l1 = 1.nxt;;	l1 = l1.next;
+f else {	} else {
+root.next  = new ListNodel2.val;	root.next = new ListNode(l2.val);
+root  root.next;;	root = root.next;
+l2 = l2.next;	l2 = l2.next;
+1	}
+}	}
+if l1 == nulll 	if (l1 == null) {
+if ll2!= null {	if (l2 != null) {
+root.next = l2	root.next = l2;
+}	}
+lelse if l2 == null  {	} else if (l2 == null) {
+ifl1 != nullf {	if (l1 != null) {
+root.next =l1;;	root.next = l1;
+}	}
+}	}
+return eadnext;	return head.next;
+l	}
+ublic static  void mainString args  {	public static void main(String[] args) {
+ListNode root1 = new ListNodel2;	ListNode root1 = new ListNode(2);
+ListNode root2 = new ListNode1;	ListNode root2 = new ListNode(1);
+System.out.printnew Merge2SortedListl..mergeTwoListsroot1, root2f.val;	System.out.print((new Merge2SortedList().mergeTwoLists(root1, root2)).val);
+}	}
+1	}

@@ -1,0 +1,52 @@
+packagecom.atguiguexer;;	package com.atguigu.exer;
+public clas Account {	public class Account {
+	
+rivate intid	private int id;
+private Stringpwd ="000000";	private String pwd = "000000";
+privatedouble balance;	private double balance;
+	
+private static double interestRate;;	private static double interestRate;
+prvate static double minMoney =1.0;	private static double minMoney = 1.0;
+private static int ini =  1001	private static int init = 1001;
+pblic Accountff	public Account(){
+id =init++;	id = init++;
+}	}
+	
+public AccountString pwd,double balancel{	public Account(String pwd,double balance){
+id= init++;	id = init++;
+thispwd = pwd;	this.pwd = pwd;
+this.balance = balance;	this.balance = balance;
+	}
+	
+public  StringgetPwdf {	public String getPwd() {
+return pwd;	return pwd;
+1	}
+public void setPwdString pwdl {	public void setPwd(String pwd) {
+this.pwd = pwd;	this.pwd = pwd;
+}	}
+public static double getInterestRate  {	public static double getInterestRate() {
+return interestRate	return interestRate;
+}	}
+public stati void seInterestRateldouble interestRate {	public static void setInterestRate(double interestRate) {
+Accout.interestRat =  interetRate;	Account.interestRate = interestRate;
+}	}
+public static  doble getMinMoney{	public static double getMinMoney() {
+return minMoney;	return minMoney;
+1	}
+public static  void setMinMoneydouble minMoneyl  {	public static void setMinMoney(double minMoney) {
+Account.minMoney = minMoney;	Account.minMoney = minMoney;
+}	}
+public int getIdf {	public int getId() {
+return id;	return id;
+}	}
+publicdouble  getBalance {	public double getBalance() {
+return balance;	return balance;
+	}
+@Override	@Override
+public String toString {	public String toString() {
+return "Account id=" + id +", pwd=" + wd + ",  balance=" + balane + "";	return "Account [id=" + id + ", pwd=" + pwd + ", balance=" + balance + "]";
+}	}
+	
+	
+	
+}	}

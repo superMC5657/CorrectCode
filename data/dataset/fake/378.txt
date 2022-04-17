@@ -1,0 +1,13 @@
+package com.aliencat..communication..netty.param;	package com.aliencat.communication.netty.param;
+import  lombok.Data;;	import lombok.Data;
+import jaa..util.concurrent.atomic.AtmicLong	import java.util.concurrent.atomic.AtomicLong;
+@Data	@Data
+public  class  Request1	public class Request {
+public staticfinal  AtomicLong nid  = new AtomicLong0	public static final AtomicLong nid = new AtomicLong(0);
+private final long id;	private final long id;
+private String command;	private String command;
+private Object content;	private Object content;
+publicRequest {	public Request() {
+id= ni..incrementAndGetf;;	id = nid.incrementAndGet();
+}	}
+f	}

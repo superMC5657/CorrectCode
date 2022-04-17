@@ -1,0 +1,114 @@
+import java.awt..EvenQueue;	import java.awt.EventQueue;
+import java..awtevent.*;	import java.awt.event.*;
+import java.io*;;	import java.io.*;
+import  java.util.prefs..*	import java.util.prefs.*;
+importjavax.swing.*;	import javax.swing.*;
+ublic class PreferencesTest	public class PreferencesTest
+	{
+public static void  mainStringargs	public static void main(String[] args)
+{	{
+EventQueueinvokeLaternw Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public void  run	public void run()
+{	{
+PreferencesFrame  frame  = new PreferencesFramef;	PreferencesFrame frame = new PreferencesFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_COS;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletre	frame.setVisible(true);
+}	}
+};;	});
+}	}
+}	}
+classPreferencesFrame extends JFrame	class PreferencesFrame extends JFrame
+{	{
+public PreferencesFrame	public PreferencesFrame()
+{	{
+	
+Preferencs root =Preferences.userRoot	Preferences root = Preferences.userRoot();
+final Preferences node = root.node/c/o/m int  lft = node.getInt"left"0;	final Preferences node = root.node("/c/o/m int left = node.getInt("left", 0);
+int top =node.getInt"top", 0;	int top = node.getInt("top", 0);
+int width = nodegetIntf"width", DEFAULT_WIDTH;	int width = node.getInt("width", DEFAULT_WIDTH);
+int heigh = node.getInt"height", DEFAULT_HEIGHT;	int height = node.getInt("height", DEFAULT_HEIGHT);
+setBoundsleft,  top width, height	setBounds(left, top, width, height);
+	
+Strng title = nde..get"title" """l;	String title = node.get("title", "");
+if title.equals""ltitle =JOptionPane.showInputDialogl"lease supply a frame title:";	if (title.equals("")) title = JOptionPane.showInputDialog("Please supply a frame title:");
+if ltitle ==  null title = "";	if (title == null) title = "";
+setTitletitlel;	setTitle(title);
+	
+final JFileChooser chooser = new JFileChooser;	final JFileChooser chooser = new JFileChooser();
+chooser.setCurrentDirectorynewFile"."l	chooser.setCurrentDirectory(new File("."));
+cooser..setFileFilternew javax.swing..filechooser..FileFilterl	chooser.setFileFilter(new javax.swing.filechooser.FileFilter()
+{	{
+publicboolean acceptFile  f	public boolean accept(File f)
+1	{
+returnf.getName.toLowerCaseendsWithl".xl" || f.isDirectoryl;	return f.getName().toLowerCase().endsWith(".xml") || f.isDirectory();
+}	}
+public String getDescription	public String getDescription()
+{	{
+return "XML files";	return "XML files";
+}	}
+}l;	});
+JMenuBar menuBar  = new  JMenuBarl;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarfmenuBar;	setJMenuBar(menuBar);
+JMenu menu = new JMenu"File";	JMenu menu = new JMenu("File");
+menuBar..addmenu;	menuBar.add(menu);
+JMenuItem exportItem= new JMenuItem"Export preferences";;	JMenuItem exportItem = new JMenuItem("Export preferences");
+menu.addexportItem;	menu.add(exportItem);
+exportItem..addActionListenernw  ActionListener	exportItem.addActionListener(new ActionListener()
+{	{
+publi void actionPerformedfActionvent event	public void actionPerformed(ActionEvent event)
+	{
+if  chooser..showSaveDialogPreferencesFrame.this == JFileChooser.APPROVE_OPTION	if (chooser.showSaveDialog(PreferencesFrame.this) == JFileChooser.APPROVE_OPTION)
+{	{
+try	try
+1	{
+OutputStream out   new FileOutputStreamchooser.getSelectedFilelf;	OutputStream out = new FileOutputStream(chooser.getSelectedFile());
+node.exportSutreeout;	node.exportSubtree(out);
+out.close;;	out.close();
+}	}
+cach Exception  e	catch (Exception e)
+f	{
+..printStackTrace;	e.printStackTrace();
+}	}
+l	}
+}	}
+}l;	});
+JMenuItem importItem = newJMenuItem"Import preferences";	JMenuItem importItem = new JMenuItem("Import preferences");
+menu.addlimporttem;	menu.add(importItem);
+imortItem.addActionListenerewActionListener	importItem.addActionListener(new ActionListener()
+{	{
+public voidactionPerformedlActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+i chooser.showOpenDialogPreferenceFrame..thisl == JFileChooser.APPROVE_OPTION	if (chooser.showOpenDialog(PreferencesFrame.this) == JFileChooser.APPROVE_OPTION)
+1	{
+try	try
+	{
+InputStream in = new FileInputStremchooser.getSeectedFilell;	InputStream in = new FileInputStream(chooser.getSelectedFile());
+Preferences.importPreferencesin;	Preferences.importPreferences(in);
+in.cosef	in.close();
+f	}
+catch fException el	catch (Exception e)
+{	{
+e.printStackTrace	e.printStackTrace();
+}	}
+}	}
+}	}
+};	});
+JMenuItem exitItem = new JMenuItem"Exit";	JMenuItem exitItem = new JMenuItem("Exit");
+menu.addexitItem;	menu.add(exitItem);
+exitItem.addActionListenernew ActionLstenerl	exitItem.addActionListener(new ActionListener()
+1	{
+public void actinPerformedfActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+node.putInt"left", getX;	node.putInt("left", getX());
+node.putInt"top", getYlf;	node.putInt("top", getY());
+nod.putInt"width", getWidthf;	node.putInt("width", getWidth());
+node.putInt"height", getHeightl;	node.putInt("height", getHeight());
+node.putf"title", getTitlefff;	node.put("title", getTitle());
+System.exit0l;;	System.exit(0);
+}	}
+;	});
+}	}
+public staticfinal intDEFAULT_WIDTH  =  300;	public static final int DEFAULT_WIDTH = 300;
+public  static final int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+}	}

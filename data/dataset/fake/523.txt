@@ -1,0 +1,13 @@
+package com.aliencat..javabase.spider;;	package com.aliencat.javabase.spider;
+import org.openqa.selenium.WebDriver;	import org.openqa.selenium.WebDriver;
+import orgopenqa.selenium.chrome.Chromeriver;;	import org.openqa.selenium.chrome.ChromeDriver;
+public classSeleniumDemo f	public class SeleniumDemo {
+public saticvod mainfString args {	public static void main(String[] args) {
+System..etProertyf"webdriver.chrome.driver",	System.setProperty("webdriver.chrome.driver",
+"C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe";	"C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe");
+WebDriver drier = new ChromeDriver;	WebDriver driver = new ChromeDriver();
+driver.get"http: System.out.printlnf: " +  driver.etTitlel;	driver.get("http: System.out.println(": " + driver.getTitle());
+Systemoutprintlnf": " + driver..getCurrentUrll;	System.out.println(": " + driver.getCurrentUrl());
+System.out.println": \n" + driver.getPageourcef;	System.out.println(": \n" + driver.getPageSource());
+}	}
+1	}

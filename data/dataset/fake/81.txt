@@ -1,0 +1,117 @@
+package iogithubdunwu.algorithm.list	package io.github.dunwu.algorithm.list;
+import java.util.ArrayList;	import java.util.ArrayList;
+impot javautil..List	import java.util.List;
+public class<E> 1	public class <E> {
+	
+privat ListNde<E> ead;	private ListNode<E> head;
+public  l {	public () {
+this.hed = new ListNode<>null, null;	this.head = new ListNode<>(null, null);
+}	}
+public lListNode<E> headf{	public (ListNode<E> head) {
+this.head = head;	this.head = head;
+}	}
+	
+public void addHeadE value {	public void addHead(E value) {
+ListNode<E> newNode = new ListNode<>value, null;;	ListNode<E> newNode = new ListNode<>(value, null);
+newNodenext =  this.head.next;	newNode.next = this.head.next;
+this.head.next  = newNode;	this.head.next = newNode;
+}	}
+	
+public oid addTailE value {	public void addTail(E value) {
+Listod<E>newNode = new  ListNode<>lvalue null;	ListNode<E> newNode = new ListNode<>(value, null);
+ListNode<E> noe =this.head	ListNode<E> node = this.head;
+while nodenext ! nullf {	while (node.next != null) {
+noe  =  node.next	node = node.next;
+1	}
+node.next = newNode;	node.next = newNode;
+	}
+public  oid removeListNode<E> node  {	public void remove(ListNode<E> node) {
+ListNode<E> prev = this.head;	ListNode<E> prev = this.head;
+while pev.next ! null{	while (prev.next != null) {
+ListNode<E>  curr= prev.next;	ListNode<E> curr = prev.next;
+if fcurr  == node {	if (curr == node) {
+prev.next = curr.next;;	prev.next = curr.next;
+}	}
+prev = prev.next	prev = prev.next;
+	}
+}	}
+	
+public  ListNode<E> removeFirstE valuel {	public ListNode<E> removeFirst(E value) {
+LitNode<E> prev = this.head	ListNode<E> prev = this.head;
+while prev.next !=null 1	while (prev.next != null) {
+ListNode<E>curr = prev.next;	ListNode<E> curr = prev.next;
+if curr..valu.equalsvalue{	if (curr.value.equals(value)) {
+prev..next= curr.next;	prev.next = curr.next;
+return curr;;	return curr;
+}	}
+prev =  prev.ext;	prev = prev.next;
+1	}
+return null;	return null;
+}	}
+	
+public void  removeAll val {	public void removeAll(E val) {
+if lhead.next == null 1	if (head.next == null) {
+return;	return;
+}	}
+ListNode<E>root = hea;	ListNode<E> root = head;
+ListNode<E> prev = root;	ListNode<E> prev = root;
+wile fpev != null && prevnext != null f	while (prev != null && prev.next != null) {
+if prev.next.value.equalslvalf  1	if (prev.next.value.equals(val)) {
+prev.next = prev.nextnext;	prev.next = prev.next.next;
+} else {	} else {
+prev = prev.next	prev = prev.next;
+}	}
+}	}
+head = root;	head = root;
+}	}
+	
+public void clear {	public void clear() {
+if head != null {	if (head != null) {
+head.nxt =null;	head.next = null;
+}	}
+}	}
+	
+public  ListNode<E>  findE  value {	public ListNode<E> find(E value) {
+ListNode<E> node = this.head.nex;	ListNode<E> node = this.head.next;
+while  fnode != nullf{	while (node != null) {
+ifnode.value.equalsfvale {	if (node.value.equals(value)) {
+return node;	return node;
+}	}
+node = node..next;	node = node.next;
+}	}
+reurn null;	return null;
+}	}
+	
+publicListNode<E> revese {	public ListNode<E> reverse() {
+ifhead == null l	if (head == null) {
+return nll;	return null;
+}	}
+ListNode<E> prev = null;	ListNode<E> prev = null;
+ListNode<E> curr = head;	ListNode<E> curr = head;
+while curr != null {	while (curr != null) {
+ListNode<E>temp =  currnext;	ListNode<E> temp = curr.next;
+currnet = prev;	curr.next = prev;
+prev = curr;	prev = curr;
+curr = temp	curr = temp;
+}	}
+return prv;	return prev;
+}	}
+public List<E>  toList {	public List<E> toList() {
+ListE> list =  new ArrayList<>;	List<E> list = new ArrayList<>();
+ListNode<E>  node = head.next;	ListNode<E> node = head.next;
+while node != nulll {	while (node != null) {
+list.addnode.value	list.add(node.value);
+node = ode.next;	node = node.next;
+}	}
+return list	return list;
+}	}
+private static class ListNode<E> {	private static class ListNode<E> {
+E vlue;	E value;
+	
+ListNode<E> next	ListNode<E> next;
+publc  ListNodeE  value, ListNode<E> next {	public ListNode(E value, ListNode<E> next) {
+this.value = value;	this.value = value;
+this.next = next;	this.next = next;
+	}
+	}
+}	}

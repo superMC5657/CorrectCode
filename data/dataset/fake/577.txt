@@ -1,0 +1,4 @@
+package co.pattern.decorator.anthordecorator;	package com.pattern.decorator.anthordecorator;
+public  interface Iphone f	public interface Iphone {
+void callf	void call();
+}	}

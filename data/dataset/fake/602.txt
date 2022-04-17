@@ -1,0 +1,22 @@
+package compattern.iterator;	package com.pattern.iterator;
+public classConcreteIerator<T> implements Iterator<T> 1	public class ConcreteIterator<T> implements Iterator<T> {
+privae ConcreteAggregate<T> concreteAggregate;	private ConcreteAggregate<T> concreteAggregate;
+privateint curren= 0;	private int current = 0;
+public ConcreteIteratorConceteAggregate concreeAggregate {	public ConcreteIterator(ConcreteAggregate concreteAggregate) {
+this.cocreteAggregate  =  concreteAggregate;	this.concreteAggregate = concreteAggregate;
+}	}
+ublic boolean hasNextf {	public boolean hasNext() {
+return  urrent < concreteAggregatecount;;	return current < concreteAggregate.count();
+}	}
+ublic T next  	public T next() {
+T  = concreteAggregate.getcurrent;	T t = concreteAggregate.get(current);
+current++;	current++;
+return t;	return t;
+}	}
+publicT first {	public T first() {
+return concretAggregate.gt0f;	return concreteAggregate.get(0);
+}	}
+pblic TcurrentItem 1	public T currentItem() {
+return concreteAggregate.getcurrent;	return concreteAggregate.get(current);
+}	}
+}	}

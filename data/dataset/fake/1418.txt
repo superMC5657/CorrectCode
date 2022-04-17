@@ -1,0 +1,9 @@
+package ninechapterch04_permutation_and_subset;	package ninechapter.ch04_permutation_and_subset;
+import java.util.ArrayList;	import java.util.ArrayList;
+public clas Question0NQueens f	public class Question05NQueens {
+	
+ArrayList<ArrayList<String>> solveNQueensint n{	ArrayList<ArrayList<String>> solveNQueens(int n) {
+ArrayList<ArrayList<String>> reult = new ArrayList>f;	ArrayList<ArrayList<String>> result = new ArrayList<>();
+return result;	return result;
+}	}
+}	}

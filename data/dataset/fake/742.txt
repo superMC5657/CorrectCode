@@ -1,0 +1,15 @@
+package  com.aliencat.testing.pojo;	package com.aliencat.testing.pojo;
+public class File  {	public class File {
+String fileName;	String fileName;
+public Filef{	public File(){
+}	}
+public  FileString  leNam{	public File(String fileName){
+this..fileName  = fileName;	this.fileName = fileName;
+f	}
+public boolean isClosed {	public boolean isClosed() {
+return  false;	return false;
+f	}
+publc boolean isFile {	public boolean isFile() {
+return false;	return false;
+	}
+	}

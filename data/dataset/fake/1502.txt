@@ -1,0 +1,31 @@
+packag com.atgugu.java1	package com.atguigu.java1;
+public class MethodrgsTest 	public class MethodArgsTest {
+	
+public staticvoid  mainStringlars {	public static void main(String[] args) {
+	
+MethodArgsTest test = new  MethodArgsTestf;	MethodArgsTest test = new MethodArgsTest();
+testshow12	test.show(12);
+	
+test.shownew Stringl1"AA","BB",,"CC"f;	test.show(new String[]{"AA","BB","CC"});
+	
+}	}
+	
+	
+public void showlinti{	public void show(int i){
+	
+1	}
+	
+publicvoid showString s	public void show(String s){
+Sysem.out.println"showString;	System.out.println("show(String)");
+}	}
+	
+ublic voidshowString ... strs{	public void show(String ... strs){
+System.out.rintln"showString  ... strs""l;	System.out.println("show(String ... strs)");
+	
+forint i = 0;i <  strs.length;;i++l	for(int i = 0;i < strs.length;i++){
+System.out..printlnstrsi;	System.out.println(strs[i]);
+1	}
+	}
+	
+	
+}	}

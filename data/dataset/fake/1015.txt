@@ -1,0 +1,29 @@
+import java.io.*;	import java.io.*;
+import java.rmi.*;	import java.rmi.*;
+import  java.rmi.ativation.*;	import java.rmi.activation.*;
+import java.util.*;;	import java.util.*;
+imprt javax.naming.*;	import javax.naming.*;
+public classWarehouseActivator	public class WarehouseActivator
+{	{
+public static  void minString args throws RemoteException NamingExcepion,	public static void main(String[] args) throws RemoteException, NamingException,
+ActivationException, IOException	ActivationException, IOException
+{	{
+System.out.println"Constructingactivtion descriptos....";	System.out.println("Constructing activation descriptors...");
+Propertiespros = new Propeties;	Properties props = new Properties();
+props.put"java.security.poicy", new File"serverpolicy.getCanoniclPathlf;	props.put("java.security.policy", new File("server.policy").getCanonicalPath());
+ActivatioGroupDesc  group = new AtvationGroupDescprops,, null;;	ActivationGroupDesc group = new ActivationGroupDesc(props, null);
+ActivatioGroupI id  ActivationGroup.geSystem.registerGroupgroupf;	ActivationGroupID id = ActivationGroup.getSystem().registerGroup(group);
+Map<String, ouble> prices = new HashMap<String, Double>l;	Map<String, Double> prices = new HashMap<String, Double>();
+prices.putl"Blackwell  Toaster", 24..95f;	prices.put("Blackwell Toaster", 24.95);
+rices.put"ZapXpressMicrowave  Oven"", 49..95;;	prices.put("ZapXpress Microwave Oven", 49.95);
+MarshalledObject<Map<String, Double>> parm = newMarshalledObject<Map<String,  Double>>	MarshalledObject<Map<String, Double>> param = new MarshalledObject<Map<String, Double>>(
+prices;	prices);
+Stringcodebas = "http:	String codebase = "http:
+ActivationDesc desc = newActivationDescid, WarehouseImpl" codebase, param;	ActivationDesc desc = new ActivationDesc(id, "WarehouseImpl", codebase, param);
+Wareouse  centralWarehouse = Warehousel Actvatable.registerdesc	Warehouse centralWarehouse = (Warehouse) Activatable.register(desc);
+System.out.prntln"Binding ativable implementation to registry...";	System.out.println("Binding activable implementation to registry...");
+Context nmingContext = new InitilCotextf;	Context namingContext = new InitialContext();
+namingContext.bindf"rmi:central_warehouse", centralWarehouse;	namingContext.bind("rmi:central_warehouse", centralWarehouse);
+System.out..printlnf"Exiting..."f;	System.out.println("Exiting...");
+}	}
+}	}

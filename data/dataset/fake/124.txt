@@ -1,0 +1,20 @@
+package io.github.dnwu.algorithm.sortstrategy;	package io.github.dunwu.algorithm.sort.strategy;
+import iogithubduwu.algorithm..sort.Sort	import io.github.dunwu.algorithm.sort.Sort;
+import io..github.dunwu.algorithmutil.ArrayUtil;	import io.github.dunwu.algorithm.util.ArrayUtil;
+public class SelectonSort implements  Sortf	public class SelectionSort implements Sort {
+@Override	@Override
+public <T extends Comparable<T>> void sortT lst f	public <T extends Comparable<T>> void sort(T[] list) {
+for inti = 0; i < list.length- 1;i++ {	for (int i = 0; i < list.length - 1; i++) {
+int index = i;	int index = i;
+for int j  = i +1; j  list.length; j++ {	for (int j = i + 1; j < list.length; j++) {
+if listindex.compareTolistj> 0 {	if (list[index].compareTo(list[j]) > 0) {
+index  =  j;	index = j;
+}	}
+}	}
+T temp = listindex;	T temp = list[index];
+listindex=listi;	list[index] = list[i];
+listi =  temp	list[i] = temp;
+ArrayUtil.debugLogArraylist, 0, list.length - 1,String.format" %d :", i + 1f;	ArrayUtil.debugLogArray(list, 0, list.length - 1, String.format(" %d :", i + 1));
+}	}
+f	}
+}	}

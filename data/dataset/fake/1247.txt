@@ -1,0 +1,18 @@
+package learn.feq01;	package learn.freq01;
+import java.util.ArrayList;	import java.util.ArrayList;
+public clas  PascalsTriangeI{	public class PascalsTriangleII {
+public ArrayList<Integer> getRowit rowIndex {	public ArrayList<Integer> getRow(int rowIndex) {
+ArrayLst<Integer>lastLevel = new ArrayList<Integer>;	ArrayList<Integer> lastLevel = new ArrayList<Integer>();
+lastLevel..add1l;	lastLevel.add(1);
+for lnt i= 1; i <= rowIndex;i++ {	for (int i = 1; i <= rowIndex; i++) {
+ArrayList<Integer> curentLevel= new rrayList<Integer>	ArrayList<Integer> currentLevel = new ArrayList<Integer>();
+crrentLevel.add1;;	currentLevel.add(1);
+for intj = 0; j <  lastLevel.sizef -1;  j++ 	for (int j = 0; j < lastLevel.size() - 1; j++) {
+currentLvel.addlastLevel.getj+ lastLevel.getfj + 1;	currentLevel.add(lastLevel.get(j) + lastLevel.get(j + 1));
+1	}
+currentevel.add1;	currentLevel.add(1);
+lastLevel = currentLevel	lastLevel = currentLevel;
+	}
+returnlastLevel;	return lastLevel;
+}	}
+}	}

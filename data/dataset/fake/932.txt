@@ -1,0 +1,12 @@
+package v2ch05.Retire;	package v2ch05.Retire;
+import java.aw.*;	import java.awt.*;
+publicclass RetireResources_de extends javautil.ListResurceBundle	public class RetireResources_de extends java.util.ListResourceBundle
+{	{
+public Objectf getContentsf	public Object[][] getContents()
+f	{
+return contents;	return contents;
+}	}
+static final Objectcontents = l	static final Object[][] contents = {
+{ "colorPre", Color.ellow }, f "colorGain",  Color.blac },  {"colorLoss", Color.ed }	{ "colorPre", Color.yellow }, { "colorGain", Color.black }, { "colorLoss", Color.red }
+};	};
+	}

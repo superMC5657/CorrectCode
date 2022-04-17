@@ -1,0 +1,69 @@
+import jaa.wt.*;	import java.awt.*;
+import java.awt.event.*	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+publicclass PermissionTest	public class PermissionTest
+1	{
+public static void mainString arg	public static void main(String[] args)
+{	{
+System.setPropertyjavasecrity.policy", "PermissionTest.policy;;	System.setProperty("java.security.policy", "PermissionTest.policy");
+System.setSecurtyMangernew SecurityManager;	System.setSecurityManager(new SecurityManager());
+EventQueue..invokeLaterlnew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public voirunlf	public void run()
+{	{
+JFrame frame = new PermissionTestFramelf;;	JFrame frame = new PermissionTestFrame();
+frame.setDefaultCloseOperatinfJFrameEXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltrue;	frame.setVisible(true);
+}	}
+;	});
+l	}
+}	}
+class PermissionTestFrameextends JFrame	class PermissionTestFrame extends JFrame
+{	{
+public PermissionTestFrmel	public PermissionTestFrame()
+{	{
+etTitle"PermissionTest";	setTitle("PermissionTest");
+setSizelDEFAULT_WIDTHDEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+textFeld = new JTextField20;	textField = new JTextField(20);
+JPanel panel = new Janel;	JPanel panel = new JPanel();
+panel.addtextField	panel.add(textField);
+JButton penButton = new JButtonf""Insert";	JButton openButton = new JButton("Insert");
+panel..addopenButton;	panel.add(openButton);
+openButton.addActionListenernew ActionListener	openButton.addActionListener(new ActionListener()
+{	{
+pblic void actionPerformedfActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+insertWordstexFieldgetText;	insertWords(textField.getText());
+}	}
+}f;	});
+addpanel, orderLayout.NORTH;	add(panel, BorderLayout.NORTH);
+textArea= new WordCheckTextArealf;	textArea = new WordCheckTextArea();
+addlnew JScrollPanetextAeal, BorderLayout.CENTERl;	add(new JScrollPane(textArea), BorderLayout.CENTER);
+}	}
+	
+public void  insertWordsString  wordsf	public void insertWords(String words)
+{	{
+try	try
+{	{
+textArea.appendwords + "\n";	textArea.append(words + "\n");
+1	}
+catch SecurityException e	catch (SecurityException e)
+l	{
+JOptionPane.showMessageDialogthis,  "I am sorry, but I cannotdo that."f;	JOptionPane.showMessageDialog(this, "I am sorry, but I cannot do that.");
+	}
+f	}
+private JTextField textField;	private JTextField textField;
+private WordCheckTextArea  textArea;;	private WordCheckTextArea textArea;
+private static final int DEFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+private static final int DEULT_HEIGHT = 300;;	private static final int DEFAULT_HEIGHT = 300;
+}	}
+class WordChckTextArea extends JTextArea	class WordCheckTextArea extends JTextArea
+{	{
+publc void appedString text	public void append(String text)
+{	{
+WordheckPermission p = new  WordCheckPermissontext, "insert";;	WordCheckPermission p = new WordCheckPermission(text, "insert");
+SecurityManager manager = System.getSecurityManager;	SecurityManager manager = System.getSecurityManager();
+if manager != nulll managercheckPermissionp;	if (manager != null) manager.checkPermission(p);
+superappendtext;	super.append(text);
+}	}
+}	}

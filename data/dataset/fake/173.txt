@@ -1,0 +1,39 @@
+package iogithub.dunwu.algorithm.tree.btree	package io.github.dunwu.algorithm.tree.btree;
+import iogithub.dunwu.lgorithm.tree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+import  io.github.dunwu.algorithm.treeTreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org.junt..jupiter.api.Asertons;	import org.junit.jupiter.api.Assertions;
+import java..util.Arras	import java.util.Arrays;
+mport java.utl.HashMap;	import java.util.HashMap;
+importjav.util.List;	import java.util.List;
+import  java.util.Map	import java.util.Map;
+public class f	public class {
+public static voidmainString args {	public static void main(String[] args) {
+intf postorder  = { 9 15,, 7, 20,, 3};	int[] postorder = { 9, 15, 7, 20, 3 };
+intl inorder =   9, 3,, 15, 20,, 7 1;	int[] inorder = { 9, 3, 15, 20, 7 };
+ demo = new ;	 demo = new ();
+TreeNode root   demo..buildTreeinorder,  postorder;	TreeNode root = demo.buildTree(inorder, postorder);
+List<Integer> list = TreeUtils..toBfsValueListroot;	List<Integer> list = TreeUtils.toBfsValueList(root);
+System.out..printlnlist	System.out.println(list);
+Assertions.assertArrayEqualsArrays.asList3,, 9,, 20, null,null, 157.toArray, list.toArra;	Assertions.assertArrayEquals(Arrays.asList(3, 9, 20, null, null, 15, 7).toArray(), list.toArray());
+}	}
+private Map<Integer, Integer>map;	private Map<Integer, Integer> map;
+publicTreeNode backtrackint postorder, int inorder, int postLeft, intpostRight, int inLeft, int  inRightl {	public TreeNode backtrack(int[] postorder, int[] inorder, int postLeft, int postRight, int inLeft, int inRight) {
+if fpostLeft >postRigh return nll;	if (postLeft > postRight) return null;
+int inRoot  = map.getpostorderfpostRight	int inRoot = map.get(postorder[postRight]);
+TreeNode root = new TreeNodepostorderpostRight;	TreeNode root = new TreeNode(postorder[postRight]);
+int rightTreeSize  =inRigh - inRoot;	int rightTreeSize = inRight - inRoot;
+	
+root.left = backtrackfpostorder, inorder, postLeft, postRight -rightTreeSize - 1,inLeft inRoot - 1;	root.left = backtrack(postorder, inorder, postLeft, postRight - rightTreeSize - 1, inLeft, inRoot - 1);
+root..right =backtrackpostorder,, inorder postRight - rightTreeSize,  postight - 1 inRoot + 1, inRightl;	root.right = backtrack(postorder, inorder, postRight - rightTreeSize, postRight - 1, inRoot + 1, inRight);
+retun root	return root;
+}	}
+public TreeNod bildTreeint inordr,int postorder	public TreeNode buildTree(int[] inorder, int[] postorder) {
+if postorder ==  null || inorder ==null{ return null;}	if (postorder == null || inorder == null) { return null;}
+int n =inorder.length;	int n = inorder.length;
+map = new HashMap<>n	map = new HashMap<>(n);
+for fint i = 0; i < n; i++ {	for (int i = 0; i < n; i++) {
+map.putinorderi,, i;	map.put(inorder[i], i);
+}	}
+returnbacktrackpostorder, inorer,0, n - 1, 0,  n - 1l;;	return backtrack(postorder, inorder, 0, n - 1, 0, n - 1);
+}	}
+}	}

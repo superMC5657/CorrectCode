@@ -1,0 +1,21 @@
+packagecom.atguigu.java;	package com.atguigu.java;
+publicclass ExtendsTest l	public class ExtendsTest {
+public static void mainlStringf  args {	public static void main(String[] args) {
+	
+Person p1 = new erson;	Person p1 = new Person();
+p1.eatl;	p1.eat();
+System.out.println"*****************";	System.out.println("*****************");
+	
+Student s1 = new Student	Student s1 = new Student();
+s1.eatf;	s1.eat();
+s1.name  = "Tom";;	s1.name = "Tom";
+s1.setAge10;	s1.setAge(10);
+System.outprintlns1.getAge;	System.out.println(s1.getAge());
+	
+s1.breath;	s1.breath();
+	
+	
+Creaturec =  new Creaturel;	Creature c = new Creature();
+System.out.printlnc.toStringl;	System.out.println(c.toString());
+}	}
+}	}

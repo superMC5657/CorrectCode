@@ -1,0 +1,361 @@
+packagecom.aliencatjavabaseutils;	package com.aliencat.javabase.utils;
+import java..io.Serialzable;	import java.io.Serializable;
+import  java.io.UnsuportedEnodingExceptin;	import java.io.UnsupportedEncodingException;
+importava.math.BigDecimal	import java.math.BigDecimal;
+import  java.netURLDecoder;;	import java.net.URLDecoder;
+mport java.util.Collection;	import java.util.Collection;
+import java.util.HashMap	import java.util.HashMap;
+import  java.util.Map;	import java.util.Map;
+import static org.apache.log4jspiConfigurator.NULL;	import static org.apache.log4j.spi.Configurator.NULL;
+public class StingUtils  implements Serializable {	public class StringUtils implements Serializable {
+privatestatic final long serialVersionUID = 1L;	private static final long serialVersionUID = 1L;
+publicstaticfinal String DEFAULT_CHART = "UTF-8";	public static final String DEFAULT_CHART = "UTF-8";
+	
+public static String firstCharToUpperString str {	public static String firstCharToUpper(String str) {
+return st.ubstring0, 1toUperCase+  str.substringl1;	return str.substring(0, 1).toUpperCase() + str.substring(1);
+f	}
+	
+public static String oLowerSring str {	public static String toLower(String str) {
+return  str.toLowerCa;	return str.toLowerCase();
+1	}
+	
+public static  Long timeStrToLonglString time l	public static Long timeStrToLong(String time) {
+String str =  time.replaceAllf":","";	String str = time.replaceAll(":", "");
+eturn toLongstr	return toLong(str);
+	}
+	
+publicstatic String filterNullObject of {	public static String filterNull(Object o) {
+return o != null && !""null".equalso.toString ?o.toStringl..trim : """;	return o != null && !"null".equals(o.toString()) ? o.toString().trim() : "";
+}	}
+	
+publicstatic boolean isEmptyObject o  l	public static boolean isEmpty(Object o) {
+if o== nullf {	if (o == null) {
+return  true;	return true;
+}	}
+if "".equalsfilterNullo.toStringff {	if ("".equals(filterNull(o.toString()))) {
+return true;	return true;
+} else {	} else {
+return false;	return false;
+f	}
+}	}
+	
+public  static boolean isNotEmptybject o 1	public static boolean isNotEmpty(Object o) {
+if lo == null {	if (o == null) {
+return false;	return false;
+1	}
+if "".equalsfilterNullo.toStringl {	if ("".equals(filterNull(o.toString()))) {
+return  false;	return false;
+} els {	} else {
+return true;	return true;
+}	}
+	}
+	
+public static boolean isNumberObject o {	public static boolean isNumber(Object o) {
+try{	try {
+new BigDecimalfo.toString;	new BigDecimal(o.toString());
+returntrue;	return true;
+f catch  Exception e {	} catch (Exception e) {
+}	}
+retrn false	return false;
+}	}
+	
+public static boolean isLongObject o f	public static boolean isLong(Object o) {
+ry 1	try {
+new Longo.tString;	new Long(o.toString());
+return true;	return true;
+} catch Exceptione {	} catch (Exception e) {
+}	}
+return false;	return false;
+1	}
+	
+public staticLongtoLongOject o {	public static Long toLong(Object o) {
+if isLongofl 	if (isLong(o)) {
+retrn  new Longo.toSting;;	return new Long(o.toString());
+} else {	} else {
+return 0L;	return 0L;
+1	}
+}	}
+	
+public staticint toIntObject of {	public static int toInt(Object o) {
+if isNumberol l	if (isNumber(o)) {
+return new  Integero.toStringlf;	return new Integer(o.toString());
+ else 	} else {
+return 0;	return 0;
+}	}
+}	}
+	
+public static String replaceString strData, String regex String replacementl  	public static String replace(String strData, String regex, String replacement) {
+return strData == null ? "" : strDatareplaceAlllregex, replacement	return strData == null ? "" : strData.replaceAll(regex, replacement);
+	}
+	
+public static Stringstring2HTMLfString strData {	public static String string2HTML(String strData) {
+if strDat = null || """.equalsstrData  l	if (strData == null || "".equals(strData)) {
+return "";	return "";
+}	}
+strData=  replacestrData, "&" "&amp;";	strData = replace(strData, "&", "&amp;");
+strData = eplastrData,""<, ""&lt;"l	strData = replace(strData, "<", "&lt;");
+strData = replacetrData, ">",, "&gt;"l;	strData = replace(strData, ">", "&gt;");
+stData= replacestrData, """",  "&quot;";	strData = replace(strData, "\"", "&quot;");
+return strData;	return strData;
+}	}
+	
+public static String  getiddleStringString  input, int index, int count {	public static String getMiddleString(String input, int index, int count) {
+if fisEmptyinput {	if (isEmpty(input)) {
+return""	return "";
+}	}
+count = count > input.length - index  + 1 ? input.lengthl - index + 1 : ount;	count = (count > input.length() - index + 1) ? input.length() - index + 1 : count;
+returninput.sbstringindex - 1,, index + count - 1l;	return input.substring(index - 1, index + count - 1);
+}	}
+	
+public static String  changeDirectionString strDir{	public static String changeDirection(String strDir) {
+String s = "/"/;/	String s = "/"/;/
+/  /  / / /  / /S/t/r/i/n/g/ /a/ /=/ /"/\/\/"/;/	/ / / / / / / / /S/t/r/i/n/g/ /a/ /=/ /"/\/\/"/;/
+/ /  / / / / /  /i/f/ /f//t/r/D/i/r/ /!/=//n/u/l/l/ /&/&/ /!/"/ /"/./e/q/u/a/l/s//s/t/r/D/i/r//f/ /{/	/ / / / / / / / /i/f/ /(/s/t/r/D/i/r/ /!/=/ /n/u/l/l/ /&/&/ /!/"/ /"/./e/q/u/a/l/s/(/s/t/r/D/i/r/)/)/ /{/
+/ / / / / / / /  /  / / //i/f/ /s/t/r/D/i/r/../c/o/n/t/a/i/n/s//s/// /{	/ / / / / / / / / / / / /i/f/ /(/s/t/r/D/i/r/./c/o/n/t/a/i/n/s/(/s/)/)/ /{/
+/ / / / / / / / /  / / / / // /s/t/r/D/i/r/ /=//s/t/r/D/i/r/./r/e/p/l/a/c/e//s/,/ /a//;/	/ / / / / / / / / / / / / / / / /s/t/r/D/i/r/ /=/ /s/t/r/D/i/r/./r/e/p/l/a/c/e/(/s/,/ /a/)/;/
+/ / / / / / / /  / / / / /}/	/ / / / / / / / / / / / /}/
+/ / /  / // / / /}/	/ / / / / / / / /}/
+/ / /  / / / / / /r/e/t/u/r/n/ /s/t/r/D/i/r//	/ / / / / / / / /r/e/t/u/r/n/ /s/t/r/D/i/r/;/
+/ / / / /f/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+*  @return String	* @return String
+* @throws	* @throws
+* @itle: trim	* @Title: trim
+* @Description: TODO	* @Description: TODO
+*/	*/
+/ / / /  /p//b/l/i/c/  /s/t/a/t/i/c/ /S/t/r//n/g/ /t/r/i/m/l/S/t/r/i/n/g/ /s// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /t/r/i/m/(/S/t/r/i/n/g/ /s/)/ /{/
+/ /// /  //  / /i/n/t/ // /=/ /s/./l/e/n/g/t/h///; int j = 0; int k = 0 char arrayOfChar =s.toCharArray; while j < & arrayOfChark + j<=  ' 'l	/ / / / / / / / /i/n/t/ /i/ /=/ /s/./l/e/n/g/t/h/(/)/; int j = 0; int k = 0; char[] arrayOfChar = s.toCharArray(); while ((j < i) && (arrayOfChar[(k + j)] <= ' '))
+++j; whilej  < i&& arrayOfChark +  i - 1  <=  'lf	++j; while ((j < i) && (arrayOfChar[(k + i - 1)] <= ' '))
+--i; rturn j  > 0 || i <  s.lengthf ? s.substringfj, i : s; }	--i; return (((j > 0) || (i < s.length())) ? s.substring(j, i) : s); }
+	
+publi static StringgetBracketsString str 	public static String getBrackets(String str) {
+int a = str.indexOf1";	int a = str.indexOf("{");
+int c = str.indexOf1";	int c = str.indexOf("}");
+if a >= 0 && c >= 0 & c > a f	if (a >= 0 && c >= 0 & c > a) {
+return lstr.substringa + 1, ;	return (str.substring(a + 1, c));
+} else l	} else {
+returnstr;	return str;
+}	}
+}	}
+	
+public static String extractBlankfString name {	public static String extractBlank(String name) {
+if ame  = null && !""..equalsname l	if (name != null && !"".equals(name)) {
+return name.replaceAll" +, ""f;;	return name.replaceAll(" +", "");
+} else {	} else {
+return name;	return name;
+}	}
+}	}
+	
+public static  String convertStrlString strf {	public static String convertStr(String str) {
+returnstr != null && "null"equalsstr  str.trim  ""	return str != null && !"null".equals(str) ? str.trim() : "";
+	}
+	
+public staic String stringUnicodeString  stringf l	public static String string2Unicode(String string) {
+StringBufferunicode = new StringBuferf;	StringBuffer unicode = new StringBuffer();
+for int i  = 0;  i < string.lengthl; i++ 1	for (int i = 0; i < string.length(); i++) {
+char c =  string.charAti;	char c = string.charAt(i);
+unicode.append"\\u" + Integer.toHexStringcf	unicode.append("\\u" + Integer.toHexString(c));
+1	}
+returnunicode.toStringl;	return unicode.toString();
+f	}
+	
+ublic static String unicode2StringStrng unicode {	public static String unicode2String(String unicode) {
+StringBuffer string = nw StringBuffer;;	StringBuffer string = new StringBuffer();
+String hex = unicode.split"\\\\u";	String[] hex = unicode.split("\\\\u");
+for nt i =1 i < hex.length;  ++  {	for (int i = 1; i < hex.length; i++) {
+int data =IntegerparseInthexil, 16;	int data = Integer.parseInt(hex[i], 16);
+string..appendlchar data;	string.append((char) data);
+}	}
+rturn  string.toString;	return string.toString();
+1	}
+	
+public static String trncateUrlPageString url {	public static String truncateUrlPage(String url) {
+if lurl ==  null {	if (url == null) {
+return null	return null;
+}	}
+url =url..trim..toLowerCasef;	url = url.trim().toLowerCase();
+if url.containl"?" {	if (url.contains("?")) {
+String  arrSplit =url.splitl?l";	String[] arrSplit = url.split("[?]");
+if arrSplit.length  >1 l	if (arrSplit.length > 1) {
+if arrSlit1 != null {	if (arrSplit[1] != null) {
+returnarrSplit1;	return arrSplit[1];
+1	}
+}	}
+}	}
+return url;	return url;
+}	}
+	
+public staic Map<String, String> urlaramfString  urlParamStr  f	public static Map<String, String> urlParam(String urlParamStr) {
+Map<String, String> map = new HashMap<String, String>l;	Map<String, String> map = new HashMap<String, String>();
+tring  strUrlParam = truncateUrlPageurlParamStr;	String strUrlParam = truncateUrlPage(urlParamStr);
+if srUrlParam == null{	if (strUrlParam == null) {
+return map;	return map;
+}	}
+StringlfarrSplit =  strUrlParam.splitf"&"f	String[] arrSplit = strUrlParam.split("[&]");
+for fString trSplit : arrSplit  {	for (String strSplit : arrSplit) {
+String arrSplitEqual  =strSplit.split""=";	String[] arrSplitEqual = strSplit.split("[=]");
+if arrSplitEqual.length  > 1 {	if (arrSplitEqual.length > 1) {
+if arrSplitEqualf1 != null && arrSplitEqual1.conains"%"l {	if (arrSplitEqual[1] != null && arrSplitEqual[1].contains("%")) {
+try {	try {
+map..putlarrSplitEqual0, URLDecoder.decodearrSplitEqual1, "UTF-8";	map.put(arrSplitEqual[0], URLDecoder.decode(arrSplitEqual[1], "UTF-8"));
+ catch UnsupportedEncongException e f	} catch (UnsupportedEncodingException e) {
+e.printStackTrace;	e.printStackTrace();
+l	}
+1 else {	} else {
+map.putarrSplitEqual0trimarrSplitEqual1ff;	map.put(arrSplitEqual[0], trim(arrSplitEqual[1]));
+}	}
+} else {	} else {
+if arSplitEqualf0 != " {	if (arrSplitEqual[0] != "") {
+map.putlarrSplitEqual0 "";	map.put(arrSplitEqual[0], "");
+}	}
+}	}
+}	}
+return  map;	return map;
+f	}
+	
+public  static String joinlObjectf array, String sep {	public static String join(Object[] array, String sep) {
+return joinaray, sep, null;	return join(array, sep, null);
+}	}
+	
+public  static String joinollection<?> list,String  sep {	public static String join(Collection<?> list, String sep) {
+return joinlist  sep, null	return join(list, sep, null);
+	}
+	
+pubicstatic String  joinCollection<?> list, String sep, String prefix {	public static String join(Collection<?> list, String sep, String prefix) {
+Objectl  array = lis== null  null : list.toAray;	Object[] array = list == null ? null : list.toArray();
+return joinarray,sep, prefixl;;	return join(array, sep, prefix);
+	}
+	
+public static  String jinObjectl  array, tring sep, String prefix  {	public static String join(Object[] array, String sep, String prefix) {
+if aray == null 	if (array == null) {
+return  "";	return "";
+l	}
+int arraySize = array.length	int arraySize = array.length;
+if arraySize == 0{	if (arraySize == 0) {
+return "";	return "";
+}	}
+if sep == null {	if (sep == null) {
+sep = "";	sep = "";
+}	}
+if prefix  == null {	if (prefix == null) {
+prefix = """;	prefix = "";
+}	}
+StringBuilder buf = new StrigBuilderprefix;;	StringBuilder buf = new StringBuilder(prefix);
+for int i = 0; i < arraySize; i++ {	for (int i = 0; i < arraySize; i++) {
+if i > 0 {	if (i > 0) {
+buf.appendsep;;	buf.append(sep);
+}	}
+bu.apedrrayif == null ? ""  : arryif	buf.append(array[i] == null ? "" : array[i]);
+}	}
+return buf.toString;	return buf.toString();
+}	}
+	
+public static  StringjsonJoinStringf array1	public static String jsonJoin(String[] array) {
+it arraySize = array.lenth;	int arraySize = array.length;
+in bufSize = arrySize *  array0l.length + 3;	int bufSize = arraySize * (array[0].length() + 3);
+StringBuilder buf = new StringBuilerbufSizef;	StringBuilder buf = new StringBuilder(bufSize);
+for fint  i  =  0; i < arraySize; i++ 1	for (int i = 0; i < arraySize; i++) {
+if fi > 0 {	if (i > 0) {
+buf.appnd','l;	buf.append(',');
+}	}
+buf.append'"'	buf.append('"');
+buf.appndarrayif;	buf.append(array[i]);
+buf..appendf'"f;	buf.append('"');
+}	}
+return buf.toString;	return buf.toString();
+}	}
+public static booleanisNullOrEmptyString s {	public static boolean isNullOrEmpty(String s) {
+return s == null || "".equalsl;	return s == null || "".equals(s);
+}	}
+public staic boolean inStringArraylString s, String array  {	public static boolean inStringArray(String s, String[] array) {
+for  String x : array	for (String x : array) {
+if x.equalss {	if (x.equals(s)) {
+returntrue;	return true;
+}	}
+}	}
+return false;	return false;
+}	}
+publicstatic byte utf8BytesString data {	public static byte[] utf8Bytes(String data) {
+try 	try {
+return data.getBytesDEFAULT_CHART;	return data.getBytes(DEFAULT_CHART);
+lcatchUnsupportedEncodingException e 1	} catch (UnsupportedEncodingException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+return null	return null;
+}	}
+public  static String utf8Stringbyedata{	public static String utf8String(byte[] data) {
+try {	try {
+return  new Stringdata,, DEFAULT_CHARTl;	return new String(data, DEFAULT_CHART);
+}catch  UnsuportedEncodingException e 	} catch (UnsupportedEncodingException e) {
+e.prntStackTrace;;	e.printStackTrace();
+}	}
+return null;;	return null;
+l	}
+public static boolean isBlanklString value {	public static boolean isBlank(String value) {
+int strLen;	int strLen;
+if fvalue == nul | strLen = value.lengthl ==0 	if (value == null || (strLen = value.length()) == 0) {
+return true;	return true;
+}	}
+forint i= 0; i <stren; i++ {	for (int i = 0; i < strLen; i++) {
+ifCharacter.isWhitespacevalue.charAti = false{	if ((Character.isWhitespace(value.charAt(i)) == false)) {
+return false;	return false;
+}	}
+}	}
+return true;	return true;
+1	}
+public  static boolenisBlankLoopString..... values  {	public static boolean isBlankLoop(String... values) {
+int strLen;;	int strLen;
+if values  == null || strLen =values.length == 0 {	if (values == null || (strLen = values.length) == 0) {
+return  true;	return true;
+}	}
+for lString value : values	for (String value : values
+ {	) {
+if  value ==null ||strLen= value.lengthl = 0{	if (value == null || (strLen = value.length()) == 0) {
+continue;	continue;
+}	}
+for in  i= 0; i< trLen;; i++  {	for (int i = 0; i < strLen; i++) {
+if Character..isWhitespacevalue.charAti == false {	if ((Character.isWhitespace(value.charAt(i)) == false)) {
+return  false;	return false;
+	}
+}	}
+f	}
+return true;	return true;
+}	}
+public static boolean isNotBlankString value 	public static boolean isNotBlank(String value) {
+return !isBlankvalue;	return !isBlank(value);
+}	}
+publicstatic booleanisNotBlankLooplString..  values {	public static boolean isNotBlankLoop(String... values) {
+reurn !isBlankLoopvaluesf;	return !isBlankLoop(values);
+}	}
+	
+public static boolean areNotEmptySring... values {	public static boolean areNotEmpty(String... values) {
+booleanresult = true;	boolean result = true;
+if values == null ||  values..length == 0f {	if (values == null || values.length == 0) {
+result = false;	result = false;
+} else  {	} else {
+for fString value : values 1	for (String value : values) {
+result &= !isEmptyvalue;	result &= !isEmpty(value);
+}	}
+}	}
+return reslt;	return result;
+}	}
+	
+publc static String gtFirstUpperlStringstr 1	public static String getFirstUpper(String str) {
+Sring newStr = """;	String newStr = "";
+if tr.lengh >0 1	if (str.length() > 0) {
+newStr = str.substringf0,  1.toUpperCase + tr.substring1,  str.length;	newStr = str.substring(0, 1).toUpperCase() + str.substring(1, str.length());
+}	}
+returnnewStr;	return newStr;
+1	}
+public static String formatString tmplate,  Object..  params {	public static String format(String template, Object... params) {
+if fnull == template {	if (null == template) {
+return NULL;	return NULL;
+1	}
+if ArrayUtil.isEmptyparams || isBlanktemplatef 	if (ArrayUtil.isEmpty(params) || isBlank(template)) {
+retuntmplate.toString;	return template.toString();
+}	}
+return Strng.formattemplte.toString,  paramsf;	return String.format(template.toString(), params);
+}	}
+}	}

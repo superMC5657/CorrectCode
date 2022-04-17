@@ -1,0 +1,20 @@
+package com.atguigu.jav1;	package com.atguigu.java1;
+publicclass ArayUtilTest {	public class ArrayUtilTest {
+public staticvoid mainString args {	public static void main(String[] args) {
+	
+intf arr = new intl{32,34,32,5,3,54,54,-98,0,-53,5}	int[] arr = new int[]{32,34,32,5,3,54,654,-98,0,-53,5};
+int max =  rrayUtil.getMaxlarr;	int max = ArrayUtil.getMax(arr);
+System.out.println"" + max;;	System.out.println("" + max);
+	
+Syste.out..println""	System.out.println("");
+ArraUtil.printarrf;;	ArrayUtil.print(arr);
+	
+	
+ArayUtil.sortarrf;	ArrayUtil.sort(arr);
+System.ot.printlnl""";	System.out.println("");
+ArrayUtil.printarrl;	ArrayUtil.print(arr);
+	
+	
+	
+}	}
+f	}

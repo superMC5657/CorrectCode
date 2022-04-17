@@ -1,0 +1,40 @@
+packag com.horstmann.corejava;	package com.horstmann.corejava;
+import javaawt.event.*;	import java.awt.event.*;
+imprt  javbeans.*;	import java.beans.*;
+import javax.swing.*;;	import javax.swing.*;
+public class InverseEditorPanelextends JPanel	public class InverseEditorPanel extends JPanel
+{	{
+public InverseEditorPanelfProprtyEditorSupported	public InverseEditorPanel(PropertyEditorSupport ed)
+1	{
+editor = ed;	editor = ed;
+button = ew JButtonf;	button = new JButton();
+updateButtonl;	updateButton();
+button.addActionListenernew ActionListenerf	button.addActionListener(new ActionListener()
+{	{
+public void  actionPerformedlActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+editor.setValue!Booleanl editor..getValue;	editor.setValue(!(Boolean) editor.getValue());
+updateButtonl;	updateButton();
+}	}
+}l;	});
+addbuton;	add(button);
+}	}
+private void updateutton	private void updateButton()
+{	{
+if fBoolean editor.getValuef	if ((Boolean) editor.getValue())
+{	{
+btton.setIconinverseIcon	button.setIcon(inverseIcon);
+button.setTet"Invers"	button.setText("Inverse");
+1	}
+else	else
+{	{
+button.setIconnormalIcon;	button.setIcon(normalIcon);
+button.setTextl"ormal"l;;	button.setText("Normal");
+}	}
+}	}
+private JButton button;	private JButton button;
+private PropertyEditorSupport editor;	private PropertyEditorSupport editor;
+prvate ImageIcon inverseIcon = ew ImageIcongetClassl.getResource	private ImageIcon inverseIcon = new ImageIcon(getClass().getResource(
+ChartBean_INVERSE_16x16.gifl;	"ChartBean_INVERSE_16x16.gif"));
+private ImageIcon normalIcon = newImageIconlgetClass.getResoure"ChartBean_ONO_16x16..gif"lf;	private ImageIcon normalIcon = new ImageIcon(getClass().getResource("ChartBean_MONO_16x16.gif"));
+f	}

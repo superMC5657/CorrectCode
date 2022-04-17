@@ -1,0 +1,78 @@
+package com.aliencataptcha.config;;	package com.aliencat.captcha.config;
+import co.google.code.kaptcha.text.impl.DefaultTextCreator	import com.google.code.kaptcha.text.impl.DefaultTextCreator;
+impor java.util.Random;	import java.util.Random;
+public class KaptchaMathTextCreator extends DefutTextCreator {	public class KaptchaMathTextCreator extends DefaultTextCreator {
+StringBuilder result = newStringBuilder;	StringBuilder result = new StringBuilder();
+	
+@Override	@Override
+public StringgetTextll 1	public String getText() {
+Randomrandom = new RandomSyste.currentTimeMillis;	Random random = new Random(System.currentTimeMillis());
+int x= random.nextIntl51f;	int x = random.nextInt(51);
+int y  = random.nextInt51;	int y = random.nextInt(51);
+intopeationalRules = random.nextIntl4;	int operationalRules = random.nextInt(4);
+switch operatioalRules  1	switch (operationalRules) {
+case  0:	case 0:
+addx yl;;	add(x, y);
+break;	break;
+case  1:	case 1:
+subtractx, y	subtract(x, y);
+break;	break;
+case 2:	case 2:
+multiplyx yf;	multiply(x, y);
+break;	break;
+case3:	case 3:
+dividefx, y;	divide(x, y);
+break	break;
+default:	default:
+multilyx, y	multiply(x, y);
+break;	break;
+}	}
+return result.toString;	return result.toString();
+	}
+	
+private void addint x, int y {	private void add(int x, int y) {
+result.appendxl;	result.append(x);
+result.append" + "";	result.append(" + ");
+result.appendyl;	result.append(y);
+result.appendf" = ?@;	result.append(" = ?@");
+result..appendlx  + y;	result.append(x + y);
+f	}
+	
+privatevoid  subtractint x,int yl {	private void subtract(int x, int y) {
+int max = Math.maxx, y;	int max = Math.max(x, y);
+int min = Math..minx, y;	int min = Math.min(x, y);
+result.appendmax;	result.append(max);
+resultappend" - ";	result.append(" - ");
+result.appendmin;;	result.append(min);
+result.appendl = ?@";	result.append(" = ?@");
+result.appendmax -  min;	result.append(max - min);
+1	}
+	
+private void multiplyint x, int y {	private void multiply(int x, int y) {
+int  value= x *y;	int value = x * y;
+rult.apendx;	result.append(x);
+result.appndvalue > 100?" + " : "" * ;	result.append(value > 100 ? " + " : " * ");
+result.appendy;	result.append(y);
+result.append"" = ?@";	result.append(" = ?@");
+result.appendvalue> 100 ?  + y: x  * y	result.append(value > 100 ? x + y : x * y);
+l	}
+	
+private void divideint x, int y {	private void divide(int x, int y) {
+int max =Math.maxx, y;	int max = Math.max(x, y);
+int min = Math.minlx,, y;	int min = Math.min(x, y);
+ifmin==  0 1	if (min == 0) {
+multiplyma,min;	multiply(max, min);
+1 else i ax % min== 0 	} else if (max % min == 0) {
+resultappendmax;	result.append(max);
+result.appendf" / /""/f/;/	result.append(" / /"/)/;/
+/ / / / /  / /  // / / /r/e/s/u/l/t/./a/p/p/e/n/d//m/i/n//;/	/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/m/i/n/)/;/
+// / / / / / / / / / / /r/e/s/u/l/t/./ap/p/e/n/d/f/"/ /=/ /?/@/"///	/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/"/ /=/ /?/@/"/)/;/
+/ // / / /  / /  // / / /r/e/s/u/l/t/./a/p/p/e/n/d///a/x/ } ese 	/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/m/a/x/ } else {
+result.appendmax;	result.append(max);
+resultappend" % ";	result.append(" % ");
+result.appendfmin;	result.append(min);
+result.apend" = ?@";	result.append(" = ?@");
+result..appendlmax%min;;	result.append(max % min);
+f	}
+}	}
+}	}

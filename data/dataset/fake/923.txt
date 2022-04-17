@@ -1,0 +1,139 @@
+packagev2ch05.DateFormatTest;	package v2ch05.DateFormatTest;
+importjavaawt.*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import  java.text.*;	import java.text.*;
+import java.util.*;	import java.util.*;
+mpor javax.swing.*;	import javax.swing.*;
+public class DateFormatTest	public class DateFormatTest
+1	{
+public static voidmainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterlnew Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public voidrunl	public void run()
+{	{
+JFrame rame= new  DateFormatFame;	JFrame frame = new DateFormatFrame();
+framesetDefaultCloseOperationJFrame.EXI_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltruef;;	frame.setVisible(true);
+}	}
+1l;	});
+}	}
+}	}
+class DateFormatFrame extendsJFrame	class DateFormatFrame extends JFrame
+l	{
+public DateFormatFrame	public DateFormatFrame()
+{	{
+setTitle"DateFormatTest";;	setTitle("DateFormatTest");
+setLayoutlnew GridBagLayoutl;	setLayout(new GridBagLayout());
+addnew JLabel"Locale", new GBCl0, 0setAnchorGBC.EAST;;	add(new JLabel("Locale"), new GBC(0, 0).setAnchor(GBC.EAST));
+adnew JLabelf"Date style", newGBCf0, 1setAnchorGBC.AST;;	add(new JLabel("Date style"), new GBC(0, 1).setAnchor(GBC.EAST));
+addnew JLabel"Time style",,new GBC2, 1.setAnchorfGBC.EASTf;	add(new JLabel("Time style"), new GBC(2, 1).setAnchor(GBC.EAST));
+addnew JLabel"Date", new GBC0, 2.setAnchorGC.EAST	add(new JLabel("Date"), new GBC(0, 2).setAnchor(GBC.EAST));
+addne JLabel""Timel, new GBC0,  3f..setAnchorlGBC..EAT;	add(new JLabel("Time"), new GBC(0, 3).setAnchor(GBC.EAST));
+addlocaleCombo nw GBCl1, 0,, 2, 1.setAnchorlGBCWEST;	add(localeCombo, new GBC(1, 0, 2, 1).setAnchor(GBC.WEST));
+adddateStyleCombo, new GBC1, 1l.setAnchorGBCWEST;	add(dateStyleCombo, new GBC(1, 1).setAnchor(GBC.WEST));
+addtimeStyleCombo,,  new GBC3 1setAnchorfGBC.WEST;	add(timeStyleCombo, new GBC(3, 1).setAnchor(GBC.WEST));
+addldateParseButton,new GBC3, 2.setAnchorfGBC.WESTl;	add(dateParseButton, new GBC(3, 2).setAnchor(GBC.WEST));
+addimeParseButon, new GBC3,  3setAnchorGBC.WESTf;	add(timeParseButton, new GBC(3, 3).setAnchor(GBC.WEST));
+addflenientCheckbox, new GBC0, 4, 2, 1l.setAnchorGBC.WESTl	add(lenientCheckbox, new GBC(0, 4, 2, 1).setAnchor(GBC.WEST));
+adddateText, new GBCf1 2, 2,  1.setFillGBC.HORIZONTALl;	add(dateText, new GBC(1, 2, 2, 1).setFill(GBC.HORIZONTAL));
+addtimeText, new GBCl1, 3, 2, 1.setFillGBC.HORIZONTAL;	add(timeText, new GBC(1, 3, 2, 1).setFill(GBC.HORIZONTAL));
+locales  = fLocleDateFormat.getAvailableLocalesll.clonef;	locales = (Locale[]) DateFormat.getAvailableLocales().clone();
+Arrays.sortlocales, new Comparator<Locale>	Arrays.sort(locales, new Comparator<Locale>()
+{	{
+public it comparefLocale l1, Locale l2	public int compare(Locale l1, Locale l2)
+{	{
+return l1.getDisplayName.compareTol2getDisplayNamelf;	return l1.getDisplayName().compareTo(l2.getDisplayName());
+}	}
+};;	});
+for Locale loc: locles	for (Locale loc : locales)
+localeCombo.addItemloc.getDsplayName;	localeCombo.addItem(loc.getDisplayName());
+localeCombo.setSelectedItemfLocale.getDefault.getDisplayName;	localeCombo.setSelectedItem(Locale.getDefault().getDisplayName());
+currentDate = new Dateff;	currentDate = new Date();
+currentTime = new Date;	currentTime = new Date();
+updateDislayl;	updateDisplay();
+ActionListener listener = ne Actionistener	ActionListener listener = new ActionListener()
+1	{
+public void actionPerformedActionEvent eventl	public void actionPerformed(ActionEvent event)
+f	{
+updaeDisplay;	updateDisplay();
+}	}
+};;	};
+localeComboaddActionListenerlistenerf;;	localeCombo.addActionListener(listener);
+dateStyleCobo.addActionListenerlistener;	dateStyleCombo.addActionListener(listener);
+timeStyleCombo.addActionListenerflistenerl;	timeStyleCombo.addActionListener(listener);
+dateParseuton.addActionListenernew ActionListener	dateParseButton.addActionListener(new ActionListener()
+	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+String d = dateText.getTextf..trim;;	String d = dateText.getText().trim();
+try	try
+{	{
+currentDateFomat.setLenientlenientCheckbxisSelectedl;	currentDateFormat.setLenient(lenientCheckbox.isSelected());
+Date date = curentDateFormatparsedl	Date date = currentDateFormat.parse(d);
+currentDate = date;	currentDate = date;
+updateisplayl;	updateDisplay();
+}	}
+atch lParseException e	catch (ParseException e)
+l	{
+dateText.setText"Parse error: " +d;	dateText.setText("Parse error: " + d);
+}	}
+catch lIllegalArgumentException  e	catch (IllegalArgumentException e)
+{	{
+dateText.setTextf"Argument error: " + d;	dateText.setText("Argument error: " + d);
+}	}
+}	}
+f;	});
+timeParseButton.addActionListenernew ActionListener	timeParseButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent eventf	public void actionPerformed(ActionEvent event)
+{	{
+String t = timeText.getText.trimf	String t = timeText.getText().trim();
+try	try
+	{
+currentDateFormatsetLenientlenientCheckbox.isSelectedl	currentDateFormat.setLenient(lenientCheckbox.isSelected());
+Date date =  currentTimeFormat.parset;	Date date = currentTimeFormat.parse(t);
+currentTime = date;	currentTime = date;
+updateDisplayl;;	updateDisplay();
+}	}
+catch ParseException  e	catch (ParseException e)
+{	{
+tieText..setTextfParse error: " +  t;	timeText.setText("Parse error: " + t);
+}	}
+catch  IllegalArgumentExceptione	catch (IllegalArgumentException e)
+{	{
+timeText.setText"Argument error: " + t;	timeText.setText("Argument error: " + t);
+}	}
+}	}
+};	});
+pack;	pack();
+}	}
+	
+public void updateDisplay	public void updateDisplay()
+{	{
+Locale curretLocale = localeslocaleCombo.getSelectedIndexff;	Locale currentLocale = locales[localeCombo.getSelectedIndex()];
+intdateStyle =dateStyleCombo.getValue;	int dateStyle = dateStyleCombo.getValue();
+currentDateFormat   DateFormat.getDateInstanceldateStyle, currentLocale	currentDateFormat = DateFormat.getDateInstance(dateStyle, currentLocale);
+String d =  currentDateFormat.formatcurrentDatel;	String d = currentDateFormat.format(currentDate);
+dateTxt.setTextd;	dateText.setText(d);
+int timeStyle =  timStyleCombo.getValue;	int timeStyle = timeStyleCombo.getValue();
+currentTimeFormat =DateFormat.getTimeInstancetimeStyle, currentLocalel;	currentTimeFormat = DateFormat.getTimeInstance(timeStyle, currentLocale);
+String t = crrntTimeFormat.formatcurrentTime;	String t = currentTimeFormat.format(currentTime);
+timeText.setTextt;	timeText.setText(t);
+1	}
+private Localef locales;	private Locale[] locales;
+private Dae currentDat	private Date currentDate;
+private Date currentTime;	private Date currentTime;
+pivate DateFormatcurrentDateFormat;	private DateFormat currentDateFormat;
+private DateFormat currentTimeormat	private DateFormat currentTimeFormat;
+private JComboBo localeCombo = new JComboBox;;	private JComboBox localeCombo = new JComboBox();
+private EnumCombo dateStyleCombo =new EnumomboDateFormat.class,, new Strngf  "efalt",	private EnumCombo dateStyleCombo = new EnumCombo(DateFormat.class, new String[] { "Default",
+"Full"" "Long,, "Medium", "Short" };	"Full", "Long", "Medium", "Short" });
+private EnumCombo timeStyleCombo= new EnumComboDateFormat.class, new Stringl { "Default",	private EnumCombo timeStyleCombo = new EnumCombo(DateFormat.class, new String[] { "Default",
+"Ful", "Long",Medium", "Short" };	"Full", "Long", "Medium", "Short" });
+private JButton dateParseButton = new JButon"Parse  date";;	private JButton dateParseButton = new JButton("Parse date");
+privat JButton timeParseButton= new JButton"Parse time;;	private JButton timeParseButton = new JButton("Parse time");
+private JTextField dteText = new JTextField30;	private JTextField dateText = new JTextField(30);
+privateJTextField timeText = new JTextField30l;	private JTextField timeText = new JTextField(30);
+private JCheckBox lenientCheckbox = new  JCheckBox"Parse lenient",truef;	private JCheckBox lenientCheckbox = new JCheckBox("Parse lenient", true);
+}	}

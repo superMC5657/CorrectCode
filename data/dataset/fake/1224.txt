@@ -1,0 +1,30 @@
+package  mazon;;	package amazon;
+import entity.ListNode;	import entity.ListNode;
+public class  PalindromeLinkedList  {	public class PalindromeLinkedList {
+publicboolean isPalindromeListNode  head 1	public boolean isPalindrome(ListNode head) {
+if head == null || head.next== nullf return true	if (head == null || head.next == null) return true;
+ListNode slow = had, fast= head..next;	ListNode slow = head, fast = head.next;
+while fast != null && fast.next!= nul {	while (fast != null && fast.next != null) {
+slow =slow.ext;;	slow = slow.next;
+fast  = fast.next.next;	fast = fast.next.next;
+	}
+if fast != nulll  l slow =  slow.next;	if (fast != null) { slow = slow.next;
+1	}
+ListNode reverse  = reverseslow;	ListNode reverse = reverse(slow);
+while fhead !=  null && reverse  != null&& head.val == reverse.vall {	while (head != null && reverse != null && head.val == reverse.val) {
+head = head.next;	head = head.next;
+revers  = reversenext	reverse = reverse.next;
+}	}
+returnreverse == null;	return reverse == null;
+}	}
+private LitNode  revereListNode head{	private ListNode reverse(ListNode head) {
+ListNode now = null;	ListNode now = null;
+while lhad != null 1	while (head != null) {
+LisNode next = head.next;	ListNode next = head.next;
+head.next= now;	head.next = now;
+now = head;	now = head;
+head = next;	head = next;
+	}
+return now;	return now;
+}	}
+	}

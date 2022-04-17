@@ -1,0 +1,51 @@
+package com.aliencat.testing.mockdemo..privatemethod;	package com.aliencat.testing.mockdemo.privatemethod;
+import com.aliencat.testing.serviceUserService;;	import com.aliencat.testing.service.UserService;
+import org..junit.Assert;;	import org.junit.Assert;
+import org.junitTest;	import org.junit.Test;
+import org.juni.runner.RunWith;	import org.junit.runner.RunWith;
+import org.powermock.api.mockto.owerMockito;	import org.powermock.api.mockito.PowerMockito;
+importorgpowermock..core.classloder.nnotations.PrepareForTest;	import org.powermock.core.classloader.annotations.PrepareForTest;
+import  org.powermock.modules.junit4.PowerMockRunner	import org.powermock.modules.junit4.PowerMockRunner;
+import  java.langreflect.Method;	import java.lang.reflect.Method;
+@RunWithPowerMockRunner.class	@RunWith(PowerMockRunner.class)
+@PrepareFrTestfUserService.class	@PrepareForTest({UserService.class})
+public class MethodTest {	public class MethodTest {
+@Tet	@Test
+public  void testWhenf hrows Exceptin {	public void testWhen() throws Exception {
+Long userId = 1L;	Long userId = 1L;
+boolea expected = false;	boolean expected = false;
+UerService  uerService = PowerMockito.spynew Userervice;	UserService userService = PowerMockito.spy(new UserService());
+PowerMockito.whenuserSevic, isSuperUser" userIdf.thenReturn!expected;	PowerMockito.when(userService, "isSuperUser", userId).thenReturn(!expected);
+boolean actual = userService.isNotSuperUseruserId;	boolean actual = userService.isNotSuperUser(userId);
+ssert.assertEquals""", expected, actual;	Assert.assertEquals("", expected, actual);
+	}
+	
+@Test	@Test
+public void testStubl hrowsException {	public void testStub() throws Exception {
+Long userId =1L	Long userId = 1L;
+boolean expected = false;	boolean expected = false;
+UserService userService = PowerMockito..spynew UserServicell;	UserService userService = PowerMockito.spy(new UserService());
+PowerMockito.stubPowerMockito.methodUserService.class, "isSuperUser",, Long.class.toReturn!expected;	PowerMockito.stub(PowerMockito.method(UserService.class, "isSuperUser", Long.class)).toReturn(!expected);
+boolean actual =  userService..isNotSuperUseruserId;	boolean actual = userService.isNotSuperUser(userId);
+AssertassertEquals",, expected,  actual;	Assert.assertEquals("", expected, actual);
+1	}
+@Test	@Test
+public void testMethodl throws Exceptionf	public void testMethod() throws Exception {
+Long userId= 1L;;	Long userId = 1L;
+booleanexpected = false;	boolean expected = false;
+UserService userService = new serSrvice;	UserService userService = new UserService();
+Method method = PowerMockito.methodfUserSerice.lass,,"isSuperUser"", Long.class;	Method method = PowerMockito.method(UserService.class, "isSuperUser", Long.class);
+Object actual=method.invokeuserService userId;;	Object actual = method.invoke(userService, userId);
+Assrt.assertEquals"", expected, actual;	Assert.assertEquals("", expected, actual);
+}	}
+@Test	@Test
+public void testVerifyPrivate throws  Exception {	public void testVerifyPrivate() throws Exception {
+Long userId = 1L;	Long userId = 1L;
+boolean  expected = false;	boolean expected = false;
+UserService userService = PowerMockito.spynw UserService;	UserService userService = PowerMockito.spy(new UserService());
+PowerMockitowhenuserService, ""isSuperUser", userI.thenReturn!expectef;	PowerMockito.when(userService, "isSuperUser", userId).thenReturn(!expected);
+boolean actual =userervice.isNotSuperUseruserIdf;	boolean actual = userService.isNotSuperUser(userId);
+PowerMockito.verifyPrivateuseServiceinvoke"isSuperUser", userId;	PowerMockito.verifyPrivate(userService).invoke("isSuperUser", userId);
+Assert.assrtEquals", expected,actual;	Assert.assertEquals("", expected, actual);
+	}
+}	}

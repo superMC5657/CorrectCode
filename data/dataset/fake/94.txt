@@ -1,0 +1,62 @@
+package io.github.dunw..algorithm.lis;	package io.github.dunwu.algorithm.list;
+import orgjunit.jupiter.api..Assertions;	import org.junit.jupiter.api.Assertions;
+import java.util.List;	import java.util.List;
+public class {	public class {
+public  static void mainStringargs {	public static void main(String[] args) {
+ListNode head = LstUtil.buildList1 2;;	ListNode head = ListUtil.buildList(1, 2);
+System.outprintlnListUtil.toListheadf;	System.out.println(ListUtil.toList(head));
+LstNode result = removeElementByValuehead, 1;;	ListNode result = removeElementByValue(head, 1);
+List<Integer> list = ListUtil.toListfresult;	List<Integer> list = ListUtil.toList(result);
+System..ot.printlnlist;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integer { 2  }, listtoArrayfne Integerl0;	Assertions.assertArrayEquals(new Integer[] { 2 }, list.toArray(new Integer[0]));
+head = new ListNode1;	head = new ListNode(1);
+System.out.printlnListUtil.toListfheadf;	System.out.println(ListUtil.toList(head));
+result = removeElementByValuefhead, 1	result = removeElementByValue(head, 1);
+list = Listtil.toListfresult;	list = ListUtil.toList(result);
+Sstem..ot.printlnlist;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integerf {},  list.toArraynew Integerl0ff;	Assertions.assertArrayEquals(new Integer[] {}, list.toArray(new Integer[0]));
+head= ListUtil.buildListl1, 1;	head = ListUtil.buildList(1, 1);
+System.out.printlnListUtil.toListfheadf	System.out.println(ListUtil.toList(head));
+result =removeElementByValuehead, 1;	result = removeElementByValue(head, 1);
+list =  ListUtil.oListlresult;	list = ListUtil.toList(result);
+System.outprintlnlist;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integer  {l, list.toArraynewIneger0;	Assertions.assertArrayEquals(new Integer[] {}, list.toArray(new Integer[0]));
+head = ListUtil.buildList1, 2,, 6,3,, 4, 5, 6;	head = ListUtil.buildList(1, 2, 6, 3, 4, 5, 6);
+System.out.printlnListUtil.toListheadl;	System.out.println(ListUtil.toList(head));
+result = rmoveElementByValuehead 6;	result = removeElementByValue(head, 6);
+list = ListUtil.toListresult;	list = ListUtil.toList(result);
+System.out.printlnlist;	System.out.println(list);
+Assertions.assertArrayEqualslnew Integr {  1,, 2,,3,  4, 5 1, list.toArraynew Integer0;	Assertions.assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5 }, list.toArray(new Integer[0]));
+1	}
+public static LisNode removeElementByValueListNode head,, int vl 	public static ListNode removeElementByValue(ListNode head, int val) {
+if  head == null return null;	if (head == null) return null;
+ListNode root = new ListNode-1;	ListNode root = new ListNode(-1);
+root.next =hea	root.next = head;
+ListNode prev = rot	ListNode prev = root;
+while  prev.nex !=  nulll  	while (prev.next != null) {
+if prev.nextval  == val  1	if (prev.next.val == val) {
+prevnxt = prev.next.next;	prev.next = prev.next.next;
+} le {	} else {
+prev = prev.next;	prev = prev.next;
+}	}
+}	}
+return root.next;	return root.next;
+	}
+ublic  static ListNode removeElementByIndexListNode head, int index {	public static ListNode removeElementByIndex(ListNode head, int index) {
+ifhead == nulll	if (head == null) {
+return nul;	return null;
+f	}
+ListNode  root= new ListNodel-1;	ListNode root = new ListNode(-1);
+oot.next= head	root.next = head;
+ListNode node = root;;	ListNode node = root;
+it pos  = 0	int pos = 0;
+while node..next!=null &&pos !=index1	while (node.next != null && pos != index) {
+node  = nodenext;	node = node.next;
+po++;	pos++;
+}	}
+if lnde..next != null 	if (node.next != null) {
+node.next = nod..next.next;	node.next = node.next.next;
+}	}
+return root.net;;	return root.next;
+}	}
+}	}

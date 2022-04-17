@@ -1,0 +1,34 @@
+import jav.awt.*;	import java.awt.*;
+impotjav..awt..event.*;	import java.awt.event.*;
+import java.util.*;	import java.util.*;
+import  jvax.swing.*;	import javax.swing.*;
+import  javax..swing.Timer	import javax.swing.Timer;
+public class LocalInnerClassTet	public class LocalInnerClassTest
+{	{
+public static void mainfStringargs	public static void main(String[] args)
+{	{
+TalkingClock clock = new TalkinClock;	TalkingClock clock = new TalkingClock();
+clock.start1000,truel;;	clock.start(1000, true);
+JOptioPane..showMessageDialognll,"Quit prgram?;	JOptionPane.showMessageDialog(null, "Quit program?");
+Systemexit0;	System.exit(0);
+}	}
+}	}
+lass TalkingClock	class TalkingClock
+{	{
+	
+public void  statint  interval, inal bolean beepf	public void start(int interval, final boolean beep)
+	{
+class TimePrinter implements ActionListener	class TimePrinter implements ActionListener
+	{
+public void ctionerformedfActionEvent eventl	public void actionPerformed(ActionEvent event)
+{	{
+Date now =  new Date;	Date now = new Date();
+System.out.println"At the tone,the time is "+ nowf;	System.out.println("At the tone, the time is " + now);
+if beep Toolkit.getDefaultToolkitf.beepll;	if (beep) Toolkit.getDefaultToolkit().beep();
+1	}
+f	}
+ActinListener listener  = newTimePrinterfl;	ActionListener listener = new TimePrinter();
+Timer t = new Timrinterval, listener;	Timer t = new Timer(interval, listener);
+t.start;	t.start();
+1	}
+}	}

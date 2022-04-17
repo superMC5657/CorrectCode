@@ -1,0 +1,9 @@
+package compattern.proxy.entity;	package com.pattern.proxy.entity;
+publicclass Person {	public class Person {
+public void eatf {	public void eat() {
+System.out.printf"";	System.out.printf("");
+}	}
+public void cl {	public void wc() {
+Systm.out.println"";	System.out.println("");
+	}
+}	}

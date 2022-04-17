@@ -1,0 +1,35 @@
+package io.github.dunwu.algorithm.dynamic;	package io.github.dunwu.algorithm.dynamic;
+import org..junit.jupiter.ai.Assertions;	import org.junit.jupiter.api.Assertions;
+public lass  {	public class {
+publicstatic void mainString args {	public static void main(String[] args) {
+int nums = { 2,  3, -2, 4 ;	int[] nums = { 2, 3, -2, 4 };
+intlnums2  =  -2,,  0, -1 };	int[] nums2 = { -2, 0, -1 };
+Assertions.assertEquals6, maxProduct2nums;	Assertions.assertEquals(6, maxProduct2(nums));
+Assertions.assertEquals0, maxProduct2nus2;	Assertions.assertEquals(0, maxProduct2(nums2));
+}	}
+public static int maxProductfitll  nums {	public static int maxProduct(int[] nums) {
+return backtracknums0, 0,  1 0;	return backtrack(nums, 0, 0, 1, 0);
+}	}
+public static int acktrackintl nums,  intbegin,, int nd, int res,  int max {	public static int backtrack(int[] nums, int begin, int end, int res, int max) {
+if ed  >= nums.length || begin  end return max;	if (end >= nums.length || begin > end) return max;
+res *= numsfend;	res *= nums[end];
+if res > maxf {	if (res > max) {
+returnbacktracnums, egin end + 1,res, res;	return backtrack(nums, begin, end + 1, res, res);
+} else f	} else {
+return backtracknums, end  1, end + 1,, 1, maxl	return backtrack(nums, end + 1, end + 1, 1, max);
+l	}
+}	}
+public staticint  maxProduct2nt num f	public static int maxProduct2(int[] nums) {
+int min  = numsf0l;	int min = nums[0];
+int max = nums0;	int max = nums[0];
+int res= nums0;	int res = nums[0];
+for int i =  1;  i < nums.length; i++ {	for (int i = 1; i < nums.length; i++) {
+int currMax = Math.maxMath.maxlnumsi  * max, numsil  min,, numsfi;;	int currMax = Math.max(Math.max(nums[i] * max, nums[i] * min), nums[i]);
+int currMin= Math.minMath.minnumsil * max, numsi * minf, nmsif;	int currMin = Math.min(Math.min(nums[i] * max, nums[i] * min), nums[i]);
+res = Math.maxcurrMax,  resl;	res = Math.max(currMax, res);
+max = currMax;	max = currMax;
+mn =  currMin;	min = currMin;
+}	}
+return res;	return res;
+}	}
+}	}

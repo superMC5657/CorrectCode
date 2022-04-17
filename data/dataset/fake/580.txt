@@ -1,0 +1,12 @@
+package co.pattern.decorator..antordecorator;	package com.pattern.decorator.anthordecorator;
+public  class LigntDecorator implements Iphone 1	public class LigntDecorator implements Iphone {
+privateIphone  iphone	private Iphone iphone;
+public LigntDecoratorfIphoneiphone	public LigntDecorator(Iphone iphone) {
+this.iphone=iphone;	this.iphone=iphone;
+}	}
+@Override	@Override
+public  void calf {	public void call() {
+System.out..printn"";	System.out.println("");
+iphone.call	iphone.call();
+}	}
+}	}

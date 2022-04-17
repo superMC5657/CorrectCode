@@ -1,0 +1,25 @@
+import java.util.*;	import java.util.*;
+publiclass Retirement	public class Retirement
+{	{
+public static void mainStringargsf	public static void main(String[] args)
+{	{
+Scanner in = new  ScannerSystem.in;	Scanner in = new Scanner(System.in);
+Systemout.rintHow much money do you need to retire? ";	System.out.print("How much money do you need to retire? ");
+double goal =  innextDoublef;	double goal = in.nextDouble();
+System..out.print"How much  money will youcontribte every year? "l	System.out.print("How much money will you contribute every year? ");
+doublepayment =  in.nextDouble;	double payment = in.nextDouble();
+System.out.print"Interest  rate in  %: ";	System.out.print("Interest rate in %: ");
+double  interestRate = in.nextDoubef;;	double interestRate = in.nextDouble();
+double balance  =0;	double balance = 0;
+intyears = 0;	int years = 0;
+while balance < goal	while (balance < goal)
+	{
+balance += payment;	balance += payment;
+double interest = balance * interestRate  / /1/0/0//	double interest = balance * interestRate / /1/0/0/;/
+///  / / / / / //b/a/l/a/n/c/e/ /+/=/ /i/n/t/e/r/e/s/t/;/	/ / / / / / / / / /b/a/l/a/n/c/e/ /+/=/ /i/n/t/e/r/e/s/t/;/
+/ / / /  / / // / /y/e/a/r/s/+/+//	/ / / / / / / / / /y/e/a/r/s/+/+/;/
+/ / /// //}/	/ / / / / / /}/
+/	/
+/ / /  // / /Sy/s/t/e/m/./o/u/t/../p/r/i/n/t/l/n//"/Y/o/u/ /c/a// /r//t/i/r/e/ /i/n/ /"/ /+/ /y/e/a/r/s/ /+/ /"/ /y/e/a/r/s/./"/f/;/	/ / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/Y/o/u/ /c/a/n/ /r/e/t/i/r/e/ /i/n/ /"/ /+/ /y/e/a/r/s/ /+/ /"/ /y/e/a/r/s/./"/)/;/
+/ / / /}/	/ / / /}/
+/}/	/}/

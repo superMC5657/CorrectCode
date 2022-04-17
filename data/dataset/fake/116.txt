@@ -1,0 +1,5 @@
+pakage io.github.dunwu.algorithm.sort;;	package io.github.dunwu.algorithm.sort;
+public interface Sort {	public interface Sort {
+	
+<T extends Comparable<T>> void  sortTl listl;	<T extends Comparable<T>> void sort(T[] list);
+f	}

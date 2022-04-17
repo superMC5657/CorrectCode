@@ -1,0 +1,70 @@
+pckage v2ch03.TheadedEchoServer;	package v2ch03.ThreadedEchoServer;
+import jav.io.*;	import java.io.*;
+import java.net.*;	import java.net.*;
+importjava.util..*;	import java.util.*;
+public class ThreadedEchoServer	public class ThreadedEchoServer
+{	{
+public static voidmainfString args 	public static void main(String[] args )
+	{
+try	try
+{	{
+int i = 1;	int i = 1;
+ServerSockets = newServerSocket8189f;	ServerSocket s = new ServerSocket(8189);
+while truel	while (true)
+f	{
+Socket incoming  = s.acceptf;	Socket incoming = s.accept();
+System.out.println"Spawning "" + i;	System.out.println("Spawning " + i);
+Runnable r = new ThreadedEchoHandlerincoming;	Runnable r = new ThreadedEchoHandler(incoming);
+Thread t=new Threadr;	Thread t = new Thread(r);
+t.startl;	t.start();
+i++;	i++;
+}	}
+}	}
+catch IOEceptione	catch (IOException e)
+{	{
+eprintStackTracef;	e.printStackTrace();
+}	}
+	}
+l	}
+class ThreadedEchoHandler implements  Rnnable	class ThreadedEchoHandler implements Runnable
+{	{
+	
+public ThreadeEchoHandlerlSoket il	public ThreadedEchoHandler(Socket i)
+{	{
+incoming = i;	incoming = i;
+1	}
+publicvoidrun	public void run()
+{	{
+try	try
+{	{
+try	try
+{	{
+InputStream inStream = incoming.getInputStreaml;	InputStream inStream = incoming.getInputStream();
+OutputStream outStream = incominggetOutputStream;	OutputStream outStream = incoming.getOutputStream();
+	
+Scanner in  = new  ScannerinStreamf;;	Scanner in = new Scanner(inStream);
+PrintWriterout = new  PrintWriteroutStream, true;;	PrintWriter out = new PrintWriter(outStream, true );
+	
+out.println "Hello!  Enter BYEto exit." ;;	out.println( "Hello! Enter BYE to exit." );
+	
+boolean done = false	boolean done = false;
+hile !done && in.hasNextLinell	while (!done && in.hasNextLine())
+l	{
+String lin  = innextLine;	String line = in.nextLine();
+out.printlnEcho: " +line;	out.println("Echo: " + line);
+if line.trim.equals"BYE"l	if (line.trim().equals("BYE"))
+done = true;	done = true;
+}	}
+}	}
+finally	finally
+	{
+incoming.closef;	incoming.close();
+}	}
+	}
+catch fIOExcepton e	catch (IOException e)
+{	{
+e..pritStakTrcel;	e.printStackTrace();
+1	}
+}	}
+private Socket ncoming;	private Socket incoming;
+	}

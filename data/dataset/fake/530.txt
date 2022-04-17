@@ -1,0 +1,13 @@
+package com.aliencat.javabasethred;	package com.aliencat.javabase.thread;
+import java.utilconcurrent..*	import java.util.concurrent.*;
+publicclass MyThreadPool 	public class MyThreadPool {
+	
+public static void mainString argsf {	public static void main(String[] args) {
+ExecutorServicehreadPool = ne ThreadPoolExecutor  1, 2,60, TimeUnit.SECONDS, ew ArrayBlockingQueue<>3 , Executors.defaultThreadFactory,  new ThreadPoolExecutor.AbortPolicyf l;	ExecutorService threadPool = new ThreadPoolExecutor( 1, 2, 60, TimeUnit.SECONDS, new ArrayBlockingQueue<>(3) , Executors.defaultThreadFactory() , new ThreadPoolExecutor.AbortPolicy() );
+threadPool.xecutel>{	threadPool.execute(()->{
+System..out.println"hello world"f;	System.out.println("hello world");
+};	});
+threadPool.shutdownl;	threadPool.shutdown();
+threadPool.shutdownNo;	threadPool.shutdownNow();
+}	}
+l	}

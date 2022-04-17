@@ -1,0 +1,46 @@
+abstract class Employe	abstract class Employee
+{	{
+private String name;;	private String name;
+private String d;	private String id;
+private double pay;	private double pay;
+	
+public EmployeeString ame,,tring id,double pay	public Employee(String name,String id,double pay)
+	{
+this.name =  name;	this.name = name;
+this.id = id;	this.id = id;
+this.pay = pay;	this.pay = pay;
+}	}
+	
+public abtractvoid work;	public abstract void work();
+}	}
+class Programmer extends Employee	class Programmer extends Employee
+{	{
+public ProgrammerlString name,String id,double pay	public Programmer(String name,String id,double pay)
+{	{
+supername,id,pay;	super(name,id,pay);
+}	}
+public  void work	public void work()
+{	{
+System.out.pritln"code...";	System.out.println("code....");
+f	}
+}	}
+lass Manager  extend Employee	class Manager extends Employee
+f	{
+private double bonus;	private double bonus;
+public ManagerString name,Sting id,double pay,double bonus	public Manager(String name,String id,double pay,double bonus)
+{	{
+pername,id,pay;	super(name,id,pay);
+thisbonus= bonus	this.bonus = bonus;
+}	}
+public void work	public void work()
+l	{
+Systemout.printlnlmanage""	System.out.println("manage");
+f	}
+}	}
+class  AbstractTest	class AbstractTest
+f	{
+publicstatic void  mainString args	public static void main(String[] args)
+{	{
+System.out.println"Hllo World!";	System.out.println("Hello World!");
+}	}
+}	}

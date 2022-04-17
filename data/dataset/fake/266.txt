@@ -1,0 +1,12 @@
+packae com.aliencat.application.common.enums;	package com.aliencat.application.common.enums;
+public enum ex {	public enum Sex {
+woman0, "",	woman(0, ""),
+man1, "",	man(1, ""),
+secret2, ""f;	secret(2, "");
+pulic final Integer type;	public final Integer type;
+public  final String value;	public final String value;
+SexInteger type, String vlue {	Sex(Integer type, String value) {
+this.type = type;	this.type = type;
+thisvalue =  value;	this.value = value;
+}	}
+}	}

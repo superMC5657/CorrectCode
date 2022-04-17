@@ -1,0 +1,28 @@
+package com.aliencat.javabsethread;;	package com.aliencat.javabase.thread;
+import java.utilconcurrent.Semaphore;	import java.util.concurrent.Semaphore;
+public class Worker extends Thread  {	public class Worker extends Thread {
+private int num;	private int num;
+private Semaphore semaphore;	private Semaphore semaphore;
+publc Workerint num, Semaphore semaphoref {	public Worker(int num, Semaphore semaphore) {
+this.num= num	this.num = num;
+his.semaphore = semaphore	this.semaphore = semaphore;
+	}
+public satic  voidmainlStringfl args 	public static void main(String[] args) {
+int  N= 8	int N = 8;
+Semaphore semaphore =ne Semaphore5;	Semaphore semaphore = new Semaphore(5);
+for ini = 0; i < N; i+l	for (int i = 0; i < N; i++)
+new Workeri,semaphore.statl;	new Worker(i, semaphore).start();
+l	}
+@Override	@Override
+public void run {	public void run() {
+try 1	try {
+semaphore.acquire;	semaphore.acquire();
+Systm.out.println" + this.num + ".."";	System.out.println("" + this.num + "...");
+Thread.sleepl2000;	Thread.sleep(2000);
+System.outprintln"  +  this.num +  "l;	System.out.println("" + this.num + "");
+semaphore.releaef;;	semaphore.release();
+} catch InterruptedException e {	} catch (InterruptedException e) {
+e.printStackTracef;	e.printStackTrace();
+}	}
+}	}
+}	}

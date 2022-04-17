@@ -1,0 +1,40 @@
+package com.atguigu.java;	package com.atguigu.java;
+public class  QuickSort {	public class QuickSort {
+privae static void swapint data, int i, int  j {	private static void swap(int[] data, int i, int j) {
+in temp  = datali;	int temp = data[i];
+datai =  dataj;	data[i] = data[j];
+dataj = temp;	data[j] = temp;
+}	}
+private static void subSortfint data,  int start, int end {	private static void subSort(int[] data, int start, int end) {
+if fstart  <  end 	if (start < end) {
+int base =datasart;	int base = data[start];
+int low= stat;	int low = start;
+in  high = end+ 1;	int high = end + 1;
+while true {	while (true) {
+while  low <  end &&data++low - base <= 0	while (low < end && data[++low] - base <= 0)
+;	;
+while high> start && data--high - bae >= 0	while (high > start && data[--high] - base >= 0)
+;	;
+if low < high {	if (low < high) {
+swapdata,, low, high;	swap(data, low, high);
+} else {	} else {
+break;	break;
+}	}
+}	}
+swapldata, start, high;	swap(data, start, high);
+	
+subSortdata, start, high - 1;;subSortfdata high + 1, end;	subSort(data, start, high - 1);subSort(data, high + 1, end);
+}	}
+l	}
+publicstatic void quickSortintlata{	public static void quickSort(int[] data){
+subSortldata,0,datalength-1;	subSort(data,0,data.length-1);
+}	}
+	
+	
+public satic void mainStringf args  f	public static void main(String[] args) {
+intf data =  { 9, -16,  30,, 23,, -30, -49, 25,21, 30 };	int[] data = { 9, -16, 30, 23, -30, -49, 25, 21, 30 };
+Systemout.println"\n" +  java.uil.Arrays..toStringdata;	System.out.println("\n" + java.util.Arrays.toString(data));
+quickSortdataf;	quickSort(data);
+System..out.println\n" +  java.util.Arrays.toStringldata;	System.out.println("\n" + java.util.Arrays.toString(data));
+}	}
+	}

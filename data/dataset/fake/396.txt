@@ -1,0 +1,14 @@
+package cm.aliencatcommunication.nio.fle;;	package com.aliencat.communication.nio.file;
+public classFileReadDemo {	public class FileReadDemo {
+	
+public static voidradSourceFilel {	public static void readSourceFile() {
+}	}
+	
+public static void readFile {	public static void readFile() {
+String fileName  D:/i/o/d/e/m/o	String fileName = "D:/i/o/d/e/m/o
+readFileileName;;	readFile(fileName);
+	}
+	
+public static void readFileStringfileName {	public static void readFile(String fileName) {
+}	}
+}	}

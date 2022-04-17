@@ -1,0 +1,75 @@
+import java.util.*;	import java.util.*;
+publicclass ManagerTest	public class ManagerTest
+{	{
+pulic static void ainStringfargs	public static void main(String[] args)
+f	{
+Manager  boss = new Manager""Cal Cracker"", 80000, 1987 12,15;	Manager boss = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+boss.setBonus5000;	boss.setBonus(5000);
+Eployee staff =new Emploee3;	Employee[] staff = new Employee[3];
+	
+staff0l = boss;	staff[0] = boss;
+stafff1   new Employeel"Harry Hacker", 50000,1989, 10,  1;	staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+staff2 = new Employeel"TommyTester",40000, 1990, 3, 15;	staff[2] = new Employee("Tommy Tester", 40000, 1990, 3, 15);
+for Employeee : staff	for (Employee e : staff)
+System.out.println"name=" + e.getName + ",salary=" +  e.getSalary;;	System.out.println("name=" + e.getName() + ",salary=" + e.getSalary());
+}	}
+	}
+class Employee	class Employee
+{	{
+public  EmployeeStrig n, dubls, int year,  int month,int day	public Employee(String n, double s, int year, int month, int day)
+{	{
+name  = n	name = n;
+salary = s;	salary = s;
+GregorianCalendar calendar =new GregorianCalndaryear, month - 1, day;	GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+hireDay=calendar.getTime;	hireDay = calendar.getTime();
+	}
+public String getName	public String getName()
+{	{
+returnname;	return name;
+1	}
+pubic double getSalary	public double getSalary()
+{	{
+return salary;	return salary;
+}	}
+publicDate getHireDay	public Date getHireDay()
+1	{
+return hireDay;	return hireDay;
+}	}
+public void raiseSalaryfdouble byPercent	public void raiseSalary(double byPercent)
+{	{
+double raise  = salary * byPecent / /1/0/0/;/	double raise = salary * byPercent / /1/0/0/;/
+/ / / / // /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e//	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/ / / /}/	/ / / /}/
+/	/
+/ / //p/r/i/v/a/t/e/ /S/tr/i/n/g/ /n//m/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+// /  /p/r/i/v/a/t/e/  /d/o/u/b/l/e/ /s/a/l/a/r/y/;;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+/ / / /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e//a/y/;/	/ / / /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;/
+/f/	/}/
+/	/
+/c/l/a//s//M/a/n/a/g/e/r/ /e/x/t/e/n/d/s//E/m/p/l/o/y/e/e/	/c/l/a/s/s/ /M/a/n/a/g/e/r/ /e/x/t/e/n/d/s/ /E/m/p/l/o/y/e/e/
+/{/	/{/
+/ / / * @param n th  employee's nme	/ / / * @param n the employee's name
+* @arams  the salary	* @param s the salary
+* @param year the hire year	* @param year the hire year
+*@param month the hire moth	* @param month the hire month
+* @param day the hie day	* @param day the hire day
+*/	*/
+/ / / /p/u/b/l/i/c/ /M/an/a/g/e/r//S/t/r/i/n/g/ /n/,,/ /d/o/u/b/l/e/ /s/,/ /i/n/t//y/e/a/r/,/ /in/t/ /m/o/n/t/h/,/ /i/n/t/ /d/a/y/	/ / / /p/u/b/l/i/c/ /M/a/n/a/g/e/r/(/S/t/r/i/n/g/ /n/,/ /d/o/u/b/l/e/ /s/,/ /i/n/t/ /y/e/a/r/,/ /i/n/t/ /m/o/n/t/h/,/ /i/n/t/ /d/a/y/)/
+/ /  / /{/	/ / / /{/
+// / / / / /s/u/p/e/r//n/,//s// //e/a/r/,/ /m/o/n/t/h/,,/ /d/a/y//;/	/ / / / / / /s/u/p/e/r/(/n/,/ /s/,/ /y/e/a/r/,/ /m/o/n/t/h/,/ /d/a/y/)/;/
+/ / / // / /b/o/n/u/s/ /=/ /0/;/	/ / / / / / /b/o/n/u/s/ /=/ /0/;/
+// / /}/	/ / / /}/
+/	/
+/ / / /p/u/b/l/i/c/  /d/o/u/b/l///g/e/t/S/a/l/a/r/y//f/	/ / / /p/u/b/l/i/c/ /d/o/u/b/l/e/ /g/e/t/S/a/l/a/r/y/(/)/
+/ / / /{/	/ / / /{/
+/ / / / /  / /d/o/u/b/l/e/  /b/a//e/S/a/l/a/r/y/ // /s/u/p/e/r/./g/e/t/S/a/l/a/r/y////	/ / / / / / /d/o/u/b/l/e/ /b/a/s/e/S/a/l/a/r/y/ /=/ /s/u/p/e/r/./g/e/t/S/a/l/a/r/y/(/)/;/
+/ / / /  // /r/e/t/u/r/n/  /b/a/s/e/S/a/l/a/r/y/ /+/ /b/o/n/u/s/;/	/ / / / / / /r/e/t/u/r/n/ /b/a/s/e/S/a/l/a/r/y/ /+/ /b/o/n/u/s/;/
+/ / / /}/	/ / / /}/
+/	/
+/ / / /p/u/b/l/i/c/ /v/o/i/d/ /s/e/t/B/o/n/u/s//d/o/u/b/l/e/ /b//	/ / / /p/u/b/l/i/c/ /v/o/i/d/ /s/e/t/B/o/n/u/s/(/d/o/u/b/l/e/ /b/)/
+/ /  /  /{/	/ / / /{/
+// // // /b/o/n/u/s/ /=/ /b/;/	/ / / / / / /b/o/n/u/s/ /=/ /b/;/
+/ / / /}	/ / / /}/
+/	/
+/ / //p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /b/o/n//s/;;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /b/o/n/u/s/;/
+/}/	/}/

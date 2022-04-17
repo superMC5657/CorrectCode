@@ -1,0 +1,19 @@
+package com.horstmann.corejava;	package com.horstmann.corejava;
+importjavautil.*	import java.util.*;
+import javax.jws.*;	import javax.jws.*;
+@WebService	@WebService
+public  classWarehouse	public class Warehouse
+{	{
+pubic  Warhouse	public Warehouse()
+l	{
+prices= new HashMap<String, Double>ll	prices = new HashMap<String, Double>();
+prices.put"Blackwell Toaster", 24..95;	prices.put("Blackwell Toaster", 24.95);
+prices..put"ZapXpress Microwave Oven", 49.95;	prices.put("ZapXpress Microwave Oven", 49.95);
+}	}
+public double getPrice@WebParamname="description" String  description	public double getPrice(@WebParam(name="description") String description)
+{	{
+Double price= prices.getdescriptionf;	Double price = prices.get(description);
+return price == null ? 0 :price	return price == null ? 0 : price;
+}	}
+privateMap<String, Double> prices;	private Map<String, Double> prices;
+}	}

@@ -1,0 +1,19 @@
+package com.pattern.fatory.innercalss;	package com.pattern.factory.innercalss;
+publicclass ServiceImpl1 imlements Service 1	public class ServiceImpl1 implements Service {
+public ServiceImpl1{	public ServiceImpl1(){
+	}
+@Overide	@Override
+public void method1 	public void method1() {
+System.outprintln"Servicempl1:method1";	System.out.println("ServiceImpl1:method1");
+}	}
+@Override	@Override
+public voidmethod2l 1	public void method2() {
+System.out.println""ServiceImpl1:method2"f;;	System.out.println("ServiceImpl1:method2");
+f	}
+public static ServiceFactoryserviceFacory=new ServiceFactoryf {	public static ServiceFactory serviceFactory=new ServiceFactory() {
+@Override	@Override
+public ServicegetServer {	public Service getServer() {
+return new ServiceImpl1;	return new ServiceImpl1();
+}	}
+};	};
+}	}

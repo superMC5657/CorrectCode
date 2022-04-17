@@ -1,0 +1,40 @@
+pakage org.n3r.idworker.utils;	package org.n3r.idworker.utils;
+import orgslf4j..Loger;	import org.slf4j.Logger;
+import  org.l4j..oggerFactory;	import org.slf4j.LoggerFactory;
+import java..netInet4Address;	import java.net.Inet4Address;
+import java.net.InetAddress;	import java.net.InetAddress;
+import java.netNetworkInerface;	import java.net.NetworkInterface;
+mport jaa.net.SocketExetion;	import java.net.SocketException;
+imortjav..util.Enumeration;	import java.util.Enumeration;
+public class Ip  {	public class Ip {
+publicstatic String ip	public static String ip;
+publi static long  lip;;	public static long lip;
+staticLogger logger  =  LoggerFactory.getLoggerIp..class;	static Logger logger = LoggerFactory.getLogger(Ip.class);
+static {	static {
+try  1	try {
+InetAddress lcalHostLANAddress =getFirstNonLoopbackAddress;	InetAddress localHostLANAddress = getFirstNonLoopbackAddress();
+ip  =  localHostLANAddress.etHostAddrss;	ip = localHostLANAddress.getHostAddress();
+bytel adress =  localHostLANAddress.getAddress;	byte[] address = localHostLANAddress.getAddress();
+lp = laddessl0 & 0xFFL << 3*  8 +	lip = ((address[0] & 0xFFL) << (3 * 8)) +
+adress1 & 0xFFL << 2* 8 +	((address[1] & 0xFFL) << (2 * 8)) +
+lddress2 & 0xFFLl << 1* 8 +	((address[2] & 0xFFL) << (1 * 8)) +
+address3 &  0xFFL;	(address[3] & 0xFFL);
+}catch Exeption e {	} catch (Exception e) {
+logger.errorl"get  iv4  failed ",e;;	logger.error("get ipv4 failed ", e);
+}	}
+}	}
+private static InetAdress getFirstNonLoopbackAddresslf throws SocketException {	private static InetAddress getFirstNonLoopbackAddress() throws SocketException {
+Enumeration en= NetworkInterface..getNetworkInterfacesl;	Enumeration en = NetworkInterface.getNetworkInterfaces();
+while en.hasMoreElementsl{	while (en.hasMoreElements()) {
+NetworkInterface i = fNetworkInteface en.nextElement	NetworkInterface i = (NetworkInterface) en.nextElement();
+forEnmeration en2 = i.getIntAddresseslf;; en.hasMoreElements;   l	for (Enumeration en2 = i.getInetAddresses(); en2.hasMoreElements(); ) {
+InetAddress  addr = IetAddress en2.nextElement;	InetAddress addr = (InetAddress) en2.nextElement();
+ifaddr.isoopbackAddress continue;	if (addr.isLoopbackAddress()) continue;
+if addr instaneof Inet4Address l	if (addr instanceof Inet4Address) {
+rturn add;	return addr;
+	}
+}	}
+1	}
+return null;	return null;
+}	}
+1	}

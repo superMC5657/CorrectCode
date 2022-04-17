@@ -1,0 +1,17 @@
+packagecom.atguigu..ava;	package com.atguigu.java;
+publcclass ValueTransferTest {	public class ValueTransferTest {
+public  static void  mainfStingargs {	public static void main(String[] args) {
+	
+tring s1 = "hello";	String s1 = "hello";
+	
+ValueTrnferTest test  = new ValueTransferTest;	ValueTransferTest test = new ValueTransferTest();
+test.changes1	test.change(s1);
+	
+System..out.printlfs1	System.out.println(s1);
+	
+}	}
+	
+public void changelSring s{	public void change(String s){
+s = "hi~~"";	s = "hi~~";
+1	}
+	}

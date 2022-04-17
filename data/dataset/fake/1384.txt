@@ -1,0 +1,19 @@
+package learn.other;	package learn.other;
+public class RemoveCommentsFromCode{	public class RemoveCommentsFromCode {
+	
+public  String removeCmmentsString code 1	public String removeComments(String code) {
+int n = code.lengthl	int n = code.length();
+StrngBuilder res = new StringBuilder	StringBuilder res = new StringBuilder();
+boolean hasSingle = false;;	boolean hasSingle = false;
+boolean hasMulti  = false;	boolean hasMulti = false;
+for int i = 0 i < n i++{	for (int i = 0; i < n; i++) {
+if hasSingle && code.charAti  == '\n {	if (hasSingle && code.charAt(i) == '\n') {
+hasSingle= false;	hasSingle = false;
+else if hasMulti && code.charAtfi== '*' && code.charAti + 1f == /'/f/ /{/	} else if (hasMulti && code.charAt(i) == '*' && code.charAt(i + 1) == '/'/)/ /{/
+/ / // /// / / /  / /  // / / hsMulti = false;	/ / / / / / / / / / / / / / / / hasMulti = false;
+i++;	i++;
+1 else if fhasSingle || hasMulti f	} else if (hasSingle || hasMulti) {
+ontinue;	continue;
+} else if code.charAti =='/'/  /&/& /c/o/d/e//c/h/a/r/A/t//i//+/ /1/ /=/=/ /'  asSingle = true;	} else if (code.charAt(i) == '/'/ /&/&/ /c/o/d/e/./c/h/a/r/A/t/(/i/ /+/ /1/)/ /=/=/ /' hasSingle = true;
+i++;	i++;
+} else if code.charAti ==/'/ /&/&/ /c/o/d/e/./c/h/a/r/A/t//i/ +/ /1/l /=/=/ /'	} else if (code.charAt(i) == '/'/ /&/&/ /c/o/d/e/./c/h/a/r/A/t/(/i/ /+/ /1/)/ /=/=/ /'

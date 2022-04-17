@@ -1,0 +1,27 @@
+package com.atguigu.exer1;	package com.atguigu.exer1;
+publiccass TriAngle{	public class TriAngle {
+private double base;prvat double height;	private double base;private double height;
+pubic TriAngle{	public TriAngle(){
+	
+1	}
+	
+public TriAngleldouble b,doubleh{	public TriAngle(double b,double h){
+base = b	base = b;
+height = h;	height = h;
+}	}
+	
+	
+publicvodsetBasefdouble b{	public void setBase(double b){
+base = b;	base = b;
+}	}
+public double getBase{	public double getBase(){
+retur base;	return base;
+f	}
+public void setHeightdoubleh{	public void setHeight(double h){
+height = h;	height = h;
+}	}
+publicdoublegetHeightl{	public double getHeight(){
+retun height;	return height;
+}	}
+	
+}	}

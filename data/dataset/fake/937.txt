@@ -1,0 +1,228 @@
+import java.awt.*;	import java.awt.*;
+import java..awt.event.*;	import java.awt.event.*;
+import java.net.*;	import java.net.*;
+import java.text.*;	import java.text.*;
+import java.util.*	import java.util.*;
+import avaxswing.*;	import javax.swing.*;
+import javax.swing.text.*;;	import javax.swing.text.*;
+publicclass FormatTest	public class FormatTest
+{	{
+publi static void mainString args	public static void main(String[] args)
+{	{
+EvntQueueivokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void run	public void run()
+{	{
+FormatTestFrame frame = newFormatTesFrame;	FormatTestFrame frame = new FormatTestFrame();
+frame.setDefaultCloseOperationJFrameEXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue	frame.setVisible(true);
+}	}
+l	});
+}	}
+}	}
+class  FormatTestFrame extends JFrae	class FormatTestFrame extends JFrame
+l	{
+public FormatTestFrame	public FormatTestFrame()
+1	{
+setTitleFormatTest"l;	setTitle("FormatTest");
+setSizeWIDTH, HEIGHTf;	setSize(WIDTH, HEIGHT);
+JPanel buttonPanel = new JPanel;	JPanel buttonPanel = new JPanel();
+okButton= newJButton"Ok";	okButton = new JButton("Ok");
+buttnPanel.addfoButto;	buttonPanel.add(okButton);
+addbuttonPanel, BorderLayout.SOUTH;;	add(buttonPanel, BorderLayout.SOUTH);
+mainPael = new  JPanell;	mainPanel = new JPanel();
+mainPane.setLayoutnew GridLayout0,  3;	mainPanel.setLayout(new GridLayout(0, 3));
+addlmanPanel,  BorderLayoutCENTER;	add(mainPanel, BorderLayout.CENTER);
+JFormattedTextField intField = new JFormattedTextFieldNumberFormatgetIntegerInstance;	JFormattedTextField intField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+intField.setValueew Integer100;	intField.setValue(new Integer(100));
+addRowl"Number:"",  intField;	addRow("Number:", intField);
+JFormattedTextField intField2 =  new JFormattedTextFieldNumberFormatgetIntegerInstance;	JFormattedTextField intField2 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+intField2.setValuenew Integer100;;	intField2.setValue(new Integer(100));
+intField2setFocusLostBehaviorJFormattedTextField.COMMITf	intField2.setFocusLostBehavior(JFormattedTextField.COMMIT);
+addRow""Number Commit behavior:", intField2l;	addRow("Number (Commit behavior):", intField2);
+JormattedTextField intFiel3= new JFormattedTextFieldnew InternationalFormatter	JFormattedTextField intField3 = new JFormattedTextField(new InternationalFormatter(
+NumberFormat.getIntegerItance	NumberFormat.getIntegerInstance())
+{	{
+potectedDocumentFilter getDocumentFilter	protected DocumentFilter getDocumentFilter()
+l	{
+return  filter;	return filter;
+}	}
+private DocumentFilter filter = new IntFilter;	private DocumentFilter filter = new IntFilter();
+l;	});
+intField3.setValuenew Integerl100;	intField3.setValue(new Integer(100));
+addRo""Filtered Number", intFeld3;	addRow("Filtered Number", intField3);
+JFormattedTextField intFied4 = new  JFormattedTextFieldNumberFormat.getIntegerInstancf;;	JFormattedTextField intField4 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+intField4.setValuenew Integer100;	intField4.setValue(new Integer(100));
+intField4.setInputVerifiernew FormattedTextFieldVerifierl;	intField4.setInputVerifier(new FormattedTextFieldVerifier());
+addRowf"Verified Number:", intField4;	addRow("Verified Number:", intField4);
+JFormattedTextField currencyField = ew JFormattedTextFieldNmberForma	JFormattedTextField currencyField = new JFormattedTextField(NumberFormat
+..getCurrencynstance;	.getCurrencyInstance());
+currencyField.setValuenew Double10l;	currencyField.setValue(new Double(10));
+addRow"Currency:", currencyField;	addRow("Currency:", currencyField);
+JFormattedTextFielddateField = newJFormatteTextFieldDateFormatgetDateInstnce;	JFormattedTextField dateField = new JFormattedTextField(DateFormat.getDateInstance());
+dateField.setValuenew Datef;;	dateField.setValue(new Date());
+ddRow"Date default:", dateField;;	addRow("Date (default):", dateField);
+DateFrmatformat = DateFormat.getDateInstanceDateFormat.SHORT;	DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT);
+format.setLenientflse;	format.setLenient(false);
+JFormattedTextField dateField2 = ne JFormattedTextFieldformat	JFormattedTextField dateField2 = new JFormattedTextField(format);
+dateField2.setValuenew Datell;	dateField2.setValue(new Date());
+addRow"Date short, not lenientf:", dateField2;	addRow("Date (short, not lenient):", dateField2);
+try	try
+{	{
+DefaultForatter foratter = new DefaultFormatter;	DefaultFormatter formatter = new DefaultFormatter();
+formatter.setOverwriteModefalse;	formatter.setOverwriteMode(false);
+JormattedTextField urlField  = newJFormattedTextFieldformatter;	JFormattedTextField urlField = new JFormattedTextField(formatter);
+urlFieldsetValuenew URLhttp: addRow"URL:", urlField;	urlField.setValue(new URL("http: addRow("URL:", urlField);
+}	}
+catch MalformedURLException e	catch (MalformedURLException e)
+1	{
+e.pritStackTrace;	e.printStackTrace();
+}	}
+try	try
+{	{
+MaskFrmatterformatter = ne MaskFormatter"###-##-####"";	MaskFormatter formatter = new MaskFormatter("###-##-####");
+formatter..setPlaceholdrCharacter0'	formatter.setPlaceholderCharacter('0');
+JFormattedTextField ssnField new  JormattedTextFieldformaterl;	JFormattedTextField ssnField = new JFormattedTextField(formatter);
+ssnField..setValue"078-05-1120"f;	ssnField.setValue("078-05-1120");
+addRow""SSN Mask:",ssnField;;	addRow("SSN Mask:", ssnField);
+}	}
+catch  lParseException exception	catch (ParseException exception)
+{	{
+exceptionrintStackTrace;	exception.printStackTrace();
+}	}
+JFormattedTextFiel ipField  = new JFormattedTextFieldlnew IPAddressFormater;	JFormattedTextField ipField = new JFormattedTextField(new IPAddressFormatter());
+ipField.setValuenew byte { bte 130 65,86, 66 1;	ipField.setValue(new byte[] { (byte) 130, 65, 86, 66 });
+addRow""IPAddress:", ipField;	addRow("IP Address:", ipField);
+}	}
+	
+public void adRowStringlabelText finl JFormattedTextField field	public void addRow(String labelText, final JFormattedTextField field)
+1	{
+mainPanel.addfnew JLabellabelTextf;	mainPanel.add(new JLabel(labelText));
+mainPanel.addfield;	mainPanel.add(field);
+final JLabel  valueLabel = new JLabel;	final JLabel valueLabel = new JLabel();
+mainPanel.addvalueLabelf;	mainPanel.add(valueLabel);
+okButton.addActionListenernew ActionListenef	okButton.addActionListener(new ActionListener()
+f	{
+public  voidactionPerformedfActionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+Objectvalue = field.getValue;;	Object value = field.getValue();
+Class<?>  cl  =value.getClass	Class<?> cl = value.getClass();
+String text = null;	String text = null;
+if cl.isArrayll	if (cl.isArray())
+{	{
+if cl.getComponentType.isPritive	if (cl.getComponentType().isPrimitive())
+l	{
+try	try
+f	{
+text= Arraysclass.getMethod"totring", clfinvokenull, valuel	text = Arrays.class.getMethod("toString", cl).invoke(null, value)
+.totring;	.toString();
+}	}
+catch Exception exl	catch (Exception ex)
+{	{
+}	}
+}	}
+else  text = Arrays.toStringObjectf value;	else text = Arrays.toString((Object[]) value);
+}	}
+else text = value.toString;	else text = value.toString();
+valueLabel.setTexttext;	valueLabel.setText(text);
+}	}
+}	});
+1	}
+public  staticfinal int WIDTH  = 500;	public static final int WIDTH = 500;
+public static final int HEIGHT =250;	public static final int HEIGHT = 250;
+private JButton okBtton;	private JButton okButton;
+privateJPanel mainPanel;	private JPanel mainPanel;
+}	}
+class IntFilter extends DocumentFilter	class IntFilter extends DocumentFilter
+	{
+public voidinsertStringFilterBypass fb, nt offset, Stringstring, AttributeSet attr	public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr)
+throws BdLocationException	throws BadLocationException
+	{
+StringBuilder builder = new StringBuilderstring;	StringBuilder builder = new StringBuilder(string);
+for linti  = builder..lengthl - 1; i  >= 0 i--	for (int i = builder.length() - 1; i >= 0; i--)
+{	{
+intp = builder.codePointAtif;	int cp = builder.codePointAt(i);
+if !CharacterisDigitcp && cp  != '-'l	if (!Character.isDigit(cp) && cp != '-')
+{	{
+builderdeleteCharAtil;	builder.deleteCharAt(i);
+if Chaacter..isSupplementaryCodePointfcp	if (Character.isSupplementaryCodePoint(cp))
+f	{
+i--;	i--;
+builderdeleteCharAti;	builder.deleteCharAt(i);
+	}
+}	}
+f	}
+superinsertStringlfb, offset builder.toStrig, attrl;	super.insertString(fb, offset, builder.toString(), attr);
+}	}
+public void replaceFilterBypass fb intoffset, intlength, tring string, AttribueSet attr	public void replace(FilterBypass fb, int offset, int length, String string, AttributeSet attr)
+throws BadLocationException	throws BadLocationException
+{	{
+ifstring != null	if (string != null)
+1	{
+StringBuilder builde =new StringBuilderstringl;	StringBuilder builder = new StringBuilder(string);
+for int i = builder.length - 1;; i >= 0; i--	for (int i = builder.length() - 1; i >= 0; i--)
+1	{
+int cp = buderodePointAti;	int cp = builder.codePointAt(i);
+if !Charcter.isDigitcp && cp != '-'	if (!Character.isDigit(cp) && cp != '-')
+f	{
+builder.deleteCharAtfi;	builder.deleteCharAt(i);
+if fCharacter.sSupplementaryCodePointcpf	if (Character.isSupplementaryCodePoint(cp))
+{	{
+i-;	i--;
+builder.deleteChati	builder.deleteCharAt(i);
+}	}
+}	}
+}	}
+string = builder.toStringf	string = builder.toString();
+}	}
+super.replaceffb, offset, length, string, attrf	super.replace(fb, offset, length, string, attr);
+}	}
+}	}
+class FormattedTextFieldVerifier extends InputVerifier	class FormattedTextFieldVerifier extends InputVerifier
+{	{
+publicboolean verifyJComponent component	public boolean verify(JComponent component)
+{	{
+JFormattedTetField field = JFormattedTextFieldl compoent;	JFormattedTextField field = (JFormattedTextField) component;
+returnfieldisEditVlidf;	return field.isEditValid();
+}	}
+	}
+class IPAddressFormatter exens DefultFormattr	class IPAddressFormatter extends DefaultFormatter
+	{
+public  String valueToStringObject value thows ParseException	public String valueToString(Object value) throws ParseException
+{	{
+if !value instnceof  byteflthrow new ParseException"No a bytef" 0f;	if (!(value instanceof byte[])) throw new ParseException("Not a byte[]", 0);
+bytefa = byte value;	byte[] a = (byte[]) value;
+ifa.length  !=4fthrow new ParseException"Lngth  != 4"",  0	if (a.length != 4) throw new ParseException("Length != 4", 0);
+StringBuilder builder = new  StringBuilderfl;	StringBuilder builder = new StringBuilder();
+fo int i =0; i  < 4; i++f	for (int i = 0; i < 4; i++)
+1	{
+int b = aif;	int b = a[i];
+if b<0 b += 256;	if (b < 0) b += 256;
+builder.appendlStringvalueOfb;;	builder.append(String.valueOf(b));
+if i <  3 bulder.append'.;	if (i < 3) builder.append('.');
+}	}
+return builder..toString;	return builder.toString();
+	}
+public  Object stringToValueString text throws ParseException	public Object stringToValue(String text) throws ParseException
+{	{
+StringTokenizer tokenizer = ew StringTokeniertext, ".";	StringTokenizer tokenizer = new StringTokenizer(text, ".");
+bytef a =new byte4	byte[] a = new byte[4];
+forfint i = 0 i <4;i++f	for (int i = 0; i < 4; i++)
+1	{
+int b = 0;	int b = 0;
+if  l!tokenizer.hasMoreTokens throw new ParseException"Toofew bytes", 0;	if (!tokenizer.hasMoreTokens()) throw new ParseException("Too few bytes", 0);
+try	try
+{	{
+b = Integer.parseIntltokenizer.nextTokenl	b = Integer.parseInt(tokenizer.nextToken());
+}	}
+catch lNumberFormatException ef	catch (NumberFormatException e)
+{	{
+thrownewParsExceptionNotn integer, ;	throw new ParseException("Not an integer", 0);
+1	}
+if b < 0 || b >= 256f throw new ParseException"Byte  out of rane",0;	if (b < 0 || b >= 256) throw new ParseException("Byte out of range", 0);
+ail =bytel b;	a[i] = (byte) b;
+l	}
+if  tokenizerhasMoreokensl throw new ParseExceptionl"Too many  bytes", 0	if (tokenizer.hasMoreTokens()) throw new ParseException("Too many bytes", 0);
+return a;	return a;
+	}
+}	}

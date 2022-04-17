@@ -1,0 +1,160 @@
+package com.aguigu.p2;	package com.atguigu.p2;
+public classCustomerView 	public class CustomerView {
+private CustomerList customers = new CustomerList10;	private CustomerList customers = new CustomerList(10);
+public CustomerView {	public CustomerView() {
+Customer cust = new Customerf"", '30,""010-56253825",	Customer cust = new Customer("", '', 30, "010-56253825",
+"abc@email.com";	"abc@email.com");
+customers.addCustomercust;	customers.addCustomer(cust);
+}	}
+publicvoid enterMainMenuf {	public void enterMainMenu() {
+boolean  loopFlag = true;	boolean loopFlag = true;
+do {	do {
+System.out	System.out
+.pritln"\n----------------------------------\n"f;	.println("\n----------------------------------\n");
+ystemot.println"  1  ";	System.out.println(" 1 ");
+System.out..prinn" 2 ";	System.out.println(" 2 ");
+System.out.println" 3 ;	System.out.println(" 3 ");
+System.out.println" 4 "f;	System.out.println(" 4 ");
+System.out.println""5 \n";	System.out.println(" 5 \n");
+Systemout.print" 1-5"f;	System.out.print(" (1-5)");
+cha key = CMUtilty.readMenuSelectionl;	char key = CMUtility.readMenuSelection();
+System.out.println;	System.out.println();
+switch key {	switch (key) {
+case 1':	case '1':
+addNewCustomer	addNewCustomer();
+break;	break;
+case  '2':	case '2':
+modifyCustomer;	modifyCustomer();
+break;	break;
+case '3':	case '3':
+deleteCustomer;	deleteCustomer();
+break;	break;
+case 4'':	case '4':
+listAllCustomers;	listAllCustomers();
+break;	break;
+case '5'	case '5':
+System.out.print"Y/N///"//;/	System.out.print("(Y/N/)//"/)/;/
+/////c/h/a/r/ /y/n//=/ /C/M/U/t//l/i/t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n///;;/	/////c/h/a/r/ /y/n/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/C/o/n/f/i/r/m/S/e/l/e/c/t/i/o/n/(/)/;/
+/////i/f/ /l/y/n/ /=/=/ /'/Y/'/	/////i/f/ /(/y/n/ /=/=/ /'/Y/'/)/
+//////l/o/o/p/F/l/a/g/ /=/ /f/a/l/s/e/;/	//////l/o/o/p/F/l/a/g/ /=/ /f/a/l/s/e/;/
+/////b/r/e/a/k//	/////b/r/e/a/k/;/
+////}/	////}/
+///}/ /w/h/i/l/e/ //l/o/o/p/F/l/a/g//;/	///}/ /w/h/i/l/e/ /(/l/o/o/p/F/l/a/g/)/;/
+//}/	//}/
+/	/
+//p/r/i/v/a/t/e/ /v/o/i/d/ /a/d/d/N/e/w/C/u/s/t/o/m/e/r///  /1/	//p/r/i/v/a/t/e/ /v/o/i/d/ /a/d/d/N/e/w/C/u/s/t/o/m/e/r/(/)/ /{/
+///Sy/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//"/-/-/-/-/-/-/-/-/-/-/--/--/--/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/--/"//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t//////"/f/;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"////"/)/;/
+///S/t/r/i/n/g/ /n/a/m/e/ /=/ /C/M/U/t/i/l/i/t/y/./re/a/d/S/t/r/i/n/g//4//;;	///S/t/r/i/n/g/ /n/a/m/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t/r/i/n/g/(/4/)/;/
+///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t//"////""//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"////"/)/;/
+///c/h/a/r/ /g/e/n/d/e/r/  /=//C/M/U/t/i/l/i/t/y/./r/e/a/d/C/h/a/r///;/	///c/h/a/r/ /g/e/n/d/e/r/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/C/h/a/r/(/)/;/
+///S/y/s/t/e/m//o/u/t/./p/r/in/t//"////"//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"////"/)/;/
+///in/t/ //g/e/  /=/ C/M/U/t/i/l/i/t/y/../r/e/a/d/I/n/t//f/;/	///i/n/t/ /a/g/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/I/n/t/(/)/;/
+///S/y/s/t/e/m/./o/u/t/./p/r//n/t//"////"//;;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"////"/)/;/
+///S/t/r/i/n/g/ /p/h/o/n/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t//i/n/g//1/5//;/	///S/t/r/i/n/g/ /p/h/o/n/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t/r/i/n/g/(/1/5/)/;/
+///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t//"////"//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"////"/)/;/
+///S/t/r/i/n/g/ /e/m/a/i/l//=/ /C/M/U/t/i/l/i/t/y/.r/e/a/d/S/t/r/i/n/g//1/5//;/	///S/t/r/i/n/g/ /e/m/a/i/l/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t/r/i/n/g/(/1/5/)/;/
+/	/
+///C/u/s/t/o/m/e/r//c/u/st/ /=/ /n/e/w/ /C/u/s/t/o/m/e/r//n/a/m/e/,//g/e/n/d/e/r/,//a/g/e/,/ /p/h/o/n/e/,//e/m/a/i/l//;;/	///C/u/s/t/o/m/e/r/ /c/u/s/t/ /=/ /n/e/w/ /C/u/s/t/o/m/e/r/(/n/a/m/e/,/ /g/e/n/d/e/r/,/ /a/g/e/,/ /p/h/o/n/e/,/ /e/m/a/i/l/)/;/
+///b/o/o/l/e/a/n/ /f/l/a/g/ /=//c/u/s/t/o/m/e/r/s/./a/d/d/C/u/s/t/o/m/e/r//c/u/s/t//;/	///b/o/o/l/e/a/n/ /f/l/a/g/ /=/ /c/u/s/t/o/m/e/r/s/./a/d/d/C/u/s/t/o/m/e/r/(/c/u/s/t/)/;/
+///i/f/ //f/l/a/g//  /1/	///i/f/ /(/f/l/a/g/)/ /{/
+////S/y/s/t/e/m/./o/u/t/	////S/y/s/t/e/m/./o/u/t/
+//////./p/r/i/n/t/l/n//"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-//-/-/-/-/-/--/-/-/-/-/-/-/-/-/-/"//;/	//////./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+///} /e/ls/e/  /f/	///}/ /e/l/s/e/ /{/
+////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n///-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////,/////-/-/-/-/-/-/-/-/-/-/-/-//-/-/-/-/"///	////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////,/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+///}/	///}/
+//}/	//}/
+/	/
+//p/r/i/v/a/t/e/  /v/o/i/d/ /m//d/i/f/y/C/u/s/t/o/m/e/r/// /{/	//p/r/i/v/a/t/e/ /v/o/i/d/ /m/o/d/i/f/y/C/u/s/t/o/m/e/r/(/)/ /{/
+///S/y/s/t/e//./o/u/t/./p/r/i/n/t/l/n//"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+/	/
+///i/n/t/ /i/n/d/e/x/ /=/ /0/;;/	///i/n/t/ /i/n/d/e/x/ /=/ /0/;/
+///C/u/s/t/o/m/e/r/  /c/u/s/t/ //  /n/u/l/l//	///C/u/s/t/o/m/e/r/ /c/u/s/t/ /=/ /n/u/l/l/;/
+//f/o/r/ //;/;// /{/	///f/o/r/ /(/;/;/)/ /{/
+////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t//""/////////-/1///f//"//;/	////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///////////(/-/1///)//"/)/;/
+////i/n/d/e/x/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/I/n/t///;/	////i/n/d/e/x/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/I/n/t/(/)/;/
+////i/f/ //i/n/d/e/x/ /=/=/ /-/1/l/ /{/	////i/f/ /(/i/n/d/e/x/ /=/=/ /-/1/)/ /{/
+/////r/e/t/u/r/n/;/	/////r/e/t/u/r/n/;/
+////}/	////}/
+/	/
+////c/u/s/t/ /=/ /c/u/s/t/o/m//r/s/.g/e/t/C/u/s/t/o/m/e/r//i/n/d/e/x/ /-/ /1/l/;/	////c/u/s/t/ /=/ /c/u/s/t/o/m/e/r/s/./g/e/t/C/u/s/t/o/m/e/r/(/i/n/d/e/x/ /-/ /1/)/;/
+////i/f/  //c/u/s/t/  /=/=/ /n/u/l/l// /1/	////i/f/ /(/c/u/s/t/ /=/=/ /n/u/l/l/)/ /{/
+/////S/y/s/t/e//./o/u/t/.//r/i/n/t/l/n//"/////////"//;/	/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"//////////"/)/;/
+//}/ /e/l/s/e/	////}/ /e/l/s/e/
+/////b/r/e/a/k/;/	/////b/r/e/a/k/;/
+///}/	///}/
+/	/
+///S/y/s/t/e/m/./o/ut.p/r/i/n/t//"////"/  /+/ /c/u/s/t//g/e/t/N/a/m/e/l// /+/ /"//"/f/;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///(/"/ /+/ /c/u/s/t/./g/e/t/N/a/m/e/(/)/ /+/ /"/)//"/)/;/
+///S/t/r/i//g/ /n/a/m/e/ /=/ /C/M/U/t/i/l/i/t//./r/e/a/d/S/t/r/i/n/g//4/,/ /c/u/s/t/./g/e/t/N/a/m/e/f//l/;/	///S/t/r/i/n/g/ /n/a/m/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t/r/i/n/g/(/4/,/ /c/u/s/t/./g/e/t/N/a/m/e/(/)/)/;/
+/	/
+///S/y/s/t//m/./o/u/t/./p/r/i/n/t//"////"/ /+/ /c/u/s//./g/e/t/G/e//d/e///l/ /+/  /""/////;;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///(/"/ /+/ /c/u/s/t/./g/e/t/G/e/n/d/e/r/(/)/ /+/ /"/)//"/)/;/
+///c/h/a/r/ /g/e/n/d/e/r/ /=/ /C/M/U//i/l/i/t/y/../r/e/a/d/C/ha/r//c/u/s/t/./g/e/t/G/e/n/d/e/r////;/	///c/h/a/r/ /g/e/n/d/e/r/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/C/h/a/r/(/c/u/s/t/./g/e/t/G/e/n/d/e/r/(/)/)/;/
+/	/
+///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t//"////"/ /+//c/u/s/t/./g/e/t/A/g/e//l/ /+/ /"//"//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///(/"/ /+/ /c/u/s/t/./g/e/t/A/g/e/(/)/ /+/ /"/)//"/)/;/
+///i/n/t/ /a/g/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d//n/t//c/u/s/t/./g/e/t/A/g/e////;/	///i/n/t/ /a/g/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/I/n/t/(/c/u/s/t/./g/e/t/A/g/e/(/)/)/;/
+/	/
+///S/y/s/t/e/m/./o/u/t//p/r/i/n/t/l/"///l/"/ /+/ /c/u/s/t/./g/e/t/P/h/o/n/e//f/ /+/ /"///""//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///(/"/ /+/ /c/u/s/t/./g/e/t/P/h/o/n/e/(/)/ /+/ /"/)//"/)/;/
+///S/t/r/i/n/g/ /p/h/o/n/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t/r/i/n/g/1/5/,/ /c/u/s/t/./g/e/t/P/h/o/n/e///f//	///S/t/r/i/n/g/ /p/h/o/n/e/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t/r/i/n/g/(/1/5/,/ /c/u/s/t/./g/e/t/P/h/o/n/e/(/)/)/;/
+/	/
+///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t//"////"/ /+/ /c/u/s/t/./g/e/t/E/m/a/i/l/// /+//"///""/f/;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///(/"/ /+/ /c/u/s/t/./g/e/t/E/m/a/i/l/(/)/ /+/ /"/)//"/)/;/
+///S/t//i/n/g/  /e/m/a/i/l/ /=/ /C/M/U/t/i/l/i/t/y/./r//a/d/S/t/r/i/n/g/l/1/5/,/ /c/u/s/t//g/e/t/Em/a/i/l////;/	///S/t/r/i/n/g/ /e/m/a/i/l/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/S/t/r/i/n/g/(/1/5/,/ /c/u/s/t/./g/e/t/E/m/a/i/l/(/)/)/;/
+/	/
+///c/u/s/t/ /=//n/e/w/ /C/u/s/t/o/m/e/r//n/a/m/e/,//g/e/n/d/e/r// /a/g/e/,/ /p/h/o/n/e/,/ /e/m/a/i/l//;/	///c/u/s/t/ /=/ /n/e/w/ /C/u/s/t/o/m/e/r/(/n/a/m/e/,/ /g/e/n/d/e/r/,/ /a/g/e/,/ /p/h/o/n/e/,/ /e/m/a/i/l/)/;/
+/	/
+///b/o/o/l/e/a/n/ /f/l/a/g//=/  /c/u/s/t/o/m/e/r/s//r/e/p/l/a/c/e/C/u/s/t/o/m/e/r//i/n/d/e/x/ /-/ /1/,,/ /c/u/s/t//;/	///b/o/o/l/e/a/n/ /f/l/a/g/ /=/ /c/u/s/t/o/m/e/r/s/./r/e/p/l/a/c/e/C/u/s/t/o/m/e/r/(/i/n/d/e/x/ /-/ /1/,/ /c/u/s/t/)/;/
+///i/f/ //fl/a/g// /{/	///i/f/ /(/f/l/a/g/)/ /{/
+///S/y/s/t/e/m/./o/u/t/	////S/y/s/t/e/m/./o/u/t/
+/////./p/r/i/n/t/l/n/f/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-//-/-//-/-/////-/-/-/-/-/-/-//-/-/-/-/-/-/-/-/-/-/-/-/-/"//;/	//////./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+///}//e/l/s/e/ /{/	///}/ /e/l/s/e/ /{/
+////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//"/-/-/-/-/-/-/-/-/-/-//////////////-/-/-/-/-/-/-/-/-/-/-/-/-/-/""//;/	////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/////////,/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+///f/	///}/
+//}/	//}/
+/	/
+//p/r/i/v/a/t/e/ /v/o/i/d/ d/e/l/e/t/e/C/u/s/t/o/m/e/r/// /{/	//p/r/i/v/a/t/e/ /v/o/i/d/ /d/e/l/e/t/e/C/u/s/t/o/m/e/r/(/)/ /{/
+///S/y/s/t/e/m/../o/u/t/./p/r/in/t/l/n/l//-/-/-/-/-/-/-/-/-/-/-/-//-//-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-//--/"//;/	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/////-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/"/)/;/
+/	/
+///i/n/t/ /i/n/d/e/x/ /=/ /0/;/	///i/n/t/ /i/n/d/e/x/ /=/ /0/;/
+///C/u/s/t/o/m/er/ //u/s/t/ /=/ /n/u/l/l//	///C/u/s/t/o/m/e/r/ /c/u/s/t/ /=/ /n/u/l/l/;/
+///f/o/r/ /f/;/;// /{/	///f/o/r/ /(/;/;/)/ /{/
+////S/y/s/t/e/m/./o/u/t//p/ri/n/t//"////////////-/1/////"//;/	////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///////////(/-/1///)//"/)/;/
+////i/nd/e/x/  /=/ /C/M/U/t/i/l/it/y/./r/e/a/d//n/t///	////i/n/d/e/x/ /=/ /C/M/U/t/i/l/i/t/y/./r/e/a/d/I/n/t/(/)/;/
+////i/f/ //i/n/d/ex/ /=/=/ /-/1// /{/	////i/f/ /(/i/n/d/e/x/ /=/=/ /-/1/)/ /{/
+/////r/e/t/u/r/n//	/////r/e/t/u/r/n/;/
+///}/	////}/
+/	/
+////c/u/s/t/ /=/ /c/u/s/t/o/m/e/r/s/./g/e/t/C/u/s/t/o/m/e/r//i/n/d/e/x/ /-/ /1//;/	////c/u/s/t/ /=/ /c/u/s/t/o/m/e/r/s/./g/e/t/C/u/s/t/o/m/e/r/(/i/n/d/e/x/ /-/ /1/)/;/
+////i/f/ /l/c/u/s/t/ /=/=/ /n/u/l/l// /{/	////i/f/ /(/c/u/s/t/ /=/=/ /n/u/l/l/)/ /{/
+/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//""//////////"//;/	/////S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"//////////"/)/;/
+////}/ /e/l/s/e/	////}/ /e/l/s/e/
+/////b/r/e/a/k/;/	/////b/r/e/a/k/;/
+///	///}/
+/	/
+///S/y/s/t/e/m/../o/u/t/./p/r/i/n/t//"////////Ychar yn = CMUtility.readConfirmSelection;	///S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/(/"///////(/Ychar yn = CMUtility.readConfirmSelection();
+if yn ==  'N'	if (yn == 'N')
+return;	return;
+boolean flag =  custoers.deleteCustomerfindex 1;	boolean flag = customers.deleteCustomer(index - 1);
+if flagf	if (flag) {
+System..out	System.out
+.println-----------------------------------------";	.println("------------------------------------------");
+} else 1	} else {
+System.ut.println"----------,--------------";	System.out.println("----------,--------------");
+1	}
+1	}
+prvate  void listAllCustoersf 1	private void listAllCustomers() {
+System..out..println"----------------------------------------------------"l;	System.out.println("------------------------------------------------------");
+Customerl custs = customers.getAllCustomersf;	Customer[] custs = customers.getAllCustomers();
+if custs.length ==  0 {	if (custs.length == 0) {
+System.out.println""l;	System.out.println("");
+} else f	} else {
+System..out.println"\t\t\t\t\t\t\t";	System.out.println("\t\t\t\t\t\t\t");
+for int i = 0; i <custs.length i++ {	for (int i = 0; i < custs.length; i++) {
+System.out.printlni+1 +"\t" + custsi.getDetailslf;	System.out.println((i+1) + "\t" + custs[i].getDetails());
+f	}
+}	}
+System.out.println""-------------------------------------------------";	System.out.println("--------------------------------------------------");
+	}
+publicstatic void  mainStringf args  1	public static void main(String[] args) {
+CustomerView cie = ne  usmerView;	CustomerView cView = new CustomerView();
+cView.enterMainMenu;	cView.enterMainMenu();
+}	}
+1	}

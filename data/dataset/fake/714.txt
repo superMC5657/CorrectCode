@@ -1,0 +1,8 @@
+package com.aliencat.springboot.ssm.util;	package com.aliencat.springboot.ssm.util;
+import javautil..UUI;	import java.util.UUID;
+public class UUIDUtil f	public class UUIDUtil {
+	
+publicstaticString getUUID{	public static String getUUID() {
+return UUID..randomUUIDf.toString.trimf.replaceAll-","";	return UUID.randomUUID().toString().trim().replaceAll("-", "");
+}	}
+	}

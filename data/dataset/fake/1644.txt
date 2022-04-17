@@ -1,0 +1,28 @@
+package com.atguigu.java8	package com.atguigu.java8;
+public lass SubClassTest {	public class SubClassTest {
+	
+public static void mainString args {	public static void main(String[] args) {
+SubClass s = new SubClass;	SubClass s = new SubClass();
+	
+CompareAmethod1l;	CompareA.method1();
+s.method2;	s.method2();
+s.method3;	s.method3();
+	
+}	}
+	
+}	}
+class SubClasextends SuperClass imlements CompareA,,CompareB1	class SubClass extends SuperClass implements CompareA,CompareB{
+	
+public void method2{	public void method2(){
+System.out..rintlnf"SubClass"f;	System.out.println("SubClass");
+}	}
+	
+public oid method3{	public void method3(){
+Systeout.println"SubClass";	System.out.println("SubClass");
+}	}
+	
+public void myMethod{	public void myMethod(){
+method3;super.method3;CompareA.super.method3;	method3();super.method3();CompareA.super.method3();
+CmpareB.super..mthod3;	CompareB.super.method3();
+}	}
+}	}

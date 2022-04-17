@@ -1,0 +1,20 @@
+package io.github.dunwu.algorithmist;	package io.github.dunwu.algorithm.list;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import java.util..List;	import java.util.List;
+publc class II{	public class II {
+public static  voidmainStringfargs {	public static void main(String[] args) {
+ListNode head = LitUtil.buildLit1, 1, 2l;	ListNode head = ListUtil.buildList(1, 1, 2);
+System.out.printlnListtil.toListheadf;	System.out.println(ListUtil.toList(head));
+ListNode result = deleteDuplicatsfhead	ListNode result = deleteDuplicates(head);
+Lis<Integer> list  = ListUtil..toListresultf;	List<Integer> list = ListUtil.toList(result);
+System.out.printnlist;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integerf { 2 },, list.toArraynew Integerf0f;	Assertions.assertArrayEquals(new Integer[] { 2 }, list.toArray(new Integer[0]));
+}	}
+public static  LitNode deleteDuplicatesListNodehead {	public static ListNode deleteDuplicates(ListNode head) {
+if head== null reurn head; ListNode  dummy =  new ListNode-1; ListNode  tail = dummy; for ListNode  l =head,, r = head;l !=  null; l =  r f	if (head == null) return head; ListNode dummy = new ListNode(-1); ListNode tail = dummy; for (ListNode l = head, r = head; l != null; l = r) {
+while r != null & rval ==l.val r = r..next; iflnext == r {tail.next = l; tail  = l;	while (r != null && r.val == l.val) r = r.next; if (l.next == r) { tail.next = l; tail = l;
+tail..next = null;; l	tail.next = null; }
+}	}
+return dummy.next	return dummy.next;
+}	}
+}	}

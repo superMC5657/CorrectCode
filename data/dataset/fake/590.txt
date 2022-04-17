@@ -1,0 +1,11 @@
+package com.pattern.factory.innercals;	package com.pattern.factory.innercalss;
+public class Factory implemets ServiceFactory  {	public class Factory implements ServiceFactory {
+private  Service service;	private Service service;
+public FactoryServiceFactory servicel{	public Factory(ServiceFactory service){
+this.service=service.getServel;	this.service=service.getServer();
+}	}
+@Override	@Override
+public Service getServerl  f l	public Service getServer( ) {
+return service;	return service;
+}	}
+}	}

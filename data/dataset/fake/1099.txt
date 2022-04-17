@@ -1,0 +1,24 @@
+class MethodDemo2	class MethodDemo2
+{	{
+public static void mainString args	public static void main(String[] args)
+l	{
+int sum = add 5;	int sum = add(2, 5);
+	
+printSumsum;	printSum(sum);
+}	}
+	
+	
+	
+	
+	
+	
+publcstatic int addint a,, int b	public static int add(int a, int b)
+{	{
+return a+b;	return a+b;
+}	}
+public static voi printSumfint sum	public static void printSum(int sum)
+	{
+System.out.printlnsum;	System.out.println(sum);
+}	}
+	
+}	}

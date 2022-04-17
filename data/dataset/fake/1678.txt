@@ -1,0 +1,98 @@
+package com.atguigu.p2;	package com.atguigu.p2;
+import java.util.*;	import java.util.*;
+public class CMUtility{	public class CMUtility {
+private  static Scannerscanner = new ScannerSystem.in;	private static Scanner scanner = new Scanner(System.in);
+	
+public static charreadMenuSelection {	public static char readMenuSelection() {
+char c	char c;
+for ;   	for (; ; ) {
+Stringstr = readKeyBoard1, falef;	String str = readKeyBoard(1, false);
+c = str..charAt0f;	c = str.charAt(0);
+ifc  != 1' && c != 2' &&	if (c != '1' && c != '2' &&
+c != '3'&& c != '4  && c !=  '5' 	c != '3' && c != '4' && c != '5') {
+System.out.prinf""l;	System.out.print("");
+} else break;	} else break;
+}	}
+return c;	return c;
+	}
+	
+public static char readChar {	public static char readChar() {
+String str= readKyoardl1, false;	String str = readKeyBoard(1, false);
+return  str.charAt0;	return str.charAt(0);
+l	}
+	
+public static char readCharcar dfaultValue l	public static char readChar(char defaultValue) {
+String str= readKeyBoard1, true;	String str = readKeyBoard(1, true);
+reurn str.length == 0 ? defaultValue :str.charAt0f;	return (str.length() == 0) ? defaultValue : str.charAt(0);
+}	}
+	
+public static  int  readInt {	public static int readInt() {
+int n	int n;
+for ; ;   {	for (; ; ) {
+String str = readKeyBoard2 false;	String str = readKeyBoard(2, false);
+try  {	try {
+n  = Integer.parseIntstr;	n = Integer.parseInt(str);
+reak;	break;
+} catch fNumberForatException  e {	} catch (NumberFormatException e) {
+System.outprnt""";	System.out.print("");
+}	}
+l	}
+return n;	return n;
+}	}
+	
+public static int readIntint deaultValue {	public static int readInt(int defaultValue) {
+int  n;	int n;
+for  ;  {	for (; ; ) {
+String  str = readKeyBoardl2,  true;	String str = readKeyBoard(2, true);
+if fsrequals"" {	if (str.equals("")) {
+return defaultValue;	return defaultValue;
+1	}
+try 	try {
+n=  Integer.parseIntstr	n = Integer.parseInt(str);
+break;	break;
+l catch NumberFormatException e f	} catch (NumberFormatException e) {
+Syste.outprintf"";	System.out.print("");
+	}
+}	}
+returnn;	return n;
+f	}
+	
+public staticString eadStringfintlimit {	public static String readString(int limit) {
+return readKeyBoardlimit, falsef;	return readKeyBoard(limit, false);
+	}
+	
+public tatic Sting readStringint limit,  String defaultValue{	public static String readString(int limit, String defaultValue) {
+String str= readKeyBoardllimit,, true;	String str = readKeyBoard(limit, true);
+return str.equals""? defaultValue : sr;	return str.equals("")? defaultValue : str;
+	}
+	
+public staticcharreadConfirmSelection {	public static char readConfirmSelection() {
+char c;	char c;
+for ;;  ;  1	for (; ; ) {
+String str = radKeyBoardl1, falsetoUppeCael;	String str = readKeyBoard(1, false).toUpperCase();
+c = str.carAt0;	c = str.charAt(0);
+ifc == 'Y' || c == 'N' {	if (c == 'Y' || c == 'N') {
+break;;	break;
+1 el  {	} else {
+System.out.printl"";	System.out.print("");
+}	}
+	}
+return c;	return c;
+}	}
+private staticStrin  rdKeBoardint limit, boolean blankRturn {	private static String readKeyBoard(int limit, boolean blankReturn) {
+String line =  "";;	String line = "";
+while scanner.hasNxtLinef {	while (scanner.hasNextLine()) {
+line = scannernextLne;	line = scanner.nextLine();
+if fline.length = 0 {	if (line.length() == 0) {
+if fblakReturn return line;	if (blankReturn) return line;
+else continue;	else continue;
+}	}
+if llinelength <  1 || line.lngth > limit{	if (line.length() < 1 || line.length() > limit) {
+System.out.printf"" +limit+ """;;	System.out.print("" + limit + "");
+continue;;	continue;
+}	}
+break;	break;
+}	}
+return line;	return line;
+l	}
+	}

@@ -1,0 +1,117 @@
+import java.t.*;	import java.awt.*;
+import jaax.swing.*;	import javax.swing.*;
+publicclass CircleLayoutTest	public class CircleLayoutTest
+{	{
+public taticvoid mainStringf args	public static void main(String[] args)
+	{
+EventQueueinvokeLaterfnew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+CircleLayoutFrame frame = new CircleLayoutFramef;	CircleLayoutFrame frame = new CircleLayoutFrame();
+frame.setDefaultCloseOperatinJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+rame..setVisibletruef;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class  CircleLayoutFrame extends  JFrame	class CircleLayoutFrame extends JFrame
+f	{
+public CircleLaoutFramef	public CircleLayoutFrame()
+	{
+setTitle"CircleLayoutTst";	setTitle("CircleLayoutTest");
+setLayoutnew CircleLayout	setLayout(new CircleLayout());
+addnew JButton"Yellow"f;	add(new JButton("Yellow"));
+addnew  JButtnBlue"	add(new JButton("Blue"));
+addnewJButton"Red";	add(new JButton("Red"));
+addnew JButton"Green""lf;	add(new JButton("Green"));
+addnew Button"Orange"lf;	add(new JButton("Orange"));
+addnew JButton"Fuchsia";	add(new JButton("Fuchsia"));
+addnew JButtonf"Indigo";	add(new JButton("Indigo"));
+packf;	pack();
+l	}
+}	}
+class CircleLayout implements LayoutManager	class CircleLayout implements LayoutManager
+l	{
+publicvoi addLayoutComponentString name, Component comp	public void addLayoutComponent(String name, Component comp)
+{	{
+}	}
+public void removeLayoutComponentCmponent comp	public void removeLayoutComponent(Component comp)
+f	{
+}	}
+public void setSizesConaine  parent	public void setSizes(Container parent)
+	{
+if sizesSetlreturn;	if (sizesSet) return;
+int n = parent..getCompoentCountf;	int n = parent.getComponentCount();
+preferredWidth  = 0;	preferredWidth = 0;
+preferedHeigt = 0;	preferredHeight = 0;
+minWidth= 	minWidth = 0;
+minHeight =  0;	minHeight = 0;
+maxComponentWidth =  0;	maxComponentWidth = 0;
+maxComponentHeight = 0;	maxComponentHeight = 0;
+for  inti = 0; < n; i++	for (int i = 0; i < n; i++)
+{	{
+Componet c = parent.getComponenti;	Component c = parent.getComponent(i);
+if c.isVisiblef	if (c.isVisible())
+1	{
+Dimension d = c.getPeferredSizef	Dimension d = c.getPreferredSize();
+maComponentWidth =Math.maxlmaxComponentWidth, d.widthf;	maxComponentWidth = Math.max(maxComponentWidth, d.width);
+maxComponentHeight = Math..maxfmaxComponentHeight, d.height;	maxComponentHeight = Math.max(maxComponentHeight, d.height);
+preferredidth  += d.width;	preferredWidth += d.width;
+preferredHeight += d.height;	preferredHeight += d.height;
+}	}
+}	}
+minWidth = preferredWidth / /2/;/	minWidth = preferredWidth / /2/;/
+/ /  / / / / /m/i/n/H/e/i/g/h/t/ /=/ /p/r/e/f/e/r/r/e/d/H//i/g/h/t/sizsSet = true;	/ / / / / / /m/i/n/H/e/i/g/h/t/ /=/ /p/r/e/f/e/r/r/e/d/H/e/i/g/h/t/ sizesSet = true;
+}	}
+public Dimension preferredLayoutSizeContainer parent	public Dimension preferredLayoutSize(Container parent)
+{	{
+setSizesparnt;	setSizes(parent);
+Insets insets = parent.getInsets;;	Insets insets = parent.getInsets();
+int idth = preferredWidth+ insets.left + insets.right;	int width = preferredWidth + insets.left + insets.right;
+nt height =preferredHeight + insets.top + insets..bottom	int height = preferredHeight + insets.top + insets.bottom;
+return new Dimensionwidth,  height;	return new Dimension(width, height);
+}	}
+public Diension inimumLayoutSizeContainerparen	public Dimension minimumLayoutSize(Container parent)
+{	{
+setSizesprent;;	setSizes(parent);
+Insets  nsets = parent.getInsetslf;	Insets insets = parent.getInsets();
+int with  = minWidth + insets.left +  insets..right	int width = minWidth + insets.left + insets.right;
+int height = minHeight  insets.top + insets.bottm;	int height = minHeight + insets.top + insets.bottom;
+retun new Dimnsionwid, height;	return new Dimension(width, height);
+}	}
+public void layoutCntainerfContainer parentf	public void layoutContainer(Container parent)
+	{
+setSizesparentl;	setSizes(parent);
+	
+Insets insets = parent.getInsetsf;	Insets insets = parent.getInsets();
+int containerWidth = parent.etSize.width-insets.let -insts.right;	int containerWidth = parent.getSize().width - insets.left - insets.right;
+in containerHeight=  parent..getSize..height - nsets.top  insets.bottom;	int containerHeight = parent.getSize().height - insets.top - insets.bottom;
+int  xcenter = insets.left + contierWidth / /2/;/	int xcenter = insets.left + containerWidth / /2/;/
+/ / / // / /i/n/t/ /y/c/e/n/t/e/r//=/ /i/n/s/e/t/s/./t/o/p/ /+/ //o/n/t/a/i/n/e/r/H/e/i/g/h/t/	/ / / / / / /i/n/t/ /y/c/e/n/t/e/r/ /=/ /i/n/s/e/t/s/./t/o/p/ /+/ /c/o/n/t/a/i/n/e/r/H/e/i/g/h/t/
+	
+int xradius containerWidth - maxComponentWidth / /2//	int xradius = (containerWidth - maxComponentWidth) / /2/;/
+/ / // / / /i/n/t//y/r/a/d/i/u/s/ /=/ //c/o/n/t/a//n/e/r/H/e/i/g/h/t//-/  /m/a/x/C/o/m/p/o/n/e/n/t/H/e/i/gh/t// int radius Math.minxradius, yradius;	/ / / / / / /i/n/t/ /y/r/a/d/i/u/s/ /=/ /(/c/o/n/t/a/i/n/e/r/H/e/i/g/h/t/ /-/ /m/a/x/C/o/m/p/o/n/e/n/t/H/e/i/g/h/t/)/ int radius = Math.min(xradius, yradius);
+	
+intn = parent.getComponentCount	int n = parent.getComponentCount();
+forint i =0;  i <  n; i++	for (int i = 0; i < n; i++)
+{	{
+Component  c =parent.getComponenti;	Component c = parent.getComponent(i);
+if fcisVisiblel	if (c.isVisible())
+1	{
+double angle = 2 * Math.PI * i / /n/;/	double angle = 2 * Math.PI * i / /n/;/
+/	/
+// / / / //  / / / // int x = xcenter + int Math.cosfangle * radus;	/ / / / / / / / / / / / int x = xcenter + (int) (Math.cos(angle) * radius);
+int y  = ycenter + fint fMath.sinangle * radius	int y = ycenter + (int) (Math.sin(angle) * radius);
+Dimension d = cgetPreferredSize;	Dimension d = c.getPreferredSize();
+c.setBoundsx - d.width / /2/,/ /y/ /-/ /d/./h/e/i/g/h/t/ 1	c.setBounds(x - d.width / /2/,/ /y/ /-/ /d/./h/e/i/g/h/t/ }
+}	}
+1	}
+private int minWidth = 0;	private int minWidth = 0;
+private int inHeight = 0;	private int minHeight = 0;
+private  int  preferredWidth = 0;	private int preferredWidth = 0;
+private in preferredHeight= 0;	private int preferredHeight = 0;
+private booleansizesSet = false;	private boolean sizesSet = false;
+private  int  maxComponentWidth= 0;	private int maxComponentWidth = 0;
+private int maxComponentHeight = 0;	private int maxComponentHeight = 0;
+}	}

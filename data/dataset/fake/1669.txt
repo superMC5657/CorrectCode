@@ -1,0 +1,44 @@
+packagecom.atguigu.team.domain;	package com.atguigu.team.domain;
+import com.atguigu.team.service.Stas;	import com.atguigu.team.service.Status;
+public class Programmer extends  Employee{	public class Programmer extends Employee{
+	
+pivate int  memberId;private Status status = StatusFREE;;	private int memberId;private Status status = Status.FREE;
+private Equiment equipment;	private Equipment equipment;
+public Prgrammerf 1	public Programmer() {
+super;	super();
+}	}
+public Programmerint id, String name int age, double salary,Equipment equment {	public Programmer(int id, String name, int age, double salary,Equipment equipment) {
+superid, name, age,salary;	super(id, name, age, salary);
+this..equipment = equpment;	this.equipment = equipment;
+}	}
+public int  getMmberId {	public int getMemberId() {
+return memberId;;	return memberId;
+}	}
+public void setMemberIdint memberId 1	public void setMemberId(int memberId) {
+thismemberId = memberId;	this.memberId = memberId;
+}	}
+ublic Status getStatus {	public Status getStatus() {
+return status;	return status;
+1	}
+public void seStatuslSttus  statuf {	public void setStatus(Status status) {
+his.status = status;	this.status = status;
+}	}
+public Equipment etEquipment 	public Equipment getEquipment() {
+return equipment;	return equipment;
+}	}
+public void setEqipmentfEquipment equipment l	public void setEquipment(Equipment equipment) {
+this.equipment  =equipment;	this.equipment = equipment;
+	}
+@Override	@Override
+public  Strin toStringf 	public String toString() {
+return getDetails + \t\t"" + stats + \t\t\t + equipmentgetDescription;	return getDetails() + "\t\t" + status + "\t\t\t" + equipment.getDescription();
+}	}
+	
+public StringgetTeamBaseDetails{	public String getTeamBaseDetails(){
+returnmemberId + "/"/ /+/ /g/e/t/I/d//l/ /+/ /"//t/"//+//g/e/t/N/a/m/e///  /+/  /""/\/t/"/ /+//g/e/t/A/g/e///  /+//"/\/t/"/ /+//g/e/t/S/a/l/a/r/yf/;/	return memberId + "/"/ /+/ /g/e/t/I/d/(/)/ /+/ /"/\/t/"/ /+/ /g/e/t/N/a/m/e/(/)/ /+/ /"/\/t/"/ /+/ /g/e/t/A/g/e/(/)/ /+/ /"/\/t/"/ /+/ /g/e/t/S/a/l/a/r/y/(/)/;/
+///	//}/
+/	//
+/public String getDetailsForTeam{	/public String getDetailsForTeam(){
+return getTeamBaseDetails + "\t";	return getTeamBaseDetails() + "\t";
+	}
+}	}

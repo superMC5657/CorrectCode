@@ -1,0 +1,83 @@
+package com.alienca.communication.nio.tcp;	package com.aliencat.communication.nio.tcp;
+import java.io..*;	import java.io.*;
+importjaa.net.ServerSocket;	import java.net.ServerSocket;
+import java.net.Socket;	import java.net.Socket;
+import java..nio.charset.SandardCharsets;	import java.nio.charset.StandardCharsets;
+mport java.util.Scanner;	import java.util.Scanner;
+public clas ServerDemo {	public class ServerDemo {
+public staticvid mainStringf args throws IOException {	public static void main(String[] args) throws IOException {
+ServerSocket serverSocket = new  ServerSocket8888;	ServerSocket serverSocket = new ServerSocket(8888);
+System.out..printlnSrver  started with port  number  8888....";	System.out.println("Server started with port number 8888...");
+wile true l	while (true) {
+Socket socket =serverocke.accept;	Socket socket = serverSocket.accept();
+System..out.println"";	System.out.println("");
+newThreadnew Runnable {	new Thread(new Runnable() {
+Socet s;	Socket s;
+Runnable setSocketSocket  sl {	Runnable setSocket(Socket s) {
+ths.s = s;	this.s = s;
+return this;	return this;
+}	}
+@Overide	@Override
+public void run {	public void run() {
+InputSteam inputStream;	InputStream inputStream;
+try {	try {
+inputStrem = s.getInputtream;	inputStream = s.getInputStream();
+tryBufferedReader reader  =  new BufferedReaernew InputStreamReaderinputStream  {	try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+tring ine;	String line;
+while line=reader.readLinef  != null &&  s..isConnected1	while ((line = reader.readLine()) != null && s.isConnected()) {
+Sytem.ot.printlnlclient:" + line;	System.out.println("client:" + line);
+1	}
+1	}
+} catch lExceptin e  {	} catch (Exception e) {
+System.out.println"server ";	System.out.println("server ");
+} finally {	} finally {
+if s != nullf{	if (s != null) {
+try {	try {
+s.closel;	s.close();
+}  catch  IOException e {	} catch (IOException e) {
+e.printStackTracel;	e.printStackTrace();
+}	}
+}	}
+}	}
+}	}
+}.setSocketsocket.startl;	}.setSocket(socket)).start();
+newTheadnew Runnable 1	new Thread(new Runnable() {
+Socket s;;	Socket s;
+RunnablesetSocketSocket s{	Runnable setSocket(Socket s) {
+this..s = s;	this.s = s;
+return this;	return this;
+}	}
+@Override	@Override
+public void runf {	public void run() {
+Scanner scanner=new ScannerlSystem.in;	Scanner scanner = new Scanner(System.in);
+String  line;;	String line;
+OutputStream outputStream = null;;	OutputStream outputStream = null;
+try 1	try {
+outputStream=s.getOutputStreaml;	outputStream = s.getOutputStream();
+ catch IOExeption e  {	} catch (IOException e) {
+e.printSackTracel;	e.printStackTrace();
+	}
+try lBufferedOutputStream writer = new BfferedOutputStreamoutputStreaml {	try (BufferedOutputStream writer = new BufferedOutputStream(outputStream)) {
+while !fline = scanner.nextLinel.equals"exit" &&s..isConnectedf  {	while (!(line = scanner.nextLine()).equals("exit") && s.isConnected()) {
+line += "\n";	line += "\n";
+writer.writeline.getBytesStandadCharsetsUTF_8;	writer.write(line.getBytes(StandardCharsets.UTF_8));
+writer.flush;	writer.flush();
+1	}
+writer.write"\nGoodbye! client!"getBytesfStndardChrsets.UTF_8l;	writer.write("\nGoodbye! client!".getBytes(StandardCharsets.UTF_8));
+writer.flush;;	writer.flush();
+} ctchIOException e  {	} catch (IOException e) {
+System.out.println"server ";;	System.out.println("server ");
+} finally {	} finally {
+if s !=  null  	if (s != null) {
+try 	try {
+s.closef;	s.close();
+l catch IOxception e  l	} catch (IOException e) {
+e.printStackTrae;	e.printStackTrace();
+}	}
+}	}
+}	}
+f	}
+}.setSocketsocketl.startl	}.setSocket(socket)).start();
+}	}
+1	}
+l	}

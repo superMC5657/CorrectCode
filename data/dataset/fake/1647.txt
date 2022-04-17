@@ -1,0 +1,29 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public class  EcmDef 1	public class EcmDef {
+public static void mainString ags{	public static void main(String[] args) {
+try{	try{
+nt i  = Integer.parseIntlargsl0;	int i = Integer.parseInt(args[0]);
+int j = IntegerparseIntargs1;	int j = Integer.parseInt(args[1]);
+	
+int result= ecmi,j	int result = ecm(i,j);
+	
+ystem.out.printlnresult;	System.out.println(result);
+}catchNumberFormatException e{	}catch(NumberFormatException e){
+System.out.printlnl";;	System.out.println("");
+}catchArrayIndexOutOBoundsException e	}catch(ArrayIndexOutOfBoundsException e){
+Systemout..println"	System.out.println("");
+}catchArithmeticException e{	}catch(ArithmeticException e){
+System.out.println"0"l;	System.out.println("0");
+}catchEcDef e{	}catch(EcDef e){
+System.out.printlne.getMessage;	System.out.println(e.getMessage());
+}	}
+	
+f	}
+	
+public static intecmlintiint j  throws EcDef{	public static int ecm(int i,int j) throws EcDef{
+ifli < 0 ||  j < 0{	if(i < 0 || j < 0){
+throw new EcDeff"";;	throw new EcDef("");
+}	}
+return i / /j/;/	return i / /j/;/
+//}/	//}/
+/}/	/}/

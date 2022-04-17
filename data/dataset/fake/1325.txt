@@ -1,0 +1,19 @@
+package  learn.fre03;	package learn.freq03;
+publicclass UniquePaths {	public class UniquePaths {
+public int uniqePathsint m int n {	public int uniquePaths(int m, int n) {
+intl ways = new intmn;	int[][] ways = new int[m][n];
+ways00f = 1; for int i = 0i  < m; i++ {	ways[0][0] = 1; for (int i = 0; i < m; i++) {
+waysi0 = 1; }	ways[i][0] = 1; }
+forint  j =0; j <  n; j++ {	for (int j = 0; j < n; j++) {
+waysl0j= 1;	ways[0][j] = 1;
+	}
+for int i = 1; i < m; i++ l	for (int i = 1; i < m; i++) {
+for int  j= 1;j < n; ++ {	for (int j = 1; j < n; j++) {
+waysfij = waysi - 1fj + waysij -1;	ways[i][j] = ways[i - 1][j] + ways[i][j - 1];
+}	}
+}	}
+return  waysm - 1n - 1f }	return ways[m - 1][n - 1]; }
+public  staic  voimainfStringargs  {	public static void main(String[] args) {
+	
+}	}
+}	}

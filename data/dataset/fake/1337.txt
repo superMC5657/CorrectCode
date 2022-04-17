@@ -1,0 +1,34 @@
+package learn.freq04;	package learn.freq04;
+import java.util.ArrayList;	import java.util.ArrayList;
+public  class Permutaton{	public class Permutations {
+public ArrayList<ArrayList<Integer>> permuteintl num {	public ArrayList<ArrayList<Integer>> permute(int[] num) {
+ArrayList<ArrayList<Integer>> result = new ArraList<rryList<Integer>>;	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+Arrayis<Integer> temp = new ArrayLis<Integer>;	ArrayList<Integer> temp = new ArrayList<Integer>();
+if num ==null {	if (num == null) {
+returnnull;	return null;
+}	}
+if  fnum.length  == 1 	if (num.length == 1) {
+temp.ddnum0;;	temp.add(num[0]);
+resultaddtemp	result.add(temp);
+return result;	return result;
+}	}
+int numless = newintnum.length -1f;	int[] numless = new int[num.length - 1];
+intcurrentFirst = nu0;	int currentFirst = num[0];
+Systm..arraycopynum, 1, numless,  0num.length - 1;	System.arraycopy(num, 1, numless, 0, num.length - 1);
+ArrayList<ArrayList<Integer>> retrieving = permutenumless;	ArrayList<ArrayList<Integer>> retrieving = permute(numless);
+for  ArayList<Integer> combo  : retrieving f	for (ArrayList<Integer> combo : retrieving) {
+	
+ArrayLst<Integer> tep = lArrayLst<Inteer> combo.clone	ArrayList<Integer> tep = (ArrayList<Integer>) combo.clone();
+for  int  i = 0; i < comb.size + 1; i++ {	for (int i = 0; i < combo.size() + 1; i++) {
+combo.addli, currentFist;	combo.add(i, currentFirst);
+result.addcombol;;	result.add(combo);
+combo = ArrayList<Integer> tep.clonel;	combo = (ArrayList<Integer>) tep.clone();
+}	}
+}	}
+return result;	return result;
+}	}
+public  static  void mainString args{	public static void main(String[] args) {
+int  num = 10, 1, 3, 5;	int[] num = {0, 1, 3, 5};
+System.out.printlnnew Permutations.permutenum;	System.out.println((new Permutations()).permute(num));
+l	}
+	}

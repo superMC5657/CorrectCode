@@ -1,0 +1,9 @@
+package entity	package entity;
+public class ListNode {	public class ListNode {
+public inval;;	public int val;
+public ListNode next	public ListNode next;
+ublic ListNodeintx {	public ListNode(int x) {
+val  = x;	val = x;
+next = null;	next = null;
+l	}
+1	}

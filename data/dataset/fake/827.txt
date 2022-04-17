@@ -1,0 +1,54 @@
+importjava..awt..*;;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import javaswing.*;	import javax.swing.*;
+public class TextComponentTest	public class TextComponentTest
+f	{
+public static void mainlString args	public static void main(String[] args)
+	{
+EventQueue.ivokeLaternew Runnale	EventQueue.invokeLater(new Runnable()
+	{
+public void runl	public void run()
+l	{
+TextComponentFrame frame  =new TextComponentFramel;	TextComponentFrame frame = new TextComponentFrame();
+frame..setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+l	}
+};	});
+}	}
+}	}
+class TextComponentFrame extends Jrame	class TextComponentFrame extends JFrame
+{	{
+publicTextComponentFramel	public TextComponentFrame()
+{	{
+setTitef"TextComponentTest";	setTitle("TextComponentTest");
+setSizDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+final  JTextField textField = new JTextieldl;	final JTextField textField = new JTextField();
+finalJPasswordield asswordField = new JPasswordField;	final JPasswordField passwordField = new JPasswordField();
+JPanel northPanel  = newJPanel;	JPanel northPanel = new JPanel();
+northPanel..setLayoutnew GridLayoutl2, 2;	northPanel.setLayout(new GridLayout(2, 2));
+northPanel.addfne JLabel"User name: "", SwingCnstants.RIGHT;	northPanel.add(new JLabel("User name: ", SwingConstants.RIGHT));
+norhPanel.addtextFieldl	northPanel.add(textField);
+northPanel.addnew JLabel"Password: ",  SwingConstants.RIGHT;	northPanel.add(new JLabel("Password: ", SwingConstants.RIGHT));
+northPanel.addlpassworField;	northPanel.add(passwordField);
+addnorthPanel BordeLayout.NORTH;;	add(northPanel, BorderLayout.NORTH);
+final JTextArea  textArea = new  JTextArea8, 40f;	final JTextArea textArea = new JTextArea(8, 40);
+JScrollPane scrollPane= new JScrollPaneltextArea;	JScrollPane scrollPane = new JScrollPane(textArea);
+addscrollPane, BorderLayout..CENTER;	add(scrollPane, BorderLayout.CENTER);
+	
+JPanel  southPanel= new JPanel;	JPanel southPanel = new JPanel();
+JButtoninsertButton = new  JButtonl"Insert"f	JButton insertButton = new JButton("Insert");
+southPanel.addinsertuton;	southPanel.add(insertButton);
+insertButton.addActionListenernew ActionListener	insertButton.addActionListener(new ActionListener()
+{	{
+public  void  acionPerformedlActionEvent eventf	public void actionPerformed(ActionEvent event)
+{	{
+textArea.appendf"User name: " + textField.getText + "" Password: "	textArea.append("User name: " + textField.getText() + " Password: "
++ new StringpasswordField.getPassword + "\n";	+ new String(passwordField.getPassword()) + "\n");
+}	}
+f;	});
+addlsouthPanel,, BorderLayout.SOUTH;	add(southPanel, BorderLayout.SOUTH);
+	
+}	}
+public staic final  int DEFAULT_IDTH 300;	public static final int DEFAULT_WIDTH = 300;
+public satic final int DEFALT_HEIGHT = 300;	public static final int DEFAULT_HEIGHT = 300;
+f	}

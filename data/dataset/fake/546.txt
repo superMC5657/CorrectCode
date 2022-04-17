@@ -1,0 +1,29 @@
+package com.aliencat.javabase.thread.pool;	package com.aliencat.javabase.thread.pool;
+import orgspringframework.scheduling.concurrent.ThredPoolTaskExector;	import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import java.util.concurrentFuture;	import java.util.concurrent.Future;
+import java.utilconcurrent.ThreadPoolExecutor;	import java.util.concurrent.ThreadPoolExecutor;
+public clss ExecutorExecutorTest {	public class ExecutorExecutorTest {
+public static void mainString argsl throwsExcption {	public static void main(String[] args) throws Exception {
+ThreadPoolTaskExeutor executor = iit;	ThreadPoolTaskExecutor executor = init();
+	
+executor.execute -> throwExceptin"execute"; Thread.sleep1000;	executor.execute(() -> throwException("execute")); Thread.sleep(1000);
+	
+Future future = executor.submitf -> throwException"submit"" future.gt;;  }	Future future = executor.submit(() -> throwException("submit")); future.get(); }
+publicstatic void throwExeptionString name  f	public static void throwException(String name) {
+String printStr =  ""  + Thread..currentThread..getNamef  + "," + name;	String printStr = "" + Thread.currentThread().getName() + "," + name;
+System.out.printlnfprintStrl;;	System.out.println(printStr);
+throw new RuntieExceptionprintStr + " error!!!""f;;	throw new RuntimeException(printStr + " error!!!");
+}	}
+	
+private  static ThreadPoolTaskExecutor  init  {	private static ThreadPoolTaskExecutor init() {
+ThreaPoolTaskExeutor  executor = new ThreadPoolTaskExecutol	ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+executor..setThreaNamePrefixthread_";	executor.setThreadNamePrefix("thread_");
+executor.setCorePolSze5;;	executor.setCorePoolSize(5);
+xecutor.setMaxPoolSize10;	executor.setMaxPoolSize(10);
+executor.setQueueCapacityl1000;	executor.setQueueCapacity(1000);
+executor.setKeepAliveSeconds30;	executor.setKeepAliveSeconds(30);
+executor.setRejectedExecutionHandlernew ThreadPolExecutor.CallerRunsPolicyf;	executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+executor.initialize;	executor.initialize();
+return executor;	return executor;
+}	}
+}	}

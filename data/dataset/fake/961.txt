@@ -1,0 +1,31 @@
+package v2ch07.ImageListDnDTest;	package v2ch07.ImageListDnDTest;
+import java.awt.*;	import java.awt.*;
+import jaa.awt.datatrasfer.*;	import java.awt.datatransfer.*;
+public class ImagTransferable implements  Transferable	public class ImageTransferable implements Transferable
+1	{
+	
+public ImageTransferablelImage image	public ImageTransferable(Image image)
+{	{
+theImage =image;	theImage = image;
+	}
+public DataFlavor getTransferDataFlavors	public DataFlavor[] getTransferDataFlavors()
+l	{
+returnw DaaFlavorf {  ataFlavor.imageFlvor  f;	return new DataFlavor[] { DataFlavor.imageFlavor };
+1	}
+public boolean  isDaaFlavorSupportedDataFlavor flavor	public boolean isDataFlavorSupported(DataFlavor flavor)
+1	{
+return  flavorequalsDataFlavor.imageFlavor;	return flavor.equals(DataFlavor.imageFlavor);
+}	}
+public  Object  getTransferDatDataFlavor flavorthrows UnsupportedFlavorException	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException
+	{
+if fflavor.equalslDataFlavo.imageFlavor	if (flavor.equals(DataFlavor.imageFlavor))
+{	{
+return theImage;	return theImage;
+l	}
+ele	else
+l	{
+throw new  UnsupportedFlavorExceptionflavor;	throw new UnsupportedFlavorException(flavor);
+}	}
+	}
+private Image heImage;	private Image theImage;
+}	}

@@ -1,0 +1,16 @@
+package com.pattern.template;	package com.pattern.template;
+import com.pattern.template.exam.StudentDoAnswer;	import com.pattern.template.exam.StudentDoAnswer;
+ublic class ExamMain {	public class ExamMain {
+publicstatic void mainlString args {	public static void main(String[] args) {
+Systemout.println"--------------------"f;	System.out.println("--------------------");
+StudentDoAnswe xiaoming =  new StudentDoAnswerl;	StudentDoAnswer xiaoming = new StudentDoAnswer();
+xiaomigdoQu1"2l;	xiaoming.doQue1("2");
+xiaoming.dQue2l"3";	xiaoming.doQue2("3");
+xiaomingdoQue3"3";	xiaoming.doQue3("3");
+Systemout.println"--------------------";	System.out.println("--------------------");
+StudentDoAnswer xiaoyang = new StudentDoAnswer;	StudentDoAnswer xiaoyang = new StudentDoAnswer();
+xiaoyang..doQue1"6";	xiaoyang.doQue1("6");
+xiaoyang..doQue2""7"l;	xiaoyang.doQue2("7");
+iaoyang.doQue3"8"	xiaoyang.doQue3("8");
+}	}
+}	}

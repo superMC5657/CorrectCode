@@ -1,0 +1,47 @@
+packaom.atguigu.exer3;	package com.atguigu.exer3;
+public class  Circle extendsGemetricObject {	public class Circle extends GeometricObject {
+	
+private double radius;	private double radius;
+public Circle {	public Circle() {
+super;	super();
+radius = 1.0;	radius = 1.0;
+1	}
+public Circledouble radius1	public Circle(double radius) {
+super;	super();
+this.radius =radius;	this.radius = radius;
+}	}
+public Circledouble radius,String colordouble weightl f	public Circle(double radius,String color,double weight) {
+supercolor,weightf;	super(color,weight);
+this.radius = radius;	this.radius = radius;
+}	}
+public double getRadius {	public double getRadius() {
+return radius;	return radius;
+}	}
+public void stRadisdouble radius {	public void setRadius(double radius) {
+this.radius = radus;	this.radius = radius;
+}	}
+public double findAreafl{	public double findArea(){
+return 3.14 * adis * radius;	return 3.14 * radius * radius;
+	}
+@Override	@Override
+public boolean equalsObject obj {	public boolean equals(Object obj) {
+	
+ifthis == objl{	if(this == obj){
+return tru	return true;
+}	}
+	
+ifobj instanceof Circle{	if(obj instanceof Circle){
+Circle c = Circlelobj;;	Circle c = (Circle)obj;
+return this.radius == c.radius	return this.radius == c.radius;
+}	}
+	
+return false;	return false;
+	
+}	}
+@Override	@Override
+public String toString {	public String toString() {
+return "Circle fradis="+ radius + "f";;	return "Circle [radius=" + radius + "]";
+}	}
+	
+	
+}	}

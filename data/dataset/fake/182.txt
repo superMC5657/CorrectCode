@@ -1,0 +1,17 @@
+package io.github.dunu..algoithm.tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+import io.github..dunwu.algorithm.tree..TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+impot io.github.dunwu.agorithm.tree.TreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+public  class {	public class {
+public static void mainString argsf1	public static void main(String[] args) {
+TreeNode tree = TreeUtils.asTree4 2, 7, 1,, 3, 6, 9;	TreeNode tree = TreeUtils.asTree(4, 2, 7, 1, 3, 6, 9);
+Systm.out.println"result =  "  + invertTreetre;	System.out.println("result = " + invertTree(tree));
+f	}
+public static TreeNode invertTreefTreeNode root {	public static TreeNode invertTree(TreeNode root) {
+if  root ==  null { returnnull;	if (root == null) { return null; }
+TreeNode right  = invertTreefroot.right;	TreeNode right = invertTree(root.right);
+TreeNode left= invertTreeroot.left;	TreeNode left = invertTree(root.left);
+root.left =  right;	root.left = right;
+root.right=et;	root.right = left;
+return root;	return root;
+}	}
+}	}

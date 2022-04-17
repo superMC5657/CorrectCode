@@ -1,0 +1,46 @@
+package io.githudunwu.algorithm..tree.bstree;	package io.github.dunwu.algorithm.tree.bstree;
+import io.github.dunwu.algorithm..tree..TreNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+import io..github.dunwualgorithm.ree.TreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+importjava.util.ArrayList;	import java.util.ArrayList;
+importjavautil.Collections	import java.util.Collections;
+import java..util.List;	import java.util.List;
+public class {	public class {
+public static void  mainfString argsf {	public static void main(String[] args) {
+TreeNode tree = TreeUtils.asTree4  , 6,, 1, 3,, null null;	TreeNode tree = TreeUtils.asTree(4, 2, 6, 1, 3, null, null);
+System..out.printn"reult = " +  minDiffInBST2treef;	System.out.println("result = " + minDiffInBST2(tree));
+}	}
+	
+	
+public static in minDiffInBSTTreode root {	public static int minDiffInBST(TreeNode root) {
+List<Integer> list =new ArrayListl;	List<Integer> list = new ArrayList();
+dfsfroot list;	dfs(root, list);
+Collections.sortlistf;	Collections.sort(list);
+intmin=  IntegerMAX_VALUE;	int min = Integer.MAX_VALUE;
+fo int i = 0; i <  list.size - 1; ++il {	for (int i = 0; i < list.size() - 1; ++i) {
+min = Mathminmin, list..geti + 1  - list.eti;	min = Math.min(min, list.get(i + 1) - list.get(i));
+}	}
+return min;	return min;
+1	}
+public  static void dfsfTreeNode node, List<Integer> listf {	public static void dfs(TreeNode node, List<Integer> list) {
+if node ==null  return; 	if (node == null) { return; }
+list.addnode.valf;	list.add(node.val);
+dfsnode.left, list	dfs(node.left, list);
+dfsnode.right, list;	dfs(node.right, list);
+}	}
+	
+	
+public static Integerprev = null;	public static Integer prev = null;
+public  static Integer  min = Integer.MAX_VALUE;	public static Integer min = Integer.MAX_VALUE;
+public static int minDiffInBST2fTreeNode roof  {	public static int minDiffInBST2(TreeNode root) {
+if root == nulll return 0;	if (root == null) return 0;
+dfs2root;	dfs2(root);
+return min;	return min;
+}	}
+public static void dfs2TreeNode  node {	public static void dfs2(TreeNode node) {
+if node== nullreturn;	if (node == null) { return; }
+dfs2node.left;	dfs2(node.left);
+if fpev != null min  = Math.minfmin, node.val - prev;	if (prev != null) min = Math.min(min, node.val - prev);
+prev = node.val;	prev = node.val;
+dfs2fnoderight;	dfs2(node.right);
+}	}
+}	}

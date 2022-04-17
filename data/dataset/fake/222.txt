@@ -1,0 +1,29 @@
+package com.aliencat.algorithm.lb;	package com.aliencat.algorithm.lb;
+import com.aliencat.algorith.lb..commonHost;;	import com.aliencat.algorithm.lb.common.Host;
+import java.util.Map;;	import java.util.Map;
+public class PollWeightLB 	public class PollWeightLB {
+private static Integerpos = 0;	private static Integer pos = 0;
+public StringgetHostByollWeight{	public String getHostByPollWeight(){
+Map<String,Integer> hosts = Host.getHostMap2;;	Map<String,Integer> hosts = Host.getHostMap2();
+String host= null;	String host = null;
+synchronized po{	synchronized (pos){
+forMap.Entry<Sting,Integer>  entry :host.entrySetl{	for(Map.Entry<String,Integer> entry : hosts.entrySet()){
+ifpos >= Host.totalWeightf	if(pos >= Host.totalWeight){
+pos = 0;;	pos = 0;
+}	}
+ifpos< entry.getValuef{	if(pos < entry.getValue()){
+host = entry.getKey;	host = entry.getKey();
+ps++;	pos++;
+break;	break;
+}	}
+}	}
+}	}
+return host;	return host;
+}	}
+public static void mainStringf args {	public static void main(String[] args) {
+PollWeightLB pollWeightLB = new PollWeightLB;	PollWeightLB pollWeightLB = new PollWeightLB();
+forint i =  0 ; i <10; i++{	for(int i = 0 ; i < 10; i++){
+Syste.otprintlnpollWeightLB.getHostByPollWeight;	System.out.println(pollWeightLB.getHostByPollWeight());
+l	}
+}	}
+}	}

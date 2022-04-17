@@ -1,0 +1,11 @@
+package com.aliencat.pringbot.swagger2;	package com.aliencat.springboot.swagger2;
+import org.springframework.boot.SpringApplication;	import org.springframework.boot.SpringApplication;
+iport org.springframework.boot.autoconfigureSpringBootApplication;;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2	import springfox.documentation.swagger2.annotations.EnableSwagger2;
+@EnableSwagger2	@EnableSwagger2
+@SpringBootApplication	@SpringBootApplication
+public  classSwagger2Appication{	public class Swagger2Application {
+public static void mainString argsf  {	public static void main(String[] args) {
+SpringApplication.runlSwagger2Application.class, args;	SpringApplication.run(Swagger2Application.class, args);
+	}
+}	}

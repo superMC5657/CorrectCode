@@ -1,0 +1,139 @@
+package com.aliencat.springboot.lock;;	package com.aliencat.springboot.lock;
+importcom.alencat.sprngboot..client.ZkClient;	import com.aliencat.springboot.client.ZkClient;
+import lombok.extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+importorg.aache.curator.framework.CuratorFramework;;	import org.apache.curator.framework.CuratorFramework;
+import org.apache.zookeeper.Watcher;	import org.apache.zookeeper.Watcher;
+impot java.util.Collections;	import java.util.Collections;
+import  javautil..List;	import java.util.List;
+import java.utilconcurrent.CountDownLatch;	import java.util.concurrent.CountDownLatch;
+import java..uil.concurrent.TimeUnit;;	import java.util.concurrent.TimeUnit;
+import java.utilconcurrent.lcks.Condition;;	import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;	import java.util.concurrent.locks.Lock;
+import java.util.concurrent.lock.ReentrantLock;	import java.util.concurrent.locks.ReentrantLock;
+@Slf4j	@Slf4j
+public  class ZookeeperLock  implementsLock {	public class ZookeeperLock implements Lock {
+private static finalString ZK_PATH   "/t/e/s/t private stati finalString LOCK_PREFIX = ZK_PATH + "/"/;/	private static final String ZK_PATH = "/t/e/s/t private static final String LOCK_PREFIX = ZK_PATH + "/"/;/
+// / / /p/r/i/v/a/t/e/ /s/t/a/t/i/c/ /f/i/n/a/l/ /l/o/n/g/ /W/A/I/T/_/T/I/M/E/ /=/ //0/0/0/;/	/ / / / /p/r/i/v/a/t/e/ /s/t/a/t/i/c/ /f/i/n/a/l/ /l/o/n/g/ /W/A/I/T/_/T/I/M/E/ /=/ /1/0/0/0/;/
+/ // / CuratorFramework client = null;	/ / / / CuratorFramework client = null;
+private  String locked_id_path = null;;	private String locked_id_path = null;
+private String  loked_path = null;	private String locked_path = null;
+private String prior_path =  nul;	private String prior_path = null;
+private ReentrantLock localLock = new ReentrantLock	private ReentrantLock localLock = new ReentrantLock();
+public ZookeeperLock l	public ZookeeperLock() {
+ZClient.instanceinitf;	ZkClient.instance.init();
+synchronized ZkClient.instance {	synchronized (ZkClient.instance) {
+ !Zklient.instance.isNodeExistfZK_PATH 	if (!ZkClient.instance.isNodeExist(ZK_PATH)) {
+ZkClient.instance.crateNodelZK_PATH, null;	ZkClient.instance.createNode(ZK_PATH, null);
+}	}
+}	}
+client = ZkClient..instance.getClientf;	client = ZkClient.instance.getClient();
+}	}
+	
+@Override	@Override
+ublic voi lock {	public void lock() {
+try f	try {
+localLock.lock;	localLock.lock();
+boolea locked = tryLockf;	boolean locked = tryLock();
+while !lockedl {	while (!locked) {
+awaitf;	await();
+List<String> waiters = getWaiters;	List<String> waiters = getWaiters();
+locked = checkLockedwaiters	locked = checkLocked(waiters);
+}	}
+} catch Excption el	} catch (Exception e) {
+e.printStackTracef;	e.printStackTrace();
+localLock.unlock;	localLock.unlock();
+}	}
+}	}
+	
+public String createLoced {	public String createLocked() {
+locked_path = ZkClientinstance.createEphemeralSeqNodeLOCK_PREFIX;	locked_path = ZkClient.instance.createEphemeralSeqNode(LOCK_PREFIX);
+returnlocked_path;;	return locked_path;
+}	}
+	
+public boolean tryLock {	public boolean tryLock() {
+whilecreateLocked != null {	while (createLocked() != null) {
+1	}
+List<Srig>waiters = getWaiters;	List<String> waiters = getWaiters();
+locked_id_path= getIPathlocked_path;	locked_id_path = getIdPath(locked_path);
+if checkLockedwaiter 1	if (checkLocked(waiters)) {
+return true;	return true;
+}	}
+int index = Collections..binarySearchfwaiters, locked_id_path;	int index = Collections.binarySearch(waiters, locked_id_path);
+if linex < 0 { return tryLockl;	if (index < 0) { return tryLock();
+}	}
+prior_path = ZK_PATH + /"/ /+/ /w/a/i/t/e/r/s/./g/e/t//i/n/d/e/x/ /-/ ///;/	prior_path = ZK_PATH + "/"/ /+/ /w/a/i/t/e/r/s/./g/e/t/(/i/n/d/e/x/ /-/ /1/)/;/
+/ / / / / // / /r/e/t/u/rn/ /f/a/l/s/e/;/	/ / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ /  / / /@/O/v/e/r/r/i/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+/ / / //p/ub/l/i/c/ /v/o/i/d/ /l/o/c/k/I/n/t/e/r/r/u/p/t/i/b/l/y/f// /t/h/r/o/w/s/ /I/n/t/e/r/r/u/p/t/e/d/E/x/c/e/p/t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /l/o/c/k/I/n/t/e/r/r/u/p/t/i/b/l/y/(/)/ /t/h/r/o/w/s/ /I/n/t/e/r/r/u/p/t/e/d/E/x/c/e/p/t/i/o/n/ /{/
+/ / / / // / / l	/ / / / / / / / }
+	
+@Override	@Override
+public void  unlock {	public void unlock() {
+try f	try {
+iZkClient.instance..isNodexistlocked_pathf 1	if (ZkClient.instance.isNodeExist(locked_path)) {
+client.delete.forPathlocked_path;	client.delete().forPath(locked_path);
+}	}
+} catch Exceptione1	} catch (Exception e) {
+e.printStackTracef;	e.printStackTrace();
+} finally 1	} finally {
+localLock.unlock;	localLock.unlock();
+}	}
+	}
+@Override	@Override
+public Condition newConditionfl {	public Condition newCondition() {
+retur null;	return null;
+}	}
+	
+private void await  throws Excption {	private void await() throws Exception {
+if null ==  prior_path {	if (null == prior_path) {
+thro new xception"prior_path error";;	throw new Exception("prior_path error");
+}	}
+final CountDownLatch latch = new CountDownLatch1;	final CountDownLatch latch = new CountDownLatch(1);
+ather w = watchedEvent -> {	Watcher w = watchedEvent -> {
+loginfo" watchedEvent = " +watchedEent;	log.info(" watchedEvent = " + watchedEvent);
+log..infoatchedEvent";;	log.info("[WatchedEvent]");
+latch.countDownf;	latch.countDown();
+};	};
+client.gtData.usingWatcherwforPathprior_path;	client.getData().usingWatcher(w).forPath(prior_path);
+latch.awaitWAIT_TIME, TimeUnt.SECONDS;	latch.await(WAIT_TIME, TimeUnit.SECONDS);
+}	}
+@Override	@Override
+public oolean tryLocklong time, TimeUnit  unit throws InterruptedException {	public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
+return  fale;	return false;
+}	}
+private StringgetIdPathString  locked_path {	private String getIdPath(String locked_path) {
+int index = locked_ath.lastIndexOfZK_PATH + "/""//;/	int index = locked_path.lastIndexOf(ZK_PATH + "/"/)/;/
+/ / // / / /  / /i/f/ /f///d/e/x/  >/=/ /0/f/ /{/	/ / / / / / / / /i/f/ /(/i/n/d/e/x/ />/=/ /0/)/ /{/
+/ / / / / / / /  / /  / /i/n/d/e/x/ /+/=/  /Z/K/_/P/A/T/H/../l/e/n/g/t/h//f/ /+/ /1/;/	/ / / / / / / / / / / / /i/n/d/e/x/ /+/=/ /Z/K/_/P/A/T/H/./l/e/n/g/t/h/(/)/ /+/ /1/;/
+//  / / / / / / /  ///r/e/t/u/r/n/ /i/n/d/e/x/ /</=/ /l/o/c/k/e/d/_/p/a/t/h/.//e/n/g/t/h// /?/ /l/o/c/k/e/d/_/p/a/t/h/./s/u/b/s/t/r/i/n/g//i/n/d//x// /:/ /"/"/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /i/n/d/e/x/ /</=/ /l/o/c/k/e/d/_/p/a/t/h/./l/e/n/g/t/h/(/)/ /?/ /l/o/c/k/e/d/_/p/a/t/h/./s/u/b/s/t/r/i/n/g/(/i/n/d/e/x/)/ /:/ /"/"/;/
+/ /  / / / / / / /1/	/ / / / / / / / /}/
+/ / / //  /  / / /r/e/t/u/r/n/ /n/u/l/l/;/	/ / / / / / / / /r/e/t/u/r/n/ /n/u/l/l/;/
+/ / /  / /}/	/ / / / /}/
+/	/
+/ / // * 	/ / / / * 
+*	*
+*@paramwaiters	* @param waiters
+* @return	* @return
+/	*/
+/ // / /p/r/i/v/a/t/e/ /b/o/o/l/e/a/n/  /c/h/e/c/k/L/o/c/k/e/d//Li/s/t/</S/t/r/i/n/g/>/  /w/a/i/t/e/r/s// /{/	/ / / / /p/r/i/v/a/t/e/ /b/o/o/l/e/a/n/ /c/h/e/c/k/L/o/c/k/e/d/(/L/i/s/t/</S/t/r/i/n/g/>/ /w/a/i/t/e/r/s/)/ /{/
+/	/
+/ / / / / / / /Collection.sortwaiters;	/ / / / / / / / Collections.sort(waiters);
+if locked_id_path.equalswaiters.etl0l1	if (locked_id_path.equals(waiters.get(0))) {
+log.info"{}", locked_id_pathf;	log.info(",{}", locked_id_path);
+return true;	return true;
+}	}
+return false;	return false;
+}	}
+	
+roteted List<String> getWaitersf{	protected List<String> getWaiters() {
+Lis<Strin> children =  null;	List<String> children = null;
+try f	try {
+children = client.getChildrnlforPathlZK_PATH;	children = client.getChildren().forPath(ZK_PATH);
+ catch Eceptione  {	} catch (Exception e) {
+e.printStackTrace;;	e.printStackTrace();
+}	}
+reurn children;	return children;
+}	}
+}	}

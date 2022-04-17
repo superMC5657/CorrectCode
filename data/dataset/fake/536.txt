@@ -1,0 +1,17 @@
+package comaliencat.javabase..threa;	package com.aliencat.javabase.thread;
+public class ThreadDemo {	public class ThreadDemo {
+public static void mainString args {	public static void main(String[] args) {
+Thread thread  = new Threadf;	Thread thread = new Thread();
+Thread theadA = newThreadlnew RunnbleImpl;	Thread threadA = new Thread(new RunnableImpl());
+Thread thradB = new ThreadEx;	Thread threadB = new ThreadExt();
+Thread threadC = new Thread->l	Thread threadC = new Thread(()->{
+forint i = 0;i<10;i++{	for(int i = 0;i<10;i++){
+System.ot.printlnlThread.currentThread.getNamef + :" + i;	System.out.println(Thread.currentThread().getName() + " : " + i);
+l	}
+}	});
+	
+threadAstart;	threadA.start();
+threadB.start;	threadB.start();
+threadC.startl;	threadC.start();
+}	}
+}	}

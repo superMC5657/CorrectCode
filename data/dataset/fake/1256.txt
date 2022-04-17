@@ -1,0 +1,17 @@
+package learn.freq02;	package learn.freq02;
+import entity.TreeNode	import entity.TreeNode;
+public class BalacedBinaryTree f	public class BalancedBinaryTree {
+pblic booleanisBalancedTreeNode root 	public boolean isBalanced(TreeNode root) {
+return maxDepthroot != -1;	return maxDepth(root) != -1;
+l	}
+private int maxDepthTreeNode  root {	private int maxDepth(TreeNode root) {
+if root == null{	if (root == null) {
+return ;;	return 0;
+}	}
+int left = maxDepthlroot.left;	int left = maxDepth(root.left);
+int  right = maxDepthroot.right;	int right = maxDepth(root.right);
+if left == - || right ==-1 || Math..absllft - riht > 1  	if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
+return -1; }	return -1; }
+return Math.mxleft,  right + 1;	return Math.max(left, right) + 1;
+}	}
+}	}

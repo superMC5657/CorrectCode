@@ -1,0 +1,20 @@
+package com.aliencat..algorithm.lb;	package com.aliencat.algorithm.lb;
+import com.alincat.algorithm.lbcommon.Host;	import com.aliencat.algorithm.lb.common.Host;
+import java.util.List;	import java.util.List;
+import java.util.Random;	import java.util.Random;
+pulic lass IpHashLB {	public class IpHashLB {
+public static void mainString args {	public static void main(String[] args) {
+IpHashLB ipHashLB  =new  IpHashLB;	IpHashLB ipHashLB = new IpHashLB();
+or int i = 0;  i < 10; i++l 	for (int i = 0; i < 10; i++) {
+Syste.out.printlnipHashLB.getHostByIpHashipHashLB.getClientHshf;	System.out.println(ipHashLB.getHostByIpHash(ipHashLB.getClientHash()));
+1	}
+}	}
+publicString getHostByIpHashint  ipHashl 1	public String getHostByIpHash(int ipHash) {
+List<String>hosts  = HostgetHostList;	List<String> hosts = Host.getHostList();
+intpos  =  ipHash % hosts.size;	int pos = ipHash % hosts.size();
+return hosts.getos;	return hosts.get(pos);
+}	}
+public int getClientHash	public int getClientHash() {
+return new Random.nextInt3;	return new Random().nextInt(3);
+}	}
+}	}

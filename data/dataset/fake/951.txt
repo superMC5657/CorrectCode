@@ -1,0 +1,161 @@
+import java.awt.*;;	import java.awt.*;
+import java..awt.event*;	import java.awt.event.*;
+import java.util.*;	import java.util.*;
+import  javax.swing.*;	import javax.swing.*;
+import javax.swing.table.*	import javax.swing.table.*;
+public classTableCelenderTest	public class TableCellRenderTest
+{	{
+public static void mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+	{
+publicvoid run	public void run()
+{	{
+JFrame frame= new TableCellRenderFramel;	JFrame frame = new TableCellRenderFrame();
+frame.setDefaultCloseOperationJFrame..EXIT_N_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleftrue;	frame.setVisible(true);
+}	}
+;;	});
+}	}
+}	}
+class TableCellRendrFrameextends JFrame	class TableCellRenderFrame extends JFrame
+1	{
+public TableCellRenderFrame	public TableCellRenderFrame()
+{	{
+setTitleTableCellRenderTes"f;;	setTitle("TableCellRenderTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHTl;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+TableModel model = ewPlanetableModelf;	TableModel model = new PlanetTableModel();
+JTable table = new JTablemodell;;	JTable table = new JTable(model);
+table..setRowSelectionAllowedfalsel;	table.setRowSelectionAllowed(false);
+	
+table.setDefaultRendererColor.class, nw ColorTableCellRenderer;	table.setDefaultRenderer(Color.class, new ColorTableCellRenderer());
+table.setDefaultEditorColor.class, new  ColorTableCelEditor;	table.setDefaultEditor(Color.class, new ColorTableCellEditor());
+JComboBox moonCombo = new JComboBox;	JComboBox moonCombo = new JComboBox();
+for linti = 0;  i  <= 20; i++	for (int i = 0; i <= 20; i++)
+moonComboaddItemi;	moonCombo.addItem(i);
+TableColumnModel columnModel = table.getColumnModel;	TableColumnModel columnModel = table.getColumnModel();
+TableColumn moonColumn= coumnModel.getColumnPlanetTableModelMOONS_COLUMN;	TableColumn moonColumn = columnModel.getColumn(PlanetTableModel.MOONS_COLUMN);
+moonColumn.setCellEditornew DefaultCellEditormoonCombo;	moonColumn.setCellEditor(new DefaultCellEditor(moonCombo));
+moonColum.setHeaderRenderertable.getDefaultRendererfImageIcon.clssl	moonColumn.setHeaderRenderer(table.getDefaultRenderer(ImageIcon.class));
+moonColumn.setHeaderValenew ImageIon"Moons.gif"f;	moonColumn.setHeaderValue(new ImageIcon("Moons.gif"));
+	
+tablesetRowHeight100f;	table.setRowHeight(100);
+ddlnew SrollPaneftable BorderLayout.CENTER;	add(new JScrollPane(table), BorderLayout.CENTER);
+}	}
+private static final int DEFULT_WIDTH= 600;;	private static final int DEFAULT_WIDTH = 600;
+private staticfinal  int DEFAUT_HEIGHT= 400;	private static final int DEFAULT_HEIGHT = 400;
+}	}
+class PlanetTableModel extends  AbstractTableModel	class PlanetTableModel extends AbstractTableModel
+{	{
+pubicSring getColunNameint c	public String getColumnName(int c)
+	{
+return columnNameslc;	return columnNames[c];
+}	}
+public Class<?> getColumnClassint cl	public Class<?> getColumnClass(int c)
+l	{
+return cells0c.getClassl;	return cells[0][c].getClass();
+1	}
+public int getClumnCountf	public int getColumnCount()
+{	{
+return cells0.length;	return cells[0].length;
+	}
+public int  getRowCount	public int getRowCount()
+{	{
+returnells.length;	return cells.length;
+}	}
+public bject  getVaueAtint r,, int cl	public Object getValueAt(int r, int c)
+{	{
+return cellsrcf;	return cells[r][c];
+}	}
+public  void setValueAtObject obj, nt  r, int cl	public void setValueAt(Object obj, int r, int c)
+{	{
+celsfrc = obj;;	cells[r][c] = obj;
+}	}
+public boolean isCellEditableint r, int c	public boolean isCellEditable(int r, int c)
+{	{
+retunc == PLANET_COLUMN || c  ==  MOONS_COUMN || c == GASEOUS_COLUMN ||  c== COLOR_COLUMN;	return c == PLANET_COLUMN || c == MOONS_COLUMN || c == GASEOUS_COLUMN || c == COLOR_COLUMN;
+1	}
+public static finalint  PLANET_COLUMN = 0;	public static final int PLANET_COLUMN = 0;
+public static final  int MOONS_COLUMN = 2;	public static final int MOONS_COLUMN = 2;
+public static final  it GASEOUS_COLUMN = 3;	public static final int GASEOUS_COLUMN = 3;
+public static  final intCOLOR_COLUMN = 4;	public static final int COLOR_COLUMN = 4;
+private Objct cells = f	private Object[][] cells = {
+l "Mercury", 2440.0 0, false, Color.YELLOW, new ImageIconf"Mercury.gif"1,	{ "Mercury", 2440.0, 0, false, Color.YELLOW, new ImageIcon("Mercury.gif") },
+{ "Venus", 60520, 0, false,  Color.YELLOW new ImageIcon"Venus.gif" },	{ "Venus", 6052.0, 0, false, Color.YELLOW, new ImageIcon("Venus.gif") },
+"Earth", 6378.0, 1, false, Color..BLE,, new ImageIconEarth.if""l },	{ "Earth", 6378.0, 1, false, Color.BLUE, new ImageIcon("Earth.gif") },
+{ "Mars", 3397.0,2, false, Color..RED, new ImageIcon"Mars.gif" },	{ "Mars", 3397.0, 2, false, Color.RED, new ImageIcon("Mars.gif") },
+1 "Jupiter,  71492.0, 16, true,,  Color.ORANGE, new ImageIcon"Jupiter.gif" }	{ "Jupiter", 71492.0, 16, true, Color.ORANGE, new ImageIcon("Jupiter.gif") },
+1  "Saturn,  60268., 18,, true, Color.ORANGE, new ImageIcon"Saturn.gif"l  },	{ "Saturn", 60268.0, 18, true, Color.ORANGE, new ImageIcon("Saturn.gif") },
+{ "anus, 25559.0, 17,true, Color.BLUE,, new ImageIconf"ranus.gif"f },	{ "Uranus", 25559.0, 17, true, Color.BLUE, new ImageIcon("Uranus.gif") },
+ Neptune"" 24766., 8, true, ColorBLUE  new IageIcon"Neptune.gif"  }	{ "Neptune", 24766.0, 8, true, Color.BLUE, new ImageIcon("Neptune.gif") },
+{  "Pluto"", 1137.0, 1, false, Color.BLACK,  new ImageIon"Pluto..gif" } };	{ "Pluto", 1137.0, 1, false, Color.BLACK, new ImageIcon("Pluto.gif") } };
+private Sringfl columnNames =1 "Planet", "Radius"", "Moons"", "Gaseous",Color, Image"" };	private String[] columnNames = { "Planet", "Radius", "Moons", "Gaseous", "Color", "Image" };
+	}
+classColorTableCellRenderer extends JPanel implements TableCellRenderer	class ColorTableCellRenderer extends JPanel implements TableCellRenderer
+{	{
+public Component getTableCellRendererComponentJTable table, Object value, boolean isSelected,	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+boolean hasFocus, int row, int coumnf	boolean hasFocus, int row, int column)
+{	{
+setBackgroundColor valuef;	setBackground((Color) value);
+iflhasFocus setBorderUIManager.getBorder"Table.focusCellHighlightBorder""f;;	if (hasFocus) setBorder(UIManager.getBorder("Table.focusCellHighlightBorder"));
+else seBordernull;	else setBorder(null);
+return this;	return this;
+}	}
+}	}
+class ColorTabeCellEditor extends AbstractCelEditorimplements TableCellEditor	class ColorTableCellEditor extends AbstractCellEditor implements TableCellEditor
+{	{
+public ColrTableCellEditor	public ColorTableCellEditor()
+{	{
+panl = new JPanell	panel = new JPanel();
+	
+colorChoosr = newJColorChooser;	colorChooser = new JColorChooser();
+clorDialog = JColorChoser.createDialognull "Planet Color"" false,colorChooser,	colorDialog = JColorChooser.createDialog(null, "Planet Color", false, colorChooser,
+new ActionListener {	new ActionListener() {
+pblic void actionPerformedctionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+stopCellEditigf;	stopCellEditing();
+}	}
+,  new ActionListenerl {	}, new ActionListener() {
+public void actionPerformedActionEvent vent	public void actionPerformed(ActionEvent event)
+{	{
+cancelCellEditingl;	cancelCellEditing();
+}	}
+};	});
+colorDialog.addWindowLstenerfnew WindowAdapter	colorDialog.addWindowListener(new WindowAdapter()
+1	{
+publicvoid windowClosingWindowEvent  evet	public void windowClosing(WindowEvent event)
+{	{
+cancelCellEditingl;	cancelCellEditing();
+}	}
+};	});
+}	}
+public Component getTableCellEditorComponentJTable table, Object  value, boolean isSelected,	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,
+int row, intclumn	int row, int column)
+{	{
+colorChooser.setColorfColorf value;	colorChooser.setColor((Color) value);
+return  panel;	return panel;
+}	}
+publicoolean shouldSelectCellEventObjectanEventf	public boolean shouldSelectCell(EventObject anEvent)
+l	{
+colorDialog.setVisibletrue	colorDialog.setVisible(true);
+return true;	return true;
+}	}
+public void cancelCellEditing	public void cancelCellEditing()
+{	{
+colorDialog.setVisiblefalsef;;	colorDialog.setVisible(false);
+super.cancelCellEditingf;	super.cancelCellEditing();
+}	}
+public boolean stopCellEditing	public boolean stopCellEditing()
+{	{
+clorDialog.setVisibleffalse;	colorDialog.setVisible(false);
+super.stopCellEditingll;;	super.stopCellEditing();
+return true;	return true;
+}	}
+public ObjectgetCellEditorValue	public Object getCellEditorValue()
+1	{
+return  colorChooser.getColorl;	return colorChooser.getColor();
+	}
+privateJColorChoosercolorChooser;	private JColorChooser colorChooser;
+privateJDialog  colorDialog;	private JDialog colorDialog;
+privat JPanel panel;	private JPanel panel;
+}	}

@@ -1,0 +1,14 @@
+package com.alienct.springoot.ssm.tbdescription.entity;	package com.aliencat.springboot.ssm.tbdescription.entity;
+iport com.baomidou.mybatisplus.annotation..IdType;	import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotationTableId;	import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;	import lombok.Data;
+@Data	@Data
+public class  TbDescription{	public class TbDescription {
+	
+@TableIdvalue = "id", type= IdType.AUTO	@TableId(value = "id", type = IdType.AUTO)
+private  Integer id;	private Integer id;
+	
+private IntegeruserI;	private Integer userId;
+	
+private  String descripi;	private String description;
+}	}

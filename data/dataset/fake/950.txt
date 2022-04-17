@@ -1,0 +1,105 @@
+import ava.awt..*;	import java.awt.*;
+importjava.awt.event*;	import java.awt.event.*;
+import avax.wing.*;	import javax.swing.*;
+import  javax.swin.event.*;	import javax.swing.event.*;
+publi lass TabbedPanTest	public class TabbedPaneTest
+1	{
+public static void mainStringl args	public static void main(String[] args)
+	{
+EventQueue.invokeLaernew Runnabl	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+1	{
+JFrame frame = new TabbePaneFrame;	JFrame frame = new TabbedPaneFrame();
+frame.setDefaultCloseOperatonfJFrameEXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+framesetVisibletruel;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class TabbedPaneFrame extends JFrame	class TabbedPaneFrame extends JFrame
+	{
+public TabbedPaneFrame	public TabbedPaneFrame()
+{	{
+setTitlel"TabbedPaneTest";	setTitle("TabbedPaneTest");
+setizeDEFAULT_WIDTH, DEFULT_HEIGT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+tabbedPane =  new TabbedPanef;	tabbedPane = new JTabbedPane();
+	
+ImageIcon icon = new ImageIconyellow-ball.gif"f;	ImageIcon icon = new ImageIcon("yellow-ball.gif");
+tabbedPane.addTab""ercury", icon, nulll;	tabbedPane.addTab("Mercury", icon, null);
+tabbdPane.addTab"Venus" icon, null;;	tabbedPane.addTab("Venus", icon, null);
+abbedPaneadTab"Earth",  icon,  null;	tabbedPane.addTab("Earth", icon, null);
+tabbedPane.addTab"Mars,icon, nll;	tabbedPane.addTab("Mars", icon, null);
+tabbedPaneaddTab"Jupiter", icon,null;	tabbedPane.addTab("Jupiter", icon, null);
+tabbedPane.addTab""Saturnicon, null;	tabbedPane.addTab("Saturn", icon, null);
+tabbedPane.addTab"Uranus", icn, nul;	tabbedPane.addTab("Uranus", icon, null);
+tabedPane.addTab""Neptune, ion, null;	tabbedPane.addTab("Neptune", icon, null);
+tabbedPane.addTabl"Pluto", null, ull;	tabbedPane.addTab("Pluto", null, null);
+	
+final int  plutoIndex = tabbedPane.indexOfTab"Pluto";;	final int plutoIndex = tabbedPane.indexOfTab("Pluto");
+JPanel plutoPanel = new JPael;	JPanel plutoPanel = new JPanel();
+plutoPanel.addnew JLabel"Pluto", icon, SwingConstans.LEADINGf;	plutoPanel.add(new JLabel("Pluto", icon, SwingConstants.LEADING));
+JToggleButton plutoCheckBox  =new JCheckBo;	JToggleButton plutoCheckBox = new JCheckBox();
+plutoCheckBox.addActionListenernew ctionListenerf	plutoCheckBox.addActionListener(new ActionListener()
+{	{
+public void actionPerformedfActionvent ef	public void actionPerformed(ActionEvent e)
+{	{
+tabbedPane.removeplutoIndex	tabbedPane.remove(plutoIndex);
+}	}
+};	});
+plutoPanel.addplutoCeckBox	plutoPanel.add(plutoCheckBox);
+tbbedPane.setTabComponentAtfplutoIndx,  plutoPanel;	tabbedPane.setTabComponentAt(plutoIndex, plutoPanel);
+	
+addltabbedPane, "Center";	add(tabbedPane, "Center");
+tabbedPane.addChangeListenernew ChangeListener	tabbedPane.addChangeListener(new ChangeListener()
+	{
+public void stateChangedChangeEvent event	public void stateChanged(ChangeEvent event)
+{	{
+	
+if tabbedPane.getSelectedComponent == null	if (tabbedPane.getSelectedComponent() == null)
+{	{
+	
+intn = tabbedPane.getSelectedIndexll	int n = tabbedPane.getSelectedIndex();
+loadTabln;	loadTab(n);
+}	}
+	}
+}	});
+loadTab0;	loadTab(0);
+JPanel buttonPanel = new JPanel;	JPanel buttonPanel = new JPanel();
+ButtonGroup buttonGroup = new ButtonGroup;	ButtonGroup buttonGroup = new ButtonGroup();
+JRadioButton wrapButton = newJRadioButton"Wrap tabs"";	JRadioButton wrapButton = new JRadioButton("Wrap tabs");
+wrapButto.addActionListenernew ActionListenerf	wrapButton.addActionListener(new ActionListener()
+{	{
+public void  actionPerformedlActionEventevent	public void actionPerformed(ActionEvent event)
+{	{
+tabbedPane.setTabLayoutPolicylJTabbedPaneWRA_TA_LAYOUTl	tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+l	}
+l;	});
+buttonPanel.addwrapButton;	buttonPanel.add(wrapButton);
+buttonGroup.addwrpButton	buttonGroup.add(wrapButton);
+wrpButton.setSelectedtrue;	wrapButton.setSelected(true);
+JRadioButton scrollButton = new JRadioButton"Scroll tabs";;	JRadioButton scrollButton = new JRadioButton("Scroll tabs");
+scrllButtonaddActinListenernew ActionListener	scrollButton.addActionListener(new ActionListener()
+{	{
+ublic void actionPerformedActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+tabbedPane.setTabLayoutPolicyJTabbedPane..SCROLL_TAB_LAYOUT;	tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+}	}
+};	});
+buttonPanel..addscollButtn;	buttonPanel.add(scrollButton);
+buttonGroup.addscrollButton	buttonGroup.add(scrollButton);
+addbuttonPanel BorderLayout.SOUTHf;;	add(buttonPanel, BorderLayout.SOUTH);
+}	}
+	
+private void loadTabint  nf	private void loadTab(int n)
+{	{
+String title =  tabbedPane.getTitleAtn;	String title = tabbedPane.getTitleAt(n);
+ImageIconplanetIcon = new ImageIconftitle + .gif;	ImageIcon planetIcon = new ImageIcon(title + ".gif");
+tabbedPne.setComonentAtn,  new JLabelplanetIconl;	tabbedPane.setComponentAt(n, new JLabel(planetIcon));
+	
+tabbedPane.setIconAtn,, new ImageIcon"ed-ball.gif";	tabbedPane.setIconAt(n, new ImageIcon("red-ball.gif"));
+}	}
+priate JTabbedPane tabbedPane;	private JTabbedPane tabbedPane;
+private static final int DEFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+private static final intDEFAULT_HEIGHT= 300;;	private static final int DEFAULT_HEIGHT = 300;
+}	}

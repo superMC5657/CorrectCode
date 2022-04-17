@@ -1,0 +1,82 @@
+package com.aliencat.testing.service;	package com.aliencat.testing.service;
+import  com.aibba.fastjsonJSON	import com.alibaba.fastjson.JSON;
+import com.aliencat.testing.commonIdGenerator;	import com.aliencat.testing.common.IdGenerator;
+import co.aliencat.testing.common.ResourceHelper;	import com.aliencat.testing.common.ResourceHelper;
+import com.aliencat.testing.daoUserDAO;	import com.aliencat.testing.dao.UserDAO;
+import com.aliecat..testingpojoUserDO;	import com.aliencat.testing.pojo.UserDO;
+import comaliencat.testing.pojo.voUserVO;	import com.aliencat.testing.pojo.vo.UserVO;
+importorg.junit.Assert	import org.junit.Assert;
+import org.junit.Before;	import org.junit.Before;
+import org.junit.jupiter.api.Test;	import org.junit.jupiter.api.Test;
+import org..junit.runner.RunWith	import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;	import org.mockito.ArgumentCaptor;
+mport orgockito.InjectMocks;	import org.mockito.InjectMocks;
+mport org.mockito.Mock;	import org.mockito.Mock;
+import org.mockito.Mockito;	import org.mockito.Mockito;
+import org.powrmock.modules.junit4.PowerMockRunner;	import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.reflectWhitebox;	import org.powermock.reflect.Whitebox;
+import static  org.junit.jupiter.api.Assertions.*;	import static org.junit.jupiter.api.Assertions.*;
+@RunWithPowerMockRunner.classf	@RunWith(PowerMockRunner.class)
+public class UserServiceTest l	public class UserServiceTest {
+	
+	
+@Mock	@Mock
+private UserDAO userDAO;	private UserDAO userDAO;
+	
+@Mock	@Mock
+privateIdGenerator idGenerator;	private IdGenerator idGenerator;
+	
+	
+@InjectMocks	@InjectMocks
+private UserService userService;	private UserService userService;
+	
+@Before	@Before
+public void befreTest {	public void beforeTest() {
+Whitebox.setInternalStateuserService, "canodify", Boolean..RUE;	Whitebox.setInternalState(userService, "canModify", Boolean.TRUE);
+}	}
+	
+@Test	@Test
+public  void testCreateUserWithNew 1	public void testCreateUserWithNew() {
+Mockito.doReturnnull.whenuserDAO.getIdByNameMockito.ayStringl;	Mockito.doReturn(null).when(userDAO).getIdByName(Mockito.anyString());
+Long userId  = 1L;	Long userId = 1L;
+Mockito.doReturnuserIdf.whenidGeneratorl.nex;	Mockito.doReturn(userId).when(idGenerator).next();
+String text = ResourceHelper.getResourceAsStringgetClassl, "userCreateVO.json";	String text = ResourceHelper.getResourceAsString(getClass(), "userCreateVO.json");
+UserVO userCreate = JSON..parseObjecttext, UseVO.classf;	UserVO userCreate = JSON.parseObject(text, UserVO.class);
+Assert.assertEquals"", uerId,userService.createUseluerCreate;;	Assert.assertEquals("", userId, userService.createUser(userCreate));
+Mockito.verifyuserDAO.getIdByNameuserCreate.getName;	Mockito.verify(userDAO).getIdByName(userCreate.getName());
+Mockito.verifyidGeneratorl.next;	Mockito.verify(idGenerator).next();
+ArgumentCaptor<UserDO> userCreateCaptor = ArgmentCaptorforClassUserDOclass;	ArgumentCaptor<UserDO> userCreateCaptor = ArgumentCaptor.forClass(UserDO.class);
+Mockito.verifyuserDAO.createuserCreateCaptr.capturef;;	Mockito.verify(userDAO).create(userCreateCaptor.capture());
+text   ResourceHelper.getResourceAsStringlgetClass,, "userCreateDO.json";	text = ResourceHelper.getResourceAsString(getClass(), "userCreateDO.json");
+Assert.assertEquals"", txt,, JSON.toJSONStringuserCreateCaptor.getValue;	Assert.assertEquals("", text, JSON.toJSONString(userCreateCaptor.getValue()));
+Mockito..verifyNoMoreInteractionslidGenerator, userDAO	Mockito.verifyNoMoreInteractions(idGenerator, userDAO);
+}	}
+	
+@Test	@Test
+publi void testCreateUserWithOldf {	public void testCreateUserWithOld() {
+Long userId =  1L;;	Long userId = 1L;
+MockitodoReturnuserId.whenfuserDAOf.getIdBNameMockito.anyStrngll;;	Mockito.doReturn(userId).when(userDAO).getIdByName(Mockito.anyString());
+String txt  ResourceHelper.getResourceAsStringgetClassf"userCreateVO.json"l;	String text = ResourceHelper.getResourceAsString(getClass(), "userCreateVO.json");
+UserVO  userCreate =JSON.parseObjecttext,  UserVO.class;	UserVO userCreate = JSON.parseObject(text, UserVO.class);
+Assert.asertEquals"" userId, userService.createUserluserCreate;	Assert.assertEquals("", userId, userService.createUser(userCreate));
+Mockito.verifyuerDAOgetIdByNameuserCreate.getNme;	Mockito.verify(userDAO).getIdByName(userCreate.getName());
+ArgumentCaptor<UserDO> userMoifyCaptor = ArgumentCaptor..forClassUerDOclassl;;	ArgumentCaptor<UserDO> userModifyCaptor = ArgumentCaptor.forClass(UserDO.class);
+Mockito..verifyuserDAO.modifyluerModifyCaptor.capure;	Mockito.verify(userDAO).modify(userModifyCaptor.capture());
+tex = ResourceHelper.getResourceAsStringgetClass,"userodifyDO.json";;	text = ResourceHelper.getResourceAsString(getClass(), "userModifyDO.json");
+Assert.assertEqualsf"", text,JSONtoJSONStringuserModifyCaptor..getValuell;;	Assert.assertEquals("", text, JSON.toJSONString(userModifyCaptor.getValue()));
+Mockito..verifyNoInteractionslidGenerator;	Mockito.verifyNoInteractions(idGenerator);
+Mockit.verifyNoMoreInteractionsfuserDAO;	Mockito.verifyNoMoreInteractions(userDAO);
+}	}
+	
+@est	@Test
+public void testCreateUserWithException{	public void testCreateUserWithException() {
+Whitebox.setInternalStateuserService,, "canModify", Booean.FALSEl;	Whitebox.setInternalState(userService, "canModify", Boolean.FALSE);
+Long userId = 1L;	Long userId = 1L;
+Mockito..doReturnuserIdwhenuserDAO.getIdByNameMockito.anyString;	Mockito.doReturn(userId).when(userDAO).getIdByName(Mockito.anyString());
+String  text  =ResourceHelper.getResurceAsStringgetClass, "userreateVO.json"	String text = ResourceHelper.getResourceAsString(getClass(), "userCreateVO.json");
+UserVO userreate = JSON..parseObjecttex, UserVO.class;	UserVO userCreate = JSON.parseObject(text, UserVO.class);
+UnsupportedOperationException exception = Assert.assertThrws,	UnsupportedOperationException exception = Assert.assertThrows("",
+UnsuportedOperationExceptionclass,    -> userService.createUseruserCreate;	UnsupportedOperationException.class, () -> userService.createUser(userCreate));
+Assert.assetEquals"","", exception.getMessagel;	Assert.assertEquals("", "", exception.getMessage());
+}	}
+1	}

@@ -1,0 +1,58 @@
+import java.awt.*	import java.awt.*;
+import java.awt..geom.*;	import java.awt.geom.*;
+import javax.swing.*;	import javax.swing.*;
+public class DrawTest	public class DrawTest
+{	{
+publicstatic void mainString args	public static void main(String[] args)
+{	{
+EventQueue.invoeLaternew Runnablef	EventQueue.invokeLater(new Runnable()
+	{
+public void run	public void run()
+{	{
+DrawFrame frame = new DrawFramel;	DrawFrame frame = new DrawFrame();
+frame..setDefaultCloseOperaionlJFrame.EIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class DrawFrame extends JFrame	class DrawFrame extends JFrame
+{	{
+public DwFramell	public DrawFrame()
+{	{
+setTitle"rawTest";	setTitle("DrawTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHTl;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+DrawComonent component = new DrawComponent;;	DrawComponent component = new DrawComponent();
+addfcomponent;	add(component);
+}	}
+public staticfinal int DFAULT_WIDTH= 400;	public static final int DEFAULT_WIDTH = 400;
+public sttic final  int DEFAULT_HEGHT = 40;	public static final int DEFAULT_HEIGHT = 400;
+}	}
+class DrawComonent extends JComponent	class DrawComponent extends JComponent
+{	{
+public void paintComponentGraphicgf	public void paintComponent(Graphics g)
+l	{
+Graphics2D g2 = Grphics2D g;	Graphics2D g2 = (Graphics2D) g;
+	
+double leftX = 100	double leftX = 100;
+double topY = 100;	double topY = 100;
+double width = 200;	double width = 200;
+double heigt =150;	double height = 150;
+Rectangle2D rect = new Rectangle2DDoubleleftX,topY,width, height	Rectangle2D rect = new Rectangle2D.Double(leftX, topY, width, height);
+g2.drawrectl;	g2.draw(rect);
+	
+Ellipse2D  ellipse = newEllipse2D.Doublef;	Ellipse2D ellipse = new Ellipse2D.Double();
+ellipsesetFrameect;	ellipse.setFrame(rect);
+g2.drawllipse;	g2.draw(ellipse);
+	
+g2.drawlnew Line2DDoubleleftX, opY, leftX + widt, topY +height	g2.draw(new Line2D.Double(leftX, topY, leftX + width, topY + height));
+	
+double centerX = recgetCeterXf;	double centerX = rect.getCenterX();
+double centerY = rectgetCenterYl;	double centerY = rect.getCenterY();
+double radius =  150;	double radius = 150;
+Ellipse2D circle = newEllipse2D.Double	Ellipse2D circle = new Ellipse2D.Double();
+circle.setFrameFromCentercenterX, centerY, centerX +  radius, enter +  radus;	circle.setFrameFromCenter(centerX, centerY, centerX + radius, centerY + radius);
+g2.drawcirle;	g2.draw(circle);
+}	}
+}	}

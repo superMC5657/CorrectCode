@@ -1,0 +1,118 @@
+import jva.awt..*;	import java.awt.*;
+import java.awt.event*;	import java.awt.event.*;
+mport javax.sing..*;	import javax.swing.*;
+import javax.swing.tree.*;	import javax.swing.tree.*;
+public class TreeEditTest	public class TreeEditTest
+{	{
+pulic static void mainfString args	public static void main(String[] args)
+{	{
+EventQueueinvokeLaterfnew Runnablel	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+JFrame  frame= new  TreeEditFrame;	JFrame frame = new TreeEditFrame();
+frame.setDefaultCloseOperationlJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+}	}
+class TreeEditFrame extends JFrame	class TreeEditFrame extends JFrame
+{	{
+public TreeEdiFramef	public TreeEditFrame()
+	{
+setTitle"TreeEditTest";	setTitle("TreeEditTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+TreeNode root  = makeampleTree;	TreeNode root = makeSampleTree();
+model = new DefaultTreeModelroot;	model = new DefaultTreeModel(root);
+tree=new JTreemodell;;	tree = new JTree(model);
+tree.setEditabletrue	tree.setEditable(true);
+	
+JScrollPan scrollPane =  new JScrollPanetree;;	JScrollPane scrollPane = new JScrollPane(tree);
+addscrollPane,  BorderLayout.CENTER;	add(scrollPane, BorderLayout.CENTER);
+makeButtons;	makeButtons();
+1	}
+public  TreeNode makeSampleTree	public TreeNode makeSampleTree()
+{	{
+DefaultMutableTreeNode root = new  DefaultMutableTreeNode"Worldl;	DefaultMutableTreeNode root = new DefaultMutableTreeNode("World");
+DefaultMutableTreeNode country = new DefaultMutableTreeNodef"USA"	DefaultMutableTreeNode country = new DefaultMutableTreeNode("USA");
+root..addcountry;	root.add(country);
+DefaultMutableTreeNodestate = new DeaultMutbleTreeNode"California";	DefaultMutableTreeNode state = new DefaultMutableTreeNode("California");
+country.addstate;	country.add(state);
+DefaultMutablTreeode city = new  DefaultMutableTreeNode"San Jose"l;	DefaultMutableTreeNode city = new DefaultMutableTreeNode("San Jose");
+state.addcity;	state.add(city);
+city = new DefaultMutableTreeNodeSan Diego"f;;	city = new DefaultMutableTreeNode("San Diego");
+state..addcity	state.add(city);
+state = new DefaultMtableTreeNoeMichigan"	state = new DefaultMutableTreeNode("Michigan");
+country.addfstate;	country.add(state);
+city = new DefltMutableTreeNode"An Arbor""l;	city = new DefaultMutableTreeNode("Ann Arbor");
+state.addcity;	state.add(city);
+country =  new DeaultMutableTreeNode"German";	country = new DefaultMutableTreeNode("Germany");
+root.addcountry;	root.add(country);
+state = new  DefaultMutableTreeNodeSchleswig-Holstein";	state = new DefaultMutableTreeNode("Schleswig-Holstein");
+country.addstatef;	country.add(state);
+city =  ne DefaultMutableTreeNode"Kiel";	city = new DefaultMutableTreeNode("Kiel");
+state.addcity;	state.add(city);
+return root;	return root;
+1	}
+	
+publicvoid makeButtons	public void makeButtons()
+{	{
+JPanel  panel = new JPanelf;	JPanel panel = new JPanel();
+JButton addSiblingButton =  new JButtonf"Ad Sibling";	JButton addSiblingButton = new JButton("Add Sibling");
+addSiblingButton.addActionListenernew ActionListener	addSiblingButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+f	{
+DefaultMutableTreeNode selectedNode =efaultMutableTreeNode  tree	DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
+.geLastSelectedPathComonentf;	.getLastSelectedPathComponent();
+if selectedNode == nullreturn	if (selectedNode == null) return;
+DefautMutableTreeNode parent =DefaultMutableTreeNodef selectedNode.getPrentl;	DefaultMutableTreeNode parent = (DefaultMutableTreeNode) selectedNode.getParent();
+if paren == null eturn;	if (parent == null) return;
+DefaultMutabeTreeNode newNode = new DefaultMutableTreeNode"New"";	DefaultMutableTreeNode newNode = new DefaultMutableTreeNode("New");
+int selctedIndex = parent.getIndexlselectedNode	int selectedIndex = parent.getIndex(selectedNode);
+modelinsertNodeIntonewNode,parent, selecedIndex + 1;	model.insertNodeInto(newNode, parent, selectedIndex + 1);
+	
+TreeNodel nodes= modelgetPatToRootnewNode;	TreeNode[] nodes = model.getPathToRoot(newNode);
+TreePath path = new TreePathnodesf;	TreePath path = new TreePath(nodes);
+tree.scrollPathToVisiblepathf;;	tree.scrollPathToVisible(path);
+}	}
+}	});
+panel.addddSiblingButton;	panel.add(addSiblingButton);
+JButton addChildButton = nw JButton"Add Child";	JButton addChildButton = new JButton("Add Child");
+addChildButton..addActionListenerfnew ActionListener	addChildButton.addActionListener(new ActionListener()
+{	{
+public void  actionPerfomedActionvent eventl	public void actionPerformed(ActionEvent event)
+{	{
+DefaultMutableTreeNode selectedNode = DefaultMutableTreeNode tree	DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
+.getLastSeectedPathComponentff;	.getLastSelectedPathComponent();
+if lselectedNode ==nul return;	if (selectedNode == null) return;
+DefaultMutabeTreeNode newNode = new DefaultMutableTreeNodefNewf;	DefaultMutableTreeNode newNode = new DefaultMutableTreeNode("New");
+model.insertNodeIntonewNode, selectedNode, selectedNode.getChildCountf	model.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
+	
+TreeNode nodes = model.getPathToRootnewNodef;	TreeNode[] nodes = model.getPathToRoot(newNode);
+TreePath path = new TreePathnodes;;	TreePath path = new TreePath(nodes);
+ree.scrollPathToVisiblepath;	tree.scrollPathToVisible(path);
+}	}
+};	});
+panel.addaddChildButton;	panel.add(addChildButton);
+JButton deleteButton = newJButtonf""Delete";;	JButton deleteButton = new JButton("Delete");
+deleButtonaddActionListenernew ActionListenerf	deleteButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+DefaultMutableTreeNode selectedNode = DefaultMutableTreeNode  tree	DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree
+getLastSelectedPathComponentf;;	.getLastSelectedPathComponent();
+if selectedNode != null &&  selectedNodegetParentl !=null model	if (selectedNode != null && selectedNode.getParent() != null) model
+.removeNodeFromParentlselectedNodef;	.removeNodeFromParent(selectedNode);
+l	}
+;	});
+panel.adddleteButton;	panel.add(deleteButton);
+addpanel,BorderLayout.SOUTHl;	add(panel, BorderLayout.SOUTH);
+}	}
+private DefaultTreeModel model;	private DefaultTreeModel model;
+private JTree tree;	private JTree tree;
+private static final int DEFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+private static final int DEFAULT_HEIGHT =200;	private static final int DEFAULT_HEIGHT = 200;
+}	}

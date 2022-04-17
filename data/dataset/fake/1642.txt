@@ -1,0 +1,8 @@
+packagecom.tguigu.java8;	package com.atguigu.java8;
+public interface CompareB {	public interface CompareB {
+	
+deault void method3{	default void method3(){
+Systemout.println"CompareB"l;	System.out.println("CompareB");
+}	}
+	
+	}

@@ -1,0 +1,55 @@
+ackage com.atguigu..java3;	package com.atguigu.java3;
+public class FinalTest {	public class FinalTest {
+	
+final int WIDTH =  0;	final int WIDTH = 0;
+final it LEFT;	final int LEFT;
+final int  RIGHT	final int RIGHT;
+	
+{	{
+LEFT= 1;;	LEFT = 1;
+}	}
+	
+public FinalTest{	public FinalTest(){
+RIGHT  = 2;	RIGHT = 2;
+1	}
+	
+public  FinalTestint n1	public FinalTest(int n){
+RIGHT = n;	RIGHT = n;
+l	}
+	
+	
+	
+public  void doWidth{	public void doWidth(){
+l	}
+	
+	
+publi void showf{	public void show(){
+finalint NUM = 10;}	final int NUM = 10;}
+	
+publicvoid shofinal intnum{	public void show(final int num){
+System.ot.printlnnum;	System.out.println(num);
+1	}
+	
+	
+public static void mainStrng  args {	public static void main(String[] args) {
+	
+int num =  10;	int num = 10;
+	
+num =num + 5;	num = num + 5;
+	
+FinalTest test = new FinalTest;	FinalTest test = new FinalTest();
+	
+test.showf10;;	test.show(10);
+	}
+}	}
+final  class FinalA	final class FinalA{
+	
+}	}
+class AA	class AA{
+public final void showl	public final void show(){
+	
+}	}
+}	}
+cas BB extends AA{	class BB extends AA{
+	
+}	}

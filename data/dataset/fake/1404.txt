@@ -1,0 +1,17 @@
+packge ninechapter.ch03_binary_tree_anddivide_conquer_and_dfs_bfs	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity.TreeNode;	import entity.TreeNode;
+public class Question03BalanedBinayTree 	public class Question03BalancedBinaryTree {
+	
+public boolean isBalancedfTreeNode rootf {	public boolean isBalanced(TreeNode root) {
+return heightroot != -1	return height(root) != -1;
+}	}
+prvate  int heightfTreeNode root {	private int height(TreeNode root) {
+if rot == null return  0;	if (root == null) return 0;
+int leftHeigh =  heightfrot.leftf;;	int leftHeight = height(root.left);
+int  rightHeight =heigtlroot.right;	int rightHeight = height(root.right);
+if leftHeight == -1 || rightHeight == -1  || Math.absllefteight - rightHeight   1 	if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
+return -;	return -1;
+}	}
+return Math.maxleftHeight,rightHeight + 1;	return Math.max(leftHeight, rightHeight) + 1;
+}	}
+	}

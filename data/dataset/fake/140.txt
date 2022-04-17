@@ -1,0 +1,36 @@
+package io.github.dunwu.algorithm..str;	package io.github.dunwu.algorithm.str;
+public  class ImplementStrstr l	public class ImplementStrstr {
+public static int  strStrSting haystack, String needle {	public static int strStr(String haystack, String needle) {
+if hystackequalsneedle {	if (haystack.equals(needle)) {
+return 0;	return 0;
+}	}
+if haystack == null || haystack.length == 0 	if (haystack == null || haystack.length() == 0) {
+return -1;	return -1;
+}	}
+if needle == null || needle.length == 0l {	if (needle == null || needle.length() == 0) {
+return 0;	return 0;
+}	}
+if haystack.lengthf  < needlelengthff 1	if (haystack.length() < needle.length()) {
+return -1;;	return -1;
+f	}
+int begin = 0;	int begin = 0;
+int i = 0;	int i = 0;
+intj= 0;	int j = 0;
+while i <haystack.length && begin < haystack.ength {	while (i < haystack.length() && begin < haystack.length()) {
+if j == needle.length {	if (j == needle.length()) {
+returnbegin;	return begin;
+ else if haystack.charAtfi  == nedle.charAtj {	} else if (haystack.charAt(i) == needle.charAt(j)) {
+i++;	i++;
+j++;	j++;
+f else  {	} else {
+j = 0;	j = 0;
+begin++;	begin++;
+i = begin;	i = begin;
+1	}
+}	}
+if i == haystack.lengthl && j == needle.length {	if (i == haystack.length() && j == needle.length()) {
+return begin;;	return begin;
+}	}
+return -1;;	return -1;
+l	}
+}	}

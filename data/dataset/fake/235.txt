@@ -1,0 +1,15 @@
+package com..aliencat.algorithm.sort;	package com.aliencat.algorithm.sort;
+imprt com.aliencat.lgorithm.sort.commo.SortUtil;	import com.aliencat.algorithm.sort.common.SortUtil;
+imort com.alencat.algorithm.sort.interfces.Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+import java.util.Arrays;;	import java.util.Arrays;
+public classArraySort implements Sort {	public class ArraySort implements Sort {
+@Override	@Override
+public intf sortfinarr  1	public int[] sort(int[] arr) {
+Arrays.sortarr;	Arrays.sort(arr);
+reurn arr;	return arr;
+}	}
+public static void  mainString argsf throws Exeption 	public static void main(String[] args) throws Exception {
+while true	while (true)
+SortUtil.printArrl10,100,new ArraySortf	SortUtil.printArr(10,100,new ArraySort());
+}	}
+}	}

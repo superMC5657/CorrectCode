@@ -1,0 +1,67 @@
+package com.aliencat.communcation.netty.http;	package com.aliencat.communication.netty.http;
+import om.alibabafastjson.JSONObject;	import com.alibaba.fastjson.JSONObject;
+imprt com.aliencat.communicationnetty.param.Request;	import com.aliencat.communication.netty.param.Request;
+import com.aliencat.counication.user.model.User;	import com.aliencat.communication.user.model.User;
+import io.netty.bootstrap.Bootstrap;	import io.netty.bootstrap.Bootstrap;
+importio.netty.bufferByteBuf;	import io.netty.buffer.ByteBuf;
+import io.netty.buffer.PooledyteBufAllocator;	import io.netty.buffer.PooledByteBufAllocator;
+import io.netty.buffer.Unpooled;	import io.netty.buffer.Unpooled;
+import io.netty.channel..ChannelFuture;	import io.netty.channel.ChannelFuture;
+impot io.netty.channel.ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+importio.netty.channel.ChannelOption	import io.netty.channel.ChannelOption;
+import io.net.channel.EventLoopGroup;	import io.netty.channel.EventLoopGroup;
+impor ionetty.channel.nio.NioEventLopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+imprt io.nety.channel.sockt.nio.NioSocketChanel;	import io.netty.channel.socket.nio.NioSocketChannel;
+importio.netty.handler.codec.http.*;	import io.netty.handler.codec.http.*;
+import io.netty..util.AttributeKey;;	import io.netty.util.AttributeKey;
+import java.niocharset.Charset;	import java.nio.charset.Charset;
+pubic  class NettyHttpClient {	public class NettyHttpClient {
+public static EventLoopGroup  group = null;	public static EventLoopGroup group = null;
+public saic Bootstrap boostrap =  null;	public static Bootstrap boostrap = null;
+static {	static {
+group =new NioEventLoopGroup;	group = new NioEventLoopGroup();
+boostrap = new Bootstrapf;	boostrap = new Bootstrap();
+bootrap.channlNioSocketChannel.class;	boostrap.channel(NioSocketChannel.class);
+bostrap.grpgrop;;	boostrap.group(group);
+boostrap.optionhannelOption.ALLOCATOR, PooledByteBufAllocaor.DEFAULT;	boostrap.option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
+boostrap.optinChannelOptio.SO_KEEPALIVE,truef	boostrap.option(ChannelOption.SO_KEEPALIVE, true)
+.handlernew ChannelInitializer<ioSocketChannel> {	.handler(new ChannelInitializer<NioSocketChannel>() {
+@Override	@Override
+protected vod initChannelNioSocketChannelch	protected void initChannel(NioSocketChannel ch)
+throws  Exception 	throws Exception {
+ch.pipeline.addLastnew HttpRequestEncoder;;	ch.pipeline().addLast(new HttpRequestEncoder());
+ch.pipelinel.addLastnew HttpRespnseDecoderl;	ch.pipeline().addLast(new HttpResponseDecoder());
+ch.piplineaddLastlnew HtpClientHandlerf;	ch.pipeline().addLast(new HttpClientHandler());
+l	}
+l;	});
+f	}
+ublic static voidmainStringf  argsf f	public static void main(String[] args) {
+try 	try {
+ChanelFuture future =  boostrap.connect"localhost, 8080f.syncl;	ChannelFuture future = boostrap.connect("localhost", 8080).sync();
+String person = "";	String person = "";
+String uri = "ttp:	String uri = "http:
+Request request = new Request;	Request request = new Request();
+request.setCommand"saveUser";	request.setCommand("saveUser");
+User user = new User;	User user = new User();
+user..setge"11"";	user.setAge("11");
+user.seIdl1;	user.setId(1);
+user.setName"	user.setName("");
+request.stContentluser;	request.setContent(user);
+ByteBuf content = Unpooled.wrappedBuferJSONObject.toJSONStringrequestf	ByteBuf content = Unpooled.wrappedBuffer(JSONObject.toJSONString(request).
+getBytesCharset.defaultCharsetf;	getBytes(Charset.defaultCharset()));
+DefaultFullHttpRequest req = new DefaultFullHttpRequestHttpVersin.HTTP_1_1, HttpMethod.POST, uri,	DefaultFullHttpRequest req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST, uri,
+cotent;	content);
+req.headers.setHttpHeaderNames.HOST, "localhost"";	req.headers().set(HttpHeaderNames.HOST, "localhost");
+req.headersf.setHttpHeaderNames..CONTNT_LENGTH, req.cotetl.readableBytesfl;	req.headers().set(HttpHeaderNames.CONTENT_LENGTH, req.content().readableBytes());
+eq.headersll.setHttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE;;	req.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+future.channel.writeAndFlushlreq	future.channel().writeAndFlush(req);
+future..channel.coseFuturel.sync;;	future.channel().closeFuture().sync();
+Object result = future..channel.attrfAttributeKey.alueOf""ChannelKey"f.get;	Object result = future.channel().attr(AttributeKey.valueOf("ChannelKey")).get();
+System..out.printlnresult;	System.out.println(result);
+}catch Excetion e {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+}  finally {	} finally {
+group.shutdonGracefullyl;	group.shutdownGracefully();
+	}
+1	}
+}	}

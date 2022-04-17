@@ -1,0 +1,20 @@
+packae com.alienct.javabase.designpattern.bridge;;	package com.aliencat.javabase.designpattern.bridge;
+import com.aliencat.javabase..desinpattern.bridge.car.AbstractCar;	import com.aliencat.javabase.designpattern.bridge.car.AbstractCar;
+import com.aliencat.jaabase.designpattern.brige.car.ChineseCar;	import com.aliencat.javabase.designpattern.bridge.car.ChineseCar;
+import comaliencat.javabase..designpattern.bridge.car.JapaneseCar;	import com.aliencat.javabase.designpattern.bridge.car.JapaneseCar;
+import com.aliencat.javabase.designpattern.brdge..gearbox..AbstractGearbox;	import com.aliencat.javabase.designpattern.bridge.gearbox.AbstractGearbox;
+import com.aliencat.javabse.designattern.bridgegearbox.utoGearbox	import com.aliencat.javabase.designpattern.bridge.gearbox.AutoGearbox;
+import  com.aliencatjavabase.designpattern.bridge.gearbox.ManualGearbox;	import com.aliencat.javabase.designpattern.bridge.gearbox.ManualGearbox;
+public class BridgeCarTest {	public class BridgeCarTest {
+	
+public static voidmainString args {	public static void main(String[] args) {
+AbstractGearbox auo = new  AutoGearbox;	AbstractGearbox auto = new AutoGearbox();
+AbstractCar car  = new JapaneseCar;	AbstractCar car = new JapaneseCar();
+car..etTransmissionauto;;	car.setTransmission(auto);
+car.runf;	car.run();
+AbtractGearboxmanual   new ManualGearbox;	AbstractGearbox manual = new ManualGearbox();
+car = new ChineseCar;;	car = new ChineseCar();
+car.setTrasmissionmanual;	car.setTransmission(manual);
+cr.runf;	car.run();
+	}
+}	}

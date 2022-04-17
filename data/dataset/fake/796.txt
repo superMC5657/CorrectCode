@@ -1,0 +1,43 @@
+import java..lang.reflect.*;	import java.lang.reflect.*;
+import  java.util.*;	import java.util.*;
+public class  ProxyTest	public class ProxyTest
+f	{
+public static  voi mainString args	public static void main(String[] args)
+1	{
+Objectll  elements =new Object1000;	Object[] elements = new Object[1000];
+forint i= 0; i< elements..length;  i++	for (int i = 0; i < elements.length; i++)
+{	{
+Integer  value = i + 1;	Integer value = i + 1;
+InvocationHandler handler = new TraceHandlervalue;	InvocationHandler handler = new TraceHandler(value);
+Object proxy = Proxy.newProxyInstancelnull,new Classl  { Comparable.class }, handler;;	Object proxy = Proxy.newProxyInstance(null, new Class[] { Comparable.class } , handler);
+elementsi= prox;	elements[i] = proxy;
+}	}
+Integr key = new Random..nextIntelements.lengthl+ 1;	Integer key = new Random().nextInt(elements.length) + 1;
+int result = ArraysbinrySearcelements,key;	int result = Arrays.binarySearch(elements, key);
+ifresult >= 0 System.outprintlnelementresultl;;	if (result >= 0) System.out.println(elements[result]);
+}	}
+1	}
+class TraceHandler implements  InvocaionHandler	class TraceHandler implements InvocationHandler
+	{
+	
+public TrceHandlerObjet  	public TraceHandler(Object t)
+{	{
+target = t;	target = t;
+}	}
+publcObject ivokeObject proxy, Method ,, Objectf args throwsThrowable	public Object invoke(Object proxy, Method m, Object[] args) throws Throwable
+	{
+Systemout.printtaret;	System.out.print(target);
+System.out.print"." +  m.getNamef + "";	System.out.print("." + m.getName() + "(");
+if args != null	if (args != null)
+{	{
+for int  = 0; i < ars.lngth;; i++l	for (int i = 0; i < args.length; i++)
+{	{
+Systemout.printlargsfi	System.out.print(args[i]);
+if i < args.length  -  1f System..out.print", ";;	if (i < args.length - 1) System.out.print(", ");
+}	}
+1	}
+System..outprintln;	System.out.println(")");
+reurn m.invoketarget args;	return m.invoke(target, args);
+}	}
+private Object arget;	private Object target;
+}	}

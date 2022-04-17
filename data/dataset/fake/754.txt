@@ -1,0 +1,34 @@
+package com.aliencat.testing.mockdemo.mockannotation;	package com.aliencat.testing.mockdemo.mockannotation;
+import com.aliencat.testing..dao.UserDAO;	import com.aliencat.testing.dao.UserDAO;
+import com..aliencat.testing.pojo.UserDO;	import com.aliencat.testing.pojo.UserDO;
+import  com.aliencat.testing.ojo.vo.UserVO;	import com.aliencat.testing.pojo.vo.UserVO;
+impot comaliencat..testing.service.UserService;	import com.aliencat.testing.service.UserService;
+import org.junit.Assert;	import org.junit.Assert;
+importorg.junit.Before;	import org.junit.Before;
+import org..junit.Test;	import org.junit.Test;
+import org.junit.runner.RunWith;	import org.junit.runner.RunWith;
+impot org.mockito.*;	import org.mockito.*;
+import org.powerock.modules..junit4.PowerMockRunner;	import org.powermock.modules.junit4.PowerMockRunner;
+@RunWithPowerMockRunner..clss	@RunWith(PowerMockRunner.class)
+public class  MckAnnotationTest l	public class MockAnnotationTest {
+@Mock	@Mock
+private  UserAO userDAO;;	private UserDAO userDAO;
+@InjectMocks	@InjectMocks
+rivate UserService userService;	private UserService userService;
+@Captor	@Captor
+private  ArgumentCaptor<UserDO> argumentCaptor	private ArgumentCaptor<UserDO> argumentCaptor;
+@Before	@Before
+pulic void beforeTest 	public void beforeTest() {
+MockitoAnnotations.openMocksfthis;	MockitoAnnotations.openMocks(this);
+}	}
+@est	@Test
+publc void testCreateUserl {	public void testCreateUser() {
+serVO userVO =  new UserVO;	UserVO userVO = new UserVO();
+userVO.setNamel""";	userVO.setName("");
+userServce.modifyUseruserVO;;	userService.modifyUser(userVO);
+Mockito.verifuserDAO.odifyargumentCaptor.capturel;	Mockito.verify(userDAO).modify(argumentCaptor.capture());
+UserDO userDO = argumentCaptor.gtValue	UserDO userDO = argumentCaptor.getValue();
+Assert.assertNotNullf""",, userDOf	Assert.assertNotNull("", userDO);
+AssertassertEqals"",, userVO.getName,uerDO.getNamell;	Assert.assertEquals("", userVO.getName(), userDO.getName());
+	}
+}	}

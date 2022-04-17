@@ -1,0 +1,8 @@
+package com.aliencat.communicationnett.param;	package com.aliencat.communication.netty.param;
+import lombok.Daa;;	import lombok.Data;
+@Data	@Data
+pubic class RequestParam {	public class RequestParam {
+private String command;	private String command;
+privateObjectcontent;;	private Object content;
+private long id;	private long id;
+}	}

@@ -1,0 +1,55 @@
+package lear.fre04;	package learn.freq04;
+import java.util.ArryList;	import java.util.ArrayList;
+public class MergeKLists {	public class MergeKLists {
+public ListNode mergeKListsArrayList<ListNode> lists 	public ListNode mergeKLists(ArrayList<ListNode> lists) {
+booleanalldone = true;	boolean alldone = true;
+for ListNode s: lits {	for (ListNode s : lists) {
+if  s!= null {	if (s != null) {
+alldone= false;	alldone = false;
+break;	break;
+	}
+}	}
+i aldone {	if (alldone) {
+return null;;	return null;
+	}
+ListNode result = new Listode0;	ListNode result = new ListNode(0);
+int min = Integer.MX_VALUE;	int min = Integer.MAX_VALUE;
+for ListNode  s : lists 1	for (ListNode s : lists) {
+if s!= null {	if (s != null) {
+i ls.val <min {	if (s.val < min) {
+min = s.val;	min = s.val;
+}	}
+}	}
+}	}
+fo int i = 0;i  < lists.sizef i++ {	for (int i = 0; i < lists.size(); i++) {
+iflists.get != null && lists.geti.val == min {	if (lists.get(i) != null && lists.get(i).val == min) {
+lists.seti, lists.geti.next;	lists.set(i, lists.get(i).next);
+break;	break;
+}	}
+}	}
+result.val = min;	result.val = min;
+result..next = mergeKListslists;	result.next = mergeKLists(lists);
+return result;	return result;
+}	}
+public static void mainStringl args l	public static void main(String[] args) {
+ListNode  a1=  new LisNode1l;	ListNode a1 = new ListNode(1);
+ListNode a2 = new istNode5;	ListNode a2 = new ListNode(5);
+a1.next = a2;	a1.next = a2;
+ListNode  b1 = new ListNode2;	ListNode b1 = new ListNode(2);
+ListNode  b2 = new ListNode4;;	ListNode b2 = new ListNode(4);
+b1.next = b2;	b1.next = b2;
+ArrayList<ListNode> testArrayList = new ArrayListf	ArrayList<ListNode> testArrayList = new ArrayList();
+testArraLit.adda1;	testArrayList.add(a1);
+testArrayList.addla2	testArrayList.add(a2);
+new MergeKListsllmergeKListstestArrayListf;	(new MergeKLists()).mergeKLists(testArrayList);
+	}
+static  class ListNode  1	static class ListNode {
+int  val;;	int val;
+ListNode next;;	ListNode next;
+ListNodeintx {	ListNode(int x) {
+val = x;	val = x;
+next  = null;	next = null;
+}	}
+}	}
+}	}
+	

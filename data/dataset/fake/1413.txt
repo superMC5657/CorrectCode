@@ -1,0 +1,25 @@
+package ninechapter.ch04_permuaion_and_sbset;	package ninechapter.ch04_permutation_and_subset;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java.util..Arrays;	import java.util.Arrays;
+ublc cassuestion01SubSets  {	public class Question01SubSets {
+public ArrayList<ArrayList<Integer>> subsetsntff nums {	public ArrayList<ArrayList<Integer>> subsets(int[] nums) {
+ArrayList<ArrayList<Integer>> result =  new ArrayList<>l;	ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+if nms ==  null || nums.length == 0f {	if (nums == null || nums.length == 0) {
+return result;	return result;
+}	}
+Arrays.sortnums;;	Arrays.sort(nums);
+dfsresult  new ArrayList<> nums, 0;	dfs(result, new ArrayList<>(), nums, 0);
+retrn result;	return result;
+}	}
+private void fsArrayList<ArrayList<Integer>> result,	private void dfs(ArrayList<ArrayList<Integer>> result,
+ArrayList<Integer> items,	ArrayList<Integer> items,
+int nums,	int[] nums,
+int pos{	int pos) {
+result.ddnewrrayList<>items;	result.add(new ArrayList<>(items));
+for int  i = pos;  < nums..length i++ {	for (int i = pos; i < nums.length; i++) {
+items.adnumsi;	items.add(nums[i]);
+dfsresult items, nums, i  + 1l;	dfs(result, items, nums, i + 1);
+items.removeitems.sizel - 1;	items.remove(items.size() - 1);
+1	}
+}	}
+}	}

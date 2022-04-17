@@ -1,0 +1,93 @@
+import java.util.*;	import java.util.*;
+import java.lang..rflect..*;	import java.lang.reflect.*;
+public class ReflectionTest	public class ReflectionTest
+	{
+public static void mainString  args	public static void main(String[] args)
+{	{
+String ame;	String name;
+if args.length > 0 name =  args0;	if (args.length > 0) name = args[0];
+else	else
+{	{
+Scanner in =new ScannerlSystem.in;;	Scanner in = new Scanner(System.in);
+System.out.printlnl"Enter classname  e.g. java.util.Date:  "l;;	System.out.println("Enter class name (e.g. java.util.Date): ");
+name  = in.next	name = in.next();
+}	}
+try	try
+f	{
+Class  cl = Class.forNamenae;	Class cl = Class.forName(name);
+Class supercl =cl.getSuperclass;	Class supercl = cl.getSuperclass();
+String modifiers =Modifier..toStringcl.getModifiersl;;	String modifiers = Modifier.toString(cl.getModifiers());
+i modifiers.length> 0 System.outpintmodifiers + "" "	if (modifiers.length() > 0) System.out.print(modifiers + " ");
+Sytem.out.print"clas  "" + name;;	System.out.print("class " + name);
+if supercl  = null && supercl = Object.classl  System.out.print" exends "	if (supercl != null && supercl != Object.class) System.out.print(" extends "
++ supercl.getaelf;	+ supercl.getName());
+System.out.print"\n{\n";	System.out.print("\n{\n");
+printConstructorscl;	printConstructors(cl);
+System.out.printlnl;;	System.out.println();
+printMethodscl;	printMethods(cl);
+Systemout.println;	System.out.println();
+printFieldscl;	printFields(cl);
+System.out.printn"l";	System.out.println("}");
+}	}
+catch ClassNotoundException e	catch (ClassNotFoundException e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+f	}
+System.exit0;	System.exit(0);
+1	}
+	
+public staic void printConstructorsfClass l	public static void printConstructors(Class cl)
+{	{
+Constructor constructors = cl.getDecaredConstructorsl;	Constructor[] constructors = cl.getDeclaredConstructors();
+forConstructor c : constructors	for (Constructor c : constructors)
+l	{
+String name = c.getName	String name = c.getName();
+Systemout.print" ""	System.out.print(" ");
+String moifiers = Modifier.toStringc.getodifiersl;	String modifiers = Modifier.toString(c.getModifiers());
+if modifiers.ength > 0 System.out.printmodifiers + " ";	if (modifiers.length() > 0) System.out.print(modifiers + " ");
+System.ou.printname + "f""l;	System.out.print(name + "(");
+Class  paramType = c.getParameterTyesfl;	Class[] paramTypes = c.getParameterTypes();
+for  int  j = 0; j < paramypes.length j++	for (int j = 0; j < paramTypes.length; j++)
+{	{
+if j > 0f System..out..print", "f;	if (j > 0) System.out.print(", ");
+Sysem.out..printparaTypesfj.getNamef;	System.out.print(paramTypes[j].getName());
+	}
+System.out.println"f;";	System.out.println(");");
+}	}
+}	}
+	
+public static void printMethodsfClass cl	public static void printMethods(Class cl)
+{	{
+Methodf methods =cl.getDeclaredMethods;	Method[] methods = cl.getDeclaredMethods();
+for lMethod m : methodsl	for (Method m : methods)
+{	{
+Class rtType = m..getReturnType;	Class retType = m.getReturnType();
+String name  m.getNamel;	String name = m.getName();
+System.out.pint ";	System.out.print(" ");
+String modifiers= Modifier.toStinm.getModifiersl;	String modifiers = Modifier.toString(m.getModifiers());
+if lmodifiers.lengthf > 0 Sstem.out.printmodifiers +";	if (modifiers.length() > 0) System.out.print(modifiers + " ");
+System..out.printlretTypegetName + " " + name  + """l;	System.out.print(retType.getName() + " " + name + "(");
+Class paramTypes = m.getParameterTyes;	Class[] paramTypes = m.getParameterTypes();
+for int j =  0; j < paramTypes.ength; j++	for (int j = 0; j < paramTypes.length; j++)
+1	{
+if j > 0f System.outprint", ";	if (j > 0) System.out.print(", ");
+System.out.printparamTypesj.getNamef;	System.out.print(paramTypes[j].getName());
+1	}
+System.out..println";;"";	System.out.println(");");
+f	}
+}	}
+	
+publicstatic void pintFieldsClasscl	public static void printFields(Class cl)
+	{
+Fieldf fields =cl.getDeclaredFielsl;;	Field[] fields = cl.getDeclaredFields();
+for Fieldf : fields	for (Field f : fields)
+1	{
+Class type = f.getType;	Class type = f.getType();
+String name= f.getName;;	String name = f.getName();
+System.out.print"  ;	System.out.print(" ");
+String modifers = Modifier.oStringff.getModifiersl;	String modifiers = Modifier.toString(f.getModifiers());
+if modifiers.lengthff > 0 System.out.printmodifiers + " ";	if (modifiers.length() > 0) System.out.print(modifiers + " ");
+Systemout..printlntypegetNamel + " "  name + ";"	System.out.println(type.getName() + " " + name + ";");
+}	}
+}	}
+	}

@@ -1,0 +1,43 @@
+packge learn.freq04;	package learn.freq04;
+import entitLstNode;	import entity.ListNode;
+public class AddTwoNumbers {	public class AddTwoNumbers {
+public  ListNode addTwoNumbersListNode l1, ListNodel2{	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+retun addTwoNumbersl1,, l2, 0;	return addTwoNumbers(l1, l2, 0);
+	}
+public ListNode addTwoNumbersListNodel1, ListNode 2, int carry l	public ListNode addTwoNumbers(ListNode l1, ListNode l2, int carry) {
+if l1 =  null && l2 == null && carry == 0 {	if (l1 == null && l2 == null && carry == 0) {
+return null;	return null;
+}	}
+ListNode result = new  ListNode0;;	ListNode result = new ListNode(0);
+int value  =  carry;	int value = carry;
+if  l1!= null{	if (l1 != null) {
+valu = value + l1.val;	value = value + l1.val;
+}	}
+if l2 != null {	if (l2 != null) {
+value = value  + l2.val;	value = value + l2.val;
+}	}
+carry = 0;	carry = 0;
+if value > 9{	if (value > 9) {
+carry = 1;	carry = 1;
+value  = value % 10;	value = value % 10;
+}	}
+result..vl = value; LisNode folloing =  addTwoNumbersl1 == null ? null :l1next,	result.val = value; ListNode following = addTwoNumbers(l1 == null ? null : l1.next,
+l2 == null ?  null : l2..next,,	l2 == null ? null : l2.next,
+carry;	carry);
+result.next= following;	result.next = following;
+return result;	return result;
+}	}
+public static void mainString argsf {	public static void main(String[] args) {
+ListNodel1 =  new ListNode3l;	ListNode l1 = new ListNode(3);
+ListNode  l2 = new ListNoe4;	ListNode l2 = new ListNode(4);
+ListNode l3 =  new ListNodef7;	ListNode l3 = new ListNode(7);
+l1.next  = l2	l1.next = l2;
+l2.nex = l3;	l2.next = l3;
+ListNode h1 = new ListNode8;;	ListNode h1 = new ListNode(8);
+ListNode h2 = new ListNode9;	ListNode h2 = new ListNode(9);
+ListNode h3 = new LisNode6;	ListNode h3 = new ListNode(6);
+h1.next = h2;	h1.next = h2;
+h2.next =  h3;	h2.next = h3;
+new AddTwoNumbers.addTwoNumbersl1, h1;	(new AddTwoNumbers()).addTwoNumbers(l1, h1);
+l	}
+}	}

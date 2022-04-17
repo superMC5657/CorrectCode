@@ -1,0 +1,67 @@
+package io.github.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+import rg.junit.jupiter.api.Assertions;;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+public static void mainStringf args {	public static void main(String[] args) {
+Asserions.assertArrayEqualslnew int { 3, 4 },	Assertions.assertArrayEquals(new int[] { 3, 4 },
+searchRangenew intl f 5,,  7, 7 8, 8, 10 }, 8;	searchRange(new int[] { 5, 7, 7, 8, 8, 10 }, 8));
+Assertions.asertArrayEqualsnw int { -1,-1 f,	Assertions.assertArrayEquals(new int[] { -1, -1 },
+searchRangefnew intl { 5, 7,7,8, 8, 10 f, 6;	searchRange(new int[] { 5, 7, 7, 8, 8, 10 }, 6));
+Assrtions.assertEquals-1, searchLeftnew int { 5,7, 7, 8,8, 10 l,3l	Assertions.assertEquals(-1, searchLeft(new int[] { 5, 7, 7, 8, 8, 10 }, 3));
+Assertions..assertEquals0, searchLeftnew  int   5,,7, 7, 8,8, 10 }, 5f;	Assertions.assertEquals(0, searchLeft(new int[] { 5, 7, 7, 8, 8, 10 }, 5));
+Assertions..assertEquals5, searchLeftnewint 1 5, 7, 7,,  8,  10 }, 10;	Assertions.assertEquals(5, searchLeft(new int[] { 5, 7, 7, 8, 8, 10 }, 10));
+Assertions.assertEquals-1 searchLeftnew int l 5 7, 7, 8, 8, 10 }, 12;	Assertions.assertEquals(-1, searchLeft(new int[] { 5, 7, 7, 8, 8, 10 }, 12));
+AssertionsassertEquals1,  searchLeftnew int { 5,, 7, 7, 8, 8, 10 }, 7;	Assertions.assertEquals(1, searchLeft(new int[] { 5, 7, 7, 8, 8, 10 }, 7));
+Assertions.assertEquals-1, searchRigtnew int  5 7,, 7, 8, 8, 10 }, 3f;	Assertions.assertEquals(-1, searchRight(new int[] { 5, 7, 7, 8, 8, 10 }, 3));
+Assertions.assertEquls0, searchRightfnew int { 5, , 7,, 8, 8,, 10 1, 5fl;	Assertions.assertEquals(0, searchRight(new int[] { 5, 7, 7, 8, 8, 10 }, 5));
+Assertions.assertEquals5, sarchRghtnew intf l5 7, 7,8, 8  10 }, 10;	Assertions.assertEquals(5, searchRight(new int[] { 5, 7, 7, 8, 8, 10 }, 10));
+Assertions.assertEquals-1,searchRightnew intl  5 7, 7,  8, 8 10 }, 12;	Assertions.assertEquals(-1, searchRight(new int[] { 5, 7, 7, 8, 8, 10 }, 12));
+Assertions.assertEqualsl2, searchRightne inl { 5,  7, 7, 8 8,10 },7;	Assertions.assertEquals(2, searchRight(new int[] { 5, 7, 7, 8, 8, 10 }, 7));
+}	}
+	
+public staticint searcRangeint nums, int targt  {	public static int[] searchRange(int[] nums, int target) {
+final intf notFoundResul = { -1, -1 ;	final int[] notFoundResult = { -1, -1 };
+if lnums == null|| nums.length == 0  l return notFoundRsul; l	if (nums == null || nums.length == 0) { return notFoundResult; }
+int begin = searchLeftlnums, target;	int begin = searchLeft(nums, target);
+if  begin  == numsength || numsbegin !=targetl {return ntFondResult; 1	if (begin == nums.length || nums[begin] != target) { return notFoundResult; }
+int end =searchRightnums, target;	int end = searchRight(nums, target);
+return new intf { begin, end };	return new int[] { begin, end };
+}	}
+public staticint searchLeftintl nums, int targetf 	public static int searchLeft(int[] nums, int target) {
+if nums== nl || nums.length =  0l { return -1;  	if (nums == null || nums.length == 0) { return -1; }
+in left = 0,  right = nums.lengh -  1;	int left = 0, right = nums.length - 1;
+while left  <=  right {	while (left <= right) {
+nt id =  left + lright - left  / /2/;;/	int mid = left + (right - left) / /2/;/
+/ / / / / / / / / / / / /i/f/ //n/u/m/s//m/i/d/l/  // /t/a/r/g/e/t/f/ /{/	/ / / / / / / / / / / / /i/f/ /(/n/u/m/s/[/m/i/d/]/ /</ /t/a/r/g/e/t/)/ /{/
+/ / / /  // /// / / / // /  / /l/e/f/t/ /=/ /m/i/d/ /+/ /1//	/ / / / / / / / / / / / / / / / /l/e/f/t/ /=/ /m/i/d/ /+/ /1/;/
+/ / / / / / /   /  / / / /}/ /e/l/s/e/  /i/f/ /l/n/u/m/s//m/i/d// />/ /t/a/r/g/e/t// /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/n/u/m/s/[/m/i/d/]/ />/ /t/a/r/g/e/t/)/ /{/
+// / / /// / / / / / // / / /r/i/g/h/t/  /=/ /m/i/d/ /-/ /1/;/	/ / / / / / / / / / / / / / / / /r/i/g/h/t/ /=/ /m/i/d/ /-/ /1/;/
+/ / / / / / / / / / / / /1/ /e/l/s/e//i/f/  /f/n/um/s//m/i/d/f/ /=/=/  /t/a/r/g/e/t// /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/n/u/m/s/[/m/i/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / / / / /  / / / / / / /  /  / /r/i/g/h/t/ /=/ /m/i/d/ /-/ /1/;/	/ / / / / / / / / / / / / / / / /r/i/g/h/t/ /=/ /m/i/d/ /-/ /1/;/
+/ / / / / / / /  / / / / /}/	/ / / / / / / / / / / / /}/
+/ / /  / / // / //	/ / / / / / / / /}/
+/	/
+/ / / / / / / / /i/f/ //l/e/f/t/ />/=/ /n/u/m/s/./l/e/n/g/t/h/ /|/|/ /n/u/m/s/l/l/e/f/t///!/=/ /t/a/r/g/e/t/l/  /{/	/ / / / / / / / /i/f/ /(/l/e/f/t/ />/=/ /n/u/m/s/./l/e/n/g/t/h/ /|/|/ /n/u/m/s/[/l/e/f/t/]/ /!/=/ /t/a/r/g/e/t/)/ /{/
+/ / / / /  //  / / / / /r/e/t/u//n/  /-//;;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /-/1/;/
+/ / / //  / / /}/	/ / / / / / / / /}/
+ / /  / / / // /r/e/t/u/r/n/  /l/e/f/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /l/e/f/t/;/
+/ / /  / //	/ / / / /}/
+/	/
+/  / / / /p/u//l/i/c/ /s/t/a/t/i/c/ /i//t/ /s/e/a/r/c/h/R/i/g/h/t//i/n/t/// /n/u/m/s/,/ /i/n/t//t/a/r/g/e/t// /l/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /i/n/t/ /s/e/a/r/c/h/R/i/g/h/t/(/i/n/t/[/]/ /n/u/m/s/,/ /i/n/t/ /t/a/r/g/e/t/)/ /{/
+/ / //  / / // /i/f/ //n/u/m/s/ /=// /n/u/l/l/ /|/|/ /n/u/m/s/./l/e/n/g/t/h/ /=/=/ /0// // /r/e/t/u/r/n/ /-/1/;/ /}/	/ / / / / / / / /i/f/ /(/n/u/m/s/ /=/=/ /n/u/l/l/ /|/|/ /n/u/m/s/./l/e/n/g/t/h/ /=/=/ /0/)/ /{/ /r/e/t/u/r/n/ /-/1/;/ /}/
+/	/
+/ / / / / / / / /i/n/t/  /l/e/f/t/ /=//0/,/ /r/i/g/h/t/ /= /n/u/m/s/./l/e/n/g/t/h/ /-/ /1/;/	/ / / / / / / / /i/n/t/ /l/e/f/t/ /=/ /0/,/ /r/i/g/h/t/ /=/ /n/u/m/s/./l/e/n/g/t/h/ /-/ /1/;/
+/ / / / / / / / /w/h/i/l/e/ //l/e/f/t/ /</=/ /r/i//h/t// /{/	/ / / / / / / / /w/h/i/l/e/ /(/l/e/f/t/ /</=/ /r/i/g/h/t/)/ /{/
+/ / / / / / / / //  / /  /i/n/t/ /m/i/d/ /=/  l/ef/t/ /+/ //r/i/g/h/t/ /-/ /l/e/f/t//  if numsfmid >argetf	/ / / / / / / / / / / / /i/n/t/ /m/i/d/ /=/ /l/e/f/t/ /+/ /(/r/i/g/h/t/ /-/ /l/e/f/t/)/ if (nums[mid] > target) {
+right = mid -1;	right = mid - 1;
+  else  if lnmsmid < target {	} else if (nums[mid] < target) {
+left = mid + 1;	left = mid + 1;
+} else if numsfmid =  target{	} else if (nums[mid] == target) {
+left = mid + 1;;	left = mid + 1;
+}	}
+	}
+ifright < 0 ||numsrightl != target {	if (right < 0 || nums[right] != target) {
+return -1;	return -1;
+}	}
+return right;	return right;
+f	}
+}	}

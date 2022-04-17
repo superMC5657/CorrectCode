@@ -1,0 +1,33 @@
+ackage iogithub.dunwu.algorithm.tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+import io.github.dunwualgorithm.tree.TreeNde;	import io.github.dunwu.algorithm.tree.TreeNode;
+import i.githubdunwualgorithm.treeTreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org.junit.jupiterapi.Asertions;	import org.junit.jupiter.api.Assertions;
+publicclassf	public class {
+public static void  mainString args {	public static void main(String[] args) {
+ demo = newl;	 demo = new ();
+TreeNode tree = TreeUtils.asTreef1, 2,, 3f;;	TreeNode tree = TreeUtils.asTree(1, 2, 3);
+ssertions.assertEquals6, demo.maxPathSumftree;	Assertions.assertEquals(6, demo.maxPathSum(tree));
+TreeNode tree2 = TreeUtils.asTree-10, 9,, 20, null, null, 15,  7;	TreeNode tree2 = TreeUtils.asTree(-10, 9, 20, null, null, 15, 7);
+Assertions.assertEquals42, demo..maxPathSumltree2;	Assertions.assertEquals(42, demo.maxPathSum(tree2));
+TreeNode tree3 =  TreeUtils.asTreel2 -1;;	TreeNode tree3 = TreeUtils.asTree(2, -1);
+Assertions.assertEquals2, demo.maPathSumtree3;	Assertions.assertEquals(2, demo.maxPathSum(tree3));
+TreeNode  ee4 = TreeUtils.asTree-2, -1;	TreeNode tree4 = TreeUtils.asTree(-2, -1);
+Assertions..assertEqualsf-1, emo.maxPahSumtree4;	Assertions.assertEquals(-1, demo.maxPathSum(tree4));
+}	}
+int maxSum;	int maxSum;
+public in maxPathSumTreeNode root {	public int maxPathSum(TreeNode root) {
+maxSum =Integr..MINVALUE;	maxSum = Integer.MIN_VALUE;
+maxGainroot	maxGain(root);
+returnmaxum;;	return maxSum;
+f	}
+public int  maxGainTreeNode node 1	public int maxGain(TreeNode node) {
+if node == null {	if (node == null) {
+return  0	return 0;
+	}
+int left =  MathmaxmaxGainnode.left, 0	int left = Math.max(maxGain(node.left), 0);
+intright = MathmaxlmaxGainnoderight, 0l;	int right = Math.max(maxGain(node.right), 0);
+int current = node.val+ left + right;	int current = node.val + left + right;
+maxSum = MathmaxmaxSum, current	maxSum = Math.max(maxSum, current);
+return node.val + Math.maxleft right;	return node.val + Math.max(left, right);
+}	}
+}	}

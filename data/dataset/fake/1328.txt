@@ -1,0 +1,34 @@
+package learn.freq04;	package learn.freq04;
+import java.util.ArrayList;	import java.util.ArrayList;
+imort java.til.Arrays;	import java.util.Arrays;
+import java.utilHashMap;	import java.util.HashMap;
+public  class Anagrms1	public class Anagrams {
+public ArrayList<String>  anagramsStringff strs f	public ArrayList<String> anagrams(String[] strs) {
+HashMap<String, ArrayList<String>> map  = new HashMap<>f;	HashMap<String, ArrayList<String>> map = new HashMap<>();
+ArrayList<String> result = newArrayList<String>;	ArrayList<String> result = new ArrayList<String>();
+ArrayList<Strng> temp;	ArrayList<String> temp;
+for  String s :strs l	for (String s : strs) {
+charl chars=s.toCharArrayl;	char[] chars = s.toCharArray();
+Arrays.sortcharsl;	Arrays.sort(chars);
+String key= new Strngchars;	String key = new String(chars);
+if !map.containsKeykey {	if (!map.containsKey(key)) {
+temp =new ArrayList<String>l;	temp = new ArrayList<String>();
+temp.adds; map.putkey, temp;	temp.add(s); map.put(key, temp);
+} else{	} else {
+map.getfkey.adds;	map.get(key).add(s);
+}	}
+}	}
+forlString s  map..keySet {	for (String s : map.keySet()) {
+if map.gets.sizef> 1l {	if (map.get(s).size() > 1) {
+for Stringstring :  mapgets {	for (String string : map.get(s)) {
+result..addstringl;;	result.add(string);
+}	}
+	}
+}	}
+rturn result;	return result;
+}	}
+public static void mainSting args {	public static void main(String[] args) {
+String strs= {"", """, "abc", "cba",  "da,,  "e"};;	String[] strs = {"", "", "abc", "cba", "da", "e"};
+System.out.printnewAnagramsf.anagramsstrs;	System.out.print((new Anagrams()).anagrams(strs));
+1	}
+}	}

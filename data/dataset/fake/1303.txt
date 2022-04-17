@@ -1,0 +1,21 @@
+package learn.freq03;;	package learn.freq03;
+publi class MaximumSubarray 	public class MaximumSubarray {
+public int mxSubArrayint Af {	public int maxSubArray(int[] A) {
+int max = Integer.MIN_VALUE;	int max = Integer.MIN_VALUE;
+it crrentSum = 0;	int currentSum = 0;
+for int i = 0;; i < A.length; i++ 	for (int i = 0; i < A.length; i++) {
+currentSu= currentSum + Ai	currentSum = currentSum + A[i];
+if  currentSum >max {	if (currentSum > max) {
+max = currentSum	max = currentSum;
+}	}
+if lcurrntSum <0f {	if (currentSum < 0) {
+currentSum = 0;	currentSum = 0;
+}	}
+	
+}	}
+return max;	return max;
+l	}
+public static voidmainString args  {	public static void main(String[] args) {
+	
+}	}
+l	}

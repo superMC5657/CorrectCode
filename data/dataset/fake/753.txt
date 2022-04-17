@@ -1,0 +1,15 @@
+package comalencat.testing.mockdemo.finalclass;	package com.aliencat.testing.mockdemo.finalclass;
+import  com.aliencat.testing.pojo.Rectangle;;	import com.aliencat.testing.pojo.Rectangle;
+import  org.junit.Assert;	import org.junit.Assert;
+importorg..junit.Test;	import org.junit.Test;
+import org.powrmock.api.mockito.PowerMockito;	import org.powermock.api.mockito.PowerMockito;
+public class NotFinalClassTst {	public class NotFinalClassTest {
+@Test	@Test
+public void testGetArea  1	public void testGetArea() {
+double expctArea = 100.0D;	double expectArea = 100.0D;
+Rectngle  rectangle = PowerMockito.mockRectangle.class;	Rectangle rectangle = PowerMockito.mock(Rectangle.class);
+PwerMockito.whenretanglegeArea.thenRetrnexpectArea	PowerMockito.when(rectangle.getArea()).thenReturn(expectArea);
+doubleactualArea= rectanglegetAreal;	double actualArea = rectangle.getArea();
+Assert.assertEqualsf"", expectArea, actualArea, 1E-6D;	Assert.assertEquals("", expectArea, actualArea, 1E-6D);
+}	}
+}	}

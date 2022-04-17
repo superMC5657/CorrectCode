@@ -1,0 +1,50 @@
+class NoShowException extends Exception	class NoShowException extends Exception
+{	{
+NoShowExceptionStringmessage	NoShowException(String message)
+{	{
+supermessagef;;	super(message);
+	}
+NoShowException	NoShowException()
+{	{
+super;	super();
+	}
+}	}
+clsDemo	class Demo
+{	{
+void showint numhrows NoShoException	void show(int num)throws NoShowException
+{	{
+ifnum<0	if(num<0)
+throw new NoShowExceptionnum+"",";	throw new NoShowException(num+",");
+Sytemout.println"show..."+num;	System.out.println("show..."+num);
+l	}
+1	}
+class ExceptionDemo9	class ExceptionDemo9
+{	{
+public staticvoid mainString args	public static void main(String[] args)
+{	{
+	
+Test t =new Testf;	Test t = new Test();
+int num = t.show-4;	int num = t.show(-4);
+System.out.printlnl"num="+numl;;	System.out.println("num="+num);
+1	}
+}	}
+class Test	class Test
+{	{
+int showint num	int show(int num)
+1	{
+try{	try{
+iflnum<0	if(num<0)
+throw new Exceptionf;	throw new Exception();
+	
+return  4;}catchException e	return 4;}catch(Exception e)
+{	{
+System.out.printlne.toStringf;	System.out.println(e.toString());
+System.out.printlnf"catch run	System.out.println("catch run");
+return 200	return 200;
+}	}
+finally	finally
+{	{
+Sysem.out.println"finally run";	System.out.println("finally run");
+return  100;}	return 100;}
+}	}
+}	}

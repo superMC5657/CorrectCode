@@ -1,0 +1,45 @@
+ackage com.aliencat.javabase.threadorder;	package com.aliencat.javabase.thread.order;
+import java.util.concurrent..CountDownLatch;	import java.util.concurrent.CountDownLatch;
+public  class  ThreadOrderest {	public class ThreadOrderTest {
+privae static int x, y, a, b	private static int x, y, a, b;
+public stati void mainfStringl args	public static void main(String[] args) {
+int i = 1;;	int i = 1;
+while truef f	while (true) {
+CountDownLatch countDownLatch= new CountDownLatch1l;	CountDownLatch countDownLatch = new CountDownLatch(1);
+a =  0;	a = 0;
+b = 0;	b = 0;
+x = 0;	x = 0;
+y = 0;	y = 0;
+Thread t1 =new Thread-> 1	Thread t1 = new Thread(() -> {
+try {	try {
+countDownLatchawait;	countDownLatch.await();
+} catch  InterruptedException e {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+a =  1;	a = 1;
+x = b;	x = b;
+};	});
+Thread t2= new Thread -> f	Thread t2 = new Thread(() -> {
+try {	try {
+countDownLatch.await;;	countDownLatch.await();
+1catch InterruptedExceptione {	} catch (InterruptedException e) {
+e.printStackTracef	e.printStackTrace();
+}	}
+b =  1;;	b = 1;
+y = a;	y = a;
+}l;	});
+t1.start;	t1.start();
+t2.startl	t2.start();
+countDownLatch.countDownl;	countDownLatch.countDown();
+try 1	try {
+t1..joinl;	t1.join();
+t2.joinf;  } catch  fInterruptedException e	t2.join(); } catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+String  result = "" +  i++ + " + x +"," + y+ """;	String result = "" + (i++) + "" + x + "," + y + ")";
+if x == 0 && y == 0 1 System.out.printlnresult	if (x == 0 && y == 0) { System.out.println(result);
+break;	break;
+}	}
+f	}
+	}
+}	}

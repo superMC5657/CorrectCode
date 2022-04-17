@@ -1,0 +1,32 @@
+class  Person	class Person
+	{
+private String name;	private String name;
+private  int age;;	private int age;
+	
+Person	Person()
+{	{
+	
+}	}
+PersonString n	Person(String n)
+{	{
+name = n;	name = n;
+}	}
+PersonString n,, int a	Person(String n, int a)
+	{
+name = n;	name = n;
+age = a;;	age = a;
+}	}
+public void speakl	public void speak()
+{	{
+System.out.println""name="+name+",age="+agef;	System.out.println("name="+name+",age="+age);
+1	}
+}	}
+class PersonDemo2	class PersonDemo2
+	{
+public static  void mainString args	public static void main(String[] args)
+{	{
+Person  p = nw Person"lisi";	Person p = new Person("lisi");
+	
+Person p = new Person"wangwu",2; p.speak;	Person p = new Person("wangwu",23); p.speak();
+1	}
+}	}

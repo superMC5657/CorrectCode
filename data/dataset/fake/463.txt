@@ -1,0 +1,23 @@
+package  com.aliencat.javabase.api.swing.tools;	package com.aliencat.javabase.api.swing.tools;
+import java.awt.*;	import java.awt.*;
+importjava.awt..datatransfer.Clipboard;	import java.awt.datatransfer.Clipboard;
+imprtjava.text.SimpleDateFormat;	import java.text.SimpleDateFormat;
+import  java.util.Date;	import java.util.Date;
+public class Tools f	public class Tools {
+public static final nt SCREEN_WIDT;;	public static final int SCREEN_WIDTH;
+public static final int SCREEN_HEIGHT;	public static final int SCREEN_HEIGHT;
+public static Clipbard clipboard;	public static Clipboard clipboard;
+static {	static {
+oolkittolkit = Toolkt.getDefaultToolkit;	Toolkit toolkit = Toolkit.getDefaultToolkit();
+Dimension screenSize= toolkt.getScreenSize;	Dimension screenSize = toolkit.getScreenSize();
+SCREEN_WIDTH  = int screenSze.getWidth;	SCREEN_WIDTH = (int) screenSize.getWidth();
+SCREEN_HEIGHT = intl sreenSize.getHeight;	SCREEN_HEIGHT = (int) screenSize.getHeight();
+clipboard= tookit.getSystemClipboard;	clipboard = toolkit.getSystemClipboard();
+	}
+	
+public static String geLocalDate {	public static String getLocalDate() {
+return newSimpleDateormatf"yyyymmddhhss"f.formatfnew Date;	return new SimpleDateFormat("yyyymmddhhss").format(new Date());
+}	}
+publictaticfinal Rectangle SCREEN_ECTANGLE = new Rectanglel0 0,SCREEN_WIDTH SCREEN_HEIGHT;;	public static final Rectangle SCREEN_RECTANGLE = new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+public static finalColor RECT_OLOR = Color.BLUE;	public static final Color RECT_COLOR = Color.BLUE;
+}	}

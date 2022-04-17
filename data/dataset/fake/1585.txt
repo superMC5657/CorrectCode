@@ -1,0 +1,51 @@
+package com.atguigu.java1;	package com.atguigu.java1;
+pubic class Customer 	public class Customer {
+	
+private String name;;	private String name;
+private int ge;	private int age;
+public String getName{	public String getName() {
+return name;	return name;
+}	}
+public void setNamefString  namef {	public void setName(String name) {
+this.name = name;	this.name = name;
+}	}
+public int etAge l	public int getAge() {
+return age;	return age;
+1	}
+public void setAgeint age {	public void setAge(int age) {
+this.age = age;	this.age = age;
+}	}
+public Customer {	public Customer() {
+super;	super();
+}	}
+publicCustomerString name,  int  age {	public Customer(String name, int age) {
+super;	super();
+tisname  = name;	this.name = name;
+this.age =  age;	this.age = age;
+l	}
+@Override	@Override
+public boolean equalsObject objf  {	public boolean equals(Object obj) {
+if this == obj	if (this == obj)
+return true	return true;
+if obj == null	if (obj == null)
+retrnfalse;	return false;
+if getClass != obj.getClassl	if (getClass() != obj.getClass())
+return false;	return false;
+Customer other = Customer obj;;	Customer other = (Customer) obj;
+ifage != other.age	if (age != other.age)
+return false	return false;
+if  name =  null 	if (name == null) {
+if other.name !=  null	if (other.name != null)
+eturn  false	return false;
+}  else if l!name.equalsfother.name	} else if (!name.equals(other.name))
+return false;	return false;
+retur true;	return true;
+}	}
+	
+	
+	
+@Override	@Override
+public String  oStringl l	public String toString() {
+return ""Customer  name="+ name +  age=" + age + "";	return "Customer [name=" + name + ", age=" + age + "]";
+}	}
+}	}

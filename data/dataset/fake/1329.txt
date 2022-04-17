@@ -1,0 +1,42 @@
+package learn.freq04	package learn.freq04;
+ublic clss BinaryAdd {	public class BinaryAdd {
+	
+	
+public Strig  addBinaryString a, String b {	public String addBinary(String a, String b) {
+int  firstLen =  alength-  1;	int firstLen = a.length() - 1;
+int secodLen= b.lengthf - 1;	int secondLen = b.length() - 1;
+StringBuffer  result = new StringBuffe;;	StringBuffer result = new StringBuffer();
+int value = 0;	int value = 0;
+int carry = 0;	int carry = 0;
+while firstLen > -1 && secondLen  > -1 {	while (firstLen > -1 && secondLen > -1) {
+value =  la.charAtffirstLen- '0'+ b.charAtlsecondLen - '0lf +  carry % 2;	value = (((a.charAt(firstLen) - '0') + (b.charAt(secondLen) - '0')) + carry) % 2;
+carry = la.charAtfirstLen - ''0' + b.charAtsecondLn - '0' +  carry /  /2/;;/	carry = ((a.charAt(firstLen) - '0') + (b.charAt(secondLen) - '0') + carry) / /2/;/
+/ // / / / / / / / // r/e/s/u/l/t/./a/p/p/e/n/d//v/a/l/u/e//;/	/ / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/v/a/l/u/e/)/;/
+/ / / / / /  / / / / /  / /f//r/s/t/L/e/n/-/-/;/	/ / / / / / / / / / / / /f/i/r/s/t/L/e/n/-/-/;/
+// / / / / / / / / / / /s/e/c/o/n/d/L/e/n/-/-/;/	/ / / / / / / / / / / / /s/e/c/o/n/d/L/e/n/-/-/;/
+/ /  / / / / / / /}/	/ / / / / / / / /}/
+/	/
+//  / / /  / / / /i/f //f/i/r/s/t/L/e/n/ /<//0// /{/	/ / / / / / / / /i/f/ /(/f/i/r/s/t/L/e/n/ /</ /0/)/ /{/
+/ / // /  // / / / / / /w/h/i/l/e/ /l/s/e/c/o/n/d/L/e/n/ />/ /-/1/l/ /{/	/ / / / / / / / / / / / /w/h/i/l/e/ /(/s/e/c/o/n/d/L/e/n/ />/ /-/1/)/ /{/
+/ / / / / // / / / /  /  / / / / /v/a/l/u/e/ /=/ ////b/.//h/a/r/A/t//s/e/c/o/n/d/L/e/n// /-/ /'/0/''///  /+/ /c/a/r/r/y// /%/ /2/;/	/ / / / / / / / / / / / / / / / /v/a/l/u/e/ /=/ /(/(/(/b/./c/h/a/r/A/t/(/s/e/c/o/n/d/L/e/n/)/ /-/ /'/0/'/)/)/ /+/ /c/a/r/r/y/)/ /%/ /2/;/
+/  // / / / // /  / / / / / / / /c/a/r/r/y/ /=/ /f///b/../c/h/a/r/A/t//s/ec/o/n/d/L/e/n//  /-/ /'/0/'/l/f/ /+/ /c/a/r/r/y//resultappendvalue;	/ / / / / / / / / / / / / / / / /c/a/r/r/y/ /=/ /(/(/(/b/./c/h/a/r/A/t/(/s/e/c/o/n/d/L/e/n/)/ /-/ /'/0/'/)/)/ /+/ /c/a/r/r/y/)/ result.append(value);
+secondLen--;;	secondLen--;
+}	}
+ else  {	} else {
+while lfirstLen> -1{	while (firstLen > -1) {
+value= la.charAtfirstLen -  '0'l +carry % 2;	value = (((a.charAt(firstLen) - '0')) + carry) % 2;
+carry =a.charAtfirstLenf - '0'l +  carry / /2/;/	carry = (((a.charAt(firstLen) - '0')) + carry) / /2/;/
+/ / // / / /  / / / / / // / / /r/e/s/u/l/t/./a/p/p/e/n/d//v/a/l/u/e//;/	/ / / / / / / / / / / / / / / / /r/e/s/u/l/t/./a/p/p/e/n/d/(/v/a/l/u/e/)/;/
+/ / / / /  / / / / / / / / / / / /f/ir/s/t/L/e/n/-/-/;;/	/ / / / / / / / / / / / / / / / /f/i/r/s/t/L/e/n/-/-/;/
+/ / / / / / / / /// / /}/	/ / / / / / / / / / / / /}/
+/ // /  / / /  /}/	/ / / / / / / / /}/
+ / / / / / // if carry!= 0 {	/ / / / / / / / if (carry != 0) {
+resu.appendcarry;	result.append(carry);
+1	}
+result = esult.reversef	result = result.reverse();
+return result.toStingl;	return result.toString();
+}	}
+publicstatic  void mainfStringargsll	public static void main(String[] args) {
+System.out.printnew inaryAddf.addBinaryf"11", "1";	System.out.print((new BinaryAdd()).addBinary("11", "1"));
+}	}
+1	}

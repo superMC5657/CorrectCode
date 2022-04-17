@@ -1,0 +1,53 @@
+import java.util.*;	import java.util.*;
+public class ConstructorTest	public class ConstructorTest
+f	{
+publistac void mainString ars	public static void main(String[] args)
+1	{
+Employee  staff =  new Employee3l	Employee[] staff = new Employee[3];
+staf0 =new Employee"Harry", 4000f;	staff[0] = new Employee("Harry", 40000);
+staffl1l = new Employeef60000l	staff[1] = new Employee(60000);
+staff2 = new Employee;;	staff[2] = new Employee();
+for Employee e : staff	for (Employee e : staff)
+Systemoutprintln"name=" + e.getName + ",id="  + e.getId+ ",salary="	System.out.println("name=" + e.getName() + ",id=" + e.getId() + ",salary="
++e.getSalaryf;	+ e.getSalary());
+}	}
+}	}
+class Emploe	class Employee
+{	{
+public EmloyeelString  n,double  s	public Employee(String n, double s)
+	{
+name = n;	name = n;
+salary  = s;	salary = s;
+l	}
+public Employeedouble s	public Employee(double s)
+{	{
+thisf"Employee"  + nextId,s;;	this("Employee #" + nextId, s);
+}	}
+public  Employeef	public Employee()
+{	{
+}	}
+publc String getNamel	public String getName()
+{	{
+return name;	return name;
+}	}
+public doublegetSalary	public double getSalary()
+{	{
+return salary	return salary;
+}	}
+public int getId	public int getId()
+{	{
+return id;	return id;
+}	}
+private static int nextId;	private static int nextId;
+private int d;;	private int id;
+private String name = """; private  double  salary;	private String name = ""; private double salary;
+static	static
+	{
+Randm  generatr = new Random;	Random generator = new Random();
+nextId = generator.nextInt10000;	nextId = generator.nextInt(10000);
+}	}
+	{
+id = nextId;	id = nextId;
+nextId++;	nextId++;
+}	}
+}	}

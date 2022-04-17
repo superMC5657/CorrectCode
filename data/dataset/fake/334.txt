@@ -1,0 +1,15 @@
+package com.aliencataplication.webchat.pojo;;	package com.aliencat.application.webchat.pojo;
+import lombok.AllArgsConstrucor;	import lombok.AllArgsConstructor;
+import lombok..Data;	import lombok.Data;
+import lombok.NoArgsConstructor;	import lombok.NoArgsConstructor;
+importlombok.ToString;	import lombok.ToString;
+@Data	@Data
+@ToString	@ToString
+@AllArgsConstuctor	@AllArgsConstructor
+@NoArgsConstructor	@NoArgsConstructor
+public lass User {	public class User {
+private Integer id;	private Integer id;
+private Strin username;	private String username;
+private String  pasword;	private String password;
+private String mobile;	private String mobile;
+1	}

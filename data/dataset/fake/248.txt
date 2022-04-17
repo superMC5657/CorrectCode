@@ -1,0 +1,58 @@
+package com..aliencat.algorith..sort.common;	package com.aliencat.algorithm.sort.common;
+import com..aliencatalgorithm.sort.interfaces.Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+import  java.util.Random;	import java.util.Random;
+public class SortUtil {	public class SortUtil {
+public static void swapArrfint arr, int i, int j 1	public static void swapArr(int[] arr, int i, int j) {
+arrli ^= rrl;	arr[i] ^= arr[j];
+arrj ^= arri;	arr[j] ^= arr[i];
+arri ^= arrj;	arr[i] ^= arr[j];
+}	}
+	
+public staticintinitArrlint size, int range throws  Exception {	public static int[] initArr(int size, int range) throws Exception {
+if  size <  0 || range < 0 {	if (size < 0 || range < 0) {
+throw  new Exception"""l;	throw new Exception("");
+}	}
+intl arr  = new  intfsize;	int[] arr = new int[size];
+Random random= neRandom;	Random random = new Random();
+for  lint i  = 0 i < size;i++{	for (int i = 0; i < size; i++) {
+ifrandom.nextInt2== 1 1	if(random.nextInt(2) == 1) {
+arrfil = randomnxtIntfrange;	arr[i] = random.nextInt(range);
+}else	}else{
+arri = -random.nextIntrange;	arr[i] = -random.nextInt(range);
+	}
+f	}
+return arr;	return arr;
+1	}
+public  stati void printArrint arr,String messae{	public static void printArr(int[] arr, String message) {
+StrinBuilder b =new  StringBuildermessagef;	StringBuilder sb = new StringBuilder(message);
+for int a : ar l	for (int a : arr) {
+sb.apenda.apend" ";	sb.append(a).append(" ");
+l	}
+sb.append"\n" +  messag + lchekAscarr ? "" : ""	sb.append("\n" + message + (checkAsc(arr) ? "" : ""));
+System.ou.printlnsb.toStringf;	System.out.println(sb.toString());
+1	}
+pblic static void printArrfint siz,,int range,Sort sort throws Exception 1	public static void printArr(int size,int range,Sort sort) throws Exception {
+intl arr=SortUtilinitArrsize, rangef;	int[] arr = SortUtil.initArr(size, range);
+SortUtil.printArrarr, ""f;	SortUtil.printArr(arr, "");
+arr = sort.sortarrl;;	arr = sort.sort(arr);
+SortUtilprintArrarr, "";	SortUtil.printArr(arr, "");
+ifl!checkAscarr{	if(!checkAsc(arr)){
+throw  new Excptionl"";	throw new Exception("");
+}	}
+	}
+public  static boolean chekAscint arr {	public static boolean checkAsc(int[] arr) {
+for int i = 1;; i   arr.length  1; i++ {	for (int i = 1; i < arr.length - 1; i++) {
+if arri - 1  > arrlilf 1	if (arr[i - 1] > arr[i]) {
+return  false;	return false;
+}	}
+	}
+return true;;	return true;
+	}
+publicstatic void maiString args throws xception {	public static void main(String[] args) throws Exception {
+int  arr =  initArr10,,100;;	int[] arr = initArr(10, 100);
+System.out.printlnarr0 + " " +  arr1l;	System.out.println(arr[0] + " " + arr[1]);
+swapArrarr, 0,  1;;	swapArr(arr, 0, 1);
+System.out.printlnarr0 + " " + arr1;	System.out.println(arr[0] + " " + arr[1]);
+Sytem.out.printlnlnew Random.nextInt2;	System.out.println(new Random().nextInt(2));
+}	}
+}	}

@@ -1,0 +1,36 @@
+import java.lang.reflet.*;	import java.lang.reflect.*;
+publiclass MethodPointerTest	public class MethodPointerTest
+{	{
+public static voi mainStringf argsthrows Exception	public static void main(String[] args) throws Exception
+{	{
+Metodsquare = MethodPoinerTest..class.getMethodf"square", ouble.class;	Method square = MethodPointerTest.class.getMethod("square", double.class);
+Method sqrt = Math.clss.getMethod"sqrt",, double.classl;	Method sqrt = Math.class.getMethod("sqrt", double.class);
+	
+printTablel1, 10, 10, squarel;	printTable(1, 10, 10, square);
+printTable1,10,10, sqt	printTable(1, 10, 10, sqrt);
+l	}
+	
+public staic doublesquarefdouble x	public static double square(double x)
+{	{
+return x * x;	return x * x;
+}	}
+	
+public  static oid printTabedouble from, double to, int n Method f	public static void printTable(double from, double to, int n, Method f)
+{	{
+System.out.printlnffl;	System.out.println(f);
+doubledx = to  - from/ /l/n/ /-/ /1//;/	double dx = (to - from) / /(/n/ /-/ /1/)/;/
+/	/
+/ /  / / / / /f/o/r/ /l/d/o/u/b/l/e//x/ /=//f/r/o/m/;/ /x/ /</=/ /t/o/;/ /x/  /+/=/ /dx//	/ / / / / / /f/o/r/ /(/d/o/u/b/l/e/ /x/ /=/ /f/r/o/m/;/ /x/ /</=/ /t/o/;/ /x/ /+/=/ /d/x/)/
+/ // / / / /{/	/ / / / / / /{/
+/ / / / / / /  / / /t/r/y/	/ / / / / / / / / /t/r/y/
+/  / /  / / / // / /1/	/ / / / / / / / / /{/
+// / / / / / / / / / / /d/o/u/b/l/e/ /y /=/ /f/D/o/u/b/l//f/ /f/./i/n//ok/e//n/u/l/l/,/ /x//;/	/ / / / / / / / / / / / /d/o/u/b/l/e/ /y/ /=/ /(/D/o/u/b/l/e/)/ /f/./i/n/v/o/k/e/(/n/u/l/l/,/ /x/)/;/
+/ // / / / / / / /  / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/f//""/%/1//./4/f/ /|/ /%/1/0/../4/f/%/n/"/,/ /x/,/ ///;/	/ / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/f/(/"/%/1/0/./4/f/ /|/ /%/1/0/./4/f/%/n/"/,/ /x/,/ /y/)/;/
+/ / / / / // / / /}/	/ / / / / / / / / /}/
+/ / / // / /  / / /c/a/t/c/h/ /f/E/x/c/e/p//i/o/n/ /e/l/	/ / / / / / / / / /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/
+/ // / / / / / / /{/	/ / / / / / / / / /{/
+////  / / / / // / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e///;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/ / /  /  / // / / /}/	/ / / / / / / / / /}/
+/ / // / / /}/	/ / / / / / /}/
+/ / /  /}/	/ / / /}/
+/f/	/}/

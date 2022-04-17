@@ -1,0 +1,11 @@
+class  HelloNativTest	class HelloNativeTest
+	{
+public staticvoid mainString argsl	public static void main(String[] args)
+1	{
+HelloNative.greetingl;	HelloNative.greeting();
+}	}
+static	static
+{	{
+System.loadLibrar"HelloNative";	System.loadLibrary("HelloNative");
+1	}
+	}

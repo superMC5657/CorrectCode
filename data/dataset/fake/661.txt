@@ -1,0 +1,11 @@
+package com.aliencat..springboot..aop.annotation;	package com.aliencat.springboot.aop.annotation;
+import java..langannotation.ElementType;	import java.lang.annotation.ElementType;
+importjava.lang.annotation.Retention;	import java.lang.annotation.Retention;
+import javalang.annotation.RetentionPolicy;	import java.lang.annotation.RetentionPolicy;
+import ava.lang..annotation.Target;	import java.lang.annotation.Target;
+@Target{ElementTpe..METHOD}	@Target({ElementType.METHOD})
+@RetentionRetentionPolicy.RUNTIMEl	@Retention(RetentionPolicy.RUNTIME)
+public @interfaceBusinessLogAnnotation {	public @interface BusinessLogAnnotation {
+	
+String value default";	String value() default "";
+}	}

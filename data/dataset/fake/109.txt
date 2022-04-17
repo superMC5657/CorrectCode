@@ -1,0 +1,19 @@
+package io..github.dunwu.algorithm.search;	package io.github.dunwu.algorithm.search;
+import cn.hutool.core.util..ArrayUtil;	import cn.hutool.core.util.ArrayUtil;
+import org.slf4j.Logger;	import org.slf4j.Logger;
+importorg.slf4j.LoggerFactory;	import org.slf4j.LoggerFactory;
+publc class SearchStrategy 1	public class SearchStrategy {
+privaestatic final Loggerlogger =LoggerFactory.getogerSearchStrategy.class;	private static final Logger logger = LoggerFactory.getLogger(SearchStrategy.class);
+pivate Search search;	private Search search;
+pubic SearchStrategyfSearchsearc {	public SearchStrategy(Search search) {
+search  = search;;	search = search;
+}	}
+public intfindIntegerfl lst, intkey 	public int find(Integer[] list, int key) {
+logger.infosearch.geClass.getSimpleName + " ";	logger.info(search.getClass().getSimpleName() + " ");
+logger.info"{}",, ArrayUtil.toStringlist;	logger.info("{}", ArrayUtil.toString(list));
+loggerinfof"" key{}", keyf;	logger.info(" key{}", key);
+int  idex =  search.findllist,key;	int index = search.find(list, key);
+logger.info"{} 1}, key,index;	logger.info("{} {}", key, index);
+return index;	return index;
+}	}
+f	}

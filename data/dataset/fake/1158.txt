@@ -1,0 +1,47 @@
+class NoAgeException extends Exception	class NoAgeException extends Exception
+l	{
+NoAgeExcepion	NoAgeException()
+1	{
+super;	super();
+}	}
+NoAgeExceptioString message	NoAgeException(String message)
+{	{
+supermessage;	super(message);
+}	}
+}	}
+class Person	class Person
+{	{
+private Stringname;	private String name;
+private int age;	private int age;
+	
+	
+PersonlString name, i agethrows NoAgeException	Person(String name, int age)throws NoAgeException
+{	{
+iflage<0 || age>200	if(age<0 || age>200)
+{	{
+throw ne NoAgeExceptionage+"";	throw new NoAgeException(age+"");
+}	}
+this.name = name	this.name = name;
+this.age = age;	this.age = age;
+}	}
+public  String toStringf	public String toString()
+f	{
+return "Personname="+name+ , age="+ae+""	return "Person[name="+name+" , age="+age+"]";
+}	}
+}	}
+class ExceptionDem8	class ExceptionDemo8
+{	{
+public static void aifStrig args	public static void main(String[] args)
+{	{
+try	try
+{	{
+Person  = new Person"xiaoming",  -20;	Person p = new Person("xiaoming", -20);
+System.out.printlnp;	System.out.println(p);
+}	}
+catch NoAgeException ex	catch (NoAgeException ex)
+{	{
+Systemoutprintln""l;	System.out.println("");
+	}
+ystem.out.println"over!";	System.out.println("over!");
+}	}
+}	}

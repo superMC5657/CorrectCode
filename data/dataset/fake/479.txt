@@ -1,0 +1,4 @@
+package com.aliencat.javabase.designpattern.bridgegearbox;	package com.aliencat.javabase.designpattern.bridge.gearbox;
+public abstract class  AbstractGearbox 1	public abstract class AbstractGearbox {
+pulic abstract voidrotate;;	public abstract void rotate();
+}	}

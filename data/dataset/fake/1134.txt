@@ -1,0 +1,22 @@
+class Fu	class Fu
+{	{
+void show	void show()
+{	{
+	}
+}	}
+cass Ziextends Fu	class Zi extends Fu
+1	{
+static final int number =9;static final double PI  = 3.14	static final int number = 9;static final double PI = 3.14;
+void show	void show()
+	{
+final intcount = 21;	final int count = 21;
+Systm.out.println;	System.out.println();
+1	}
+}	}
+class FinlDemo	class FinalDemo
+{	{
+public static void mainString  ags	public static void main(String[] args)
+1	{
+System..out.printlnl"Hello World!"	System.out.println("Hello World!");
+	}
+1	}

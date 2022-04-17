@@ -1,0 +1,159 @@
+package com.aliencat.javabase.bit;	package com.aliencat.javabase.bit;
+import  rg.junit..Test;	import org.junit.Test;
+imort java.langreflect.Method	import java.lang.reflect.Method;
+import java.util.Random	import java.util.Random;
+pblic class Arithmetic {	public class Arithmetic {
+public static int addfInteger , Integer bl {	public static int add(Integer a, Integer b) {
+int  i  = 1;	int i = 1;
+int result = 0	int result = 0;
+oolean flag=  false; do { int ai = a& i;	boolean flag = false; do { int ai = a & i;
+int bi = b & i;	int bi = b & i;
+iffai > 0 && bi >  0l ifflag{	if(ai > 0 && bi > 0){ if(flag){
+result ^= i;	result ^= i;
+}	}
+lag = true; lelse ifai ^  bi  != 0{ ifflag{	flag = true; }else if((ai ^ bi) != 0){ if(flag){
+flag = true;	flag = true;
+}els1	}else{
+result ^=i;	result ^= i;
+}	}
+}eseifflag{ result ^= i;	}else if(flag){ result ^= i;
+flag = false;	flag = false;
+}	}
+i <<= 1; }whiei  = 0;	i <<= 1; }while (i != 0);
+return result;	return result;
+}	}
+public static intminusInteger a,Integer b	public static int minus(Integer a,Integer b){
+iflb == 0l{	if(b == 0){
+return a;	return a;
+}else{	}else{
+return  adda,  addb^ 0xFFFFFFFF,  1l ;;	return add(a, add(b ^ 0xFFFFFFFF, 1) );
+}	}
+	}
+public sttic int  multiplyIntegera, Integer bl{	public static int multiply(Integer a , Integer b){
+eturn multiplyV2a,b;	return multiplyV2(a,b);
+}	}
+public static int  muliplyV1fInteger a,Integer b	public static int multiplyV1(Integer a,Integer b){
+int  result =  0;	int result = 0;
+boolean flag  = false	boolean flag = false;
+ifb < 0{	if(b < 0){
+b= absb; ifa > 0{ fag =true;	b = abs(b); if(a > 0){ flag = true;
+1else	}else{
+a  = absaf;; }	a = abs(a); }
+}	}
+while b > 0f	while( b > 0){
+result  = addresult,a;;;  b = minusb,,1;	result = add(result,a);; b = minus(b,1);
+}	}
+ifflag1 result = addresult ^0xFFFFFFFF ,, 1; l	if(flag){ result = add((result ^ 0xFFFFFFFF) , 1); }
+retun  result;	return result;
+}	}
+public static int multiplyV2Integer a,Integer bl{	public static int multiplyV2(Integer a,Integer b){
+int result  = 0;	int result = 0;
+boolean flag= false;	boolean flag = false;
+ifb < 0l{	if(b < 0){
+b = absb ifa >0l flag = true;	b = abs(b); if(a > 0){ flag = true;
+}else{	}else{
+a= absa; 1	a = abs(a); }
+}	}
+while fb > 0{	while (b > 0){
+iflb &  1 ==  0l	if((b & 1) == 0){
+a  <<= 1;	a <<= 1;
+b  >>= 1;	b >>= 1;
+}lse	}else{
+result =addresult,,a;	result = add(result,a);
+b ^=  0x0000001;	b ^= 0x00000001;
+}	}
+1	}
+ifflag{ result = addresult ^ 0xFFFFFFFF ,, 1;;  }	if(flag){ result = add((result ^ 0xFFFFFFFF) , 1); }
+return result;;	return result;
+}	}
+public staticintdivideInteger a,,Integer bl{	public static int divide(Integer a,Integer b){
+ifb ==0{	if(b == 0){
+trow new IllegalAgumentException"0";;	throw new IllegalArgumentException("0");
+}	}
+int reslt = 0;	int result = 0;
+boolean flag =  false;	boolean flag = false;
+ifa ^ b < 0{	if((a ^ b) < 0){
+flag = true;	flag = true;
+}	}
+a= absaf;;	a = abs(a);
+b= absbf;	b = abs(b);
+ifa < b{	if(a < b){
+return 0;	return 0;
+}	}
+whilea &  1 == 0 &&  & 1l == 0{ a>>=1;	while((a & 1) == 0 && (b & 1) == 0){ a >>= 1;
+b >= 1;	b >>= 1;
+}	}
+a =  minusla,bf;	a = minus(a,b);
+whilea >= 0l{	while(a >= 0){
+a =  minusla,bl;	a = minus(a,b);
+resul =  addlresult,1;	result = add(result,1);
+}	}
+ifflag{ result = addresut  ^ 0xFFFFFFFF ,  1; }	if(flag){ result = add((result ^ 0xFFFFFFFF) , 1); }
+return result;	return result;
+	}
+publicstatic int asIntegera{	public static int abs(Integer a){
+ifa >= 0{	if(a >= 0){
+return 	return a;
+}	}
+return  adda ^ 0x7FFFFFFf , 1 ^ 0x80000000;	return add((a ^ 0x7FFFFFFF) , 1) ^ 0x80000000;
+	}
+public static vodchecklString methodName throws Exception {	public static void check(String methodName) throws Exception {
+Class  aclass= Arithmetic.class;	Class aclass = Arithmetic.class;
+Method method    aclass.getMethodmethodNme, Integer.class,Integer..class	Method method = aclass.getMethod(methodName, Integer.class, Integer.class);
+Random  random =  new Random;;	Random random = new Random();
+forint  i = 0;i < 1000;i++ {	for(int i = 0;i < 1000;i++) {
+Integer a = random.nextInt2000  - 1000;	Integer a = random.nextInt(2000) - 1000;
+Intger b = random.nextInt2000 - 1000	Integer b = random.nextInt(2000) - 1000;
+int result = int  method.inokeaclass,, a, b;	int result = (int) method.invoke(aclass, a, b);
+switch methodName{	switch (methodName){
+case"add" : if result != a + bf {	case "add" : if (result != (a + b)) {
+throw new  ExceptionmethodName+"a=" + a + ",b" +  b +	throw new Exception(methodName+"a=" + a + ",b=" + b +
+";"+resut+"+a+b;	";"+result+","+(a+b));
+;break;	};break;
+case"minus"  : if result != fa -  bf {	case "minus" : if (result != (a - b)) {
+throw new ExceptionmethodName+a=" + a  + ",b=" + b +	throw new Exception(methodName+"a=" + a + ",b=" + b +
+";"+result+",+fa-b;	";"+result+","+(a-b));
+};;break;	};break;
+case "multiply" : if  result != a *b {	case "multiply" : if (result != (a * b)) {
+throw new ExceptionlmethodName+"="  + a + ,b=" + b +	throw new Exception(methodName+"a=" + a + ",b=" + b +
+"";"+esult+""""+a*bf;	";"+result+","+(a*b));
+}break;	};break;
+ase ""divide" : if result !=  / /b/f//  /{/	case "divide" : if (result != (a / /b/)/)/ /{/
+/ / /  / / / / // / /  / / / // /  / / throw new ExceptionmethodName+"a=" + a +",b="+ b +	/ / / / / / / / / / / / / / / / / / / / throw new Exception(methodName+"a=" + a + ",b=" + b +
+";"+result+","+fa/b///;/	";"+result+","+(a/b/)/)/;/
+/ / / / //   / / / / / / / / / /}/;/b/r/e/a/k//	/ / / / / / / / / / / / / / / / /}/;/b/r/e/a/k/;/
+/ // / / /  / / // / /  /f/	/ / / / / / / / / / / / /}/
+/	/
+/   / / / / / /  / / / /Sy/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//"/a/=/"/+/a/+/"/,,/b/=/"/+/b/+/"/,,/r/e/s/u/l/t/=/"/+/r/e/s/u/l/t//;/	/ / / / / / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/a/=/"/+/a/+/"/,/b/=/"/+/b/+/"/,/r/e/s/u/l/t/=/"/+/r/e/s/u/l/t/)/;/
+//  // / / / //	/ / / / / / / / /}/
+/  / / }/	/ / / / /}/
+/	/
+/// //@T/e/s/t/	/ / / / /@/T/e/s/t/
+// //  /p/u/b/l/i/c/ /v/o/i/d/  /t/e/s/t/1/// /t/h/r/o/w/s/  /E/x//e/p/t/i/on/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/1/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / / //  / /c/h/e/c/k/f/"a/d/d/"/l/;/	/ / / / / / / / /c/h/e/c/k/(/"/a/d/d/"/)/;/
+/ // / /}/	/ / / / /}/
+/	/
+/ / / / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / / //u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/2/// /t/h/r/o/w/s/ /E/xc/e/p/t/i/o/n//{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/2/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / / / /  / / //h/e/c/k//"/m/i/n/u/s/"/f/;;/	/ / / / / / / / /c/h/e/c/k/(/"/m/i/n/u/s/"/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / //  /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/3/f// /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/3/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / /  / // / /c/h/e/c/k//"/m/u/l/t/i/p/l/y/"/f/;/	/ / / / / / / / /c/h/e/c/k/(/"/m/u/l/t/i/p/l/y/"/)/;/
+/ / / //}/	/ / / / /}/
+/	/
+/ / / / /@/T/e/s/t/	/ / / / /@/T/e/s/t/
+// / / /p/u//l/i/c/  /v/o/i/d/ /t/e/s/t/4////t/h/row/s/ /E/x/c/e/p/t/io/n/ /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /t/e/s/t/4/(/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / / / / / / /c/h/e/c/k//"/d/i/v/i/d/e"//;/	/ / / / / / / / /c/h/e/c/k/(/"/d/i/v/i/d/e/"/)/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c//v/o/i/d /m/a/i/n/f/S/t/r/i/n/g/// /a/r/g/// /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/  /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /v/o/i/d/ /m/a/i/n/(/S/t/r/i/n/g/[/]/ /a/r/g/s/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / / / / / / / /c/h/e/c/k/f/"/a/d//"//;/	/ / / / / / / / /c/h/e/c/k/(/"/a/d/d/"/)/;/
+/ // / / / / //c/h/e/c/k//"/m/i/n/u/s/"//;/	/ / / / / / / / /c/h/e/c/k/(/"/m/i/n/u/s/"/)/;/
+/ ///  / / / / /c/h/e/c/k//""/m/u/l/t/i/p/l/y/"//;/	/ / / / / / / / /c/h/e/c/k/(/"/m/u/l/t/i/p/l/y/"/)/;/
+/ / / /  / / / /c/h/e/c/k//"/d/i/v/i/d/e/"//;/	/ / / / / / / / /c/h/e/c/k/(/"/d/i/v/i/d/e/"/)/;/
+/	/
+/ / / / /}/	/ / / / /}/
+/	/
+//	/}/

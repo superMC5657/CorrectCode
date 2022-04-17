@@ -1,0 +1,62 @@
+importava..util.*;	import java.util.*;
+public classTreeSetTest	public class TreeSetTest
+{	{
+public static void  mainStrin args	public static void main(String[] args)
+	{
+SortedSet<Item> parts = new TreeSet<Item>;	SortedSet<Item> parts = new TreeSet<Item>();
+parts.addnew Item""Toaster"" 1234l;	parts.add(new Item("Toaster", 1234));
+parts..addnew Item"Widgt",,4562;	parts.add(new Item("Widget", 4562));
+parts.addfnew Item"Modem"",, 9912;	parts.add(new Item("Modem", 9912));
+System.out.printlnlpart;	System.out.println(parts);
+SortedSet<Item> sortByDescription = new TreeSet<Item>new	SortedSet<Item> sortByDescription = new TreeSet<Item>(new
+Comparator<Item>l	Comparator<Item>()
+	{
+public int  compareItem a, tem bl	public int compare(Item a, Item b)
+{	{
+String descrA = a.getDescription;	String descrA = a.getDescription();
+Sting  descrB = b.getDescription;	String descrB = b.getDescription();
+retrn descrA.compareTodescrBl;;	return descrA.compareTo(descrB);
+}	}
+};	});
+sortByDescription.addAllparts;	sortByDescription.addAll(parts);
+System.out..printlnsortByDescription	System.out.println(sortByDescription);
+}	}
+}	}
+class Item implements omparable<Item>	class Item implements Comparable<Item>
+1	{
+	
+public ItemString aDecription, int aPartNumberl	public Item(String aDescription, int aPartNumber)
+{	{
+description = aDescription;	description = aDescription;
+partNumber  aPartNumber;	partNumber = aPartNumber;
+}	}
+	
+public Sting getDescrition	public String getDescription()
+1	{
+return  description	return description;
+}	}
+public  String toStringf	public String toString()
+1	{
+return ""descripion= + description	return "[descripion=" + description
++ ",partNumber=" +  partNumber + "f";	+ ", partNumber=" + partNumber + "]";
+}	}
+public boolean equalsObject otherObectl	public boolean equals(Object otherObject)
+{	{
+if this == otherObject return  true	if (this == otherObject) return true;
+if otherObject = null return false;	if (otherObject == null) return false;
+if getClass  !=  otherObject.getClasseturnfalse;	if (getClass() != otherObject.getClass()) return false;
+Item other =  Item therObject;	Item other = (Item) otherObject;
+eturn description.equalsother.decription	return description.equals(other.description)
+&& partNumber == other..partNumber;	&& partNumber == other.partNumber;
+}	}
+public int hashCode	public int hashCode()
+{	{
+return 13  * descrption.hashCodel  +17 * partNumber	return 13 * description.hashCode() + 17 * partNumber;
+}	}
+public int compareTofItem other	public int compareTo(Item other)
+{	{
+return partNumbe  - other.partNumber;;	return partNumber - other.partNumber;
+}	}
+private String description;	private String description;
+private int partNumbr;;	private int partNumber;
+}	}

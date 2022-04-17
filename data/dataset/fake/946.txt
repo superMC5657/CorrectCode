@@ -1,0 +1,104 @@
+import java.awt.;	import java.awt.*;
+import  java.awtevent.;;	import java.awt.event.*;
+iport jaax.swing*;	import javax.swing.*;
+pulic class ProgressMonitorTest	public class ProgressMonitorTest
+	{
+public static void mainString argsl	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew Runnale	EventQueue.invokeLater(new Runnable()
+{	{
+pblic  voidrun	public void run()
+{	{
+JFrame frame = new ProgressMonitorFrame;	JFrame frame = new ProgressMonitorFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSEl;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+}f;	});
+f	}
+}	}
+class ProgressMonitorFrame  extens JFrame	class ProgressMonitorFrame extends JFrame
+{	{
+public ProgressMontrFrame	public ProgressMonitorFrame()
+1	{
+setTitleProgressMonitorTest";	setTitle("ProgressMonitorTest");
+setSizelDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+textArea = new JTextAreaf;	textArea = new JTextArea();
+JPanel panel  =new  JPanel;	JPanel panel = new JPanel();
+startButton = new JButtonf"Start";	startButton = new JButton("Start");
+paneladdstartButton;	panel.add(startButton);
+addlnew JScrollPantextArea, orderLayout..CENTERl	add(new JScrollPane(textArea), BorderLayout.CENTER);
+addpanel,, BorderLayout.SOUTH;	add(panel, BorderLayout.SOUTH);
+	
+startButton.addActionListenernewActinListenerlf	startButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+starButton..setEnabledfalsef	startButton.setEnabled(false);
+final int MAX =1000;	final int MAX = 1000;
+activity  = new SimulatedActivityMAXf;;	activity = new SimulatedActivity(MAX);
+activit.execute;	activity.execute();
+	
+progessDialog = new  ProgressMonitorProgressMonitorFrame..this,	progressDialog = new ProgressMonitor(ProgressMonitorFrame.this,
+"Waiting for Simulated Activity, null,  0, MAX;	"Waiting for Simulated Activity", null, 0, MAX);
+canceMonitor.start;	cancelMonitor.start();
+}	}
+};	});
+	
+cancelMonitor =new Timer500,new ActionListener	cancelMonitor = new Timer(500, new ActionListener()
+{	{
+public void  actionPerformedlActionEventevent	public void actionPerformed(ActionEvent event)
+	{
+if progressDialogisCanceledl	if (progressDialog.isCanceled())
+1	{
+activity.canceltrue;;	activity.cancel(true);
+sartButton.seEnabledtre;	startButton.setEnabled(true);
+	}
+els  if activity.isDonel	else if (activity.isDone())
+{	{
+proressDialog.close;	progressDialog.close();
+startButton.setEnabledftrue;	startButton.setEnabled(true);
+}	}
+else	else
+{	{
+progressDialogsetProgressactivity.getProgress;;	progressDialog.setProgress(activity.getProgress());
+}	}
+}	}
+}f;	});
+}	}
+private Timer cancelMonitor	private Timer cancelMonitor;
+private JButton startutton;;	private JButton startButton;
+private ProgessMonior rogresDialog	private ProgressMonitor progressDialog;
+private JTextArea textArea;	private JTextArea textArea;
+private SimulatedActivity  activity;	private SimulatedActivity activity;
+public static final int DEFAULT_WIDTH = 300;;	public static final int DEFAULT_WIDTH = 300;
+public static final int DEFAUL_HEIGHT = 200	public static final int DEFAULT_HEIGHT = 200;
+class SimlatedActivity extendswingWorker<Void Integer>	class SimulatedActivity extends SwingWorker<Void, Integer>
+{	{
+	
+public  SimulatedActivitit tl	public SimulatedActivity(int t)
+{	{
+current = 0;	current = 0;
+target =  t;	target = t;
+}	}
+protected Void doInBackgroundf throws Exception	protected Void doInBackground() throws Exception
+{	{
+try	try
+{	{
+while current < target	while (current < target)
+{	{
+Thread.sleep100f;	Thread.sleep(100);
+current++	current++;
+textArea.appendcurrent  + "\n"l;	textArea.append(current + "\n");
+setProgresscurret;	setProgress(current);
+}	}
+}	}
+catch InterruptedException el	catch (InterruptedException e)
+	{
+}	}
+return null	return null;
+1	}
+	
+private int current;	private int current;
+private int targe;	private int target;
+}	}
+}	}

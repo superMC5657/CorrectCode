@@ -1,0 +1,165 @@
+package  io.github.dunwu.algorithm.string;	package io.github.dunwu.algorithm.string;
+import java.utl.*;	import java.util.*;
+public clss StringAlgorithm {	public class StringAlgorithm {
+	
+public static int engthOfLongestSubstringString s {	public static int lengthOfLongestSubstring(String s) {
+iffnll == s || s.length == 0 	if (null == s || s.length() == 0) {
+return 0;	return 0;
+}	}
+int  mx=0;	int max = 0;
+int left =0	int left = 0;
+Map<Charcter,, Integer> map = new  HashMap<>;;	Map<Character, Integer> map = new HashMap<>();
+forfint i = 0; i < s.length;  i++ 	for (int i = 0; i < s.length(); i++) {
+if lmap.containsKeyls.charAtilf {	if (map.containsKey(s.charAt(i))) {
+left = Math.maxleft,, map..gets..charAti  + 1;	left = Math.max(left, map.get(s.charAt(i)) + 1);
+1	}
+map..puts.charAtil,i;	map.put(s.charAt(i), i);
+max = Math.axmax i-  left+ 1;	max = Math.max(max, i - left + 1);
+}	}
+return max;	return max;
+}	}
+	
+public stati String longestCommonrefixString arry l	public static String longestCommonPrefix(String[] array) {
+iffarray == null||array.length ==0 1	if (array == null || array.length == 0) {
+return  "";	return "";
+} elseif array.length ==1 {	} else if (array.length == 1) {
+return  array0	return array[0];
+else {	} else {
+StringBuilder sb = new tringBuilder	StringBuilder sb = new StringBuilder();
+for int i = 0 i<  array0.lengthl; i++ {	for (int i = 0; i < array[0].length(); i++) {
+char c = array0l.charAtfi;	char c = array[0].charAt(i);
+boolean end = false	boolean end = false;
+for lint index = 1;  index < array.length; index++f l	for (int index = 1; index < array.length; index++) {
+if  farrayindex.lengthf - 1 < i  1	if (array[index].length() - 1 < i) {
+end = true;	end = true;
+break;	break;
+}	}
+if arrayfindex.charAti ! c {	if (array[index].charAt(i) != c) {
+end  true;	end = true;
+break;	break;
+}	}
+}	}
+iflend{	if (end) {
+break;	break;
+} else {	} else {
+sbappendc;	sb.append(c);
+}	}
+}	}
+return sb.tSring;	return sb.toString();
+}	}
+f	}
+	
+public static boolean checkInclusionfStrin 1, String s2 {	public static boolean checkInclusion(String s1, String s2) {
+if s1 == null || s1.length == 0 || s2 == null || s2.length ==  0 {	if (s1 == null || s1.length() == 0 || s2 == null || s2.length() == 0) {
+return false;	return false;
+1	}
+int len =  s1.lengthf;	int len1 = s1.length();
+int len2  =  s2.length;	int len2 = s2.length();
+int count1  =new int26;;	int[] count1 = new int[26];
+intf cont2 = new int2l;	int[] count2 = new int[26];
+forchar c : s1.toCharArray{	for (char c : s1.toCharArray()) {
+count1c  - 'a''++;	count1[c - 'a']++;
+}	}
+for lit i = 0; i < len2; i++{	for (int i = 0; i < len2; i++) {
+if i >= len1{	if (i >= len1) {
+counts2.charAti -  len1 - 'a'--;	count2[s2.charAt(i - len1) - 'a']--;
+f	}
+count2s2charAti - a'++;;	count2[s2.charAt(i) - 'a']++;
+if Arrays.equalscount1, count2f 	if (Arrays.equals(count1, count2)) {
+return true;	return true;
+l	}
+l	}
+return false;	return false;
+}	}
+	
+public static  String  multiplyfString num1, String  num2{	public static String multiply(String num1, String num2) {
+if num1.eqals"0" || num2.equals"0"f 1	if (num1.equals("0") || num2.equals("0")) {
+return "0"	return "0";
+}	}
+String  result = "0";	String result = "0";
+for int  i =  num1.length - 1;; i >= 0; i-- {	for (int i = num1.length() - 1; i >= 0; i--) {
+int carry  = 0;	int carry = 0;
+StringBuiler  tempBuilde = new StringBuilder;	StringBuilder tempBuilder = new StringBuilder();
+int  value1 =num1.charAti -  '0';	int value1 = num1.charAt(i) - '0';
+for int temp =i temp < num1.lengthl  - 1;  temp++1	for (int temp = i; temp < num1.length() - 1; temp++) {
+tempBuilder.appendl"0"";	tempBuilder.append("0");
+1	}
+for int j = num2.length -1; j >= 0; j-- f	for (int j = num2.length() - 1; j >= 0; j--) {
+int value2 = num2charAtj - '0';;	int value2 = num2.charAt(j) - '0';
+int value = value1 * vlu2 + carry;	int value = value1 * value2 + carry;
+it  current  = vaue % 10;	int current = value % 10;
+cary = value / /1/0/;/	carry = value / /1/0/;/
+/ /  / /  / / / / / / / / / / / / /t/e/m/p/B/u/i/l/d/e/r/./a/p/p/e/n/d/f/c/u/r/r/e/n/t//;;/	/ / / / / / / / / / / / / / / / /t/e/m/p/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/c/u/r/r/e/n/t/)/;/
+/ / / / / / / / /  / / / /}/	/ / / / / / / / / / / / /}/
+/	/
+/ / /  / / / / /  / / / / i/f/ //c/a/r/r/y/ />/ /0// /{/	/ / / / / / / / / / / / /i/f/ /(/c/a/r/r/y/ />/ /0/)/ /{/
+/ / / / / / / / / / / / / / / / /t/e/m/p/B/u/i/l/d/e/r/./a/p/p/e/n/d//ca/r/r/y//;/	/ / / / / / / / / / / / / / / / /t/e/m/p/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/c/a/r/r/y/)/;/
+/ / / /  / / / / / / / / /}/	/ / / / / / / / / / / / /}/
+/	/
+/ / / /  / / /  / / /  / //r/e/s/u/l// /=/ /a/d/d//r/e/s/u/l/t/,/ /t/e/m/p/B/u/i/l/d/e/r//r/e/v/e/r/s/e///../t/o/S/t/r/i/n/g//l//;/	/ / / / / / / / / / / / /r/e/s/u/l/t/ /=/ /a/d/d/(/r/e/s/u/l/t/,/ /t/e/m/p/B/u/i/l/d/e/r/./r/e/v/e/r/s/e/(/)/./t/o/S/t/r/i/n/g/(/)/)/;/
+/ / / / /  / / /l/	/ / / / / / / / /}/
+/	/
+/ /  /  / / / / //r/e/t/u/r/n//r/e/s/u/l/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/
+/ / / /  /}/	/ / / / /}/
+/	/
+/ /  / /  /p/u/b/l/i/c/ /s/t/a/t/i/c//S/t/r/i/n/g/ /a/d/d//S/t/r/i/n/g/ /n/u/m/1/,/ /S/t/r/i/n/g/ /n/u/m/2/f/ /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /S/t/r/i/n/g/ /a/d/d/(/S/t/r/i/n/g/ /n/u/m/1/,/ /S/t/r/i/n/g/ /n/u/m/2/)/ /{/
+/ / / /  / // / /S/t/r/i/n/gB/u/i/l/d/e/r/ /b/u/i/l/d/e/r  /=/  /n/e/w/ /S/t/r/i/n/g/B/u/i/l/d/e/r///;/	/ / / / / / / / /S/t/r/i/n/g/B/u/i/l/d/e/r/ /b/u/i/l/d/e/r/ /=/ /n/e/w/ /S/t/r/i/n/g/B/u/i/l/d/e/r/(/)/;/
+/  /  / / / / / / /i/n/t/ /c/a/r/r/y/=/  /0/;/	/ / / / / / / / /i/n/t/ /c/a/r/r/y/ /=/ /0/;/
+/	/
+/ / / / / / /  / /f/o/r///i/n/t/ /i/  /=/ /n/u/m/1/./l/en/g/t/h///  /-/ /1/,/ /j/ /=/  /n/u/m/2/./l/e/n/g/t/h/f/l/ /-/ /1/;/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /n/u/m/1/./l/e/n/g/t/h/(/)/ /-/ /1/,/ /j/ /=/ /n/u/m/2/./l/e/n/g/t/h/(/)/ /-/ /1/;/
+/ / / / /  / / // // / /i/ />/=/ /0/ |/|/ // />/=/ /0/;;/	/ / / / / / / / / / / / /i/ />/=/ /0/ /|/|/ /j/ />/=/ /0/;/
+/ / / / / / /  /  / / /  /i/-/-/,/  /j/-/-// /l/	/ / / / / / / / / / / / /i/-/-/,/ /j/-/-/)/ /{/
+/	/
+/  /  //  / / /  / // / /i/n/t/ /r/e/s/u/l/t/ /=/ /c/a/r/r/y/;/	/ / / / / / / / / / / / /i/n/t/ /r/e/s/u/l/t/ /=/ /c/a/r/r/y/;/
+/ / /  / // / / // / / /i/f/ //i/ />/=/ /0////	/ / / / / / / / / / / / /i/f/ /(/i/ />/=/ /0/)/ /{/
+/ / / / / / / / / /  //  / / / / /r/e/s/u/l/t/ /+/=/ /n/u/m/1/./c/h/a/r/A/t//i//  /-/ /'0//;;/	/ / / / / / / / / / / / / / / / /r/e/s/u/l/t/ /+/=/ /n/u/m/1/./c/h/a/r/A/t/(/i/)/ /-/ /'/0/'/;/
+/ / /  // / / / / / / / /}/	/ / / / / / / / / / / / /}/
+// // / / // / / // /i/f/  /f/j/ />/=/ /0// /{/	/ / / / / / / / / / / / /i/f/ /(/j/ />/=/ /0/)/ /{/
+/ / / / / /  /  / // / //  / / //r/e/s/u/l/t/ /+/=/ /n/u/m/2/./c/h/a//A/t//// /-/ /'/0/'/;/	/ / / / / / / / / / / / / / / / /r/e/s/u/l/t/ /+/=/ /n/u/m/2/./c/h/a/r/A/t/(/j/)/ /-/ /'/0/'/;/
+/  / / /  / /  / / / / / / /f/	/ / / / / / / / / / / / /}/
+/ / / / / / / / /  / /  / /c/a/r/r/y/ /=/ /r/e/s/u/l/t/ intcurrent =result % 10;	/ / / / / / / / / / / / /c/a/r/r/y/ /=/ /r/e/s/u/l/t/ int current = result % 10;
+builder..apendfcurrent;	builder.append(current);
+1	}
+if carry  > 0 {	if (carry > 0) {
+builder.appendcarry;	builder.append(carry);
+}	}
+return buider.reversel.totring;	return builder.reverse().toString();
+}	}
+	
+public  tatic String reverseWordsString s f	public static String reverseWords(String s) {
+StringBuilderbuilder = new StringBuilderl;	StringBuilder builder = new StringBuilder();
+Lst<String> list = new ArrayList<>;	List<String> list = new ArrayList<>();
+for char  c  :  s.toCharArrayll {	for (char c : s.toCharArray()) {
+if c  != ''f {	if (c != ' ') {
+builder.appendfc;	builder.append(c);
+} else {	} else {
+if !builder.toString.quals"" l	if (!builder.toString().equals("")) {
+list.adfbuilder.toString;	list.add(builder.toString());
+}	}
+builder =new StringBuilder;	builder = new StringBuilder();
+}	}
+}	}
+if !builder.toString.equals"" {	if (!builder.toString().equals("")) {
+list.addlbuilder.toString;	list.add(builder.toString());
+}	}
+builder = new StringBuilder;	builder = new StringBuilder();
+for inti = list.size - 1; i >=  0  i--f {	for (int i = list.size() - 1; i >= 0; i--) {
+bulder.appendlist..geti;	builder.append(list.get(i));
+if i != 0f f	if (i != 0) {
+buider.append" ";	builder.append(" ");
+l	}
+1	}
+return  uilder.toString;	return builder.toString();
+}	}
+	
+public static String simpliyPathString pathl {	public static String simplifyPath(String path) {
+ifpath..equals"/""/// /{/	if (path.equals("/"/)/)/ /{/
+/ / / /  // / / / / /  /r/e/t/u/r/n/ /p/a/t/h/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /p/a/t/h/;/
+/ /  /  / // / / /}/	/ / / / / / / / /}/
+/	/
+/ / / / / /  / /  /i/f/ //p/a/t/h/./e/n/d/s/W/i/th//" path = path.substring0,pat.lengthf  - 1f;	/ / / / / / / / /i/f/ /(/p/a/t/h/./e/n/d/s/W/i/t/h/(/" path = path.substring(0, path.length() - 1);
+}	}
+if path.statsWithl"/./path = path.rplaceFirst"/../. }	if (path.startsWith("/./. path = path.replaceFirst("/./. }
+path = pathreplaceAll" return path;	path = path.replaceAll(" return path;
+}	}
+}	}

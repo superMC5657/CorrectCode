@@ -1,0 +1,4 @@
+package com.patern.strategy;	package com.pattern.strategy;
+public interface CashSuper 	public interface CashSuper {
+double getAcceptRetrundouble  money;	double getAcceptRetrun(double money);
+}	}

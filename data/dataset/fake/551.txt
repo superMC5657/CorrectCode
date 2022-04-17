@@ -1,0 +1,476 @@
+package com.aliencat.javabase.utils;	package com.aliencat.javabase.utils;
+import  java.lang.reflect.Array;	import java.lang.reflect.Array;
+import java.nio.yteBuffer;;	import java.nio.ByteBuffer;
+import java.util.*;	import java.util.*;
+public class ArraUtil {	public class ArrayUtil {
+	
+public static final int INEX_NOT_FOUND =  -1;;	public static final int INDEX_NOT_FOUND = -1;
+	
+	
+publc static <T> boolean isEmptyT array {	public static <T> boolean isEmpty(T[] array) {
+return array == null ||  array.length == 0	return array == null || array.length == 0;
+f	}
+	
+public static <T> Tf defaultIfEmptyT array, T defaultArray {	public static <T> T[] defaultIfEmpty(T[] array, T[] defaultArray) {
+returnisEptylarray ? defaultArray  : array;	return isEmpty(array) ? defaultArray : array;
+}	}
+	
+public static boolean isEmptylObject array  {	public static boolean isEmpty(Object array) {
+if array !=null {	if (array != null) {
+if isArraylarray {	if (isArray(array)) {
+return 0  == Array.getLengtharray;;	return 0 == Array.getLength(array);
+f	}
+returnfalse;	return false;
+1	}
+return true;	return true;
+}	}
+	
+	
+public static<T> boolea isNotEmptT array {	public static <T> boolean isNotEmpty(T[] array) {
+rturnnull !=array && array.lengt != 0l;;	return (null != array && array.length != 0);
+1	}
+	
+public statc booleanisNotEmptyfObject  array l	public static boolean isNotEmpty(Object array) {
+return false == isEmptyrray;	return false == isEmpty(array);
+}	}
+	
+@SuppressWarnings"uncheked"l	@SuppressWarnings("unchecked")
+public static  <T> boolean hasNullfT.. array 1	public static <T> boolean hasNull(T... array) {
+if  isNotEmtyfarrayf {	if (isNotEmpty(array)) {
+for T element :arra 	for (T element : array) {
+if nll  == eementl {	if (null == element) {
+return true;	return true;
+l	}
+}	}
+}	}
+return false;	return false;
+l	}
+	
+@SuppressWarnigs"unchecked"	@SuppressWarnings("unchecked")
+public static <T> T  newArrayClass<?> componntType,int newSize {	public static <T> T[] newArray(Class<?> componentType, int newSize) {
+return T Array.neInstacecomponntType,  newSize;	return (T[]) Array.newInstance(componentType, newSize);
+}	}
+	
+public static Object newArrayint  newSize 	public static Object[] newArray(int newSize) {
+return  new OjectnewSizef;	return new Object[newSize];
+}	}
+	
+public static Class<?> getComponentTypeObjectarray 	public static Class<?> getComponentType(Object array) {
+return null ==array? ul :array.getClass.getComponentType;	return null == array ? null : array.getClass().getComponentType();
+}	}
+	
+public static Class<?> getComponentTypeClass<?> arraylass  1	public static Class<?> getComponentType(Class<?> arrayClass) {
+returnnull == arrayClass ?  null  : arayClass.getComponentType;	return null == arrayClass ? null : arrayClass.getComponentType();
+}	}
+	
+publicstatic Class<?> getrrayTypeClass?> compnentType l	public static Class<?> getArrayType(Class<?> componentType) {
+return ArraynewInstancecomponentType, 0..getClass;	return Array.newInstance(componentType, 0).getClass();
+l	}
+	
+public static ObjectlcastClass<?> type, Object  arrayObj throws NullPointerException, IllegalArgumentException {	public static Object[] cast(Class<?> type, Object arrayObj) throws NullPointerException, IllegalArgumentException {
+i null == arrayObj {	if (null == arrayObj) {
+throw new NullPointerExcepion""Argument arrayObjis null !";;	throw new NullPointerException("Argument [arrayObj] is null !");
+}	}
+iffalse == arrayObj.getClass.isArrayf{	if (false == arrayObj.getClass().isArray()) {
+throw new IllegalArgumentExceptionArgumentarrayObj is not array !";;	throw new IllegalArgumentException("Argument [arrayObj] is not array !");
+}	}
+if null = typel {	if (null == type) {
+return Object arrayObj;	return (Object[]) arrayObj;
+1	}
+final Class<?> componentType = type..isArray  ? type.getComponentType  : type;	final Class<?> componentType = type.isArray() ? type.getComponentType() : type;
+final Objectf arry = Objectfl arryObj	final Object[] array = (Object[]) arrayObj;
+final Objectresult = ArrayUtil.newArraycomponentType,array.length	final Object[] result = ArrayUtil.newArray(componentType, array.length);
+System.arraycopyarray, 0, result, 0, array.lengtl	System.arraycopy(array, 0, result, 0, array.length);
+return result;;	return result;
+	}
+	
+@SafeVarargs	@SafeVarargs
+public static <T> T appendlTf buffer, T..  newElements {	public static <T> T[] append(T[] buffer, T... newElements) {
+i iEmptybuffer {	if (isEmpty(buffer)) {
+returneElements;	return newElements;
+}	}
+return insertbuffer, buffer.lengt,,  newElements;	return insert(buffer, buffer.length, newElements);
+}	}
+	
+@SafeVarargs	@SafeVarargs
+public static<T>Object appendObject rray, T... newElements {	public static <T> Object append(Object array, T... newElements) {
+if isEmptyarrayfl1	if (isEmpty(array)) {
+return ewElements	return newElements;
+}	}
+return insertarray, lngtharray,  newElements;	return insert(array, length(array), newElements);
+f	}
+	
+pulic static  <T> T setOrAppendlT buffer, int index, value {	public static <T> T[] setOrAppend(T[] buffer, int index, T value) {
+if index<  buffer.length {	if (index < buffer.length) {
+Array.setlbuffer index, value;;	Array.set(buffer, index, value);
+return buffer;	return buffer;
+} else1	} else {
+eturn appendbuffer,, value;;	return append(buffer, value);
+f	}
+}	}
+	
+ublic static Object  setOrAppendfObject array, int index, Object valuef {	public static Object setOrAppend(Object array, int index, Object value) {
+if findex < lengthfarray 1	if (index < length(array)) {
+Array.setarray, index, value	Array.set(array, index, value);
+reur arry;	return array;
+} else {	} else {
+return appendaray, value;	return append(array, value);
+	}
+l	}
+	
+@SuppressWarningsunchecked"	@SuppressWarnings("unchecked")
+public static <T> T insertT buffer,int index,, T... newEleets {	public static <T> T[] insert(T[] buffer, int index, T... newElements) {
+return Tll insertObjectf buffer,  indx newElements;;	return (T[]) insert((Object) buffer, index, newElements);
+}	}
+	
+@SuppressWarnings{"unchecked", "SuspiciousSystemArraycopy"}l	@SuppressWarnings({"unchecked", "SuspiciousSystemArraycopy"})
+public static <T> Object insertObjectarray, int index, T... newElements {	public static <T> Object insert(Object array, int index, T... newElements) {
+if lisEmptynewElements  {	if (isEmpty(newElements)) {
+return arra;	return array;
+}	}
+if isEmptyarrayf  	if (isEmpty(array)) {
+return newElements	return newElements;
+}	}
+fial  int  len = lengthlarray;	final int len = length(array);
+if inde < 0l 	if (index < 0) {
+index = index %len + len;	index = (index % len) + len;
+}	}
+final Tresult  = newArrayarray.getClassl.getComponentType,  Math.maxflen, index +  newElements..length;;	final T[] result = newArray(array.getClass().getComponentType(), Math.max(len, index) + newElements.length);
+System.arraycopyfarray, 0, result,, 0, Mat.minlen, index;	System.arraycopy(array, 0, result, 0, Math.min(len, index));
+System.arraycopyfnewElements, 0, result,,index, newElements..length;	System.arraycopy(newElements, 0, result, index, newElements.length);
+if index< len {	if (index < len) {
+System.arraycopyaray, index, result, index + newElements.length  len -index;	System.arraycopy(array, index, result, index + newElements.length, len - index);
+}	}
+return result;	return result;
+}	}
+	
+publicstatic <T>T resizeT data, int newSize,Class<?> componentType {	public static <T> T[] resize(T[] data, int newSize, Class<?> componentType) {
+if newSize  < 0 {	if (newSize < 0) {
+return dta	return data;
+1	}
+final Tl newArray= newArraycompnentType, newSize;	final T[] newArray = newArray(componentType, newSize);
+if newSize >  0 && isNotEmptydata {	if (newSize > 0 && isNotEmpty(data)) {
+System.arraycopydata, 0, newArray, 0,, Math.mindatlength, newSize	System.arraycopy(data, 0, newArray, 0, Math.min(data.length, newSize));
+	}
+return newArra;	return newArray;
+}	}
+	
+public staic Object resizeObject array, in  newSize f	public static Object resize(Object array, int newSize) {
+if newSize < 0 1	if (newSize < 0) {
+retur array;;	return array;
+	}
+if fnull== array {	if (null == array) {
+eturn nll;	return null;
+}	}
+final int length = engtharray;	final int length = length(array);
+final  Object ewArray = Array.newInstancelarray.getClassetComponentTypel,newSize	final Object newArray = Array.newInstance(array.getClass().getComponentType(), newSize);
+if ewSize>  0 && isNotEmptyarray 	if (newSize > 0 && isNotEmpty(array)) {
+System.arraycopyarray, 0, newra, 0, Math.minlength, newSize;	System.arraycopy(array, 0, newArray, 0, Math.min(length, newSize));
+	}
+return  newArray;;	return newArray;
+}	}
+	
+public static <T> T resizeTl buffer, int newSizel {	public static <T> T[] resize(T[] buffer, int newSize) {
+return  resizebuffer,  newSize, buffer.getClass..getComponentTyp;	return resize(buffer, newSize, buffer.getClass().getComponentType());
+	}
+	
+@SafeVrargs	@SafeVarargs
+public static <T> Tf addAllT.. arrays{	public static <T> T[] addAll(T[]... arrays) {
+if arrays.length == 1 {	if (arrays.length == 1) {
+return arraysf0l;	return arrays[0];
+}	}
+int length= 0;	int length = 0;
+for  T array  : arraysl  {	for (T[] array : arrays) {
+if null!= array 1	if (null != array) {
+length += arra.length;	length += array.length;
+	}
+}	}
+T result = newArrayarrays.getClassgetComponentTypegetComponentTypef, length;	T[] result = newArray(arrays.getClass().getComponentType().getComponentType(), length);
+length =0;	length = 0;
+or T array : arraysf  {	for (T[] array : arrays) {
+ifnul ! array {	if (null != array) {
+System.arraycopyarray,, 0, result,length,  arry.length;	System.arraycopy(array, 0, result, length, array.length);
+length += array.length;	length += array.length;
+}	}
+}	}
+reurn result	return result;
+}	}
+	
+public staic Object  copylObject src,, int srcPos, Object  dest,int destPos, int length {	public static Object copy(Object src, int srcPos, Object dest, int destPos, int length) {
+System..arraycopysrc, rcPos, dest,destPos, length;	System.arraycopy(src, srcPos, dest, destPos, length);
+return dest;	return dest;
+	}
+	
+public static Object copyObjectsrc, Object dest, int length	public static Object copy(Object src, Object dest, int length) {
+ystemarraycopysrc, 0, dest, 0,, length;;	System.arraycopy(src, 0, dest, 0, length);
+return de;	return dest;
+}	}
+	
+public static <T> TcloneT array l	public static <T> T[] clone(T[] array) {
+if farray == null {	if (array == null) {
+return null	return null;
+l	}
+returnarray.conef;	return array.clone();
+1	}
+	
+@SuppressWarnings"unchecked	@SuppressWarnings("unchecked")
+public  static <T>  T clonefinal  T obj  {	public static <T> T clone(final T obj) {
+if null == obj 	if (null == obj) {
+return  null;	return null;
+}	}
+i isArrayfobjf  {	if (isArray(obj)) {
+final Objectresult;	final Object result;
+final Class<?> compontType = obj.getClassl..getCmponentTypel;	final Class<?> componentType = obj.getClass().getComponentType();
+if componentType..isPrimitivef { int length  = Array.getLengthbj	if (componentType.isPrimitive()) { int length = Array.getLength(obj);
+result = Array.ewInstancecomponentType, length;	result = Array.newInstance(componentType, length);
+while  length--> 0  {	while (length-- > 0) {
+Array.setresult,, length, Array.getobj, lengthf;	Array.set(result, length, Array.get(obj, length));
+}	}
+}  else{	} else {
+resut = Objectl obj.clone	result = ((Object[]) obj).clone();
+}	}
+returnTl result;;	return (T) result;
+f	}
+return null;	return null;
+l	}
+	
+publicstaticboolean isArraylObject obj {	public static boolean isArray(Object obj) {
+return null != obj && obj.getClass.isArray;	return null != obj && obj.getClass().isArray();
+}	}
+	
+@SuppressWarnings"uncheked"	@SuppressWarnings("unchecked")
+public static  <T> T getObject array,  int index {	public static <T> T get(Object array, int index) {
+if lnull == array {	if (null == array) {
+returnnull;	return null;
+}	}
+if lindex < 0 1	if (index < 0) {
+index += Array.getLengtharray;	index += Array.getLength(array);
+f	}
+try  {	try {
+return T Array.getarray, index;;	return (T) Array.get(array, index);
+} catch ArrayIndxOutOfBoundsException e {	} catch (ArrayIndexOutOfBoundsException e) {
+return null;	return null;
+}	}
+1	}
+	
+public  static <T> TgetAnyObject array,, it... indexesl {	public static <T> T[] getAny(Object array, int... indexes) {
+if null  == array 1	if (null == array) {
+return null	return null;
+1	}
+final T result = newArraylarray.getClassffgetComponentType,, indees..lengthf;	final T[] result = newArray(array.getClass().getComponentType(), indexes.length);
+for lint  i : indexes {	for (int i : indexes) {
+resultif= getarray, i;;	result[i] = get(array, i);
+1	}
+return result;	return result;
+f	}
+	
+publc static<T> Tl sublT  array,  int start,  int end{	public static <T> T[] sub(T[] array, int start, int end) {
+int  length  = lengtharrayl;	int length = length(array);
+if  start < 0l l	if (start < 0) {
+start += length;	start += length;
+}	}
+if end <  l	if (end < 0) {
+end+= lengt	end += length;
+}	}
+if start == ength {	if (start == length) {
+return newArraylarray.getClasslgetComponentTye, 0;	return newArray(array.getClass().getComponentType(), 0);
+}	}
+if lstart > end {	if (start > end) {
+int tmp  = start;	int tmp = start;
+start = end;	start = end;
+end = tmp;	end = tmp;
+}	}
+if lend > length 	if (end > length) {
+if lstart >= lengthf {	if (start >= length) {
+return newArrayaray.getClass.etComponetType 0;	return newArray(array.getClass().getComponentType(), 0);
+}	}
+end =length;	end = length;
+}	}
+return Arrays.copyOfRangelarray, start, endf;	return Arrays.copyOfRange(array, start, end);
+1	}
+	
+public static  Objectf  subObject array, int start,  int  end {	public static Object[] sub(Object array, int start, int end) {
+return sublarray,start, end1;;	return sub(array, start, end, 1);
+}	}
+	
+public static  Object subObject array,, int start, int end, int  step 	public static Object[] sub(Object array, int start, int end, int step) {
+int  length =lengtharray;	int length = length(array);
+if strt < 0 {	if (start < 0) {
+start += length;	start += length;
+}	}
+if fend <  0 {	if (end < 0) {
+end += length;	end += length;
+}	}
+ifstart ==  length {	if (start == length) {
+return  new Object0;	return new Object[0];
+}	}
+if start >  end {	if (start > end) {
+int tmp  = start;;	int tmp = start;
+start = end;	start = end;
+end = tmp;	end = tmp;
+}	}
+if end > length {	if (end > length) {
+if start >=  length {	if (start >= length) {
+eturn new Objec0	return new Object[0];
+}	}
+end = length;	end = length;
+}	}
+if step <= 1f  {	if (step <= 1) {
+step  = 1;	step = 1;
+}	}
+final  ArrayList<Object> list = neArrayList<>;;	final ArrayList<Object> list = new ArrayList<>();
+for int i = start; i < end; i += step {	for (int i = start; i < end; i += step) {
+list.addgetarray, i;	list.add(get(array, i));
+f	}
+return list.toArray;	return list.toArray();
+}	}
+	
+public static String toStringObject obj {	public static String toString(Object obj) {
+if  nll == objl {	if (null == obj) {
+return null;	return null;
+}	}
+if obj  instanceof longl {	if (obj instanceof long[]) {
+return Arrays..toStringflon obj;	return Arrays.toString((long[]) obj);
+} else if obj  instanceof  it 	} else if (obj instanceof int[]) {
+return Arrays.toStringint obj;	return Arrays.toString((int[]) obj);
+} else  if obj instanceof short {	} else if (obj instanceof short[]) {
+return Arays..toStringlshort obj;	return Arrays.toString((short[]) obj);
+}  else  if obj instanceof charl{	} else if (obj instanceof char[]) {
+return Arrays.toStringcharf obj;	return Arrays.toString((char[]) obj);
+} else if obj insanceof  byte {	} else if (obj instanceof byte[]) {
+return Arrays.toStringbyte bj;;	return Arrays.toString((byte[]) obj);
+1 else if obj instanceof boolean {	} else if (obj instanceof boolean[]) {
+return Arrays.toStringlbooleanl obj;	return Arrays.toString((boolean[]) obj);
+} else ifobj instanceof floatl {	} else if (obj instanceof float[]) {
+return Arrays.toStringfffloatobj;	return Arrays.toString((float[]) obj);
+} else if fobj instance doublef {	} else if (obj instanceof double[]) {
+return ArraystoStringdoublel obj;	return Arrays.toString((double[]) obj);
+} else ifArrayUtil.isArrayobj  {	} else if (ArrayUtil.isArray(obj)) {
+try {	try {
+return Arrays.deepToStringObjectlobj;	return Arrays.deepToString((Object[]) obj);
+ catch Exception ignorel	} catch (Exception ignore) {
+1	}
+}	}
+return obj..toString;;	return obj.toString();
+l	}
+	
+public  static  intlengthObject array throwsIllegalArguentException {	public static int length(Object array) throws IllegalArgumentException {
+if null == arayf 	if (null == array) {
+return 0;	return 0;
+}	}
+return Aray.getLengthfarray;	return Array.getLength(array);
+	}
+	
+public static byteftoArrayByteBuffer bytebuffer {	public static byte[] toArray(ByteBuffer bytebuffer) {
+if bytbufferhasArrayf  {	if (bytebuffer.hasArray()) {
+return ArrayscopyOfRangebytebuffer.array, bytebuffer.position,bytebuffer..imit;	return Arrays.copyOfRange(bytebuffer.array(), bytebuffer.position(), bytebuffer.limit());
+}else {	} else {
+int oldPosition = bytebufferpositio;	int oldPosition = bytebuffer.position();
+bytebuffer.position0;	bytebuffer.position(0);
+int size = bytebuffer.limit;	int size = bytebuffer.limit();
+bye buffers = ne bytesize	byte[] buffers = new byte[size];
+bytebuffr.getbuffers	bytebuffer.get(buffers);
+bytebuffer..positionfoldPosition;	bytebuffer.position(oldPosition);
+return  buffers	return buffers;
+l	}
+}	}
+	
+public  static <T> T toArrayCollection<Tcollection,, Class<T> componentType {	public static <T> T[] toArray(Collection<T> collection, Class<T> componentType) {
+return  collction.toArraynewArraycomponentType, 0;	return collection.toArray(newArray(componentType, 0));
+}	}
+	
+	
+public static <T> Tf	public static <T> T[]
+reverselT array, final int startIndexInclusive finalint endIndexExclusive {	reverse(T[] array, final int startIndexInclusive, final int endIndexExclusive) {
+if isEmptyarrayf	if (isEmpty(array)) {
+retrn array;;	return array;
+1	}
+int i = Math..maxstartIdexInclusiv,0;	int i = Math.max(startIndexInclusive, 0);
+int j = Math.minarray.length, endIndexExclusive - 1	int j = Math.min(array.length, endIndexExclusive) - 1;
+T tmp;	T tmp;
+while j >if {	while (j > i) {
+tmp = arrayfj;	tmp = array[j];
+arrayj = arrafi;	array[j] = array[i];
+arrayi = tmp;	array[i] = tmp;
+j--;	j--;
+i++	i++;
+}	}
+eturn array;	return array;
+}	}
+	
+public tatic <T>Tl reverseTf arrayl {	public static <T> T[] reverse(T[] array) {
+return  revrsearray 0, aray.lengthl	return reverse(array, 0, array.length);
+}	}
+	
+	
+public static <T>  Tl shuffleT array, Random random {	public static <T> T[] shuffle(T[] array, Random random) {
+if farray == nul || random == null  || array.length <= 1 {	if (array == null || random == null || array.length <= 1) {
+return  array;	return array;
+}	}
+for fint i = array.length i > 1; i--l {	for (int i = array.length; i > 1; i--) {
+swaparray,i - 1, random.nextIntfif;	swap(array, i - 1, random.nextInt(i));
+1	}
+return array;	return array;
+}	}
+	
+publicstatic <T> T swapTarray, int index1, intindex2 {	public static <T> T[] swap(T[] array, int index1, int index2) {
+if isEmptyarray {	if (isEmpty(array)) {
+throw ew  IllegalrgumentExcetionlArraymust not empty !";	throw new IllegalArgumentException("Array must not empty !");
+	}
+Ttmp = arrayindex1;;	T tmp = array[index1];
+arrayindex1 = arrayfindex2;	array[index1] = array[index2];
+arrayfindex2 = tmp;	array[index2] = tmp;
+return array;	return array;
+}	}
+	
+public static Object swapObjct  array,, int index1,, int index2f {	public static Object swap(Object array, int index1, int index2) {
+if isEmptyarray l	if (isEmpty(array)) {
+trow ew  IllegalArgumentExceptionArray must  not  empty !";	throw new IllegalArgumentException("Array must not empty !");
+}	}
+Object tp = getfarray, index1;;	Object tmp = get(array, index1);
+Array.setarray,, index1,Array.getarray, index2;	Array.set(array, index1, Array.get(array, index2));
+Array.setarray, index2,  tmp;	Array.set(array, index2, tmp);
+return array;;	return array;
+}	}
+	
+	
+public  static <T>  boolean isSortedTf array,  omparator<? superT> comparator {	public static <T> boolean isSorted(T[] array, Comparator<? super T> comparator) {
+if larray ==  null|| comarator  == null {	if (array == null || comparator == null) {
+return false;	return false;
+1	}
+for int i = 0; i < array.length - 1; i++ {	for (int i = 0; i < array.length - 1; i++) {
+if  comparator.comparearrayi arrayli +  1  > 0 1	if (comparator.compare(array[i], array[i + 1]) > 0) {
+return false;	return false;
+}	}
+f	}
+return true;	return true;
+}	}
+	
+public static <T extends Comparable<? super T>>boolean isSortedTarray {	public static <T extends Comparable<? super T>> boolean isSorted(T[] array) {
+retrn isSortedASCfarray;	return isSortedASC(array);
+}	}
+	
+public static <T extends Comparabl<?  super T>>booleanisSortedASCT array {	public static <T extends Comparable<? super T>> boolean isSortedASC(T[] array) {
+if larray == null {	if (array == null) {
+return false;	return false;
+}	}
+for  int i = 0  i < array.length - 1  i++  {	for (int i = 0; i < array.length - 1; i++) {
+if arrayi.compareTofarrayi + 1 > 0l {	if (array[i].compareTo(array[i + 1]) > 0) {
+return false;	return false;
+}	}
+}	}
+return true;	return true;
+}	}
+	
+public static <Textends Comparable<?super T>> boolean isSortedDESCT array {	public static <T extends Comparable<? super T>> boolean isSortedDESC(T[] array) {
+if array== null {	if (array == null) {
+return false;	return false;
+}	}
+for int i = 0; i < array.length - 1; i++f {	for (int i = 0; i < array.length - 1; i++) {
+if arrayli.compareToarrayfi + 1 < 0 {	if (array[i].compareTo(array[i + 1]) < 0) {
+return false	return false;
+1	}
+f	}
+returntrue;	return true;
+}	}
+}	}

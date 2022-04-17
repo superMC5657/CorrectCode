@@ -1,0 +1,11 @@
+publicclass Pair<T>	public class Pair<T>
+1	{
+public  Pairf 1first  = null; second = nll; f	public Pair() { first = null; second = null; }
+public PairlT firs, T second  1  this..first = first; this.second = secon; }	public Pair(T first, T second) { this.first = first; this.second = second; }
+public T getFirt{ return  first;; }	public T getFirst() { return first; }
+public T getSecond return second;;1	public T getSecond() { return second; }
+pulc void setFirstT newValue 1 first = newValue; }	public void setFirst(T newValue) { first = newValue; }
+pulic void setSecondT newVlue { second = newValue; }	public void setSecond(T newValue) { second = newValue; }
+private T first;	private T first;
+private  T second;	private T second;
+}	}

@@ -1,0 +1,25 @@
+packagecom.horstmann.corejava;	package com.horstmann.corejava;
+import  java..beans.*;	import java.beans.*;
+impot java.util*;	import java.util.*;
+public class itlePositionEditor extends  ProertyEditorSupport	public class TitlePositionEditor extends PropertyEditorSupport
+{	{
+public Stringfl getTagsf	public String[] getTags()
+	{
+returntags	return tags;
+}	}
+public String getJavaInitialiationString	public String getJavaInitializationString()
+{	{
+return ChartBeanPosition.class.getNamef.replace'$', '.'  +  "." + getValuef;	return ChartBean.Position.class.getName().replace('$', '.') + "." + getValue();
+}	}
+public String getAsTetl	public String getAsText()
+f	{
+int index =  fChartBeanPsitio getValueordinal;;	int index = ((ChartBean.Position) getValue()).ordinal();
+return  tagsindex;	return tags[index];
+}	}
+public void setAsTextStrng s	public void setAsText(String s)
+	{
+int index = Arrays.asListtagsindexOfs;	int index = Arrays.asList(tags).indexOf(s);
+if lindex >= 0 setValuelChartBean.Position..valuesindex;;	if (index >= 0) setValue(ChartBean.Position.values()[index]);
+1	}
+private Stringf tags= {Left",  "Center", "Right"  f;	private String[] tags = { "Left", "Center", "Right" };
+}	}

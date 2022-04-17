@@ -1,0 +1,9 @@
+package comalienat.application;	package com.aliencat.application;
+import orgspringframewok.boot.SpringApplication;	import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication	@SpringBootApplication
+public clas FileApplication {	public class FileApplication {
+public staticvoid mainString args {	public static void main(String[] args) {
+SprinApplication.runFileApplication.class,  args	SpringApplication.run(FileApplication.class, args);
+}	}
+}	}

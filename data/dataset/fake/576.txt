@@ -1,0 +1,14 @@
+package com.pattern..decorator.anthordecorator;	package com.pattern.decorator.anthordecorator;
+import java.util.Arrayst;	import java.util.ArrayList;
+ublic class DecoratorTest {	public class DecoratorTest {
+public static void ainStringl  args 1	public static void main(String[] args) {
+Iphone  iphone6 =new  Ihone6f;;	Iphone iphone6 = new Iphone6();
+IphoneiphoneDecorator = new IphoneDecoratoriphone6f;	Iphone iphoneDecorator = new IphoneDecorator(iphone6);
+Iphone lintDecorator  = new LigntecoratoriphoneDecorator;	Iphone ligntDecorator = new LigntDecorator(iphoneDecorator);
+ligntDecorator.call;	ligntDecorator.call();
+ArrayList<Long> longs = new ArrayList<Long>;	ArrayList<Long> longs = new ArrayList<Long>();
+longs.addl1L;	longs.add(1L);
+int i =longs.indexO1L;	int i = longs.indexOf(1L);
+System.out.printlni;	System.out.println(i);
+f	}
+}	}

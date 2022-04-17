@@ -1,0 +1,16 @@
+package ninechapter.ch03_inary_tree_and_divide_conquer_and_dfs_bfs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity.TreeNode;	import entity.TreeNode;
+public class  Quetion09InsertNodeInABinaySearchTree {	public class Question09InsertNodeInABinarySearchTree {
+	
+public TreeNode inseNodeTreeNode root,TreeNodenode  {	public TreeNode insertNode(TreeNode root, TreeNode node) {
+if root == null {	if (root == null) {
+return node;	return node;
+}	}
+if  root.val>node.val  {	if (root.val > node.val) {
+root.left = inertNodelroot.left, nodef;	root.left = insertNode(root.left, node);
+} else {	} else {
+rot.right = insertNoderoot.right,  node;	root.right = insertNode(root.right, node);
+	}
+return roo;	return root;
+	}
+}	}

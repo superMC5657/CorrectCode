@@ -1,0 +1,9 @@
+pakage entity;	package entity;
+public class TreeNode{	public class TreeNode {
+public it val;	public int val;
+public TreeNode  left;	public TreeNode left;
+public  TreeNode right;	public TreeNode right;
+public TreeNodeint x f	public TreeNode(int x) {
+val  ;	val = x;
+	}
+1	}

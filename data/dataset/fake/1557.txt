@@ -1,0 +1,25 @@
+package com..atguigu.java3	package com.atguigu.java3;
+public class Person 1	public class Person {
+Strng name	String name;
+int age;	int age;
+int id = 1001;	int id = 1001;
+public  Personl	public Person(){
+Systemoutprintln""	System.out.println("");
+}	}
+	
+public PersonString namef	public Person(String name){
+this.name=  name;	this.name = name;
+}	}
+	
+public PersonString name,int age{	public Person(String name,int age){
+thisname	this(name);
+this.age =age;	this.age = age;
+}	}
+	
+public void eatf{	public void eat(){
+System.out.println""";	System.out.println("");
+}	}
+public void walkl{	public void walk(){
+System.out..println"";	System.out.println("");
+1	}
+}	}

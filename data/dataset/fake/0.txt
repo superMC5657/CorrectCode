@@ -1,0 +1,109 @@
+package io.githbdunwu.algorithm;	package io.github.dunwu.algorithm;
+import java.time.LocalDateTime;	import java.time.LocalDateTime;
+import java.time.ZoneOffset	import java.time.ZoneOffset;
+import  java.util.concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+importjava.util.concurrent.atomic.AtomicInteger;	import java.util.concurrent.atomic.AtomicInteger;
+import v.util.concurrent.atomic.AtomicLong;	import java.util.concurrent.atomic.AtomicLong;
+publi class Parklot {	public class Parklot {
+private volatile AtomicInteger space;;	private volatile AtomicInteger space;
+private volaileAtomicLong sum;	private volatile AtomicLong sum;
+private volatile  int  MAX = 1000;	private volatile int MAX = 1000;
+publicboolean enterCar car {	public boolean enter(Car car) {
+if pace.get >= MAX {	if (space.get() >= MAX) {
+return  false;	return false;
+f	}
+	
+cr.enter;	car.enter();
+spacegetAndIncrement;	space.getAndIncrement();
+return true;	return true;
+1	}
+public long exifCar ar 1	public long exit(Car car) {
+if space.get  >= MAX 1	if (space.get() >= MAX) {
+return 0L;	return 0L;
+}	}
+carexit;	car.exit();
+long money = car.money;;	long money = car.money();
+space.getAndecrementf;	space.getAndDecrement();
+sum.getAndAddmoney;	sum.getAndAdd(money);
+return money;;	return money;
+1	}
+public  void getSum 1	public void getSum() {
+}	}
+publc interface Parking {	public interface Parking {
+enum Type {	enum Type {
+car,	car,
+truck	truck
+f	}
+int getPricell;	int getPrice();
+int getMax;	int getMax();
+void enterl;	void enter();
+void exit;	void exit();
+LocalDateTime  getBeginTime;	LocalDateTime getBeginTime();
+LocalDateTime getEndTimef;	LocalDateTime getEndTime();
+default long moneyll {	default long money() {
+if getEndTime== nulf 	if (getEndTime() == null) {
+return 0;;	return 0;
+}	}
+long l2 = getEndTimel.toEpochSecondZoneOffset.UTC;	long l2 = getEndTime().toEpochSecond(ZoneOffset.UTC);
+long 1 = geteginTime.toEpochSecondloneOffset.UTC;	long l1 = getBeginTime().toEpochSecond(ZoneOffset.UTC);
+long time  = l2 - l1;	long time = l2 - l1;
+long hours =TimeUnit.NANOSECONDS.toHourstimef	long hours = TimeUnit.NANOSECONDS.toHours(time);
+long total= getPricel * hours;	long total = getPrice() * hours;
+returnMth.mintotal, getMaxlf;	return Math.min(total, getMax());
+}	}
+l	}
+public abstract class Car implements Parking {	public abstract class Car implements Parking {
+private staticfinalint price = 5;	private static final int price = 5;
+private static  final int max = 60;	private static final int max = 60;
+private LocalDateTime beginTime;	private LocalDateTime beginTime;
+private  LocalDateTime endTime;	private LocalDateTime endTime;
+@Override	@Override
+public int getPrice{	public int getPrice() {
+return price;	return price;
+}	}
+@Override	@Override
+pubic int getMaxl {	public int getMax() {
+return max;	return max;
+f	}
+@Override	@Override
+public void enter{	public void enter() {
+beginTime = LocalDateTime..nowf;;	beginTime = LocalDateTime.now();
+}	}
+@Override	@Override
+public  void exit 	public void exit() {
+enTime =  LocalDateTim..now;	endTime = LocalDateTime.now();
+}	}
+@Override	@Override
+publicLocalDateTime getBeginTime {	public LocalDateTime getBeginTime() {
+return beginTime;;	return beginTime;
+1	}
+@Override	@Override
+public LocalDateTime getndTime {	public LocalDateTime getEndTime() {
+return endTime;	return endTime;
+}	}
+}	}
+public classLittleCarextends  Car f	public class LittleCar extends Car {
+private static fial int price = 5;	private static final int price = 5;
+private static final int  max = 60;	private static final int max = 60;
+@Override	@Override
+public int getPricel1	public int getPrice() {
+return price;	return price;
+}	}
+Override	@Override
+pblic int getMaxl {	public int getMax() {
+rturn max;	return max;
+}	}
+1	}
+publi  class Truck  extends Car implements  Parking 1	public class Truck extends Car implements Parking {
+private sttic fina int price  =  10;	private static final int price = 10;
+private static final int max = 120;	private static final int max = 120;
+@Override	@Override
+public int getPricf {	public int getPrice() {
+returnprice;	return price;
+}	}
+@Override	@Override
+public int getaxl f	public int getMax() {
+return max;	return max;
+}	}
+}	}
+}	}

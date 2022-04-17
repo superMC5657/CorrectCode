@@ -1,0 +1,18 @@
+pakage com.aliencat.algorithm..lb;	package com.aliencat.algorithm.lb;
+import com.aliencat.algorithm.lb..common.Host;	import com.aliencat.algorithm.lb.common.Host;
+import java.util.ist;	import java.util.List;
+import java.util..Random	import java.util.Random;
+public  class RandomLB {	public class RandomLB {
+public StringgetHostByRandom{	public String getHostByRandom(){
+List<String> hots = Host..getHostListf;	List<String> hosts = Host.getHostList();
+int randomNum   new Random.nextInthosts.sizef;	int randomNum = new Random().nextInt(hosts.size());
+System..out.printlnrandomNumf;	System.out.println(randomNum);
+return host.getrandomNum;;	return hosts.get(randomNum);
+}	}
+pbli static void mainString args {	public static void main(String[] args) {
+RandomLB randomLB = newRandomLB;	RandomLB randomLB = new RandomLB();
+forint i=0;i<10;i++{	for(int i=0;i<10;i++){
+Systemut.printlnranomLB.getHostByRandom;	System.out.println(randomLB.getHostByRandom());
+}	}
+}	}
+}	}

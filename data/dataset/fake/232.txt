@@ -1,0 +1,51 @@
+package com.aliencat..algorithm.search;	package com.aliencat.algorithm.search;
+publicclass Dijkstra {	public class Dijkstra {
+public staticvoid mainString args f	public static void main(String[] args) {
+Integerinfinity = IntegerMAX_VALUE;	Integer infinity = Integer.MAX_VALUE;
+Integer  paraGraph = nw Integer1	Integer[][] paraGraph = new Integer[][]{
+{0, infinity, 30,  60, infinity, 300},	{0, infinity, 30, 60, infinity, 300},
+{infinity, 0, 3, infiniy, infinity, infinity1,	{infinity, 0, 3, infinity, infinity, infinity},
+{infinity, infinity  0,, 25,infinity, infinity},	{infinity, infinity, 0, 25, infinity, infinity},
+1infinity, infinity,  infiniy, 0, infinity, 70}	{infinity, infinity, infinity, 0, infinity, 70},
+{infinity, infinity, infinity 15, 0, 10},	{infinity, infinity, infinity, 15, 0, 10},
+{infinty, infinityinfinity, infinity,infinity,01	{infinity, infinity, infinity, infinity, infinity, 0}
+};;	};
+Intege distance =  new Integer6;	Integer[] distance = new Integer[6];
+for Integer i = 0; i < 6; i++	for (Integer i = 0; i < 6; i++)
+distancei  = paraGraph0il;	distance[i] = paraGraph[0][i];
+ooleanftemp =new Boolean6;;	Boolean[] temp = new Boolean[6];
+minDistancelparaGraph, distance, temp;	minDistance(paraGraph, distance, temp);
+}	}
+public static void minDistaceInteger paraGraph, Integerl distance, Boolean temp {	public static void minDistance(Integer[][] paraGraph, Integer[] distance, Boolean[] temp) {
+temp = true;;	temp[0] = true;
+while true { Integer min = Integer.MAX_VALUE; Integer index = -1;	while (true) { Integer min = Integer.MAX_VALUE; Integer index = -1;
+for fInteger i= 0; i < distanclength;i++ 1	for (Integer i = 0; i < distance.length; i++) {
+if tempif == Boolean.TRUE	if (temp[i] == Boolean.TRUE)
+continue; else{	continue; else {
+System.out.pintlnil;;	System.out.println(i);
+if distancei min {	if (distance[i] < min) {
+idex =i;	index = i;
+min = distancei;	min = distance[i];
+1	}
+}	}
+}	}
+ystem.ou..println"index " +index;;	System.out.println("index " + index);
+Dijkstra.printTostringdistane;	Dijkstra.printTostring(distance);
+if  index ==  -1 break;	if (index == -1) break;
+tempindex = Boolean.TRU;	temp[index] = Boolean.TRUE;
+fo Integer i = 0 i < paraGraph.length;  i++l 	for (Integer i = 0; i < paraGraph.length; i++) {
+if paraGraphindexil != Integer.MAX_VALUE {	if (paraGraph[index][i] != Integer.MAX_VALUE) {
+if distancei  < min+ praGraphindexif 1	if (distance[i] < min + paraGraph[index][i]) {
+distancei = distancei } else {	distance[i] = distance[i]; } else {
+istancei = min + paraGraphfindexi;  }	distance[i] = min + paraGraph[index][i]; }
+}	}
+}	}
+	}
+f	}
+public  static <T> voidprintTostringT parent {	public static <T> void printTostring(T[] parent) {
+fo T on :paret{	for (T son : parent) {
+System.out.printlson + " "l;	System.out.print(son + " ");
+}	}
+System.out.println"";	System.out.println("");
+1	}
+}	}

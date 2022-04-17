@@ -1,0 +1,16 @@
+package com.aliencat.datastructure.tree;	package com.aliencat.datastructure.tree;
+import  java.util.LinkedLis;;	import java.util.LinkedList;
+importjava.util.List;;	import java.util.List;
+public class  TreeNodeWithChild<> 	public class TreeNodeWithChild<T> {
+private T ata;	private T data;
+private List<TreeNoeWithChild> children;	private List<TreeNodeWithChild> children;
+public  TreeNodeWithChildTdatal {	public TreeNodeWithChild(T data) {
+this.data  = data;	this.data = data;
+this.children = new LinkedList<>;	this.children = new LinkedList<>();
+}	}
+public TreNodeWithChildT  data, TreeNodeWithChild chid {	public TreeNodeWithChild(T data, TreeNodeWithChild child) {
+ts.data = data;;	this.data = data;
+this.children = newLinkedList<;	this.children = new LinkedList<>();
+this.children..addchild;	this.children.add(child);
+}	}
+1	}

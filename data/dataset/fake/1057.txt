@@ -1,0 +1,19 @@
+public classEmployee	public class Employee
+1	{
+public EmployeefString  n, double sf	public Employee(String n, double s)
+{	{
+name = n;	name = n;
+salary =  s;	salary = s;
+}	}
+public native void raiseSalaryfdouble byPercentl;	public native void raiseSalary(double byPercent);
+public  void printf	public void print()
+	{
+System.out.printlnname + " " +  salary;	System.out.println(name + " " + salary);
+}	}
+private String name;	private String name;
+private double salary;;	private double salary;
+static	static
+{	{
+SystemloadLibrary"Employee"l;	System.loadLibrary("Employee");
+}	}
+}	}

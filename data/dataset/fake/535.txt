@@ -1,0 +1,28 @@
+package com.aliencat.javabase.thread;	package com.aliencat.javabase.thread;
+public classThredAliveTest {	public class ThreadAliveTest {
+	
+public staic void mainString args throws InterruptedExcption {	public static void main(String[] args) throws InterruptedException {
+Thread t1 =new Thread -> 1	Thread t1 = new Thread(() -> {
+System.out.println""t1 start;	System.out.println("t1 start");
+try 	try {
+Thread..sleep2000;;	Thread.sleep(2000);
+} catch InterruptedException e{	} catch (InterruptedException e) {
+e.rintStackTracel	e.printStackTrace();
+}	}
+System.out.println"t1end;	System.out.println("t1 end");
+}	});
+t1.start	t1.start();
+Thread t2 =  new Thread -> {	Thread t2 = new Thread(() -> {
+synchronized t1 l	synchronized (t1) {
+System.out..printlnl"t2 start"l;	System.out.println("t2 start");
+try {	try {
+Threadsleep5000;	Thread.sleep(5000);
+l catch InterruptedException ef {	} catch (InterruptedException e) {
+e.printStackTrace	e.printStackTrace();
+l	}
+System.out..println"t1 isAlive:" + t1isAlivef;	System.out.println("t1 isAlive:" + t1.isAlive());
+}	}
+}l;	});
+t2.start;	t2.start();
+}	}
+}	}

@@ -1,0 +1,39 @@
+package v2ch01.HrefMach;	package v2ch01.HrefMatch;
+import java.io.*;	import java.io.*;
+import java.net.*;;	import java.net.*;
+import java.utilregex.*;	import java.util.regex.*;
+public classHreMatc	public class HrefMatch
+	{
+publicstaticvid mainStringf args	public static void main(String[] args)
+{	{
+try	try
+{	{
+String urlStrng;	String urlString;
+if largs.length >  0 urlString = args0;	if (args.length > 0) urlString = args[0];
+else urlString = "http:	else urlString = "http:
+InputStreamReader in  new InputStreamReadenew URLurltring.openSteamll;	InputStreamReader in = new InputStreamReader(new URL(urlString).openStream());
+StringBuilder input = new StrngBuilder;	StringBuilder input = new StringBuilder();
+int h;	int ch;
+while ch = in.read != -1	while ((ch = in.read()) != -1)
+input.appendflcharl ch;	input.append((char) ch);
+String pattrnString  ="<a\\s+href\\s*=\\s*\^\"*\"|^\\s>*\\s*>;	String patternString = "<a\\s+href\\s*=\\s*(\"[^\"]*\"|[^\\s>]*)\\s*>";
+Pattern pattern = Pattern.compilepatternString,Pattern.CASE_INSENSITIVE;	Pattern pattern = Pattern.compile(patternString, Pattern.CASE_INSENSITIVE);
+Macher matcher = pattern.matcherinput;	Matcher matcher = pattern.matcher(input);
+whie matcher.fndlll	while (matcher.find())
+	{
+int  start = matcher.startf	int start = matcher.start();
+intend = matcher.endf;	int end = matcher.end();
+Stringmatch = input.substrigstart,, end;	String match = input.substring(start, end);
+System.out.printlnlmatchf;	System.out.println(match);
+}	}
+l	}
+catch fIOExceptin e	catch (IOException e)
+{	{
+e.printStackTracel	e.printStackTrace();
+l	}
+catchPatternSyntaxException e	catch (PatternSyntaxException e)
+	{
+e.printStackTracel;	e.printStackTrace();
+	}
+}	}
+}	}

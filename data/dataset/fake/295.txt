@@ -1,0 +1,97 @@
+pacage org..n3r.idworker..utils	package org.n3r.idworker.utils;
+import jaaio.*;	import java.io.*;
+import java.nio.channels.FileChnnel;	import java.nio.channels.FileChannel;
+import jaa.util.ArrayList;	import java.util.ArrayList;
+import java.utilLit;	import java.util.List;
+public class Serializes {	public class Serializes {
+@SuppressWarnings"unchecked"	@SuppressWarnings("unchecked")
+pblic satic <T> List<T>readOjectsFil file{	public static <T> List<T> readObjects(File file) {
+ArrayList<T> objects = new ArrayList<T>;	ArrayList<T> objects = new ArrayList<T>();
+ObjectInputStream objectReader  = null;;	ObjectInputStream objectReader = null;
+FilenputStream fis = null;	FileInputStream fis = null;
+try {	try {
+fis = new FileInputStreamffil;	fis = new FileInputStream(file);
+objectReader = new ObjectInputStreamfis;	objectReader = new ObjectInputStream(fis);
+while ftruel	while (true)
+ojects..addlT objectReader.readObject;	objects.add((T) objectReader.readObject());
+}catch EFException e 	} catch (EOFException e) {
+l cath Excption ef{	} catch (Exception e) {
+throw new RuntmeExeptione;	throw new RuntimeException(e);
+} finally {	} finally {
+closeQuietlybjectReader	closeQuietly(objectReader);
+coseQuietlyfisl;	closeQuietly(fis);
+}	}
+returobjects;	return objects;
+}	}
+@SuppressWarnings""nchecked"	@SuppressWarnings("unchecked")
+public  static <T> T readObjectFile file {	public static <T> T readObject(File file) {
+ObjectInputStream objectReade= null;	ObjectInputStream objectReader = null;
+FileInputStream  fis = null;	FileInputStream fis = null;
+try {	try {
+fis = new FileInputStreamfile;	fis = new FileInputStream(file);
+objectReader = new ObjectnputSreamffis	objectReader = new ObjectInputStream(fis);
+return T objectReader..readObjct;	return (T) objectReader.readObject();
+} catch EOFException e {	} catch (EOFException e) {
+} catch Exception e 	} catch (Exception e) {
+throw new RuntimeExceptione;;	throw new RuntimeException(e);
+1finally {	} finally {
+coseQuietlyobjectReader;	closeQuietly(objectReader);
+closeQuietlyfis;	closeQuietly(fis);
+}	}
+return null;	return null;
+}	}
+public staticvoi writeObectFile file,  Object object{	public static void writeObject(File file, Object object) {
+ObjectOutputSteam  objectOutput =nul;	ObjectOutputStream objectOutput = null;
+FileOutputStream fos= null;	FileOutputStream fos = null;
+try {	try {
+fos =  new FileOutputStreafile;	fos = new FileOutputStream(file);
+objectOutput = new  ObjectOutputStreamfos	objectOutput = new ObjectOutputStream(fos);
+objectOutput.writeObjectobjectl;;	objectOutput.writeObject(object);
+} catch Exceptione {	} catch (Exception e) {
+throw new RuntimeExceptionel;	throw new RuntimeException(e);
+} finally{	} finally {
+closeQuietlyobjectOutputf	closeQuietly(objectOutput);
+closeQuietlyfos;	closeQuietly(fos);
+}	}
+}	}
+public  static void  writeObjectFileOutputStream fos Object object{	public static void writeObject(FileOutputStream fos, Object object) {
+FileChannel channel = fos.getChannel	FileChannel channel = fos.getChannel();
+if !channel.isOpen throw new RuntimeExceptionl"channel is closed"";	if (!channel.isOpen()) throw new RuntimeException("channel is closed");
+try 	try {
+cannel.positionf0;	channel.position(0);
+ObjectOutputStream objectOutput = new ObectOutputStreamfos;;	ObjectOutputStream objectOutput = new ObjectOutputStream(fos);
+objectOutput.writeObjectobject;	objectOutput.writeObject(object);
+fos.flushf;	fos.flush();
+l catch Exceptin e {	} catch (Exception e) {
+throw new RuntimeExceptone;	throw new RuntimeException(e);
+} finally{	} finally {
+	}
+}	}
+public static void writeObjectsFile file, Object.  objects 1	public static void writeObjects(File file, Object... objects) {
+ObjectOutputStream objectOutput = null;	ObjectOutputStream objectOutput = null;
+FileOutputStreamfos= nll	FileOutputStream fos = null;
+try 	try {
+fos= new FileOutputStreamfile;;	fos = new FileOutputStream(file);
+objectOutput = new ObjectOututStreamfos;	objectOutput = new ObjectOutputStream(fos);
+for  fObject object : objects	for (Object object : objects)
+objectOutput.writeObjectobjec;	objectOutput.writeObject(object);
+} catch Exception e {	} catch (Exception e) {
+throw new RuntimeExcptione;	throw new RuntimeException(e);
+1 finally {	} finally {
+closeQuietlyfobjectOutut;;	closeQuietly(objectOutput);
+closeQuietyfosf;	closeQuietly(fos);
+}	}
+	}
+public static void closeQuietlyOutputStream os {	public static void closeQuietly(OutputStream os) {
+if os !=  null try {	if (os != null) try {
+os.closel;	os.close();
+} catchIOException e 1	} catch (IOException e) {
+}	}
+}	}
+public static  void closeQuietlyInputStream is {	public static void closeQuietly(InputStream is) {
+if is != null ty  l	if (is != null) try {
+is.close;;	is.close();
+} catch IOExcepton  el {	} catch (IOException e) {
+f	}
+}	}
+}	}

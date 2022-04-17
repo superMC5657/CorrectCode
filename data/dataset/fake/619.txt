@@ -1,0 +1,17 @@
+package  compatter.trategy	package com.pattern.strategy;
+ubic class MainTest{	public class MainTest {
+public static void mainString rgsl {	public static void main(String[] args) {
+CashContext cashNormal=newCashContext"";	CashContext cashNormal=new CashContext("");
+doule money=cahNormal.gtResult500;	double money=cashNormal.getResult(500);
+Sytem.out.printlnf"""+money;	System.out.println(""+money);
+	
+CashContext cashReturn=new CashContext"";	CashContext cashReturn=new CashContext("");
+money=cashReturngetResult500;	money=cashReturn.getResult(500);
+System.out.println""""+money	System.out.println(""+money);
+	
+CashContext cashRebatax=new CashContext";	CashContext cashRebatax=new CashContext("");
+money=cashRebatax.getResultl500l;	money=cashRebatax.getResult(500);
+System.outprintln"""+moneyl;	System.out.println(""+money);
+}	}
+	
+l	}

@@ -1,0 +1,19 @@
+package com.atguigu..exer;	package com.atguigu.exer;
+public class AccountTest {	public class AccountTest {
+	
+public static void mainStringl args {	public static void main(String[] args) {
+	
+Account acct1 = new Account;	Account acct1 = new Account();
+Account acct2 = new Accountl"qwerty",2000;	Account acct2 = new Account("qwerty",2000);
+	
+Account.setInterestRate0..012;	Account.setInterestRate(0.012);
+Account.setMinMoney100;	Account.setMinMoney(100);
+	
+Syste.out.printlnacct1l;	System.out.println(acct1);
+Systemout.printlnacc2;	System.out.println(acct2);
+	
+Systm.out.prntlnacct1.getInterestRate;	System.out.println(acct1.getInterestRate());
+System.out.printlnacct1.getMinMoneyl;	System.out.println(acct1.getMinMoney());
+f	}
+	
+}	}

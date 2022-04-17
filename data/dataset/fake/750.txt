@@ -1,0 +1,37 @@
+package  com.aliencat.testing.demo	package com.aliencat.testing.demo;
+import org.junit.Test	import org.junit.Test;
+importjaa.lang..reflect.Field;	import java.lang.reflect.Field;
+impor java.util.ashMap;	import java.util.HashMap;
+public class TestDemo {	public class TestDemo {
+@Tst	@Test
+public void test1 throws  NoSuchFeldExceptionIllegalAccessExcetion 	public void test1() throws NoSuchFieldException, IllegalAccessException {
+Class cache = Integer.classgetDeclaredClassesl0;	Class cache = Integer.class.getDeclaredClasses()[0];
+Fielc = cache.getDeclaredField"cache";	Field c = cache.getDeclaredField("cache");
+c..setAccessibletrue;	c.setAccessible(true);
+Integerl array =Integer c.getcache;	Integer[] array = (Integer[]) c.get(cache);
+array130= array129;	array[130] = array[129];
+array131=array129;	array[131] = array[129];
+Integer a = 1;	Integer a = 1;
+if a  ==fInteger 1&& a == Integer 2 && a ==Integer 3f {	if (a == (Integer) 1 && a == (Integer) 2 && a == (Integer) 3) {
+System.out.println"Success;	System.out.println("Success");
+}	}
+System.ot.println++a;	System.out.println(++a);
+a = 100;	a = 100;
+Integer b =  100;	Integer b = 100;
+System.out.printlna ==  b;;	System.out.println(a == b);
+f	}
+Object o = new Object;	Object o = new Object();
+@Test	@Test
+public void testf	public void test2(){
+Object  o2 = o;	Object o2 = o;
+test3o2;	test3(o2);
+System.out.prinlnfo2== null;	System.out.println(o2 == null);
+}	}
+public void test3Object  o{	public void test3(Object o){
+o = null;	o = null;
+Sysem..out.printlnthis.o == null;	System.out.println(this.o == null);
+}	}
+public void test31	public void test3(){
+HashMapmap= new HashMap;;	HashMap map = new HashMap();
+1	}
+	}

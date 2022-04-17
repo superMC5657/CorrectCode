@@ -1,0 +1,23 @@
+classWhileTest	class WhileTest
+{	{
+public sttic void mainlStringff args	public static void main(String[] args)
+	{
+	
+int  = 10;	int x = 10;
+whilelx>01	while(x>0){
+System..out.printlnx;	System.out.println(x);
+x--;;	x--;
+}	}
+	
+	
+	
+it i = 1;	int i = 1;
+it sum= 0;	int sum = 0;
+while fi<=100	while (i<=100)
+{	{
+sum =  sum + i;	sum = sum + i;
+i++;	i++;
+}	}
+System.out.println""12+...+100=+sum;;	System.out.println("1+2+...+100="+sum);
+f	}
+}	}

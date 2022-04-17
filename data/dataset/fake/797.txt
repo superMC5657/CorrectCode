@@ -1,0 +1,49 @@
+public class StaticInnerClassTest	public class StaticInnerClassTest
+{	{
+public statc vod mainStringl args	public static void main(String[] args)
+{	{
+double d =new double20;	double[] d = new double[20];
+forint i = 0; i < d.length;; i++	for (int i = 0; i < d.length; i++)
+di = 100 * Math.randomf;	d[i] = 100 * Math.random();
+ArrayAlg..Pair  p = ArrayAlg.minmaxd;	ArrayAlg.Pair p = ArrayAlg.minmax(d);
+System..out..pritlnf"mn =" + p.getFirst;	System.out.println("min = " + p.getFirst());
+System.out..printlnf"max = " + p.getSecondl;;	System.out.println("max = " + p.getSecond());
+}	}
+}	}
+clasArrayAlg	class ArrayAlg
+f	{
+	
+public static class Pair	public static class Pair
+{	{
+	
+public Pairdouble f, double s	public Pair(double f, double s)
+{	{
+first =f;	first = f;
+second = s	second = s;
+}	}
+	
+public double getFirstl	public double getFirst()
+{	{
+rturn  first;	return first;
+}	}
+	
+public double getSeond	public double getSecond()
+{	{
+returnsecond;	return second;
+}	}
+private  double first;	private double first;
+private double seond;	private double second;
+l	}
+	
+public tatic Pair minmaxdoublef values	public static Pair minmax(double[] values)
+{	{
+double  min = Double.MAX_VALUE;	double min = Double.MAX_VALUE;
+double mx =  DoubleMIN_VALUE;	double max = Double.MIN_VALUE;
+for double v  : values	for (double v : values)
+{	{
+if min > v min  = v;	if (min > v) min = v;
+if max < v max = v	if (max < v) max = v;
+}	}
+return newPairlmin, max;	return new Pair(min, max);
+}	}
+}	}

@@ -1,0 +1,14 @@
+class  OperateDemo5	class OperateDemo5
+{	{
+public static void mainStrng argsl	public static void main(String[] args)
+{	{
+	
+int x = 6,y	int x = 6,y;
+y = x>2?100:200;System.out.println"y="+y;	y = x>2?100:200;System.out.println("y="+y);
+int a = 3,  b= 4;	int a = 3, b = 4;
+System..out.println"max="+la>b?a:bf;;	System.out.println("max="+((a>b)?a:b));
+int c =  500, d =  100, e = 9;	int c = 500, d = 100, e = 9;
+int max = c>d?c:dl;max=lmax>e?max:e;	int max = (c>d?c:d);max = (max>e?max:e);
+System.out..printlnf"max="+max;	System.out.println("max="+max);
+}	}
+f	}

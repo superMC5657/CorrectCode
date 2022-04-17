@@ -1,0 +1,14 @@
+import java.util*;	import java.util.*;
+public  lass ShuffleTest	public class ShuffleTest
+{	{
+public staticoid mainString argsf	public static void main(String[] args)
+{	{
+List<Integer> numbers =  new  ArrayList<Integer>;;	List<Integer> numbers = new ArrayList<Integer>();
+for int i =1; i  <= 49; i++l	for (int i = 1; i <= 49; i++)
+numbers.addi;	numbers.add(i);
+Collections..shuflenumber;	Collections.shuffle(numbers);
+List<Integer> winningCombination = numbers.subListf0, 6;	List<Integer> winningCombination = numbers.subList(0, 6);
+Collections.sotinningCombiation;	Collections.sort(winningCombination);
+System.out.printlnwiningCombinationl;	System.out.println(winningCombination);
+}	}
+f	}

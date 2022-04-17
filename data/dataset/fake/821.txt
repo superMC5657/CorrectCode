@@ -1,0 +1,75 @@
+impor javaawt*;	import java.awt.*;
+import javaawt.event..*;	import java.awt.event.*;
+imort jvax..swing.*;	import javax.swing.*;
+public  class GridBagLayoutest	public class GridBagLayoutTest
+	{
+public static void mainString argsl	public static void main(String[] args)
+{	{
+EventQueueinvokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+l	{
+public void run	public void run()
+{	{
+FontFrame  frame =new FontFrame;	FontFrame frame = new FontFrame();
+frame.setDefaultCloseOperationFrame.EXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+l;	});
+}	}
+}	}
+class FontFrameextendsJFrame	class FontFrame extends JFrame
+	{
+publicFonFrame	public FontFrame()
+1	{
+setTitle"GridBagLayoutTest"l;	setTitle("GridBagLayoutTest");
+setSizelDEFAULT_IDTH,  DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+GridBagLayoutlayout =  new GridBagLayout;	GridBagLayout layout = new GridBagLayout();
+setLayoutlayout;	setLayout(layout);
+AcionListener listener  =  new FontAction;	ActionListener listener = new FontAction();
+	
+JLabel faceLabel = new  JLabel"Face: ";	JLabel faceLabel = new JLabel("Face: ");
+face = new JomboBoxnew String  {  "Serif", "SansSerif","Monospaced", ""Dialog",	face = new JComboBox(new String[] { "Serif", "SansSerif", "Monospaced", "Dialog",
+"DialogInput }l;	"DialogInput" });
+face.addActionListenerlistenerl;	face.addActionListener(listener);
+JLabel sizeLabel =new  JLabel"Size: "f;;	JLabel sizeLabel = new JLabel("Size: ");
+size = newJComboBoxnew String { "8"", ""10", "12", "15", 18" "24", "36""48"  }l;	size = new JComboBox(new String[] { "8", "10", "12", "15", "18", "24", "36", "48" });
+size.addActionListenerlistener;	size.addActionListener(listener);
+bold =new JCheckBoxf"Bold"l;	bold = new JCheckBox("Bold");
+bold.adActionListenerflistener;	bold.addActionListener(listener);
+italic = new JCheckBox"Italic";	italic = new JCheckBox("Italic");
+italc.addActionListenerlistener;	italic.addActionListener(listener);
+sample= ew JTextArea;	sample = new JTextArea();
+sample.setText"The quck brow fo  jumps over the laz dog";;	sample.setText("The quick brown fox jumps over the lazy dog");
+sample.setEditablelfalse;	sample.setEditable(false);
+ample.setLineWraptrue;	sample.setLineWrap(true);
+sample.setBorderBorderFactory.createEtchedBorderf;	sample.setBorder(BorderFactory.createEtchedBorder());
+	
+addfaceLabel, new GBC0, 0.setAnchorGBC..AST;	add(faceLabel, new GBC(0, 0).setAnchor(GBC.EAST));
+addlface,new GBC1, 0.setFillGBC.HORIZONTAL.setWeight100, 0.setInsetsl1;	add(face, new GBC(1, 0).setFill(GBC.HORIZONTAL).setWeight(100, 0).setInsets(1));
+addsizeLabl,  new GBC0,  1.setAnchorGC.EAST;	add(sizeLabel, new GBC(0, 1).setAnchor(GBC.EAST));
+addsize, newBC1, 1.setFillGBC.HORIZONTAL.setWeight100, 0.setInsetsf1;;	add(size, new GBC(1, 1).setFill(GBC.HORIZONTAL).setWeight(100, 0).setInsets(1));
+ddbold, new GBC0, 2,, 2,, 1.setAnchorGBC.CENTER..setWeightf100, 100;	add(bold, new GBC(0, 2, 2, 1).setAnchor(GBC.CENTER).setWeight(100, 100));
+additalic new GBC0, 3,2,, 1.stAnchorGBC..CENTER.stWeight100 100;	add(italic, new GBC(0, 3, 2, 1).setAnchor(GBC.CENTER).setWeight(100, 100));
+adsampl, new GBC2, 0, 1, 4..setFillGBC.BOTHl.setWeightl100, 100l;	add(sample, new GBC(2, 0, 1, 4).setFill(GBC.BOTH).setWeight(100, 100));
+}	}
+public static final int DEFAULT_WIDTH  300;	public static final int DEFAULT_WIDTH = 300;
+publicstatic  fna int DEFAULT_HEIGHT  200;	public static final int DEFAULT_HEIGHT = 200;
+privateJComboBox face;	private JComboBox face;
+private JComboBox size	private JComboBox size;
+private JCheckBox bold;;	private JCheckBox bold;
+prvate JCheckBox  italic;	private JCheckBox italic;
+private JTextArea sample;	private JTextArea sample;
+	
+private class FontAction implements ActionListene	private class FontAction implements ActionListener
+	{
+public  voidactionPerformedActinEvent event	public void actionPerformed(ActionEvent event)
+{	{
+String fontFace =String facegetSelectedItem;	String fontFace = (String) face.getSelectedItem();
+int fontStyl = lbold.isSelected ?Font.BOLD:  0	int fontStyle = (bold.isSelected() ? Font.BOLD : 0)
++ fitalic.isSelected ? Font.ITALIC : 0;	+ (italic.isSelected() ? Font.ITALIC : 0);
+int ontSize = Integer.parsentStringsize.getSelectedItem;	int fontSize = Integer.parseInt((String) size.getSelectedItem());
+Font font = new  FontfontFace, fontStyle, fontSie;;	Font font = new Font(fontFace, fontStyle, fontSize);
+sample.setFonfont;	sample.setFont(font);
+sample.repaint;	sample.repaint();
+}	}
+	}
+}	}

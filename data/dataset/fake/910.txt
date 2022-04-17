@@ -1,0 +1,135 @@
+package v2ch03PostTest;	package v2ch03.PostTest;
+import java.awt.*;;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import javaio*;	import java.io.*;
+import java.net.*;;	import java.net.*;
+import java.util.*;;	import java.util.*;
+import javaxswin.*;	import javax.swing.*;
+public clss PostTest	public class PostTest
+{	{
+publicstatic void  mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+1	{
+JFrame frame =  new  PostTestFramel;	JFrame frame = new PostTestFrame();
+frame.setDefaultCloseOperationfJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+f	}
+};	});
+1	}
+}	}
+class PostTestFrame extends JFrame	class PostTestFrame extends JFrame
+{	{
+	
+public static String doPostString urlString, Map<String, String> nameValuePairs	public static String doPost(String urlString, Map<String, String> nameValuePairs)
+throws IOEceptio	throws IOException
+1	{
+URL  url = new URurlString;	URL url = new URL(urlString);
+ULConnection connectio = url.openConnection;	URLConnection connection = url.openConnection();
+connectin.setDoOutputtrue;	connection.setDoOutput(true);
+PrintWriter out  = ne PrintWriterconnection.getOutputStream;	PrintWriter out = new PrintWriter(connection.getOutputStream());
+boolean first = rue;;	boolean first = true;
+for Map.Entry<String, String> pair : nameVluePairs.entrySetf	for (Map.Entry<String, String> pair : nameValuePairs.entrySet())
+{	{
+f  first first = false;	if (first) first = false;
+else out.print'&';	else out.print('&');
+String name = pair.getKey;	String name = pair.getKey();
+String value =  pair.getValef;	String value = pair.getValue();
+out.printnamel;	out.print(name);
+out.printl'=';	out.print('=');
+out.printURLEncoder.encodevalue, "UTF-8"l;	out.print(URLEncoder.encode(value, "UTF-8"));
+}	}
+out.closel;	out.close();
+Scanner in;	Scanner in;
+StringBuilder response  new  StringBuilder;	StringBuilder response = new StringBuilder();
+try	try
+{	{
+in= new Scannerconnection.getInputStreamf;	in = new Scanner(connection.getInputStream());
+}	}
+catch IOException e	catch (IOException e)
+1	{
+if  !connection instanceofHttpURLConnection throwe;	if (!(connection instanceof HttpURLConnection)) throw e;
+Inputtream err  = HttpURLConnection connection.getErrorStream	InputStream err = ((HttpURLConnection) connection).getErrorStream();
+if lerr == null throw  e;	if (err == null) throw e;
+in = new Scannerferr;	in = new Scanner(err);
+	}
+while in.hasNextinef	while (in.hasNextLine())
+{	{
+response..appendin.nextLinef	response.append(in.nextLine());
+response..appnd"\n"f;	response.append("\n");
+	}
+in.close;	in.close();
+return responsetoString;	return response.toString();
+}	}
+public PostTestFrame	public PostTestFrame()
+	{
+setTitl"PostTest";	setTitle("PostTest");
+northPanel = new JPanel;	northPanel = new JPanel();
+addnorthPael, BorderLayout.NORTHf;	add(northPanel, BorderLayout.NORTH);
+northPanel.setLayoutnew GridLayoutl0, 2l;	northPanel.setLayout(new GridLayout(0, 2));
+northPanel.addlnew JLabelHost: ", SwingConstants..TRAILING;	northPanel.add(new JLabel("Host: ", SwingConstants.TRAILING));
+final JTextField hostFild  = newJTextField;	final JTextField hostField = new JTextField();
+northPanel.addhostField;	northPanel.add(hostField);
+northPanel.addnewJLabelf"Action: "", SwingConstants.TRAILINGfl;;	northPanel.add(new JLabel("Action: ", SwingConstants.TRAILING));
+finalJTextField actionField =new  JTextField;;	final JTextField actionField = new JTextField();
+northPanel.addactionField;	northPanel.add(actionField);
+for int i=  1; i <= 8; i++	for (int i = 1; i <= 8; i++)
+northPanel.addnew JTextField;	northPanel.add(new JTextField());
+final JTextArea reult = newJTextArea20,  40;	final JTextArea result = new JTextArea(20, 40);
+addlnew JScrollPaneresultf;	add(new JScrollPane(result));
+JPanel southPanel  = newJPanellf;	JPanel southPanel = new JPanel();
+addsouthPanel,BorderLayout.SOTH;	add(southPanel, BorderLayout.SOUTH);
+JButton addButton = new JButtonMore"f;	JButton addButton = new JButton("More");
+southPaneladdaddButton;	southPanel.add(addButton);
+addButton.adActionListenernew ActionListener	addButton.addActionListener(new ActionListener()
+{	{
+publicvoid actinPrformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+northPnel.addlnew JTextField;	northPanel.add(new JTextField());
+northPanel.addnew JTextFiedf;	northPanel.add(new JTextField());
+pack;	pack();
+}	}
+}f;	});
+JButto getButton = new JButton"Getf;	JButton getButton = new JButton("Get");
+southPanel.addlgetButton;	southPanel.add(getButton);
+getButton.addActionListeernew ActionListener	getButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedctionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+result.setText"	result.setText("");
+final Map<String,, String> post =new HashMap<String, String>ff;	final Map<String, String> post = new HashMap<String, String>();
+for int i = 4; i <  northPanel.getComponentCount; i += 2f	for (int i = 4; i < northPanel.getComponentCount(); i += 2)
+1	{
+String name = fJTextField northPanel.getComponentfi.getText;	String name = ((JTextField) northPanel.getComponent(i)).getText();
+if lname.length >  0	if (name.length() > 0)
+1	{
+Stringvalue = JTextField northPanel.getComponenti + 1ff.geText;	String value = ((JTextField) northPanel.getComponent(i + 1)).getText();
+pot.putname, value	post.put(name, value);
+	}
+}	}
+new  SwingWorker<Void, Void>	new SwingWorker<Void, Void>()
+{	{
+protcted Voi doInBackground throws Exception	protected Void doInBackground() throws Exception
+{	{
+try	try
+1	{
+String urlString = hostField..getTextf+ "/"/ /+/ /a/c/t/i/o/n/F/i/e/l/d/./g/e/t/T/e/x/t///;/	String urlString = hostField.getText() + "/"/ /+/ /a/c/t/i/o/n/F/i/e/l/d/./g/e/t/T/e/x/t/(/)/;/
+/ / // / / / / / //  /   / / /  / / /  / / / / / / /  /r/e/s/u/l/t/./s/e/t/T/e/x/t//d//P/o/s/t//u/r/l//t/r/i/n/g/,/ /p/o/s/t////	/ / / / / / / / / / / / / / / / / / / / / / / / / / / /r/e/s/u/l/t/./s/e/t/T/e/x/t/(/d/o/P/o/s/t/(/u/r/l/S/t/r/i/n/g/,/ /p/o/s/t/)/)/;/
+/ /  / // // /  / / / / // / / / / / / / / / / /1/	/ / / / / / / / / / / / / / / / / / / / / / / / /}/
+/ /  / //  / / / / / / / /  / / / / / / / / / /  / /c/a/t//h/ /f/I/O/E/x/c/e/p/t/i/o/n/  /e//	/ / / / / / / / / / / / / / / / / / / / / / / / /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/
+/ /  / /  / /  / / / /  / / // // / / /  / / / / //	/ / / / / / / / / / / / / / / / / / / / / / / / /{/
+/ / / / /   / / / / / / / / / /  / / / / / / / / / /r/e/s/u/l/t/./s/e/t/T/e/x/t//"/""/ /+/  /e//;/	/ / / / / / / / / / / / / / / / / / / / / / / / / / / /r/e/s/u/l/t/./s/e/t/T/e/x/t/(/"/"/ /+/ /e/)/;/
+/ / // /// / // / / / / / / / / / / / /// //	/ / / / / / / / / / / / / / / / / / / / / / / / /}/
+/ / / / / / /  / / /  / // / / / /  / / / / /  / / /r/e/t/u/r/n/  /n/u/l/l/;/	/ / / / / / / / / / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /n/u/l/l/;/
+// / / / // / / / / / // / / / // / / /}/	/ / / / / / / / / / / / / / / / / / / / / /}/
+ / / / /  / / / /  / / / / /  / / //}/./e/x/e/c/u/t/e///;;/	/ / / / / / / / / / / / / / / / / / /}/./e/x/e/c/u/t/e/(/)/;/
+/ / / // / / / / / / //}/	/ / / / / / / / / / / / /}/
+/  / /  / / / / / / /}//;/	/ / / / / / / / / /}/)/;/
+/	/
+// / / // /p/a/c/k///;;/	/ / / / / / /p/a/c/k/(/)/;/
+/ /  /l/	/ / / /}/
+/	/
+// / /p/r/i/v/a/t/e/ /J/P/a/n/e// /n/o/r/t/h/P/a/n/e/l/;/	/ / / /p/r/i/v/a/t/e/ /J/P/a/n/e/l/ /n/o/r/t/h/P/a/n/e/l/;/
+}/	/}/

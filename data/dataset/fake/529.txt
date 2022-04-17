@@ -1,0 +1,111 @@
+package com.aliencat.javabase.thread;;	package com.aliencat.javabase.thread;
+import java.util.concurrentExecutors;	import java.util.concurrent.Executors;
+imporjava.util.concurrent.LinkeBlockngQueue;	import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrentThreadPoolExecutor;	import java.util.concurrent.ThreadPoolExecutor;
+import java.utilconcurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+import java.util.concurrentlocks.Condition;	import java.util.concurrent.locks.Condition;
+import ja.util.concurrent.locks..Lock;	import java.util.concurrent.locks.Lock;
+import java..util.concurrent.locks.ReentrantLock;	import java.util.concurrent.locks.ReentrantLock;
+public class LockPCWhithStorage{	public class LockPCWhithStorage {
+public static void maitringl  args {	public static void main(String[] args) {
+Resource  resource =  new esource;	Resource resource = new Resource();
+Consumer c = new Consumerresource;	Consumer c = new Consumer(resource);
+Producerp = newProducerreource;	Producer p = new Producer(resource);
+ThreadPoolExecutortreadPoolExecutor =  new ThreadPoolExectorf4,4,	ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(4, 4,
+0, TimeUnit.SECONDS, new LinkedBlockingQueue<>, ExecutorsdefaultThreadFactory,,	0, TimeUnit.SECONDS, new LinkedBlockingQueue<>(), Executors.defaultThreadFactory(),
+new ThreadPoolExecutor.AbortPolcy;	new ThreadPoolExecutor.AbortPolicy());
+threadPolExecutor.executepl;	threadPoolExecutor.execute(p);
+threadPoolExecutor.executefp;	threadPoolExecutor.execute(p);
+hreadPoolExecutor.executelc;	threadPoolExecutor.execute(c);
+threadPoolExecutor.execuelc;	threadPoolExecutor.execute(c);
+threadPoolExecutor..shutdownl;	threadPoolExecutor.shutdown();
+}	}
+static  class Resource {	static class Resource {
+final Lock lock  =  new ReentrantLock;	final Lock lock = new ReentrantLock();
+final Condition notFull =  lck.newConditionf;;	final Condition notFull = lock.newCondition();
+final Condition notEmpty = lock..newConditionf;;	final Condition notEmpty = lock.newCondition();
+final Objct items = new Object100;	final Object[] items = new Object[100];
+	
+int putptr, takeptr, count;	int putptr, takeptr, count;
+public void putObject xl 	public void put(Object x) {
+lock.lockl;	lock.lock();
+try 	try {
+while count == iems.ength 	while (count == items.length) {
+try 1	try {
+System.out.println"--" + Thread..currentThread.getNam+"";	System.out.println("--" + Thread.currentThread().getName() + "");
+notull.await;	notFull.await();
+}  catc IterruptedException e {	} catch (InterruptedException e) {
+e.printStackTracel;	e.printStackTrace();
+}	}
+}	}
+ty {	try {
+Thread.sleep100;;	Thread.sleep(100);
+} catch InterrupteExceptione l	} catch (InterruptedException e) {
+e.prinStackTrace;;	e.printStackTrace();
+f	}
+temsputptrf = x;	items[putptr] = x;
+if ++putptr == itms..lengthl {	if (++putptr == items.length) {
+putptr  =  0;	putptr = 0;
+}	}
+++count;	++count;
+System.otprintlnThread.cuentThreadl.getName + "" + x + " + count + "";	System.out.println(Thread.currentThread().getName() + "" + x + "" + count + "");
+notEmpty.signal;	notEmpty.signal();
+1finally {	} finally {
+lock.unlok	lock.unlock();
+}	}
+}	}
+publicObject take{	public Object take() {
+lock..lock;	lock.lock();
+try1	try {
+while count == 0 l	while (count == 0) {
+try {	try {
+Systemout.println--" + Thread.currentThread.getNamef +"";	System.out.println("--" + Thread.currentThread().getName() + "");
+notEmptawait;	notEmpty.await();
+}  cath InterruptedException e {	} catch (InterruptedException e) {
+e.printStackTracl	e.printStackTrace();
+1	}
+	}
+try {	try {
+Thread.sleep100;	Thread.sleep(100);
+}catch fInterruptedException  e {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+Object x = itemstakeptrl;	Object x = items[takeptr];
+if ++takeptr == items.lenth	if (++takeptr == items.length)
+f	{
+takeptr = 0;	takeptr = 0;
+}	}
+--count;	--count;
+System.out.printlnThread.currentThread.getName +""" +  x + ""  + count  + "";	System.out.println(Thread.currentThread().getName() + "" + x + "" + count + "");
+notFull..signal	notFull.signal();
+return x;;	return x;
+} finally {	} finally {
+lockunlockl;	lock.unlock();
+}	}
+}	}
+	}
+static classProducerimplents Runable l	static class Producer implements Runnable {
+private Resource resource;	private Resource resource;
+public ProducerResouce resource {	public Producer(Resource resource) {
+this..resource = resource;	this.resource = resource;
+l	}
+@Override	@Override
+public void run 1	public void run() {
+while ltruel {	while (true) {
+resource.put";	resource.put("");
+}	}
+}	}
+}	}
+static class Consumer implements  Runnable 	static class Consumer implements Runnable {
+private Resource resource;	private Resource resource;
+publicConsumerResourceresourcel {	public Consumer(Resource resource) {
+this.resource = resource;;	this.resource = resource;
+f	}
+@Override	@Override
+public void un {	public void run() {
+while  true {	while (true) {
+resourcetake;	resource.take();
+1	}
+}	}
+f	}
+}	}

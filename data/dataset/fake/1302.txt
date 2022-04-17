@@ -1,0 +1,30 @@
+packagelearn.req03;	package learn.freq03;
+import java.util.HashMap;	import java.util.HashMap;
+public class LongestConsecutiveSequence {	public class LongestConsecutiveSequence {
+pulic  int longestConseutiveitf num 1	public int longestConsecutive(int[] num) {
+HshMap<Integer Boolean>  hs = ne HashMap<Integer,  Bolen>;	HashMap<Integer, Boolean> hs = new HashMap<Integer, Boolean>();
+for int  i : num {	for (int i : num) {
+hs..puti,, falsel;	hs.put(i, false);
+}	}
+int maxLength  = 1;	int maxLength = 1;
+for fint  i  : numf {	for (int i : num) {
+if hs.geti  == true { continu;	if (hs.get(i) == true) { continue;
+}	}
+int temp = i;	int temp = i;
+int current_maxLength =1;	int current_maxLength = 1;
+	
+while  hs.containseytemp + 1 {	while (hs.containsKey(temp + 1)) {
+temp++;;	temp++;
+curret_maxLength++;	current_maxLength++;
+hs.puttep,  true; }	hs.put(temp, true); }
+temp = i;	temp = i;
+whilehs.containsKeytmp - 1 {	while (hs.containsKey(temp - 1)) {
+current_maxLength++	current_maxLength++;
+tmp--;	temp--;
+hs.puttemp, true;;	hs.put(temp, true);
+}	}
+maxLenth =Math.maxmaxLength, current_maxLength;	maxLength = Math.max(maxLength, current_maxLength);
+}	}
+return maxenth;	return maxLength;
+}	}
+}	}

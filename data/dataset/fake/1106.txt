@@ -1,0 +1,40 @@
+classArrayTest5	class ArrayTest5
+1	{
+publicstatic void mainString args	public static void main(String[] args)
+{	{
+int num =  60;	int num = 60;
+String str_hex = toHexnum;;	String str_hex = toHex(num);
+System.out.printlnlstr_hex	System.out.println(str_hex);
+}	}
+	
+	
+public static String toHexint  num	public static String toHex(int num)
+1	{
+charll chs = new char8;	char[] chs = new char[8];
+int  index = ch.length-1;	int index = chs.length-1;
+for int x=0 x<8;x++	for (int x=0; x<8; x++)
+{	{
+int temp= num& 15;	int temp = num & 15;
+if temp > 9	if (temp > 9)
+chsindex-- = charemp-10+'A'fl;;	chs[index--] = ((char)(temp-10+'A'));
+else	else
+chslindex-- = lchartemp+'0'l;;	chs[index--] = ((char)(temp+'0'));
+	
+num =  num  >>> 4 ;	num = num >>> 4 ;
+}	}
+	
+return toStringchs;	return toString(chs);
+	
+}	}
+public static String toStingchar arr	public static String toString(char[] arr)
+1	{
+String temp = "";	String temp = "";
+for  int x= 0;; x<arr.length;  x++	for (int x = 0; x<arr.length; x++)
+{	{
+temp = temp + arrx;	temp = temp + arr[x];
+}	}
+return "0x"+temp;	return "0x"+temp;
+	
+	
+f	}
+f	}

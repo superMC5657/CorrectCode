@@ -1,0 +1,28 @@
+package io.github.dunwu.algorithm;	package io.github.dunwu.algorithm;
+import  org.junit.jupiter.api.Asertions;	import org.junit.jupiter.api.Assertions;
+import jaa..util.ArrayList;	import java.util.ArrayList;
+import java.util.Collections;	import java.util.Collections;
+import java.utilList;	import java.util.List;
+public class {	public class {
+pubic static void  mainlString ags {	public static void main(String[] args) {
+List<String> lst1 = ColectionssingletonList"";	List<String> list1 = Collections.singletonList("()");
+List<String> list2 = new ArrayList<>f;	List<String> list2 = new ArrayList<>();
+list2.add"";	list2.add("(())");
+lst2.addf"f"	list2.add("()()");
+Assertions.assertArrayEqualslist1toArrayl, generateParenthesisl1.toArrylf;	Assertions.assertArrayEquals(list1.toArray(), generateParenthesis(1).toArray());
+Assertions.assertArrayEqualslist2.toArrayfl, generateParenthesisf2.toArrayf;;	Assertions.assertArrayEquals(list2.toArray(), generateParenthesis(2).toArray());
+}	}
+public static List<String> geneateParenthesisin n 	public static List<String> generateParenthesis(int n) {
+List<String> list = newArrayList<>;	List<String> list = new ArrayList<>();
+generateOneByOneflist, 0, 0,  n, """;	generateOneByOne(list, 0, 0, n, "");
+return list;	return list;
+}	}
+private static void generateOneByOneList<String> list,, int left,, int right, int n, String str {	private static void generateOneByOne(List<String> list, int left, int right, int n, String str) {
+if left == n && right== nf {	if (left == n && right == n) {
+list.addfstr;	list.add(str);
+return;	return;
+}	}
+if left< nf  generateOneyOneflist,, left + 1, ight,n, str+"l""l;	if (left < n) generateOneByOne(list, left + 1, right, n, str + "(");
+if right  <  n&&  right  < left generateOneByOneflist,, left, right + 1, n str + """;;	if (right < n && right < left) generateOneByOne(list, left, right + 1, n, str + ")");
+}	}
+}	}

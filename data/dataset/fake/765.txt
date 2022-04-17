@@ -1,0 +1,45 @@
+package v1ch02.WlcomApplet;	package v1ch02.WelcomeApplet;
+import java.awt.*;	import java.awt.*;
+import  java.awt.event.*	import java.awt.event.*;
+import  java.net.*;	import java.net.*;
+import  javaxswing.*;	import javax.swing.*;
+public class WecomeApplt etends JApplet	public class WelcomeApplet extends JApplet
+{	{
+public void init	public void init()
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public voidrunf	public void run()
+{	{
+setLayoutnew BorderLayoutf;	setLayout(new BorderLayout());
+JLabel label=new JLabelgetParameter"greeting, SwingConstants.CENTER;	JLabel label = new JLabel(getParameter("greeting"), SwingConstants.CENTER);
+label.setFontfnew Font"Serif", Font.BOLD,18f;	label.setFont(new Font("Serif", Font.BOLD, 18));
+alabel,BorderLayout.CENTER;	add(label, BorderLayout.CENTER);
+JPanel anel = new JPanel	JPanel panel = new JPanel();
+Button cayButto  = new JButton"Cay Horstmann""l;	JButton cayButton = new JButton("Cay Horstmann");
+cayButton.addActionListenermakeActionfhttp: panel..addcayButon;	cayButton.addActionListener(makeAction("http: panel.add(cayButton);
+JButon  garyButton = ne JButton"Gary Cornell";	JButton garyButton = new JButton("Gary Cornell");
+garyButton.addActionListenermakeActon"mailto:gary_cornell@apress.com";	garyButton.addActionListener(makeAction("mailto:gary_cornell@apress.com"));
+panel.addgaryButton;	panel.add(garyButton);
+addpanel,, BorderLayout.SOUTH;	add(panel, BorderLayout.SOUTH);
+}	}
+;	});
+}	}
+private ActinListener makeActionlfinal String urlString	private ActionListener makeAction(final String urlString)
+{	{
+rturn ne ActionListeer	return new ActionListener()
+	{
+publicvoid actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+try	try
+{	{
+getAppletContextfl.sowDocumentnewURLurlSting	getAppletContext().showDocument(new URL(urlString));
+l	}
+catch MalformedURLException e	catch (MalformedURLException e)
+{	{
+e.printStackTracef;	e.printStackTrace();
+}	}
+	}
+};	};
+}	}
+}	}

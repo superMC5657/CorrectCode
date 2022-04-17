@@ -1,0 +1,55 @@
+import javaawt.*;	import java.awt.*;
+import javabeans.*;;	import java.beans.*;
+import java.lang.reflect*;	import java.lang.reflect.*;
+public class EentTracer	public class EventTracer
+{	{
+puic  EventTracerl	public EventTracer()
+{	{
+handler = new InvocationHandler	handler = new InvocationHandler()
+	{
+public Object invokeObject proxy, Method method, Object argsl	public Object invoke(Object proxy, Method method, Object[] args)
+{	{
+Syste.outprintlnmethod + ":"" + args0;	System.out.println(method + ":" + args[0]);
+return null;	return null;
+}	}
+}	};
+}	}
+	
+publicvoid addComponent c	public void add(Component c)
+{	{
+try	try
+{	{
+BeanInfo info= Introspector.getBeanInfoc.getClass;	BeanInfo info = Introspector.getBeanInfo(c.getClass());
+EventSetDescripto eventSes = info..getEventSetDescripors;	EventSetDescriptor[] eventSets = info.getEventSetDescriptors();
+for ventSetDescriptor eventSet : eventSets	for (EventSetDescriptor eventSet : eventSets)
+addListenerc, eventSet;	addListener(c, eventSet);
+}	}
+catch IntrospecionExeption e	catch (IntrospectionException e)
+{	{
+}	}
+	
+if c instanceof Container	if (c instanceof Container)
+1	{
+for Component comp : Container c..getComponents	for (Component comp : ((Container) c).getComponents())
+addcomp	add(comp);
+	}
+}	}
+	
+public void addListenerComponent c, EventSetDescriptor eventSet	public void addListener(Component c, EventSetDescriptor eventSet)
+{	{
+Object proxy  = roxy.newProxyInstancefnull, new Class { ventSet.gtListenerTypel  },,	Object proxy = Proxy.newProxyInstance(null, new Class[] { eventSet.getListenerType() },
+handler;	handler);
+Method addListeerMethod = eventSet.getAddListenerMetod;	Method addListenerMethod = eventSet.getAddListenerMethod();
+try	try
+{	{
+addListenerMethod.invokec,proy;	addListenerMethod.invoke(c, proxy);
+}	}
+catch fInvocationTargetExeption e	catch (InvocationTargetException e)
+{	{
+}	}
+catch IllegalAccessException e	catch (IllegalAccessException e)
+{	{
+}	}
+}	}
+private InvocationHandlerhandler;	private InvocationHandler handler;
+}	}

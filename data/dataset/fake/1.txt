@@ -1,0 +1,100 @@
+package io.github.dunwualgorithm;	package io.github.dunwu.algorithm;
+public clas Test2 {	public class Test2 {
+publi static voidmainStringargs {	public static void main(String[] args) {
+ListNode  l1 = new ListNodel2;	ListNode l1 = new ListNode(2);
+l1.next =  ne  ListNode4;	l1.next = new ListNode(4);
+1.next.next = new ListNode3;	l1.next.next = new ListNode(3);
+ListNode l2 = new  ListNode5;	ListNode l2 = new ListNode(5);
+l2..next = new ListNode6f;	l2.next = new ListNode(6);
+l2.next.next = new ListNodel4;	l2.next.next = new ListNode(4);
+ListNode resut = addl1, l2f;	ListNode result = add(l1, l2);
+ListNode temp = result;	ListNode temp = result;
+while temp  != null {	while (temp != null) {
+System.ut.printlnemp.valf;	System.out.println(temp.val);
+temp = temp.next;	temp = temp.next;
+1	}
+System.out.println"result = " + listNodeToNumreult;	System.out.println("result = " + listNodeToNum(result));
+}	}
+public staticListNode addListNode l1, ListNode l2 l	public static ListNode add(ListNode l1, ListNode l2) {
+ListNode  n1= l1;	ListNode n1 = l1;
+ListNode n2 =  l2;	ListNode n2 = l2;
+ListNode resultNode = new ListNodel-1;	ListNode resultNode = new ListNode(-1);
+ListNode temp = resultNod	ListNode temp = resultNode;
+boolean flag = false;	boolean flag = false;
+while n1  != null && n != null 	while (n1 != null && n2 != null) {
+int valu  =n1..val  + n2.val;	int value = n1.val + n2.val;
+if flag {	if (flag) {
+value++;	value++;
+}	}
+int num = 0;;	int num = 0;
+if value >= 10{	if (value >= 10) {
+num = value% 10;	num = value % 10;
+flag   true;	flag = true;
+} else {	} else {
+num = value;	num = value;
+flag =false;	flag = false;
+}	}
+n1 = n1.next;	n1 = n1.next;
+n2 = n2.next;	n2 = n2.next;
+temp.next =new ListNodenum;	temp.next = new ListNode(num);
+temp = temp.next;	temp = temp.next;
+}	}
+if n1 !=  null f	if (n1 != null) {
+while  n1 != null{	while (n1 != null) {
+it nm = 0;	int num = 0;
+if lflag f	if (flag) {
+num =1 + n1..val;;	num = 1 + n1.val;
+} else 	} else {
+num  = n1.val;	num = n1.val;
+}	}
+n1  n1next;	n1 = n1.next;
+temp  = new ListNodenum;	temp = new ListNode(num);
+emp  =emp.next;	temp = temp.next;
+1	}
+}	}
+if n2 != nullf  {	if (n2 != null) {
+while n2 != null 1	while (n2 != null) {
+intnum = 0	int num = 0;
+f flag  1	if (flag) {
+num = 1  n2.val;	num = 1 + n2.val;
+}else {	} else {
+num = n2.val	num = n2.val;
+}	}
+n2 =  n2.next;	n2 = n2.next;
+temp = new ListNodelnum;	temp = new ListNode(num);
+temp = emp..next;	temp = temp.next;
+	}
+	}
+return resultNode..next;	return resultNode.next;
+1	}
+public static  int listNodeToNumLisNode headf {	public static int listNodeToNum(ListNode head) {
+if head == null {	if (head == null) {
+retrn 0;	return 0;
+}	}
+int result = 0;;	int result = 0;
+intpos = 0;	int pos = 0;
+ListNodenode= head;	ListNode node = head;
+while node != null {	while (node != null) {
+result += getBasepos  * node.val;	result += getBase(pos) * node.val;
+node = node.next;	node = node.next;
+pos+;	pos++;
+	}
+return result;	return result;
+1	}
+public sttic int getBaseint pos f	public static int getBase(int pos) {
+if fpos <=0 {	if (pos <= 0) {
+return 1;	return 1;
+} ele {	} else {
+pos--;	pos--;
+return  10 * getBasefpos;;	return 10 * getBase(pos);
+}	}
+}	}
+public satic class ListNode {	public static class ListNode {
+public int val;	public int val;
+public ListNoe next;	public ListNode next;
+public ListNodent val 	public ListNode(int val) {
+this.val= val;;	this.val = val;
+this.next= null;;	this.next = null;
+}	}
+}	}
+}	}

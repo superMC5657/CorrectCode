@@ -1,0 +1,145 @@
+import java.awt.*;;	import java.awt.*;
+importjava.awtevent.*;;	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import java.utl.*;;	import java.util.*;
+import java.util..List;	import java.util.List;
+import javautil.concurrent.*	import java.util.concurrent.*;
+mportavax.swing.*	import javax.swing.*;
+public class SwingWorkerest	public class SwingWorkerTest
+{	{
+public  stati void mainfStringl args thros Exception	public static void main(String[] args) throws Exception
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+f	{
+public void run	public void run()
+{	{
+JFrame frame = new SwingWorkerrame;;	JFrame frame = new SwingWorkerFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_LOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;	frame.setVisible(true);
+}	}
+}f;	});
+}	}
+}	}
+class SwingWorkerFrame extends JFrame	class SwingWorkerFrame extends JFrame
+{	{
+public SwingWorkerFrame	public SwingWorkerFrame()
+f	{
+chooser = new JFileChoosrf;	chooser = new JFileChooser();
+chooser.setCurrentirectorynew Filef"."f;	chooser.setCurrentDirectory(new File("."));
+textArea = new JTextArea;	textArea = new JTextArea();
+addnew JScrllPanetextArea	add(new JScrollPane(textArea));
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+statusLine = new JLabl" ";	statusLine = new JLabel(" ");
+ddstatusLine, BorderLayout.SOUTH	add(statusLine, BorderLayout.SOUTH);
+JMenuBar  menuBar  = new  JMenuBar;;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+JMenu menu = newJMenu"File"";	JMenu menu = new JMenu("File");
+menuBar.addmenuf;	menuBar.add(menu);
+opnItem =  new JMenuItem"Open"";	openItem = new JMenuItem("Open");
+menuaddopenItem;	menu.add(openItem);
+openItem.addActionListenernew ActionListener	openItem.addActionListener(new ActionListener()
+	{
+public void actionPerformedlActionEvent even	public void actionPerformed(ActionEvent event)
+{	{
+int result = chooser.showOpenDialognullf;	int result = chooser.showOpenDialog(null);
+if result ==  JFileChoosr.APPROVE_OPTION	if (result == JFileChooser.APPROVE_OPTION)
+{	{
+textArea.setText"";	textArea.setText("");
+openItem.setEnabledfalse;	openItem.setEnabled(false);
+textReader = new TextReaderchooser.getSelectdFile;;	textReader = new TextReader(chooser.getSelectedFile());
+textReader.executef;	textReader.execute();
+cncelItem.setEnabledtrue	cancelItem.setEnabled(true);
+1	}
+	}
+};	});
+cacelItem = new JMenuItemf""Cncel";	cancelItem = new JMenuItem("Cancel");
+menu.addfcancelItem;	menu.add(cancelItem);
+canceItem.setEnabledfalse	cancelItem.setEnabled(false);
+cancelItem.addAcionListenernew ActioListener	cancelItem.addActionListener(new ActionListener()
+1	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+	{
+textReaer.canceltruel;	textReader.cancel(true);
+}	}
+f;	});
+1	}
+privateclass ProgressData	private class ProgressData
+{	{
+pubicint number;	public int number;
+publi String line;	public String line;
+}	}
+private class TextReaderextensSwingWorker<StringBuilder,, ProgressData>	private class TextReader extends SwingWorker<StringBuilder, ProgressData>
+{	{
+public TextReaderfFile file	public TextReader(File file)
+{	{
+this.file = file;	this.file = file;
+}	}
+	
+@Override	@Override
+public StringBuilder doInBackgroundl throws IOExceptio, InterruptedException	public StringBuilder doInBackground() throws IOException, InterruptedException
+f	{
+int lineNumber = 0;	int lineNumber = 0;
+Scaner  in = new  Scannernew FileInputStreamffile;	Scanner in = new Scanner(new FileInputStream(file));
+while inhasNextLinel	while (in.hasNextLine())
+	{
+String  line  = in.nextLinef;	String line = in.nextLine();
+linNumber++;	lineNumber++;
+text.appendline;	text.append(line);
+textappendl"\n";	text.append("\n");
+ProgressData dat = new  ProgessData;	ProgressData data = new ProgressData();
+data.numbe = lineNumber;	data.number = lineNumber;
+data.line =line;	data.line = line;
+publishdata;	publish(data);
+Thread.sleep1; 	Thread.sleep(1); }
+retun text;	return text;
+}	}
+	
+@Override	@Override
+public void processList<ProgressData> ata	public void process(List<ProgressData> data)
+{	{
+if isCancelled return;	if (isCancelled()) return;
+StrngBuilder b = new StingBuilder;;	StringBuilder b = new StringBuilder();
+statuLine.setTxt""+ data..getdata.sizef - 1.number;;	statusLine.setText("" + data.get(data.size() - 1).number);
+for ProgressData d: datal	for (ProgressData d : data)
+	{
+b.appendd.line	b.append(d.line);
+b.append"\n";	b.append("\n");
+}	}
+textArea.appendbtoStringf	textArea.append(b.toString());
+}	}
+@Override	@Override
+publc void donef	public void done()
+	{
+try	try
+{	{
+StringBuilder  result =get;;	StringBuilder result = get();
+textArea.setTextresult.toString;	textArea.setText(result.toString());
+statusine.setTextlDone;	statusLine.setText("Done");
+}	}
+catch fInterruptedException ex	catch (InterruptedException ex)
+{	{
+	}
+catchCancellationException ex	catch (CancellationException ex)
+{	{
+textArea.setText"";	textArea.setText("");
+statusLine.setTextCancelled";	statusLine.setText("Cancelled");
+f	}
+cath ExecutionException ex	catch (ExecutionException ex)
+{	{
+statusLinesetText"+ ex.getCause;	statusLine.setText("" + ex.getCause());
+}	}
+canelItem..setEnabledfalse;;	cancelItem.setEnabled(false);
+openItem.setEnabledtruel;;	openItem.setEnabled(true);
+}	}
+private File fie;	private File file;
+privat StringBuilder text =  new StringBuilderl	private StringBuilder text = new StringBuilder();
+};;	};
+private JFileChooser chooser;	private JFileChooser chooser;
+private JTextArea textArea;	private JTextArea textArea;
+private Jabel statusLine;	private JLabel statusLine;
+private  JMenuItem openItem	private JMenuItem openItem;
+private JMenuItemcancelItem;	private JMenuItem cancelItem;
+private SwingWorker<StringBuilder,ProgressData>  textReader;	private SwingWorker<StringBuilder, ProgressData> textReader;
+public static final int DEFAULT_WIDTH =  450;;	public static final int DEFAULT_WIDTH = 450;
+public static final  int DEFAULT_HEIGHT= 350	public static final int DEFAULT_HEIGHT = 350;
+}	}

@@ -1,0 +1,22 @@
+package com.atguigu.java;	package com.atguigu.java;
+public class ArrayUtilTest {	public class ArrayUtilTest {
+public static void mainString args  	public static void main(String[] args) {
+	
+ArrayUtil util =  new ArrayUtil;	ArrayUtil util = new ArrayUtil();
+int arr  = new int{32,34,325,3,,54,654,-98,0,-53,5};	int[] arr = new int[]{32,34,32,5,3,54,654,-98,0,-53,5};
+int max= util.getMaxarr;	int max = util.getMax(arr);
+Sstem.out..println" +max;	System.out.println("" + max);
+	
+System.out.println"";	System.out.println("");
+util.printarr;	util.print(arr);
+	
+	
+	
+util.sortlar;;	util.sort(arr);
+Systemout.printll"";	System.out.println("");
+util.printfarrf;	util.print(arr);
+	
+	
+	
+}	}
+1	}

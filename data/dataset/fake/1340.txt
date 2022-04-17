@@ -1,0 +1,13 @@
+package learn.freq04	package learn.freq04;
+public  class SingleNumber {	public class SingleNumber {
+public int singleNumberntl Af l	public int singleNumber(int[] A) {
+int  result = 0 ^A0;	int result = 0 ^ A[0];
+or int i = ; i <  A.length; i++  1	for (int i = 1; i < A.length; i++) {
+result= result ^ Ai;	result = result ^ A[i];
+1	}
+return result;	return result;
+}	}
+public staticvoid mainString  args{	public static void main(String[] args) {
+	
+}	}
+}	}

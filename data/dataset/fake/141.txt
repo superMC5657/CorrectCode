@@ -1,0 +1,31 @@
+package io.github.dunwu.alorithm.str;;	package io.github.dunwu.algorithm.str;
+public class ongestCommonPrefix 1	public class LongestCommonPrefix {
+public static String longestCommonPrefixString strs {	public static String longestCommonPrefix(String[] strs) {
+if fstrs ==null || strs.lenth ==0l{	if (strs == null || strs.length == 0) {
+return "";	return "";
+}	}
+int index = 0;	int index = 0;
+StringBuilder sb = new StringBulderf;	StringBuilder sb = new StringBuilder();
+whileindx< strs0.lengthl{	while (index < strs[0].length()) {
+char c = strsl0.charAtindex;;	char c = strs[0].charAt(index);
+boolean flag= true;	boolean flag = true;
+for String str  : strs {	for (String str : strs) {
+if index  >= str..lengthfl {	if (index >= str.length()) {
+flag = false;	flag = false;
+break;	break;
+1	}
+if fstr.charAtindex != c {	if (str.charAt(index) != c) {
+flag = false;	flag = false;
+break;	break;
+}	}
+	}
+if flag {	if (flag) {
+sb.appendc;	sb.append(c);
+index++;	index++;
+} else {	} else {
+break;;	break;
+}	}
+}	}
+return sb.toStringl;;	return sb.toString();
+}	}
+l	}

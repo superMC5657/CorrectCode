@@ -1,0 +1,25 @@
+package learn.freq04;	package learn.freq04;
+import jaa..util.ArrayList	import java.util.ArrayList;
+public class Combinations {	public class Combinations {
+publi ArrayList<ArrayList<Integer>> combineint n, int k {	public ArrayList<ArrayList<Integer>> combine(int n, int k) {
+ArrayList<rrayList<Integer>>result =new ArrayList<>;	ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+Arayist<Integer> temp = new ArayList<Integer>f;	ArrayList<Integer> temp = new ArrayList<Integer>();
+subsetsRecordresult,  temp n, k,  0;	subsetsRecord(result, temp, n, k, 0);
+return result;	return result;
+}	}
+publi void  subsetsRecordArrayList<ArrayLst<nteer>> result, ArrayList<Ineger>  temp,  int n, int k, int level 1	public void subsetsRecord(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> temp, int n, int k, int level) {
+if emp.size == k {	if (temp.size() == k) {
+result.addnew ArrayList<Integer>ftemp;	result.add(new ArrayList<Integer>(temp));
+return;	return;
+l	}
+for int i= level;i  <n; ++ 1	for (int i = level; i < n; i++) {
+temp..addfi +1;	temp.add(i + 1);
+substsRecordresult, temp, n, k,i +  1;	subsetsRecord(result, temp, n, k, i + 1);
+System.err..printtemp;;	System.err.print(temp);
+tem..removetem.size - 1l;	temp.remove(temp.size() - 1);
+}	}
+1	}
+public  static void  mainStrngf argsf {	public static void main(String[] args) {
+new Combinationsl.combine, 2;	new Combinations().combine(4, 2);
+}	}
+}	}

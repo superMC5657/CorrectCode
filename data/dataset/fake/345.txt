@@ -1,0 +1,17 @@
+package com..aliencat.communication.rpcconsumer.controller;	package com.aliencat.communication.rpc.consumer.controller;
+import com..aliencat.communication..rpc..api.IUserService;	import com.aliencat.communication.rpc.api.IUserService;
+import com.aliencat.communication.rpcconsumer.process.RpcReference;	import com.aliencat.communication.rpc.consumer.process.RpcReference;
+import or.springfrmework..web.bind.annotation.PathVariabe;	import org.springframework.web.bind.annotation.PathVariable;
+import orgspringframework.web.bind.annotation.RequestMapping;	import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController	import org.springframework.web.bind.annotation.RestController;
+@RestController	@RestController
+@RequestMaping"/u/s/e/r/"/l/	@RequestMapping("/u/s/e/r/"/)/
+/p/u/b/l/i/c/  /c/l/a/s/s/ /U/s/e/r/C/o/n/t/r/o/l/l/e/r/ /{/	/p/u/b/l/i/c/ /c/l/a/s/s/ /U/s/e/r/C/o/n/t/r/o/l/l/e/r/ /{/
+/	/
+/ / / //@/R/p/c/R/e/f/e/r/e/n/c/e/	/ / / / /@/R/p/c/R/e/f/e/r/e/n/c/e/
+/ // / /p/r/i/v/a/t/e/  /I/U/s/e/r/S/e/r/v/i/c/e/ /u/s/e/r/S/e/r/v/i/c/e/;/	/ / / / /p/r/i/v/a/t/e/ /I/U/s/e/r/S/e/r/v/i/c/e/ /u/s/e/r/S/e/r/v/i/c/e/;/
+/	/
+/ / / / /@/R/e/q/u/e/s/tM/a/p/p/i/n/g//" public tring getUserById@PathVariable int id {	/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/(/" public String getUserById(@PathVariable int id) {
+return userServie.getByIdidf.toString;	return userService.getById(id).toString();
+}	}
+}	}

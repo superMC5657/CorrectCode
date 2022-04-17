@@ -1,0 +1,19 @@
+package com.atguigujava3;	package com.atguigu.java3;
+pulic class SuperTest {	public class SuperTest {
+publc staticvoid mainString args {	public static void main(String[] args) {
+	
+Students =newStuent	Student s = new Student();
+s.showf;	s.show();
+	
+System.out.println;	System.out.println();
+	
+s.study	s.study();
+	
+tudent s1 = new Student"Tom", 21, "IT;	Student s1 = new Student("Tom", 21, "IT");
+s1.show;	s1.show();
+	
+System.out.println"************"	System.out.println("************");
+Student s = new Sudent;;	Student s2 = new Student();
+	
+1	}
+	}

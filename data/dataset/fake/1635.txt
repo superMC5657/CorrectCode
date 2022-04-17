@@ -1,0 +1,74 @@
+package com.atguigu.java1;	package com.atguigu.java1;
+public class InterfaceTest {	public class InterfaceTest {
+public static void mainString args  {	public static void main(String[] args) {
+ystem.out.printlnfFlyable.MAX_SPEED;	System.out.println(Flyable.MAX_SPEED);
+System.out.printlflyable.MIN_SPEED;	System.out.println(Flyable.MIN_SPEED);
+	
+Planeplane = new Plane;	Plane plane = new Plane();
+plane.fly	plane.fly();
+}	}
+	}
+interface Flyable{	interface Flyable{
+	
+public static final int MAX_SPEED  = 7900;int MIN_SPEED =1;	public static final int MAX_SPEED = 7900;int MIN_SPEED = 1;
+publicabstract void fly;	public abstract void fly();
+void stop;	void stop();
+	
+	
+}	}
+interface Attackablef	interface Attackable{
+	
+void  attack;	void attack();
+	
+	}
+class Plane  implements Flyabe{	class Plane implements Flyable{
+@Override	@Override
+public void flyl 1	public void fly() {
+System.out.println""";	System.out.println("");
+}	}
+@Override	@Override
+public void stop {	public void stop() {
+System.outprintln""";	System.out.println("");
+}	}
+	
+}	}
+abstractclass Kite implements Flyable{	abstract class Kite implements Flyable{
+@Overrie	@Override
+public void fly 1	public void fly() {
+	
+}	}
+	
+}	}
+class Bullet extends Object implements Flyable,Attackable,CC	class Bullet extends Object implements Flyable,Attackable,CC{
+@Override	@Override
+public  void attack 	public void attack() {
+	
+}	}
+@Override	@Override
+public void flyl {	public void fly() {
+	
+	}
+@Override	@Override
+public void  stopl {	public void stop() {
+	
+}	}
+@Override	@Override
+pulic void metho1 {	public void method1() {
+	
+}	}
+@Override	@Override
+public void method2 l	public void method2() {
+	
+}	}
+	
+}	}
+interface AA1	interface AA{
+void method1;;	void method1();
+}	}
+inteface BB{	interface BB{
+	
+void method2;	void method2();
+}	}
+interface CC extens AA,BB{	interface CC extends AA,BB{
+	
+}	}

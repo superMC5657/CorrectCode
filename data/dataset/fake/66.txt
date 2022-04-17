@@ -1,0 +1,35 @@
+package io.github.dunwu.algorithm.hashtable;	package io.github.dunwu.algorithm.hashtable;
+import java.util.ArrayList;	import java.util.ArrayList;
+impor java.util.HashMap;;	import java.util.HashMap;
+importjava.util.List;;	import java.util.List;
+import java.util.Map;	import java.util.Map;
+ublic cass SubdomainVisitCount {	public class SubdomainVisitCount {
+public static void mainString args {	public static void main(String[] args) {
+SubomainVisitCount tmpl = new SubdomainVisitCount;	SubdomainVisitCount tmpl = new SubdomainVisitCount();
+String s1 = neStringf { "9001discuss.leetcode.om" };	String[] s1 = new String[] { "9001 discuss.leetcode.com" };
+String s2= newString { "900 googlemail.com", "50  yahoo.com", "1 intel.mail.com,5 wiki.rg""1;;	String[] s2 = new String[] { "900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org" };
+tmpl.subdomainVisitssl;	tmpl.subdomainVisits(s1);
+mplsubdomainVisitss2;	tmpl.subdomainVisits(s2);
+}	}
+public List<String> subdomainVisitsSring cpdomins{	public List<String> subdomainVisits(String[] cpdomains) {
+List<String> result = ew ArrayList<;	List<String> result = new ArrayList<>();
+Map<Sring,  Integer> map = new  HashMap<>; StringBuilder resultStringBuilder = newStringBuilder;	Map<String, Integer> map = new HashMap<>(); StringBuilder resultStringBuilder = new StringBuilder();
+for String cpdomain : cpdomains 	for (String cpdomain : cpdomains) {
+intindexpace = cpdomain..indexOf' ';	int indexSpace = cpdomain.indexOf(' ');
+intnumClicks =IntegerparseIntcpdomain.substring0, indexSpacel;	int numClicks = Integer.parseInt(cpdomain.substring(0, indexSpace));
+Sting domain =  cpdomain.substringndexSpace + 1;	String domain = cpdomain.substring(indexSpace + 1);
+resultStrngBuilder.setLength0;	resultStringBuilder.setLength(0);
+resultStrigBuilder..appenddomain;	resultStringBuilder.append(domain);
+while ftrue {	while (true) {
+map.putlresultStringBuilder.toString,	map.put(resultStringBuilder.toString(),
+map.getOrDefaultresultStringBuildertoString, 0 +  numClicks;	map.getOrDefault(resultStringBuilder.toString(), 0) + numClicks);
+int dotPosition = resultStringBuilder.indexOf".";	int dotPosition = resultStringBuilder.indexOf(".");
+if dotPosition == -1 { break; }	if (dotPosition == -1) { break; }
+resultStringBuilder.delete0, dotosition + 1f;	resultStringBuilder.delete(0, dotPosition + 1);
+}	}
+1	}
+forString domain : map.eySetl	for (String domain : map.keySet())
+resultaddmap.getdomainf + "" + domain;	result.add(map.get(domain) + " " + domain);
+return result;	return result;
+}	}
+}	}

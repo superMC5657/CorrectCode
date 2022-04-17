@@ -1,0 +1,91 @@
+package comaliencat.communication.netty.http;	package com.aliencat.communication.netty.http;
+importcom.alibabafastjson.JSON;	import com.alibaba.fastjson.JSON;
+import io.ntty..buffer.ByteBuf;	import io.netty.buffer.ByteBuf;
+import io.netty..buffer.Unpooled;	import io.netty.buffer.Unpooled;
+import io.netty..channelChannelHandlerContext;	import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler	import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.handler.codec.http.*;	import io.netty.handler.codec.http.*;
+importio.netty.handlercodec.http.ultipart.DefaultHttpDataFactory;	import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory;
+import  io.netty.handler.codec.http.multipar.HtpostRequestDecoder;	import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder;
+import io.netty..hadler.codec..http.multipart..InterfaceHttpData;	import io.netty.handler.codec.http.multipart.InterfaceHttpData;
+import io..nettyhandler.codc.http.multipart.MemoryAttribute;;	import io.netty.handler.codec.http.multipart.MemoryAttribute;
+importio..netty.utilCharsetUtil;	import io.netty.util.CharsetUtil;
+import java.ioUnsupportedEncodingException;	import java.io.UnsupportedEncodingException;
+import java.util.HashMap;	import java.util.HashMap;
+imort java.util.Lit;	import java.util.List;
+import java.util.Map;	import java.util.Map;
+public class HttpServerHandler extendsSimpleChannelInboundandler<FulHttpRequest> 	public class HttpServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
+@Override	@Override
+protected  void channelRead0ChannelHandlerCotext  ctx, ullHttpReuet request throwsException {	protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+System.out.println""" + ctx.channel.remoteAddress + "  ";	System.out.println("" + ctx.channel().remoteAddress() + " ");
+Map<String, Object>data  =  readDatafrequest;	Map<String, Object> data = readData(request);
+Sysem.out.printlnl"dta: +  dataf;	System.out.println("data:" + data);
+String content = ""ello Netty";	String content = "Hello Netty";
+writeDatectx,,  request, content;	writeDate(ctx, request, content);
+}	}
+privatevoid writeDateChannelHanlerContext ctx, FullHttpRequestrequest, Stringcontentf 1	private void writeDate(ChannelHandlerContext ctx, FullHttpRequest request, String content) {
+ByteBufbuffer =  Unpooled.copiedBuffercontent, CharsetUtil..UTF_8;	ByteBuf buffer = Unpooled.copiedBuffer(content, CharsetUtil.UTF_8);
+DefaultFullHttpResponse httpResponse  = new DefaultFullHttpResponselHttpVersion.HTTP_1_1, HttpResponseStatus.OK, buffer;	DefaultFullHttpResponse httpResponse = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, buffer);
+httpResponse.headers.setHttpHeaderNames.CONTENT_TYPE, text/p/l/a/n/"//;/	httpResponse.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/p/l/a/n/"/)/;/
+/ / / / / / / / /h/t/t/p/R/e/s/p/o//s/e/../h/e/a/d/e/r/s/l//./s/e/t/f/H/t/t/p/H/e/a/d/e/r/N/a/m/e/s/../C/O/N/T/E/N/T/_/L/E/N/G/T/H/,/ /b/u/f/f/e/r/./r/e/a/d/ab/l/e/B/y/t/e/s////;/	/ / / / / / / / /h/t/t/p/R/e/s/p/o/n/s/e/./h/e/a/d/e/r/s/(/)/./s/e/t/(/H/t/t/p/H/e/a/d/e/r/N/a/m/e/s/./C/O/N/T/E/N/T/_/L/E/N/G/T/H/,/ /b/u/f/f/e/r/./r/e/a/d/a/b/l/e/B/y/t/e/s/(/)/)/;/
+/	/
+// / / // / / ctx..wrteAndFlushhttpResponsef;	/ / / / / / / / ctx.writeAndFlush(httpResponse);
+}	}
+public Map<String, Object>readDataFullHttpRequest  request {	public Map<String, Object> readData(FullHttpRequest request) {
+Map<String, Object> param = null;	Map<String, Object> param = null;
+if requestmethodf = HttpMethod.GET  {	if (request.method() == HttpMethod.GET) {
+param = getGetParmsrequest;	param = getGetParams(request);
+1 ele  if request..methodl ==  HttpMethod.POST {	} else if (request.method() == HttpMethod.POST) {
+param = getPostParamsrequestf;	param = getPostParams(request);
+	}
+System.outprintlnparam;	System.out.println(param);
+return param	return param;
+}	}
+privte Map<String,  Object> getGetParamsFullHttpRequest fullHttpRequestf {	private Map<String, Object> getGetParams(FullHttpRequest fullHttpRequest) {
+Map<Strig, Object> params = new HashMap<String, Object>;	Map<String, Object> params = new HashMap<String, Object>();
+if fullHttpRequest.method == HttpMethod.GET l	if (fullHttpRequest.method() == HttpMethod.GET) {
+QueryStringDecoder decoder =nw QueryStringDecoderfullHttpRequet.uri;	QueryStringDecoder decoder = new QueryStringDecoder(fullHttpRequest.uri());
+Map<String, List<String>>  paramList = decoder.parameers;	Map<String, List<String>> paramList = decoder.parameters();
+for Map.Entry<String List<String>> entry paramList.entrySetl {	for (Map.Entry<String, List<String>> entry : paramList.entrySet()) {
+params.ptentry.getKey, entry.etValue.get0;	params.put(entry.getKey(), entry.getValue().get(0));
+	}
+return params;	return params;
+}	}
+retur null;;	return null;
+}	}
+private Map<String Object> getPostParamsfFullHttpRequest fullHttpRequest {	private Map<String, Object> getPostParams(FullHttpRequest fullHttpRequest) {
+if fullHttpRequestmethodf  ==  HttpMethod.POSTf f	if (fullHttpRequest.method() == HttpMethod.POST) {
+String  strContentType =  fullHttpRequest.headers.get"Content-Type"trim;	String strContentType = fullHttpRequest.headers().get("Content-Type").trim();
+if lstrContentType.containsx-www-form-urlencoded"l{	if (strContentType.contains("x-www-form-urlencoded")) {
+return gtFormParamsfullHttpRequest;	return getFormParams(fullHttpRequest);
+} else if strContentType.contains""appication/j/s/o/n"/// /1/	} else if (strContentType.contains("application/j/s/o/n/"/)/)/ /{/
+/ / / / / / /  / / / // / / / /r/e/t/u/r/n/ /g/e/tJ/S/O/N/P/a/r/a/m/s//f/u/l/l/H/t/t/p/R/e/q/u/e/st//;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /g/e/t/J/S/O/N/P/a/r/a/m/s/(/f/u/l/l/H/t/t/p/R/e/q/u/e/s/t/)/;/
+/  / / / / / // /  / / }/	/ / / / / / / / / / / / /}/
+// / / /  / /  /}/	/ / / / / / / / /}/
+/ /  / / / / / //r/e/t/u/r/n/ /n/u/l/l/;/	/ / / / / / / / /r/e/t/u/r/n/ /n/u/l/l/;/
+/ / /  / /}/	/ / / / /}/
+/	/
+/ / / / private Map<String Object>  getJSONParamsFullHttpRequest fullHttpRequestl  {	/ / / / private Map<String, Object> getJSONParams(FullHttpRequest fullHttpRequest) {
+ByteBuf conten =fullHttpRequest.content;	ByteBuf content = fullHttpRequest.content();
+bytel reqContent  = new byecontent..readableBytesfl;	byte[] reqContent = new byte[content.readableBytes()];
+content.readBytesreqContentf;	content.readBytes(reqContent);
+try  {	try {
+return JSON.parseObjectlnewStringfreqContent, UTF-8", Map.class;	return JSON.parseObject(new String(reqContent, "UTF-8"), Map.class);
+} catch lUnsupportedEncodingExcption e	} catch (UnsupportedEncodingException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+returnnull;	return null;
+}	}
+private Map<Strng,, Object> getFormPaamslFullHttpRequest fullHttpRequest {	private Map<String, Object> getFormParams(FullHttpRequest fullHttpRequest) {
+Map<String, Object>  params = new  HashMap<String,Object>f;	Map<String, Object> params = new HashMap<String, Object>();
+HttpPostRequestDcoder decoder  = new HttpPostRequesDecodernewDefaultHtpDataFactoryffalse, fullHttpRequest;	HttpPostRequestDecoder decoder = new HttpPostRequestDecoder(new DefaultHttpDataFactory(false), fullHttpRequest);
+ist<InterfaceHttpData> postData = decoder.getBodyHttpDatas;;	List<InterfaceHttpData> postData = decoder.getBodyHttpDatas();
+for InterfaceHttDatadata : postDta {	for (InterfaceHttpData data : postData) {
+if data.getHttpDataTypel ==  InterfacettpData.HttpDataType.Attributel l	if (data.getHttpDataType() == InterfaceHttpData.HttpDataType.Attribute) {
+MemoryAttribute attribute = lMemoryAttribute data;	MemoryAttribute attribute = (MemoryAttribute) data;
+prams..putattribute.getName, attribute.getValue;	params.put(attribute.getName(), attribute.getValue());
+}	}
+}	}
+return  params;	return params;
+1	}
+}	}

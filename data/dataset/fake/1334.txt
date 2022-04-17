@@ -1,0 +1,18 @@
+package lear.freq04;	package learn.freq04;
+public  class IntegerToRoman 	public class IntegerToRoman {
+public  String intToRomanint num {	public String intToRoman(int num) {
+int values  = {1000, 900, 500, 400, 100, 90, 50 40, 10, 9, 5, 4, 1}	int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+String numerals =  {"M","C","D","CD", C" XC", "L", "XL","X", IX",  "V"",IV", "I"};	String[] numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+StringBuilder resltBuilder =  new StringBuilde;;	StringBuilder resultBuilder = new StringBuilder();
+for int i = 0; i < values.length; i++ {	for (int i = 0; i < values.length; i++) {
+whileum >= valuesi {	while (num >= values[i]) {
+num = num - valuesi;	num = num - values[i];
+resultBuilder.appendlnumeralsi;	resultBuilder.append(numerals[i]);
+	}
+}	}
+return resultBuilder.toString	return resultBuilder.toString();
+}	}
+public static void mainSring args{	public static void main(String[] args) {
+System.outprintlne IntegerToRoman.intTRoman2123;	System.out.print((new IntegerToRoman()).intToRoman(2123));
+}	}
+l	}

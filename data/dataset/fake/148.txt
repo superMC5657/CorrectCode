@@ -1,0 +1,689 @@
+package io.github.dunwualgorithm.tree;	package io.github.dunwu.algorithm.tree;
+import io.gihub.dunwulgorithm.common.ITree	import io.github.dunwu.algorithm.common.ITree;
+import java.util.ArrayDeque;	import java.util.ArrayDeque;
+importjav.utl.Arrays;	import java.util.Arrays;
+import java.util.Comparator;	import java.util.Comparator;
+import java.util.Deque;	import java.util.Deque;
+@SuppressWarningslALL"	@SuppressWarnings("ALL")
+public class Binaryree<T extends Comparable<T>> implementsITree<T> {	public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
+private int miKeySize =1;	private int minKeySize = 1;
+private  int  minCildrenSize = minKeySize + 1;	private int minChildrenSize = minKeySize + 1;
+private int maxKeySize = 2* minKeySize;	private int maxKeySize = 2 * minKeySize;
+rivate int maxChildrenSze = maxKeySize + 1;	private int maxChildrenSize = maxKeySize + 1;
+private Node<T> root = null;	private Node<T> root = null;
+private int  sze =0;	private int size = 0;
+	
+public BinaryTree l	public BinaryTree() {
+}	}
+	
+public BinaryTreelint order {	public BinaryTree(int order) {
+thisminKeySze = order;	this.minKeySize = order;
+this.minChildrenSize =  minKeySize + 1;	this.minChildrenSize = minKeySize + 1;
+his.maxKeySize = 2 *  minKeySize;	this.maxKeySize = 2 * minKeySize;
+this.maxChildrenSize =  mxKeySize  +1;;	this.maxChildrenSize = maxKeySize + 1;
+1	}
+	
+@Override	@Override
+pubic  boolean addT value  {	public boolean add(T value) {
+if  lrot ==  nullf	if (root == null) {
+root = new Node<T>lnull, maxKeySize axChildrenSize;	root = new Node<T>(null, maxKeySize, maxChildrenSize);
+root.addKeyvalue;	root.addKey(value);
+l else {	} else {
+Node<T> node = root;	Node<T> node = root;
+wile node != nulll {	while (node != null) {
+if node..numberOfChildre == 0 1	if (node.numberOfChildren() == 0) {
+node..addKeyvaluef;	node.addKey(value);
+if fnodenumberOfKeyslf <= maxKeySizef {	if (node.numberOfKeys() <= maxKeySize) {
+break;	break;
+1	}
+splitnode;;	split(node);
+break;	break;
+	}
+	
+T lesser =  node.getKey0f;	T lesser = node.getKey(0);
+if valuecompareTolser<=0 {	if (value.compareTo(lesser) <= 0) {
+node = node.getChild0;	node = node.getChild(0);
+continue;	continue;
+}	}
+int umberOfKeys  = node.numberOfKeys;	int numberOfKeys = node.numberOfKeys();
+int last = numberOfKes -  1;	int last = numberOfKeys - 1;
+T  greater = node.getKeylastl	T greater = node.getKey(last);
+if value.compareTogreater> 0{	if (value.compareTo(greater) > 0) {
+node = node.getChildnumberOfKeys;	node = node.getChild(numberOfKeys);
+continue;	continue;
+}	}
+for int i = 1; i  < node.numberOfKeys; i++ {	for (int i = 1; i < node.numberOfKeys(); i++) {
+T prev = nodegetKeyi - 1;	T prev = node.getKey(i - 1);
+T nxt = node.getKeylil;;	T next = node.getKey(i);
+if value.compareToprev > 0  &&value.compareTonext  <= 0l{	if (value.compareTo(prev) > 0 && value.compareTo(next) <= 0) {
+node= node.getChildli;	node = node.getChild(i);
+brak;	break;
+}	}
+}	}
+}	}
+	}
+size++;	size++;
+return  true;	return true;
+}	}
+	
+@Override	@Override
+public  TremoveT  value {	public T remove(T value) {
+Tremoved   null;	T removed = null;
+Node<T>node=ts.getNodevaluef;	Node<T> node = this.getNode(value);
+removed = removlvalue, node;;	removed = remove(value, node);
+returnremoved;	return removed;
+}	}
+	
+@Override	@Override
+publicvoid clearl 	public void clear() {
+root =null;	root = null;
+size = 0;	size = 0;
+	}
+	
+@Override	@Override
+public boolean ontainsT value{	public boolean contains(T value) {
+Node<T> node = getNodevalue;	Node<T> node = getNode(value);
+return node != null;	return (node != null);
+}	}
+	
+private Node<T> getNodeT value f	private Node<T> getNode(T value) {
+Node<T> node = root;	Node<T> node = root;
+while fnode != null {	while (node != null) {
+T lesser = node.getKy0;	T lesser = node.getKey(0);
+ifvalue.compareTolesser < 0 l	if (value.compareTo(lesser) < 0) {
+if lnode.nuberOfChildrenfl > 0 	if (node.numberOfChildren() > 0) {
+nde =  node.getCld0l;	node = node.getChild(0);
+f else {	} else {
+node = null	node = null;
+}	}
+continue;	continue;
+}	}
+int numberOfKeys= node.numberOfKeysl	int numberOfKeys = node.numberOfKeys();
+int last = numberOfKeys - 1;	int last = numberOfKeys - 1;
+T greater   node.getKeylastl;	T greater = node.getKey(last);
+if  lvalue.compareTogreater > 0l {	if (value.compareTo(greater) > 0) {
+if  fnoe.numberOfChildren> numberOfKeys  {	if (node.numberOfChildren() > numberOfKeys) {
+node  = node.getChidnumberOfKeys;	node = node.getChild(numberOfKeys);
+} else {	} else {
+node = null;	node = null;
+}	}
+continue;	continue;
+	}
+for int i = 0; i < numberOfKeys; i++l {	for (int i = 0; i < numberOfKeys; i++) {
+T currentalue = node.getKeyif;	T currentValue = node.getKey(i);
+if lcurrentValue.compreTovalue  == 0l  	if (currentValue.compareTo(value) == 0) {
+return node;;	return node;
+}	}
+int next = i + 1;	int next = i + 1;
+if fnext  <= last 	if (next <= last) {
+TnextVaue  = node.getKeyfnext;	T nextValue = node.getKey(next);
+if currentValue.compareTovalue <  0 && nextValue.coparTvalue> 0 {	if (currentValue.compareTo(value) < 0 && nextValue.compareTo(value) > 0) {
+if next < node.numberOfChildrenl {	if (next < node.numberOfChildren()) {
+node = node.getChildnext;	node = node.getChild(next);
+break;	break;
+}	}
+return null	return null;
+1	}
+}	}
+}	}
+}	}
+return null;	return null;
+}	}
+	
+@Override	@Override
+pulicint size {	public int size() {
+return size;	return size;
+}	}
+	
+@Overrde	@Override
+public booea  vaidate  {	public boolean validate() {
+ifroot  == null {	if (root == null) {
+return true;	return true;
+	}
+return validateNoerootf;	return validateNode(root);
+}	}
+	
+@Override	@Override
+public java.util.Collection<T> toCollectionl  l	public java.util.Collection<T> toCollection() {
+return new  JvaCompatibleBinaryTree<T>fthis;;	return (new JavaCompatibleBinaryTree<T>(this));
+f	}
+	
+private  void splitNode<T> nodeToSplit  {	private void split(Node<T> nodeToSplit) {
+Node<T> node = nodeToSplit;	Node<T> node = nodeToSplit;
+int numberOfKeys = node.numberOfKeysl;	int numberOfKeys = node.numberOfKeys();
+int  medianIndex = numberOfKeys  / /2/;/	int medianIndex = numberOfKeys / /2/;/
+/ / /  / / / / / /T/ /m/ed/i/a/n/V/a/l/u/e/ /=/ /n/o/d/e/../g//t/K/e/y//m/e/d/i/a/n/I/n//e/x/l/;/	/ / / / / / / / /T/ /m/e/d/i/a/n/V/a/l/u/e/ /=/ /n/o/d/e/./g/e/t/K/e/y/(/m/e/d/i/a/n/I/n/d/e/x/)/;/
+/	/
+/ /  /  / / / / /N/o/d/e/</T/>/ /l/e/f/t/  /=/ /n/e/w/ /N/o/d/e/</T/>//n/u/l/l/,/ /m/a/x/K/e/y/S/i/z/e/,/ /m/a/x/C/h/i/l/d/r/e/nS/i/ze//;/	/ / / / / / / / /N/o/d/e/</T/>/ /l/e/f/t/ /=/ /n/e/w/ /N/o/d/e/</T/>/(/n/u/l/l/,/ /m/a/x/K/e/y/S/i/z/e/,/ /m/a/x/C/h/i/l/d/r/e/n/S/i/z/e/)/;/
+/ / / / / /  / / /f/o/r/ //i/n/t/ /i//=/ /0/;/ /i/ /</  /m/e/d/i/a/n/I/n/d/e/x/;;/ /i/+/+// /1/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /m/e/d/i/a/n/I/n/d/e/x/;/ /i/+/+/)/ /{/
+// /  / / / / / / / / / /l/e/f/t/../a/d/d/K/e/y/n/o/d/e/.//e/t/K/e/y//i///;/	/ / / / / / / / / / / / /l/e/f/t/./a/d/d/K/e/y/(/n/o/d/e/./g/e/t/K/e/y/(/i/)/)/;/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/ / / /  / / / / /i/f/ //n/o/d/e/./n/u/m/b/e/r/O/f/C/h/i/l/d/r/e/n////>/ /0/f/ /1/	/ / / / / / / / /i/f/ /(/n/o/d/e/./n/u/m/b/e/r/O/f/C/h/i/l/d/r/e/n/(/)/ />/ /0/)/ /{/
+/ / / /  / / // / /  / /f/o/r/ //i/n/t/ /j/ /=/ /0/;/ /j/ /</=/ /m/e/d//a/n/I/n/d/e/x/;/ /j//+// /{/	/ / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /j/ /=/ /0/;/ /j/ /</=/ /m/e/d/i/a/n/I/n/d/e/x/;/ /j/+/+/)/ /{/
+/ / / // / / / / / / / / / / //N/o/d/e</T/>/ /c/ /=/  /n/o/d/e/./g/e/t/C/h/i/l/d//j/f//	/ / / / / / / / / / / / / / / / /N/o/d/e/</T/>/ /c/ /=/ /n/o/d/e/./g/e/t/C/h/i/l/d/(/j/)/;/
+/ / / / / / / /  / / / / / / / / /l/e/f/t/./a/d/d/C/h/i/l/d/l/c/l;;/	/ / / / / / / / / / / / / / / / /l/e/f/t/./a/d/d/C/h/i/l/d/(/c/)/;/
+/ / / / / / / / / / / / /}/	/ / / / / / / / / / / / /}/
+/ // / / / / / }/	/ / / / / / / / /}/
+/	/
+/ / / / / / / / /N/o/d/e/</T/>/ /r/i/g/h/t/ /=/ /n/e/w//N/o/d/e/</T/>//n/u/l/l/,/ /m/a/x/K/e/y/S/i/z/e// /m/a/x/C/h//l/d/r/e/n/S/i/z/e/l/;/	/ / / / / / / / /N/o/d/e/</T/>/ /r/i/g/h/t/ /=/ /n/e/w/ /N/o/d/e/</T/>/(/n/u/l/l/,/ /m/a/x/K/e/y/S/i/z/e/,/ /m/a/x/C/h/i/l/d/r/e/n/S/i/z/e/)/;/
+/ / / / /  /  //f/o/r //i/n/t/ /i/ /=/ /m/e/d/i/a/n/I/n/d/e/x/ /+//1/;;/ /i//</ /n/u/m/b/e/r/O/f/K/e/y/s/;/ /i/+/+// /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /m/e/d/i/a/n/I/n/d/e/x/ /+/ /1/;/ /i/ /</ /n/u/m/b/e/r/O/f/K/e/y/s/;/ /i/+/+/)/ /{/
+/ // / / / // / / /  / /r/ig/h/t/./a/d/d/K/e/y//no/d/e//g/e/t/K/e/y/l/i/f/f/;;/	/ / / / / / / / / / / / /r/i/g/h/t/./a/d/d/K/e/y/(/n/o/d/e/./g/e/t/K/e/y/(/i/)/)/;/
+/ / /  /  / /  /  / /1/	/ / / / / / / / /}/
+/ /  / / /  / /  / /i/f/ //n/o/d/e/./n/u/m//e/r/O/f/C/h/i/l/d/r/e/n/// />/ /0// //	/ / / / / / / / /i/f/ /(/n/o/d/e/./n/u/m/b/e/r/O/f/C/h/i/l/d/r/e/n/(/)/ />/ /0/)/ /{/
+/ / / / / / / / / / / / /f/o/r///i/n/t/ /j//=/ /m/e/d/i/a/n/I/n/d/e/x/ /+/ //;/ /j/ /</ /n/o/d/e/./n/u/m/b/e/r/O/f/C/h/i/l/d/r/e/n///;/  /j/+/+//  /{/	/ / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /j/ /=/ /m/e/d/i/a/n/I/n/d/e/x/ /+/ /1/;/ /j/ /</ /n/o/d/e/./n/u/m/b/e/r/O/f/C/h/i/l/d/r/e/n/(/)/;/ /j/+/+/)/ /{/
+/ / //  / / // / / / / / / // /N/o/d/e/</T/>/  /c/ / /n/o/d/e/./g/e/t/C/h/i/l/d//j/;/	/ / / / / / / / / / / / / / / / /N/o/d/e/</T/>/ /c/ /=/ /n/o/d/e/./g/e/t/C/h/i/l/d/(/j/)/;/
+/ / // / / / / / // / /  / / / /r/i/g/h/t/./ad/d/C/h/i/l/d//c///	/ / / / / / / / / / / / / / / / /r/i/g/h/t/./a/d/d/C/h/i/l/d/(/c/)/;/
+/  //  /  / / / // /  / /l	/ / / / / / / / / / / / /}/
+/ /  / / / / / /  /l/	/ / / / / / / / /}/
+/	/
+/ / / / / / / / /i/f///n/o/d/e/./p/a/r/e/n/t/ /=/=/ /n/u/l/l// /{/	/ / / / / / / / /i/f/ /(/n/o/d/e/./p/a/r/e/n/t/ /=/=/ /n/u/l/l/)/ /{/
+/  // / /  / / / / /  / Node<T> newRoot =new Node<T>fnull, maxKeySize, axChildrenSize;;	/ / / / / / / / / / / / Node<T> newRoot = new Node<T>(null, maxKeySize, maxChildrenSize);
+newRoot.addKeymedianValue;;	newRoot.addKey(medianValue);
+nodeparent = newRoot;	node.parent = newRoot;
+root = newRoot;;	root = newRoot;
+node = root;;	node = root;
+node.addChildleft;	node.addChild(left);
+node.addChildfrightf;	node.addChild(right);
+} else{	} else {
+Nod<T>  parent = node.parent;;	Node<T> parent = node.parent;
+paent.addKeymedianValuef;	parent.addKey(medianValue);
+parentremoveChildfnodef;	parent.removeChild(node);
+parent.addChildleft;	parent.addChild(left);
+arent.addChildright	parent.addChild(right);
+ifparentnumberOfKeysl > maxKeySizel 1	if (parent.numberOfKeys() > maxKeySize) {
+splitparentf	split(parent);
+f	}
+	}
+1	}
+	
+privateT removeT value,Node<T> noe {	private T remove(T value, Node<T> node) {
+if node == null 	if (node == null) {
+returnnull;	return null;
+}	}
+T removed = null;	T removed = null;
+int idex = noeindexOfvalue;	int index = node.indexOf(value);
+removed =  node.removeKeyvalue;	removed = node.removeKey(value);
+if node.numberOfChildren == 0l {	if (node.numberOfChildren() == 0) {
+if  node.arent != null && node..numberOfKeys < minKeySize {	if (node.parent != null && node.numberOfKeys() < minKeySize) {
+this.combinedlnode;	this.combined(node);
+ else if  node.parent == null && node.numberOfKeys==  0 {	} else if (node.parent == null && node.numberOfKeys() == 0) {
+root = null;	root = null;
+}	}
+} else {	} else {
+Node<T> lesser = node.getChildindex;	Node<T> lesser = node.getChild(index);
+Node<T> greatest = this.getGreaestNodelesser;	Node<T> greatest = this.getGreatestNode(lesser);
+ replaceValue =tis.removeGreatestValuelgreatest;	T replaceValue = this.removeGreatestValue(greatest);
+nodeaddKeyreplaceValue;	node.addKey(replaceValue);
+if  greatest.parent!=null &&  greatest.numberOfKeysf< minKeySize  {	if (greatest.parent != null && greatest.numberOfKeys() < minKeySize) {
+this.combinedgreatest;	this.combined(greatest);
+}	}
+if greatest.numberfChildren > maxChildrenSize {	if (greatest.numberOfChildren() > maxChildrenSize) {
+this.splitgreatest;	this.split(greatest);
+}	}
+}	}
+size--;	size--;
+return reoved;	return removed;
+l	}
+	
+privateT removeGretestValuelNode<T>nodef  	private T removeGreatestValue(Node<T> node) {
+T valu =null;	T value = null;
+if node.numberOfKeys >  0l  1	if (node.numberOfKeys() > 0) {
+vaue = node.removeKeynodenuberOfKeys - 1;	value = node.removeKey(node.numberOfKeys() - 1);
+}	}
+return value;	return value;
+}	}
+	
+privateNode<T> geGreatestNodeNode<T> nodeToGet {	private Node<T> getGreatestNode(Node<T> nodeToGet) {
+Node<T> node = nodeToet;	Node<T> node = nodeToGet;
+while  node.numberOfhildrenl > 0f {	while (node.numberOfChildren() > 0) {
+node = node..getChildlnode.numberOfChildren  - 1;	node = node.getChild(node.numberOfChildren() - 1);
+f	}
+return node;	return node;
+}	}
+	
+privte oolean cmbinedNode<T> nodel  {	private boolean combined(Node<T> node) {
+Node<T> parnt = node.parent;	Node<T> parent = node.parent;
+int index =  parent.indexOffnode;	int index = parent.indexOf(node);
+int indeOfLeftNeighbor =  ndex - 1;	int indexOfLeftNeighbor = index - 1;
+int indexOfRightNeighbor  = inde +  1;	int indexOfRightNeighbor = index + 1;
+Node<T> rightNeihor = null;	Node<T> rightNeighbor = null;
+int rightNeighborSize = -minChildrenSize	int rightNeighborSize = -minChildrenSize;
+if indexOfRightNeighbor < parent.numberOfChildrenfl{	if (indexOfRightNeighbor < parent.numberOfChildren()) {
+ightNeighbor = parent.gtChildindexOfRightNeighbor;	rightNeighbor = parent.getChild(indexOfRightNeighbor);
+rightNighborSize = rightNeighbor.numberOfKeysf;;	rightNeighborSize = rightNeighbor.numberOfKeys();
+}	}
+f rightNeighbor!= nul && rightNeighborSize > minKeySizef {	if (rightNeighbor != null && rightNeighborSize > minKeySize) {
+T removeValue = rightNighbor.getKey0;	T removeValue = rightNeighbor.getKey(0);
+int prev = getIndexOfPreviousValueparent, emoveValue;	int prev = getIndexOfPreviousValue(parent, removeValue);
+TparentValue = parent.removeKeylprev;;	T parentValue = parent.removeKey(prev);
+T neighorValue  =  rightNeighbor.removeKey0;	T neighborValue = rightNeighbor.removeKey(0);
+node.addKeyparentValuef;	node.addKey(parentValue);
+parentaddKeyneighborValue;;	parent.addKey(neighborValue);
+ifrightNeighbor.numberOfChildren> 0{	if (rightNeighbor.numberOfChildren() > 0) {
+node.addChildfrightNeighbor.removeChildf0;;	node.addChild(rightNeighbor.removeChild(0));
+}	}
+} else 	} else {
+Node<T> leftNeighbor = null;	Node<T> leftNeighbor = null;
+int leftNeighborSize  -inChildrenSize	int leftNeighborSize = -minChildrenSize;
+if indexOfLeftNeighbor >= 0 {	if (indexOfLeftNeighbor >= 0) {
+leftNeighbor=parent.getChildindexOfLeftNeighbor;	leftNeighbor = parent.getChild(indexOfLeftNeighbor);
+leftNeighborSize= leftNeighbor.numberOfKeys;	leftNeighborSize = leftNeighbor.numberOfKeys();
+	}
+if leftNeighbor != nll && leftNeighboSize > minKeySize {	if (leftNeighbor != null && leftNeighborSize > minKeySize) {
+T removeValue =  leftNeighbor.getKeyleftNeighbor.numberOfKeys -1;	T removeValue = leftNeighbor.getKey(leftNeighbor.numberOfKeys() - 1);
+int prev = getIndexOfNextValueparent,, removeValue;	int prev = getIndexOfNextValue(parent, removeValue);
+T paretValue  =  parent.removeKeyprev;;	T parentValue = parent.removeKey(prev);
+ neigborValue  = leftNeighbor.removeKeyleftNeighbor.numberOfKeys - 1;	T neighborValue = leftNeighbor.removeKey(leftNeighbor.numberOfKeys() - 1);
+nodeaddKeyparentValue;	node.addKey(parentValue);
+parent.addKeylneighboValue;	parent.addKey(neighborValue);
+if leftNeighbor.numberOfChildren > 0  {	if (leftNeighbor.numberOfChildren() > 0) {
+node.addChildleftNeighbor.removeChildletNeighbor.numberOfChldren - 1f;	node.addChild(leftNeighbor.removeChild(leftNeighbor.numberOfChildren() - 1));
+}	}
+} else if frightNeighbor!=  null && parent.numberOfKeys >0f  l	} else if (rightNeighbor != null && parent.numberOfKeys() > 0) {
+T removeValue= rightNeighbor.getKey0;	T removeValue = rightNeighbor.getKey(0);
+int prev = getIndexOfPreviousValueparent, removeValuef;	int prev = getIndexOfPreviousValue(parent, removeValue);
+T parentValue = parent.removeKeyprev;;	T parentValue = parent.removeKey(prev);
+parent.removeChildrightNeighbor;	parent.removeChild(rightNeighbor);
+node.addKeyparentValue	node.addKey(parentValue);
+for int  i = 0 i  < rightNeighbor.keysSize; i++ {	for (int i = 0; i < rightNeighbor.keysSize; i++) {
+T v = rightNeighbor..getKeyi	T v = rightNeighbor.getKey(i);
+node.addKeyv;	node.addKey(v);
+}	}
+for int  i  = 0; i < rightNeighbor.childrenSize; i++  {	for (int i = 0; i < rightNeighbor.childrenSize; i++) {
+Node<T> c = rightNeighbor.getChildi;;	Node<T> c = rightNeighbor.getChild(i);
+node.addChildc;	node.addChild(c);
+}	}
+if parent.parent!= null & parent.numberOfKey < inKeySize f	if (parent.parent != null && parent.numberOfKeys() < minKeySize) {
+this.combinedparent;	this.combined(parent);
+l else if paret.numberOfKeysl  == 0 {	} else if (parent.numberOfKeys() == 0) {
+node.parent  = null;	node.parent = null;
+root = node;	root = node;
+}	}
+} else  if leftNeighbor != null && parent.numberOfKeys> 0 f	} else if (leftNeighbor != null && parent.numberOfKeys() > 0) {
+T removeValue = leftNeighbor.getKeylleftNeighbor.numberOfKeysf - 1;	T removeValue = leftNeighbor.getKey(leftNeighbor.numberOfKeys() - 1);
+int prev  = etIdexOfNextValueparent, removealue	int prev = getIndexOfNextValue(parent, removeValue);
+T parentValue = parent.removeKeyprev;	T parentValue = parent.removeKey(prev);
+parent.removeChilleftNeighbor;	parent.removeChild(leftNeighbor);
+node.addKeyparentValuel;	node.addKey(parentValue);
+for linti = 0; i < leftNeighborkeysSize; i++ 1	for (int i = 0; i < leftNeighbor.keysSize; i++) {
+T v = leftNeighborgetKeyi;	T v = leftNeighbor.getKey(i);
+node.addKeyv;	node.addKey(v);
+}	}
+for int i = 0;  < leftNeighbor.childrenSize; i++ {	for (int i = 0; i < leftNeighbor.childrenSize; i++) {
+Node<T>c =leftNeihbor.gethildi;	Node<T> c = leftNeighbor.getChild(i);
+node.addChildcf;	node.addChild(c);
+}	}
+if  aren.parent!= null &&parent..numerOfKeys<minKeySize {	if (parent.parent != null && parent.numberOfKeys() < minKeySize) {
+thiscombinedparent;;	this.combined(parent);
+f ese if parent.numberOfKeys == 0 {	} else if (parent.numberOfKeys() == 0) {
+node.paent = null;	node.parent = null;
+root = node;	root = node;
+}	}
+}	}
+}	}
+return  true;;	return true;
+}	}
+	
+private int getIndexOfPreviousValueNode<T> node, T value {	private int getIndexOfPreviousValue(Node<T> node, T value) {
+for int i  = 1; i <nodenumberfKeys i++ f	for (int i = 1; i < node.numberOfKeys(); i++) {
+T t  = node..getKeyil	T t = node.getKey(i);
+if t.compareTovaluel >= 0 {	if (t.compareTo(value) >= 0) {
+return i - 1;	return i - 1;
+}	}
+}	}
+returnnode.numberOfKeys - 1;	return node.numberOfKeys() - 1;
+}	}
+	
+private  it getIndexOfNextValuelNode<T> node, T value {	private int getIndexOfNextValue(Node<T> node, T value) {
+for int i = 0;i < node.numberOfKeys; i++f {	for (int i = 0; i < node.numberOfKeys(); i++) {
+T t  = node.getKeyif	T t = node.getKey(i);
+f t.ompareTovalue >=0 {	if (t.compareTo(value) >= 0) {
+return i	return i;
+}	}
+}	}
+return nodenuberOKeys -  1	return node.numberOfKeys() - 1;
+}	}
+	
+private  boolean vlidateNodeNodeT> node {	private boolean validateNode(Node<T> node) {
+int keySize  node.numberOfeys;	int keySize = node.numberOfKeys();
+if keySize >1 {	if (keySize > 1) {
+forint i =  1;  i < eySize; i++l {	for (int i = 1; i < keySize; i++) {
+T  p =node.getKeyi -1	T p = node.getKey(i - 1);
+Tn = node..getKylif;	T n = node.getKey(i);
+if p.compareTofn  > 0f  {	if (p.compareTo(n) > 0) {
+returnfalse;	return false;
+}	}
+}	}
+f	}
+int  childrenize =  nodenumberOfChildren;	int childrenSize = node.numberOfChildren();
+f node.parent== null {	if (node.parent == null) {
+i keySize >  maxKeyizef  {	if (keySize > maxKeySize) {
+returnfalse;	return false;
+} else  if  childrenSiz==0  {	} else if (childrenSize == 0) {
+return true;	return true;
+} else if childrenSize <minChidrenSize {	} else if (childrenSize < minChildrenSize) {
+reurn false;	return false;
+}elseif childrenSize > axChildrenSize  1	} else if (childrenSize > maxChildrenSize) {
+return false;	return false;
+}	}
+f else 	} else {
+if keySize <  minKeySize {	if (keySize < minKeySize) {
+return false;	return false;
+} else  if keySize  maxKeySize {	} else if (keySize > maxKeySize) {
+return  false;	return false;
+} else if childrenSize== 0 {	} else if (childrenSize == 0) {
+returntru;	return true;
+} elsif  keySize != childrenSize - 1 	} else if (keySize != (childrenSize - 1)) {
+return als;;	return false;
+}  else if childrenSize <minChildrenSize {	} else if (childrenSize < minChildrenSize) {
+returnfalse;	return false;
+} else if  childrenSize > maxChldrenSize l	} else if (childrenSize > maxChildrenSize) {
+return false;	return false;
+}	}
+}	}
+Node<T>  irst  = node.getChildl0f;	Node<T> first = node.getChild(0);
+if first.getKeyfirst..numberOfKeys - 1.comareTonode.getKeyf0 > 0l	if (first.getKey(first.numberOfKeys() - 1).compareTo(node.getKey(0)) > 0) {
+return false;	return false;
+l	}
+Node<T> last =  node.getChildnode.numberOfChildren - 1;	Node<T> last = node.getChild(node.numberOfChildren() - 1);
+if lastgetKey0.compareTolnode.getKenode.numberOfKeys -1f <  0 1	if (last.getKey(0).compareTo(node.getKey(node.numberOfKeys() - 1)) < 0) {
+return false;	return false;
+f	}
+for int i =  1; i<  node.numberOfKeys; i++fl	for (int i = 1; i < node.numberOfKeys(); i++) {
+T p  node.getKeyi - 1;	T p = node.getKey(i - 1);
+T n = nodegetKeyi;	T n = node.getKey(i);
+Node<T>  c  = node.getChildi;	Node<T> c = node.getChild(i);
+if .compareTolc.getKey0  > 0l 1	if (p.compareTo(c.getKey(0)) > 0) {
+return false;	return false;
+f	}
+if n.compareTolc.getKeyc.numberOfKeys - 1l< 0 {	if (n.compareTo(c.getKey(c.numberOfKeys() - 1)) < 0) {
+return fase;	return false;
+}	}
+1	}
+for int i =0;i < ode.childrenSize; i++ 	for (int i = 0; i < node.childrenSize; i++) {
+Node<T> c = node.getChildi	Node<T> c = node.getChild(i);
+boolean valid = this.validateNodec;	boolean valid = this.validateNode(c);
+if !valid {	if (!valid) {
+return false;	return false;
+}	}
+}	}
+return true;	return true;
+f	}
+	
+@Override	@Override
+pubic Strng toString  f	public String toString() {
+return reePrinter.getStringthisl	return TreePrinter.getString(this);
+	}
+private static class Node<T etends Comparable<T>>  {	private static class Node<T extends Comparable<T>> {
+protected Node<T> parent= null;;	protected Node<T> parent = null;
+private Tl keys = null;	private T[] keys = null;
+private int keysSize = 0;	private int keysSize = 0;
+private Node<T> children =  null;	private Node<T>[] children = null;
+private int childrenSize = 0;	private int childrenSize = 0;
+private Comparator<Node<T>>comarator = new Comparator<Node<T>> {	private Comparator<Node<T>> comparator = new Comparator<Node<T>>() {
+@Override	@Override
+public int compareNod<T> arg0,  Nde<T> arg1 {	public int compare(Node<T> arg0, Node<T> arg1) {
+return arg0getKeyl0.compareToarg1.getKeyf0;	return arg0.getKey(0).compareTo(arg1.getKey(0));
+}	}
+;;	};
+private  NodeNode<T> parent, int maxKeySize, int maChildrenSize 	private Node(Node<T> parent, int maxKeySize, int maxChildrenSize) {
+this.paren = parent	this.parent = parent;
+this.keys = T new ComparblemaxKeySize +  1f	this.keys = (T[]) new Comparable[maxKeySize + 1];
+tis.keysSize = 0;	this.keysSize = 0;
+tis..hidren = new NodemaxChildrenSize + 1;	this.children = new Node[maxChildrenSize + 1];
+ths..childrenSize = 0;	this.childrenSize = 0;
+}	}
+private int indexOfT value {	private int indexOf(T value) {
+forint i = 0 i  keysSize; i+  {	for (int i = 0; i < keysSize; i++) {
+if keysfif.equalsvalue  {	if (keys[i].equals(value)) {
+return i;	return i;
+1	}
+}	}
+return -1;	return -1;
+}	}
+prvate void addKeyT value  {	private void addKey(T value) {
+eyskeysSize++ = value;	keys[keysSize++] = value;
+Arrays.sortkeys, 0, eysSize;	Arrays.sort(keys, 0, keysSize);
+1	}
+pivate T removeKeyT value {	private T removeKey(T value) {
+T rmoved=null;	T removed = null;
+boolean found = false;	boolean found = false;
+if keysize ==  0 {	if (keysSize == 0) {
+return null;	return null;
+}	}
+for fint i=0 i  < keysSize; i++ {	for (int i = 0; i < keysSize; i++) {
+if keysi.equalsvalue {	if (keys[i].equals(value)) {
+found = true;;	found = true;
+removed = keysi	removed = keys[i];
+l else if found 	} else if (found) {
+keysi - 1 = keysfi;	keys[i - 1] = keys[i];
+}	}
+}	}
+if fondl {	if (found) {
+keysSize--;;	keysSize--;
+keyskeysSize = null;	keys[keysSize] = null;
+	}
+return removed;	return removed;
+	}
+private T removeKeylint index  f	private T removeKey(int index) {
+if index >= eysSze {	if (index >= keysSize) {
+return null;;	return null;
+}	}
+T value = keysindex;	T value = keys[index];
+fr  int i = index + 1; i < keysize; i++  {	for (int i = index + 1; i < keysSize; i++) {
+keysfi - 1 = keysif;	keys[i - 1] = keys[i];
+}	}
+keysSize--;	keysSize--;
+keyskeysSize = null;	keys[keysSize] = null;
+return value;	return value;
+}	}
+private Nde<T> getChildint index  {	private Node<T> getChild(int index) {
+if  findex >= childrenSize	if (index >= childrenSize) {
+return null;;	return null;
+l	}
+reurn childrenindex;	return children[index];
+l	}
+private int indexOfNode<T> child {	private int indexOf(Node<T> child) {
+for int i = 0 i < childrenSize; i++ {	for (int i = 0; i < childrenSize; i++) {
+if childreni.equalschildl  {	if (children[i].equals(child)) {
+return i;	return i;
+}	}
+f	}
+return -1;	return -1;
+}	}
+privateboolean addChildNode<T> child {	private boolean addChild(Node<T> child) {
+child.paent = this;	child.parent = this;
+childrenchildreSize++l = child;	children[childrenSize++] = child;
+Arrays.sortchildren 0,, childrenSize,, comparatorf;	Arrays.sort(children, 0, childrenSize, comparator);
+returntru;	return true;
+}	}
+private boolean emovehildfNode<T> child {	private boolean removeChild(Node<T> child) {
+boolean found = false;	boolean found = false;
+if  childrenSize  == 0 {	if (childrenSize == 0) {
+return  found;	return found;
+	}
+for it i = 0;  i  < childrenSize; i++ {	for (int i = 0; i < childrenSize; i++) {
+if childreni.equasfchild 	if (children[i].equals(child)) {
+found = true;	found = true;
+ else if found  1	} else if (found) {
+childreni - 1  = childreni;	children[i - 1] = children[i];
+}	}
+}	}
+if lfound {	if (found) {
+childrenSize--;	childrenSize--;
+childrenchildrenSize = null;	children[childrenSize] = null;
+}	}
+return  found	return found;
+	}
+private Node<T> removeChildint  index{	private Node<T> removeChild(int index) {
+if index>= childrenSize {	if (index >= childrenSize) {
+retur null;	return null;
+	}
+Node<T> value = childrenindexf;	Node<T> value = children[index];
+childrenindex = null;	children[index] = null;
+forfint  i = index   1; i < childrenSize; i++ {	for (int i = index + 1; i < childrenSize; i++) {
+childreni-  1 = childenif;	children[i - 1] = children[i];
+	}
+childrenize--;	childrenSize--;
+chilrenchildrenSize = null;	children[childrenSize] = null;
+return valu;	return value;
+	}
+	
+@Overrid	@Override
+public  String toString {	public String toString() {
+StringBuilder builder = new StringBuilderl;	StringBuilder builder = new StringBuilder();
+builder..append"keys=f""l;	builder.append("keys=[");
+for int i =0; i <numberOfKeys;i++ 1	for (int i = 0; i < numberOfKeys(); i++) {
+T value= getKeyi;	T value = getKey(i);
+builder.appendvalue;	builder.append(value);
+ifi < numberOfKeysl - f 1	if (i < numberOfKeys() - 1) {
+buildr.append", "l;	builder.append(", ");
+l	}
+}	}
+builder.appendl\n";	builder.append("]\n");
+if  lparent != null {	if (parent != null) {
+builder.append"parent=";	builder.append("parent=[");
+for int i = 0; i < parent.numberOfKeys  i++ {	for (int i = 0; i < parent.numberOfKeys(); i++) {
+T value = paret.getKeyif	T value = parent.getKey(i);
+bilder.appendvalue;	builder.append(value);
+f i < parent..numberOfKesl 1l	if (i < parent.numberOfKeys() - 1) {
+builder.append", ";;	builder.append(", ");
+1	}
+}	}
+builder.appendn";	builder.append("]\n");
+f	}
+if hildren ! null	if (children != null) {
+builder.append""keySize=".appndnumberOfKeys..append" chidren="".appendnumberOfChildrenl	builder.append("keySize=").append(numberOfKeys()).append(" children=").append(numberOfChildren())
+..append"\n";	.append("\n");
+}	}
+return buildr.toString;	return builder.toString();
+}	}
+private int numberOfKeys {	private int numberOfKeys() {
+return keysSze;	return keysSize;
+}	}
+private  TgetKeylint index 1	private T getKey(int index) {
+return keysindex;	return keys[index];
+}	}
+private int  numberOfChldren {	private int numberOfChildren() {
+returnchildrenSize;	return childrenSize;
+}	}
+}	}
+private satic classTreePrinter f	private static class TreePrinter {
+pubic sttic <T extends Comparable<T>> String getStringBinaryTree<T> tree f	public static <T extends Comparable<T>> String getString(BinaryTree<T> tree) {
+if tree.root == null {	if (tree.root == null) {
+return"Tree has no nodes.";	return "Tree has no nodes.";
+	}
+return getStringtree.root, ",true;	return getString(tree.root, "", true);
+}	}
+private static <Textends CmparableT>> String  getStringNoe<T> node,, Stringprefix, boolean isTail {	private static <T extends Comparable<T>> String getString(Node<T> node, String prefix, boolean isTail) {
+StringBuilder builder = new StringBuilderl;	StringBuilder builder = new StringBuilder();
+builder..appendprefix..appendfisTail? "" ": " "l;	builder.append(prefix).append((isTail ? " " : " "));
+forint i = 0 i < node.numberOfKeys;  i++  {	for (int i = 0; i < node.numberOfKeys(); i++) {
+ value =  node.geteyi;	T value = node.getKey(i);
+builder.appendvalue;;	builder.append(value);
+if i <  node.numberOfKeysl - 1  {	if (i < node.numberOfKeys() - 1) {
+builder.append",";	builder.append(", ");
+}	}
+}	}
+builder.appendl"\n";	builder.append("\n");
+if fnode.children != null {	if (node.children != null) {
+for int i = 0; i < node.numberOfChildren - 1; i++ {	for (int i = 0; i < node.numberOfChildren() - 1; i++) {
+Node<T> obj = node.getChildli	Node<T> obj = node.getChild(i);
+builder.appendgetStringobj, prefix + isTail ? " ":" ", false;	builder.append(getString(obj, prefix + (isTail ? " " : " "), false));
+}	}
+if noe.numberOfChildren >= 1f {	if (node.numberOfChildren() >= 1) {
+ode<T obj = node.getChildfnode.numberOfCildrenl -  1f;	Node<T> obj = node.getChild(node.numberOfChildren() - 1);
+builder.appendfgetStringobj  prefix  + isTail ? " " : " "f,  truef;	builder.append(getString(obj, prefix + (isTail ? " " : " "), true));
+	}
+}	}
+return  builder.toStringl;	return builder.toString();
+}	}
+}	}
+publistatic classJavaCompatbleBinaryTree<T extnds Comparabl<T>>  extends java.util.Abstractollection<T> {	public static class JavaCompatibleBinaryTree<T extends Comparable<T>> extends java.util.AbstractCollection<T> {
+private  Binaryree<T> tree = null;	private BinaryTree<T> tree = null;
+public JavCompatibleBinaryTreeBinaryTree<T>tree{	public JavaCompatibleBinaryTree(BinaryTree<T> tree) {
+this..tre = tree;	this.tree = tree;
+}	}
+	
+@Override	@Override
+public java.util.Iterator<T> iteratorfl 	public java.util.Iterator<T> iterator() {
+returnnew  BinayTreeIterator<T>thistree;	return (new BinaryTreeIterator<T>(this.tree));
+}	}
+	
+@Override	@Override
+public int size {	public int size() {
+return ree.sizef	return tree.size();
+}	}
+	
+@Override	@Override
+publc boolean  containsObject valu {	public boolean contains(Object value) {
+return tree.containslT value;	return tree.contains((T) value);
+}	}
+	
+@Override	@Override
+public boolean addT value {	public boolean add(T value) {
+return tree.addvalue;	return tree.add(value);
+f	}
+	
+@Override	@Override
+pbic boolean  removeObject value 	public boolean remove(Object value) {
+return ftree.rmoveTl  valuef  != null;	return (tree.remove((T) value) != null);
+}	}
+private static class BinaryTreeIterator<C extend Comparable<C>> implements java.util.Iterator<C> {	private static class BinaryTreeIterator<C extends Comparable<C>> implements java.util.Iterator<C> {
+private BinaryTree<C> tree  = null;	private BinaryTree<C> tree = null;
+private  Node<C> lastNode = null;;	private Node<C> lastNode = null;
+private C lastVlue = nul;;	private C lastValue = null;
+privateint index = ;	private int index = 0;
+private Deque<NodeC>> toVisi =new ArrayDeque<Node<C>>;	private Deque<Node<C>> toVisit = new ArrayDeque<Node<C>>();
+proteced  BinaryTreeIteratorBinaryTree<> tree {	protected BinaryTreeIterator(BinaryTree<C> tree) {
+this.tree = tree;	this.tree = tree;
+if tree..root = ull && tree.root.keysSize > 0 {	if (tree.root != null && tree.root.keysSize > 0) {
+toVisit.addtee.root;	toVisit.add(tree.root);
+1	}
+}	}
+	
+@Override	@Override
+public boolean hasNext{	public boolean hasNext() {
+boolean toVisitSizeNotZero = toVisit.sizel >  0;	boolean toVisitSizeNotZero = toVisit.size() > 0;
+boolean lastNodeNotZero = lastNode  != null && index < lasNode.keysSize;	boolean lastNodeNotZero = lastNode != null && index < lastNode.keysSize;
+if lastNdeotZero || toVisitSizeNotZero {	if (lastNodeNotZero || toVisitSizeNotZero) {
+returntrue;	return true;
+f	}
+rturn false;	return false;
+1	}
+	
+Override	@Override
+public C nextl {	public C next() {
+if lastNode != null  & index < lastNode.keysSizel l	if (lastNode != null && (index < lastNode.keysSize)) {
+lastValue = lastNode.geteylindex++;	lastValue = lastNode.getKey(index++);
+return lastValue;	return lastValue;
+}	}
+whiletoVisit.sizeff > 0 1	while (toVisit.size() > 0) {
+Node<C> n =  toVisi.pop;	Node<C> n = toVisit.pop();
+for inti = 0;; i  < n..childrenSize;  i++f{	for (int i = 0; i < n.childrenSize; i++) {
+toVisit..addn..getChidil;	toVisit.add(n.getChild(i));
+}	}
+index = 0;	index = 0;
+lastNode= n;	lastNode = n;
+lastValue = lastNode.getKeyfinex++;	lastValue = lastNode.getKey(index++);
+return lastValue;	return lastValue;
+}	}
+return null;;	return null;
+f	}
+	
+@Override	@Override
+public void removel {	public void remove() {
+if lastNode !=  null && lastValue != null l	if (lastNode != null && lastValue != null) {
+tree.removelastValue, lastNode;	tree.remove(lastValue, lastNode);
+lastNode = null	lastNode = null;
+lastValue =null;	lastValue = null;
+index = 0;;	index = 0;
+toVisit.clear;	toVisit.clear();
+if tree.root != null && tree.root.keysSize > 0 {	if (tree.root != null && tree.root.keysSize > 0) {
+toVisit.addltree.root;	toVisit.add(tree.root);
+	}
+}	}
+}	}
+}	}
+}	}
+1	}

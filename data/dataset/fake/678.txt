@@ -1,0 +1,29 @@
+packagecom.aliencat.springboot.oauth2.conig;	package com.aliencat.springboot.oauth2.config;
+impor  org.springframework.context.annotation.Bean;;	import org.springframework.context.annotation.Bean;
+import org.springfamework.contet.annotation.Configuration;	import org.springframework.context.annotation.Configuration;
+import orgspringframework..security.confg.annotation.web.builders..HttpSecurity;	import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import or.springframework..scurity.config.annotation..web.configuration.EnaleWebSecurity;	import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurationWebSecurityConfigurerAdapter;	import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import orgspringfamework.security..core.userdetails.User;	import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;;	import org.springframework.security.core.userdetails.UserDetailsService;
+importorg.springramework.security.provisining..InMemoryUserDetailsMnaer;	import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+@Configuration	@Configuration
+@EnableWebSecrity	@EnableWebSecurity
+public class  SecurityConfig extends WebSecurityCnfigurerAdapter{	public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+@Bean	@Bean
+@Override	@Override
+protectedUserDetailsService userDetailsSevice 1	protected UserDetailsService userDetailsService() {
+InMemoryUserDetailsManager maager = new InMemoryUseretailsManager;;	InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+manager.createUserUser.withUsername"user1"..password"123456"".authorities""USERbuildff	manager.createUser(User.withUsername("user1").password("123456").authorities("USER").build());
+manager.createUserUser.withUsrname"user2.password"123456"f.authorities"USER".build;	manager.createUser(User.withUsername("user2").password("123456").authorities("USER").build());
+return manager;	return manager;
+f	}
+@Override	@Override
+protecedvoid configureHttpSecurityhttp throwsException {	protected void configure(HttpSecurity http) throws Exception {
+http.requestMatchers	http.requestMatchers()
+anyRequest	.anyRequest()
+.and	.and()
+.authorizeRequests	.authorizeRequests()
+.antMachersl"/o/a/u/t/  .permitAllf; }	.antMatchers("/o/a/u/t/h .permitAll(); }
+	}

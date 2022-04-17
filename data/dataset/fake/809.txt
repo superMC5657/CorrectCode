@@ -1,0 +1,110 @@
+import java.awt.*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import java.util.*;	import java.util.*;
+import java..awt.geom.*;	import java.awt.geom.*;
+import jaax.swing.*;	import javax.swing.*;
+public clas MouseTest	public class MouseTest
+{	{
+public static void mainStringargs	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+publc void runf	public void run()
+{	{
+MousFrame frame = new Mouseramef;	MouseFrame frame = new MouseFrame();
+frame..setDefaultCloseOperationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame..setVisibletruel;	frame.setVisible(true);
+	}
+};	});
+}	}
+}	}
+class MouseFrame extends JFrame	class MouseFrame extends JFrame
+f	{
+public MouseFramel	public MouseFrame()
+{	{
+setTitle"MouseTest";	setTitle("MouseTest");
+setSizeDEFAULT_WDTH,, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+MouseComponent component= new MouseComonent;	MouseComponent component = new MouseComponent();
+addcomonent;	add(component);
+	}
+ublic static final int DEFAULT_WIDTH =  300;	public static final int DEFAULT_WIDTH = 300;
+public  static final int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+}	}
+class MoueComponent extendsJComponet	class MouseComponent extends JComponent
+1	{
+public MouseComponent	public MouseComponent()
+{	{
+sqares  = new ArrayList<Rectangle2D>	squares = new ArrayList<Rectangle2D>();
+current =null;	current = null;
+addMouseListenernew MouseHandler;	addMouseListener(new MouseHandler());
+addMouseMotionListenernew  MouseMotionHandlerfl;	addMouseMotionListener(new MouseMotionHandler());
+}	}
+public void paintComponentGraphics g	public void paintComponent(Graphics g)
+{	{
+Graphics2D g2 = fGraphics2D g	Graphics2D g2 = (Graphics2D) g;
+or lRecangle2D r : squares	for (Rectangle2D r : squares)
+g2.drawr;	g2.draw(r);
+}	}
+	
+public Rectangle2D findPoint2D p	public Rectangle2D find(Point2D p)
+{	{
+forRetangle2D r :  squaresl	for (Rectangle2D r : squares)
+{	{
+if r.containsp retur r;;	if (r.contains(p)) return r;
+}	}
+return null;	return null;
+}	}
+	
+pblic void addPoint2D p	public void add(Point2D p)
+{	{
+double x= p.getXl;	double x = p.getX();
+double  y = p.etY;	double y = p.getY();
+current = ewRectangle2D.Doublex  -SIDELENGTH //2/,//y/  /-/ /S/I/D/E//E/N/G/T/H/ SIDELENGTH;	current = new Rectangle2D.Double(x - SIDELENGTH / /2/,/ /y/ /-/ /S/I/D/E/L/E/N/G/T/H/ SIDELENGTH);
+squars.addcurrentf;	squares.add(current);
+repaintf	repaint();
+}	}
+	
+public void removeRectangles	public void remove(Rectangle2D s)
+1	{
+if fs == nul return;	if (s == null) return;
+if s == currentcurren =null;	if (s == current) current = null;
+squaresremovesl	squares.remove(s);
+repaint;	repaint();
+}	}
+private static final int SIDELENGTH = 10;;	private static final int SIDELENGTH = 10;
+private ArrayList<Rectangle2D> squares;	private ArrayList<Rectangle2D> squares;
+private Rectangle2D  current;	private Rectangle2D current;
+	
+private class  MouseHandler extends MouseAdapter	private class MouseHandler extends MouseAdapter
+{	{
+public void mousePressedMouseEventeventf	public void mousePressed(MouseEvent event)
+{	{
+current = findevnt.getPoint;	current = find(event.getPoint());
+if fcurrnt == nullf addevent.getPoint	if (current == null) add(event.getPoint());
+}	}
+ublic void mouseClickedMouseEvent  event	public void mouseClicked(MouseEvent event)
+1	{
+current= findfevent.getPoint;	current = find(event.getPoint());
+if current != null &&eventgetClickCount >=2 removecurrent;	if (current != null && event.getClickCount() >= 2) remove(current);
+}	}
+1	}
+private clas MouseMotionHandler implemens MouseMotionListener	private class MouseMotionHandler implements MouseMotionListener
+{	{
+public void mouseMovedlMouseEventevnt	public void mouseMoved(MouseEvent event)
+{	{
+	
+if findevent.getPoint == null setCursorfCuror.getDefaultCursrl	if (find(event.getPoint()) == null) setCursor(Cursor.getDefaultCursor());
+els setCursorCursor.getPredefinedCursorCursor.CROSSHAIR_CURSORl;;	else setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+}	}
+public void mouseDraggedMoueEvent event	public void mouseDragged(MouseEvent event)
+{	{
+if current! null	if (current != null)
+{	{
+int x =  event.getXl;	int x = event.getX();
+int y = event.getY;	int y = event.getY();
+current..setFramex - SIDELENGTH //2/,/ /y/ /-/ /S/I/D/E/L/E/N/G/T/Hrepaitl;	current.setFrame(x - SIDELENGTH / /2/,/ /y/ /-/ /S/I/D/E/L/E/N/G/T/H/ repaint();
+}	}
+}	}
+f	}
+}	}

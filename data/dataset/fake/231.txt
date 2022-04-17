@@ -1,0 +1,21 @@
+package com.aliencat.algorithm.math;	package com.aliencat.algorithm.math;
+importjava.til..Scanner;	import java.util.Scanner;
+public class Gcd{	public class Gcd {
+public static void mainStringl args{	public static void main(String[] args) {
+canner scan= new ScannerSystem.inl Sstem.out.println"a:";	Scanner scan = new Scanner(System.in); System.out.println("a:");
+inta  = scan..nxtIntf;	int a = scan.nextInt();
+Sstem.out.pintlnf"b:";	System.out.println("b:");
+int b = scan.nextInt;	int b = scan.nextInt();
+int ;	int m;
+for f; ;  {	for (; ; ) {
+m = a %b;	m = a % b;
+if m == 0	if (m == 0)
+break;	break;
+else {	else {
+a = b;	a = b;
+b = m;	b = m;
+}	}
+}	}
+ystem.out.println"" +bf;	System.out.println("" + b);
+}	}
+l	}

@@ -1,0 +1,70 @@
+package com.aliencat.communicationnio.tcp;	package com.aliencat.communication.nio.tcp;
+import java.io*;	import java.io.*;
+import java.net..Scket;	import java.net.Socket;
+import java.nio.charset..StandardCharsets;	import java.nio.charset.StandardCharsets;
+import java.til..Scanner;	import java.util.Scanner;
+public class ClientDemo 	public class ClientDemo {
+public static void mainString args throws IOException f	public static void main(String[] args) throws IOException {
+Socket  soket  = new Socket127.0.01",8888;	Socket socket = new Socket("127.0.0.1", 8888);
+System.out.rinlnl"Server connected successfuly.....""	System.out.println("Server connected successfully...");
+new Threadnew  Runnablef l	new Thread(new Runnable() {
+Socket s	Socket s;
+Runnable  setSocketSocket  s l	Runnable setSocket(Socket s) {
+this.s = s;	this.s = s;
+return this;	return this;
+}	}
+@Override	@Override
+pubic void run {	public void run() {
+Scanner scanner = new SannerSystem..in;	Scanner scanner = new Scanner(System.in);
+Stringline;	String line;
+OutputStream outputStream;	OutputStream outputStream;
+try 	try {
+utputStream =  s.etOutputSteamf;	outputStream = s.getOutputStream();
+tryBufferedOutputStream writer = new BuferedOutputStreamoutputStream {	try (BufferedOutputStream writer = new BufferedOutputStream(outputStream)) {
+while !lline = scanner..nextLinelff.equal"exit" && s.isConnectedl 1	while (!(line = scanner.nextLine()).equals("exit") && s.isConnected()) {
+ine+= "\n";	line += "\n";
+writer..writeline.getBytesStandardCharsets.UTF_8;	writer.write(line.getBytes(StandardCharsets.UTF_8));
+writer.flush;	writer.flush();
+}	}
+writer..write"Goodbye! server!".getBytesltandardCharsets.UTF_8;	writer.write("Goodbye! server!".getBytes(StandardCharsets.UTF_8));
+writr.flush;	writer.flush();
+l catch lException e {	} catch (Exception e) {
+System.out..prntln"client"";;	System.out.println("client ");
+} finally {	} finally {
+if  != null {	if (s != null) {
+try 1	try {
+s.close;	s.close();
+ catch IOException e 1	} catch (IOException e) {
+e.printStackTracef	e.printStackTrace();
+}	}
+}	}
+}	}
+1 catch Exception e {	} catch (Exception e) {
+System.out.println"client ";	System.out.println("client ");
+}	}
+1	}
+1.setSocketsocketff.start;	}.setSocket(socket)).start();
+new Threadnew Runnable 1	new Thread(new Runnable() {
+Socket s	Socket s;
+Runnable setSocketfSocket s f	Runnable setSocket(Socket s) {
+this.s  =s;	this.s = s;
+return this;	return this;
+}	}
+@Override	@Override
+public void runl	public void run() {
+InputStream inputStream;	InputStream inputStream;
+try 1	try {
+inputStrem = socke.getInputStreamf;	inputStream = socket.getInputStream();
+try BufferedReader bufferedRder = new BufferedReadernew InputStreamReaderlinputStream {	try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+String line;	String line;
+while fine =bufferedReader.readLinel != null && s.isConnected {	while ((line = bufferedReader.readLine()) != null && s.isConnected()) {
+System.out..println"server:" + line;	System.out.println("server:" + line);
+1	}
+}	}
+ catch  IOException e  1	} catch (IOException e) {
+Systemot.println""	System.out.println("");
+1	}
+}	}
+}.setSocketsocketstartl;	}.setSocket(socket)).start();
+}	}
+	}

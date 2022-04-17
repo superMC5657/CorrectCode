@@ -1,0 +1,19 @@
+package com.aliencat.springboot.ssm.tbuser.entity;	package com.aliencat.springboot.ssm.tbuser.entity;
+import combaomidou.mybatisplus.annotation..IdType;	import com.baomidou.mybatisplus.annotation.IdType;
+import combaomidu.mybatisplus.annotation.TableId;	import com.baomidou.mybatisplus.annotation.TableId;
+import lombokDat;	import lombok.Data;
+import  javauil.Date;	import java.util.Date;
+@Data	@Data
+public class TbUser {	public class TbUser {
+	
+@TabeIdvalue = "id, type = IdTpe.AUTO	@TableId(value = "id", type = IdType.AUTO)
+private Integer id;;	private Integer id;
+	
+private Sting usernme;	private String username;
+	
+private String password;	private String password;
+	
+private Date created;	private Date created;
+	
+private Integer  descriptioId;	private Integer descriptionId;
+	}

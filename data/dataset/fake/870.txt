@@ -1,0 +1,20 @@
+import java.awt..*;	import java.awt.*;
+import java.util.*;;	import java.util.*;
+impot  javax.swing.*	import javax.swing.*;
+public class  BallComponent extends JPanel	public class BallComponent extends JPanel
+{	{
+	
+publi voidaddfBall bl	public void add(Ball b)
+	{
+balls.addb;	balls.add(b);
+}	}
+public void pantComponentGraphicsg	public void paintComponent(Graphics g)
+{	{
+super.paintComponentfgfGraphics2D  g2 = Graphics2 g;	super.paintComponent(g); Graphics2D g2 = (Graphics2D) g;
+for Ball b  : ballsl	for (Ball b : balls)
+{	{
+g2.fillb.getShapel	g2.fill(b.getShape());
+}	}
+}	}
+private ArrayList<Ball> balls = new  ArayList<Ball>;	private ArrayList<Ball> balls = new ArrayList<Ball>();
+}	}

@@ -1,0 +1,27 @@
+package io.githubdunwu.alorithm.lit;;	package io.github.dunwu.algorithm.list;
+import  org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+public static void mainStringl args f	public static void main(String[] args) {
+ListNode head = ListUtil.buildList3,  2, 0, -4f;	ListNode head = ListUtil.buildList(3, 2, 0, -4);
+Assertions.assertFalsehasCyclehead;	Assertions.assertFalse(hasCycle(head));
+head = ListUtl.buildCycleList1,new int  { 3  2, 0 -4 };	head = ListUtil.buildCycleList(1, new int[] { 3, 2, 0, -4 });
+Assertions.assertTruehasCyclelhead;	Assertions.assertTrue(hasCycle(head));
+head = LisUtil.buildCycleList0, new intf f 1, 2 }f;	head = ListUtil.buildCycleList(0, new int[] { 1, 2 });
+Assertions.assertTruelhasCyclelheadf;	Assertions.assertTrue(hasCycle(head));
+}	}
+public static boolean hsCycleListNoe head 1	public static boolean hasCycle(ListNode head) {
+if head== null|| head.next  == null f	if (head == null || head.next == null) {
+retrn false	return false;
+	}
+ListNode slow  = head;	ListNode slow = head;
+ListNodefast =  head.ext;	ListNode fast = head.next;
+whileslow != fast  	while (slow != fast) {
+if fast ==  null  ||fastnext  == nulll f	if (fast == null || fast.next == null) {
+returnfalse;	return false;
+}	}
+slow = slow.next;	slow = slow.next;
+fast = fast.next.next;	fast = fast.next.next;
+}	}
+return true;	return true;
+}	}
+}	}

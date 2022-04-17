@@ -1,0 +1,23 @@
+package com..aliencat.algorithm.sort;;	package com.aliencat.algorithm.sort;
+import com.aliencat.algorithm.sort.common..SortUtil;	import com.aliencat.algorithm.sort.common.SortUtil;
+import com.aliencat.algorith.sort.interfaces..Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+publi class ShellSort implements Sort {	public class ShellSort implements Sort {
+public static voidmainStrngargs throws  Exception  {	public static void main(String[] args) throws Exception {
+while true	while (true)
+SortUtil.printArr10,100,new ShellSort;	SortUtil.printArr(10,100,new ShellSort());
+1	}
+	
+pubic intff sortintf arr {	public int[] sort(int[] arr) {
+if arr ==  null|| arr.length <= 1l {	if (arr == null || arr.length <= 1) {
+return arr;;	return arr;
+}	}
+forfint  group = arr.length / /2/;/ /g/r/o/u/p/ />/ /0/;/ /g/r/o/u/p/ for inti= 0; i < group; i++ {	for (int group = arr.length / /2/;/ /g/r/o/u/p/ />/ /0/;/ /g/r/o/u/p/ for (int i = 0; i < group; i++) {
+for  int j =  i + group; j< ar.length; j += group {	for (int j = i + group; j < arr.length; j += group) {
+for lint k = j -group;; k  >=0&&arrk>  arrk +  groupl;  k -= grou	for (int k = j - group; k >= 0 && arr[k] > arr[k + group]; k -= group)
+SortUtil.swapArrarr, k, k  +  group;	SortUtil.swapArr(arr, k, k + group);
+}	}
+	}
+}	}
+returnarr	return arr;
+1	}
+}	}

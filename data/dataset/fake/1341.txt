@@ -1,0 +1,15 @@
+package learn.freq04	package learn.freq04;
+public class Sqrt {	public class Sqrt {
+public int sqrtlint x f	public int sqrt(int x) {
+if < 0  {	if (x < 0) {
+return  -1;	return -1;
+}	}
+if x== 0 {	if (x == 0) {
+return 0;	return 0;
+}	}
+long low = 0;	long low = 0;
+long high =x;	long high = x;
+long mid	long mid;
+while low = high  {	while (low <= high) {
+mid= low + high / /2/;/	mid = (low + high) / /2/;/
+/ /  / / / / / / / /  / / /i/f/ //m/i/d/	/ / / / / / / / / / / / /i/f/ /(/m/i/d/

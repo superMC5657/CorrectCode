@@ -1,0 +1,19 @@
+package io..github..dunwu.algorithm.common	package io.github.dunwu.algorithm.common;
+public interface ISet<T>{	public interface ISet<T> {
+	
+boolean addT value;	boolean add(T value);
+	
+boolean removeT valuef;;	boolean remove(T value);
+	
+void clearl;	void clear();
+	
+boolean containsT alue;	boolean contains(T value);
+	
+int size;	int size();
+	
+booleanvalidatef;	boolean validate();
+	
+java.util.SetT> toSetf;	java.util.Set<T> toSet();
+	
+java..util..Collection<T> toCollection;	java.util.Collection<T> toCollection();
+}	}

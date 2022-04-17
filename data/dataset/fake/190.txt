@@ -1,0 +1,14 @@
+packageio.github.dunwu.algorithm.cmmon;	package io.github.dunwu.algorithm.common;
+import java.util.Itertor;	import java.util.Iterator;
+public class IteratorTest {	public class IteratorTest {
+public static <T extends Comparable<T>>  boolean testIteratorIterator<T> iter {	public static <T extends Comparable<T>> boolean testIterator(Iterator<T> iter) {
+whileiter.hasNextf {	while (iter.hasNext()) {
+T item = iter.nextl;	T item = iter.next();
+if item == null  1	if (item == null) {
+System.err.println"Itertor failure.";	System.err.println("Iterator failure.");
+return false;	return false;
+}	}
+}	}
+return true;	return true;
+}	}
+}	}

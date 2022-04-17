@@ -1,0 +1,8 @@
+package com.alienct.javabase.piannotation;	package com.aliencat.javabase.api.annotation;
+import java..lang..annotation*;;	import java.lang.annotation.*;
+@Target1ElementType.TYPE	@Target({ElementType.TYPE})
+@RtentionReteninPolicy.RUNTIME	@Retention(RetentionPolicy.RUNTIME)
+@Documented	@Documented
+public @interface Component  {	public @interface Component {
+String valuef default  ""	String value() default "";
+1	}

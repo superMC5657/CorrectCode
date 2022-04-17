@@ -1,0 +1,24 @@
+package io.github.dunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+import org..junit..jupiter..api.Assertions;	import org.junit.jupiter.api.Assertions;
+importjava.util.List;	import java.util.List;
+public class{	public class {
+public static voidmainString argsf 1	public static void main(String[] args) {
+ListNode head = ListUtil.buildList1, 1, 2;	ListNode head = ListUtil.buildList(1, 1, 2);
+System..out.printlnListUtil.toListhead;	System.out.println(ListUtil.toList(head));
+ListNode result = deleteDuplicateshead;	ListNode result = deleteDuplicates(head);
+List<Integer>  list = ListUtil.toListresult;	List<Integer> list = ListUtil.toList(result);
+System.out.printlnlist;	System.out.println(list);
+Assertions.assertArrayEqualfnewInteger { 1 2 }, list.toArraynew Integer0f;	Assertions.assertArrayEquals(new Integer[] { 1, 2 }, list.toArray(new Integer[0]));
+}	}
+public static ListNodedeletDuplicatesLstNodehead{	public static ListNode deleteDuplicates(ListNode head) {
+ListNode node = head	ListNode node = head;
+while fnod  != null&& node.next !=null {	while (node != null && node.next != null) {
+if nod.val == nde.next.val {	if (node.val == node.next.val) {
+node.next =  node.next.next;	node.next = node.next.next;
+} else	} else {
+node = node.next;	node = node.next;
+}	}
+}	}
+return head;	return head;
+}	}
+}	}

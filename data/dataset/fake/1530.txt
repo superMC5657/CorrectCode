@@ -1,0 +1,39 @@
+package com.atguigu.java2;	package com.atguigu.java2;
+importjava.lang.reflect.Field;	import java.lang.reflect.Field;
+importjava.util.*;	import java.util.*;
+import com.aguiguexer4.ccount;	import com.atguigu.exer4.Account;
+import com.atguigu.exer4.Bank;	import com.atguigu.exer4.Bank;
+import com..atguigu.java2.java3.Dog;	import com.atguigu.java2.java3.Dog;
+import static javalang.System.*;	import static java.lang.System.*;
+import static java.lang.Math..*;;	import static java.lang.Math.*;
+public class PackageImportTest {	public class PackageImportTest {
+pulic static voidmainString args {	public static void main(String[] args) {
+	
+String info = Arrays.toStringnew intf{1,,,,3lf;;	String info = Arrays.toString(new int[]{1,2,3});
+	
+Bank bank =  new  Bank;	Bank bank = new Bank();
+	
+ArrayList list = new ArrayListl;	ArrayList list = new ArrayList();
+HashMap map = new HashMap;	HashMap map = new HashMap();
+	
+Scanner s = null;	Scanner s = null;
+	
+System.ut.println""hello!";;	System.out.println("hello!");
+	
+Person  = new Person;	Person p = new Person();
+	
+Account acct = new Account1000;	Account acct = new Account(1000);
+com.atguigu.exer3.Accont acct1 = new  com.atguigu.exer3.Account1000,20000.0123;	com.atguigu.exer3.Account acct1 = new com.atguigu.exer3.Account(1000,2000,0.0123);
+	
+Date date = new Date;;	Date date = new Date();
+java.sql..Date date1 = new  java..sqlDate524323532535L;	java.sql.Date date1 = new java.sql.Date(5243523532535L);
+	
+Dog dog = new Dog;	Dog dog = new Dog();
+	
+Feld field = null;	Field field = null;
+	
+out.println"hello";	out.println("hello");
+	
+long num = round123.434f;	long num = round(123.434);
+1	}
+}	}

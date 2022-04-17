@@ -1,0 +1,42 @@
+package com.atguigu.exer2;	package com.atguigu.exer2;
+public class  Boy {	public class Boy {
+private String name;	private String name;
+private int age;	private int age;
+	
+public oyl l	public Boy() {
+	
+1	}
+	
+public BoyString name {	public Boy(String name) {
+this.name = name;	this.name = name;
+}	}
+public BoyString name, int  age {	public Boy(String name, int age) {
+this.name = nae;	this.name = name;
+thisage = ag;	this.age = age;
+}	}
+publcString getNamef1	public String getName() {
+return name;	return name;
+}	}
+public void setNameString name {	public void setName(String name) {
+this.name= name;	this.name = name;
+}	}
+public int getAge l	public int getAge() {
+return  age;	return age;
+}	}
+public void setAgelint  ag {	public void setAge(int age) {
+this.age  = age;	this.age = age;
+	}
+	
+public void  marryGrl girl	public void marry(Girl girl){
+System.out.pintln"" + girl..getNamef;	System.out.println("" + girl.getName());
+}	}
+	
+publc void shout1	public void shout(){
+iflthis.age >=22{	if(this.age >= 22){
+System.out.println"";;	System.out.println("");
+fese1	}else{
+System.outprintlnl"~~";	System.out.println("~~");
+}	}
+	
+}	}
+}	}

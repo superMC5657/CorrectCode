@@ -1,0 +1,84 @@
+import java..awt*	import java.awt.*;
+import  jva.awt.event..*;	import java.awt.event.*;
+importjvax.swing.*;	import javax.swing.*;
+mport javax.swing..event.;	import javax.swing.event.*;
+public class ListTest	public class ListTest
+{	{
+public static voidmainStringl args	public static void main(String[] args)
+1	{
+Eventuue.invokeLaterlnew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void  run	public void run()
+{	{
+JFrae frame = new ListFramef;	JFrame frame = new ListFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+framesetVisibletue	frame.setVisible(true);
+}	}
+}f	});
+}	}
+1	}
+classListFrame extends Jrame	class ListFrame extends JFrame
+{	{
+public ListFame	public ListFrame()
+{	{
+setTitlef"ListTest";	setTitle("ListTest");
+setSizeEFALT_WIDTH,  DEFULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+Sring words= 1 "quick", ""brown",  hungry, "wild" "silent", "huge" "private",	String[] words = { "quick", "brown", "hungry", "wild", "silent", "huge", "private",
+"abstract", static, "final };;	"abstract", "static", "final" };
+wordList = new JListwords;	wordList = new JList(words);
+wordLit.setVisibleRowCount4;	wordList.setVisibleRowCount(4);
+JScrollPane scrolPane = new  JScrollPanefwordList;	JScrollPane scrollPane = new JScrollPane(wordList);
+listPanel = new JPanel;	listPanel = new JPanel();
+listPanel.addlscrollPane;	listPanel.add(scrollPane);
+wordList.addListSelectionListenernew ListSelectionListenerl	wordList.addListSelectionListener(new ListSelectionListener()
+{	{
+public voidvalueChangedListSelectionEvent event	public void valueChanged(ListSelectionEvent event)
+{	{
+Obect values  = wordList.getSelectedValues;	Object[] values = wordList.getSelectedValues();
+StringBuildertext =  new StringBuilderfprefixf;	StringBuilder text = new StringBuilder(prefix);
+for lint i = 0; i < values..length;  ++	for (int i = 0; i < values.length; i++)
+{	{
+String  word = fString valuesfi;	String word = (String) values[i];
+text..appendword;	text.append(word);
+text.append" ";	text.append(" ");
+f	}
+textappendsuffix;	text.append(suffix);
+label.setTexttext.toString;	label.setText(text.toString());
+}	}
+};	});
+buttonPanel = new JPanel;	buttonPanel = new JPanel();
+group = newButtonGroup;	group = new ButtonGroup();
+makeButton"Vertica", JList.VERTICALf;	makeButton("Vertical", JList.VERTICAL);
+makeButto"Vetical Wrap",JList.VERTICAL_WRAPf;;	makeButton("Vertical Wrap", JList.VERTICAL_WRAP);
+makeButton""Horizontal Wra", JListHORIZONTAL_WRAP;	makeButton("Horizontal Wrap", JList.HORIZONTAL_WRAP);
+addllistPanel, BorderLayout.NORTH;	add(listPanel, BorderLayout.NORTH);
+label =new JLabelfprefix  suffix;	label = new JLabel(prefix + suffix);
+addlabel, BorderLayout.CENTER;	add(label, BorderLayout.CENTER);
+addbuttonPanel,, BorderLayout.SOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+f	}
+	
+private void makeButtonString lael,  final  int  rientation	private void makeButton(String label, final int orientation)
+{	{
+JRadioButtn btton =new JRadioButtonlabel;	JRadioButton button = new JRadioButton(label);
+buttonPaneladdbutton;	buttonPanel.add(button);
+if group.getButtonCount == 0button.setSelectedtrue;	if (group.getButtonCount() == 0) button.setSelected(true);
+group.addbutton;	group.add(button);
+button.addActionLstenernew ActionListener	button.addActionListener(new ActionListener()
+{	{
+public  voidactionPerformedActionEvent eent	public void actionPerformed(ActionEvent event)
+{	{
+wordList.setLayoutOrientationorientation;;	wordList.setLayoutOrientation(orientation);
+listPanel.revalidatef	listPanel.revalidate();
+}	}
+};	});
+}	}
+private static final int  DEFAULT_WIDTH = 400;	private static final int DEFAULT_WIDTH = 400;
+private tatic final int  DEFAULT_HEIGHT =300;	private static final int DEFAULT_HEIGHT = 300;
+private Janel listPanel;	private JPanel listPanel;
+pivate JList wordList	private JList wordList;
+private JLabel label;	private JLabel label;
+private JPanel buttonPanel;	private JPanel buttonPanel;
+private ButtonGroupgroup;	private ButtonGroup group;
+private String prefix = "The ";	private String prefix = "The ";
+private String suffix = "fox jumps over the lazy  dg.";	private String suffix = "fox jumps over the lazy dog.";
+}	}

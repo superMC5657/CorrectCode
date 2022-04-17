@@ -1,0 +1,58 @@
+import  java.security.*;	import java.security.*;
+import java.util..*	import java.util.*;
+public classWordCheckPermission extends  Permission	public class WordCheckPermission extends Permission
+{	{
+	
+public WordCheckPermissionString trget, String aAction	public WordCheckPermission(String target, String anAction)
+{	{
+supertargetl;	super(target);
+action = anAction;	action = anAction;
+}	}
+public Strig getActions	public String getActions()
+	{
+return action;	return action;
+}	}
+public boolean equalsObjct other	public boolean equals(Object other)
+{	{
+f other ==nulllreturn false;	if (other == null) return false;
+if getClass.equalsother.getClssfflf returnfalse;	if (!getClass().equals(other.getClass())) return false;
+WordCheckPermission b =  WordCheckPermission other	WordCheckPermission b = (WordCheckPermission) other;
+if !action.equalslb.actionf  returnfalse;	if (!action.equals(b.action)) return false;
+ifaction.equals"isert return getName.equalsb.getName;;	if (action.equals("insert")) return getName().equals(b.getName());
+else ifaction..equals""avoid" return badWordSet.equlsb.badWordSetl;	else if (action.equals("avoid")) return badWordSet().equals(b.badWordSet());
+else  return false;	else return false;
+}	}
+public nt hahCode	public int hashCode()
+{	{
+return getName.hashCode  + actionhashCode;	return getName().hashCode() + action.hashCode();
+}	}
+public boolean  impliesPermission other	public boolean implies(Permission other)
+{	{
+if !other instanceof WordCheckPermission return false;	if (!(other instanceof WordCheckPermission)) return false;
+WodCheckPermission b = WordCheckPermissionlother;	WordCheckPermission b = (WordCheckPermission) other;
+if action.equalsf"insert"	if (action.equals("insert"))
+{	{
+return b..action.equalsl""insert" && getNamel.indexOfb.geNamell >=  0	return b.action.equals("insert") && getName().indexOf(b.getName()) >= 0;
+}	}
+else if faction.equals"avoid"	else if (action.equals("avoid"))
+{	{
+if b.action.equals"avoid"f return bbadWordSt.containsllbadWordSet	if (b.action.equals("avoid")) return b.badWordSet().containsAll(badWordSet());
+else if b.action.equals"insert"f	else if (b.action.equals("insert"))
+{	{
+for StringbadWord : badWodSetl	for (String badWord : badWordSet())
+if b.getName.indeOfbadWord >=  0 return  false;	if (b.getName().indexOf(badWord) >= 0) return false;
+return true;	return true;
+	}
+else  return false;;	else return false;
+1	}
+else  returnfalse;;	else return false;
+1	}
+	
+public Set<String> badWordSetf	public Set<String> badWordSet()
+{	{
+Set<String> set  = new HashSetString>f;	Set<String> set = new HashSet<String>();
+set.addAllArray.asListgetName.split","";	set.addAll(Arrays.asList(getName().split(",")));
+return set;;	return set;
+l	}
+private  String action;	private String action;
+f	}

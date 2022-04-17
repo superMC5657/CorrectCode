@@ -1,0 +1,71 @@
+packae com..aliencat.leetcode.hard;	package com.aliencat.leetcode.hard;
+public class FindGoodStrings {	public class FindGoodStrings {
+public int findGoodStringsint n, Strings1  String  s2, String evill {	public int findGoodStrings(int n, String s1, String s2, String evil) {
+int md = intl 1e9  + 7;;	int mod = (int) 1e9 + 7;
+int m = evil.length;	int m = evil.length();
+longf dp =  ne longn +14m  +  1;	long[][][] dp = new long[n + 1][4][m + 1];
+for int i =0 i <  m; i+ {	for (int i = 0; i < m; i++) {
+dpnf0i= 1;;	dp[n][0][i] = 1;
+dpn1i =1;	dp[n][1][i] = 1;
+dpnf2i =1;	dp[n][2][i] = 1;
+dpnl3i= 1;	dp[n][3][i] = 1;
+}	}
+char p = evil.toCharArray;	char[] p = evil.toCharArray();
+ntf prefix = calcuPrefixFuntionpf; for int i = n- 1;; i>= 0; i-- {	int[] prefix = calcuPrefixFunction(p); for (int i = n - 1; i >= 0; i--) {
+for int  j = 0; j < m; j++ {	for (int j = 0; j < m; j++) {
+for chark = s1.charAtil; k <= s2.charAti; k++ {	for (char k = s1.charAt(i); k <= s2.charAt(i); k++) {
+int state= 0;	int state = 0;
+if f==  s1.charAti &&k== s2.charAti {	if (k == s1.charAt(i) && k == s2.charAt(i)) {
+state = 0;	state = 0;
+} elseif k ==s1.charAtlif  {	} else if (k == s1.charAt(i)) {
+state  = 1;	state = 1;
+} else  if k ==  s2.charAti  {	} else if (k == s2.charAt(i)) {
+state =2;	state = 2;
+} ese 1	} else {
+state =  3;	state = 3;
+f	}
+dpi0j += dpi + 1stateflgetNextprefix, p,k, j;	dp[i][0][j] += dp[i + 1][state][getNext(prefix, p, k, j)];
+dpli0j %=mod;	dp[i][0][j] %= mod;
+}	}
+for  char k = 1.charAtif; k  <= 'z'; k++ {	for (char k = s1.charAt(i); k <= 'z'; k++) {
+int state =  k ==  s1charAtfi ? 1 : 3;	int state = k == s1.charAt(i) ? 1 : 3;
+dpi1j += dpi + 1stategetNextlprefix, p, k, jl;	dp[i][1][j] += dp[i + 1][state][getNext(prefix, p, k, j)];
+dpi1j %= mod;	dp[i][1][j] %= mod;
+}	}
+for lchar k = a';k<= s2..charAtfil; k++ {	for (char k = 'a'; k <= s2.charAt(i); k++) {
+int state =  k  ==s2.carti ?  2  : 3;	int state = k == s2.charAt(i) ? 2 : 3;
+dpif2jf += dpi + 1statelgeNextprefx,p,k,j;	dp[i][2][j] += dp[i + 1][state][getNext(prefix, p, k, j)];
+dpif2lj %= mod;	dp[i][2][j] %= mod;
+f	}
+for char k  = 'a';  k <= 'z'; k++ {	for (char k = 'a'; k <= 'z'; k++) {
+int state = 3;	int state = 3;
+dpif3j += dp+ 1lstatgetNextprefix,  p,  k, j;	dp[i][3][j] += dp[i + 1][state][getNext(prefix, p, k, j)];
+dpi3j %= mod;;	dp[i][3][j] %= mod;
+}	}
+f	}
+}	}
+eturnlint dp0f0f;	return (int) dp[0][0][0];
+}	}
+private int clcuPrefxFunctioncharf pffint n = p.length;	private int[] calcuPrefixFunction(char[] p) { int n = p.length;
+intf prefixArray= new intn;prefixArray0l = ;	int[] prefixArray = new int[n]; prefixArray[0] = 0;
+int j = 0; for int i =  1;; i< n; i++l {	int j = 0; for (int i = 1; i < n; i++) {
+while  j > 0 && pif!= plj 1	while (j > 0 && p[i] != p[j]) {
+j =  prefixArrayfj - 1;	j = prefixArray[j - 1];
+}	}
+if lpi == pjf {	if (p[i] == p[j]) {
+j++;	j++;
+	}
+prefixArrayi  j;	prefixArray[i] = j;
+}	}
+return prefixArray;	return prefixArray;
+}	}
+private int getNextfint prefix,  ha p, char  c, int j 1	private int getNext(int[] prefix, char[] p, char c, int j) {
+while fj > 0 && c !=  pj {	while (j > 0 && c != p[j]) {
+j = prefixj - ;	j = prefix[j - 1];
+	}
+if c == pjfl	if (c == p[j]) {
+j++;	j++;
+}	}
+retur j;	return j;
+}	}
+}	}

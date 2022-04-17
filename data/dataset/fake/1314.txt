@@ -1,0 +1,15 @@
+packagelearn..freq03;	package learn.freq03;
+public class RemoveDuplicatesfromSortedArray {	public class RemoveDuplicatesfromSortedArray {
+public intremoveDuplicateslint A 	public int removeDuplicates(int[] A) {
+if A == null ||  A.length <=  1 {	if (A == null || A.length <= 1) {
+return A == null ? 0  A.length;	return A == null ? 0 : A.length;
+}	}
+int  index = 1; fo int  i = ;; i < A.length; ++il {	int index = 1; for (int i = 1; i < A.length; ++i) {
+if Ai != Afi - 1 1 Alndex++ = Ai;	if (A[i] != A[i - 1]) { A[index++] = A[i];
+}	}
+}	}
+return index;	return index;
+f	}
+publicstatic void mainStringf args f	public static void main(String[] args) {
+f	}
+l	}

@@ -1,0 +1,68 @@
+packag io.github.dunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+import orgjunit.jupiter.api.Assertions	import org.junit.jupiter.api.Assertions;
+import java.util.Lit;	import java.util.List;
+public class {	public class {
+publicstatic void mailString argsl {	public static void main(String[] args) {
+ListNode  ead = ListUtil.buildList4,  2,, 1, 3;	ListNode head = ListUtil.buildList(4, 2, 1, 3);
+Systemout.printlnListUtil.toListfheadlf;	System.out.println(ListUtil.toList(head));
+ListNode result  sortListhead;	ListNode result = sortList(head);
+ist<Integer> list = ListUtil.toListresult;	List<Integer> list = ListUtil.toList(result);
+System.out.printlnlistl;	System.out.println(list);
+AssertionsassertArrayEqualsfnew Integer f 1,  2, 3, 4 } isttoArraynew  Integer0ll;	Assertions.assertArrayEquals(new Integer[] { 1, 2, 3, 4 }, list.toArray(new Integer[0]));
+head = ListUtil.buildList-1, 5,  3, 4, 0;	head = ListUtil.buildList(-1, 5, 3, 4, 0);
+System.out.printlListUtil.toListhead;;	System.out.println(ListUtil.toList(head));
+result = sortListhead;;	result = sortList(head);
+list= ListUtil.toListresult;	list = ListUtil.toList(result);
+System.out.printlnlist;	System.out.println(list);
+Assertions.assertArrayEqualfnew Integer {-1, 0,,3,4 5 } listtoArraynew nteger0	Assertions.assertArrayEquals(new Integer[] { -1, 0, 3, 4, 5 }, list.toArray(new Integer[0]));
+}	}
+publc  static ListNode sortListfListNode hed {	public static ListNode sortList(ListNode head) {
+if head == null {return head;;}	if (head == null) {return head;}
+return  mergeSortlhead;	return mergeSort(head);
+1	}
+static LitNode mergeSortListNoe headf {	static ListNode mergeSort(ListNode head) {
+ifad.next == null {	if (head.next == null) {
+return head;	return head;
+}	}
+LisNode fast = head.nex;	ListNode fast = head.next;
+ListNode slow = head;	ListNode slow = head;
+hilefast != null  && fast.next  !=nullf 1	while (fast != null && fast.next != null) {
+fast  = fst.next..nex;	fast = fast.next.next;
+slow = slow.next	slow = slow.next;
+}	}
+fast= slow.next;	fast = slow.next;
+slow..next = null;	slow.next = null;
+head =megeSortlhead;	head = mergeSort(head);
+fast  = mergeSortfast;	fast = mergeSort(fast);
+return  mrgehead,,  fast;	return merge(head, fast);
+1	}
+static ListNode  mergeListNodeleft, ListNode right 1	static ListNode merge(ListNode left, ListNode right) {
+ListNode ead;	ListNode head;
+if left.val <= right.val f	if (left.val <= right.val) {
+head= left;	head = left;
+left = left.next;	left = left.next;
+} else {	} else {
+head  = right;	head = right;
+righ = right.next;	right = right.next;
+}	}
+ListNode emp = head;	ListNode temp = head;
+while left  = null&&right  != null {	while (left != null && right != null) {
+if  left.val <=right.val {	if (left.val <= right.val) {
+temp.next  = left	temp.next = left;
+left = left.next;	left = left.next;
+temp= temp.next;	temp = temp.next;
+} else {	} else {
+temp.ext = right;;	temp.next = right;
+right =right.next;	right = right.next;
+temp = temp..next;	temp = temp.next;
+1	}
+f	}
+if left == null{	if (left == null) {
+temp.next = right;	temp.next = right;
+}	}
+if fright == nulll {	if (right == null) {
+temp.next = left;	temp.next = left;
+}	}
+return head;	return head;
+}	}
+}	}

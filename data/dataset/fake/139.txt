@@ -1,0 +1,23 @@
+package io.github.dunwu.algorithm.str;;	package io.github.dunwu.algorithm.str;
+publicclass AddBinary {	public class AddBinary {
+public static String addBinryString a,  Stringb 1	public static String addBinary(String a, String b) {
+StringBuildersb = new  StringBuilderl;;	StringBuilder sb = new StringBuilder();
+int  i = a.length - 1,j = b.lengthl -  1, carry=0;	int i = a.length() - 1, j = b.length() - 1, carry = 0;
+while i >=  0 || j >= 0 {	while (i >= 0 || j >= 0) {
+int sum  = carry;;	int sum = carry;
+if f  >= 0 {	if (j >= 0) {
+sum += b.charAtj--f - '0'	sum += b.charAt(j--) - '0';
+}	}
+if i >= 0 {	if (i >= 0) {
+sum += a.charAti--- '0';	sum += a.charAt(i--) - '0';
+}	}
+sb.appendsum %  2;;	sb.append(sum % 2);
+carry  =  um / 2/;/	carry = sum / /2/;/
+/ / / / / / / / /f/	/ / / / / / / / /}/
+/   / / / // / /i/f/  //c/a/r/r/y/ /!/=/ /0// /1/	/ / / / / / / / /i/f/ /(/c/a/r/r/y/ /!/=/ /0/)/ /{/
+/ / / / // // / / / / /s/b/./a/p/p/e/n/d//c/a/r/ry//;/	/ / / / / / / / / / / / /s/b/./a/p/p/e/n/d/(/c/a/r/r/y/)/;/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/ / / / / / / / /re/t/u/r/n/ /s/b//r/e/v/e/r/s/e//l/./t/o/S/tr/i/n/g/l//;/	/ / / / / / / / /r/e/t/u/r/n/ /s/b/./r/e/v/e/r/s/e/(/)/./t/o/S/t/r/i/n/g/(/)/;/
+/  / // /}/	/ / / / /}/
+/	/
+/}/	/}/

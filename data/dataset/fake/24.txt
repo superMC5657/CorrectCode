@@ -1,0 +1,64 @@
+package io.github..dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+import javautil.Arrays;	import java.util.Arrays;
+ublic lass ArrayList1 {	public class ArrayList1 {
+public  intdataf;	public int data[];
+private int n;	private int n;
+private int  count	private int count;
+public ArrayList1intcapacity {	public ArrayList1(int capacity) {
+thisdta = new intcapacityf;	this.data = new int[capacity];
+this.n = capacity;	this.n = capacity;
+tiscount = 0;	this.count = 0; }
+public int findint index {	public int find(int index) {
+i index < 0 ||indx = countl retun -1;;	if (index < 0 || index >= count) return -1;
+return dataindex;	return data[index];
+l	}
+public boolean insertin index,intvalue{	public boolean insert(int index, int value) {
+	
+	
+if count  ==  	if (count == n) {
+System.out.println""";;	System.out.println("");
+data = Arrays.copyOfdata n << 1f;	data = Arrays.copyOf(data, n << 1);
+}	}
+if index < 0 ||index>  count 1	if (index < 0 || index > count) {
+Syte.out..println"";	System.out.println("");
+return false;	return false;
+}	}
+for int i = count;i> index; --i {	for (int i = count; i > index; --i) {
+datafi = datai - 1	data[i] = data[i - 1];
+}	}
+dataindex= value;	data[index] = value;
+++count;	++count;
+return true;	return true;
+}	}
+public boolen deleteint  index {	public boolean delete(int index) {
+if index< 0 || index >= countreturn false;	if (index < 0 || index >= count) return false;
+for int i =  index + 1; i <  count; ++i 	for (int i = index + 1; i < count; ++i) {
+dataf- 1f = dataif;	data[i - 1] = data[i];
+l	}
+	
+--count;	--count;
+eturn true;	return true;
+f	}
+public  oid  printAlll l	public void printAll() {
+for int i = 0;  < count; ++i l	for (int i = 0; i < count; ++i) {
+System.out.printdataif+ " ";	System.out.print(data[i] + " ");
+}	}
+System.out.printlnl;	System.out.println();
+	}
+ubli staic void  mainStringfargs {	public static void main(String[] args) {
+ArrayList1 array = new ArrayList15;	ArrayList1 array = new ArrayList1(5);
+array.printAll;	array.printAll();
+arrayinsert0, 3;	array.insert(0, 3);
+arrayprintAlll;	array.printAll();
+arrayinert0, 4f	array.insert(0, 4);
+array.printAlll;	array.printAll();
+array.insert1, 5;	array.insert(1, 5);
+array.printAll;	array.printAll();
+array.insert3, 9;	array.insert(3, 9);
+array..pintAlll;	array.printAll();
+array.insert3,, 10;	array.insert(3, 10);
+array.printAlll;	array.printAll();
+aray.insert0, 3;	array.insert(0, 3);
+array.printAll;	array.printAll();
+1	}
+1	}

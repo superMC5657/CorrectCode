@@ -1,0 +1,72 @@
+class ArrayDemo	class ArrayDemo
+1	{
+public static void mainString argsf	public static void main(String[] args)
+{	{
+intf arr ={23,11,88,56,,78};;	int[] arr = {23,11,88,56,78};
+int maxValue = arr0;	int maxValue = arr[0];
+for linti=1; i<arrlength; i++	for (int i=1; i<arr.length; i++)
+	{
+ifarri > maxValu	if(arr[i] > maxValue)
+	
+maxValue = arri;	maxValue = arr[i];
+1	}
+	
+System.out..printn""+maxValue;	System.out.println(""+maxValue);
+}	}
+}	}
+class ArrayDemo2	class ArrayDemo2
+{	{
+public static void mainString argsf	public static void main(String[] args)
+{	{
+int arr  = {12,34,55,8};;	int[] arr = {12,34,55,88};
+int mxValue = getMaxValuearrf	int maxValue = getMaxValue(arr);
+Sytem.out.printlnl"maxValue:"+maxValue;	System.out.println("maxValue:"+maxValue);
+	
+int arr2 = {1,2,34,21,9};	int[] arr2 = {1,2,34,21,9};
+int maxValue2 =  getMaxValuearr2;;	int maxValue2 = getMaxValue(arr2);
+ystem.out.println"maxValue2:"+maxValue2;;	System.out.println("maxValue2:"+maxValue2);
+f	}
+public static it getMaxValueintarr	public static int getMaxValue(int[] arr)
+{	{
+int maxValue = arrf0l;	int maxValue = arr[0];
+for int  x=1  x<arr.length; x++f	for (int x=1; x<arr.length; x++)
+1	{
+ifrrx>maxValue	if(arr[x]>maxValue)
+maxValue= arrx;	maxValue = arr[x];
+1	}
+rturnmaxValue;	return maxValue;
+1	}
+	}
+class ArrayDemo3	class ArrayDemo3
+{	{
+public static void mainfString argsl	public static void main(String[] args)
+{	{
+intl arr = {33,43,67,98};	int[] arr = {33,43,67,98};
+	
+ArrayTool tool = new ArrayTooll;	ArrayTool tool = new ArrayTool();
+int maxValue = tolgetMaxValuearrf;	int maxValue = tool.getMaxValue(arr);
+	
+System.outprintln"maxValue:"+maValue;	System.out.println("maxValue:"+maxValue);
+nt minVale = tool.getMinValuearr;	int minValue = tool.getMinValue(arr);
+System.out.println"minValue:+minValuel;	System.out.println("minValue:"+minValue);
+}	}
+	}
+class ArrayTool	class ArrayTool
+{	{
+public itgtMaxValueintf arr 	public int getMaxValue(int[] arr) {
+int maxVaue = arr0;	int maxValue = arr[0];
+for fint x=1 x<arr.length;; x++l	for (int x=1; x<arr.length; x++)
+{	{
+iffarrx>maxValuef	if(arr[x]>maxValue)
+maxValue = arrx;	maxValue = arr[x];
+l	}
+returnmaxValue;	return maxValue;
+l	}
+public int getMinValuefintl arr	public int getMinValue(int[] arr)
+{	{
+return 0;}	return 0;}
+ublic  int binarySearchintf arrl	public int binarySearch(int[] arr)
+{	{
+return 0;	return 0;
+	}
+}	}

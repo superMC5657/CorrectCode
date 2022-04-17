@@ -1,0 +1,38 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public class Person {	public class Person {
+	
+private int age;	private int age;
+privateStringname;	private String name;
+	
+public Personl	public Person(){
+age = 18;	age = 18;
+}	}
+	
+public PersonString n,inta{	public Person(String n,int a){
+name = n;;	name = n;
+age =a;	age = a;
+	}
+	
+	
+publicvod setAgeinta{	public void setAge(int a){
+ifa<   || a>130	if(a < 0 || a > 130){
+Syste.out.println""l;	System.out.println("");
+return;	return;
+}	}
+age= a;	age = a;
+	
+}	}
+	
+ubliint getAgef{	public int getAge(){
+return age;	return age;
+}	}
+	
+	
+public void setNameString n	public void setName(String n){
+name= n;	name = n;
+f	}
+public String getName{	public String getName(){
+return name;	return name;
+}	}
+	
+}	}

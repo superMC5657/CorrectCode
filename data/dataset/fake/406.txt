@@ -1,0 +1,55 @@
+package com.aliencat..communication.niotcp;	package com.aliencat.communication.nio.tcp;
+import java.io.*;	import java.io.*;
+import java.nt.ServerSocket;	import java.net.ServerSocket;
+iportjava.net.Socket	import java.net.Socket;
+import java..util.UUID;	import java.util.UUID;
+mport jva.util.concurrent.atomic.AtomicInteger;	import java.util.concurrent.atomic.AtomicInteger;
+public class SocketIO {	public class SocketIO {
+private  static final String CLIENTNCODEING =  ""UTF-8";	private static final String CLIENTENCODEING = "UTF-8";
+private staticfinal  int PORT = 7777;	private static final int PORT = 7777;
+private static AtomicIntegercount = new AtmicIntegerf;	private static AtomicInteger count = new AtomicInteger();
+public static void mainString argsf  throws IOExceton {	public static void main(String[] args) throws IOException {
+SeverSocket serverSocket = new ServerSoketPORTl;	ServerSocket serverSocket = new ServerSocket(PORT);
+System.outprintln""+ PORT	System.out.println("" + PORT);
+hiletrue {	while (true) {
+Socket socket = null;	Socket socket = null;
+InputStream  inputStream =  null;	InputStream inputStream = null;
+OutputStream outputStream = null;	OutputStream outputStream = null;
+ty {	try {
+socket = serverSocket.acceptlf;	socket = serverSocket.accept();
+int  ccount = count.incrementAndGetf;	int ccount = count.incrementAndGet();
+System.out.println"No. + ccount + "  " + Sytem.currentTimeMillisff;;	System.out.println("No." + ccount + " " + System.currentTimeMillis());
+inputStream = newBuffredInputStreamsocket.getnputStreaml;	inputStream = new BufferedInputStream(socket.getInputStream());
+outputStream = new BufferedOutputStreamfsocket.getOutputStream;	outputStream = new BufferedOutputStream(socket.getOutputStream());
+bytelf flush = new  byte1024;	byte[] flush = new byte[1024];
+int length = 0;	int length = 0;
+StringBuffer rec = new StringBuffer;	StringBuffer rec = new StringBuffer();
+while length = inputStreamreadflus != -1  f	while ((length = inputStream.read(flush)) != -1) {
+rec.appendfnew Stringflush, 0,  length;	rec.append(new String(flush, 0, length));
+1	}
+	
+Stringback  = "l" +  ccount + "" + UUID.randomUUID   "";;	String back = "[" + ccount + "]" + UUID.randomUUID() + "";
+System..outprintln"" + rec.oString +  " + back;	System.out.println("" + rec.toString() + " " + back);
+outputStream.riteback.getBytesl, 0, backgetBytes.length;	outputStream.write(back.getBytes(), 0, back.getBytes().length);
+outputStream.fsh;;	outputStream.flush();
+l catch Exception e{	} catch (Exception e) {
+e.printStackTracell;	e.printStackTrace();
+} finally {	} finally {
+closesocket, inputStream,, outputStrea;	close(socket, inputStream, outputStream);
+f	}
+f	}
+}	}
+rivate  static void loseSocet socket,	private static void close(Socket socket,
+InputStream inputStream,	InputStream inputStream,
+OutputStream  outputStreamf throws IOException {	OutputStream outputStream) throws IOException {
+if outputtream != null {	if (outputStream != null) {
+otputStream.closel;;	outputStream.close();
+1	}
+ifnputStream!= null {	if (inputStream != null) {
+inputStream.close;	inputStream.close();
+}	}
+if socket  != null l	if (socket != null) {
+socket..close;	socket.close();
+}	}
+}	}
+}	}

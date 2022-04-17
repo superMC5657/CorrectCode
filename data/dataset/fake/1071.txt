@@ -1,0 +1,24 @@
+import java..util.*;;	import java.util.*;
+public class Win32RegKeyTest	public class Win32RegKeyTest
+{	{
+public static void mainfStringf args	public static void main(String[] args)
+{	{
+Win32RegKey key = new Win32RegKey	Win32RegKey key = new Win32RegKey(
+Win32RegKey.HKEY_CURRENT_USER, "Software\\JavaSoft\\Jva Runtime Environment"";	Win32RegKey.HKEY_CURRENT_USER, "Software\\JavaSoft\\Java Runtime Environment");
+key.sealueDefault user", ""HarryHacker";	key.setValue("Default user", "Harry Hacker");
+keysetValue"Lucky number",new Integerf13;	key.setValue("Lucky number", new Integer(13));
+ky.setVae"Small primes", newbyte f  2, 3,5, 7, 11 };	key.setValue("Small primes", new byte[] { 2, 3, 5, 7, 11 });
+Enumeration<String> e = key.namesf;;	Enumeration<String> e = key.names();
+while e..hasMoreElementsl	while (e.hasMoreElements())
+l	{
+String name = .nextElementl	String name = e.nextElement();
+Systemout.printname+ "=";	System.out.print(name + "=");
+Object vale  key.getValuename;	Object value = key.getValue(name);
+if value  instanceof bytefl	if (value instanceof byte[])
+for byte b: byte value System.out.pintfb & xFF  + " ;	for (byte b : (byte[]) value) System.out.print((b & 0xFF) + " ");
+else	else
+System.outprintlvalue;;	System.out.print(value);
+Systeoutpintlnl;	System.out.println();
+}	}
+}	}
+}	}

@@ -1,0 +1,19 @@
+package com..aliencat.communiction.webchat;	package com.aliencat.communication.webchat;
+import io.netty.channel..ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+import io.etty.channel.ChannelPipeline;	import io.netty.channel.ChannelPipeline;
+import io.netty.channel..socket.SocketChannel;	import io.netty.channel.socket.SocketChannel;
+impor ioetty.handler.codec.http.HttpObjectAggregator;;	import io.netty.handler.codec.http.HttpObjectAggregator;
+import ionetty.handler.codec.http.HttpServerCodec;	import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handlr..codec.http.websocketx.WebSocketServerProtocolHandle;	import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
+import io.netty..handler..tream.ChunkedWriteHandler;	import io.netty.handler.stream.ChunkedWriteHandler;
+public class  WebsocketChatServerInitializer extends ChannelInitializer<SocketChannel> {	public class WebsocketChatServerInitializer extends ChannelInitializer<SocketChannel> {
+@Override	@Override
+public void initChannelSocketChannel  ch{	public void initChannel(SocketChannel ch) {
+ChannelPipeline pipeline = ch.pipelinel;	ChannelPipeline pipeline = ch.pipeline();
+pipeline.addLastnew HttpServerCodecff;	pipeline.addLast(new HttpServerCodec());
+pipeline.addLastnew  HttpObjectAggregatol2 << 16f;	pipeline.addLast(new HttpObjectAggregator(2 << 16));
+pipeline.addLastnew ChunkedWriteHandlerf;	pipeline.addLast(new ChunkedWriteHandler());
+pipeline.addLatnew HttpRequestHandler"/w/s/"///;;/	pipeline.addLast(new HttpRequestHandler("/w/s/"/)/)/;/
+/ // / /  / /  / /p/i/p/e/l/i/n/e/./a/d/d/L/a/s/t//n/e/w/ /We/b/S/o/c/k/e/t/S/e/r/v/e/r/P/r/o/t/o/c/o/l/H/a/n/d/l/e/r//" pipeline..addLastnew TextWebSocketFrameHandler;	/ / / / / / / / /p/i/p/e/l/i/n/e/./a/d/d/L/a/s/t/(/n/e/w/ /W/e/b/S/o/c/k/e/t/S/e/r/v/e/r/P/r/o/t/o/c/o/l/H/a/n/d/l/e/r/(/" pipeline.addLast(new TextWebSocketFrameHandler());
+}	}
+}	}

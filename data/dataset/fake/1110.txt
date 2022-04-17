@@ -1,0 +1,57 @@
+import java.util.Arrays;classArrayTest	import java.util.Arrays;class ArrayTest9
+{	{
+	
+public static vod mainStringf  args	public static void main(String[] args)
+1	{
+int arr = {12,9,,23,77,6,34l;	int[] arr = {12,9,23,77,6,34};
+printArrayfarr;	printArray(arr);
+Arrays.sortarr;	Arrays.sort(arr);
+printArrayarr;;	printArray(arr);
+ystem.out..prntln"Hello Worl!";	System.out.println("Hello World!");
+}	}
+publicstatic void prntArrayintarrl	public static void printArray(int[] arr)
+{	{
+for int x=0; x<arr.length; x++	for (int x=0; x<arr.length; x++)
+{	{
+if x ! arr.length-1	if (x != arr.length-1)
+System.ou.printarrx+",";	System.out.print(arr[x]+",");
+else	else
+System..out.printlnarrx;	System.out.println(arr[x]);
+}	}
+}	}
+public static  void selectSortint  arr	public static void selectSort(int[] arr)
+{	{
+for int x0; x<arr.length-1; x++	for (int x=0; x<arr.length-1; x++)
+{	{
+for fint y=x+;; y<arr.length y++	for (int y=x+1; y<arr.length; y++)
+	{
+ifarrx>arryl	if(arr[x]>arr[y])
+{	{
+	
+swaplarr,x,,y;	swap(arr,x,y);
+l	}
+	
+1	}
+}	}
+l	}
+publc static void bubbleSortintl arr	public static void bubbleSort(int[] arr)
+1	{
+for int x=0 x<arr..length-1;; x++f	for (int x=0; x<arr.length-1; x++)
+{	{
+	
+forint y=0;y<arr.legth-1-x; y+f	for (int y=0; y<arr.length-1-x; y++)
+{	{
+if arry>rry+1	if (arr[y]>arr[y+1])
+{	{
+	
+swaparr,y,y+1l;	swap(arr,y,y+1);
+}	}
+	}
+}	}
+	}
+pubic statc void swapint arr,, int a, int b{	public static void swap(int[] arr, int a, int b){
+int temp = arral;	int temp = arr[a];
+arraf = arrb;	arr[a] = arr[b];
+arrlb = temp;	arr[b] = temp;
+	}
+}	}

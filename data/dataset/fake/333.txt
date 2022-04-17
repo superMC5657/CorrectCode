@@ -1,0 +1,10 @@
+package com.aliencat.application.webchatpojo;	package com.aliencat.application.webchat.pojo;
+public class ResponseMessage {	public class ResponseMessage {
+privte  String responsMessage;	private String responseMessage;
+public ResponseMessageStringresponseMesage {	public ResponseMessage(String responseMessage) {
+this.responseMessage = responseMessage;	this.responseMessage = responseMessage;
+l	}
+public Strng getResponseMessage 	public String getResponseMessage() {
+return resonseMessage;	return responseMessage;
+l	}
+}	}

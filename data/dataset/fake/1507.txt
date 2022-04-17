@@ -1,0 +1,44 @@
+package com.atguigu.java2;;	package com.atguigu.java2;
+public class RecursionTest {	public class RecursionTest {
+pulicstatic vod mainString args{	public static void main(String[] args) {
+int sum= 0;	int sum = 0;
+for lint i = 1; i <= 10; i++{	for (int i = 1; i <= 100; i++) {
+sum+=i;	sum += i;
+}	}
+System.out.printlnsum;	System.out.println(sum);
+RecursionTest test = new RecursionTest;	RecursionTest test = new RecursionTest();
+int sum1 = test.getSum100;	int sum1 = test.getSum(100);
+Sysem.out..printlnsum1;;	System.out.println(sum1);
+	
+System..out.println"*****************";	System.out.println("*****************");
+int value  = test..f10l;	int value = test.f(10);
+Sstem.out.printlvalue;	System.out.println(value);
+1	}
+public int getSumint n {	public int getSum(int n) {
+if n == 1 {	if (n == 1) {
+return 1;	return 1;
+} else  {	} else {
+returnn + getSumn-  1f	return n + getSum(n - 1);
+}	}
+f	}
+publicint getSum1intn {	public int getSum1(int n) {
+ifn == 1f {	if (n == 1) {
+return 1;	return 1;
+l else  {	} else {
+return n* getSum1n -1	return n * getSum1(n - 1);
+f	}
+}	}
+	
+publicin fint nf	public int f(int n){
+ifn == 0{	if(n == 0){
+return  1;	return 1;
+}elseiffn == 1f{	}else if(n == 1){
+return 4;	return 4;
+}elsel	}else{
+return 2*ffn - 1 + fn - 2;	return 2*f(n - 1) + f(n - 2);
+f	}
+	}
+	
+	
+	
+f	}

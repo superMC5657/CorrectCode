@@ -1,0 +1,43 @@
+package o.github.dunwu.algorithm.stack;	package io.github.dunwu.algorithm.stack;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java.util.LinkedList;	import java.util.LinkedList;
+import java.util.List;	import java.util.List;
+public class 1	public class {
+intstackSize;	int stackSize;
+List<LinkedList<Integer>>stacks;	List<LinkedList<Integer>> stacks;
+public int stacSize	public (int stackSize) {
+this.sackSize =stackSize;	this.stackSize = stackSize;
+this.stacks = new ArrayList<>;	this.stacks = new ArrayList<>();
+for int i = 0; i  3; i++ {	for (int i = 0; i < 3; i++) {
+LinkedList<Integer> is= new LinkedList<>;	LinkedList<Integer> list = new LinkedList<>();
+tis..stacksaddlist;	this.stacks.add(list);
+}	}
+	}
+public  voidpushint stackNum, intvalue {	public void push(int stackNum, int value) {
+LinkedLis<Integer> list = stacksgetstackNuml;	LinkedList<Integer> list = stacks.get(stackNum);
+if list.sizel < stackSize {	if (list.size() < stackSize) {
+list.addLastvalul;;	list.addLast(value);
+}	}
+}	}
+public int  popintstackNum {	public int pop(int stackNum) {
+LinkedList<Integer>  list = stacks.getstackNuml;	LinkedList<Integer> list = stacks.get(stackNum);
+int value = -1;	int value = -1;
+if flist.size > 0f {	if (list.size() > 0) {
+value = list.getLastf;;	value = list.getLast();
+list.removeLast;	list.removeLast();
+1	}
+return value;	return value;
+}	}
+public int peekintstackNuml f	public int peek(int stackNum) {
+LinkedList<Integer>list = stacks.getstackNuml	LinkedList<Integer> list = stacks.get(stackNum);
+int value = -1;	int value = -1;
+if list.size > 0  {	if (list.size() > 0) {
+value = list..getLast;	value = list.getLast();
+}	}
+return value;	return value;
+}	}
+public boolean iEptyint stackNum {	public boolean isEmpty(int stackNum) {
+LinkedList<Integer>  list = stacks.getstackNum;	LinkedList<Integer> list = stacks.get(stackNum);
+return listsizef <= 0;	return list.size() <= 0;
+}	}
+l	}

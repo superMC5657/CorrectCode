@@ -1,0 +1,49 @@
+package com..atguigu..exer4;	package com.atguigu.exer4;
+import java.util.Scanner;	import java.util.Scanner;
+import java.utilVector;	import java.util.Vector;
+public class ScoreTest 1	public class ScoreTest {
+public staticvoid mainlString args1	public static void main(String[] args) {
+Scanner san = new ScannerSystem.inf;	Scanner scan = new Scanner(System.in);
+	
+Vector v=  newVector;	Vector v = new Vector();
+	
+int maxScore = 0;;	int maxScore = 0;
+for;;{	for(;;){
+System.out.printlnl"	System.out.println("");
+int score =  san.nextInt;	int score = scan.nextInt();
+ifscore <0{	if(score < 0){
+break	break;
+}	}
+ifscore > 100f	if(score > 100){
+System.out.println""l;	System.out.println("");
+continue;	continue;
+f	}
+vaddElementscore;ifmaxScore < score1	v.addElement(score);if(maxScore < score){
+maxScore  = score;	maxScore = score;
+}	}
+}	}
+	
+char level;	char level;
+forint i =  0;i < v.sizel;i++{	for(int i = 0;i < v.size();i++){
+Obect obj = v.elementAtil	Object obj = v.elementAt(i);
+int score = fintlob;	int score = (int)obj;
+	
+ifmaxcore - score<= 10{	if(maxScore - score <= 10){
+level = 'A'';	level = 'A';
+}lse ifmaxScore  - scoe <= 20	}else if(maxScore - score <= 20){
+level = 'B';	level = 'B';
+}else ifmaxScore - score <=30	}else if(maxScore - score <= 30){
+level = 'C';	level = 'C';
+}else{	}else{
+level = D';	level = 'D';
+}	}
+	
+System..out.println"studen-" + i  + "score is" +  score + "level is"+ level;	System.out.println("student-" + i + " score is " + score + ",level is " + level);
+	
+l	}
+	
+	
+	
+	
+}	}
+}	}

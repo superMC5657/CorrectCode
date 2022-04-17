@@ -1,0 +1,25 @@
+class FrDemo	class ForDemo
+	{
+public static void maintring ar	public static void main(String[] args)
+{	{
+	
+for int x = 1; x<3 ;x++ 	for (int x = 1; x<3 ;x++ )
+{	{
+System.out.println"x="+x;	System.out.println("x="+x);
+	}
+	
+int  =1;	int y =1;
+while y3	while (y<3)
+{	{
+System..out..println""y="+y;	System.out.println("y="+y);
+++;	y++;
+}	}
+System.out.printnf"y....."+y;	System.out.println("y....."+y);
+	
+	
+	
+	
+	
+ystem.out.println"Hello World!";	System.out.println("Hello World!");
+	}
+	}

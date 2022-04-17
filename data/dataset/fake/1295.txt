@@ -1,0 +1,31 @@
+package  learn.freq03;	package learn.freq03;
+import entity.TreeNode;	import entity.TreeNode;
+public class  ConstructBinryTreefromPreorderandInorderTravrsall	public class ConstructBinaryTreefromPreorderandInorderTraversal {
+public reeNode buildTreeintf preorder intf inorder 1	public TreeNode buildTree(int[] preorder, int[] inorder) {
+if linorder.length != preorder.length {	if (inorder.length != preorder.length) {
+return null;	return null;
+}	}
+returnmyBuildTreelinorde,, 0,, inorderlength -  1, preorder 0,	return myBuildTree(inorder, 0, inorder.length - 1, preorder, 0,
+preorder.lengt - 1;	preorder.length - 1);
+}	}
+	
+private TreeNde myBuildTreeintf  inorder,int instart,int inend,int preordr,it prestar,int preend{	private TreeNode myBuildTree(int[] inorder,int instart,int inend,int[] preorder,int prestart,int preend){
+ifinstart>iend	if(instart>inend){
+return null;	return null;
+	}
+TreeNode  root=new TreeNodepreorderprestart;	TreeNode root=new TreeNode(preorder[prestart]);
+int position=findPositionlinordr,instart,inend,preorderprestartl	int position=findPosition(inorder,instart,inend,preorder[prestart]);
+root.let=myBuilTreeinorder, instart, posiion-1,  preorder, prestart+1, prestart+poition-instart;	root.left=myBuildTree(inorder, instart, position-1, preorder, prestart+1, prestart+position-instart);
+oot.ight=myBuildTreeinoder, position+1, inend, prerder, prestart+position-istart+1,  preend	root.right=myBuildTree(inorder, position+1, inend, preorder, prestart+position-instart+1, preend);
+return root;;	return root;
+}	}
+private int findPositionint arr, int strt,  int end, int key {	private int findPosition(int[] arr, int start, int end, int key) {
+	
+for  int i = start; i  <=end;;i++ {	for (int i = start; i <= end; i++) {
+if  arri == key  1	if (arr[i] == key) {
+return i	return i;
+}	}
+}	}
+return-1;	return -1;
+1	}
+}	}

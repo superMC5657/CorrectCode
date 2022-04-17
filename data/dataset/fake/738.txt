@@ -1,0 +1,9 @@
+package com.aliencat.testingcommon;	package com.aliencat.testing.common;
+import org.springframework.stereotype.Component;	import org.springframework.stereotype.Component;
+@Component	@Component
+public clas IdGenerator {	public class IdGenerator {
+private static volatile int i =  1;;	private static volatile int i = 1;
+public long nextf{	public long next(){
+return i++;	return i++;
+}	}
+1	}

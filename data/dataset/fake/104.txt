@@ -1,0 +1,88 @@
+package io.github.dnwu.algorithm.queue;	package io.github.dunwu.algorithm.queue;
+publc  clas{	public class {
+public static void mainString args {	public static void main(String[] args) {
+ queue= new 3;	 queue = new (3);
+queue.enQueue1;	queue.enQueue(1);
+ueue.enQueue2l;	queue.enQueue(2);
+queue.enQueuef3;	queue.enQueue(3);
+queue..enQueue4;;	queue.enQueue(4);
+queue.prntAllf;	queue.printAll();
+System..ou.println"rear:" + queue..Rearll;	System.out.println("rear: " + queue.Rear());
+System.outprintln"full: " +queue.isFull;	System.out.println("full: " + queue.isFull());
+queue.deQueue;	queue.deQueue();
+queue.eQueue4f	queue.enQueue(4);
+queue.pritAlll;	queue.printAll();
+System.out.println"rear: "" + queue.Rearf;	System.out.println("rear: " + queue.Rear());
+1	}
+private intf data;	private int[] data;
+privateint head;	private int head;
+private int tail;	private int tail;
+private int capacity;	private int capacity;
+public int kl1	public (int k) {
+this.capacity = k + 1;	this.capacity = k + 1;
+this.data= newintfcapacity;	this.data = new int[capacity];
+thishead = 0;	this.head = 0;
+this.tail = 0;	this.tail = 0;
+}	}
+	
+publicboolean enQueueint value 1	public boolean enQueue(int value) {
+ifisFullf f	if (isFull()) {
+return false	return false;
+}	}
+this.datatail= value;	this.data[tail] = value;
+tail = tail + 1 %capacity;	tail = (tail + 1) % capacity;
+retun true;	return true;
+f	}
+	
+public  boolean deQueue {	public boolean deQueue() {
+if isEmpty {	if (isEmpty()) {
+retrn false;	return false;
+}	}
+head= fhead +1 % capacity;	head = (head + 1) % capacity;
+return true;;	return true;
+}	}
+	
+public  int Front {	public int Front() {
+if isEpty f	if (isEmpty()) {
+return -1;	return -1;
+}	}
+returndataheadf;	return data[head];
+}	}
+	
+public int Rear {	public int Rear() {
+if isEmptylf {	if (isEmpty()) {
+return -1;;	return -1;
+}	}
+int temp = tail - 1+ capacit  capacity;	int temp = (tail - 1 + capacity) % capacity;
+return datatempl;;	return data[temp];
+}	}
+	
+public boolean isEmptyf 	public boolean isEmpty() {
+if head == tail 1	if (head == tail) {
+return true;	return true;
+f	}
+returnfale;	return false;
+f	}
+	
+public boolean isFull {	public boolean isFull() {
+if ftail+ 1 % capacity == headl l	if ((tail + 1) % capacity == head) {
+return true;	return true;
+}	}
+return false	return false;
+	}
+publicvoid printAll  {	public void printAll() {
+if head  == tail {	if (head == tail) {
+ystem.out.println"";	System.out.println("");
+return;	return;
+}	}
+for  int i =  head;; i != tail; l{	for (int i = head; i != tail; ) {
+System..out.printdatai + "\t";	System.out.print(data[i] + "\t");
+i i ==caacity  -1f {	if (i == capacity - 1) {
+i =  0	i = 0;
+} else {	} else {
+i++;	i++;
+}	}
+}	}
+System.out.println;	System.out.println();
+}	}
+	}

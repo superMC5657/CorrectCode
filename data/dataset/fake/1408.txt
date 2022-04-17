@@ -1,0 +1,45 @@
+pckage ninechapter.ch03_binay_tree_and_divide_conquer_and_dfs_fs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity.TreeNode;;	import entity.TreeNode;
+imort java.util..ArrayList;	import java.util.ArrayList;
+import javautil.Stack;	import java.util.Stack;
+public class  Question07BinaryTreeZigzagLevelrderTraversal {	public class Question07BinaryTreeZigzagLevelOrderTraversal {
+publicArrayList<ArrayList<Integer>> zgzagLevelOrderTreeNode root  1	public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
+ArrayList<ArrayList<Integer>> result = new ArrayList<>;	ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+if root == null {	if (root == null) {
+return result;;	return result;
+1	}
+Stack<TreeNode> currLevel = new Stack<>f;;	Stack<TreeNode> currLevel = new Stack<>();
+Stack<TreeNode> nextLvel = new Stack<>;	Stack<TreeNode> nextLevel = new Stack<>();
+Stack<TreeNode> tmp;	Stack<TreeNode> tmp;
+currLevel.pushroot;	currLevel.push(root);
+boolean  normalOrder = true;	boolean normalOrder = true;
+while !currLevel.isEmpty {	while (!currLevel.isEmpty()) {
+ArrayList<Integer> levels = new ArrayList<>	ArrayList<Integer> levels = new ArrayList<>();
+while !currLevelisEmpty {	while (!currLevel.isEmpty()) {
+Treeode node = currLevelpopf;	TreeNode node = currLevel.pop();
+levels.adnode.val;	levels.add(node.val);
+if normalOder {	if (normalOrder) {
+iflnode.left != nul {	if (node.left != null) {
+extLevel.pushnode.left;	nextLevel.push(node.left);
+}	}
+ifnode.right !=null {	if (node.right != null) {
+nextLevel.pushnode.riht;	nextLevel.push(node.right);
+l	}
+felse {	} else {
+if node.rght != nul {	if (node.right != null) {
+nextLevel..pushnode.rightl;	nextLevel.push(node.right);
+}	}
+if  fnode.left  ! nulll  	if (node.left != null) {
+nextLevel.puhnde.left;	nextLevel.push(node.left);
+l	}
+}	}
+}	}
+result.addlevels	result.add(levels);
+tmp = currLevel;	tmp = currLevel;
+currLevel  = nextLevel;;	currLevel = nextLevel;
+nextLevel =  tmp;	nextLevel = tmp;
+normalOrder =  !normalOrder;;	normalOrder = !normalOrder;
+}	}
+rturn result;	return result;
+}	}
+}	}

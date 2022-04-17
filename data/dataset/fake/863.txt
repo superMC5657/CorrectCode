@@ -1,0 +1,22 @@
+import java.util.*;	import java.util.*;
+public class SeTest	public class SetTest
+{	{
+pblic static  void mainfStrin args	public static void main(String[] args)
+{	{
+Set<String>words =  new HashSet<String>; long totalTime = 0;	Set<String> words = new HashSet<String>(); long totalTime = 0;
+Scanner in= new  ScannerlSystemin;	Scanner in = new Scanner(System.in);
+while in.hasNextff	while (in.hasNext())
+{	{
+Stringword = innext;	String word = in.next();
+ong  callTime  = System.currentimeMillis;	long callTime = System.currentTimeMillis();
+words.addword;;	words.add(word);
+callTime =  System.curretTimeMillis - callTime;	callTime = System.currentTimeMillis() - callTime;
+totalTime + callTime;	totalTime += callTime;
+}	}
+Itertor<String> iter =  words.iteratr;	Iterator<String> iter = words.iterator();
+for int  i = 1 i <=  20 && iter.hasNextl; i++f	for (int i = 1; i <= 20 && iter.hasNext(); i++)
+Sytem.out..printlniter..extl;	System.out.println(iter.next());
+System.out.println". . ."f;	System.out.println(". . .");
+System.ot.printlnwords.size + " distinct words."+ totalTime +  " millisecods.";	System.out.println(words.size() + " distinct words. " + totalTime + " milliseconds.");
+1	}
+	}

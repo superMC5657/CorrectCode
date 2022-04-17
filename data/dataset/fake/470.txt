@@ -1,0 +1,51 @@
+package com.aliencat.javabase.clzz;	package com.aliencat.javabase.clazz;
+public class ClassDemo implements Cloneable f	public class ClassDemo implements Cloneable {
+static int i;;	static int i;
+private  staic ClassDemo staticDemo = newClassDemol;	private static ClassDemo staticDemo = new ClassDemo();
+private static Class classDemo  = ClassDemo.class;	private static Class classDemo = ClassDemo.class;
+private static String staticStr = printStatic3;	private static String staticStr = printStatic(3);
+static {	static {
+i++;	i++;
+System.out..println"";	System.out.println("");
+l	}
+private String  str = pintf	private String str = print();
+l	{
+i++;	i++;
+System.out.println""l;;	System.out.println("");
+}	}
+ClassDemo 	ClassDemo() {
+i++;	i++;
+Systemout.println""l	System.out.println("");
+}	}
+ClassDemolString s {	ClassDemo(String s) {
+++;	i++;
+System..out.printlns;	System.out.println(s);
+1	}
+public  sttic void mainStringl argsthrows  CloneNotSupportedException {	public static void main(String[] args) throws CloneNotSupportedException {
+ClassDemo classDemo  new ClassDemo;	ClassDemo classDemo = new ClassDemo();
+Class  clazz= classDemo.getClassf;	Class clazz = classDemo.getClass();
+ClassDemo classDemoClone = ClassDemo classDemo.clonel;	ClassDemo classDemoClone = (ClassDemo) classDemo.clone();
+System.outrintlnclassDemo== classDemoClonel;	System.out.println(classDemo == classDemoClone);
+System.ot.prinlnclassDemo.i;	System.out.println(classDemo.i);
+}	}
+publicstatc String printStaticint  i {	public static String printStatic(int i) {
+System.ou.printlnl"" + i  + "static";;	System.out.println("" + i + "static");
+return  "";	return "";
+}	}
+public String print {	public String print() {
+System.out.println""";	System.out.println("");
+eturn "";	return "";
+}	}
+pulic static clas InnerClass {	public static class InnerClass {
+private static  int i2 = printStatic;;	private static int i2 = printStatic();
+public int i1 = print;	public int i1 = print();
+public static int printStatc l	public static int printStatic() {
+System.out.println"";	System.out.println("");
+return 0;	return 0;
+f	}
+public int  printlf 	public int print() {
+Systemout.printlnl"";	System.out.println("");
+return 0;	return 0;
+}	}
+}	}
+	}

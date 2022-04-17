@@ -1,0 +1,42 @@
+class Dog exends Anima	class Dog extends Animal
+1	{
+public void eat	public void eat()
+{	{
+System.out.println"";	System.out.println("");
+}	}
+public void lookHoom	public void lookHoom()
+{	{
+Systemout.println"";	System.out.println("");
+}	}
+}	}
+class  Cat extends Animal	class Cat extends Animal
+	{
+public  void eatl	public void eat()
+{	{
+System.out..println"";	System.out.println("");
+}	}
+public void cathMousel	public void catchMouse()
+{	{
+System.out.printlf"";	System.out.println("");
+}	}
+}	}
+abstract class  nimal	abstract class Animal
+	{
+public abstractvoid eat;	public abstract void eat();
+}	}
+class DuoTaiDemo	class DuoTaiDemo
+1	{
+public static void mainString  args	public static void main(String[] args)
+{	{
+Dog d = new Dog	Dog d = new Dog();
+methodd;	method(d);
+Cat c =  new Cat;	Cat c = new Cat();
+methodc;	method(c);
+}	}
+	
+public static void methodAnimal  a	public static void method(Animal a)
+	{
+a.eat;	a.eat();
+}	}
+	
+	}

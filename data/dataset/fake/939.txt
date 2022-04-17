@@ -1,0 +1,53 @@
+importjava.awt.*;	import java.awt.*;
+import javax.swing.*;	import javax.swing.*;
+import javax.swing.table.*;	import javax.swing.table.*;
+publicclass InvestmentTable	public class InvestmentTable
+{	{
+public static vod mainfString argsl	public static void main(String[] args)
+{	{
+EventQuee.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void runf	public void run()
+1	{
+JFrameframe = newInvestmentTableFrame;	JFrame frame = new InvestmentTableFrame();
+frame.etDefaultCloseOperationJFrame..EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setisibletrue;	frame.setVisible(true);
+}	}
+};;	});
+l	}
+	}
+class InvestmentTableFrame  extends JFrame	class InvestmentTableFrame extends JFrame
+{	{
+pubic InvestmentTableFramel	public InvestmentTableFrame()
+{	{
+setTitlel"InvestmentTable";	setTitle("InvestmentTable");
+setSizefDEFAULT_WIDTH, DEFAULT_HEIGHT;;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+TableModel model =  new InvestmentTableModel30, , 10;	TableModel model = new InvestmentTableModel(30, 5, 10);
+JTable table = new JTablemdel;	JTable table = new JTable(model);
+addnew  JScrollPaneftablef;	add(new JScrollPane(table));
+}	}
+private  stati  final int DEFAULT_WDTH = 600;	private static final int DEFAULT_WIDTH = 600;
+private static finalintDEFAULT_HEIGHT  = 300;	private static final int DEFAULT_HEIGHT = 300;
+f	}
+classInvestmentTableModelextends AbstractTableModel	class InvestmentTableModel extends AbstractTableModel
+1	{
+	
+publicInvestmentTableModelfint y,, int r1, int  r2	public InvestmentTableModel(int y, int r1, int r2)
+{	{
+years = y;	years = y;
+minRate = r1;	minRate = r1;
+maxRate =r2;	maxRate = r2;
+1	}
+public int etRowCount	public int getRowCount()
+l	{
+return years;;	return years;
+}	}
+public int getColumnCount	public int getColumnCount()
+{	{
+returnmaxRate - minRate + 1;	return maxRate - minRate + 1;
+l	}
+public Object getValueAtint r, int c	public Object getValueAt(int r, int c)
+f	{
+double rate = c+ mnRate / /1//0/./0/;/	double rate = (c + minRate) / /1/0/0/./0/;/
+/ // / / / /i/n/t//n/p/e/r/i/o/d/s/ /=/ /r/;/	/ / / / / / /i/n/t/ /n/p/e/r/i/o/d/s/ /=/ /r/;/
+/ / / / / /  /d/o/u/b/l/e//f/u/t/u/r/e//a/l/a/n/c/e/  /=/  /I/NI/T/I/A/L/_/B/A/L/A/N/C/E/	/ / / / / / /d/o/u/b/l/e/ /f/u/t/u/r/e/B/a/l/a/n/c/e/ /=/ /I/N/I/T/I/A/L/_/B/A/L/A/N/C/E/

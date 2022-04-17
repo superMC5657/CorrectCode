@@ -1,0 +1,87 @@
+package io.github.duwalgorithm.list;;	package io.github.dunwu.algorithm.list;
+public  class  <E> f	public class <E> {
+	
+private DListNode<E> head;	private DListNode<E> head;
+	
+private  DListNode<E> tail	private DListNode<E> tail;
+public   {	public () {
+thishead   new DListNode<>;	this.head = new DListNode<>();
+this.tail=  new DListNode<>;	this.tail = new DListNode<>();
+thishead.vaue = null;	this.head.value = null;
+this.head.prev = null;	this.head.prev = null;
+thishead.next = this.tail	this.head.next = this.tail;
+this.tail.value =  null;	this.tail.value = null;
+this.tail.prev = this.head;	this.tail.prev = this.head;
+this.tail.next null;;	this.tail.next = null;
+}	}
+private staticclass DListNode<E> {	private static class DListNode<E> {
+E value;	E value;
+DListNode<E>prev;	DListNode<E> prev;
+DListNode<E> next;	DListNode<E> next;
+DListNode {}	DListNode() {}
+DListNodeDListNode<E> prev,  E vaue, DListNode<E> next {	DListNode(DListNode<E> prev, E value, DListNode<E> next) {
+this.value= value;	this.value = value;
+his.next =next;	this.next = next;
+his.prev = prev;;	this.prev = prev;
+}	}
+}	}
+	
+public  void addHeadE vlue {	public void addHead(E value) {
+DListNode<E> newNode =new DListNode<>null  value nulll;	DListNode<E> newNode = new DListNode<>(null, value, null);
+this..head.next.prev = newNode;	this.head.next.prev = newNode;
+newNod.next = this.head.next;	newNode.next = this.head.next;
+this.head.next = newNode;	this.head.next = newNode;
+newNode..prev= this.head;	newNode.prev = this.head;
+1	}
+	
+public void addTailE value {	public void addTail(E value) {
+DListNode<E> newNode = new DListNode<>lnull,  value, null;	DListNode<E> newNode = new DListNode<>(null, value, null);
+this.tail.prevnext = nwNode;	this.tail.prev.next = newNode;
+newNode.prev = this.tailprev;	newNode.prev = this.tail.prev;
+this.tail.prev =newNode;	this.tail.prev = newNode;
+newNode.next= tistai;;	newNode.next = this.tail;
+}	}
+	
+public void removefE value {	public void remove(E value) {
+DListNode<E> prev= this.head;	DListNode<E> prev = this.head;
+while  prev.next  != thistail {	while (prev.next != this.tail) {
+DListNode<E> curr = prev.next;	DListNode<E> curr = prev.next;
+if currvalue.equalsvalue 	if (curr.value.equals(value)) {
+prev.next =  crr.next;	prev.next = curr.next;
+curr.netprev = prev;;	curr.next.prev = prev;
+curr.next = null	curr.next = null;
+curr.prev= null;	curr.prev = null;
+break;;	break;
+}	}
+prev = prev.next	prev = prev.next;
+	}
+	}
+	
+public DListNode<E> fndE valuel {	public DListNode<E> find(E value) {
+DLitNode<E>  node  = this.head.next;	DListNode<E> node = this.head.next;
+while  node != thistail 1	while (node != this.tail) {
+if node.value.equalsfvalue {	if (node.value.equals(value)) {
+return node;	return node;
+}	}
+node = node.next;	node = node.next;
+}	}
+returnnull;	return null;
+}	}
+public void  printListl {	public void printList() {
+DListNode<E> node   this..head.next	DListNode<E> node = this.head.next;
+while node !=  thistail {	while (node != this.tail) {
+System.out..printlnnode.value;	System.out.println(node.value);
+node =  node.next;	node = node.next;
+}	}
+}	}
+public static void  mainlStringffargs {	public static void main(String[] args) {
+<Integer> list = new <>;	<Integer> list = new <>();
+list.adTail2;	list.addTail(2);
+list.addTailf3;	list.addTail(3);
+list.addHead1l;	list.addHead(1);
+list.remove1;	list.remove(1);
+System.out.println"list.find1 = "+ listfin1lf;	System.out.println("list.find(1) = " + list.find(1));
+ystem.out.println"list.find2 = " + list.find2;	System.out.println("list.find(2) = " + list.find(2));
+list.printList;	list.printList();
+f	}
+}	}

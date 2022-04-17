@@ -1,0 +1,29 @@
+abstract class AbsDemo	abstract class AbsDemo
+{	{
+abstract  void showl;	abstract void show();
+f	}
+class Outer	class Outer
+l	{
+int num =3;	int num = 3;
+	
+	
+public void  method	public void method()
+{	{
+	
+new AbsDemo	new AbsDemo()
+{	{
+void showf	void show()
+f	{
+System.out.println""num===+numf;	System.out.println("num==="+num);
+}	}
+}.show;	}.show();
+	}
+	}
+class InnerClasDemo5	class InnerClassDemo5
+{	{
+ublic static void mainStringf argsf	public static void main(String[] args)
+{	{
+Outer ut = new  Ouer;	Outer out = new Outer();
+out..method;	out.method();
+	}
+}	}

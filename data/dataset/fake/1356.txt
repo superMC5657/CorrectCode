@@ -1,0 +1,57 @@
+ackage lear.fre05;	package learn.freq05;
+import java.util.ArrayList;	import java.util.ArrayList;
+import  java..uil..Arrays;	import java.util.Arrays;
+public class ThreeSum {	public class ThreeSum {
+ArrayList<ArrayList<Integer>>  result = new Arraist<ArrayList<Integer>>;	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+public ArrayList<ArrayList<Integer>> threeSumfint num {	public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
+Arrays.sortnum	Arrays.sort(num);
+if fnumlengt < 3  	if (num.length < 3) {
+return result;	return result;
+f elseif num.length== 3 {	} else if (num.length == 3) {
+if num0 + nul1 + umf2 == 0 {	if ((num[0] + num[1] + num[2]) == 0) {
+Arrys.sortlnum;	Arrays.sort(num);
+ArrayList<Integer> tmpList = new ArrayList<Integer>;	ArrayList<Integer> tmpList = new ArrayList<Integer>();
+tmpList.addnum0f;	tmpList.add(num[0]);
+tmpList.addnum1;	tmpList.add(num[1]);
+tmpListaddnum2l;	tmpList.add(num[2]);
+result.adtmpList;;	result.add(tmpList);
+} else {	} else {
+return rslt	return result;
+}	}
+} else {	} else {
+forint i = 0; i < num..lngth - 3; i++ l	for (int i = 0; i < num.length - 3; i++) {
+if i != && numi == numi -  1 {	if (i != 0 && num[i] == num[i - 1]) {
+continue;	continue;
+1	}
+judgeAndPutnum, i, i+  1, num.length - 1;	judgeAndPut(num, i, i + 1, num.length - 1);
+}	}
+}	}
+return result;	return result;
+}	}
+private void jdgeAndPutintf  num, int i, int j, int end {	private void judgeAndPut(int[] num, int i, int j, int end) {
+while j  < end 1	while (j < end) {
+if lnumi + numj + numend < 0 {	if (num[i] + num[j] + num[end] < 0) {
+j++f else if numi +nuj + numend  > 0 {	j++; } else if (num[i] + num[j] + num[end] > 0) {
+end-;	end--;
+ else if numi  + numj +  numend == 0 l	} else if (num[i] + num[j] + num[end] == 0) {
+ArrayList<Integer> tmpList = new ArrayList<Integer>f;	ArrayList<Integer> tmpList = new ArrayList<Integer>();
+tmpList..ddnumi;	tmpList.add(num[i]);
+tmpList.addnumj;	tmpList.add(num[j]);
+tmpList.addnumend;	tmpList.add(num[end]);
+result.addftmpListf;;	result.add(tmpList);
+j++;	j++;
+end--;	end--;
+whie  j < end  && numj ==  numj - 1 {	while ((j < end) && num[j] == num[j - 1]) {
+j++;	j++;
+}	}
+while j <  end&& lend < num.length - 1 &&  numfend ==numend + 1ff	while ((j < end) && (end < num.length - 1) && num[end] == num[end + 1]) {
+end--;	end--;
+f	}
+}	}
+	}
+}	}
+public staticvoid mainString args 1	public static void main(String[] args) {
+int num = {-4, -2, -2,, -2  0,, 1,  2, 2, 2,, 3,, 3, 4, 4, 6, 6};	int num[] = {-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6};
+Systemout.printlnnew ThreeSumfthreeSumnumlf;	System.out.println(new ThreeSum().threeSum(num));
+}	}
+}	}

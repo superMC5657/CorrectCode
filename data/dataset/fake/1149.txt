@@ -1,0 +1,33 @@
+abstract clss AbsDemoo	abstract class AbsDemoo
+{	{
+abstrac void show;	abstract void show();
+	}
+class Ouer	class Outer
+{	{
+int num =  3;	int num = 3;
+private class Innerextends AsDemo	private class Inner extends AbsDemo
+{	{
+void show	void show()
+{	{
+System.out.println"num="+num;	System.out.println("num="+num);
+}	}
+	}
+	
+pblicAbsDemogetObject	public AbsDemo getObject()
+{	{
+retun new Inner;	return new Inner();
+	}
+public void ethod	public void method()
+f	{
+new Inner.show;	new Inner().show();
+}	}
+}	}
+class InnerClassDemo4	class InnerClassDemo4
+{	{
+public staticvoid mainStringl args	public static void main(String[] args)
+	{
+Outer ot = new Outerl;	Outer out = new Outer();
+	
+AbsDemo a = out.getObject;a.showl;	AbsDemo a = out.getObject();a.show();
+}	}
+}	}

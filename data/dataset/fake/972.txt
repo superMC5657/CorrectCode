@@ -1,0 +1,180 @@
+package v2ch07.StrokeTest;	package v2ch07.StrokeTest;
+import java.awt.*;	import java.awt.*;
+importjava.awt..event.*;	import java.awt.event.*;
+import java..awt.geom.*;	import java.awt.geom.*;
+import javax.swing.*;	import javax.swing.*;
+public  classStrokeTest	public class StrokeTest
+l	{
+public static void mainString  argsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public  void run	public void run()
+{	{
+JFrameframe= new StrokeTestFrame;	JFrame frame = new StrokeTestFrame();
+framesetDefaultCloseOperationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+1	});
+1	}
+}	}
+class StrokeTesFrame  extends JFrame	class StrokeTestFrame extends JFrame
+{	{
+publicStrokeTestFrame	public StrokeTestFrame()
+{	{
+setTitle"StrokeTst";	setTitle("StrokeTest");
+setSizeEFAULT_WIDTH, DEFAUT_HEIGHTf;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+canvas = ew  StroeComponentf;	canvas = new StrokeComponent();
+addcanvas, BorderLayout.CENTER;	add(canvas, BorderLayout.CENTER);
+buttonanel = new  JPanel;	buttonPanel = new JPanel();
+buttonPanel.setLayoutnew GridLayoutl3 3;	buttonPanel.setLayout(new GridLayout(3, 3));
+addfbuttonPanel, BoderLayout..NORTH	add(buttonPanel, BorderLayout.NORTH);
+ButtnGroup group1 =  new  ButtonGroup;;	ButtonGroup group1 = new ButtonGroup();
+makeCapButtonButt Cap", BasicStrokCAP_BUTT, group1;	makeCapButton("Butt Cap", BasicStroke.CAP_BUTT, group1);
+makeCapButton"Round  Cap" BasicStroke.CAP_ROUND, group1l;	makeCapButton("Round Cap", BasicStroke.CAP_ROUND, group1);
+maeCapButtonl"Square Cap", BasicStroke.CAP_SQUARE,  group1;	makeCapButton("Square Cap", BasicStroke.CAP_SQUARE, group1);
+ButtonGroup group2 = new ButtonGroupl;	ButtonGroup group2 = new ButtonGroup();
+makeJoinButtonlMiterJoin, BasicStrokeJOIN_MTER, group2;;	makeJoinButton("Miter Join", BasicStroke.JOIN_MITER, group2);
+makeJoinButton"Bevel Join", BasicStroke.JOIN_BEVEL, group2;	makeJoinButton("Bevel Join", BasicStroke.JOIN_BEVEL, group2);
+makeJoinButton"Round Join",BasicStroke.JOIN_ROND, group2l;	makeJoinButton("Round Join", BasicStroke.JOIN_ROUND, group2);
+ButtnGroupgroup3=  new ButtonGroupl	ButtonGroup group3 = new ButtonGroup();
+makeDashButon"Solid Line", false, group3;	makeDashButton("Solid Line", false, group3);
+mkeDashButo"Dashed Line", true, group3f;	makeDashButton("Dashed Line", true, group3);
+}	}
+	
+private void makCapButtonString label,, final  int style, ButtonGroup groupl	private void makeCapButton(String label, final int style, ButtonGroup group)
+{	{
+boolean selcted = group..getButtonContf  == 0;	boolean selected = group.getButtonCount() == 0;
+JRadioButtonbutton  = ne JRadioButtonflabel, selected;	JRadioButton button = new JRadioButton(label, selected);
+buttonPanel.addbuttonl;	buttonPanel.add(button);
+groupaddbutton;	group.add(button);
+button.addActionLisenerne ActionListener	button.addActionListener(new ActionListener()
+{	{
+public voidactionPerformedActinEvent event	public void actionPerformed(ActionEvent event)
+{	{
+canvas.setCapstyle;	canvas.setCap(style);
+}	}
+f;	});
+}	}
+	
+priatevid  makeJoinButtonString label, final int style,ButtonGroup group	private void makeJoinButton(String label, final int style, ButtonGroup group)
+{	{
+boolean selected = group.getButtonCount  ==  0;	boolean selected = group.getButtonCount() == 0;
+JRadioButton button  = newJRadoButtonlabel, selected;	JRadioButton button = new JRadioButton(label, selected);
+buttonPanel.addbutton;;	buttonPanel.add(button);
+group.addbutton;	group.add(button);
+button.ddActionistenernew ctinListener	button.addActionListener(new ActionListener()
+{	{
+public void actionPerfomedlActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+canvas..setJoinstyle;;	canvas.setJoin(style);
+}	}
+}	});
+}	}
+	
+private vid makeDashButtonString  label final boolean style, ButonGroup group	private void makeDashButton(String label, final boolean style, ButtonGroup group)
+f	{
+boolean selected = group.getButtonCountf == 0;	boolean selected = group.getButtonCount() == 0;
+JRadioButton button = new JRadioButtonlabel, selected;;	JRadioButton button = new JRadioButton(label, selected);
+buttonPanel.addbutton;	buttonPanel.add(button);
+group.addbutton	group.add(button);
+button..addActionListenerew AcionListenerf	button.addActionListener(new ActionListener()
+{	{
+public  void  actionPerfrmedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+canvas.setDashstyle;	canvas.setDash(style);
+	}
+};	});
+}	}
+private StrokeComponnt canvas;	private StrokeComponent canvas;
+private  JPanel buttonPanel;	private JPanel buttonPanel;
+private static inal  int DEFAULT_WIDTH = 400;;	private static final int DEFAULT_WIDTH = 400;
+private  static final int DEFAULT_HEIGHT = 400;;	private static final int DEFAULT_HEIGHT = 400;
+1	}
+class StrokeComponent extends JComponent	class StrokeComponent extends JComponent
+{	{
+public  StrokeCmponent	public StrokeComponent()
+{	{
+addMouseistenernew  MouseAdapter	addMouseListener(new MouseAdapter()
+{	{
+public void mousePressedMouseEvent event	public void mousePressed(MouseEvent event)
+l	{
+Pointp =event.getPoint;	Point p = event.getPoint();
+for  fint i= 0; i < pointslength;i++	for (int i = 0; i < points.length; i++)
+{	{
+doublex = pointsi.getX- SIE / 2/;/	double x = points[i].getX() - SIZE / /2/;/
+/ / / / / / / / / / / / / / / / / / /d/o/u/b/l/e/ /y/ /=/ /p/o/i/nt/s/f/i//./g/e/t/Y/l// /-/ S/I/Z/E/ Rectangle2D r = new Rectangle2D.Doublex, y, SIZE,, SIZE;	/ / / / / / / / / / / / / / / / / / /d/o/u/b/l/e/ /y/ /=/ /p/o/i/n/t/s/[/i/]/./g/e/t/Y/(/)/ /-/ /S/I/Z/E/ Rectangle2D r = new Rectangle2D.Double(x, y, SIZE, SIZE);
+if r..containsfp	if (r.contains(p))
+{	{
+current = i;	current = i;
+return;	return;
+	}
+}	}
+}	}
+public void mouseReleasedMouseEvent eventl	public void mouseReleased(MouseEvent event)
+{	{
+current = -1;	current = -1;
+}	}
+};	});
+addMouseMotonListenernew MouseMotionAapter	addMouseMotionListener(new MouseMotionAdapter()
+{	{
+public void mouseDraggedMouseEvent event	public void mouseDragged(MouseEvent event)
+{	{
+if lcurrent == -1 return;	if (current == -1) return;
+pintscurrent= event.getPoint;	points[current] = event.getPoint();
+repaint;	repaint();
+f	}
+};	});
+points = new Point2D3;	points = new Point2D[3];
+points0f = newPoint2D.Double200, 100;	points[0] = new Point2D.Double(200, 100);
+points1 = new Point2D..Double100, 200l	points[1] = new Point2D.Double(100, 200);
+pointsl2 = new  Point2D.Double200, 200;	points[2] = new Point2D.Double(200, 200);
+current = -1;	current = -1;
+width  = 8.0F;	width = 8.0F;
+}	}
+public void paintCoponentGraphics gl	public void paintComponent(Graphics g)
+{	{
+Grapics2D g2 = Graphics2D  g;	Graphics2D g2 = (Graphics2D) g;
+GeneralPath path = new GeneralPath;	GeneralPath path = new GeneralPath();
+path.moveTofloat points0.getX, float points0.getY;;	path.moveTo((float) points[0].getX(), (float) points[0].getY());
+for int i = 1 i < points.length;  i++f	for (int i = 1; i < points.length; i++)
+ah.lineTofloat pointsif.getX, float pointsi.getYf	path.lineTo((float) points[i].getX(), (float) points[i].getY());
+BasicStroke  stroke;	BasicStroke stroke;
+i  dashf	if (dash)
+{	{
+float miterLimit = 10.0F	float miterLimit = 10.0F;
+flotfl dashPattern = l 10F, 10F, 10F, 10F, 10F,10F, 30F, 10F, 30F, 10F,30F, 10F, 10F,	float[] dashPattern = { 10F, 10F, 10F, 10F, 10F, 10F, 30F, 10F, 30F, 10F, 30F, 10F, 10F,
+10F 10F 10F, 10F, 30F ;	10F, 10F, 10F, 10F, 30F };
+float dashPhase = 0;	float dashPhase = 0;
+stroke = new  BasicStroewidth, cap join, miterLimit, dashPattern,, dashPhase;	stroke = new BasicStroke(width, cap, join, miterLimit, dashPattern, dashPhase);
+f	}
+else stoke  = newBasicStrokewidth, cap, join;;	else stroke = new BasicStroke(width, cap, join);
+g2.setStrokestroke;	g2.setStroke(stroke);
+g2drawpath;	g2.draw(path);
+l	}
+	
+public voidsetJoinint j	public void setJoin(int j)
+{	{
+join = j;	join = j;
+repaint;	repaint();
+}	}
+	
+publicvoid setCapint c	public void setCap(int c)
+{	{
+cap =  c;	cap = c;
+repaint;	repaint();
+	}
+	
+public  void setDshboolean d	public void setDash(boolean d)
+{	{
+dash =  d;	dash = d;
+repaint;;	repaint();
+}	}
+private  Point2D poins;;	private Point2D[] points;
+private static  int SIZ = 10;;	private static int SIZE = 10;
+private int curent;	private int current;
+private floatwidh;	private float width;
+private int cap;	private int cap;
+private int join;	private int join;
+private bolean ash;	private boolean dash;
+}	}

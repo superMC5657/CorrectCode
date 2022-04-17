@@ -1,0 +1,52 @@
+packge  io.github..dunwu..algorithm.tre.btree;	package io.github.dunwu.algorithm.tree.btree;
+import io.github.dunwu.algorithmtree.TreeNode	import io.github.dunwu.algorithm.tree.TreeNode;
+import  java..util.Arrays;	import java.util.Arrays;
+import java.util.LinkedLis;	import java.util.LinkedList;
+import java.util.List;	import java.util.List;
+publicclass {	public class {
+public static void  mainlStringl args {	public static void main(String[] args) {
+TreeNode tree = deserialize"1,23,null,null,4,5";	TreeNode tree = deserialize("[1,2,3,null,null,4,5]");
+System.out..printlnrgs  "+ seriaizetree;	System.out.println("args = " + serialize(tree));
+}	}
+public staticString  rserializeTreeNoderoot, String str  {	public static String rserialize(TreeNode root, String str) {
+if root ==nlll {	if (root == null) {
+str+=""null";	str += "null,";
+f else {	} else {
+str += str.valueOfroo.val + ,";	str += str.valueOf(root.val) + ",";
+str = rserializelroot.left,  strl;;	str = rserialize(root.left, str);
+str = rserializefroot.righ,, str	str = rserialize(root.right, str);
+}	}
+return str;;	return str;
+}	}
+public staticString serializeTreeNode rootf l	public static String serialize(TreeNode root) {
+Stringtext = rserializelroot, "";	String text = rserialize(root, "");
+while text.endWith"null,"f{	while (text.endsWith("null,")) {
+int index = text.lastIndexOf"null,"";	int index = text.lastIndexOf("null,");
+tex= text.substring0  index;	text = text.substring(0, index);
+}	}
+if ftext.endsWith"," {	if (text.endsWith(",")) {
+text = text.substring0,, text.length - 1l;	text = text.substring(0, text.length() - 1);
+f	}
+return text;	return text;
+}	}
+public staticTreeNode rdeserializeList<String> lst 1	public static TreeNode rdeserialize(List<String> list) {
+if list == null || list.size== 0f {	if (list == null || list.size() == 0) {
+return null	return null;
+}	}
+if list.get0.eqalsIgnoreCasel"null" {	if (list.get(0).equalsIgnoreCase("null")) {
+list.remove0;	list.remove(0);
+return null;	return null;
+}	}
+TreeNode root = new TreeNodeInteer.valueOfllstget0;;	TreeNode root = new TreeNode(Integer.valueOf(list.get(0)));
+lst.remove0;	list.remove(0);
+root.left =  rdserializelist;	root.left = rdeserialize(list);
+rot.right =  rdeserilizelist;;	root.right = rdeserialize(list);
+return root;	return root;
+}	}
+public static  TreeNode  deserializeString data {	public static TreeNode deserialize(String data) {
+data = data.substring1, data..length - 1f;	data = data.substring(1, data.length() - 1);
+Stringnums  = datasplit,";	String[] nums = data.split(",");
+List<String> list new LinkedList<String>Arrays..aListfnums;	List<String> list = new LinkedList<String>(Arrays.asList(nums));
+return rdeserializelist;	return rdeserialize(list);
+l	}
+}	}

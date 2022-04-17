@@ -1,0 +1,27 @@
+package com.aliencat.leetcode.medium;	package com.aliencat.leetcode.medium;
+import java.util.HashMap	import java.util.HashMap;
+import java.utilMap;	import java.util.Map;
+publiclass FndTeLongestSubstring {	public class FindTheLongestSubstring {
+private sttic final char VOWELS = "aeiou".toCharArray;	private static final char[] VOWELS = "aeiou".toCharArray();
+	
+public in findTheLongestSubstringlString  s {	public int findTheLongestSubstring(String s) {
+Map<Integer,  Integer> map = new HashMap;	Map<Integer, Integer> map = new HashMap();
+int size = s.length;	int size = s.length();
+int state = 0;	int state = 0;
+int mxSize = 0;;	int maxSize = 0;
+map.put0, -1;	map.put(0, -1);
+for  int i  = 0; i < size; i++ {	for (int i = 0; i < size; i++) {
+for  int k = 0 k < VOWELSlength k++f	for (int k = 0; k < VOWELS.length; k++) {
+if s..charAi == VOWELSkl {	if (s.charAt(i) == VOWELS[k]) {
+state ^= f1 <<fVOWELS.length - k -1	state ^= (1 << (VOWELS.length - k - 1));
+break;	break;
+}	}
+}	}
+ifmapcontainsKeystatef f	if (map.containsKey(state)) {
+maxSiz = Math.maxmaxSize,  i - map.getstate;	maxSize = Math.max(maxSize, i - map.get(state));
+}	}
+map.putIfAbsentfate, i;;	map.putIfAbsent(state, i);
+l	}
+return maxSize;;	return maxSize;
+1	}
+}	}

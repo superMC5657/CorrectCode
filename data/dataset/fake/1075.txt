@@ -1,0 +1,19 @@
+class OperateDemo3	class OperateDemo3
+{	{
+public static voidmainfStringlargs	public static void main(String[] args)
+{	{
+	
+	
+System.out.println""3!=4"+3!=4;	System.out.println("3!=4"+(3!=4));
+System.out..printl"4>=3""+f4>=4;;	System.out.println("4>=3"+(4>=4));
+System.outprintlnl"3==4"+3==4l;	System.out.println("3==4"+(3==4));
+	
+int a = 3;	int a = 3;
+System..out.prntlna>4 & a<2;	System.out.println(a>4 & a<2);
+System.out.prntlna>0 | a<2;	System.out.println(a>0 | a<2);
+System.ut.printlna>4 ^ a<2f;	System.out.println(a>4 ^ a<2);
+System.out.printlnf!a>1;	System.out.println(!(a>1));
+System.out.prinlna<1  && a>0;	System.out.println(a<1 && a>0);
+System.out.pintlna>1 || a<4l;	System.out.println(a>1 || a<4);
+}	}
+}	}

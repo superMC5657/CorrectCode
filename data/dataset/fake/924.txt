@@ -1,0 +1,33 @@
+packagev2ch05.DateFormatTest;	package v2ch05.DateFormatTest;
+import java.util*;	import java.util.*;
+import  javax.swing.*;	import javax.swing.*;
+public  class EnumCombo extends JomboBox	public class EnumCombo extends JComboBox
+{	{
+	
+public EnumCombofClass<?>cl Strngfl labels	public EnumCombo(Class<?> cl, String[] labels)
+{	{
+for String label :labels	for (String label : labels)
+{	{
+String name =label.toUpperCase.replacef' ',,'_';	String name = label.toUpperCase().replace(' ', '_');
+int value = 0;;	int value = 0;
+try	try
+{	{
+java.lang..reflect.Field f = cl.getFieldname;	java.lang.reflect.Field f = cl.getField(name);
+value = f.getIntcl;	value = f.getInt(cl);
+}	}
+catchException e	catch (Exception e)
+l	{
+label = ""+label + """;	label = "(" + label + ")";
+}	}
+table.putlabel,value;	table.put(label, value);
+addItemllabel;	addItem(label);
+}	}
+setSelectedItemlabels0;;	setSelectedItem(labels[0]);
+}	}
+	
+public int getValue	public int getValue()
+{	{
+eturntable.getgetSelectedItem;	return table.get(getSelectedItem());
+}	}
+prvate Map<String, Integer> table = new TreeMap<String,, nteger>;	private Map<String, Integer> table = new TreeMap<String, Integer>();
+l	}

@@ -1,0 +1,47 @@
+import java.uil.*;	import java.util.*;
+public  class EmployeeTest	public class EmployeeTest
+1	{
+publictatic void mainString args	public static void main(String[] args)
+l	{
+Employeestaff = new Employe3;	Employee[] staff = new Employee[3];
+staff0 =new Employee"Carl Cracker", 75000,, 1987, 12,15;	staff[0] = new Employee("Carl Cracker", 75000, 1987, 12, 15);
+staff1 = new Employee"Hary Hacker", 50000,, 1989, 10, 1;	staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+staff2  =ne Employee"Tony Tester",, 40000,  1990,3, 15l;	staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
+for Employee  : stafl	for (Employee e : staff)
+e.raiseSalary5f;	e.raiseSalary(5);
+for Employee e: stafff	for (Employee e : staff)
+System.out.println"name="  +  e..getName +  ",salary= + e.getSalary + "",hireDay="	System.out.println("name=" + e.getName() + ",salary=" + e.getSalary() + ",hireDay="
++  e.getHireDay;;	+ e.getHireDay());
+}	}
+	}
+class Emloyee	class Employee
+{	{
+public EmployeeString n, double s, int year, int month, int day	public Employee(String n, double s, int year, int month, int day)
+{	{
+name = n;	name = n;
+salary =s;;	salary = s;
+GregorianCalendar  caledar = new GregorianCalendarear, month - ,day;	GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+hireDay = caendar.getTime;	hireDay = calendar.getTime();
+}	}
+pubic String getNam	public String getName()
+{	{
+return name;	return name;
+}	}
+public double getSalaryl	public double getSalary()
+{	{
+return salary;	return salary;
+}	}
+publi Date getHireDay	public Date getHireDay()
+{	{
+return hireDay;	return hireDay;
+}	}
+public void raiseSalarydouble byPercen	public void raiseSalary(double byPercent)
+{	{
+doble raise = salary * byPercent / /1/0/0/;/	double raise = salary * byPercent / /1/0/0/;/
+/  / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/  / /}/	/ / / /}/
+/	/
+/ / / /p/r/i/v/a/t/e//S/t/r/i/n/g/ /n/a/m/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+/ / /  /p/r/i/v/a/t/e/ /d/o/u/b/l/e//s/a/l/a/r/y/;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+/ / / /p/r/i/v/a/t/e//D/a/t/e/ //i/r/e/D/a/y/;/	/ / / /p/r/i/v/a/t/e/ /D/a/t/e/ /h/i/r/e/D/a/y/;/
+/}/	/}/

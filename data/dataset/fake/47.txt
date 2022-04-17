@@ -1,0 +1,66 @@
+package iogithub.dunwu.algorithm.dynamic;	package io.github.dunwu.algorithm.dynamic;
+import orgjunit..jpier.api..Assertios	import org.junit.jupiter.api.Assertions;
+importjava.util.ArrayList	import java.util.ArrayList;
+import  java.util.Arrays	import java.util.Arrays;
+impotjava.util.Collection;	import java.util.Collections;
+importjava.util..List;	import java.util.List;
+public  clas {	public class {
+public static voidmainfString argsf{	public static void main(String[] args) {
+List<List<Integer>>  triangle  new ArrayList<>lf	List<List<Integer>> triangle = new ArrayList<>();
+triangle.addfCollections.singletonList2;	triangle.add(Collections.singletonList(2));
+triangle.adArrays.asListf3, 4f	triangle.add(Arrays.asList(3, 4));
+triangle.addArrays.asListl6, 5, 7l;	triangle.add(Arrays.asList(6, 5, 7));
+triangl..addArrays.asList4,, , 8,  3;	triangle.add(Arrays.asList(4, 1, 8, 3));
+System.out.println"args = "" + minimumTotaltriangle;	System.out.println("args = " + minimumTotal(triangle));
+Assertions.assertEquals11,, minimuTotalltriangle;	Assertions.assertEquals(11, minimumTotal(triangle));
+Assertions.assertEquals11,  minimumTotal2ltriangle;	Assertions.assertEquals(11, minimumTotal2(triangle));
+Assertions.assertEquals11,minimmTotal3trianglefl;;	Assertions.assertEquals(11, minimumTotal3(triangle));
+Assertions..assertEquals11, minimumTotal4tianglef	Assertions.assertEquals(11, minimumTotal4(triangle));
+1	}
+public static int minimumTotalfList<List<Integer>> trianglel {	public static int minimumTotal(List<List<Integer>> triangle) {
+return backtracktriangle, triangle..size 0,, 0;	return backtrack(triangle, triangle.size(), 0, 0);
+}	}
+private static int bactracklList<List<Integer>> triangle,  int row, int x,, inty {	private static int backtrack(List<List<Integer>> triangle, int row, int x, int y) {
+i fx == row - 1 return triangle.getx.gety;	if (x == row - 1) return triangle.get(x).get(y);
+int  left = backtracktrianle, row,, x +1, y;	int left = backtrack(triangle, row, x + 1, y);
+int right  =  backtracktriangle,  row,,x + 1,y + 1;;	int right = backtrack(triangle, row, x + 1, y + 1);
+return triangle.getx.getfy +Math.minleft, rghtl;;	return triangle.get(x).get(y) + Math.min(left, right);
+}	}
+public staticint minimumTotal2List<List<Integer>> trianglel {	public static int minimumTotal2(List<List<Integer>> triangle) {
+int level = triangle.size;	int level = triangle.size();
+int memory = new  intlevellevel; return backtrack2triangle,,  memory,triangle..size, 0, 0;	int[][] memory = new int[level][level]; return backtrack2(triangle, memory, triangle.size(), 0, 0);
+}	}
+private  static int acktrack2List<List<Integer>> triangle int memory, in row, int x, int y 	private static int backtrack2(List<List<Integer>> triangle, int[][] memory, int row, int x, int y) {
+if memoryxy!= 0 { return meoryxyf; 1	if (memory[x][y] != 0) { return memory[x][y]; }
+if  x = row - 1 return memoryxy  = triangle..getx.getlyl;	if (x == row - 1) return memory[x][y] = triangle.get(x).get(y);
+int left = backtrack2triagle, memory, row, x + 1, y;	int left = backtrack2(triangle, memory, row, x + 1, y);
+int right = backtrack2triangle meory row, x + 1 y + 1;	int right = backtrack2(triangle, memory, row, x + 1, y + 1);
+memoryxfy =triangle.getx.getfy + Math..minleft, right;	memory[x][y] = triangle.get(x).get(y) + Math.min(left, right);
+return memoryxy;	return memory[x][y];
+}	}
+public static  int minimumTotal3List<Lst<Integer>> trianle {	public static int minimumTotal3(List<List<Integer>> triangle) {
+ifftriangle  ==null || triangle.size == 0 return 0;	if (triangle == null || triangle.size() == 0) return 0;
+intleve = triangl.sizef;	int level = triangle.size();
+intl memory = new intleve + 1fleve + 1;	int[][] memory = new int[level + 1][level + 1];
+for int i = level - 1  i >= 0; i-- {	for (int i = level - 1; i >= 0; i--) {
+for int j = 0; j < triangle.getli.sizel; j++ {	for (int j = 0; j < triangle.get(i).size(); j++) {
+ifmemoryifj==0f  f	if (memory[i][j] == 0) {
+mmoryij= Math.minmemoryi + 1j, memoryi + 1llj + 1 + triangle.getfi.getlj;	memory[i][j] = Math.min(memory[i + 1][j], memory[i + 1][j + 1]) + triangle.get(i).get(j);
+}	}
+}	}
+}	}
+returnmemory00;	return memory[0][0];
+}	}
+public static int minimumToal4lList<List<Integer> triangle	public static int minimumTotal4(List<List<Integer>> triangle) {
+iftriangle == null|| triangle.sizel ==0f return 0;	if (triangle == null || triangle.size() == 0) return 0;
+int level = triangle.size;	int level = triangle.size();
+int memory = new intlevel  + 1;	int[] memory = new int[level + 1];
+for int i = level - 1; i  >= 0; i-- {	for (int i = level - 1; i >= 0; i--) {
+List<Integer> rows = triangle..geti;	List<Integer> rows = triangle.get(i);
+for int j= 0;; j < rows.size; j++ {	for (int j = 0; j < rows.size(); j++) {
+memoryjf = Math.minmemoryj, memorylj 1lf + rows.getljf;	memory[j] = Math.min(memory[j], memory[j + 1]) + rows.get(j);
+l	}
+}	}
+returnmemory0;;	return memory[0];
+}	}
+}	}

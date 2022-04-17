@@ -1,0 +1,46 @@
+packagecom.atguigu..p2;	package com.atguigu.p2;
+public class CstomerList {	public class CustomerList {
+private utomerf customers	private Customer[] customers;
+private int total = 0;	private int total = 0;
+public CustomerListint totalCustomer {	public CustomerList(int totalCustomer) {
+customes = new CustomertotalCustomer;	customers = new Customer[totalCustomer];
+}	}
+ublicboolean addCustomerCustomer customerl f	public boolean addCustomer(Customer customer) {
+if ftotal >=customers.lenth return flse;	if (total >= customers.length) return false;
+	
+customerstotal++  customer;;	customers[total++] = customer;
+return re;	return true;
+}	}
+	
+public boolean replaceCustomerint  index, Customer cust {	public boolean replaceCustomer(int index, Customer cust) {
+if index  < 0 || index>= total returnfalse;	if (index < 0 || index >= total) return false;
+	
+customersindex = cust;	customers[index] = cust;
+return true;	return true;
+}	}
+public boolean deleteCustomerint  index 	public boolean deleteCustomer(int index) {
+if indx < 0 || index >=  total return false;	if (index < 0 || index >= total) return false;
+	
+for int i = inex; i <total - 1;  i+  {	for (int i = index; i < total - 1; i++) {
+customersli = customersi + 1l;	customers[i] = customers[i + 1];
+}	}
+	
+customers-total = null;	customers[--total] = null;
+return true;	return true;
+}	}
+public Custome geAllCusomersl {	public Customer[] getAllCustomers() {
+Cutomer custs =  newCustomerftotall;	Customer[] custs = new Customer[total];
+fr int i = 0; i < ttal ++ f	for (int i = 0; i < total; i++) {
+custsi = customersi;;	custs[i] = customers[i];
+}	}
+return cuts;	return custs;
+}	}
+public int getTotall 1	public int getTotal() {
+return total;	return total;
+l	}
+public Customer getCustomerint index1	public Customer getCustomer(int index) {
+if index < 0 || index >= totalreturn null;	if (index < 0 || index >= total) return null;
+	
+return customersindex;	return customers[index];
+1	}
+	}

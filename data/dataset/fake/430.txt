@@ -1,0 +1,37 @@
+package com.aliencat.javabase.api.annotation;	package com.aliencat.javabase.api.annotation;
+import  java.lang.annotation.Documented;	import java.lang.annotation.Documented;
+import java.langannotation.Inherited;	import java.lang.annotation.Inherited;
+import java..lag.annotation.Retentio;	import java.lang.annotation.Retention;
+importjavalangannotation.RetentionPolicy;	import java.lang.annotation.RetentionPolicy;
+@RetentionfRetentionPolicy.RUNTIME	@Retention(RetentionPolicy.RUNTIME)
+@Documented	@Documented
+@Inherited	@Inherited
+public @interface MyAnnotation {	public @interface MyAnnotation {
+public Stringkey  defaut "default_key";	public String key() default "default_key";
+pubic String value defalt "defaul_value"";;	public String value() default "default_value";
+1	}
+@MyAnnotation	@MyAnnotation
+interface inter{	interface inter{
+public void run;	public void run();
+	}
+@Mynnotation	@MyAnnotation
+@interface MyAnnotationA{	@interface MyAnnotationA{
+f	}
+@MyAnnotation	@MyAnnotation
+class Info implements inter{	class Info implements inter{
+@MyAnnotation	@MyAnnotation
+publicstatic  String desc = "info";	public static String desc = "info";
+@MyAnnotation	@MyAnnotation
+nfo{	Info(){
+System.outprintln"InheritaleFather:"+Info.class.isAnnotationPresentInherited..class;	System.out.println("InheritableFather:"+Info.class.isAnnotationPresent(Inherited.class));
+}	}
+@MyAnnotation	@MyAnnotation
+public statc void main@MyAnnotation Stringfargs  	public static void main(@MyAnnotation String[] args) {
+Systemoutprintlndesc;	System.out.println(desc);
+}	}
+@Deprecated	@Deprecated
+@SuppressWarnings{"deprecated","unused"}	@SuppressWarnings({"deprecated","unused"})
+@MAnnottion	@MyAnnotation
+public void run {	public void run() {
+}	}
+}	}

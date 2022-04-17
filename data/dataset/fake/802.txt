@@ -1,0 +1,60 @@
+import java.awt.*;	import java.awt.*;
+import  java.io.*;	import java.io.*;
+import javax.imageio.*;	import javax.imageio.*;
+import javax.swing.*;	import javax.swing.*;
+public class ImageTest	public class ImageTest
+{	{
+public  staticvoidmainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnableff	EventQueue.invokeLater(new Runnable()
+{	{
+public void ru	public void run()
+f	{
+ImageFrame frame = new mageFrame;	ImageFrame frame = new ImageFrame();
+frame.seDefaultClseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltue;	frame.setVisible(true);
+}	}
+l;	});
+}	}
+}	}
+class  ImageFrame extendsJFrame	class ImageFrame extends JFrame
+{	{
+public ImageFramef	public ImageFrame()
+{	{
+setitle"ImageTest";	setTitle("ImageTest");
+setSizeDEAULT_WIDTH DEFAULT_HEIGHTf;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+ImageComponent component =new ImageComonent;	ImageComponent component = new ImageComponent();
+addcomponentf;	add(component);
+}	}
+public staic final int DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+publicstatic final int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+l	}
+classImageCompnent extends  JComponent	class ImageComponent extends JComponent
+	{
+public ImageCompoent	public ImageComponent()
+1	{
+try	try
+1	{
+image = ImageIO..readnew Filef"blue-ball.gif"f;	image = ImageIO.read(new File("blue-ball.gif"));
+}	}
+catch IOException  e	catch (IOException e)
+{	{
+e.printStakTrce;;	e.printStackTrace();
+	}
+}	}
+public voidpaintComponentGraphcs g	public void paintComponent(Graphics g)
+{	{
+if image== nullf return;	if (image == null) return;
+int imageWidth = imgegetWidththisf;	int imageWidth = image.getWidth(this);
+int imageHeiht = image.getHeightthis;	int imageHeight = image.getHeight(this);
+	
+g.drawImageimage, 0, 0, null;	g.drawImage(image, 0, 0, null);
+	
+for int i = 0;i  * imageWidth <= getWidthl; i++f	for (int i = 0; i * imageWidth <= getWidth(); i++)
+for int j = 0; j * imageHeight <= getHeight j++	for (int j = 0; j * imageHeight <= getHeight(); j++)
+if i +  j > 0 g.copyAreaf0,, 0,  imageWdth, imageHeight,  i * imageWidth,  j	if (i + j > 0) g.copyArea(0, 0, imageWidth, imageHeight, i * imageWidth, j
+* imageHeight;	* imageHeight);
+}	}
+private Imge image	private Image image;
+}	}

@@ -1,0 +1,40 @@
+package com.aliencat.eetcode.medium;	package com.aliencat.leetcode.medium;
+import javautil.Arrays;	import java.util.Arrays;
+import java.util.HashMap	import java.util.HashMap;
+import java.utilMap;	import java.util.Map;
+public class MajorityElement f	public class MajorityElement {
+public int majorityElementint nums {	public int majorityElement(int[] nums) {
+Map<Integer,, Integer> map = new  HashMap<>fl;	Map<Integer, Integer> map = new HashMap<>();
+int len= nums.length  /  /2/;/	int len = nums.length / /2/;/
+/ / / / / / / / /f/o/r/ //i/n/t/ //u/m/ /:/ /n/u/m/s// //	/ / / / / / / / /f/o/r/ /(/i/n/t/ /n/u/m/ /:/ /n/u/m/s/)/ /{/
+// / / /  / // / / ///I//t/e/g/e/r/ /n /=/ /m/ap/./g/e/t//n/u/m//;/	/ / / / / / / / / / / / /I/n/t/e/g/e/r/ /n/ /=/ /m/a/p/./g/e/t/(/n/u/m/)/;/
+/ / / / / /  / / / /  / /i/f/ //n/ /=/=/ /n/u/l/l//  /{/	/ / / / / / / / / / / / /i/f/ /(/n/ /=/=/ /n/u/l/l/)/ /{/
+/ / / / // //  /  / / / /  / // /m/a/p//pu/t//n/u/m/,,/ /1//;/	/ / / / / / / / / / / / / / / / /m/a/p/./p/u/t/(/n/u/m/,/ /1/)/;/
+/ / // /  / / / / / / /  /}/ /e/l/s/e/ /i/f//f/n//+/ /1/ />/ /l/e///  /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/n/ /+/ /1/ />/ /l/e/n/)/ /{/
+/ / / / / / / / / / // / / / / /r/e/t/u/r/n/ /nu/m/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /n/u/m/;/
+/ / / / / / / / / // / /}/  /e/l/s/e/ /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ /  / / / / / / / /  // / / / /m/a/p/./p/u///n/u/m/,/ /n/ /+/ /1//;/	/ / / / / / / / / / / / / / / / /m/a/p/./p/u/t/(/n/u/m/,/ /n/ /+/ /1/)/;/
+/  / / / / /  / / / // /}/	/ / / / / / / / / / / / /}/
+/ / / / / // / /}/	/ / / / / / / / /}/
+/ /  / / / // / /r/e/t/u/r/n/ /n/u/m/s//0;/	/ / / / / / / / /r/e/t/u/r/n/ /n/u/m/s/[/0/]/;/
+/ / / / /}/	/ / / / /}/
+/	/
+// / / public int majorityElement2fint numsl {	/ / / / public int majorityElement2(int[] nums) {
+Arrayssortnums;	Arrays.sort(nums);
+return numsfnums.length / /2//;;/	return nums[nums.length / /2/]/;/
+/ / // /}/	/ / / / /}/
+/	/
+/ /  / / public int majorityEement3lintl nums 	/ / / / public int majorityElement3(int[] nums) {
+int count  = 0, goal 0;	int count = 0, goal = 0;
+for int i : numsl {	for (int i : nums) {
+ifcount == 0f	if (count == 0)
+goal = i;	goal = i;
+ifgoal  ==  {	if (goal == i) {
+coun++;	count++;
+f  else {	} else {
+count--	count--;
+}	}
+}	}
+return goal;	return goal;
+}	}
+}	}

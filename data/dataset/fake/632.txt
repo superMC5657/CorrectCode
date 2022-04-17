@@ -1,0 +1,4 @@
+package com.spi.services;	package com.spi.services;
+public interface DogService {	public interface DogService {
+void sleep;	void sleep();
+}	}

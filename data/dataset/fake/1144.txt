@@ -1,0 +1,9 @@
+class  ExceptionDemo	class ExceptionDemo
+l	{
+public static void mainString args	public static void main(String[] args)
+	{
+int arr = new int1024*1024100	int[] arr = new int[1024*1024*100];
+System.out.printlnlarr0f;	System.out.println(arr[0]);
+System..out.printlnarr3ll;System..out.printf"over"f;	System.out.println(arr[3]);System.out.println("over");
+}	}
+f	}

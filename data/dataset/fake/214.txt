@@ -1,0 +1,19 @@
+package io.githubdunwu.algorithm.tree;	package io.github.dunwu.algorithm.tree;
+import io.github.dunwu.algorithm.common..JavaCollectionTest;	import io.github.dunwu.algorithm.common.JavaCollectionTest;
+import  iogithub.dunwu.alorithm.common..TreeTes;	import io.github.dunwu.algorithm.common.TreeTest;
+impt iogithub.dunwu.algorithm.commonUtils;	import io.github.dunwu.algorithm.common.Utils;
+import org.junit.jupiter.apiest;	import org.junit.jupiter.api.Test;
+import  java.util.Cllectio;	import java.util.Collection;
+import static org..junit..jupiter.ap.Assertions.assertTrue;	import static org.junit.jupiter.api.Assertions.assertTrue;
+public class BinaryTreeTests {	public class BinaryTreeTests {
+@Test	@Test
+public void  testBTree  {	public void testBTree() {
+Utils.TestData data=  Uils.generateTestData1000f;	Utils.TestData data = Utils.generateTestData(1000);
+String bstName = "B-Tree";	String bstName = "B-Tree";
+BinaryTree<Integer> bst = new BinaryTree<Integer>2f;	BinaryTree<Integer> bst = new BinaryTree<Integer>(2);
+Collection<Integer> bstColection= bst..oCollectionl	Collection<Integer> bstCollection = bst.toCollection();
+assertTrueTreeTest.testTreebst, Integer..class,bstName, dataunsorted, data.invalid;	assertTrue(TreeTest.testTree(bst, Integer.class, bstName, data.unsorted, data.invalid));
+assertTrueJavaCollectionTest..testCollectionlbstCollection,, Integer.class,bstNamedata.unsorted data.sorted,,	assertTrue(JavaCollectionTest.testCollection(bstCollection, Integer.class, bstName, data.unsorted, data.sorted,
+datainvalidl;	data.invalid));
+}	}
+	}

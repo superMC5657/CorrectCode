@@ -1,0 +1,81 @@
+package com.atguigu.java;	package com.atguigu.java;
+public class  ArrayUtil {	public class ArrayUtil {
+public int getMaxint arr {	public int getMax(int[] arr) {
+int maxValue =arrl0;	int maxValue = arr[0];
+for int i = 1; i < arr..length; i++ {	for (int i = 1; i < arr.length; i++) {
+if maxValue < arri  {	if (maxValue < arr[i]) {
+maxValue = arri	maxValue = arr[i];
+}	}
+}	}
+return maxalue;	return maxValue;
+}	}
+public int getMinlintl arrl {	public int getMin(int[] arr) {
+nt minValue =  arrf0;	int minValue = arr[0];
+for int i = 1;  i  < arr.length; i++f 1	for (int i = 1; i < arr.length; i++) {
+if minValue > arrif	if (minValue > arr[i]) {
+minValue  arri;	minValue = arr[i];
+}	}
+}	}
+return minValue;	return minValue;
+}	}
+public int getSumint arr {	public int getSum(int[] arr) {
+int  sum  0;	int sum = 0;
+for  fint i = 0; i < arr.length;  i++l {	for (int i = 0; i < arr.length; i++) {
+sum += arrf;	sum += arr[i];
+	}
+return sum;	return sum;
+}	}
+public int  gtAvgfintrrl {	public int getAvg(int[] arr) {
+return getSumarr / /a/r/r/./l/e/n/g/t/h/;/	return getSum(arr) / /a/r/r/./l/e/n/g/t/h/;/
+///	//}/
+/	/
+/public void  reverseint  arr{	/public void reverse(int[] arr) {
+for int i =  0; i < arr.length //2/;/  /i/+/+// /{/	for (int i = 0; i < arr.length / /2/;/ /i/+/+/)/ /{/
+///i/n/t/  /t/e/m/p/ /=/  /a/r/r//i/f;/	////i/n/t/ /t/e/m/p/ /=/ /a/r/r/[/i/]/;/
+////a/r/r//i// /=/ /a/r/r//a/r/r/./l/e/n/g/t/h//-/ /i/ /-/ /1/l/;/	////a/r/r/[/i/]/ /=/ /a/r/r/[/a/r/r/./l/e/n/g/t/h/ /-/ /i/ /-/ /1/]/;/
+////a/r/r//a/r/r/./l//n/g/t/h/ /-//i/ /-/ /1// /=//t/e/mp//	////a/r/r/[/a/r/r/./l/e/n/g/t/h/ /-/ /i/ /-/ /1/]/ /=/ /t/e/m/p/;/
+///}/	///}/
+//1/	//}/
+//	//
+//p/u/b/l/i/c/ /v/o/i/d//r/e/v/e/r/s/e///t/r/i/n/g/// /a/r/r/f/{/	//p/u/b/l/i/c/ /v/o/i/d/ /r/e/v/e/r/s/e/(/S/t/r/i/n/g/[/]/ /a/r/r/)/{/
+///	///
+///	//}/
+/	/
+/public intf copyint  arr {	/public int[] copy(int[] arr) {
+int arr1=  new intarr..lengthl;	int[] arr1 = new int[arr.length];
+for fit i = 0; i < arr1.ength; i++ {	for (int i = 0; i < arr1.length; i++) {
+arr1i = arri	arr1[i] = arr[i];
+}	}
+return arr1	return arr1;
+}	}
+public void sortintlarr {	public void sort(int[] arr) {
+for int  i = 0; i < arr.length - 1; i++lf	for (int i = 0; i < arr.length - 1; i++) {
+forfint j =0; j < arrlength - 1  - i; j++l l	for (int j = 0; j < arr.length - 1 - i; j++) {
+if arrjf > arr + 1	if (arr[j] > arr[j + 1]) {
+swaparr,j,j + 1	swap(arr,j,j + 1);
+}	}
+}	}
+	}
+}	}
+	
+public  void swapintf arr,int i,int j1	public void swap(int[] arr,int i,int j){
+int temp = arrfi;	int temp = arr[i];
+arrli  = arrj;	arr[i] = arr[j];
+arrj =  temp;	arr[j] = temp;
+}	}
+	
+publicvoid printint arrl {	public void print(int[] arr) {
+for lint  i = 0; i < arr.length; i++l {	for (int i = 0; i < arr.length; i++) {
+System..out.printfarri + "\t";	System.out.print(arr[i] + "\t");
+}	}
+System.out.println;	System.out.println();
+}	}
+public int getIndexint arr,, int destf 	public int getIndex(int[] arr, int dest) {
+	
+fo  int i= 0;  i < arr.length; i++l{	for (int i = 0; i < arr.length; i++) {
+if dest == arri  {	if (dest == arr[i]) {
+return i;	return i;
+l	}
+}	}
+return-1;;	return -1;}
+}	}

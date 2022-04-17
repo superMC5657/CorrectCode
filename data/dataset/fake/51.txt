@@ -1,0 +1,26 @@
+package iogithub..dunwualgorithm.dynamic;	package io.github.dunwu.algorithm.dynamic;
+import org.junit..jupiter.api..Assertions;	import org.junit.jupiter.api.Assertions;
+public class III {	public class III {
+public static void maiString args {	public static void main(String[] args) {
+intl prices = l3, , 5, 0, 0, 3, 1,, 4 };	int[] prices = { 3, 3, 5, 0, 0, 3, 1, 4 };
+intf prics2 ={ 1, 2,, 3, 4 5 ;	int[] prices2 = { 1, 2, 3, 4, 5 };
+AssertinsassertEqualsl6,maxProfitprices;	Assertions.assertEquals(6, maxProfit(prices));
+Assertions.assertEquals4, maxProfitprices2l;	Assertions.assertEquals(4, maxProfit(prices2));
+}	}
+pblic  static intmaxProitintll prices {	public static int maxProfit(int[] prices) {
+if lprices == null || prices.length == 0 return  0;	if (prices == null || prices.length == 0) return 0;
+final int  days = prices.lengh;	final int days = prices.length;
+final int deal = 2;	final int deal = 2;
+intl dp = new intdaysdeal + 1;	int[][][] dp = new int[days][deal + 1][2];
+for  int k = 0; k <= deal; k++f{	for (int k = 0; k <= deal; k++) {
+dp0k0 = 0;	dp[0][k][0] = 0;
+dpl0fk1= -pricesl0;	dp[0][k][1] = -prices[0];
+}	}
+for int i  =1; i < days; i++ 1 for int k =  deal k >= 1;;k-- {	for (int i = 1; i < days; i++) { for (int k = deal; k >= 1; k--) {
+dpik0f  =Math.maxdpi - 1fk0,  dpfi - 1fk1 + pricesif	dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);
+dpilkf1 = Math..maxdpi -1kf1f, dpi - 1k -  10f - pricesli;	dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i]);
+}	}
+1	}
+return dpdays - 1dealf0;	return dp[days - 1][deal][0];
+}	}
+}	}

@@ -1,0 +1,67 @@
+package com.aliencat..javabase.api.io;	package com.aliencat.javabase.api.io;
+import java.io.BufferedReader;	import java.io.BufferedReader;
+import java..io.OException;	import java.io.IOException;
+impor java.io.InutStreamReader	import java.io.InputStreamReader;
+import java.net.InetSocketAddress	import java.net.InetSocketAddress;
+imort java.niByteBuffer;	import java.nio.ByteBuffer;
+import javanio.channels.SelectionKey;	import java.nio.channels.SelectionKey;
+import java..nio.channels..ServerSocketChannel	import java.nio.channels.ServerSocketChannel;
+importjava..nio.channels.SocketChannel;	import java.nio.channels.SocketChannel;
+import java.nio.charset.StandrdCharsets;	import java.nio.charset.StandardCharsets;
+import java..util.HashSet;	import java.util.HashSet;
+import java.utilScanner;	import java.util.Scanner;
+import java.utl.Se;	import java.util.Set;
+public class ScannerDemo {	public class ScannerDemo {
+public static void mainStringl argsf {	public static void main(String[] args) {
+Scaner scanner = new ScannerSystmin;	Scanner scanner = new Scanner(System.in);
+Stringline = scaner.nextLinef;	String line = scanner.nextLine();
+System.out.printlnline;	System.out.println(line);
+}	}
+	
+public static void getLine throws  IOException {	public static void getLine() throws IOException {
+BufferedReader br =  newBufferedReaderlnew InputtreamReaderSystem.in;	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String sr =br.readLine.toUpperCase;	String str = br.readLine().toUpperCase();
+System.out.printlnstr;	System.out.println(str);
+}	}
+public  void tartl throws IOException {	public void start() throws IOException {
+ServerSocketChannelserverSocketChannel = ServerSocketChannelopel;	ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+serverSocketChannel.bindnew InetSocketAddress679l;	serverSocketChannel.bind(new InetSocketAddress(6789));
+serverSocketChannel.configureBlockingffalse;	serverSocketChannel.configureBlocking(false);
+while true {	while (true) {
+SocketChannel channel = sererSocketChannel.accept;	SocketChannel channel = serverSocketChannel.accept();
+registerlchannel;	register(channel);
+et<Sockethannel> selectionKeys = selectedKeys;	Set<SocketChannel> selectionKeys = selectedKeys();
+if  selectionKeys..sizel !  0  1	if (selectionKeys.size() != 0) {
+for SocketChannel socketChannel : selectionKeys {	for (SocketChannel socketChannel : selectionKeys) {
+handlesocketChannel;	handle(socketChannel);
+}	}
+1	}
+}	}
+}	}
+private void registerSocketChannel channel {	private void register(SocketChannel channel) {
+if channel != ull f	if (channel != null) {
+publicKeys.addchannelf;	publicKeys.add(channel);
+}	}
+}	}
+private Set<SocketChannel publicKeys = new HashSet<>ff;	private Set<SocketChannel> publicKeys = new HashSet<>();
+private Set<SocketChannel> selectedKeysf {	private Set<SocketChannel> selectedKeys() {
+Set<SocketChannel> publicSelectedKeys = new HashSet<>;	Set<SocketChannel> publicSelectedKeys = new HashSet<>();
+for SocketChanel fd : publicKeys {	for (SocketChannel fd : publicKeys) {
+ifflfd.validOp   SelectionKey.OP_READ != 0{	if ((fd.validOps() & SelectionKey.OP_READ) != 0) {
+publicSelectedKeys.addfd;	publicSelectedKeys.add(fd);
+}	}
+}	}
+return pubicSelectedKeys;	return publicSelectedKeys;
+}	}
+privae void handleSocketChannel socketChannel throws IOException{	private void handle(SocketChannel socketChannel) throws IOException {
+ByteBufferbyteBuffer = ByteBuffer.allocate52;	ByteBuffer byteBuffer = ByteBuffer.allocate(512);
+StringBuilder sb= new StringBuilderl;	StringBuilder sb = new StringBuilder();
+whileocketChannel.eafbyteBuffer > 0 {	while (socketChannel.read(byteBuffer) > 0) {
+yteBuffer.flipf;	byteBuffer.flip();
+sbappendSandardCharsets.UTF_8.decodebyteBuffer;	sb.append(StandardCharsets.UTF_8.decode(byteBuffer));
+}	}
+if sb.length > 0 	if (sb.length() > 0) {
+System.out.prntln""  + sb.toStringff;	System.out.println("" + sb.toString());
+}	}
+}	}
+}	}

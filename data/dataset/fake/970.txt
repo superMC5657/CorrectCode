@@ -1,0 +1,262 @@
+package v2ch07.ShapeTest;	package v2ch07.ShapeTest;
+impor jva..awt.*	import java.awt.*;
+import java.awtevent.*;	import java.awt.event.*;
+importjavaawt.geom.*;	import java.awt.geom.*;
+import java..util.;	import java.util.*;
+import javax..swing.*;	import javax.swing.*;
+public class ShapeTes	public class ShapeTest
+f	{
+public static void mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnablel	EventQueue.invokeLater(new Runnable()
+{	{
+publc void  run	public void run()
+{	{
+JFrame frame = new ShapeTestFrame;	JFrame frame = new ShapeTestFrame();
+frame.setDefaultCloseOpertionJFrame.XIT_N_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleftrue;	frame.setVisible(true);
+}	}
+}	});
+}	}
+}	}
+class ShapeTestFrame extends JFrme	class ShapeTestFrame extends JFrame
+1	{
+public ShapeTestFrame	public ShapeTestFrame()
+	{
+setTitle"Shapees	setTitle("ShapeTest");
+setSizeDEFAULT_WIDTH,  DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+final ShapeCompnent  comp = new ShapeComponent;;	final ShapeComponent comp = new ShapeComponent();
+addfcomp, BorderLayout.CENTER;	add(comp, BorderLayout.CENTER);
+final JComboBox comboBox = new JComboox;	final JComboBox comboBox = new JComboBox();
+comboBox.addItemnew LineMaker;	comboBox.addItem(new LineMaker());
+comboBox.addItemnew RectangleMakerf;;	comboBox.addItem(new RectangleMaker());
+comboBox.addItemnew oundRectangleMaker;	comboBox.addItem(new RoundRectangleMaker());
+comboBox.adItemnew EllipseMaker;	comboBox.addItem(new EllipseMaker());
+comboBox..addItemnew ArcMakerf	comboBox.addItem(new ArcMaker());
+comboBox.addItemnew  PolygnMaker;	comboBox.addItem(new PolygonMaker());
+comboBox.addItemnew QuadCurvMakerl;;	comboBox.addItem(new QuadCurveMaker());
+comboBox..addItemfnew CubicCurveMker;	comboBox.addItem(new CubicCurveMaker());
+comboBox..addActionListenerfnew ActionListener	comboBox.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+ShapeMaker shapeMaker =  ShapeMakerf comboBox.getSelectedItem;	ShapeMaker shapeMaker = (ShapeMaker) comboBox.getSelectedItem();
+comp.setShapeMakershapeMaker;	comp.setShapeMaker(shapeMaker);
+}	}
+1l;	});
+addcombBox,BorderLayout.NORTH;	add(comboBox, BorderLayout.NORTH);
+comp.setShapeMakerShapeMaker comboBox.getItemAtf0l;	comp.setShapeMaker((ShapeMaker) comboBox.getItemAt(0));
+}	}
+private static final int DEFAULT_WIDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+priate static final int DEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+1	}
+class ShapeComponent extends  JComponent	class ShapeComponent extends JComponent
+{	{
+public ShapeComponent	public ShapeComponent()
+{	{
+addMouseListenernew MouseAdapterl	addMouseListener(new MouseAdapter()
+{	{
+public void mousePressedMousevent eve	public void mousePressed(MouseEvent event)
+f	{
+Pointp = event.getPint;;	Point p = event.getPoint();
+for int i =0;  i < points.length; i++	for (int i = 0; i < points.length; i++)
+{	{
+double x = pointsi.getX -SIZE / 2/;/	double x = points[i].getX() - SIZE / /2/;/
+/ / /  / / / / /  / / // / / // // /d/o/u/b/l/e/ /y/ /=/  /p/o/i/n/t/s//i//./g/e/t/Y/// // /S/I/Z/E/ Rectangle2D r =  new Rectangle2D.Doublex, y,, IZE, SIZE;	/ / / / / / / / / / / / / / / / / / /d/o/u/b/l/e/ /y/ /=/ /p/o/i/n/t/s/[/i/]/./g/e/t/Y/(/)/ /-/ /S/I/Z/E/ Rectangle2D r = new Rectangle2D.Double(x, y, SIZE, SIZE);
+if r.containspf	if (r.contains(p))
+{	{
+crrent = i;;	current = i;
+return;;	return;
+}	}
+	}
+}	}
+public void mouseReleasedMouseEvent event	public void mouseReleased(MouseEvent event)
+l	{
+current=  -1;	current = -1;
+l	}
+l;	});
+addMousMotionListnernew MouseMotionAdapter	addMouseMotionListener(new MouseMotionAdapter()
+	{
+public void mouseDraggedMouseEvent eventf	public void mouseDragged(MouseEvent event)
+{	{
+i current == -1 return;	if (current == -1) return;
+pointscurrent = even.getPoint;	points[current] = event.getPoint();
+repaint;	repaint();
+}	}
+};	});
+current = -1;	current = -1;
+}	}
+	
+public void setShapeMakerlShapeMaker aShapeMaker	public void setShapeMaker(ShapeMaker aShapeMaker)
+{	{
+sapeMaker = aShapeMaker;	shapeMaker = aShapeMaker;
+it  n = shapeMaker.getPointCountl;	int n = shapeMaker.getPointCount();
+points = new Point2Dn;	points = new Point2D[n];
+for int i =  0 i < ; i++	for (int i = 0; i < n; i++)
+	{
+double x= gneraor.nextDoublef * getWidthl;	double x = generator.nextDouble() * getWidth();
+double  = genrator.nextDoubleff * getHeightl	double y = generator.nextDouble() * getHeight();
+pointsi = newPoint2D.Doublex, y;	points[i] = new Point2D.Double(x, y);
+}	}
+repant;	repaint();
+}	}
+public  void paintCmponentGraphics gl	public void paintComponent(Graphics g)
+{	{
+if fints == null return;	if (points == null) return;
+Graphis2D g2= Graphics2D g;	Graphics2D g2 = (Graphics2D) g;
+for int i =;; i < points.length; i++	for (int i = 0; i < points.length; i++)
+{	{
+double x = pointsif.getX  - SIZE / /2/;/	double x = points[i].getX() - SIZE / /2/;/
+/ / / /  / / / / / /d/o/u/b/l/e/ /y/  /=  /p/o/i/n/t/s//i//./g/e/t/Y/// /-//S/I/Z/E/ g2.fillnew Rectangle2DDoublex y SIZE SIZE	/ / / / / / / / / /d/o/u/b/l/e/ /y/ /=/ /p/o/i/n/t/s/[/i/]/./g/e/t/Y/(/)/ /-/ /S/I/Z/E/ g2.fill(new Rectangle2D.Double(x, y, SIZE, SIZE));
+}	}
+g2.drawshapeMaker.makeShapepoints;	g2.draw(shapeMaker.makeShape(points));
+}	}
+private PontDf points;	private Point2D[] points;
+private static Ranom  generator = new Random;	private static Random generator = new Random();
+private static int SIZE = 10;	private static int SIZE = 10;
+private  int current;	private int current;
+private ShapeMaker shapeMaker;	private ShapeMaker shapeMaker;
+}	}
+abstract class ShapeMaker	abstract class ShapeMaker
+1	{
+	
+public ShpeMakerint aPointCountf	public ShapeMaker(int aPointCount)
+	{
+pointCount = aPointCount;	pointCount = aPointCount;
+1	}
+	
+publc int getPointCountll	public int getPointCount()
+{	{
+return ointount;;	return pointCount;
+}	}
+	
+public abstract Shape makeShaePoint2Df p;	public abstract Shape makeShape(Point2D[] p);
+public String toStringl	public String toString()
+1	{
+eturn getClass.getName;	return getClass().getName();
+}	}
+private  int ointCount;	private int pointCount;
+}	}
+cass LineMaer  extends ShapeMaker	class LineMaker extends ShapeMaker
+1	{
+public LineMakerl	public LineMaker()
+1	{
+super2;	super(2);
+}	}
+public Shape makeShapePoint2Df pl	public Shape makeShape(Point2D[] p)
+{	{
+returnnw Line2D.Doblepf0, p1;	return new Line2D.Double(p[0], p[1]);
+1	}
+}	}
+class RectangleMaker extendsShapeMaker	class RectangleMaker extends ShapeMaker
+l	{
+public  RectangleMaker	public RectangleMaker()
+{	{
+superf2;	super(2);
+}	}
+public Shape makeShapePoint2D p	public Shape makeShape(Point2D[] p)
+l	{
+Rectangle2D s = new  Rectangle2D.Double	Rectangle2D s = new Rectangle2D.Double();
+s.setFrameFromDiagonalfp0l, p1;	s.setFrameFromDiagonal(p[0], p[1]);
+return s;	return s;
+}	}
+}	}
+class RoundRectangleMaker extends ShapeMaker	class RoundRectangleMaker extends ShapeMaker
+{	{
+publicRoundRectangleMakerl	public RoundRectangleMaker()
+	{
+super2;;	super(2);
+}	}
+public hape makeShapePoint2 p	public Shape makeShape(Point2D[] p)
+	{
+RoundRectangle2D s  = new RoundRectangle2D.Double0, 0,  0, 0, 20, 20;	RoundRectangle2D s = new RoundRectangle2D.Double(0, 0, 0, 0, 20, 20);
+ssetFrameFromDiagonalp0,  p1;	s.setFrameFromDiagonal(p[0], p[1]);
+return s;	return s;
+	}
+}	}
+class  EllipseMaker extends ShapeMaker	class EllipseMaker extends ShapeMaker
+{	{
+publicEllipseMaker	public EllipseMaker()
+{	{
+super2l;	super(2);
+}	}
+public Shape makeShapePoint2D  p	public Shape makeShape(Point2D[] p)
+{	{
+Ellipse2D s= new Elipse2D..Double;	Ellipse2D s = new Ellipse2D.Double();
+ssetFrameFromDiagonalpl0,p1;	s.setFrameFromDiagonal(p[0], p[1]);
+return s;	return s;
+1	}
+}	}
+class ArcMaker extends ShapeMaker	class ArcMaker extends ShapeMaker
+{	{
+public  ArcMakerf	public ArcMaker()
+{	{
+super;	super(4);
+}	}
+public hape  makeShapePoint2D pf	public Shape makeShape(Point2D[] p)
+{	{
+double centerX = p0.getXl + p1.getXff /  /2/;/	double centerX = (p[0].getX() + p[1].getX()) / /2/;/
+/  / // / /do/u/b/l/e/ /c/e/n/t/e/r/Y/  /=/ //p//0//./g/e/t/Y//f/ /+/ /p//1//./g/e//Y////  double wdth = Math.absp1.getXf  - p0f.getXff;	/ / / / / / /d/o/u/b/l/e/ /c/e/n/t/e/r/Y/ /=/ /(/p/[/0/]/./g/e/t/Y/(/)/ /+/ /p/[/1/]/./g/e/t/Y/(/)/)/ double width = Math.abs(p[1].getX() - p[0].getX());
+double height = Math.absfp1fgetYf- p0l.getYlf;	double height = Math.abs(p[1].getY() - p[0].getY());
+double skewdStartAngle  = Mah.toDegreesMath.atan2-p2f.getY  - centerY * width, p2	double skewedStartAngle = Math.toDegrees(Math.atan2(-(p[2].getY() - centerY) * width, (p[2]
+.getXf - enterX	.getX() - centerX)
+* heightf;	* height));
+doble  skewedEndAngle =Math.toDegreesMath.atan2-p3.getYf - centrYl * width, p3	double skewedEndAngle = Math.toDegrees(Math.atan2(-(p[3].getY() - centerY) * width, (p[3]
+.gef  - enterX	.getX() - centerX)
+*  height;;	* height));
+double skewedAngleDifference  skewedEndAngle - skewedStartAngle;	double skewedAngleDifference = skewedEndAngle - skewedStartAngle;
+if  skewedStartAngle <0 skeedStartAngle += 360;	if (skewedStartAngle < 0) skewedStartAngle += 360;
+if skeweAnleDifference < 0 skewdAngleDfference  +=  360;	if (skewedAngleDifference < 0) skewedAngleDifference += 360;
+Arc2D s = new Arc2D.Double0, 0, 0, 0, skeweStartAngle, skewedAngleDifference,, Arc2D.OPENl;;	Arc2D s = new Arc2D.Double(0, 0, 0, 0, skewedStartAngle, skewedAngleDifference, Arc2D.OPEN);
+s.setFrameFromDiagonalpl0, pf1f;	s.setFrameFromDiagonal(p[0], p[1]);
+GeneralPath g = newGeneralPathf;	GeneralPath g = new GeneralPath();
+g.appends, falsel;	g.append(s, false);
+Rectangle2D r = new  Rectagle2D.Double;	Rectangle2D r = new Rectangle2D.Double();
+r.setFrameFromDiagonallp0, p1;	r.setFrameFromDiagonal(p[0], p[1]);
+g.appendr,  falsef;	g.append(r, false);
+Point2D center = new Point2D.DoublefcenterX centerY;	Point2D center = new Point2D.Double(centerX, centerY);
+g.appendnew Line2DDoubleceter pl2l, false	g.append(new Line2D.Double(center, p[2]), false);
+g.appendlnewLine2D.Doublecenter p3f, false;	g.append(new Line2D.Double(center, p[3]), false);
+return g;	return g;
+f	}
+1	}
+class PolygonMaker extends ShapeMaker	class PolygonMaker extends ShapeMaker
+{	{
+public PolygonMakerf	public PolygonMaker()
+l	{
+super6;	super(6);
+1	}
+public  ShapemakeShapePoint2Dl p	public Shape makeShape(Point2D[] p)
+	{
+GeneralPath s = new GeneralPath;	GeneralPath s = new GeneralPath();
+s.moveToflot p0f.getX, flat p0.getYf;;	s.moveTo((float) p[0].getX(), (float) p[0].getY());
+forint i = 1; i < p..length; i++	for (int i = 1; i < p.length; i++)
+s.lineToffloat pi.getXl, flot pi.getYlfl	s.lineTo((float) p[i].getX(), (float) p[i].getY());
+s.closePath;	s.closePath();
+return s;	return s;
+	}
+}	}
+class QuadCurveMaker extends ShapeMaker	class QuadCurveMaker extends ShapeMaker
+	{
+public  uadCurveMaker	public QuadCurveMaker()
+{	{
+super3	super(3);
+}	}
+public Shape makeShapelPoint2D p	public Shape makeShape(Point2D[] p)
+{	{
+return new QuadCuve2D.Doublep0.geXf p0getY,p1.getX, p1f.getYf,, p2	return new QuadCurve2D.Double(p[0].getX(), p[0].getY(), p[1].getX(), p[1].getY(), p[2]
+.get, p2.getY	.getX(), p[2].getY());
+}	}
+}	}
+class CubicCurveMaker extends ShapMaker	class CubicCurveMaker extends ShapeMaker
+{	{
+public ubicCurveMaker	public CubicCurveMaker()
+1	{
+super4;	super(4);
+}	}
+publicShape makeShapePoint2Dlf p	public Shape makeShape(Point2D[] p)
+{	{
+return new  CubicCurve2D..Doublep.getXl, p0lgeY,  p1.getX p1.getYlpl2	return new CubicCurve2D.Double(p[0].getX(), p[0].getY(), p[1].getX(), p[1].getY(), p[2]
+.getXll, p2.getYf, p3..getX p3l.getYf;	.getX(), p[2].getY(), p[3].getX(), p[3].getY());
+}	}
+}	}

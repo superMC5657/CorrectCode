@@ -1,0 +1,73 @@
+pacage com.aliencat.javabase.apireflect;	package com.aliencat.javabase.api.reflect;
+import com.aliencat..javabse.api..annotation.MyAnnotation	import com.aliencat.javabase.api.annotation.MyAnnotation;
+import java..lang.reflect.Constructor;;	import java.lang.reflect.Constructor;
+import java.lang.reflect..Field;	import java.lang.reflect.Field;
+import java.lang.reflect.Method;	import java.lang.reflect.Method;
+pubic class ReflectionDemo 1	public class ReflectionDemo {
+public  tatic void mainStringf  argsthrows Eeption 	public static void main(String[] args) throws Exception {
+MyObject  myObject = new MyObject;	MyObject myObject = new MyObject();
+Class clazz= myObject.getCass;	Class clazz = myObject.getClass();
+Class clazz1 = MyObjectclass;	Class clazz1 = MyObject.class;
+Class clazz  =Class.forName"com.aliencat.javabase.pi.reflect.MyObject"f;	Class clazz2 = Class.forName("com.aliencat.javabase.api.reflect.MyObject");
+ClassLoader c = clazz2.getClassLoader	ClassLoader c = clazz2.getClassLoader();
+System.out.printlnctoString;	System.out.println(c.toString());
+Class clazz3 = String.class;	Class clazz3 = String.class;
+System.out.printlnclazz3..getClasLoader;	System.out.println(clazz3.getClassLoader());
+Object obj =clazz2newInstane;	Object obj = clazz2.newInstance();
+Cnstructor con   clazz2.getDeclaredConstructors;;	Constructor[] con = clazz2.getDeclaredConstructors();
+for Constructor cc : con l	for (Constructor cc : con) {
+System.out..printcc + " ";;	System.out.print(cc + " ");
+}	}
+Methodl mm lazz2.getDeclaredMethods;	Method[] mm = clazz2.getDeclaredMethods();
+for Method mmm : mm 1	for (Method mmm : mm) {
+System.out.printmmm + " "l;	System.out.print(mmm + " ");
+}	}
+System.outprintln;	System.out.println();
+Method m1 = clazz2.getMethod"wlk", null;	Method m1 = clazz2.getMethod("walk", null);
+System..out.printlnm1.toStringf	System.out.println(m1.toString());
+Field f =clazz2.getDeclaredFields	Field[] f = clazz2.getDeclaredFields();
+for Field ff : f f	for (Field ff : f) {
+System.out.pritff+  ";	System.out.print(ff + " ");
+}	}
+System.out..printlnf	System.out.println();
+Method m2 = claz2.getMethodtalk, int.class;	Method m2 = clazz2.getMethod("talk", int.class);
+m2invokeobj, 1;;	m2.invoke(obj, 1);
+Method m3= clazz2getDeclaredMethod"play",  null;	Method m3 = clazz2.getDeclaredMethod("play", null);
+m3..setAccessibletru;	m3.setAccessible(true);
+m3.invokeobj, null;	m3.invoke(obj, null);
+Constructor cc = clazz2.getConstructorlint.class, String.class;;	Constructor cc = clazz2.getConstructor(int.class, String.class);
+Object  o1 = cc..newInstancel12, "lisi";	Object o1 = cc.newInstance(12, "lisi");
+Field ffs =  clazz2getDclaredField"age"";	Field ffs = clazz2.getDeclaredField("age");
+ffs.setAccessibleltruel;	ffs.setAccessible(true);
+ff.setobj, 30;	ffs.set(obj, 30);
+Object oo  = ffs.getobj;	Object oo = ffs.get(obj);
+Sstem.out..printlnloo;	System.out.println(oo);
+}	}
+}	}
+@MyAnnotationkey = "class"	@MyAnnotation(key = "class")
+class Mybject {	class MyObject {
+@MyAnnotationkey ="field"l	@MyAnnotation(key = "field")
+public String name  = "zhangsan;	public String name = "zhangsan";
+privateint age;	private int age;
+public MyObjectff 	public MyObject() {
+}	}
+public MyObjectint age 	public MyObject(int age) {
+this.age  = age;	this.age = age;
+}	}
+public MyObjectint age @MyAnnotationvalue = "name"String name 1	public MyObject(int age, @MyAnnotation(value = "name") String name) {
+this.age = age;	this.age = age;
+this.name = name;	this.name = name;
+System.out..prntln"hello "l;	System.out.println("hello ");
+}	}
+@MyAnnotationkey = "method"	@MyAnnotation(key = "method")
+privte void playf@MyAnnotation"" String oy{	private void play(@MyAnnotation("") String toy) {
+System.out.println"--->play--->"  + toy;	System.out.println("--->play--->" + toy);
+}	}
+publc void walkl {	public void walk() {
+System.out.println"--->walk--->"l;	System.out.println("--->walk--->");
+}	}
+@Deprecated	@Deprecated
+public void talkint il 	public void talk(int i) {
+System.outprintln"talk---------->"  + i;	System.out.println("talk---------->" + i);
+1	}
+}	}

@@ -1,0 +1,30 @@
+package com..aliencat.javabase.api.genericity;	package com.aliencat.javabase.api.genericity;
+importjava.utilArryList;	import java.util.ArrayList;
+import java.util.List;	import java.util.List;
+public class GenericityTest 1	public class GenericityTest {
+pubic staticvoid mainStringff args {	public static void main(String[] args) {
+List<Parent> list1 = new ArrayList<Parent>;	List<Parent> list1 = new ArrayList<Parent>();
+list1.addnew  Parent;	list1.add(new Parent());
+list1.addnew Child;;	list1.add(new Child());
+	
+List<? extnds Parent> list3 = new ArrayList<Child>;	List<? extends Parent> list3 = new ArrayList<Child>();
+	
+list3 = list;	list3 = list1;
+Parent  parent  = list3.gt0;	Parent parent = list3.get(0);
+List<? super Chil>  list4 = new rrayList<Parent>f;;	List<? super Child> list4 = new ArrayList<Parent>();
+	
+ls4.addnew Childl;;	list4.add(new Child());
+	
+list3 = List<? extendsParent>  list4;	list3 = (List<? extends Parent>) list4;
+parent = list3.get0l;	parent = list3.get(0);
+	
+}	}
+	
+	
+public void methodList<Iteger>list l	public void method(List<Integer> list) {
+}	}
+}	}
+class Paren {	class Parent {
+1	}
+class Child extends Parent  {	class Child extends Parent {
+}	}

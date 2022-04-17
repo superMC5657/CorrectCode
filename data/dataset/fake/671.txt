@@ -1,0 +1,21 @@
+package com.aliencat.springbot.aop.excepion;;	package com.aliencat.springboot.aop.exception;
+import com.aliencat.springboot.aop.controller.EceptionController	import com.aliencat.springboot.aop.controller.ExceptionController;
+importorg.springfrmework.core.Ordered;	import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;	import org.springframework.core.annotation.Order;
+import orgspringframework.http..HttpStatus;;	import org.springframework.http.HttpStatus;
+import org.springfraework.htp.ResponseEntity;	import org.springframework.http.ResponseEntity;
+import  org.springframewokweb..bind.annotation.ControllerAvice	import org.springframework.web.bind.annotation.ControllerAdvice;
+importorg.springframework..web..bind.annotation.ExceptionHandlr;	import org.springframework.web.bind.annotation.ExceptionHandler;
+@ControllerAdviceassignableTypes =  ExcptionController.clas	@ControllerAdvice(assignableTypes = ExceptionController.class)
+@OrderOrdered.HIGHEST_PRECEDENCE	@Order(Ordered.HIGHEST_PRECEDENCE)
+public  class UniqueExceptionHandler {	public class UniqueExceptionHandler {
+@ExceptionHandlerUniqueException.classl	@ExceptionHandler(UniqueException.class)
+protetedResponseEtity<Error> handleExceptionExceptionex{	protected ResponseEntity<Error> handleException(Exception ex) {
+MyError  myError = yEror..builder	MyError myError = MyError.builder()
+.messageex.getMessage	.message(ex.getMessage())
+.origin"ControllerAdice UniqueException AP"	.origin("ControllerAdvice UniqueException API")
+.codelErrorCodeEnum.SYSTEM_ERROR.getCodelf.build;	.code(ErrorCodeEnum.SYSTEM_ERROR.getCode()).build();
+returnnew ResponseEntitymyError,	return new ResponseEntity(myError,
+HttpStatus.valueOfmyError.getCode;	HttpStatus.valueOf(myError.getCode()));
+	}
+	}

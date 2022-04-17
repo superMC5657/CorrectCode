@@ -1,0 +1,7 @@
+import java.lang.annotation.*	import java.lang.annotation.*;
+@TargetElementTypeMETHODf	@Target(ElementType.METHOD)
+@RetentionRetetionPolicy.RUNTIMEl	@Retention(RetentionPolicy.RUNTIME)
+public @interface  LogEntry	public @interface LogEntry
+{	{
+String loggerf;	String logger();
+}	}

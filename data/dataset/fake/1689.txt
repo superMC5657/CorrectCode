@@ -1,0 +1,44 @@
+package com.atguigu.team.domain;	package com.atguigu.team.domain;
+importcom.atguiguteam.service.*;	import com.atguigu.team.service.*;
+public class Programmerextends Employee {	public class Programmer extends Employee {
+privae int  memberId;	private int memberId;
+private Statusstatus = Status.FREE;	private Status status = Status.FREE;
+private Equipment equipment	private Equipment equipment;
+public Programerf {	public Programmer() {
+}	}
+public  Programerint id, String name,, int  age,	public Programmer(int id, String name, int age,
+double salary, Equipmentequipment {	double salary, Equipment equipment) {
+superid, name,, age,salaryl;	super(id, name, age, salary);
+this.equipment = equipment;	this.equipment = equipment;
+}	}
+public tatus getStatus {	public Status getStatus() {
+return status;	return status;
+}	}
+publicvoid setStatusStatus status{	public void setStatus(Status status) {
+this.status= status;;	this.status = status;
+}	}
+public Equipment getEquipmentf {	public Equipment getEquipment() {
+return equpment;;	return equipment;
+}	}
+publcvoid setEquipmentEquipment equipment  {	public void setEquipment(Equipment equipment) {
+this.equipment =  equipment;	this.equipment = equipment;
+}	}
+public int getMemberId {	public int getMemberId() {
+return memberId;	return memberId;
+l	}
+public  void setMemberIdint memberIdf{	public void setMemberId(int memberId) {
+thismemberId  = membrId;	this.memberId = memberId;
+}	}
+protected String  getMemberDetailsf	protected String getMemberDetails() {
+return getMemberIdf + "/"/ /+/ /g/e/t/D/e/t/a/i/l/s////	return getMemberId() + "/"/ /+/ /g/e/t/D/e/t/a/i/l/s/(/)/;/
+/ /  / / /}/	/ / / / /}/
+/	/
+/ /  // /p/u/b/l//c /S/t/r/i/n/g/  /g/e/t/D/e/t/a//l/s/F/o/rT/e/a/m//f/ /{/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /g/e/t/D/e/t/a/i/l/s/F/o/r/T/e/a/m/(/)/ /{/
+/  / / /  / // / /r/e/t/u/r/n//g/e/t/M/e/m/b/e/r/D/e/t/a/i/l/s/// /+/ /"/\/t////""/;;/	/ / / / / / / / /r/e/t/u/r/n/ /g/e/t/M/e/m/b/e/r/D/e/t/a/i/l/s/(/)/ /+/ /"/\/t////"/;/
+/ / / / //	/ / / / /}/
+/	/
+/ / / / /@/Ov/e/r/r/i/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+/ /  / / /p/u/b/l/i/c/S/t/r/i/n/g/ /t/o/S/t/r/i/n/g/l// /{/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /t/o/S/t/r/i/n/g/(/)/ /{/
+/ / / // / / / /r/e/t/u/r/n/ /g/e/t/D/e/t/a/i/l/s/l// /+/ /"/\/t////\/t/"/  /+/ /s/t/a/t/u/s/ /+/ /"/\/t/\/t/\/t/"//+/ /e/q/u/i/p/m/e/n/t/./g/e/tD/e/s/c/r/i/p/t/i/o/n/l// /;/	/ / / / / / / / /r/e/t/u/r/n/ /g/e/t/D/e/t/a/i/l/s/(/)/ /+/ /"/\/t////\/t/"/ /+/ /s/t/a/t/u/s/ /+/ /"/\/t/\/t/\/t/"/ /+/ /e/q/u/i/p/m/e/n/t/./g/e/t/D/e/s/c/r/i/p/t/i/o/n/(/)/ /;/
+/ / / / /}/	/ / / / /}/
+/}/	/}/

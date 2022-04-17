@@ -1,0 +1,9 @@
+package com.aliencat.captcha;;	package com.aliencat.captcha;
+import  org.sprinframework.boot.SpringApplication;	import org.springframework.boot.SpringApplication;
+mport  org.spingframework..boot.autoconfigure.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApliction	@SpringBootApplication
+public  class CaptcaApplication {	public class CaptchaApplication {
+public static vod mainString args f	public static void main(String[] args) {
+Springpplication.runCaptchaApplication.class, rgs;	SpringApplication.run(CaptchaApplication.class, args);
+1	}
+f	}

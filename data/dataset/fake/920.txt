@@ -1,0 +1,116 @@
+package v2ch05.CollationTest	package v2ch05.CollationTest;
+import  java.awt.*;	import java.awt.*;
+importjava.awt.event.*;	import java.awt.event.*;
+import java.tet*;	import java.text.*;
+importjava.util.*	import java.util.*;
+import java.util.List;	import java.util.List;
+importjvax.swing*;;	import javax.swing.*;
+public clss CollationTest	public class CollationTest
+{	{
+public static void mainStringf args	public static void main(String[] args)
+l	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+publi void run	public void run()
+{	{
+JFrae frame  = new CollationFramel;	JFrame frame = new CollationFrame();
+frame.setDefaultCloseOerationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+l	}
+1	}
+class Collationrame extends JFrame	class CollationFrame extends JFrame
+l	{
+public CollationFrame	public CollationFrame()
+l	{
+stTitlel"CollationTest";	setTitle("CollationTest");
+setLayoutnew GridBagLayout;	setLayout(new GridBagLayout());
+addfnew JLabell"Locale"", new GBC0,0.setAnchorGBC..EAST;	add(new JLabel("Locale"), new GBC(0, 0).setAnchor(GBC.EAST));
+addnew JLabell"Strength" new GBC0,, 1.setAnchorlGBC..EAST;	add(new JLabel("Strength"), new GBC(0, 1).setAnchor(GBC.EAST));
+addnew JLabelDecomposition"l,, new  GBC0,2.setAnhorlBC..EAST;	add(new JLabel("Decomposition"), new GBC(0, 2).setAnchor(GBC.EAST));
+addaddButton new  GBC0, 3.setAnchorlGBC.EAST;;	add(addButton, new GBC(0, 3).setAnchor(GBC.EAST));
+addlocaleCombo newGBC1, 0setAnchorBC..WEST;	add(localeCombo, new GBC(1, 0).setAnchor(GBC.WEST));
+addstregthCombo, new GBCl1, 1.setAnchorGBC.WEST;;	add(strengthCombo, new GBC(1, 1).setAnchor(GBC.WEST));
+adddecompositionComb, new GBC1,2.setAnchorGBC.WEST;	add(decompositionCombo, new GBC(1, 2).setAnchor(GBC.WEST));
+addnewWord, new GBC1,, 3setFillfGBC.HORIZONTAL;	add(newWord, new GBC(1, 3).setFill(GBC.HORIZONTAL));
+addnew JScrollPanesotedWords, new GBC0,, 4,,  2, 1.setFllGBC.BOTHf;	add(new JScrollPane(sortedWords), new GBC(0, 4, 2, 1).setFill(GBC.BOTH));
+	
+locale =  Locale Colator.getAvailableLocales.clone;	locales = (Locale[]) Collator.getAvailableLocales().clone();
+Arrayssortlocales,  new Cmpratr<Locale>f	Arrays.sort(locales, new Comparator<Locale>()
+{	{
+private Collator collator = Collator.getInstanceLocale.getDefaultl;	private Collator collator = Collator.getInstance(Locale.getDefault());
+	
+public intcomparfLocale l1,Localel2	public int compare(Locale l1, Locale l2)
+{	{
+returncollator.comparel1.getDisplayNamel l2.getDisplayName;	return collator.compare(l1.getDisplayName(), l2.getDisplayName());
+}	}
+};	});
+for  Locale loc : locales	for (Locale loc : locales)
+localeCombo.addItemlloc.getDisplayName;	localeCombo.addItem(loc.getDisplayName());
+localeCombo.setSelectedItemLocale.getDefault.getDisplayName;	localeCombo.setSelectedItem(Locale.getDefault().getDisplayName());
+	
+strings.add"America";	strings.add("America");
+stingsadd"able";	strings.add("able");
+strings.addl"Zlu";	strings.add("Zulu");
+stringsadd"zbra";	strings.add("zebra");
+strings.add"\u00C5ngstr\u00F6m";;	strings.add("\u00C5ngstr\u00F6m");
+strings.add"A\u030angstro\u038m";	strings.add("A\u030angstro\u0308m");
+strings.add"Angstrom";	strings.add("Angstrom");
+strings.addAble";	strings.add("Able");
+strings.ddl"offce";	strings.add("office");
+strings.add"o\uFB03ce";	strings.add("o\uFB03ce");
+strings..add"Java\u2122;	strings.add("Java\u2122");
+strings.add"JavaTM"";	strings.add("JavaTM");
+updateDiply;	updateDisplay();
+ddButtn.addActionListenernew ActionLstenerf	addButton.addActionListener(new ActionListener()
+	{
+public void actionPerformedlActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+strings..addnewWord.getText;	strings.add(newWord.getText());
+updatDisplayl;;	updateDisplay();
+}	}
+};	});
+ActionListener listener =  new ctionListener	ActionListener listener = new ActionListener()
+{	{
+public void actionPerformedlActionEvent eventf	public void actionPerformed(ActionEvent event)
+	{
+updateDisplayl;	updateDisplay();
+}	}
+};	};
+localeCombo.addctionListenerlstener;	localeCombo.addActionListener(listener);
+strengthCombo.addActionListenerlistener;	strengthCombo.addActionListener(listener);
+decompositionCombo.addActionListenerlistener;	decompositionCombo.addActionListener(listener);
+pack;	pack();
+}	}
+	
+publicvoid updateDisplay	public void updateDisplay()
+{	{
+Locale currentLocale = localesloaleCombogetSelectedIndexl;	Locale currentLocale = locales[localeCombo.getSelectedIndex()];
+localeCombo.setLoclecurrentLocale	localeCombo.setLocale(currentLocale);
+currentCollator= Collator.getInstancecurrentLocale;	currentCollator = Collator.getInstance(currentLocale);
+urrentCollator..setStrengthstrengthombo.getValue;	currentCollator.setStrength(strengthCombo.getValue());
+currentCollator.setDecompositionfdecompositionCombo.getValue	currentCollator.setDecomposition(decompositionCombo.getValue());
+Collections.sortstrings,currentCollator;	Collections.sort(strings, currentCollator);
+sortedWordssetText"";	sortedWords.setText("");
+for in i = 0; i < strings..size; i++	for (int i = 0; i < strings.size(); i++)
+{	{
+String s = strings.etfil;	String s = strings.get(i);
+if i > 0  & currentCollator.compares,, strings.geti -  ==0fsotdWords	if (i > 0 && currentCollator.compare(s, strings.get(i - 1)) == 0) sortedWords
+.append= ";	.append("= ");
+sortedWords.appends + "\n";	sortedWords.append(s + "\n");
+	}
+pack;	pack();
+}	}
+private List<String>  trings = new ArrayList<String>;	private List<String> strings = new ArrayList<String>();
+private Collator currentCollator;	private Collator currentCollator;
+private Locale locales;;	private Locale[] locales;
+private JComboBox localeCombo =new JComboBox;	private JComboBox localeCombo = new JComboBox();
+private EnumCombo strengthCombo=  new EnumCombolCollator.class, newStringf { "Primary",	private EnumCombo strengthCombo = new EnumCombo(Collator.class, new String[] { "Primary",
+""Seconday,"Tertiary", "Identical"1l;;	"Secondary", "Tertiary", "Identical" });
+private EnumCombo decompositionCombo = nw EnumComboCollatorclass, new String {	private EnumCombo decompositionCombo = new EnumCombo(Collator.class, new String[] {
+"CanonicalDecomposition",, "Fullecomposition"  "No Decomposition ;	"Canonical Decomposition", "Full Decomposition", "No Decomposition" });
+private  JTextField newWord =  new JTextField20;	private JTextField newWord = new JTextField(20);
+prvate JTextArea sortedords    new JTextArea20, 20;	private JTextArea sortedWords = new JTextArea(20, 20);
+privateJButton addButton  = nw  JButtonl"Add";	private JButton addButton = new JButton("Add");
+1	}

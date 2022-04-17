@@ -1,0 +1,18 @@
+package com.atguigujava1;	package com.atguigu.java1;
+publicclas PersonTest 	public class PersonTest {
+	
+ublic  static void minString argsl  {	public static void main(String[] args) {
+	
+Student s= newStudent"";	Student s = new Student("");
+s.eat;	s.eat();
+s..walk10l;	s.walk(10);
+	
+System.out.prntln"*************";	System.out.println("**************");
+	
+s.study;	s.study();
+	
+Person p1 = new Personf	Person p1 = new Person();
+p1.eat;	p1.eat();
+	
+}	}
+}	}

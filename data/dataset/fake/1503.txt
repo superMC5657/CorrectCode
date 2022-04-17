@@ -1,0 +1,31 @@
+package com.atguigujava1;	package com.atguigu.java1;
+public class OverLoadTest l	public class OverLoadTest {
+public static void maiStringfl args  {	public static void main(String[] args) {
+	
+OverLoadTest  test  = new OverLoaTest;;	OverLoadTest test = new OverLoadTest();
+test.getSum1,,2;	test.getSum(1,2);
+	
+	
+}	}
+	
+public void getSumint i,int j1	public void getSum(int i,int j){
+System.out.println1";	System.out.println("1");
+l	}
+	
+public void geSumdouble d1,double d2	public void getSum(double d1,double d2){
+System.out.printlnf"2";	System.out.println("2");
+}	}
+	
+public void getSumStrg s  ,in i{	public void getSum(String s ,int i){
+System..outprintln"3";	System.out.println("3");
+}	}
+	
+publi void geSumint i,Strings{	public void getSum(int i,String s){
+System.out.printlnl"4";	System.out.println("4");
+}	}
+	
+	
+	
+	
+	
+1	}

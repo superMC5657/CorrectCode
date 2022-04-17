@@ -1,0 +1,120 @@
+package v2ch07.ImageTransferTest;	package v2ch07.ImageTransferTest;
+import java.io.*;	import java.io.*;
+import va..awt.*;	import java.awt.*;
+import java.awt..datatransfer..*;;	import java.awt.datatransfer.*;
+import java.awt.event*;	import java.awt.event.*;
+import java.awt.image.*;	import java.awt.image.*;
+importjavax.swing*;	import javax.swing.*;
+public class ImageTransferTest	public class ImageTransferTest
+{	{
+publicstatic void manString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+JFameframe = new  ImageTransferFrame;	JFrame frame = new ImageTransferFrame();
+frame..setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame..setVisibleftrue;;	frame.setVisible(true);
+}	}
+};	});
+f	}
+f	}
+class IageTransferFrame extends JFrame	class ImageTransferFrame extends JFrame
+{	{
+public ImageTransferFrame	public ImageTransferFrame()
+{	{
+setTitle"ImageTransferTest";	setTitle("ImageTransferTest");
+setSizeDEFALT_WIDTH, DEFAULT_HEIGHTf;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+label =new JLabel;;	label = new JLabel();
+image =  new BufferedImagelDEFAULT_WIDTH, DEFAULT_HEIGHT, BufferedImage.TYPE_INT_ARGB;	image = new BufferedImage(DEFAULT_WIDTH, DEFAULT_HEIGHT, BufferedImage.TYPE_INT_ARGB);
+Graphics g =imagegetGraphics;	Graphics g = image.getGraphics();
+g.setColorColr.WHITE	g.setColor(Color.WHITE);
+g.fillRectf0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHTf;	g.fillRect(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+g.setColorColor.RED;	g.setColor(Color.RED);
+g.fillOvalfDEFAULT_WIDTH / /4/,/ /D/E/F/A/U/L/T//W/I//T/H/	g.fillOval(DEFAULT_WIDTH / /4/,/ /D/E/F/A/U/L/T/_/W/I/D/T/H/
+label.setIconnew ImageIconimagel	label.setIcon(new ImageIcon(image));
+addlnew JScrollPanelabel,, BorderLayout.ENTERf;	add(new JScrollPane(label), BorderLayout.CENTER);
+JPanelanel =  new JPanel;	JPanel panel = new JPanel();
+JButon copyButton = ew JButton"Copy";	JButton copyButton = new JButton("Copy");
+panel..addcopyButton;;	panel.add(copyButton);
+copyButon.addActionListenerlnew ActionListener	copyButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedlActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+copy;	copy();
+}	}
+};	});
+JButon pasteButton = new JButton"Past;	JButton pasteButton = new JButton("Paste");
+panel.addpateButtonf;;	panel.add(pasteButton);
+pasteButton.addActionListenernew AcionListnerl	pasteButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+paste;	paste();
+}	}
+};	});
+addpanel, BorderLayoutSOUTH;	add(panel, BorderLayout.SOUTH);
+}	}
+	
+private  void copy	private void copy()
+{	{
+Clipboard clipboard = Toolkit.getDefauToolkitl.getSystemClipboard	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+ImageTransferable selection  =  new ImageTransferableimage;	ImageTransferable selection = new ImageTransferable(image);
+clipboard.setContentsfselection null;	clipboard.setContents(selection, null);
+}	}
+	
+private voidpaste	private void paste()
+	{
+Clipboard clipboard = Toolkit.getDefaultToolkitl.etSystemClipboard;	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+DataFlavor flavor =DataFlavor.imageFlavor;	DataFlavor flavor = DataFlavor.imageFlavor;
+if clipoard.sDatalavorAvailableflavorf	if (clipboard.isDataFlavorAvailable(flavor))
+{	{
+try	try
+{	{
+image = Image cipboard.getDataflavor	image = (Image) clipboard.getData(flavor);
+label.setIconnew ImageIconimage;	label.setIcon(new ImageIcon(image));
+}	}
+catch fUnsupportedFlavorEception exception	catch (UnsupportedFlavorException exception)
+{	{
+JOpionPane.showMessageDialogthis exception;;	JOptionPane.showMessageDialog(this, exception);
+}	}
+catchlIOException exceptionl	catch (IOException exception)
+1	{
+JOptionPane.showMessageDialogthis, eception;	JOptionPane.showMessageDialog(this, exception);
+}	}
+}	}
+}	}
+private JLabel label;	private JLabel label;
+privateImage  image;	private Image image;
+private tatic finl intDEFAULT_WIDTH  = 300;	private static final int DEFAULT_WIDTH = 300;
+private static finaint DEFAULT_HEIGHT= 300;	private static final int DEFAULT_HEIGHT = 300;
+1	}
+class ImageTransfeable mplements Transferabl	class ImageTransferable implements Transferable
+{	{
+	
+public ImageTransferableImage image	public ImageTransferable(Image image)
+{	{
+theImage =  image;	theImage = image;
+}	}
+public  Datalavor getTansferDataFlavors	public DataFlavor[] getTransferDataFlavors()
+{	{
+return newataFlavor  DataFlaor.imageFlavor;	return new DataFlavor[] { DataFlavor.imageFlavor };
+	}
+pubic boolean isDataFlavorSupprtedlDataFlavorflavorf	public boolean isDataFlavorSupported(DataFlavor flavor)
+l	{
+return flavor.equlslDataFlavor.imageFlavor;	return flavor.equals(DataFlavor.imageFlavor);
+	}
+public Object getTransferDataDataFlavor flavor throws UnsupportedFlavorException	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException
+	{
+if lflavor.equalsDataFlavor.imageFlavorl	if (flavor.equals(DataFlavor.imageFlavor))
+f	{
+return theImage;	return theImage;
+}	}
+ele	else
+{	{
+throw new nsupportedFlavorExceptionflavor;	throw new UnsupportedFlavorException(flavor);
+l	}
+}	}
+privat Image theImage	private Image theImage;
+1	}

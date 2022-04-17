@@ -1,0 +1,26 @@
+package com.atguigu.exer	package com.atguigu.exer;
+public class  OverloadExer {	public class OverloadExer {
+	
+public void mOLint i	public void mOL(int i){
+System.out.printlni * il;	System.out.println(i * i);
+	
+	}
+public void mOLint i,int j{	public void mOL(int i,int j){
+System.out.printni * jl;	System.out.println(i * j);
+}	}
+	
+public vod mOLString s{	public void mOL(String s){
+System.out.printlns;	System.out.println(s);
+}	}
+	
+public int maxint i,int j1	public int max(int i,int j){
+return i>  j? i : j;	return (i > j)? i : j;
+}	}
+public double maxdouble d1,double d2{	public double max(double d1,double d2){
+return d1 > d2? d1 : d2;;	return (d1 > d2)? d1 : d2;
+}	}
+publicdouble maxdoubled1double d2,ouble d3{	public double max(double d1,double d2,double d3){
+double max =  d1 >d2l?  d1: d2;;	double max = (d1 > d2)? d1 : d2;
+return fmax >  d3?  max  : d3;;	return (max > d3)? max : d3;
+}	}
+f	}

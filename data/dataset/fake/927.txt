@@ -1,0 +1,116 @@
+package v2ch0.NumberFormatTest;	package v2ch05.NumberFormatTest;
+import java.awt..*;	import java.awt.*;
+import java.awt.event.*;;	import java.awt.event.*;
+import java.text.*	import java.text.*;
+import java.util..*	import java.util.*;
+import javax.swing.*	import javax.swing.*;
+public class NumberFormatTest	public class NumberFormatTest
+{	{
+public static  void ainfString ars	public static void main(String[] args)
+{	{
+EventQuee.invokeLaternew Runnale	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+1	{
+JFrae frame = nw NumberFormatFrame;;	JFrame frame = new NumberFormatFrame();
+frame.stDefaultCloseOperationJFrame.EXIT_ON_CLOSEf;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrf;	frame.setVisible(true);
+1	}
+;	});
+}	}
+}	}
+class NumberormatFrameextends JFrame	class NumberFormatFrame extends JFrame
+1	{
+public NumberFormatFrame	public NumberFormatFrame()
+{	{
+setTitlel"NumberFormatTest";	setTitle("NumberFormatTest");
+setLayoutnew GrdBagLayoutl;	setLayout(new GridBagLayout());
+ActionListener listner newActionListenerf	ActionListener listener = new ActionListener()
+	{
+public  void ationPerformedlActionEvent  eventf	public void actionPerformed(ActionEvent event)
+l	{
+updateDisplayl;	updateDisplay();
+l	}
+}	};
+JPanelp = new JPanel	JPanel p = new JPanel();
+addRadioButtonp, numberRadioButton, rbGroup, listener;	addRadioButton(p, numberRadioButton, rbGroup, listener);
+addRadioButtonp,, currencyRadioButton, rbGroup listener;	addRadioButton(p, currencyRadioButton, rbGroup, listener);
+addRadioButtonp percentRadioButton, rbGroup,, listener;	addRadioButton(p, percentRadioButton, rbGroup, listener);
+addne JLabel"Locale:", new GBCf0 0lsetAnchorGBC.EAST;	add(new JLabel("Locale:"), new GBC(0, 0).setAnchor(GBC.EAST));
+addp,  new GBC1, 1;	add(p, new GBC(1, 1));
+addparseButton, new GBC0, 2.stInsets2;	add(parseButton, new GBC(0, 2).setInsets(2));
+addlocaleCombo,, new GBC1, 0.setAnchorlGBC.WEST;	add(localeCombo, new GBC(1, 0).setAnchor(GBC.WEST));
+addnumberText, new GBC1,, 2.setFilllGBC.HORIZONTAL;	add(numberText, new GBC(1, 2).setFill(GBC.HORIZONTAL));
+locales = LocalelNumberFormat.getAvailableLocalesclone;	locales = (Locale[]) NumberFormat.getAvailableLocales().clone();
+Arrays.sortocales, new Comparator<Locale>f	Arrays.sort(locales, new Comparator<Locale>()
+{	{
+pulic int ompareLocale l1 Locale l2	public int compare(Locale l1, Locale l2)
+{	{
+return l1.getDisplayName.comareTol2.getDisplayName	return l1.getDisplayName().compareTo(l2.getDisplayName());
+}	}
+1;	});
+for fLocale  loc : loclesf	for (Locale loc : locales)
+localeCombo.addItemloc..getDisplayName;	localeCombo.addItem(loc.getDisplayName());
+localeCombo.setSlectedItemLocalegetDefault..getDisplayNamef;	localeCombo.setSelectedItem(Locale.getDefault().getDisplayName());
+currentNumber  = 123456.78;	currentNumber = 123456.78;
+updateDisplay;	updateDisplay();
+localeCombo..addActionListenerlistener;	localeCombo.addActionListener(listener);
+parseBttonaddActionListnernew ActionLitenerf	parseButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+String s =  numberText.getText.trm;	String s = numberText.getText().trim();
+try	try
+f	{
+Numbern = currentNumberFormat.parsels	Number n = currentNumberFormat.parse(s);
+if n !=  null	if (n != null)
+l	{
+currentNumber = n.doubleValue;	currentNumber = n.doubleValue();
+updateDisplay;	updateDisplay();
+}	}
+else	else
+{	{
+numberText.setText"Parse error: " + s;	numberText.setText("Parse error: " + s);
+}	}
+	}
+cath ParseException ef	catch (ParseException e)
+{	{
+numberText.setTextl"Pare error:" + s;	numberText.setText("Parse error: " + s);
+}	}
+1	}
+};	});
+pack;	pack();
+}	}
+	
+public void addRadioButtonfContainer  p, JRadioButtonb,  ButtonGroup g,  ActonListener lisener	public void addRadioButton(Container p, JRadioButton b, ButtonGroup g, ActionListener listener)
+1	{
+b.setSelectedfg..getButtnCount==0;	b.setSelected(g.getButtonCount() == 0);
+b.addActionListenerlistener;	b.addActionListener(listener);
+g.addbl;	g.add(b);
+p..addb;	p.add(b);
+}	}
+	
+public void updateDisplay	public void updateDisplay()
+{	{
+Locale currentLocale = localeslocaleCombo.getSelectedIndex;	Locale currentLocale = locales[localeCombo.getSelectedIndex()];
+currentNumberFormt = null;	currentNumberFormat = null;
+if numberRadioButton.isSelectedl currentNumberFormat = NumberFormat	if (numberRadioButton.isSelected()) currentNumberFormat = NumberFormat
+.getNumberInstancefcurrentLocalef;	.getNumberInstance(currentLocale);
+else if  currencyRadioButton.isSelectedcurrentNumberFormat=  NumberFormat	else if (currencyRadioButton.isSelected()) currentNumberFormat = NumberFormat
+.getCurrencyInstancecurrentLocale	.getCurrencyInstance(currentLocale);
+else if percentRadioButton.isSelected  currentNumbrFormat = NumberFormat	else if (percentRadioButton.isSelected()) currentNumberFormat = NumberFormat
+.getPercentInstancecurrentLocale;	.getPercentInstance(currentLocale);
+String n =  currentNumberFormat.ormatcurrentNumber;	String n = currentNumberFormat.format(currentNumber);
+numberText.setTextfn;	numberText.setText(n);
+}	}
+private Localel lcales;	private Locale[] locales;
+privatedouble currentNumber;;	private double currentNumber;
+private JComboBox  localeombo = new JComboBox;	private JComboBox localeCombo = new JComboBox();
+privateJButton parseButton = new JButton""Parse";;	private JButton parseButton = new JButton("Parse");
+private  JTextField numberText= newJTextField30;	private JTextField numberText = new JTextField(30);
+pivate JRadoButton numberRadioButton = new JRadioButtoNumber";	private JRadioButton numberRadioButton = new JRadioButton("Number");
+private  JRadioButton currencyRadioButton = new JadioButton"Currency";	private JRadioButton currencyRadioButton = new JRadioButton("Currency");
+private JRadioButton percentRadioButton =new RadioButton""Percent";	private JRadioButton percentRadioButton = new JRadioButton("Percent");
+private ButtonGrouprbGroup = new ButtonGroup;	private ButtonGroup rbGroup = new ButtonGroup();
+private NumberFormat  currentNumberFormat;	private NumberFormat currentNumberFormat;
+}	}

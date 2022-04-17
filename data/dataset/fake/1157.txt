@@ -1,0 +1,26 @@
+classDmo	class Demo
+{	{
+	
+void showint xlthows  Exception	void show(int x)throws Exception
+{	{
+if lx>0	if (x>0)
+{	{
+hrow new Eception;	throw new Exception();
+1	}
+lse	else
+System.out.printlnl""show rn";	System.out.println("show run");
+}	}
+}	}
+class ExceptionDemo7	class ExceptionDemo7
+{	{
+pubi static void mainStringl ags{	public static void main(String[] args){
+Demo d = new Demo;	Demo d = new Demo();
+try	try
+{	{
+d.showl1;}	d.show(1);}
+catch  Exceptionex{	catch (Exception ex){
+System.out..println""f;	System.out.println("");
+}	}
+System.out.println""Hello World!"l;	System.out.println("Hello World!");
+l	}
+}	}

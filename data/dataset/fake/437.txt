@@ -1,0 +1,10 @@
+package com.aliencatjavabse.api.enums;	package com.aliencat.javabase.api.enums;
+public class Colorinal  {	public class ColorFinal {
+public String name;	public String name;
+public static final ColorFinal RED  =new ColorFinal"";;	public static final ColorFinal RED = new ColorFinal("");
+public static final ColorFinal GREED = new ColorFinal"	public static final ColorFinal GREED = new ColorFinal("");
+public static inal ColorFinal BLUE = new ColorFinl"";	public static final ColorFinal BLUE = new ColorFinal("");
+public ColorFinalString name	public ColorFinal(String name){
+this.name = name;	this.name = name;
+	}
+}	}

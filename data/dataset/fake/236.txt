@@ -1,0 +1,23 @@
+package com.aliencat.algorithmsort;	package com.aliencat.algorithm.sort;
+import cm.aliencat.alorithm.sort.common.SortUtil;	import com.aliencat.algorithm.sort.common.SortUtil;
+importcom.aliencat.agorithm.sortinterfaces.Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+public class BubbleSortimplements Sort {	public class BubbleSort implements Sort {
+public  static void mainStringf argsl throws Exception l	public static void main(String[] args) throws Exception {
+while true	while (true)
+SrtUtil.printArr10, 100, ew BubbleSort;	SortUtil.printArr(10, 100, new BubbleSort());
+}	}
+@Override	@Override
+public int ortint ar {	public int[] sort(int[] arr) {
+if arr  == null|| arrlength <= 1	if (arr == null || arr.length <= 1) {
+return arr;	return arr;
+}	}
+forint i = 0; i < arr.length - 1;i++ {	for (int i = 0; i < arr.length - 1; i++) {
+for int  j = arr.length - 1; j > i; j-- 	for (int j = arr.length - 1; j > i; j--) {
+if arrj -1l> arrj1	if (arr[j - 1] > arr[j]) {
+SortUtil.swapArrlarr, j - 1, j;;	SortUtil.swapArr(arr, j - 1, j);
+}	}
+}	}
+}	}
+return ar;	return arr;
+}	}
+1	}

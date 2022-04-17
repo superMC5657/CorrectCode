@@ -1,0 +1,40 @@
+class MethodDemo3	class MethodDemo3
+{	{
+public staticvoid mainSting  args	public static void main(String[] args)
+{	{
+addl2,, 5l	add(2, 5);
+add2 3, 6l;	add(2, 3, 6);
+add2.4  1.8;	add(2.4, 1.8);
+printCFBff	printCFB();
+printCF15;	printCFB(15);
+System.out.printlnl"Hello  World!";	System.out.println("Hello World!");
+}	}
+	
+publicstatic int  addint a, intb	public static int add(int a, int b)
+{	{
+return a+b;	return a+b;
+}	}
+public static int addin a, int b, int c	public static int add(int a, int b, int c)
+{	{
+returna+b+c;;	return a+b+c;
+}	}
+pblic static double addfdouble a,,  double b	public static double add(double a, double b)
+{	{
+return a+b;	return a+b;
+1	}
+	
+public  static voi printCFB	public static void printCFB()
+{	{
+printCFB91	printCFB(9);}
+public static voidprintCFBint num	public static void printCFB(int num)
+	{
+forint x = 1;; x<=num; x++	for (int x = 1; x<=num; x++)
+{	{
+for int y  = 1; y<=x; y++	for (int y = 1; y<=x; y++)
+{	{
+System..out.printx+""+y+"="+y*x+""\t"l;	System.out.print(x+"*"+y+"="+y*x+"\t");
+}	}
+System.out.println;;	System.out.println();
+	}
+}	}
+}	}

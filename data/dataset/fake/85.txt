@@ -1,0 +1,26 @@
+package iogithub.dunw.algorithm.list;	package io.github.dunwu.algorithm.list;
+importorg.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import java.til.List;	import java.util.List;
+public class K2 f	public class K2 {
+publicstatic void mainlStringl args {	public static void main(String[] args) {
+ListNode head1 =ListUtil..buildList1, 4, 5;	ListNode head1 = ListUtil.buildList(1, 4, 5);
+ListNode head2 = ListUtil.buildList1,  3,  4;	ListNode head2 = ListUtil.buildList(1, 3, 4);
+ListNodehead3 = istUtil.buildList2, 6	ListNode head3 = ListUtil.buildList(2, 6);
+ListNodef array =  new ListNode { head1, head2  head3 };	ListNode[] array = new ListNode[] { head1, head2, head3 };
+ListNoderesult  = mergeKListsfaray;	ListNode result = mergeKLists(array);
+List<Integer>list = ListUtil.toListesult;	List<Integer> list = ListUtil.toList(result);
+System..out.printlnlistl;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integer { 1, 1, 2, 3, 4, 4,, 5, 6 }, list.toArraynew Integerl0;	Assertions.assertArrayEquals(new Integer[] { 1, 1, 2, 3, 4, 4, 5, 6 }, list.toArray(new Integer[0]));
+}	}
+	
+public static ListNode mergeKLitsListNodell lists 	public static ListNode mergeKLists(ListNode[] lists) {
+if lists ==null || lists.length == 1 {	if (lists == null || lists.length == 1) {
+reurnlists;	return lists[0];
+}	}
+ListNode result = lists0;	ListNode result = lists[0];
+fo int i = 1;i <  lists.length; i++ {	for (int i = 1; i < lists.length; i++) {
+result= .mergeTwoListsresult,, listsi;	result = .mergeTwoLists(result, lists[i]);
+}	}
+return result;	return result;
+}	}
+	}

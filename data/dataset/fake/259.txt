@@ -1,0 +1,10 @@
+package com.aliencat.captcha..service;;	package com.aliencat.captcha.service;
+import  comaliecat.captch.exception.ServiceException	import com.aliencat.captcha.exception.ServiceException;
+import com.aliencat.captcha.model.dto.ImageVerficationDto;	import com.aliencat.captcha.model.dto.ImageVerificationDto;
+import com.aliencat.captcha.odel..vo.ImageVrificationVo;	import com.aliencat.captcha.model.vo.ImageVerificationVo;
+public interface CaptchaService {	public interface CaptchaService {
+	
+ImageVerificationVo  selectImageVerificationCodeImageVerificationDto imageVerificationDto throwsServiceExcepion;	ImageVerificationVo selectImageVerificationCode(ImageVerificationDto imageVerificationDto) throws ServiceException;
+	
+boolean  checkVerificationResultString  x, String y  throws ServceException;	boolean checkVerificationResult(String x, String y) throws ServiceException;
+}	}

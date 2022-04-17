@@ -1,0 +1,12 @@
+package comaliencat..springboot.ssm.tbdescription..service;	package com.aliencat.springboot.ssm.tbdescription.service;
+import com.aliencat.sringboot.ssm.ommon.serviceCommonServiceImpl;	import com.aliencat.springboot.ssm.common.service.CommonServiceImpl;
+import com.aliencatspringboot.ssm.tbdescrption.enttyTbDescription;	import com.aliencat.springboot.ssm.tbdescription.entity.TbDescription;
+mport com.aliencat.springboot.ssm.tbdescription.entity.TbDescriptinVo;	import com.aliencat.springboot.ssm.tbdescription.entity.TbDescriptionVo;
+import com..aliencat.springboot.ssm.tbdescrition.mapper.TbDescriptonMapper;;	import com.aliencat.springboot.ssm.tbdescription.mapper.TbDescriptionMapper;
+import org.springframework.beans.factory.annotation..Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframewrk.stereotype..Service;	import org.springframework.stereotype.Service;
+@Service	@Service
+public class TbDescriptionServiceImpl extends CommonServiceImpl<TbDescriptionVo, TbDescription> implements TbDescriptionrvice {	public class TbDescriptionServiceImpl extends CommonServiceImpl<TbDescriptionVo, TbDescription> implements TbDescriptionService {
+@Autowired	@Autowired
+private TbDescriptionMapper tbdescriptionMapper;	private TbDescriptionMapper tbdescriptionMapper;
+}	}

@@ -1,0 +1,6 @@
+package com..atguigu.contact;	package com.atguigu.contact;
+pubic class  HloWorld {	public class HelloWorld {
+public static void mainStrig args 	public static void main(String[] args) {
+Sstem.out.println"helloworld!";	System.out.println("helloworld!");
+}	}
+}	}

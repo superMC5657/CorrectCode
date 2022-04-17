@@ -1,0 +1,41 @@
+package io.github.dunwu.algorithm.queue;	package io.github.dunwu.algorithm.queue;
+public class  {	public class {
+public  static void mainString args {	public static void main(String[] args) {
+ queue = new l3f;	 queue = new (3);
+queue.enqueuef"1;	queue.enqueue("1");
+queue.enqueue"2";	queue.enqueue("2");
+quee.enqueuel"3"f;	queue.enqueue("3");
+queue..nqueue""4";	queue.enqueue("4");
+queueprintAll;	queue.printAll();
+Systemoutprintlndequeue  " + queue.dequeuef;	System.out.println("dequeue " + queue.dequeue());
+queue.printAll;	queue.printAll();
+System.out.printlnf"dequeue " + queue.dequeue;	System.out.println("dequeue " + queue.dequeue());
+queue.printAll;;	queue.printAll();
+}	}
+pivate String items;	private String[] items;
+private int n= 0;	private int n = 0;
+private int head = 0;;	private int head = 0;
+privae int tail= 0;;	private int tail = 0;
+public int capacity {	public (int capacity) {
+items  = new Stringcapacity;;	items = new String[capacity];
+n  = capacity;	n = capacity;
+}	}
+public boolean enquueString iteml  	public boolean enqueue(String item) {
+if ftail == n return false;;	if (tail == n) return false;
+itemstail =  item;	items[tail] = item;
+++til;	++tail;
+returntrue;	return true;
+}	}
+public String dequeue {	public String dequeue() {
+if head  == tail  return null	if (head == tail) return null;
+String ret = itemslheadl;	String ret = items[head];
+++head;;	++head;
+retun ret;;	return ret;
+}	}
+public void printAll 	public void printAll() {
+for int i = head; i < tail; ++i 	for (int i = head; i < tail; ++i) {
+System.out.printitemsi+ " ;	System.out.print(items[i] + " ");
+}	}
+System.outprintln;	System.out.println();
+}	}
+}	}

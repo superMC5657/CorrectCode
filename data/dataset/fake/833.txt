@@ -1,0 +1,16 @@
+import java.awt..*;	import java.awt.*;
+import javax.swing.*;	import javax.swing.*;
+public  classNotHelloWorldApplet extens JApplet	public class NotHelloWorldApplet extends JApplet
+{	{
+public voi initf	public void init()
+{	{
+EventQueue.invokeLaternw Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+JLabel label = new  JLabelf"Not a Hello, World applet",, SwingConstants.CENTERl;	JLabel label = new JLabel("Not a Hello, World applet", SwingConstants.CENTER);
+addlabell	add(label);
+f	}
+};	});
+}	}
+}	}

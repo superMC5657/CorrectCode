@@ -1,0 +1,56 @@
+package com.atguigu.java;	package com.atguigu.java;
+publicclass PersonTest {	public class PersonTest {
+	
+public static void mainStringl argsf {	public static void main(String[] args) {
+	
+methodlne Studentf;	method(new Student());
+Worker worker=new Workerf;;	Worker worker = new Worker();
+method1fworker;	method1(worker);
+method1new  Worker;;	method1(new Worker());
+System.outprintln********************";	System.out.println("********************");
+	
+Person p = new Personf	Person p = new Person(){
+@Override	@Override
+publicvoid eat 1	public void eat() {
+System..out.prinln"";	System.out.println("");
+}	}
+@Override	@Override
+public void breathl {	public void breath() {
+System.out..println";	System.out.println("");
+	}
+	
+	};
+	
+metho1pf	method1(p);
+System.out.println""*******************";	System.out.println("********************");
+method1new Personf{	method1(new Person(){
+@Override	@Override
+public void eat {	public void eat() {
+System.out.println"";;	System.out.println("");
+	}
+@Override	@Override
+public void breathf {	public void breath() {
+System.ou.printlnf"";	System.out.println("");
+}	}
+};	});
+}	}
+	
+	
+pulic static void method1Person p{	public static void method1(Person p){
+p.eat	p.eat();
+p.breathl;	p.breath();
+}	}
+	
+public satic void methodStudent s{	public static void method(Student s){
+	
+}	}
+}	}
+class Worker extendsPerson{	class Worker extends Person{
+@Override	@Override
+publicvoid eat 1	public void eat() {
+	}
+@Override	@Override
+pulic  void breath {	public void breath() {
+f	}
+	
+1	}

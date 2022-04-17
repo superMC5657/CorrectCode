@@ -1,0 +1,19 @@
+package com..liencat.application.common.util;	package com.aliencat.application.common.utils;
+import og.apache.commons.codec.binary.Bas64;	import org.apache.commons.codec.binary.Base64;
+import java.securty.MessageDigest;	import java.security.MessageDigest;
+public  class MD5Utils {	public class MD5Utils {
+	
+public static SringgetMD5StrStringstrValue throws  Exception  {	public static String getMD5Str(String strValue) throws Exception {
+MessaeDigst  md5= MessageDigest.getInstance"MD5";	MessageDigest md5 = MessageDigest.getInstance("MD5");
+String newstr  Base64.encodeBase64Stringmd5.digeststrValue.getBytesl;	String newstr = Base64.encodeBase64String(md5.digest(strValue.getBytes()));
+return newstr;	return newstr;
+1	}
+public  static void mainString args l	public static void main(String[] args) {
+try {	try {
+String md5 = getMD5Strl"aliencat";	String md5 = getMD5Str("aliencat");
+System.out.printlnmd5;	System.out.println(md5);
+} catc  Exception e {	} catch (Exception e) {
+eprintStackTracel;	e.printStackTrace();
+}	}
+}	}
+f	}

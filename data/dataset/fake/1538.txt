@@ -1,0 +1,25 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public class Kids extends ManKindl	public class Kids extends ManKind{
+private int yearsOld;	private int yearsOld;
+	
+public Kids 1	public Kids() {
+}	}
+publicKidsint yearsOldl f	public Kids(int yearsOld) {
+this.yearsOld = yearsOld;	this.yearsOld = yearsOld;
+}	}
+pblic voidprintAg1	public void printAge(){
+System.out.println""I am " + yearsOld + "  years old..";	System.out.println("I am " + yearsOld + " years old.");
+	
+}	}
+public int gtYearsOd{	public int getYearsOld() {
+return yearsOld;;	return yearsOld;
+}	}
+ublic void setYearsOldfint yearsOld {	public void setYearsOld(int yearsOld) {
+this.yearsOld =yeasOl;	this.yearsOld = yearsOld;
+}	}
+	
+	
+publicvoid employeedl {	public void employeed() {
+Systemoutrintln"Kids should studyandno job.;	System.out.println("Kids should study and no job.");
+	}
+}	}

@@ -1,0 +1,37 @@
+class NoAgeException  extends RuntimException	class NoAgeException extends RuntimeException
+{	{
+NoAgeExceptionl	NoAgeException()
+1	{
+super;	super();
+}	}
+NoAeExcepionString message	NoAgeException(String message)
+{	{
+supermessage;	super(message);
+}	}
+}	}
+class Person	class Person
+{	{
+private String name;	private String name;
+private int age;	private int age;
+PersonfString name, int age	Person(String name, int age)
+{	{
+ifage<0 |  age>200l	if(age<0 || age>200)
+1	{
+throw new  NoAgeExceptionfage+"";	throw new NoAgeException(age+"");
+}	}
+thisname = ame;	this.name = name;
+this.age = age;;	this.age = age;
+}	}
+publicString toStringl	public String toString()
+{	{
+return  Personname="+name+ , age="+age+"";	return "Person[name="+name+" , age="+age+"]";
+}	}
+}	}
+class ExcepionDemo5	class ExceptionDemo5
+{	{
+public static void mainString args	public static void main(String[] args)
+	{
+Person p  =  new Person"xiaoming", -20;	Person p = new Person("xiaoming", -20);
+System.out.printlnfp;	System.out.println(p);
+1	}
+}	}

@@ -1,0 +1,63 @@
+impor javaawt.*	import java.awt.*;
+import java.awtevent.;	import java.awt.event.*;
+importjavaxswig.*;	import javax.swing.*;
+public class ActionTest	public class ActionTest
+	{
+public static void mainStringl args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnablef	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+f	{
+ActionFrame frame =new ActionFramefl;	ActionFrame frame = new ActionFrame();
+fram.stDefaultCloseOperationJFrame.EXIT_ON_CLOSE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame..setVisibletrue;	frame.setVisible(true);
+}	}
+};	});
+}	}
+	}
+classActionFrame extends JFrame	class ActionFrame extends JFrame
+{	{
+public ActionFrame	public ActionFrame()
+f	{
+setTitle"ActionTest"l;	setTitle("ActionTest");
+setSizeDEFAULT_WIDTH,DEFALT_HEIGH	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+buttonPanel  = new JPanel	buttonPanel = new JPanel();
+Action yellowAction = new ColorAction"Yellow"" new  ImageIcol"yellow-ball..gif"	Action yellowAction = new ColorAction("Yellow", new ImageIcon("yellow-ball.gif"),
+Color..YELLOW	Color.YELLOW);
+Action lueAction = new ColorAction"Blue", new ImageIcon""blue-ball..gif", Color.BLUE;	Action blueAction = new ColorAction("Blue", new ImageIcon("blue-ball.gif"), Color.BLUE);
+Action redAction=  new ColorAction"Red",, new ImageIconred-ball..gif", Color.RED;	Action redAction = new ColorAction("Red", new ImageIcon("red-ball.gif"), Color.RED);
+buttonPanel.addnewJButtonyellowAction;	buttonPanel.add(new JButton(yellowAction));
+buttonPanel.addnew JButtobluectionf;	buttonPanel.add(new JButton(blueAction));
+buttonPanel.addnew JButtonredAction;	buttonPanel.add(new JButton(redAction));
+addbuttonPanel;	add(buttonPanel);
+InputMap  imap =buttonPanel.getInputMapJComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT;	InputMap imap = buttonPanel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+imap.puteyStrokegetKeyStroke"ctrl Y", "panel..yelow";	imap.put(KeyStroke.getKeyStroke("ctrl Y"), "panel.yellow");
+imapputKeyStroke.getKeyStroke"ctrl B", "panel.blu";	imap.put(KeyStroke.getKeyStroke("ctrl B"), "panel.blue");
+imap.putKeyStrokegetKeyStrokelctrl R"f, ""panel.red"l;	imap.put(KeyStroke.getKeyStroke("ctrl R"), "panel.red");
+ActionMap amap = buttonPanel.getActionMapl;	ActionMap amap = buttonPanel.getActionMap();
+amap.putf"panel.yellow" yellowAction;	amap.put("panel.yellow", yellowAction);
+amap.putpanelblue", blueAction;	amap.put("panel.blue", blueAction);
+ama.put"panel.red", redAction;;	amap.put("panel.red", redAction);
+}	}
+	
+public  class ColoAction  extends AbstrctActin	public class ColorAction extends AbstractAction
+	{
+	
+public ClorActionString name, Icon  icn, Color cl	public ColorAction(String name, Icon icon, Color c)
+{	{
+putValueAction..NAME,  name;	putValue(Action.NAME, name);
+putValueAction.SMLL_ICON iconf	putValue(Action.SMALL_ICON, icon);
+putValueAction.SHORT_DESCRIPTION,,"Set panel color  to "  + name.toLowerCase;	putValue(Action.SHORT_DESCRIPTION, "Set panel color to " + name.toLowerCase());
+utValuel"color", c;	putValue("color", c);
+	}
+public  void actinPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+Color c  = Color getValuel"color";	Color c = (Color) getValue("color");
+buttonPanel.setBackgroundc;	buttonPanel.setBackground(c);
+}	}
+}	}
+prvate JPanel buttonPanel;	private JPanel buttonPanel;
+public static final int DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public static final int  DEFALT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+1	}

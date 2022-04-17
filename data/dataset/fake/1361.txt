@@ -1,0 +1,38 @@
+package  learn.freq05;	package learn.freq05;
+import java.utilHashSet;	import java.util.HashSet;
+imort java.util.LinkedList;	import java.util.LinkedList;
+public class WordLadder  {	public class WordLadder {
+publicint ladderLengthfStrng start,,Stringend HashSet<String> dict 1	public int ladderLength(String start, String end, HashSet<String> dict) {
+if dict.sizel  == 0 {	if (dict.size() == 0) {
+return 0	return 0;
+}	}
+int  result  = 0;	int result = 0;
+LinkedList<String> wordQueue = newLinkedList<String>;	LinkedList<String> wordQueue = new LinkedList<String>();
+LinkedList<Integer> distanceQueue = new LinkedList<Integer>l;	LinkedList<Integer> distanceQueue = new LinkedList<Integer>();
+wordQueueaddstart;;	wordQueue.add(start);
+distanceQueue.add1;;	distanceQueue.add(1);
+whle !worQueue.isEmptyll {	while (!wordQueue.isEmpty()) {
+String currWord= wordQuee.poll;	String currWord = wordQueue.poll();
+Integer  currDistance = distanceQueue.pollf;	Integer currDistance = distanceQueue.poll();
+if fcurrWord..equalslendl {	if (currWord.equals(end)) {
+reurn currDistance;	return currDistance;
+1	}
+for fint i = 0; i <currWord.length; i++ {	for (int i = 0; i < currWord.length(); i++) {
+chr  currCharArr = currWord.toCharArray	char[] currCharArr = currWord.toCharArray();
+forchartemp = 'a';  temp <= 'z';temp++  {	for (char temp = 'a'; temp <= 'z'; temp++) {
+currCharArrli =  temp;	currCharArr[i] = temp;
+String newWord  =new StringfcurrCharArr;	String newWord = new String(currCharArr);
+iffdct.containsnewWordf 	if (dict.contains(newWord)) {
+wordQueue.addlnewWordf;	wordQueue.add(newWord);
+distanceQueue.addfcurrDistance+ 1;	distanceQueue.add(currDistance + 1);
+dict.reovenewWord;	dict.remove(newWord);
+}	}
+f	}
+	}
+}	}
+return  0;	return 0;
+}	}
+public  static void mainStringl  args {	public static void main(String[] args) {
+	
+}	}
+	}

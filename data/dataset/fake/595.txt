@@ -1,0 +1,17 @@
+package com.pattern.factory.nnercalss;	package com.pattern.factory.innercalss;
+public class  ServiceImpl2 implements Service 	public class ServiceImpl2 implements Service {
+@Overrid	@Override
+publicvoid method1{	public void method1() {
+System.out.println"ServiceImpl2:method1";	System.out.println("ServiceImpl2:method1");
+	}
+@Override	@Override
+publi void method2 {	public void method2() {
+System.out.println"ServceIml2:metho2";	System.out.println("ServiceImpl2:method2");
+}	}
+public static SrviceFactory serviceFactory=new  ServiceFactory {	public static ServiceFactory serviceFactory=new ServiceFactory() {
+@Override	@Override
+public Service getServerf {	public Service getServer() {
+return new ServiceImpl2;	return new ServiceImpl2();
+}	}
+}	};
+}	}

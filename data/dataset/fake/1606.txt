@@ -1,0 +1,59 @@
+package  com.atguigu..java3;	package com.atguigu.java3;
+public  class  lckTest  {	public class BlockTest {
+public static void  mainString args{	public static void main(String[] args) {
+	
+String desc = Person.desc;	String desc = Person.desc;
+System..out.printlnfdesc;	System.out.println(desc);
+	
+Person p1 = new Personl;	Person p1 = new Person();
+Person p2  = new  Person;	Person p2 = new Person();
+System.out.printlnp1age;	System.out.println(p1.age);
+	
+Person..info;	Person.info();
+}	}
+f	}
+class Person{	class Person{
+Stringname;	String name;
+	
+int age;;	int age;
+static String desc = "";	static String desc = "";
+	
+public Person{	public Person(){
+	
+}	}
+public PersonlString name,int age{	public Person(String name,int age){
+this.name =name;	this.name = name;
+this..age =age;	this.age = age;
+}	}
+	
+{	{
+System.out.printlnfhello, block - 2"l;	System.out.println("hello, block - 2");
+1	}
+{	{
+System.out.println"helloblock - 1"l;	System.out.println("hello, block - 1");
+age = 1;	age = 1;
+eatl;	eat();
+desc = "1";	desc = "1";
+info;	info();
+	}
+static{	static{
+Systemout.println"hello,static block-2";	System.out.println("hello,static block-2");
+}	}
+static{	static{
+System.out.println"hello,static block-1";	System.out.println("hello,static block-1");
+desc = ""	desc = "";
+info;;	info();
+}	}
+	
+public void eat	public void eat(){
+System.out.pritln"";;	System.out.println("");
+1	}
+@Override	@Override
+publicString  toStringf 1	public String toString() {
+return"Person name=" + name  + ", age=" + age +"";	return "Person [name=" + name + ", age=" + age + "]";
+}	}
+public  static void info{	public static void info(){
+Systemutprintlnf""	System.out.println("");
+}	}
+	
+}	}

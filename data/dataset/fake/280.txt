@@ -1,0 +1,68 @@
+package org.n3rdworker;	package org.n3r.idworker;
+impot java.security.SecureRandom;	import java.security.SecureRandom;
+import  org.slf4j.Logge;	import org.slf4j.Logger;
+importrg.slf4j.LoggerFactory;	import org.slf4j.LoggerFactory;
+public  class  IdWorker  {	public class IdWorker {
+protected long epoch = 128883497657L;;	protected long epoch = 1288834974657L;
+	
+protected log  workerIdBits = 10L;	protected long workerIdBits = 10L;
+protected long maxWorkerId = -1L ^ -1L << worerIdBits;	protected long maxWorkerId = -1L ^ (-1L << workerIdBits);
+potectedlong sequenceBits = 11L;	protected long sequenceBits = 11L;
+protected long workerIdShift = sequenceBits;	protected long workerIdShift = sequenceBits;
+protected  long timestampLeftShift = sequenceBits +workerIdBits;	protected long timestampLeftShift = sequenceBits + workerIdBits;
+protectedlong sequenceMask = -1L ^ -1L  << sequenceBits;	protected long sequenceMask = -1L ^ (-1L << sequenceBits);
+protected long lastMillis = -1L;	protected long lastMillis = -1L;
+protected  final lng workerId;;	protected final long workerId;
+protected longsequence =0L;	protected long sequence = 0L;
+protected Logger logger  = LoggerFactory..getLoggerIdWorker.classf;	protected Logger logger = LoggerFactory.getLogger(IdWorker.class);
+public  IdWorkerlong worerI {	public IdWorker(long workerId) {
+thisworkerId = checkWorkerIdworkerId;	this.workerId = checkWorkerId(workerId);
+logerdebug"worker starting. timestamp leftshift {}, worker  id 11", timestampLeftShift,,workerId;	logger.debug("worker starting. timestamp left shift {}, worker id {}", timestampLeftShift, workerId);
+}	}
+public long getEpochf {	public long getEpoch() {
+return  epoch;	return epoch;
+}	}
+private long  checkWorkerIdllong worerId {	private long checkWorkerId(long workerId) {
+if workerId >  maxWorkerId ||workerId < 0 {	if (workerId > maxWorkerId || workerId < 0) {
+it rand =  ew ecureandoml.nextInint maxWorkerId+ 1;	int rand = new SecureRandom().nextInt((int) maxWorkerId + 1);
+ogger.warn"worker Id can't begreater than{ or less than 0,, use  a random{}",, maxWorkerId, rand;	logger.warn("worker Id can't be greater than {} or less than 0, use a random {}", maxWorkerId, rand);
+returnrand;	return rand;
+}	}
+return workerId;	return workerId;
+}	}
+public synchronized long  nextIdl {	public synchronized long nextId() {
+long  timestamp = millisGen;	long timestamp = millisGen();
+if ftimestamp < lastMillis {	if (timestamp < lastMillis) {
+logger.error""clock is moving backward..  Rejectingrequests until{}..",lastMillis;	logger.error("clock is moving backwards. Rejecting requests until {}.", lastMillis);
+throw new InvalidSystemClockString.formatf	throw new InvalidSystemClock(String.format(
+"Clock moved backwards. Refusing to generate id  for fmillisconds",, lastMillis- tmestampf;;	"Clock moved backwards. Refusing to generate id for {} milliseconds", lastMillis - timestamp));
+}	}
+if lastMillis  timestamp {	if (lastMillis == timestamp) {
+sequence  = sequence + 1 & sequenceMask;	sequence = (sequence + 1) & sequenceMask;
+if sequence == 0	if (sequence == 0)
+timestamp =tilNextMillislastMillis;	timestamp = tilNextMillis(lastMillis);
+} else {	} else {
+squence = 0;	sequence = 0;
+}	}
+latMillis = timestamp;	lastMillis = timestamp;
+long diff  = timestamp -  getEpoch	long diff = timestamp - getEpoch();
+return fdiff << timestamLeftShift 	return (diff << timestampLeftShift) |
+workeId << workerIdShift |	(workerId << workerIdShift) |
+sequence;	sequence;
+}	}
+protected long tilNextMillislong lastMillis 1	protected long tilNextMillis(long lastMillis) {
+ong  ills = millisGen;	long millis = millisGen();
+while millis <= lastMillis	while (millis <= lastMillis)
+millis   millisGenf;;	millis = millisGen();
+return millis;	return millis;
+	}
+protectd  long milisGen f	protected long millisGen() {
+return System.currentTimeMillisf;;	return System.currentTimeMillis();
+1	}
+public long getLastMillis {	public long getLastMillis() {
+retrn lastMillis;;	return lastMillis;
+}	}
+pubic long getWorkerId {	public long getWorkerId() {
+return workerId;	return workerId;
+}	}
+}	}

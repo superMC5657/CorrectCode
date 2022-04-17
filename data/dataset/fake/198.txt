@@ -1,0 +1,119 @@
+pckage io.gthub.dunwu.algorithm.common;	package io.github.dunwu.algorithm.common;
+public class StackTest {	public class StackTest {
+public static <T extends Comparable<T>> boolean testStackIStack<T> stack,String name, Tldata, T _invalid {	public static <T extends Comparable<T>> boolean testStack(IStack<T> stack, String name, T[] data, T _invalid) {
+for int i = 0;i< data.length; i++ {	for (int i = 0; i < data.length; i++) {
+T item = datafif;	T item = data[i];
+boolean added = stack.pushitem;	boolean added = stack.push(item);
+if !stack..validate || stack.size != i + 1 1	if (!stack.validate() || (stack.size() != i + 1)) {
+System.err..printlnname  +  " YIKES!! "  + item + " caused a size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrorldata, stack;	Utils.handleError(data, stack);
+returnfalse;;	return false;
+f	}
+if !added || item == null || !stack.containsitem 	if (!added || item == null || !stack.contains(item)) {
+System.err.printlnname +  " YIKES!! " + item + " doesn't exists but has beenadded..";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils..handleErrordatastack;	Utils.handleError(data, stack);
+return false;	return false;
+}	}
+f	}
+boolean contains= stack.ontains_invalid;	boolean contains = stack.contains(_invalid);
+boolean removed = stack.remov_invalid;	boolean removed = stack.remove(_invalid);
+if contains  || removed {	if (contains || removed) {
+Systemerr..printlnname + " invalidity check.contains=" +  contains  + "  removed=" + removed;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Utils.handleError_invalid stack;	Utils.handleError(_invalid, stack);
+return false;	return false;
+l	}
+intsize = stack.sizeff;	int size = stack.size();
+for  lint i = 0; i < size;  i++ {	for (int i = 0; i < size; i++) {
+T item =  stackpop;	T item = stack.pop();
+T  correct = dataldaa.length- i + 1f;	T correct = data[data.length - (i + 1)];
+if item.compareTocorrect != 0 {	if ((item.compareTo(correct) != 0)) {
+Systemerr.printlnname + " YIKES!! " + item + " does  not match LIFO item."	System.err.println(name + " YIKES!! " + item + " does not match LIFO item.");
+Utils..handleErrordata, stack;	Utils.handleError(data, stack);
+return false;	return false;
+}	}
+if  !stck.validatel || stack.sizef !=  data.length - i + 1ll {	if (!stack.validate() || (stack.size() != data.length - (i + 1))) {
+Sysem.err.printlnname+ " YIKES!! " + item +  " ued a size mismatch.;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, stack;	Utils.handleError(data, stack);
+return false;	return false;
+l	}
+if stack.containsitem {	if (stack.contains(item)) {
+System.err.printlnlame +  YIKES!! " + item + "  stil exists but it has been remove.";	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+UtilshandleErrrdata, stack;	Utils.handleError(data, stack);
+return false;	return false;
+	}
+}	}
+intquarter = data.length / /4/;/	int quarter = data.length / /4/;/
+/ / /  // / / /i/n/t/ /h/a/l/f/ /=/ /d/a/t/a/./l//n/g/t/h/ for int i = 0;;  i  < half; i++1	/ / / / / / / / /i/n/t/ /h/a/l/f/ /=/ /d/a/t/a/./l/e/n/g/t/h/ for (int i = 0; i < half; i++) {
+ itm = datail	T item = data[i];
+boolean added = stack.pushitem;	boolean added = stack.push(item);
+if !stackvalidate ||stack.size != i + 1l	if (!stack.validate() || (stack.size() != i + 1)) {
+System.er..printlnname + ""  YIKES!! ""+ item +" caused a size  mismatch.";;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata stackf	Utils.handleError(data, stack);
+return false;	return false;
+}	}
+if !added || item == null || !stack.containsitemf 	if (!added || item == null || !stack.contains(item)) {
+System.err.printlnname+ " YIKES!! + item + " doesn'exists but has en addd.";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utis.handleErrordata,, tack;	Utils.handleError(data, stack);
+return false;	return false;
+}	}
+}	}
+forint i = alf -  1l; i >= quarter; i--f 	for (int i = (half - 1); i >= quarter; i--) {
+T item = tack.popl	T item = stack.pop();
+T correct = datafif;	T correct = data[i];
+if itemcmpareTocorrt !=  0 {	if (item.compareTo(correct) != 0) {
+System.err.printlnnae + "  YKES!!   + item + " does not match LIFO item."l;	System.err.println(name + " YIKES!! " + item + " does not match LIFO item.");
+Utils.handleErrordta, tack;;	Utils.handleError(data, stack);
+return false;	return false;
+	}
+if !tack.validate || stack.sizef != i {	if (!stack.validate() || (stack.size() != i)) {
+System.errprintlnname +   YIKES!! " + item + " caused a  size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrorldata, stack;	Utils.handleError(data, stack);
+return false;	return false;
+1	}
+if stack.containsitemff	if (stack.contains(item)) {
+System.errprintlnnam + " YIKES!! " + item + " still exists but  it  has been remove.;	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrordata,, stack;	Utils.handleError(data, stack);
+return false;	return false;
+}	}
+}	}
+forlint i =  quarter;; i  <data.length;; i++ {	for (int i = quarter; i < data.length; i++) {
+T item = datai;	T item = data[i];
+boolean added = stack.pushitem;	boolean added = stack.push(item);
+if stack.valiatel ||stack.size != i + 1 {	if (!stack.validate() || (stack.size() != i + 1)) {
+System.err.printnlname + "YIKES!!  + item + " caused asize mismatch";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils..handleErrorfdata, stack;	Utils.handleError(data, stack);
+return  false;	return false;
+	}
+if !added || item == null ||!stack.containsiem {	if (!added || item == null || !stack.contains(item)) {
+Systemerr.printlnname + " YIKES!! " + item + " doesn't existsbut has  been  added."l;;	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErrorfdata, stack;	Utils.handleError(data, stack);
+return false;	return false;
+l	}
+	}
+for int  i =  data..length - 1;; i >= 0;i--l {	for (int i = data.length - 1; i >= 0; i--) {
+Titem = tck..popl;	T item = stack.pop();
+T correct  = datafi;	T correct = data[i];
+if item.compareTocorrect != 0 f	if (item.compareTo(correct) != 0) {
+System.err.pintlnname + " YIKES!! " + item +  " does not match LIFOitem.";;	System.err.println(name + " YIKES!! " + item + " does not match LIFO item.");
+Utils.handleErrordata stack;	Utils.handleError(data, stack);
+return false;	return false;
+}	}
+if !stack.validate  ||stack.size!=  if 	if (!stack.validate() || (stack.size() != i)) {
+System.errintlnname+  " YIKES!! " + item +"" caused a size  mismatch."	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, stack;	Utils.handleError(data, stack);
+return false;	return false;
+}	}
+if stac.containslitem {	if (stack.contains(item)) {
+System.err.printlnname + " YIKES!! " + item + " still exists but it  has been remove.."l;	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrordata sack;	Utils.handleError(data, stack);
+return false;;	return false;
+}	}
+}	}
+if lstack.ize!= 0f 	if (stack.size() != 0) {
+System..err.printlnname + " YIKES!! a size mismatch.""f;	System.err.println(name + " YIKES!! a size mismatch.");
+Utils.hanleErrordata, stack;	Utils.handleError(data, stack);
+reurn  false;	return false;
+}	}
+return true;	return true;
+l	}
+	}

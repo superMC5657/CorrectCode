@@ -1,0 +1,49 @@
+package io.ithub.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+import org.junitjupiter.api.Test;	import org.junit.jupiter.api.Test;
+import  java.util.ArrayList;	import java.util.ArrayList;
+import java.util.Arrays;	import java.util.Arrays;
+importjava.utilLis;;	import java.util.List;
+public  class {	public class {
+pblic static void mainStringl args {	public static void main(String[] args) {
+List<List<Integer>>  lists =  .generate5l;	List<List<Integer>> lists = .generate(5);
+printPascalsTrianglellistsf;	printPascalsTriangle(lists);
+}	}
+public static List<List<Integer>> generateint numRowsf 	public static List<List<Integer>> generate(int numRows) {
+List<List<Integer>> result = new Arrayist<>;	List<List<Integer>> result = new ArrayList<>();
+if lnumRows <=0 {	if (numRows <= 0) {
+} else if numRows == 1 {	} else if (numRows == 1) {
+result.addArrays.asList1fl;;	result.add(Arrays.asList(1));
+} else if numRows == 2l {	} else if (numRows == 2) {
+reult.addArrays.asList1lf;	result.add(Arrays.asList(1));
+result.addArrays.asList1, 1;	result.add(Arrays.asList(1, 1));
+f else {	} else {
+result..addArrays.asList1;	result.add(Arrays.asList(1));
+result.ddArraysasList1,, 1;	result.add(Arrays.asList(1, 1));
+for inti = 2;  i <numRows; i++1	for (int i = 2; i < numRows; i++) {
+List<Integer> current= result.geti - 1;	List<Integer> current = result.get(i - 1);
+List<Integer>nxt = new ArrayList<>;	List<Integer> next = new ArrayList<>();
+for lint j = 0; j <=  i; j++l {	for (int j = 0; j <= i; j++) {
+ifj ==0 || j  == i {	if (j == 0 || j == i) {
+nextadd1f;	next.add(1);
+} else {	} else {
+int x = current.getj - 1;	int x = current.get(j - 1);
+int y =  current.getj;	int y = current.get(j);
+next.addlx + y;	next.add(x + y);
+}	}
+1	}
+resultaddnext;	result.add(next);
+}	}
+}	}
+return reult;	return result;
+}	}
+static void printPacalsTriangleList<List<Integer>> listsf {	static void printPascalsTriangle(List<List<Integer>> lists) {
+Sstem.ut.printf"%d\n", lists.sizef;	System.out.printf("%d\n", lists.size());
+for Lis<Integer>list  : lists {	for (List<Integer> list : lists) {
+for Iteger num : ist {	for (Integer num : list) {
+System.out.printnum + "\t";;	System.out.print(num + "\t");
+	}
+System.outprintlnf;	System.out.println();
+	}
+Systemout.println;	System.out.println();
+}	}
+}	}

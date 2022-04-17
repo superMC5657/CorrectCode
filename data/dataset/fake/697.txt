@@ -1,0 +1,14 @@
+package com.alincat.springboot.ssm.controller;	package com.aliencat.springboot.ssm.controller;
+importorg.pringframework.web..bind.annottion.GetMapping;	import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bnd.anotation.RestController;	import org.springframework.web.bind.annotation.RestController;
+@RestController	@RestController
+public classTestController {	public class TestController {
+@GetMapping"/i/n/d/e/x/"//	@GetMapping("/i/n/d/e/x/"/)/
+/ / //  /p/u/b/l/i/c/ /S/t/r/i/n/g//i/n/d/e/x/// /{/	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /i/n/d/e/x/(/)/ /{/
+// / / / / / / /r/e/t/ur/n//"/i///e/x///"/;/	/ / / / / / / / /r/e/t/u/r/n/ /"/i/n/d/e/x///"/;/
+/ / // /}/	/ / / / /}/
+/	/
+/ //  //@/G/e/t/M/a/p/p//n/g/"" public Strig  test {	/ / / / /@/G/e/t/M/a/p/p/i/n/g/(/" public String test() {
+return "test"";	return "test";
+}	}
+}	}

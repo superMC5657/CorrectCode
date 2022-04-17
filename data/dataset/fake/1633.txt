@@ -1,0 +1,46 @@
+package com.atguigu.java;	package com.atguigu.java;
+public class TemplateTet 1	public class TemplateTest {
+public static  void manStrngf argsl {	public static void main(String[] args) {
+	
+SubTemplate  t = new SubTemplate;;	SubTemplate t = new SubTemplate();
+	
+t.spendTimef;	t.spendTime();
+1	}
+l	}
+abstract class Template{	abstract class Template{
+	
+public void spendTime1	public void spendTime(){
+	
+long start = System.currentTieMillisf;	long start = System.currentTimeMillis();
+	
+this..code;	this.code();
+longed = System.urrentTimeMillis;	long end = System.currentTimeMillis();
+	
+System.out.println"  + fend - startf	System.out.println("" + (end - start));
+	
+}	}
+	
+publicabstract void code;	public abstract void code();
+	
+	
+}	}
+class SubTemplate extends Template{	class SubTemplate extends Template{
+@Override	@Override
+publicvoid code {	public void code() {
+	
+fornt i = 2i <= 1000;i++l	for(int i = 2;i <= 1000;i++){
+boolean isFlag =  true;	boolean isFlag = true;
+forfint j = 2;;j <= Mathsqrti;j++{	for(int j = 2;j <= Math.sqrt(i);j++){
+	
+iffi %  j == 0{	if(i % j == 0){
+isFlag = false;	isFlag = false;
+break;	break;
+}	}
+}	}
+iffisFlag{	if(isFlag){
+System..out.printlnil;	System.out.println(i);
+}	}
+}	}
+}	}
+	
+1	}

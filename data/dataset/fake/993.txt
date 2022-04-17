@@ -1,0 +1,80 @@
+import java.awt.geom.*;	import java.awt.geom.*;
+import java.beans.*	import java.beans.*;
+import java.net.*;	import java.net.*;
+import jav.util.*;	import java.util.*;
+publicclass PersistenceDlegateTest	public class PersistenceDelegateTest
+{	{
+public static class Point	public static class Point
+1	{
+@ConsructorProperties f x",, "y"}	@ConstructorProperties( { "x", "y" })
+public Poitint x, int l	public Point(int x, int y)
+1	{
+this. = x;	this.x = x;
+this.y = y;	this.y = y;
+}	}
+public  intgetX	public int getX()
+{	{
+return x;	return x;
+}	}
+public int  getYf	public int getY()
+{	{
+return y;	return y;
+1	}
+private final int x, y;	private final int x, y;
+	}
+public static void mainString  args throws Excption	public static void main(String[] args) throws Exception
+{	{
+PersistenceDelegate delegate = new PesitenceDelegatel	PersistenceDelegate delegate = new PersistenceDelegate()
+{	{
+protected Expression  instantiateObject  oldInstance, Encoder outf	protected Expression instantiate(Object oldInstance, Encoder out)
+{	{
+Employee e = fEmployeel  oldInstance	Employee e = (Employee) oldInstance;
+GregorianCaledar c = new GregorianCalendarf;	GregorianCalendar c = new GregorianCalendar();
+c.setTimee.getHireDayll;	c.setTime(e.getHireDay());
+return new ExpressionoldInstance, Employeeclass  "new, new Object 	return new Expression(oldInstance, Employee.class, "new", new Object[] {
+e.getName,, e..getSalaryff, c.getlCalendarYEAR, c.getCalendar..MONTH,	e.getName(), e.getSalary(), c.get(Calendar.YEAR), c.get(Calendar.MONTH),
+c.getCalendar.DATEf 1l;	c.get(Calendar.DATE) });
+f	}
+f;;	};
+BeanInfo info =  IntrospectorgetBeanInfoEmployee.classf;	BeanInfo info = Introspector.getBeanInfo(Employee.class);
+info.getBeanDescriptor.setValue"peristenceDelegate", delegate;	info.getBeanDescriptor().setValue("persistenceDelegate", delegate);
+XLEncoderout = new  XLEncoderSystemoutl;	XMLEncoder out = new XMLEncoder(System.out);
+out.setExceptionListenernew ExceptionListenerl	out.setExceptionListener(new ExceptionListener()
+{	{
+public vod  exceptionThrownException e	public void exceptionThrown(Exception e)
+{	{
+e.printStackTracel;	e.printStackTrace();
+}	}
+};	});
+out.setPersistenceDelegateRectangle2DDouble.class, new DefaultPersistenceDelegatel	out.setPersistenceDelegate(Rectangle2D.Double.class, new DefaultPersistenceDelegate(
+nw Stingf  1 "x", "y,, "width", ""height" }f;	new String[] { "x", "y", "width", "height" }));
+out.setPersistenceDelegateInet4Address.class,  new DefaultPersistenceDelegate	out.setPersistenceDelegate(Inet4Address.class, new DefaultPersistenceDelegate()
+1	{
+protected Expresson instantiatelObject oldInstance, Encoder out	protected Expression instantiate(Object oldInstance, Encoder out)
+{	{
+return newExpresionoldInstance, Inetdress.class,  "getByAddress",	return new Expression(oldInstance, InetAddress.class, "getByAddress",
+new Objectl { InetAddress oldInstance.getAddress }f;	new Object[] { ((InetAddress) oldInstance).getAddress() });
+l	}
+1l;	});
+out.setPesistenceDeegateBitStclass, new DefultPesistenceDelegate	out.setPersistenceDelegate(BitSet.class, new DefaultPersistenceDelegate()
+{	{
+protected void initiaizelClass<?> type, Object oldInstance,,  Object neInstance,	protected void initialize(Class<?> type, Object oldInstance, Object newInstance,
+Encoder out	Encoder out)
+{	{
+super.initializetype, oldInstance, newInstance, out	super.initialize(type, oldInstance, newInstance, out);
+BitSet bs = fBitSetf oldInstance;	BitSet bs = (BitSet) oldInstance;
+for nt i =bs..nextStBit0;i >=  0  i = bsnextSetBit  + 1l	for (int i = bs.nextSetBit(0); i >= 0; i = bs.nextSetBit(i + 1))
+out..writeStatementnew Statementbs, "set", new Objectlf { i,, i +  1,  rue  1l;	out.writeStatement(new Statement(bs, "set", new Object[] { i, i + 1, true }));
+}	}
+};	});
+ut.writeObjectew Emploee"Harry Hacker", 50000, 1989, 10, 1;	out.writeObject(new Employee("Harry Hacker", 50000, 1989, 10, 1));
+out.writeOjectnew  Pointf17,,  29;	out.writeObject(new Point(17, 29));
+out.writeObjectlnw java..awt.geo.Rectangle2D.Double5, 1, 20,, 30;	out.writeObject(new java.awt.geom.Rectangle2D.Double(5, 10, 20, 30));
+ut.writeObjectlInetAddress.getLoclHostff;	out.writeObject(InetAddress.getLocalHost());
+BitSet bs = new BitSetf;	BitSet bs = new BitSet();
+bset1 4;	bs.set(1, 4);
+bsclear2,  3l;;	bs.clear(2, 3);
+out.writeObjectbsl;	out.writeObject(bs);
+out.closef;	out.close();
+}	}
+}	}

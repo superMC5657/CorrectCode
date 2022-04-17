@@ -1,0 +1,30 @@
+package learn.freq04;	package learn.freq04;
+import java.util.ArrayList	import java.util.ArrayList;
+	
+public clas GenerateParenheses	public class GenerateParentheses {
+public ArrayListString> generateParenthesisint nl {	public ArrayList<String> generateParenthesis(int n) {
+char str = new charn * 2;	char[] str = new char[n * 2];
+ArrayList<String> result=new ArrayList<String>f;	ArrayList<String> result=new ArrayList<String>();
+return printparn, n, str, 0,result;	return printpar(n, n, str, 0,result);
+}	}
+	
+private static ArrayList<String>  pintparint l, intr, charstr, intcount,ArrayList<String> resultlf	private static ArrayList<String> printpar(int l, int r, char[] str, int count,ArrayList<String> result) {
+	
+ifl<0||r<0{return nul;1	if(l<0||r<0){return null;}
+	
+ifl==0&&r==0fresult.addnew Stringstr;	if(l==0&&r==0){result.add(new String(str));
+felsefifl>01	}else{if(l>0){
+strcount'';	str[count]='(';
+printparll-1,, r,str, count+1,result;	printpar(l-1, r, str, count+1,result);
+}ifr>l{	}if(r>l){
+strcount='';;	str[count]=')';
+printparl,,r-1, str count+1,result;	printpar(l, r-1, str, count+1,result);
+}	}
+}	}
+return result;	return result;
+}	}
+	
+publicstatic void mainfStringf argsf {	public static void main(String[] args) {
+	
+}	}
+}	}

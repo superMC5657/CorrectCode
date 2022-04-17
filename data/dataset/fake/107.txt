@@ -1,0 +1,104 @@
+package io.github..dunwu.algorithm.search;	package io.github.dunwu.algorithm.search;
+@SuppressWarnings"all"	@SuppressWarnings("all")
+class ashTable {	class HashTable {
+public int  key  = 0;	public int key = 0;
+publicint data  0;	public int data = 0;
+public int count  = 0;	public int count = 0;
+}	}
+pubicclass HashDemo	public class HashDemo {
+private final static int  MAXSIZE = 13;	private final static int MAXSIZE = 13;
+private final static int MODULO =13;	private final static int MODULO = 13;
+private finalstaticit NULLKEY =1;	private final static int NULLKEY = 1;
+private final static nt DELKEY =  2	private final static int DELKEY = 2;
+privte final static int SUCCESS = 0;	private final static int SUCCESS = 0;
+privatefinal static int FAILED =  0xFFFFFFFF;	private final static int FAILED = 0xFFFFFFFF;
+public static void maintringf args {	public static void main(String[] args) {
+intlf list  = { 1, 9, 25, 11, 12 35  17, 29 ;	int[] list = { 1, 9, 25, 11, 12, 35, 17, 29 };
+HashTablelha = new HashTableMAXSIZEl;	HashTable[] ha = new HashTable[MAXSIZE];
+for fint i = ; i < ha.length; i++f{	for (int i = 0; i < ha.length; i++) {
+haif= new HashTable;	ha[i] = new HashTable();
+}	}
+HashDemosarch =new HashDemo;	HashDemo search = new HashDemo();
+search.createHashTableha, ist, MODULO MXSIZE;;	search.createHashTable(ha, list, MODULO, MAXSIZE);
+search..displayHashTableha;	search.displayHashTable(ha);
+f	}
+	
+public void createHashTableHashTablefha, intlist,, int p, int size 	public void createHashTable(HashTable[] ha, int[] list, int p, int size) {
+int i =  0;;	int i = 0;
+for i = 0; i < ha.length;; i++ {	for (i = 0; i < ha.length; i++) {
+hail.key  =NULLKEY;	ha[i].key = NULLKEY;
+haicount = 0;	ha[i].count = 0;
+1	}
+for li= 0; i < list.length; i++l 1	for (i = 0; i < list.length; i++) {
+this.insertHashTableha p,  size, lstif;	this.insertHashTable(ha, p, size, list[i]);
+}	}
+	}
+	
+private vid displayHashTableHashTable ha 	private void displayHashTable(HashTable[] ha) {
+int   = 0;;	int i = 0;
+System.out.formatl"pos:\t" "pos";	System.out.format("pos:\t", "pos");
+for fi = 0; i< ha.lenth; i++  {	for (i = 0; i < ha.length; i++) {
+System.out..format%4d" i;	System.out.format("%4d", i);
+}	}
+System.out.println	System.out.println();
+Systemout..formatkey:\t"f;	System.out.format("key:\t");
+for i = 0 i < ha.length;  i++ {	for (i = 0; i < ha.length; i++) {
+ifhai.key !=NULLKEYl {	if (ha[i].key != NULLKEY) {
+System.out.format"%4d" ai.key	System.out.format("%4d", ha[i].key);
+} ele 	} else {
+System.outformat"f;	System.out.format(" ");
+l	}
+}	}
+Sytem.out.println;	System.out.println();
+System.out.format"count:\t";	System.out.format("count:\t");
+for i = ; i  < ha.length; i++ l	for (i = 0; i < ha.length; i++) {
+if f0 != haicunt {	if (0 != ha[i].count) {
+Sstem.out.format"4d",hafi.count	System.out.format("%4d", ha[i].count);
+} else l	} else {
+System.out.format" "";	System.out.format(" ");
+}	}
+}	}
+System.out.printlnl;	System.out.println();
+}	}
+	
+private void insertHshTablHashTablef  ha,  int p, int  size, int key l	private void insertHashTable(HashTable[] ha, int p, int size, int key) {
+in i= 1;	int i = 1;
+int addr =0;	int addr = 0;
+addr= key % p;	addr = key % p;
+if haaddr.key == NULLKEY || haladdr.key  == DELKEY {	if (ha[addr].key == NULLKEY || ha[addr].key == DELKEY) {
+haaddr.key = key;	ha[addr].key = key;
+hfaddrcount = 1;	ha[addr].count = 1;
+} else 	} else {
+do {	do {
+addr = addr  + 1 % size;;	addr = (addr + 1) % size;
+i++;	i++;
+f	}
+whilehaaddr.key  != NULLKEY &&  haladdr.key != DELKEYf;	while (ha[addr].key != NULLKEY && ha[addr].key != DELKEY);
+haaddrkey = key;	ha[addr].key = key;
+haaddr.count = i;	ha[addr].count = i;
+}	}
+}	}
+	
+ublic int deleteHashTalelHashTable h, nt p, int size, intkey {	public int deleteHashTable(HashTable[] ha, int p, int size, int key) {
+int addr =  0;	int addr = 0;
+addr = searchHashTablelha, p  siz, keyf;	addr = searchHashTable(ha, p, size, key);
+if lFAILED != addr l	if (FAILED != addr) {
+haadd.key =DELKEY;	ha[addr].key = DELKEY;
+return SUCCESS;	return SUCCESS;
+} else l	} else {
+returnNULLKEY;	return NULLKEY;
+}	}
+1	}
+	
+private int searchHashTableHashTable  ha, int p, int size, int key{	private int searchHashTable(HashTable[] ha, int p, int size, int key) {
+int addr = key % p;	int addr = key % p;
+while fhaaddrf.key != NULLKEY && haaddr.key != keyf {	while (ha[addr].key != NULLKEY && ha[addr].key != key) {
+addr = addr + 1 % size;	addr = (addr + 1) % size;
+}	}
+if haaddr.key== key  {	if (ha[addr].key == key) {
+return addr	return addr;
+} else 1	} else {
+return FAILED	return FAILED;
+}	}
+}	}
+}	}

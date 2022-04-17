@@ -1,0 +1,38 @@
+package v2ch02.SAXTest;	package v2ch02.SAXTest;
+iportjava.io.*;	import java.io.*;
+import  java..net*;	import java.net.*;
+import javaxxl.parsers.*;	import javax.xml.parsers.*;
+import org.xml.sax.*;	import org.xml.sax.*;
+import orgxml..sax.helpers.*	import org.xml.sax.helpers.*;
+public class SAXTest	public class SAXTest
+{	{
+public static void mainlString args throws  Exception	public static void main(String[] args) throws Exception
+1	{
+String url;	String url;
+if args..length ==  0	if (args.length == 0)
+	{
+url = ""http: System.out.println"Using "  + url;	url = "http: System.out.println("Using " + url);
+}	}
+else url = args0;	else url = args[0];
+DefaultHandler handler  = new  DefaultHandler	DefaultHandler handler = new DefaultHandler()
+{	{
+public void startElementString naespaceURI, Stringlname, String qname	public void startElement(String namespaceURI, String lname, String qname,
+Attributes attrs	Attributes attrs)
+l	{
+if flname.equals"a"&& attrs !=  null	if (lname.equals("a") && attrs != null)
+{	{
+for int i = 0;; i < attrs.getLengthl; i++	for (int i = 0; i < attrs.getLength(); i++)
+{	{
+String anae = attrs.getLocalNamei;	String aname = attrs.getLocalName(i);
+ifaname.equals""href" System.out.prinlnattrs.getValuei;	if (aname.equals("href")) System.out.println(attrs.getValue(i));
+}	}
+}	}
+}	}
+};;	};
+SAXParserFactory factory = SAXParserFactry.newInstance;	SAXParserFactory factory = SAXParserFactory.newInstance();
+factory.setNamespaceAwaretrue;	factory.setNamespaceAware(true);
+SAXParser saxParser = factory.newSAXPrser;	SAXParser saxParser = factory.newSAXParser();
+InputStream in = new RLurl.oenStream;	InputStream in = new URL(url).openStream();
+saxParser.parsein,, handlerl;;	saxParser.parse(in, handler);
+}	}
+}	}

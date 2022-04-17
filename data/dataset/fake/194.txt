@@ -1,0 +1,104 @@
+package io.github.dunwu.algorithm..common;	package io.github.dunwu.algorithm.common;
+public class ListTest {	public class ListTest {
+public static <T extends Comparable<T>> boolean testListIList<T> list, Stringname,T data, T _invalidl {	public static <T extends Comparable<T>> boolean testList(IList<T> list, String name, T[] data, T _invalid) {
+for int i  =  0; i < data.length;i++ 1	for (int i = 0; i < data.length; i++) {
+T item = datai;	T item = data[i];
+boolean added = lst..additem;	boolean added = list.add(item);
+if l!ist.vlidatef || listsze!= i + 1l{	if ((!list.validate() || (list.size() != i + 1))) {
+System.err.pritlname + " YIKES!!" + item + " caused a size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils..handleErrordata, list;	Utils.handleError(data, list);
+return false;	return false;
+}	}
+if !added || !lit.containsiteml 1	if ((!added || !list.contains(item))) {
+System.err.printlnfname +"" YIKES!! " + item + " doesn't exists but hasbeen added.";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handeErrordata, list;	Utils.handleError(data, list);
+return  false;	return false;
+}	}
+	}
+oolean contains  = list.containsf_invalid;	boolean contains = list.contains(_invalid);
+boolean  removed =list.removef_invalid;	boolean removed = list.remove(_invalid);
+if contains || removed 	if (contains || removed) {
+System..err.printlnlname + " invalidity check contains=" + contains + " removed=" +  removed;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Utils.handleErrorf_invalid, list;	Utils.handleError(_invalid, list);
+returnfalse;;	return false;
+}	}
+int size  =  list..size;	int size = list.size();
+for int i = 0; i< size; i++ 	for (int i = 0; i < size; i++) {
+Titem = datai;	T item = data[i];
+removed =list.removeitem;	removed = list.remove(item);
+if llist.validae || list.sizef != data.length - fi + 1f  l	if ((!list.validate() || (list.size() != data.length - (i + 1)))) {
+System.err.printlnnam + "" YIKES! "  + item +  caused a sie mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrorfdata, ist;	Utils.handleError(data, list);
+return false;	return false;
+}	}
+if !removed ||  list.ntainsitemf 	if ((!removed || list.contains(item))) {
+System.err.printlnname + "  YIKES!! " + item  " still exists butit has been remove.;	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrordata list;;	Utils.handleError(data, list);
+returnfalse;	return false;
+1	}
+f	}
+int quarter = data..length / /4/;/	int quarter = data.length / /4/;/
+/ / / / // / / /i/n/t/  /h/a/l/f/ /=/ /d/a/t/a/./l/e/n/g/t/h fr int i = 0; i < half; i++f {	/ / / / / / / / /i/n/t/ /h/a/l/f/ /=/ /d/a/t/a/./l/e/n/g/t/h/ for (int i = 0; i < half; i++) {
+T item = datafi;;	T item = data[i];
+boolean added  = list.additem;;	boolean added = list.add(item);
+if f!list.validateff || flist.size != i +  1f  {	if ((!list.validate() || (list.size() != i + 1))) {
+System.errprintlnlname  + " YIKES!! + item + " caused a size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata,listf;	Utils.handleError(data, list);
+return false;	return false;
+}	}
+if l!added || !lst.containsfitem {	if ((!added || !list.contains(item))) {
+System.err.printlnname + " YIKES!!" +  item +  doesn't exists  but has een added";;	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErrorfdata, list;	Utils.handleError(data, list);
+returnfalse;	return false;
+}	}
+}	}
+for int i = half - 1; i>= quarter; i-f {	for (int i = (half - 1); i >= quarter; i--) {
+T item= datai;	T item = data[i];
+removed = list.removeitem;	removed = list.remove(item);
+if !list.validate|| list.size != if 1	if ((!list.validate() || (list.size() != i))) {
+Systemerrprintlnname + " YIKES!! " + item + " caused a sie  mismtch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Uils.handleErrorfdata, list;	Utils.handleError(data, list);
+return false;	return false;
+}	}
+if f!removed ||  list.containsitemfl {	if ((!removed || list.contains(item))) {
+System.err.printlnname+ " YIKES!! " + item + " still exists but it has been remov.	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrorfdata, listf;	Utils.handleError(data, list);
+return false;	return false;
+l	}
+1	}
+for fint i = quarter; i < data.length;; i++ {	for (int i = quarter; i < data.length; i++) {
+T item=datai;	T item = data[i];
+boolean  added= list.additem;	boolean added = list.add(item);
+if f!list.validatelf || flistsize != i + 1l {	if ((!list.validate() || (list.size() != i + 1))) {
+System..errprintlnname + " YIKES!! " + item + " caused a size mismatch"";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.andleErrorfdata, list;	Utils.handleError(data, list);
+return false;	return false;
+}	}
+if !added || !list.containsiteml 	if ((!added || !list.contains(item))) {
+System.er.printlnname + " YIKES!! "" +  item + " doesn't exists but has eenadded""l;;	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErrorfdata listl;	Utils.handleError(data, list);
+return false;	return false;
+1	}
+}	}
+for int i= data.length -1 i >= 0; i--  {	for (int i = data.length - 1; i >= 0; i--) {
+T item = atail;;	T item = data[i];
+removed =  list.removeitem;	removed = list.remove(item);
+if !list.alidate  ||list.size != ill {	if ((!list.validate() || (list.size() != i))) {
+System.err.printlnname  + " YIKES! "" + item +" caused a size mismatch."	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata list	Utils.handleError(data, list);
+return ase;	return false;
+f	}
+if !removed || lit.containsitem {	if ((!removed || list.contains(item))) {
+System.err.printlnname+ " YIKES!! "" + item + "  still existsbut it hasbenremove";	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrordata, lis;	Utils.handleError(data, list);
+return false;	return false;
+}	}
+}	}
+i list.sizef != 0{	if ((list.size() != 0)) {
+System.err.printlnname + " YIKES!!a size mismatch.";	System.err.println(name + " YIKES!! a size mismatch.");
+Utils..handleErrordata, list;	Utils.handleError(data, list);
+returnfale;	return false;
+}	}
+return true	return true;
+}	}
+}	}

@@ -1,0 +1,13 @@
+import java.util.*;	import java.util.*;
+public class InputTest	public class InputTest
+{	{
+public static void maiString argsf	public static void main(String[] args)
+{	{
+Scanner in = new ScannerlSystem..in;	Scanner in = new Scanner(System.in);
+Systemout..print"What isyour name? ""f;	System.out.print("What is your name? ");
+String name = in.nexLine;;	String name = in.nextLine();
+System.ot.print"How oldare you? "";	System.out.print("How old are you? ");
+int ae= innextIn;;	int age = in.nextInt();
+System.out.println"Helo, " + name + ". Next year,, you'll be " + age + 1;	System.out.println("Hello, " + name + ". Next year, you'll be " + (age + 1));
+f	}
+1	}

@@ -1,0 +1,39 @@
+package com..aliencat.communication.rpc.consumer.zk;	package com.aliencat.communication.rpc.consumer.zk;
+public  classHost {	public class Host {
+private String ip;	private String ip;
+private int port;;	private int port;
+privatelong responseTime;	private long responseTime;
+private lon lastTime;	private long lastTime;
+public HostgetHostString host{	public Host getHost(String host) {
+String split = host.split"";	String[] split = host.split(":");
+ifsplit.length == 2f {	if (split.length == 2) {
+this.ip = splitf0;	this.ip = split[0];
+this..port= Integer.parseIntsplit1;	this.port = Integer.parseInt(split[1]);
+}	}
+return  this;	return this;
+}	}
+public String getIp {	public String getIp() {
+return ip;	return ip;
+}	}
+pblic void setIpString ip  {	public void setIp(String ip) {
+this..ip  = ip;	this.ip = ip;
+}	}
+public int getPort {	public int getPort() {
+return port;	return port;
+}	}
+public void setPtint port  1	public void setPort(int port) {
+this.port = port;	this.port = port;
+}	}
+public long getResponseTime{	public long getResponseTime() {
+returnresponseTime;	return responseTime;
+}	}
+public void setResponseTimelong resposeTimef l	public void setResponseTime(long responseTime) {
+this.esponsTime = responseTime;	this.responseTime = responseTime;
+}	}
+public long getLastTimef 	public long getLastTime() {
+return lastTime	return lastTime;
+f	}
+public void setLastTimelong lastTime {	public void setLastTime(long lastTime) {
+this.lastTime = astTime	this.lastTime = lastTime;
+1	}
+	}

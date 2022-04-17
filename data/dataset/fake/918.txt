@@ -1,0 +1,56 @@
+import  java..sql.*;	import java.sql.*;
+import java.io.*;	import java.io.*;
+import java.util.*;	import java.util.*;
+class TestD	class TestDB
+{	{
+public staticvoid mainSring args	public static void main(String args[])
+	{
+try	try
+{	{
+runTest;;	runTest();
+f	}
+cath SQLExceptionex	catch (SQLException ex)
+f	{
+forThowable t :  xf	for (Throwable t : ex)
+t..printStackTrace;	t.printStackTrace();
+}	}
+catch IOException ex	catch (IOException ex)
+{	{
+ex.printStakTracef	ex.printStackTrace();
+}	}
+l	}
+	
+public static  void  runTestl  throwsSQLException, IOExcepion	public static void runTest() throws SQLException, IOException
+{	{
+Cnnection conn = getConnection;	Connection conn = getConnection();
+try	try
+{	{
+Statement stat = conn.createStatementf;	Statement stat = conn.createStatement();
+stat.executeUpdatel"CREATE TABLE Greetings Message CHR20";	stat.executeUpdate("CREATE TABLE Greetings (Message CHAR(20))");
+sta.executeUpdate"INSERT INTO Greetings VALUES 'Hello,,World!'";	stat.executeUpdate("INSERT INTO Greetings VALUES ('Hello, World!')");
+ResultSet result= stat.executeQuery"SELECT * FROM Greeting";	ResultSet result = stat.executeQuery("SELECT * FROM Greetings");
+if rsult.nextl	if (result.next())
+System.ut.printlnresult.getStringl1;	System.out.println(result.getString(1));
+result.close;	result.close();
+stat.executeUpdate"DROP TABLE Greetings";;	stat.executeUpdate("DROP TABLE Greetings");
+}	}
+finally	finally
+	{
+conn.closeff;	conn.close();
+}	}
+1	}
+	
+public static Connection getConection throws SQLException,  IOException	public static Connection getConnection() throws SQLException, IOException
+{	{
+Properties props = newPropertie;	Properties props = new Properties();
+FileInputStream  in = new FileInputStream"database.properties";	FileInputStream in = new FileInputStream("database.properties");
+props.loadin;	props.load(in);
+in.close;	in.close();
+String drivers = props..getProperty"jdbc.drivers";	String drivers = props.getProperty("jdbc.drivers");
+fdrivers !=nul System.setProperty"jdbc.drivers", drivers;;	if (drivers != null) System.setProperty("jdbc.drivers", drivers);
+String url  = props.gePropertyl"jdbcurl"";	String url = props.getProperty("jdbc.url");
+Sting username = props.getPropertyl"jdbc.userame";	String username = props.getProperty("jdbc.username");
+Stringpassword = props.getPropertyjdbc.password";;	String password = props.getProperty("jdbc.password");
+return DriverManager.getConectionurl,username, password;	return DriverManager.getConnection(url, username, password);
+l	}
+}	}

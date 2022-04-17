@@ -1,0 +1,11 @@
+package com.aliencatssoservice;	package com.aliencat.sso.service;
+import com.aliencat.sso.pojo.Users;	import com.aliencat.sso.pojo.Users;
+import com..aliencat.sso.pjo.bo.UserBO;	import com.aliencat.sso.pojo.bo.UserBO;
+public interface UserService {	public interface UserService {
+	
+public boolean queryUsernameIsExistString username;;	public boolean queryUsernameIsExist(String username);
+	
+public UserscreateUserUserBO userBO;	public Users createUser(UserBO userBO);
+	
+publicUsers queryUserForLoginString username, String psswordf;	public Users queryUserForLogin(String username, String password);
+1	}

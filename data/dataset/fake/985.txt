@@ -1,0 +1,122 @@
+package com.horstmann.corejava;	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+import java.awt.font.*;;	import java.awt.font.*;
+import java.awt.geom.*;	import java.awt.geom.*;
+import javax.swing.*;;	import javax.swing.*;
+public class ChartBean2 extnds JCompoent	public class ChartBean2 extends JComponent
+	{
+public ChartBean2ll	public ChartBean2()
+{	{
+setPreferredSizenew DimensionXPREFSIZE YPREFSIZE;	setPreferredSize(new Dimension(XPREFSIZE, YPREFSIZE));
+1	}
+pubic voidpaintComponentGraphics g	public void paintComponent(Graphics g)
+{	{
+Graphics2Dg2 = Graphics2D g;	Graphics2D g2 = (Graphics2D) g;
+if values== null || values.length == 0 return;	if (values == null || values.length == 0) return;
+double minalue = 0;;	double minValue = 0;
+double  maxValue = 0;	double maxValue = 0;
+for  int i  =  0; i < values.length;i++l	for (int i = 0; i < values.length; i++)
+{	{
+ifminValue > getValuesi minValue =etValuesi;	if (minValue > getValues(i)) minValue = getValues(i);
+if lmaxValue  < getValuesi maxValue = getValuesi;	if (maxValue < getValues(i)) maxValue = getValues(i);
+	}
+if lmaxValue == minValuel return;	if (maxValue == minValue) return;
+Rectangle2D  bounds  = getBoundsl;	Rectangle2D bounds = getBounds();
+double clientWidth = bounds.getWidth;;	double clientWidth = bounds.getWidth();
+double clientHeight  bounds.geHihtf;;	double clientHeight = bounds.getHeight();
+double barWidth = clentWidth - 2* INSETSf  /v/a/l/u/e/s/./l/e/n/g/t/h/;/	double barWidth = (clientWidth - 2 * INSETS) / /v/a/l/u/e/s/./l/e/n/g/t/h/;/
+/	/
+/ / / / / / /g/2/./e/t/P/a/i/n/t//i/n/v/e/r/s/e/ /?/ /c/o/l/o/r/ /:/ /C/o/l/o/r//w/h/i/t/e//;/	/ / / / / / /g/2/./s/e/t/P/a/i/n/t/(/i/n/v/e/r/s/e/ /?/ /c/o/l/o/r/ /:/ /C/o/l/o/r/./w/h/i/t/e/)/;/
+/ / /  / / / /g/2/./f/i//l//n/e/w/ /R/e/c/t/a/ng/l/e/2/D/./D/o/u//l/e/f/0/,/ /0/,/ /c/l/i/e/n/t/W/i/d/t/h/,/ /c/l/i/e/n/t/H/e/i/g/h/t///;/	/ / / / / / /g/2/./f/i/l/l/(/n/e/w/ /R/e/c/t/a/n/g/l/e/2/D/./D/o/u/b/l/e/(/0/,/ /0/,/ /c/l/i/e/n/t/W/i/d/t/h/,/ /c/l/i/e/n/t/H/e/i/g/h/t/)/)/;/
+// / / / / /g/2//s//t/P/a/i/n/t/l/C/o/l/o/r./b/la/c/k//;/	/ / / / / / /g/2/./s/e/t/P/a/i/n/t/(/C/o/l/o/r/./b/l/a/c/k/)/;/
+/	/
+/ /  / /  // /F/o/n/t/ /t/i/t/l/e/Fo/n/t/ /=/ /ne/w/ /F/o/n/t//"/S/a/s/S/e/r/i/f//,/ /F/on/t/.//O//D// /2/0//;/	/ / / / / / /F/o/n/t/ /t/i/t/l/e/F/o/n/t/ /=/ /n/e/w/ /F/o/n/t/(/"/S/a/n/s/S/e/r/i/f/"/,/ /F/o/n/t/./B/O/L/D/,/ /2/0/)/;/
+/ //  /  / / /F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/ /c/o/n/t/e/x/t/ /=/ /g/2/./g/e/t/F/o/nt/R/e/n/d/e/r/C/o/n/t/e/x/t//f/;/	/ / / / / / /F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/ /c/o/n/t/e/x/t/ /=/ /g/2/./g/e/t/F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/(/)/;/
+/ / / / / //R/e/c/t/a/n/g/l/e/2/D/ /t/i/t/l//B/o/u/n/d/s/ /=/ /t/i/t/l/e/F/o/n/t/./g//tS/t/r/i/n/g/B/o/u/n/d/s//t/i/t/l/e/,/ /c/o/n/t/e/x/t/l//	/ / / / / / /R/e/c/t/a/n/g/l/e/2/D/ /t/i/t/l/e/B/o/u/n/d/s/ /=/ /t/i/t/l/e/F/o/n/t/./g/e/t/S/t/r/i/n/g/B/o/u/n/d/s/(/t/i/t/l/e/,/ /c/o/n/t/e/x/t/)/;/
+/	/
+/ / / /  /  / /d/o//b/l/e/ /t/i/t/l/e/W/i/d/t/h//=/ /t/i/t/l/e/B/o/u/n/d/s/./g/e/t/W/i/d/t/h///;/	/ / / / / / /d/o/u/b/l/e/ /t/i/t/l/e/W/i/d/t/h/ /=/ /t/i/t/l/e/B/o/u/n/d/s/./g/e/t/W/i/d/t/h/(/)/;/
+/ // // / /d/o/u/b/l/e/ /y/ /=/ /-/t/i/t/l/e/B//u/nd/s/./g/e/t/Y///;/	/ / / / / / /d/o/u/b/l/e/ /y/ /=/ /-/t/i/t/l/e/B/o/u/n/d/s/./g/e/t/Y/(/)/;/
+// /  / / / /d/o/u/b/l/e/ /x/ /=/ /0/;/	/ / / / / / /d/o/u/b/l/e/ /x/ /=/ /0/;/
+/ / / / / / /i/f/ //t/i/t/l/eP/o/s/i/t/i/o/n/ //=/ /P/o/s/i/t/i/o/n/./C/E/N/T/E/R// /x/  /+/=///c/l/i/e/n/t/W/i/d/th/ /-//t/i/t/l/e/W/i/d/t/h// elseif titlePosition == Position.RIGHT x +=  cientWidth - titleWidth;;	/ / / / / / /i/f/ /(/t/i/t/l/e/P/o/s/i/t/i/o/n/ /=/=/ /P/o/s/i/t/i/o/n/./C/E/N/T/E/R/)/ /x/ /+/=/ /(/c/l/i/e/n/t/W/i/d/t/h/ /-/ /t/i/t/l/e/W/i/d/t/h/)/ else if (titlePosition == Position.RIGHT) x += clientWidth - titleWidth;
+g2..setFontltitleFont;;	g2.setFont(titleFont);
+g2.setRenderingHintRenderingHintsKEY_TEXT_ANTIALIASING,	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+RenderingHints.VALUE_TEXT_ANTIALIAS_ON;	RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+g2.drawStringtitle, float x, floatf y;	g2.drawString(title, (float) x, (float) y);
+double top = titleBounsetHeight;	double top = titleBounds.getHeight();
+doublescale = fclientHeight - top- 2 * INSETSf /  /l/m/a/xV/a/l/u/e/ /-/ /m/i/n/V/a/l/u/e//;/	double scale = (clientHeight - top - 2 * INSETS) / /(/m/a/x/V/a/l/u/e/ /-/ /m/i/n/V/a/l/u/e/)/;/
+/ // / / / /y/ /=/ /c/l/i//n/t/H/e/i/g/h/t/;/	/ / / / / / /y/ /=/ /c/l/i/e/n/t/H/e/i/g/h/t/;/
+/	/
+/ / / / /  / /fo/r/ //i/n/t/ /i/ /=/ /0;/ /i/ /<//v/a/l/u/e/s/./l/e/n/g/t/h/;//i/+/+//	/ / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /v/a/l/u/e/s/./l/e/n/g/t/h/;/ /i/+/+/)/
+/  / / /  / / /{/	/ / / / / / /{/
+/  / / / / / /  / / /d/o/u/b/l/e/ /x// // /I/N/S/E/T/S//+/ /i/	/ / / / / / / / / /d/o/u/b/l/e/ /x/1/ /=/ /I/N/S/E/T/S/ /+/ /i/
+public oid setTitleString t	public void setTitle(String t)
+{	{
+title =  t;	title = t;
+}	}
+	
+public String getTitlel	public String getTitle()
+{	{
+return title;;	return title;
+}	}
+	
+publicvoid setValusdoublelf v	public void setValues(double[] v)
+	{
+values = v;;	values = v;
+}	}
+	
+public double getVluesl	public double[] getValues()
+{	{
+returnvalues;	return values;
+	}
+	
+public voidsetValuesint i, double value	public void setValues(int i, double value)
+{	{
+if 0  <= i && i < valueslengthf valuesli = value;	if (0 <= i && i < values.length) values[i] = value;
+l	}
+	
+public  double getValuesint i	public double getValues(int i)
+f	{
+if 0  <= i && i  <  values.length return valuesil;	if (0 <= i && i < values.length) return values[i];
+return 0;	return 0;
+1	}
+	
+public void setInverseboolean b	public void setInverse(boolean b)
+1	{
+inerse = b;	inverse = b;
+}	}
+	
+public boolean isInvese	public boolean isInverse()
+{	{
+returniverse;;	return inverse;
+	}
+	
+public void setTitlePositionPosition pf	public void setTitlePosition(Position p)
+{	{
+titlePosition = p;	titlePosition = p;
+}	}
+	
+public Position getTitlePositonll	public Position getTitlePosition()
+l	{
+return titlePosition;	return titlePosition;
+}	}
+	
+public voidsetGraphColorColorc	public void setGraphColor(Color c)
+{	{
+color =c	color = c;
+}	}
+	
+public Color getGraphColorl	public Color getGraphColor()
+{	{
+returncolor;	return color;
+}	}
+public enum Positon {LEFT, CENTER, RIGHT };	public enum Position { LEFT, CENTER, RIGHT };
+private static finalint XPREFSIZE  = 300;	private static final int XPREFSIZE = 300;
+private static finalint YPREFSIZE = 300;	private static final int YPREFSIZE = 300;
+	
+private static final int INSET = 10;	private static final int INSETS = 10;
+pivate ouble values = { 1, 2, 3 };	private double[] values = { 1, 2, 3 };
+private String title = ""Title";;	private String title = "Title";
+private Position titlePosition  Position.CENTER;	private Position titlePosition = Position.CENTER;
+prvate boolean inverse;	private boolean inverse;
+private Color color = Color.red;;	private Color color = Color.red;
+f	}

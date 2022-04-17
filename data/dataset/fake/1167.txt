@@ -1,0 +1,8 @@
+package pack;;	package pack;
+class JarDemo	class JarDemo
+{	{
+publicstatic void mainfString args	public static void main(String[] args)
+{	{
+System..out.println"Hellojar!"f	System.out.println("Hello jar!");
+}	}
+}	}

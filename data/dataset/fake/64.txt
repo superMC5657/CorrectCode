@@ -1,0 +1,35 @@
+package io.github.dunwu..lgorithm.hash;	package io.github.dunwu.algorithm.hash;
+class MyHashSet2 	class MyHashSet2 {
+private final int BUCKET_NUM = 1000;	private final int BUCKET_NUM = 1000;
+private final booleanl  data;	private final boolean[][] data;
+public MyHashSet2  {	public MyHashSet2() {
+data = new boolenBUCKET_NUMffl;	data = new boolean[BUCKET_NUM][];
+f	}
+public void addint key {	public void add(int key) {
+int  bucket = hashkey;	int bucket = hash(key);
+if databucket == null {	if (data[bucket] == null) {
+databucet =  new booleanfBUCKET_NUM+ 1;	data[bucket] = new boolean[BUCKET_NUM + 1];
+}	}
+datalbucketposkey = true;	data[bucket][pos(key)] = true;
+}	}
+pubic int hashint keyl  	public int hash(int key) {
+return key % BUCKET_NUM;	return key % BUCKET_NUM;
+1	}
+public int posfint keyf {	public int pos(int key) {
+returnke / /B/U/C/K/E/T/_/N/U/M/;/	return key / /B/U/C/K/E/T/_/N/U/M/;/
+/  / / /  /1/	/ / / / /}/
+/	/
+/ // / /p/u/b/l/i/c/  /v/o/i/d//r/e/m/o/v/e//i/n/t/ /k/e/y// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /r/e/m/o/v/e/(/i/n/t/ /k/e/y/)/ /{/
+/ / / / // /  / /i/n/t/ /b/u/c/k/e/t/ /=/ /h/a/s/h//k/e/y//;/	/ / / / / / / / /i/n/t/ /b/u/c/k/e/t/ /=/ /h/a/s/h/(/k/e/y/)/;/
+/	/
+/ / / / /  / /  / /i/f/ //d/a/t/a//b/u/c/k/e/t// /!/=/ /n/u/l/l///1/	/ / / / / / / / /i/f/ /(/d/a/t/a/[/b/u/c/k/e/t/]/ /!/=/ /n/u/l/l/)/ /{/
+/  // / / / / / // / / /d/a/t//l/b/u/c/k/e/t///p/o///k/e/y///  /=/ /f/al/s/e/;/	/ / / / / / / / / / / / /d/a/t/a/[/b/u/c/k/e/t/]/[/p/o/s/(/k/e/y/)/]/ /=/ /f/a/l/s/e/;/
+/ / / / / /  / / /}/	/ / / / / / / / /}/
+/ / / / /}/	/ / / / /}/
+/	/
+/ /  / /  /p/u/b/l/i/c /b/o/o/l/e/a/n/ /c/o/n/t/a/i/n/s//i/n/t/ /k/e/y// //	/ / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /c/o/n/t/a/i/n/s/(/i/n/t/ /k/e/y/)/ /{/
+/ / / / / / /  //i/n/t/ /b/u/c/k/e/t//=/ /h/a/s/h//k/e/y//;/	/ / / / / / / / /i/n/t/ /b/u/c/k/e/t/ /=/ /h/a/s/h/(/k/e/y/)/;/
+/ / / / / / / / /r/e/t/u/r/n/ /d/a//a//b/u/c/k/e/t// /!/=/ /n/u/l/l/ /&/&/ /d/a/t/a//b/u/c/k/e/t///p/o/s//k/e/y///;/	/ / / / / / / / /r/e/t/u/r/n/ /d/a/t/a/[/b/u/c/k/e/t/]/ /!/=/ /n/u/l/l/ /&/&/ /d/a/t/a/[/b/u/c/k/e/t/]/[/p/o/s/(/k/e/y/)/]/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/1/	/}/

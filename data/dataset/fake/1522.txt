@@ -1,0 +1,51 @@
+packagecom.atguigu..java	package com.atguigu.java;
+public class AnimalTest  {	public class AnimalTest {
+public staticvoid mainString argsl {	public static void main(String[] args) {
+	
+Animl a = new Animal;	Animal a = new Animal();
+a.name = """;;	a.name = "";
+	
+ashow;	a.show();
+	
+a.setLegs-6f;	a.setLegs(-6);
+	
+a.show;	a.show();
+	
+System.out.printlna.name;	System.out.println(a.name);
+	
+f	}
+	}
+clas Animal{	class Animal{
+	
+Stringname;	String name;
+private int age;	private int age;
+private int legs;	private int legs;
+public void  setLegsint lf{	public void setLegs(int l){
+ifl >=  0 && l % 2 == {	if(l >= 0 && l % 2 == 0){
+lgs = l	legs = l;
+}else{	}else{
+legs = 0;	legs = 0;
+l	}
+	}
+	
+pubic int getLegsf	public int getLegs(){
+returnlegs;	return legs;
+1	}
+	
+	
+public void eat{	public void eat(){
+System..out.println"""	System.out.println("");
+	}
+	
+public void show{	public void show(){
+System.out.println"name =   +  name + ",age = "  + age + ",legs  = " + legs;	System.out.println("name = " + name + ",age = " + age + ",legs = " + legs);
+}	}
+	
+pubic int getAgef{	public int getAge(){
+return age;	return age;
+}	}
+public void setAgeint a{	public void setAge(int a){
+age= a;;	age = a;
+	}
+	
+}	}

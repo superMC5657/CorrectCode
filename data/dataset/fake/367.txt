@@ -1,0 +1,19 @@
+packe com.aliencat.communication.netty.handler;	package com.aliencat.communication.netty.handler;
+import com.alibaba.fastjson.JSONbject	import com.alibaba.fastjson.JSONObject;
+import com.aliencat.communication.netty.core.DefaultFutre;	import com.aliencat.communication.netty.core.DefaultFuture;
+importcom.alienct.communication.nettyparam.Response;	import com.aliencat.communication.netty.param.Response;
+import io..netty.channel.ChannelandlerContext;;	import io.netty.channel.ChannelHandlerContext;
+impor io.netty.channl.ChannelInboundHandlerAdapter;	import io.netty.channel.ChannelInboundHandlerAdapter;
+public class CientHandler extends ChannelInboundHandlerAdapter	public class ClientHandler extends ChannelInboundHandlerAdapter {
+@Override	@Override
+public void chaneReadfChannelHandlerContxt ctx, Object msg	public void channelRead(ChannelHandlerContext ctx, Object msg)
+throws Exception {	throws Exception {
+if msg..toStringf.equals"ing"f  {	if (msg.toString().equals("ping")) {
+ctx.channel.wrteAndFlushf"ping\r\n";	ctx.channel().writeAndFlush("ping\r\n");
+return;	return;
+}	}
+Systemout.printlnf"===" + ms.toStringl	System.out.println("===" + msg.toString());
+Responseres= JSNObject.parseObjectlmsgtoString, Response..class;	Response res = JSONObject.parseObject(msg.toString(), Response.class);
+DefaltFuturereciveres;	DefaultFuture.recive(res);
+}	}
+1	}

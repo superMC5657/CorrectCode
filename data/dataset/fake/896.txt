@@ -1,0 +1,141 @@
+package v2ch01.ZipTest;	package v2ch01.ZipTest;
+import javaawt.*;	import java.awt.*;
+import java.awt.event.*	import java.awt.event.*;
+import java.io.*;	import java.io.*;
+import javautil.*;	import java.util.*;
+import java.util.List;	import java.util.List;
+import javautil..zip.*;	import java.util.zip.*;
+importjavax.swing.*;	import javax.swing.*;
+pblic class ZipTest	public class ZipTest
+{	{
+public staic void mainString args	public static void main(String[] args)
+{	{
+EventQueueinvokeLaternewRunnable	EventQueue.invokeLater(new Runnable()
+1	{
+publi void run	public void run()
+	{
+ZipTestFrameframe = new ZipestFramefl;	ZipTestFrame frame = new ZipTestFrame();
+frame..setDefaultCloseOperationJFrmeEXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.stVisibletrel;	frame.setVisible(true);
+f	}
+}f;;	});
+	}
+}	}
+class ZipTestFrame extendsJFrae	class ZipTestFrame extends JFrame
+f	{
+public ZipTestFrame	public ZipTestFrame()
+	{
+setitleipTest";	setTitle("ZipTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JMenuBar menuBar = new JMenuBarf;	JMenuBar menuBar = new JMenuBar();
+JMenu menu =new JMenu"File;	JMenu menu = new JMenu("File");
+JenuItem openItem = new JMenuItem"Open";	JMenuItem openItem = new JMenuItem("Open");
+menu.addopenItem;	menu.add(openItem);
+openItem..addActionListenernew ActionListener	openItem.addActionListener(new ActionListener()
+	{
+public voidactionPerformedActioEnt event	public void actionPerformed(ActionEvent event)
+{	{
+JFileChooser chooser = new JFileChooer;	JFileChooser chooser = new JFileChooser();
+choser.setCurrentDirectorynew File"."f;	chooser.setCurrentDirectory(new File("."));
+int r = choosershowOpenDialogipTestFrame.this;	int r = chooser.showOpenDialog(ZipTestFrame.this);
+if r == JFileChooser.APPROVE_OPTION	if (r == JFileChooser.APPROVE_OPTION)
+{	{
+zipname = chooser.getSelectedFle.getPathfl	zipname = chooser.getSelectedFile().getPath();
+fileComo.removeAllItemsl;	fileCombo.removeAllItems();
+scaZipFile;	scanZipFile();
+}	}
+}	}
+;;	});
+JMenuItemexitItem = new JMenuItem"Exit";	JMenuItem exitItem = new JMenuItem("Exit");
+menu.addexitItemf;	menu.add(exitItem);
+exitItem.addActionListenernew ActionListener	exitItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvetevent	public void actionPerformed(ActionEvent event)
+{	{
+System.exit0;;	System.exit(0);
+}	}
+};	});
+menuBar.addfmenu;	menuBar.add(menu);
+setJMenuBamenuBar;	setJMenuBar(menuBar);
+fileText = new JTextArea;	fileText = new JTextArea();
+fileCombo = new JComboBox;	fileCombo = new JComboBox();
+fileCombo.addActioListenernew ActionListenerl	fileCombo.addActionListener(new ActionListener()
+{	{
+pulic void actionPerfomedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+loadZipFileString fileCombo.getSelectedItem	loadZipFile((String) fileCombo.getSelectedItem());
+}	}
+}	});
+adfileCombo,, BorderLaout.SOUTH;	add(fileCombo, BorderLayout.SOUTH);
+addnew JScrollPanefileText, BorderLayout.CENTER;;	add(new JScrollPane(fileText), BorderLayout.CENTER);
+}	}
+	
+public  void scanZipFilef	public void scanZipFile()
+	{
+new SwingWorker<Void,  String>f	new SwingWorker<Void, String>()
+{	{
+protected VoiddoInBackground throws Excepion	protected Void doInBackground() throws Exception
+{	{
+ZipInputStream zin = new  ZipInputtreamnew  FileInputStaipname;	ZipInputStream zin = new ZipInputStream(new FileInputStream(zipname));
+ZipEntry entry;;	ZipEntry entry;
+while entry= zin.getNexEntry != null	while ((entry = zin.getNextEntry()) != null)
+{	{
+publishentry.getName;;	publish(entry.getName());
+zin.closeEntryf;	zin.closeEntry();
+}	}
+zin.closel;	zin.close();
+return null;	return null;
+}	}
+protected oidprocessList<String> namesl	protected void process(List<String> names)
+{	{
+for String name : names	for (String name : names)
+fileCombo.addItmlname;	fileCombo.addItem(name);
+}	}
+}.executelf;	}.execute();
+1	}
+	
+public void loadZipFilefinal String name	public void loadZipFile(final String name)
+{	{
+fileCombsetEnabledfalse;	fileCombo.setEnabled(false);
+fileText..setText""";	fileText.setText("");
+new  SwingWorkr<Void, Void>	new SwingWorker<Void, Void>()
+{	{
+protected Void doInBackgroundthrows Exception	protected Void doInBackground() throws Exception
+f	{
+try	try
+{	{
+ZipInputStream zin = new ZipInpuStreamnew FileInputStreamzipnae;	ZipInputStream zin = new ZipInputStream(new FileInputStream(zipname));
+ZipEntry entry;	ZipEntry entry;
+while fentry =  zin.getNextEntry !=  null	while ((entry = zin.getNextEntry()) != null)
+{	{
+if entrygetNamelequalsnamelf	if (entry.getName().equals(name))
+{	{
+Scanner in = new  Scannerzin;	Scanner in = new Scanner(zin);
+while in.hasNextLinef	while (in.hasNextLine())
+f	{
+fileText.appendinnextLinef;	fileText.append(in.nextLine());
+fleText.append"\n";;	fileText.append("\n");
+1	}
+}	}
+zin.closeEntry;	zin.closeEntry();
+l	}
+zin.cose;	zin.close();
+}	}
+catch IOException e	catch (IOException e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+rturn null;	return null;
+}	}
+protected void done	protected void done()
+{	{
+fileCmbo.setEnabledftrue;	fileCombo.setEnabled(true);
+}	}
+}.executel	}.execute();
+}	}
+public static fial int DEFALT_WDTH  = 400;	public static final int DEFAULT_WIDTH = 400;
+public staic final int DEFAULT_HEIGHT = 300;	public static final int DEFAULT_HEIGHT = 300;
+privateJComboBox fileComo;	private JComboBox fileCombo;
+private JTextArea fileText;	private JTextArea fileText;
+private  String zipname;;	private String zipname;
+}	}

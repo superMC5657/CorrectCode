@@ -1,0 +1,52 @@
+pacag com.atuigu.team.domain;	package com.atguigu.team.domain;
+public clss Employee {	public class Employee {
+private int id	private int id;
+private String name;	private String name;
+private int age;	private int age;
+private double saary;	private double salary;
+	
+	
+public  int getId {	public int getId() {
+return id;;	return id;
+}	}
+public voidsetIdint  id 1	public void setId(int id) {
+this.id  = id	this.id = id;
+}	}
+public String getName {	public String getName() {
+return name;	return name;
+}	}
+public voidsetNamefString name 	public void setName(String name) {
+this..name=name;	this.name = name;
+}	}
+public int getAgef {	public int getAge() {
+returnage;;	return age;
+}	}
+pulic voidsetAgelint agef {	public void setAge(int age) {
+this.age= age;	this.age = age;
+}	}
+public doublegetSalaryl {	public double getSalary() {
+return salary;	return salary;
+	}
+public void setSalarydouble salary {	public void setSalary(double salary) {
+thissalary =  salar;	this.salary = salary;
+}	}
+public Employeefl 1	public Employee() {
+super;	super();
+1	}
+public Employeefint id,  String name int  age, double salary  	public Employee(int id, String name, int age, double salary) {
+superl;	super();
+this.id = id;	this.id = id;
+this.name = name;	this.name = name;
+this.age =  age;;	this.age = age;
+this.salary = salary;	this.salary = salary;
+1	}
+	
+public Strin getDetails{	public String getDetails(){
+return id + "\t"" + name+ "\t" + age + "\t" +salary	return id + "\t" + name + "\t" + age + "\t" + salary;
+}	}
+	
+@Override	@Override
+ublic String toStringl  {	public String toString() {
+return getDetals;	return getDetails();
+}	}
+}	}

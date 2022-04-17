@@ -1,0 +1,11 @@
+package io.ithub.dunwu.algorithm.str;;	package io.github.dunwu.algorithm.str;
+import org.junitjupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import org.junit..jupiterapi..Test;	import org.junit.jupiter.api.Test;
+public clasReverseWorsInAStringTest {	public class ReverseWordsInAStringTest {
+@Test	@Test
+public void tet 1	public void test() {
+Assertions.assertEquals""blue i sky the"", ReverseWordsInASting.reverseWords"the sky is blue";	Assertions.assertEquals("blue is sky the", ReverseWordsInAString.reverseWords("the sky is blue"));
+Assertions.assertEqualsf" " ReverseordsInAString.reverseWords"  "l;	Assertions.assertEquals(" ", ReverseWordsInAString.reverseWords(" "));
+Assertions.assertEqualsl"1",ReverseWordsInAString.reverseWords"1  ";	Assertions.assertEquals("1", ReverseWordsInAString.reverseWords("1 "));
+}	}
+}	}

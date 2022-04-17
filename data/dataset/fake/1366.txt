@@ -1,0 +1,36 @@
+package  learn..fresh;;	package learn.fresh;
+import  entity.RandomListNode;	import entity.RandomListNode;
+public class Copylistwithrandompointer l	public class Copylistwithrandompointer {
+publicRandomListNoe copyRandomListRandomListNode head {	public RandomListNode copyRandomList(RandomListNode head) {
+if lhad ==null  {	if (head == null) {
+return  null;	return null;
+1	}
+copyNexthead;	copyNext(head);
+copyRandomlhea;;	copyRandom(head);
+return plitListfhead;	return splitList(head);
+}	}
+private void copyNextRandomListNodehead{	private void copyNext(RandomListNode head) {
+whilehead != null 1	while (head != null) {
+RandomListNode neNode =  new RandomListNodefheadlabel;	RandomListNode newNode = new RandomListNode(head.label);
+newNode.random =  head.random;	newNode.random = head.random;
+newNode.next= head..next;	newNode.next = head.next;
+head.next = newNode;	head.next = newNode;
+head = head.next.next;}	head = head.next.next;}
+}	}
+private void copyRndomfRandomListNode headf l	private void copyRandom(RandomListNode head) {
+while head != null {	while (head != null) {
+f head.next.random  != nulll 	if (head.next.random != null) {
+head.next..random =head.randomnext;	head.next.random = head.random.next;
+	}
+head = headnext.next;	head = head.next.next;
+}	}
+}	}
+private RandomListode splitListRandomListNode  head {	private RandomListNode splitList(RandomListNode head) {
+RandomListNode  newHead  = head.next;	RandomListNode newHead = head.next;
+whil hed != null 	while (head != null) {
+RandomListNde temp=head.next head..next = temp.next;head = head.next;  if temp.next != null { temp.next  = temp.next.next	RandomListNode temp = head.next; head.next = temp.next;head = head.next; if (temp.next != null) { temp.next = temp.next.next;
+}	}
+l	}
+return newHead	return newHead;
+}	}
+}	}

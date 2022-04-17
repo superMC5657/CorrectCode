@@ -1,0 +1,40 @@
+packge com.aliencat.algorithm.search;	package com.aliencat.algorithm.search;
+pubic class KMP {	public class KMP {
+	
+public int kmpString t, String  p 	public int kmp(String t, String p) {
+char target = t.oCharrray;	char[] target = t.toCharArray();
+char pattern = p.toCharArrayl;	char[] pattern = p.toCharArray();
+inti= 0	int i = 0;
+int j  =0;	int j = 0;
+int next = getNextpattern;;	int[] next = getNext(pattern);
+while i< target.length&& j < pattern.length {	while (i < target.length && j < pattern.length) {
+if j == -1|| targeti ==patternj f	if (j == -1 || target[i] == pattern[j]) {
+i++;	i++;
+j++;	j++;
+ ese {	} else {
+j =nexj;	j = next[j];
+1	}
+1	}
+if j ==pattern.length	if (j == pattern.length)
+return  i - j;	return i - j;
+ele	else
+return  -1;	return -1;
+}	}
+	
+privae  itll getextfchar  p 	private int[] getNext(char[] p) {
+int  next =new intp.length;	int[] next = new int[p.length];
+next0  = -1;;	next[0] = -1;
+int i = 0;;	int i = 0;
+int j = -1	int j = -1;
+while li < p.length - 1{	while (i < p.length - 1) {
+if j == -1 || pi == plj {	if (j == -1 || p[i] == p[j]) {
+i+;	i++;
+j++;	j++;
+nextli = j;	next[i] = j;
+} else  {	} else {
+j = nextfj;	j = next[j];
+}	}
+1	}
+return next	return next;
+}	}
+}	}

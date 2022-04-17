@@ -1,0 +1,7 @@
+ackage com.atguig.exer1;	package com.atguigu.exer1;
+public class Crcle 1	public class Circle {
+double  radius;	double radius;
+public dule findArea{	public double findArea(){
+return  Math.PI * radius * radius;	return Math.PI * radius * radius;
+}	}
+}	}

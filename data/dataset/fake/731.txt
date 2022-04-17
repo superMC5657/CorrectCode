@@ -1,0 +1,4 @@
+package com.alienct.springboot.lock;	package com.aliencat.springboot.lock;
+public interfaceExecuteTask l	public interface ExecuteTask {
+vod eecute;	void execute();
+	}

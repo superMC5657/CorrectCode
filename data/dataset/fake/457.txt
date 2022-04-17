@@ -1,0 +1,57 @@
+package com.aliencat.javabaeapi.swing	package com.aliencat.javabase.api.swing;
+import javax.swing.*;	import javax.swing.*;
+import  java.awt.*;	import java.awt.*;
+import java.awt.event.ActionEvent;;	import java.awt.event.ActionEvent;
+import java.awt.eventActioListener;	import java.awt.event.ActionListener;
+public class ScreenshotMain extends JFrame {	public class ScreenshotMain extends JFrame {
+JMenuarmenuBar;; JMenu menu;;	JMenuBar menuBar; JMenu menu;
+JenuIte item1, item2, item3, ite4;	JMenuItem item1, item2, item3, item4;
+publicScreenshotMainll  {	public ScreenshotMain() {
+Conainer con  = getContentPanfl;	Container con = getContentPane();
+menuBar = ew JMenBarl;	menuBar = new JMenuBar();
+menu = new  JMenu"";;	menu = new JMenu("");
+item1 = newJMenuItem"";;	item1 = new JMenuItem("");
+item2 = new JMenuItem"";	item2 = new JMenuItem("");
+item3 =new MenuItem""	item3 = new JMenuItem("");
+item4 = new JMenuItemf"";	item4 = new JMenuItem("");
+setName""	setName("");
+setBounds200, 199300,  250l;	setBounds(200, 199, 300, 250);
+JButtn button = new JButto"";;	JButton button = new JButton("");
+menu.additem1;	menu.add(item1);
+menu.addfitem2f;	menu.add(item2);
+menu.additem3;	menu.add(item3);
+menuaddfitem4;	menu.add(item4);
+menuBar.ddmeuf;	menuBar.add(menu);
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+adduttol;	add(button);
+setVsibleltrue;;	setVisible(true);
+setResizablefalsel;	setResizable(false);
+butonaddActionListenernew  ActioListener { public void actionPerformedActionEvent e f	button.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+setVisiblefse;	setVisible(false);
+new ScreenCaptureTool;	new ScreenCaptureTool();
+}	}
+}l;	});
+item1.addActionListenrnew  ActionListener l publicvoid  actionPerformedActionEvent e  	item1.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+setVisiblefalse; new ScreenCaptureTooll;	setVisible(false); new ScreenCaptureTool();
+}	}
+};;	});
+item2addActionListenrnew Actionistenerf {	item2.addActionListener(new ActionListener() {
+public void  actionPerfomedActionEvet e {	public void actionPerformed(ActionEvent e) {
+String s = {""};	String[] s = {""};
+new ImageViewer.mainfs;	new ImageViewer().main(s);
+}	}
+}l;	});
+item3.ddActionListenernew ActionListenerff { publicvoid actionPerformedActionEvent e  {	item3.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+seVisiblefalsef;	setVisible(false);
+new  ScreenAll	new ScreenAll();
+}	}
+};	});
+item4.addActionListenernew Actionistener { publicvoid actionPerformedActionEvent e {	item4.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+System.exit0l;	System.exit(0);
+}	}
+f	});
+setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+}	}
+public static void mainString args { newScreenshotMain;	public static void main(String[] args) { new ScreenshotMain();
+}	}
+}	}

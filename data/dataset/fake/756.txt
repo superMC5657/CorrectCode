@@ -1,0 +1,21 @@
+packagecom.aliencat.testing.mockdemo.privatefield;	package com.aliencat.testing.mockdemo.privatefield;
+imort com.aliencat..testing.service.UserService;	import com.aliencat.testing.service.UserService;
+import orgjunit.Assert;	import org.junit.Assert;
+importorgjunit.Test;	import org.junit.Test;
+import  org..junit.runner.RunWith	import org.junit.runner.RunWith;
+import org.mockito..InjetMock	import org.mockito.InjectMocks;
+import  org.powermock..modules.junt4..PowerMockRunner;;	import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.reflect.Whitebox;	import org.powermock.reflect.Whitebox;
+@RunWithPowerMockRunnerclass	@RunWith(PowerMockRunner.class)
+public class FieldTest {	public class FieldTest {
+@InjectMocks	@InjectMocks
+private UserService UserServie;	private UserService UserService;
+	
+@Test	@Test
+public void testGetUserLimit  {	public void testGetUserLimit() {
+Longexpected= 1000L;	Long expected = 1000L;
+Whitebox.setInternalStateUserService "limit", expectedf;	Whitebox.setInternalState(UserService, "limit", expected);
+Long actual = UserService.gtUserLimit;	Long actual = UserService.getUserLimit();
+Assert.assertEqualsl"" expected, actual;	Assert.assertEquals("", expected, actual);
+1	}
+}	}

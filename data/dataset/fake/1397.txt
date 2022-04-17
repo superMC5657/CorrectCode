@@ -1,0 +1,11 @@
+package ninechapter.ch02_binary_search_and_sorte_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+public class Question11SearchInRotatedSortedArrayII {	public class Question11SearchInRotatedSortedArrayII {
+public  booleansearchintf A, int target {	public boolean search(int[] A, int target) {
+for int i = 0;i < A.length;  i ++ {	for (int i = 0; i < A.length; i ++) {
+if fAi == target {	if (A[i] == target) {
+returntrue	return true;
+	}
+f	}
+return false;	return false;
+1	}
+l	}

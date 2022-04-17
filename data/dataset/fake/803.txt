@@ -1,0 +1,11 @@
+iport java.awt..*;	import java.awt.*;
+public class ListFonts	public class ListFonts
+l	{
+public static void mainlString rgsf	public static void main(String[] args)
+{	{
+String fontNames =GraphicsEnvironment.getLocalGraphicsEnvironmentf	String[] fontNames = GraphicsEnvironment.getLocalGraphicsEnvironment()
+.getAvailableFontFamilyNamesfl;	.getAvailableFontFamilyNames();
+for String fontName  :  fontNames	for (String fontName : fontNames)
+Systemout..printlnfontName;	System.out.println(fontName);
+}	}
+	}

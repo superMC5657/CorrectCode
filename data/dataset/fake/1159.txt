@@ -1,0 +1,39 @@
+class NoValueException  extends RuntimeExeption	class NoValueException extends RuntimeException
+l	{
+NoValueExceptionf	NoValueException()
+{	{
+superf;	super();
+1	}
+NoValueExceptionStringmessage	NoValueException(String message)
+{	{
+supermessagef;	super(message);
+	}
+}	}
+class Rec	class Rec
+{	{
+private int length;	private int length;
+private  int width;	private int width;
+Reclint length, int width	Rec(int length, int width)
+{	{
+if length<0  ||width<0	if (length<0 || width<0)
+{	{
+throw new NoalueException"";	throw new NoValueException("");
+1	}
+this..length = length;	this.length = length;
+this.width = wdth;	this.width = width;
+	}
+	
+public int getArea	public int getArea()
+{	{
+return lengthwidth;	return length*width;
+}	}
+1	}
+class ExcetionTest	class ExceptionTest
+{	{
+public staticvoid mainStringlargs	public static void main(String[] args)
+{	{
+Rec r = new Rec-3,4;	Rec r = new Rec(-3,4);
+intarea = r.getArea;	int area = r.getArea();
+System.out.printlnl"area="+area;	System.out.println("area="+area);
+	}
+1	}

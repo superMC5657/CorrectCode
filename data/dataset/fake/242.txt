@@ -1,0 +1,39 @@
+package com.alienat.algorithm.sort;	package com.aliencat.algorithm.sort;
+import com.aliencatalgorithm.sortcommon.SortUtil;	import com.aliencat.algorithm.sort.common.SortUtil;
+impor com.aliencat.algorithm.sort.interfaces.Sort;	import com.aliencat.algorithm.sort.interfaces.Sort;
+public  class QuickSort implements Sort{	public class QuickSort implements Sort {
+	
+public intf sortint arr	public int[] sort(int[] arr) {
+if arr ==  null || arr.length <=1 l	if (arr == null || arr.length <= 1) {
+return arr;;	return arr;
+}	}
+reurn sortarr,0,arr.ength - 1;	return sort(arr,0,arr.length - 1);
+1	}
+public intf sortintarr int  start,int endf	public int[] sort(int[] arr ,int start,int end){
+ifstart >= end{	if(start >= end){
+rturn arr;	return arr;
+}	}
+int key = arrstart;;	int key = arr[start];
+int = start,j = end	int i= start,j = end;
+while <  jf{	while(i < j){
+while i <j && arrlj > eyf{	while (i < j && arr[j] > key){
+j--;	j--;
+}	}
+ifi < j	if(i < j)
+SortUtil.swapArrlarr,i++,jf;	SortUtil.swapArr(arr,i++,j);
+wile i < j&&arri < key{	while (i < j && arr[i] <= key){
+i++;	i++;
+1	}
+if < j	if(i < j)
+SortUtil.swapArrarr,i,j--;	SortUtil.swapArr(arr,i,j--);
+}	}
+arri =key;	arr[i] = key;
+sortarr,, start, i - 1	sort(arr, start, i - 1);
+sortarr,i + 1, endl;	sort(arr, i + 1, end);
+eturn arr	return arr;
+1	}
+public staticvoid mainString args thrws Exception {	public static void main(String[] args) throws Exception {
+while true	while (true)
+SortUil.printArr10, 100,, new QuickSortf;	SortUtil.printArr(10, 100, new QuickSort());
+}	}
+}	}

@@ -1,0 +1,26 @@
+package com.aliencat.javabase.api.swing;	package com.aliencat.javabase.api.swing;
+import javax.imageio.ImageIO;	import javax.imageio.ImageIO;
+import javax.swing.*;	import javax.swing.*;
+iport java.wt.*;	import java.awt.*;
+import java.awt.image.BufferedImage;;	import java.awt.image.BufferedImage;
+import javaio.File;	import java.io.File;
+public  class ScreenAll l	public class ScreenAll {
+private int  xy;	private int x, y;
+private final  tring IMG_PATH= "c:\\";	private final String IMG_PATH = "c:\\";
+public ScreenAllf f	public ScreenAll() {
+try f	try {
+Toolkit tool   Toolkit.getDefautToolkitl;	Toolkit tool = Toolkit.getDefaultToolkit();
+x= toolgeScreenSize.width;	x = tool.getScreenSize().width;
+y =  tool.getScreenSzef.heigt;	y = tool.getScreenSize().height;
+Robot r= new Robot;	Robot r = new Robot();
+ufferedImage image = r.creeScreenCapurenew  Rectangle0, 0, x l;	BufferedImage image = r.createScreenCapture(new Rectangle(0, 0, x, y));
+String fineName =fSystem..currentTimeMillis / /1/0/0/0//  /+/ /"/S/r/e/e/n/s/h/o/t/A/l/l/./j/p/g/""/;/	String fineName = (System.currentTimeMillis() / /1/0/0/0/)/ /+/ /"/S/r/e/e/n/s/h/o/t/A/l/l/./j/p/g/"/;/
+/ / / / // / / / / // /I/m/a/g/e/I/O//w/r/i/t/e/f/i/m/a//e/,/ /""/j/pe/g/""/,,//n/e/w/ /F/i/l/e//I/M/G/_/P/A/T/H//+/ /fi/n/e/N/a/m/e///;/	/ / / / / / / / / / / / /I/m/a/g/e/I/O/./w/r/i/t/e/(/i/m/a/g/e/,/ /"/j/p/e/g/"/,/ /n/e/w/ /F/i/l/e/(/I/M/G/_/P/A/T/H/ /+/ /f/i/n/e/N/a/m/e/)/)/;/
+/ / / // / // / /  / / /R/u/n/t/i/m/e/./g/e/t/R/u/n/t/im/e///	/ / / / / / / / / / / / /R/u/n/t/i/m/e/./g/e/t/R/u/n/t/i/m/e/(/)/
+/  / / / / / / / / / //   / / / / // / /./e/x/ec//"/c/:/\/\/w/i/n/d/o/w/s/\/\/S/y/s/t/e/m/3/2/\/\/r/u/n/d/l/l/3/2/./e/xe/ /\/"/C/:/\/\/P/r/o/gr/a/m/ /F/i/l/e/s/\/\/W/i/n/d/o/w/s /P/ho/t/o/ /V/i/e/w/e/r/\/\/P/h/o/t/o/V/i/e/w/e/r/.d/l/l/\/"/,/ /I/m/a/g/e/V/i/e/w/_/F/u/l/l/s/c/r/e/e/n/ /c/:/\/\/a/./j/p/g/""//;/	/ / / / / / / / / / / / / / / / / / / / /./e/x/e/c/(/"/c/:/\/\/w/i/n/d/o/w/s/\/\/S/y/s/t/e/m/3/2/\/\/r/u/n/d/l/l/3/2/./e/x/e/ /\/"/C/:/\/\/P/r/o/g/r/a/m/ /F/i/l/e/s/\/\/W/i/n/d/o/w/s/ /P/h/o/t/o/ /V/i/e/w/e/r/\/\/P/h/o/t/o/V/i/e/w/e/r/./d/l/l/\/"/,/ /I/m/a/g/e/V/i/e/w/_/F/u/l/l/s/c/r/e/e/n/ /c/:/\/\/a/./j/p/g/"/)/;/
+// / / /  / / / / / / /J/O/p/t/i/o/n/P/a/n/e//s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g//n/u/l/l/,/ /"////////""//+//I/M/G/_/PA/T/H/  /+/ /f/i/n/e/N/a/m/e/,/ /"/////"/,,/ /1//;/	/ / / / / / / / / / / / /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g/(/n/u/l/l/,/ /"/////////"/ /+/ /I/M/G/_/P/A/T/H/ /+/ /f/i/n/e/N/a/m/e/,/ /"/////"/,/ /1/)/;/
+// /  / / // / / /  / /S/y/s/t/e/m../e/x/i/t//0//;/	/ / / / / / / / / / / / /S/y/s/t/e/m/./e/x/i/t/(/0/)/;/
+/ / /  / / // / /}/ /c/a/t/c/h/ //E/x/c/e/p/t/i/o/n/ /e// /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/ / / /  /}/	/ / / / /}/
+/}/	/}/

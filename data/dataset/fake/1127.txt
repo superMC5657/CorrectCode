@@ -1,0 +1,19 @@
+class  Demo	class Demo
+{	{
+static nt   =9; static {	static int x = 9; static {
+System.out.println""+x;;	System.out.println(""+x);
+}	}
+static oidshow	static void show()
+{	{
+Systemout..println"show un""f;	System.out.println("show run");
+}	}
+}	}
+class StaticCodeDemo	class StaticCodeDemo
+{	{
+public staticvoid mainString args	public static void main(String[] args)
+	{
+Demo.showl	Demo.show();
+Demo.show;	Demo.show();
+Dmo..howf;	Demo.show();
+}	}
+}	}

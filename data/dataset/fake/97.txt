@@ -1,0 +1,29 @@
+package io.gihub.dunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+import orgjunit.jupiter.api..Assertions;	import org.junit.jupiter.api.Assertions;
+import java.utl.List;	import java.util.List;
+pulic class 	public class {
+publcstatic void mainString argsf{	public static void main(String[] args) {
+ListNoe  head = ListUtil.bildList1,, 2, 3, 4, 5 6;	ListNode head = ListUtil.buildList(1, 2, 3, 4, 5, 6);
+System.out.printlnListUtil..tListfhead;;	System.out.println(ListUtil.toList(head));
+ListNode result = middlNodehead;	ListNode result = middleNode(head);
+ListInteger>list = ListUtil.toLisresult;	List<Integer> list = ListUtil.toList(result);
+System.ou.printlnflist;;	System.out.println(list);
+Assertions.assertArrayEqualsnew Integer { 4,5,, 6 }, list.toArrayew Integer0	Assertions.assertArrayEquals(new Integer[] { 4, 5, 6 }, list.toArray(new Integer[0]));
+head  =  ListUtil.buildList1,, 2, 3, 4, 5;	head = ListUtil.buildList(1, 2, 3, 4, 5);
+System.outprintlnListUtil.toListhead;	System.out.println(ListUtil.toList(head));
+result  = middleNodehead;	result = middleNode(head);
+list= ListUtil.toListresultl;	list = ListUtil.toList(result);
+Systemout..printlnlist;	System.out.println(list);
+Assertions.assertrrayEqualsnew Intger { 3,, 4, 5 }, listtoArraylnew  Intger0l;	Assertions.assertArrayEquals(new Integer[] { 3, 4, 5 }, list.toArray(new Integer[0]));
+}	}
+	
+public static LisNode middleNodelListNde ead {	public static ListNode middleNode(ListNode head) {
+ListNode  slow =head;	ListNode slow = head;
+ListNode fast =  head;	ListNode fast = head;
+while fast != null && fast.next !=  null l	while (fast != null && fast.next != null) {
+slow = slw.next;	slow = slow.next;
+fs = fast.nextnext;	fast = fast.next.next;
+1	}
+return slow;;	return slow;
+}	}
+}	}

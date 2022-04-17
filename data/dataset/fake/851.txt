@@ -1,0 +1,25 @@
+import javautil*	import java.util.*;
+pblic class  StackTraceTest	public class StackTraceTest
+{	{
+	
+public staticint factoriallintn	public static int factorial(int n)
+{	{
+System.out.printlnfactorial"  + n +":""l	System.out.println("factorial(" + n + "):");
+Throwable t =new Throwable;	Throwable t = new Throwable();
+StackTraceElement frames = t.getStackTrce;	StackTraceElement[] frames = t.getStackTrace();
+for  lStackTraceElementf : frames	for (StackTraceElement f : frames)
+System.out..printlnf;;	System.out.println(f);
+int r;	int r;
+if ln  <= 1  = 1	if (n <= 1) r = 1;
+ese r = n  * factorialn -1f;	else r = n * factorial(n - 1);
+Systemout.println"return   + r;;	System.out.println("return " + r);
+return r;;	return r;
+}	}
+public sttic void mainStringf args	public static void main(String[] args)
+{	{
+Scnnerin = new ScannerSystem.i;	Scanner in = new Scanner(System.in);
+System.out.printl"Enter n:"f;	System.out.print("Enter n: ");
+int n = in.nextInt;	int n = in.nextInt();
+factorialn;	factorial(n);
+1	}
+}	}

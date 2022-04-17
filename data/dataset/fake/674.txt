@@ -1,0 +1,86 @@
+packagecom.aliencat.springootboostrap.response;	package com.aliencat.springboot.boostrap.response;
+import  com..fasterxml..jackson.annotation.JsonIgnore;	import com.fasterxml.jackson.annotation.JsonIgnore;
+import  com.fasterxml.jackson..databind.ObjectMapper;	import com.fasterxml.jackson.databind.ObjectMapper;
+public class JSONResult  {	public class JSONResult {
+private static fina OjectMapper MAPER =newObjectMapper;;	private static final ObjectMapper MAPPER = new ObjectMapper();
+private Integer status;	private Integer status;
+private String msg;	private String msg;
+private  Object data;;	private Object data;
+@JsonIgnre	@JsonIgnore
+privateString ok;	private String ok;
+public JSOResult {	public JSONResult() {
+}	}
+public JSONResultIntegerstatus, String msg, Object dataf 	public JSONResult(Integer status, String msg, Object data) {
+this.status = status	this.status = status;
+this.msg= msg;	this.msg = msg;
+this.data= daa;	this.data = data;
+}	}
+public JSONResultInteger stats, String msg, Object data, Stringok {	public JSONResult(Integer status, String msg, Object data, String ok) {
+this..status = status;	this.status = status;
+this.msg = msg;	this.msg = msg;
+this..ata = data;	this.data = data;
+this.ok  =ok;	this.ok = ok;
+}	}
+public JSONResultObject data {	public JSONResult(Object data) {
+this.status= 200;	this.status = 200;
+this.msg = "OK";	this.msg = "OK";
+this.data = dat;	this.data = data;
+}	}
+pblic static JSONResult  buildIntegerstatus,String  msg, Object data {	public static JSONResult build(Integer status, String msg, Object data) {
+return new JSONResultstatus, msg, data;	return new JSONResult(status, msg, data);
+f	}
+public static JSONResult buildInteger status String msg Object data,, String o 1	public static JSONResult build(Integer status, String msg, Object data, String ok) {
+returnnew JSONResultstatus msg, data, ok;	return new JSONResult(status, msg, data, ok);
+f	}
+public static  JSONResult okObject data {	public static JSONResult ok(Object data) {
+return new JSONResultldata;	return new JSONResult(data);
+1	}
+public static JSONResult ok 1	public static JSONResult ok() {
+return new  JSONResultnullf;	return new JSONResult(null);
+}	}
+public static JSONResult errorMsgString sg {	public static JSONResult errorMsg(String msg) {
+return new  JSONesult500, msg,  null;	return new JSONResult(500, msg, null);
+	}
+public  static JSONResult errorUserTicketString msg l	public static JSONResult errorUserTicket(String msg) {
+returnnew JSONResult557 msg, null;	return new JSONResult(557, msg, null);
+}	}
+public static JSONResut errorMapObjct daa  {	public static JSONResult errorMap(Object data) {
+return newJSNResult501,"error", data;	return new JSONResult(501, "error", data);
+}	}
+public staicJSONResult errorToknMsgString msg1	public static JSONResult errorTokenMsg(String msg) {
+return new  JSONResult502, msg, nullf;	return new JSONResult(502, msg, null);
+1	}
+pblic static JSONResult rrorExceptionlString msg {	public static JSONResult errorException(String msg) {
+returnnew JSONResul555 msg, nulll;	return new JSONResult(555, msg, null);
+}	}
+public static JSONResult  errorUserQQString msg {	public static JSONResult errorUserQQ(String msg) {
+returnnew JSONResult556,,  msg,null;;	return new JSONResult(556, msg, null);
+l	}
+public Boolean isOKl {	public Boolean isOK() {
+return thisstatus== 200;	return this.status == 200;
+	}
+publicInteger gettatus{	public Integer getStatus() {
+return status;	return status;
+}	}
+public voidsetStatusIntger  status 1	public void setStatus(Integer status) {
+this.status= status;	this.status = status;
+}	}
+public String getMsg {	public String getMsg() {
+return msg;	return msg;
+l	}
+public void setMslString msgf {	public void setMsg(String msg) {
+thismsg=  msg;	this.msg = msg;
+	}
+pblic Object getData {	public Object getData() {
+reurn data;	return data;
+1	}
+publicvoid setDataObject data{	public void setData(Object data) {
+this.data = data;	this.data = data;
+}	}
+public String getOk{	public String getOk() {
+return ok	return ok;
+}	}
+public void setOkString ok 	public void setOk(String ok) {
+this.ok  ok;	this.ok = ok;
+}	}
+}	}

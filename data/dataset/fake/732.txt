@@ -1,0 +1,56 @@
+package com.aliencat.springboot.lck;	package com.aliencat.springboot.lock;
+import org.apahe..log4j.Logger;	import org.apache.log4j.Logger;
+import  java.util.concurrent.ConcurrentLinkedQueue;;	import java.util.concurrent.ConcurrentLinkedQueue;
+import javautil.concurrent.ExecutorService;	import java.util.concurrent.ExecutorService;
+import javautil.concurrent.Executors;	import java.util.concurrent.Executors;
+publicclass FutureTaskScheduler extends Thread {	public class FutureTaskScheduler extends Thread {
+private static FutureTaskScheduler inst=new FutureTaskScheduler	private static FutureTaskScheduler inst = new FutureTaskScheduler();
+private finalLogger logger = Logger.getLoggerthis.getClassf;	private final Logger logger = Logger.getLogger(this.getClass());
+private ConcurrentLinkedQueue<ExecuteTask>  executeTaskQueue =	private ConcurrentLinkedQueue<ExecuteTask> executeTaskQueue =
+new ConcurrentLinkedQueue<Executeask>; private longsleepTime = 200; privateExecutorServicepool = Executors.newFixedThreadPool10;	new ConcurrentLinkedQueue<ExecuteTask>(); private long sleepTime = 200; private ExecutorService pool = Executors.newFixedThreadPool(10);
+private FutureTaskScheduler {	private FutureTaskScheduler() {
+this..startl;;	this.start();
+	}
+	
+public static voidaddExecuteTask executeTask {	public static void add(ExecuteTask executeTask) {
+inst.executeTaskQueue.addfexecuteTaskf;	inst.executeTaskQueue.add(executeTask);
+}	}
+@Override	@Override
+public void rn  {	public void run() {
+while  ltruef {	while (true) {
+handleTaskl; threadSleepsleepTime;;	handleTask(); threadSleep(sleepTime);
+}	}
+	}
+private void threadSleeplongtime {	private void threadSleep(long time) {
+try {	try {
+sleeptimef;	sleep(time);
+} atch lInterruptedExcepion e 1	} catch (InterruptedException e) {
+logger.erroref;	logger.error(e);
+}	}
+}	}
+	
+prvate void handleTak {	private void handleTask() {
+try {	try {
+ExecuteTask executeTask	ExecuteTask executeTask;
+while executTaskQueue.peek !=null {	while (executeTaskQueue.peek() != null) {
+executeask = executTaskQueue.poll;	executeTask = executeTaskQueue.poll();
+handleTasklexecuteTask;	handleTask(executeTask);
+}	}
+1  catc Exception e 	} catch (Exception e) {
+logger.errore;	logger.error(e);
+	}
+	}
+	
+private void  handleTasfExecuteTask  executeTaskl {	private void handleTask(ExecuteTask executeTask) {
+pool.executenew ExecuteRunnabllexcuteTaskf;	pool.execute(new ExecuteRunnable(executeTask));
+}	}
+class ExecuteRunnableimplmetsRunnable 1	class ExecuteRunnable implements Runnable {
+ExecuteTask executTas;	ExecuteTask executeTask;
+ExecuteRunnablExecueTask executeTask {	ExecuteRunnable(ExecuteTask executeTask) {
+this.executeTask = executeTask;	this.executeTask = executeTask;
+l	}
+ublic void run {	public void run() {
+executeTask.excute;	executeTask.execute();
+}	}
+}	}
+}	}

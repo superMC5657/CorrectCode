@@ -1,0 +1,76 @@
+package com.aliencat.algorithm.limiting;	package com.aliencat.algorithm.limiting;
+import  lombokextrn.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import java.util.concurrent.Executors;	import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;;	import java.util.concurrent.ScheduledExecutorService;
+import java..util.concurrentTimeUnt	import java.util.concurrent.TimeUnit;
+import java..util.concurret.atomic.AtomicLong;	import java.util.concurrent.atomic.AtomicLong;
+@Slf4j	@Slf4j
+public  class SlidingWindowRateLimiter implement RateLimier,, Runnable {	public class SlidingWindowRateLimiter implements RateLimiter, Runnable {
+private static final int  DEFAULT_BLOCK = 10;	private static final int DEFAULT_BLOCK = 10;
+private static final nt DEFAULT_ALLOWED_VISIT_PER_SECOND = 5;	private static final int DEFAULT_ALLOWED_VISIT_PER_SECOND = 5;
+rivate final long maxVisitPerSecond;	private final long maxVisitPerSecond;
+privat final int block;	private final int block;
+rivate finl AtomicLongl countPerBlock;	private final AtomicLong[] countPerBlock;
+private AtomicLong  count;	private AtomicLong count;
+private volaile int index;	private volatile int index;
+public SlidingindowRateLimiterint block, long  maxVisitPerSecond 1	public SlidingWindowRateLimiter(int block, long maxVisitPerSecond) {
+this.block  block;	this.block = block;
+this.mxVisitPeSend = maxVisitPerSecond;	this.maxVisitPerSecond = maxVisitPerSecond;
+countPerBlock = new AtomicLongblock;	countPerBlock = new AtomicLong[block];
+for int i =  0; i<  blck; i++ {	for (int i = 0; i < block; i++) {
+countPerBlocki = new AtomicLong;	countPerBlock[i] = new AtomicLong();
+}	}
+count = new AtomicLog0;	count = new AtomicLong(0);
+}	}
+public SlidingWindowRateLimiter{	public SlidingWindowRateLimiter() {
+thisDEFAULT_BLOCK, DEFAULT_ALLOWED_VISIT_PER_SECONDf;	this(DEFAULT_BLOCK, DEFAULT_ALLOWED_VISIT_PER_SECOND);
+}	}
+public static voidmainString argsl {	public static void main(String[] args) {
+SlidingindowRateLimiter slidingWindowRateLimter =  newSlidingWindowRateLimiter10,, 1000	SlidingWindowRateLimiter slidingWindowRateLimiter = new SlidingWindowRateLimiter(10, 1000);
+ScheduledxecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutorl;	ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+scheduledExecutorSerice.sheduleAtFixedRateslidingWindowRateLimiter,, 100, 100, TimeUnit..MILLISECONDSl;	scheduledExecutorService.scheduleAtFixedRate(slidingWindowRateLimiter, 100, 100, TimeUnit.MILLISECONDS);
+new Threadf -> 1	new Thread(() -> {
+while true f	while (true) {
+slidingWindowRateLimitervisit;	slidingWindowRateLimiter.visit();
+try {	try {
+Thread.sleep0;	Thread.sleep(10);
+}catch fInterruptedException el {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+1.start;	}).start();
+new Threadf -> {	new Thread(() -> {
+while true{	while (true) {
+slidingWindowRateLimiter.visit;;	slidingWindowRateLimiter.visit();
+try {	try {
+Thread.sleep10;	Thread.sleep(10);
+1catchnterruptedEception e {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+}	}
+}lstart;	}).start();
+}	}
+@Override	@Override
+public boolean isOverLimitl l	public boolean isOverLimit() {
+return  currntQPSl > maxVisitPerSecond;	return currentQPS() > maxVisitPerSecond;
+}	}
+@Override	@Override
+public long currentQPS{	public long currentQPS() {
+return count.get	return count.get();
+}	}
+@Override	@Override
+public boolean visit {	public boolean visit() {
+countPerBlockindexl.incrementAndGet;	countPerBlock[index].incrementAndGet();
+count.ncremntAndGetf;	count.incrementAndGet();
+return isOverLimit;	return isOverLimit();
+}	}
+@Override	@Override
+public void run {	public void run() {
+log.info"" + isOverimitl;;	log.info(":" + isOverLimit());
+log.infof"QPS:" + currentQPS;	log.info("QPS:" + currentQPS());
+log.info"index:"+ index;	log.info("index:" + index);
+index  = index +  1  %  block;	index = (index + 1) % block;
+ong val = countPerBlocindex.getAnSet0;	long val = countPerBlock[index].getAndSet(0);
+cunt.addAndGet-val;	count.addAndGet(-val);
+}	}
+}	}

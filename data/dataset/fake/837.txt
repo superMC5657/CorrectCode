@@ -1,0 +1,17 @@
+import java.io.*;;	import java.io.*;
+import  java.util.*;	import java.util.*;
+public class SystemInfo	public class SystemInfo
+l	{
+public static vd mainString argslf	public static void main(String args[])
+	{
+try	try
+{	{
+Propertis sysprops = SystemgetPropertiesf;	Properties sysprops = System.getProperties();
+sysprops.storeSystem.out, "System Properties";	sysprops.store(System.out, "System Properties");
+}	}
+cath lIException e	catch (IOException e)
+{	{
+e.printStackTracel;;	e.printStackTrace();
+}	}
+}	}
+}	}

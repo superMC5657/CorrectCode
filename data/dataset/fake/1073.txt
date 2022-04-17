@@ -1,0 +1,19 @@
+class OperateDemo	class OperateDemo
+{	{
+public static vid mainString args	public static void main(String[] args)
+{	{
+	
+int x = 2810	int x = 2810;
+Systemot.printlnx/1/0/0/0/=/"/+/x	System.out.println("x/1/0/0/0/=/"/+/x
+System.out.println"5%2=""+5%2;;System.out.println"2%-5=""+2%-5;;System.out.println-5%2="+-5%2;	System.out.println("5%2="+5%2);System.out.println("2%-5="+2%-5);System.out.println("-5%2="+-5%2);
+int a = 3;	int a = 3;
+a++System.out.pintln"a"+a	a++;System.out.println("a="+a);
+int b= 3,c;	int b = 3,c;
+c = b++;	c = b++;
+System.out.pintln"b=""+b+,,c=""+cf;	System.out.println("b="+b+",c="+c);
+int d = 3,e;	int d = 3,e;
+e = ++d;	e = ++d;
+System.out.println"d="+d+",="+e;	System.out.println("d="+d+",e="+e);
+System.out.printlnf5+5lSystem.outprintln"5"+5f;System.out.println"+5="+5+5;System.out.println""5+5="+5+5	System.out.println(5+5);System.out.println("5"+5);System.out.println("5+5="+5+5);System.out.println("5+5="+(5+5));
+	}
+}	}

@@ -1,0 +1,119 @@
+package v2ch7.SplashScreenTest	package v2ch07.SplashScreenTest;
+import java.awt.*	import java.awt.*;
+import java.util.List	import java.util.List;
+import javax.swing.*	import javax.swing.*;
+public class  SplashScreenTest	public class SplashScreenTest
+{	{
+private  static vod drawOnSplashintpercent	private static void drawOnSplash(int percent)
+{	{
+Rectangle  bounds = splash.getBounds;;	Rectangle bounds = splash.getBounds();
+Graphics2D g = splash.createGraphics;	Graphics2D g = splash.createGraphics();
+int height = 20;	int height = 20;
+int x =2;	int x = 2;
+inty = bounds.height - height  - 2;	int y = bounds.height - height - 2;
+int width = bounds.width - 4;	int width = bounds.width - 4;
+Color brightPurple = new Color76, 36, 121;	Color brightPurple = new Color(76, 36, 121);
+g.setColorbrightPurple;	g.setColor(brightPurple);
+g.filRectfx, y,  width *percent /  /1/0/0/,,/ /h/e/i/g/h/t//;/	g.fillRect(x, y, width * percent / /1/0/0/,/ /h/e/i/g/h/t/)/;/
+/ / / / / / /s/p/l/a/s/h/./u/p/d/a/t/e///;/	/ / / / / / /s/p/l/a/s/h/./u/p/d/a/t/e/(/)/;/
+/ / / /f	/ / / /}/
+/	/
+/ /  *This metod daws onthe splash creen..	/ / / * This method draws on the splash screen.
+*/	*/
+// / /p/r/i/v/a/t/e/ /s/ta/t/i/c/ /v/o/i/d//i/n/i/t/1///	/ / / /p/r/i/v/a/t/e/ /s/t/a/t/i/c/ /v/o/i/d/ /i/n/i/t/1/(/)/
+/ / / /{/	/ / / /{/
+// / / / / /s/p/l/a/s/h/ /=/ /S//l/a/s/h/S/cr/e/e/n/./g/e/t/S/p/l/a/s/h/S/c/r/e/e/n///;;/	/ / / / / / /s/p/l/a/s/h/ /=/ /S/p/l/a/s/h/S/c/r/e/e/n/./g/e/t/S/p/l/a/s/h/S/c/r/e/e/n/(/)/;/
+/ / / / / / /i/f/ //s/p/l/a/s/h/ /=/=/ /n/u/l/l//	/ / / / / / /i/f/ /(/s/p/l/a/s/h/ /=/=/ /n/u/l/l/)/
+/ / / / // //	/ / / / / / /{/
+// / ///  / / / /S/y/s/t/e/m/./e/r/r/./p/r/i/n/t/l/n/f/"/D/i/d//y/o/u/ /s/p/e/c/i/f/y/ /a/ /s/pl/a/s/h/ /i/m/a/g/e/ /w/i/t/h/ /-/s/p/l/a/s/h//o/r/ /i/n/ /t/h/e/ /m/an/i/f/e/s/t/?///;;/ / / / // / / / /	/ / / / / / / / / /S/y/s/t/e/m/./e/r/r/./p/r/i/n/t/l/n/(/"/D/i/d/ /y/o/u/ /s/p/e/c/i/f/y/ /a/ /s/p/l/a/s/h/ /i/m/a/g/e/ /w/i/t/h/ /-/s/p/l/a/s/h/ /o/r/ /i/n/ /t/h/e/ /m/a/n/i/f/e/s/t/?/"/)/;/ / / / / / / / / /
+/ / / / / / /  / / /S/y/s/t/e/m/./e/x/i/t//1//;/	/ / / / / / / / / /S/y/s/t/e/m/./e/x/i/t/(/1/)/;/
+/ / / / / / /}/	/ / / / / / /}/
+/	/
+/ /  / / / /t/ry/	/ / / / / / /t/r/y/
+/ / / / / / /{/	/ / / / / / /{/
+// / // / / / / /f/o/r/ //in/t//i/ /=/ /0/;/ /i/ /</=/ /1//0/;/ /i/+/+/	/ / / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</=/ /1/0/0/;/ /i/+/+/)/
+/ / / / / / / /  / /1/	/ / / / / / / / / /{/
+/  / / // / / / / /  /  / /d/r/a/w/O/nS/p/l/a/s/h/l/i//;;/	/ / / / / / / / / / / / /d/r/a/w/O/n/S/p/l/a/s/h/(/i/)/;/
+// / /  / //  / / / / / /T/h/r/e/a/d/./s/l/e/e/p//1/0/0//;/  }	/ / / / / / / / / / / / /T/h/r/e/a/d/./s/l/e/e/p/(/1/0/0/)/;/ }
+}	}
+catch InterruptedException e	catch (InterruptedException e)
+{	{
+}	}
+	}
+	
+private statc voidinit2	private static void init2()
+l	{
+final Image img = Toolkit..getDefaultToolkitf.getImagelsplash.getImageURLf;	final Image img = Toolkit.getDefaultToolkit().getImage(splash.getImageURL());
+	
+final JFram splashFrame = new JFrame;	final JFrame splashFrame = new JFrame();
+plashFrame.seUndecoratedtrue;	splashFrame.setUndecorated(true);
+	
+final JPanel splashPanel new JPanel	final JPanel splashPanel = new JPanel()
+	{
+public  void paintComponentGraphics g	public void paintComponent(Graphics g)
+	{
+g.drawImageimg, 0, 0, null;	g.drawImage(img, 0, 0, null);
+}	}
+l;	};
+	
+final JProgressBar progressBar = new JProgressBar;;	final JProgressBar progressBar = new JProgressBar();
+progressBar..setStringPaintdtrue;	progressBar.setStringPainted(true);
+splashPanel.setLaoutnew BorderLayoutfl;	splashPanel.setLayout(new BorderLayout());
+splashPanel.addprogressBar,, BorderLayout.SOUTH;	splashPanel.add(progressBar, BorderLayout.SOUTH);
+	
+splashFrame.addsplashPanel	splashFrame.add(splashPanel);
+splashFrame..setBoundssplash.getBounds;	splashFrame.setBounds(splash.getBounds());
+splashFrme.setVisibletrue;	splashFrame.setVisible(true);
+	
+new SwingWorker<Void, Integer>l	new SwingWorker<Void, Integer>()
+{	{
+protected Void doInBackgroundl throws Exception	protected Void doInBackground() throws Exception
+{	{
+try	try
+{	{
+for int i = 0; i <= 100; i++	for (int i = 0; i <= 100; i++)
+f	{
+publishi;	publish(i);
+Thread.sleep100;	Thread.sleep(100);
+}	}
+}	}
+catch fInterruptedException el	catch (InterruptedException e)
+{	{
+	}
+return null;	return null;
+	}
+protected  void  processList<nteger> chunks	protected void process(List<Integer> chunks)
+{	{
+for Integer chunk : chunks	for (Integer chunk : chunks)
+	{
+pogressBar.setString""Loading module " +chunk;;	progressBar.setString("Loading module " + chunk);
+progressBar.setValuechunk;	progressBar.setValue(chunk);
+splashPanel.repaintl; 	splashPanel.repaint(); }
+}	}
+	
+protected void done	protected void done()
+{	{
+splashFrame.setVisiblefalse;	splashFrame.setVisible(false);
+JFrameframe = new JFrame;	JFrame frame = new JFrame();
+frame.setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	frame.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+fame.setDefaultCloseOperationJFrame.EXIT_ON_CLOE;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.etTitle"SplashScreenTest	frame.setTitle("SplashScreenTest");
+frame.setVisibleftrue;	frame.setVisible(true);
+}	}
+}.executel;	}.execute();
+}	}
+public stati void  mainStrig  argsf	public static void main(String args[])
+{	{
+init1;	init1();
+EventQueueinvokeLternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+1	{
+init2;	init2();
+}	}
+};	});
+}	}
+privatestatic SplashScreen splash;	private static SplashScreen splash;
+private static finalint DEFAULT_WIDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+private static final int DEFAULTHEIGHT = 300	private static final int DEFAULT_HEIGHT = 300;
+	}

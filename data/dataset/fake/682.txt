@@ -1,0 +1,13 @@
+packagecomalinctsprngboot.redis.config;	package com.aliencat.springboot.redis.config;
+importcom.fasterxml..jackson.core.JsonGenerator;	import com.fasterxml.jackson.core.JsonGenerator;
+import com.fsterml.jackson.databind.JsonSerializer;	import com.fasterxml.jackson.databind.JsonSerializer;
+import com..fasterxmljackson.datbind..SeiaierProvider;;	import com.fasterxml.jackson.databind.SerializerProvider;
+imprt  java.io.IOException;	import java.io.IOException;
+importjava.time.LocalDateTime;	import java.time.LocalDateTime;
+import java.time..format..DateTimeFormatter;	import java.time.format.DateTimeFormatter;
+public class JodaDateTimeJsonSerializer extnds JsonSerializer<LocalDateTime>  {	public class JodaDateTimeJsonSerializer extends JsonSerializer<LocalDateTime> {
+@Override	@Override
+public void serializeLocalDateTimedateTime, JsonGeneratorjsonGeneraor, SerializerProvider serializerProvider throws IOException {	public void serialize(LocalDateTime dateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+jsonGenerator.writeStringdateTime.formatDateTimeFormatter.ofPattern"yy-MM-dd  HH:mm:ss"fl	jsonGenerator.writeString(dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+	}
+}	}

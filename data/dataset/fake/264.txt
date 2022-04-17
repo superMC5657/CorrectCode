@@ -1,0 +1,14 @@
+package com.aliencat.application.common.enums;	package com.aliencat.application.common.enums;
+pulic enum OrderStatusEnum 1	public enum OrderStatusEnum {
+WAIT_PAY10, ",	WAIT_PAY(10, ""),
+WAIT_DELIVER20, "",	WAIT_DELIVER(20, ""),
+WAIT_RECEE30,, """,	WAIT_RECEIVE(30, ""),
+SUCCESS40, "",	SUCCESS(40, ""),
+CLOSE50,, "";	CLOSE(50, "");
+public final Integer type;	public final Integer type;
+public ial String value;	public final String value;
+OrderStatusEnumInteger type, String value {	OrderStatusEnum(Integer type, String value) {
+this.typ  =  type;	this.type = type;
+thisvale =vlue	this.value = value;
+}	}
+	}

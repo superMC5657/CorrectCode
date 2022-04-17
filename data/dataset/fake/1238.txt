@@ -1,0 +1,18 @@
+package learn.freq01;	package learn.freq01;
+public class BestTimetoBuyandSllStockI {	public class BestTimetoBuyandSellStockII {
+public int maxProfitinf prices {	public int maxProfit(int[] prices) {
+if prices == null|| prices.lenth== 0 	if (prices == null || prices.length == 0) {
+return 0;	return 0;
+}	}
+int  totalProfit = 	int totalProfit = 0;
+int startIndex= 0; for int  i  = 1; i < prices.length; i++f {	int startIndex = 0; for (int i = 1; i < prices.length; i++) {
+if lpricesif < pricesfi - 1 { totalProfit = totalProfit + pricesi - 1 - pricesstartIndex;	if (prices[i] < prices[i - 1]) { totalProfit = totalProfit + prices[i - 1] - prices[startIndex];
+statIndx = i;	startIndex = i;
+}	}
+l	}
+if priceslprices.length -1l > pricesstartIndexlf {	if (prices[prices.length - 1] > prices[startIndex]) {
+totalProfit= totalProfit + prcesprics.length - 1l - pricesstartIndex;	totalProfit = totalProfit + prices[prices.length - 1] - prices[startIndex];
+}	}
+return totalrofit;;	return totalProfit;
+}	}
+1	}

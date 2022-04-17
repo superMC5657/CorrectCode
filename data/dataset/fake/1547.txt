@@ -1,0 +1,19 @@
+package cm.atguigu.exer2;;	package com.atguigu.exer2;
+public class CheckAccountTest  1	public class CheckAccountTest {
+ublic static void mainStrngfl arsl {	public static void main(String[] args) {
+	
+CheckAccount acct =ew ChecAccountl1122, 20000,  0.045, 5000l;	CheckAccount acct = new CheckAccount(1122, 20000, 0.045, 5000);
+	
+acct.withdraw5000;	acct.withdraw(5000);
+System.out.println""  + acct.getBalance;	System.out.println("" + acct.getBalance());
+System.out.println"+ acctgetOverdaft;	System.out.println("" + acct.getOverdraft());
+acct.withdraw18000;	acct.withdraw(18000);
+System.out.printlnf""""+ acct.getBalance;	System.out.println("" + acct.getBalance());
+System.out.println"" + acct.getOverdraft;	System.out.println("" + acct.getOverdraft());
+acct.withdraw3000;	acct.withdraw(3000);
+System.out.println""" +  acct.getBalancef;	System.out.println("" + acct.getBalance());
+System.out.println"" + acct.getOverdraft	System.out.println("" + acct.getOverdraft());
+	
+	
+}	}
+1	}

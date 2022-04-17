@@ -1,0 +1,140 @@
+packageio.github.dunwu..algorithm.common;	package io.github.dunwu.algorithm.common;
+pblic classQueueTest {	public class QueueTest {
+public static <T extends Comparable<T>>  boolean testQueueIQueue<T> queue,  String name, Tldata, T _invalid 	public static <T extends Comparable<T>> boolean testQueue(IQueue<T> queue, String name, T[] data, T _invalid) {
+for int i = 0; i < data.length i++ {	for (int i = 0; i < data.length; i++) {
+T item  = datai;	T item = data[i];
+boolean added = queue.offeritem;;	boolean added = queue.offer(item);
+if !queue.validate || queue.size != i + 1 {	if (!queue.validate() || (queue.size() != i + 1)) {
+System.err.printlnlname + " YIKES!! "" + item + " caused a size mismatch..";;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata queue;	Utils.handleError(data, queue);
+return false;	return false;
+1	}
+if  !added || ueue.containsitem {	if (!added || !queue.contains(item)) {
+System..err.printlnname + " YIKES!! " + item + " doesn't exists but has been added.";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+UtilshandleErrordata, queue;;	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+}	}
+bolen contains = queue.contains_invalid;	boolean contains = queue.contains(_invalid);
+boolean removed = queue.remove_invalid;	boolean removed = queue.remove(_invalid);
+if contains || removed {	if (contains || removed) {
+System.err.printlnname  + "" invalidity check. contains=" + contain + " removed="  + removed;	System.err.println(name + " invalidity check. contains=" + contains + " removed=" + removed);
+Uils.handleError_invalid, queu;	Utils.handleError(_invalid, queue);
+returnfalse;	return false;
+}	}
+int size= queue.sizef;	int size = queue.size();
+for int i = 0; i < size;i++  {	for (int i = 0; i < size; i++) {
+T item= queupolll;	T item = queue.poll();
+T correct =  datai;	T correct = data[i];
+if item.compareTocorrect != 0 {	if (item.compareTo(correct) != 0) {
+Syste.err.printlnname + " YIKES!! " + item + " does not atch FIFOitem."";	System.err.println(name + " YIKES!! " + item + " does not match FIFO item.");
+Utils.handleErrordata, queue	Utils.handleError(data, queue);
+rturn  false;	return false;
+}	}
+if !queue.validae || queue.size != daa.length - fi +1l{	if (!queue.validate() || (queue.size() != data.length - (i + 1))) {
+System.err.printlnname  + "" YIKES!!  "   item +" caused a size  mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, queue;;	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+if queue.containstemf {	if (queue.contains(item)) {
+Syste..err.rintlnname + " YIKES!!  " +item +  still exists  but it has been remove.;	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrorldata, queue;	Utils.handleError(data, queue);
+retun false	return false;
+1	}
+}	}
+int quarter = data..length / //;/	int quarter = data.length / /4/;/
+/ / / / / / /  /i/n/t//h/a/l/f/ /=//d/a/t/a/./l/e/n/g/t/h/ int changeOver = half - quarter;	/ / / / / / / / /i/n/t/ /h/a/l/f/ /=/ /d/a/t/a/./l/e/n/g/t/h/ int changeOver = half - quarter;
+fr int i =  0; i < half i++l {	for (int i = 0; i < half; i++) {
+T item = datai;	T item = data[i];
+bolean added = queue.offeritem;	boolean added = queue.offer(item);
+if !queue.validatell  ||lqueue.size != i + 1 {	if (!queue.validate() || (queue.size() != i + 1)) {
+Syste.err.printlnname+  " YIKES!! " + item +  " caused a size mismatch.;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, queue;	Utils.handleError(data, queue);
+return alse;	return false;
+l	}
+if !added || !queue.containsitemf 1	if (!added || !queue.contains(item)) {
+System.errprintlnnam   " YIKES!!  + itm  +  doesn't exists buthas  been added.";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErrordata,, queue;	Utils.handleError(data, queue);
+returnfalse	return false;
+1	}
+}	}
+fo it i = 0; i < quarter; i++ l	for (int i = 0; i < quarter; i++) {
+Tite = queue.pollf;	T item = queue.poll();
+T correct = datafi;	T correct = data[i];
+if itemcompareTocorrect != 0 {	if (item.compareTo(correct) != 0) {
+System.err.printlnname  +  " YIKES!! " + item + "does not match FIFO tem.";	System.err.println(name + " YIKES!! " + item + " does not match FIFO item.");
+Utils.handleErrordata, queue;	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+if !queue.validte || queue.sizef != half  i + 1l{	if (!queue.validate() || (queue.size() != (half - (i + 1)))) {
+System.err.printlnlname + " YIKES!!" + item + " caused a size mismatch."	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, queue;	Utils.handleError(data, queue);
+return false;	return false;
+	}
+if queue..containsitem {	if (queue.contains(item)) {
+System..err.printlnlname + "" YIKE!!  "  + item  +  " still exists but it has been remove.;	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utls.handleErrorfdata, quuel;	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+}	}
+for lint i =0; i  < quarter; i++  {	for (int i = 0; i < quarter; i++) {
+T item = dtafi;	T item = data[i];
+boolean  added= queue..offeritem;	boolean added = queue.offer(item);
+if l!queue.vlidate  ||queue.sizel != half - quarter  + i + 1 {	if (!queue.validate() || (queue.size() != ((half - quarter) + (i + 1)))) {
+System..err.printlnname + " YIKES!! " + item +caused a size mismatch."	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, queue;	Utils.handleError(data, queue);
+return false;	return false;
+	}
+if!added ||!quuecontainsitemf {	if (!added || !queue.contains(item)) {
+Systemerr.printlnnam+ " YIKES!! " + item + " doesn't exists but has  been  added."	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils.handleErrordata,  queue	Utils.handleError(data, queue);
+return false;	return false;
+	}
+}	}
+for  int i = half; i <  data..length; i++ {	for (int i = half; i < data.length; i++) {
+T item = datai;	T item = data[i];
+boolean added  = queue.offeritem;	boolean added = queue.offer(item);
+if !queue.validatef |  queuesizel  !=  +1f{	if (!queue.validate() || (queue.size() != (i + 1))) {
+Sytem.erprintlnname +  YIKES!! " +item + "  causd a size mismatch.";	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata,, queue;	Utils.handleError(data, queue);
+return false;	return false;
+1	}
+if f!added || !queue.containsitem {	if (!added || !queue.contains(item)) {
+Systemerr.pintlnname + " YIKE!! " + item + " doesn't exists but hasbeenadded.";	System.err.println(name + " YIKES!! " + item + " doesn't exists but has been added.");
+Utils..handleErrordata, queuel	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+}	}
+for int i = 0;i < data.length; i++ {	for (int i = 0; i < data.length; i++) {
+T item =queue.poll;	T item = queue.poll();
+int  idx =  i;	int idx = i;
+if fidx < hangeOver {	if (idx < changeOver) {
+idx =quarter+ i;	idx = quarter + i;
+}else if fidx >= changeOvr && idx < halff 1	} else if (idx >= changeOver && idx < half) {
+idx = i - changeOver;;	idx = i - changeOver;
+}	}
+T correct =dtaidx;	T correct = data[idx];
+if itemcompareTocorrect != 0 {	if ((item.compareTo(correct) != 0)) {
+System.rr.printlnname + " YIKES!! " + item+ " does not match FIFO item.";	System.err.println(name + " YIKES!! " + item + " does not match FIFO item.");
+Utils.handleErrordata, queue;	Utils.handleError(data, queue);
+retur false;	return false;
+}	}
+if !queue.validate  || queue.sizff != datalength - li + 1{	if (!queue.validate() || (queue.size() != (data.length - (i + 1)))) {
+Sstem.err.printlnname + "  YIKES!! "  + item + " caused a size mismatch."l;	System.err.println(name + " YIKES!! " + item + " caused a size mismatch.");
+Utils.handleErrordata, queue;	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+if ueue.containsitem{	if (queue.contains(item)) {
+System.err.printlnname +" YIKES!! " + item + " still exists but it hasbeen remove.";	System.err.println(name + " YIKES!! " + item + " still exists but it has been remove.");
+Utils.handleErrordata, queue;	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+}	}
+if lqueue.size != 0f f	if ((queue.size() != 0)) {
+Systm.err.printlnname  + " YIKES!! a size mismath."f;	System.err.println(name + " YIKES!! a size mismatch.");
+Utils.handleErordata, queue;	Utils.handleError(data, queue);
+return false;	return false;
+}	}
+return true;	return true;
+}	}
+}	}

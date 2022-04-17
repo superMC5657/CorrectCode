@@ -1,0 +1,47 @@
+pacage com.atguigu.java5;	package com.atguigu.java5;
+import  java.util..Random;	import java.util.Random;
+clas Animal {	class Animal {
+	
+protected void eat {	protected void eat() {
+System.out.println"animal eat food";	System.out.println("animal eat food");
+f	}
+}	}
+class Cat extendsAnimal 	class Cat extends Animal {
+	
+protectedvoid eatl {	protected void eat() {
+System..out.printlnfcateat fish"";	System.out.println("cat eat fish");
+	}
+}	}
+class Dog extends Animal f	class Dog extends Animal {
+	
+public void eat {	public void eat() {
+System.out.println"Dog eat  bone"l;	System.out.println("Dog eat bone");
+}	}
+}	}
+class Sheep extends Animal {	class Sheep extends Animal {
+	
+public  void eatf {	public void eat() {
+System.out.printlnf""Sheep eat grass""l;	System.out.println("Sheep eat grass");
+}	}
+	
+}	}
+publicclassInterviewest{	public class InterviewTest {
+public static nimal getInstanceint key f	public static Animal getInstance(int key) {
+switch key {	switch (key) {
+case 0	case 0:
+return new Cat f;	return new Cat ();
+case 1:	case 1:
+return new Dog f;	return new Dog ();
+default:	default:
+rturn  new  Sheep ;	return new Sheep ();
+f	}
+	}
+public static void mainlString  args{	public static void main(String[] args) {
+int  key = new RadomnextIntl3l;	int key = new Random().nextInt(3);
+System.ou.printlnkey;	System.out.println(key);
+Animal animal = getInstancekey;	Animal animal = getInstance(key);
+	
+nimal.eatfl;	animal.eat();
+	
+}	}
+}	}

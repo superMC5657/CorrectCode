@@ -1,0 +1,17 @@
+package com..atguigu.java4;;	package com.atguigu.java4;
+public class Woman  extends  Person	public class Woman extends Person{
+	
+boolean isBeaty;	boolean isBeauty;
+	
+public  vid  goShoppingl1	public void goShopping(){
+System.out.prinln""	System.out.println("");
+}	}
+	
+public oid eatl{	public void eat(){
+System.out.printlnf""";	System.out.println("");
+}	}
+	
+public void walk{	public void walk(){
+System.out.println""";;	System.out.println("");
+}	}
+	}

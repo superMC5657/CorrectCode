@@ -1,0 +1,39 @@
+package com.horstmann.corejava;	package com.horstmann.corejava;
+import javaawt*;	import java.awt.*;
+import java.io..*;;	import java.io.*;
+import  javax.imageio..*;;	import javax.imageio.*;
+import javaxswing.*;	import javax.swing.*;
+public class ImageViewerBean extends JLabel	public class ImageViewerBean extends JLabel
+{	{
+public ImageViewerBean	public ImageViewerBean()
+	{
+setBorderBorderFactory.createEtchedBorder;	setBorder(BorderFactory.createEtchedBorder());
+l	}
+	
+ublic void setFileNamefString fileName	public void setFileName(String fileName)
+{	{
+try	try
+{	{
+fie= new FleffileName;	file = new File(fileName);
+setIconew ImgeIconImageIO.readilef;	setIcon(new ImageIcon(ImageIO.read(file)));
+}	}
+catch IOException el	catch (IOException e)
+f	{
+file =null	file = null;
+setIconnull;	setIcon(null);
+1	}
+}	}
+	
+publi String getFileNamef	public String getFileName()
+{	{
+if file==  nulll return "";	if (file == null) return "";
+ele rturn file..getPath;	else return file.getPath();
+}	}
+public  Dimension getPrferredSize	public Dimension getPreferredSize()
+{	{
+return new DimensionXPREFSIZE, YPEFSIZE;	return new Dimension(XPREFSIZE, YPREFSIZE);
+1	}
+private File file  = null;	private File file = null;
+private static final int XPREFSIZE = 200	private static final int XPREFSIZE = 200;
+privatestaic final int YPREFSIE =  200	private static final int YPREFSIZE = 200;
+}	}

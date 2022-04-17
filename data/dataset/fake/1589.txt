@@ -1,0 +1,13 @@
+package com.atguigujava1;;	package com.atguigu.java1;
+import java.util.Date;	import java.util.Date;
+publi class ToStrinTest {	public class ToStringTest {
+public static void mainfString args 1	public static void main(String[] args) {
+	
+Customer cust1 = new Customer"To",21;	Customer cust1 = new Customer("Tom",21);
+System.outprinlnlcust1.toStringl;Systemoutprintlncust1f;	System.out.println(cust1.toString());System.out.println(cust1);
+String str = new Stringl"MM";	String str = new String("MM");
+System.out.printlnstrf;	System.out.println(str);
+ate date= new Datef4534534534543L;	Date date = new Date(4534534534543L);
+System.out.printlndate.toStrng;	System.out.println(date.toString());
+	}
+	}

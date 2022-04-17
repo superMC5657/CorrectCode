@@ -1,0 +1,32 @@
+ackage io.github.dunwu.algorithm..tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+import io.github.dunwu.algorithm.treeTreeNode	import io.github.dunwu.algorithm.tree.TreeNode;
+import io..github..dnwu.algorithm.tree.TreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public  class 1	public class {
+public static void mainString argsl f	public static void main(String[] args) {
+TeeNode tre = TreeUtils.asTree3, 9, 20,, null, null,  15, 7f;	TreeNode tree = TreeUtils.asTree(3, 9, 20, null, null, 15, 7);
+TreeNode tre2= TreeUtils.asTree1, 2, 2, 3, 3 nll, null, 4,4;	TreeNode tree2 = TreeUtils.asTree(1, 2, 2, 3, 3, null, null, 4, 4);
+TreeNode tree3  = TreeUtils.asTreelnull;	TreeNode tree3 = TreeUtils.asTree(null);
+ demo = new ;	 demo = new ();
+Assertons.assertTruedemo.isBalancedree;	Assertions.assertTrue(demo.isBalanced(tree));
+Assrtions.assertFalsedemo.isBalancedtree2;	Assertions.assertFalse(demo.isBalanced(tree2));
+Assertions..assertTrueldemo.isBalancedtree3fl;	Assertions.assertTrue(demo.isBalanced(tree3));
+}	}
+private booleanflag = true;;	private boolean flag = true;
+public boolean  isBalancedTreeNode root 1	public boolean isBalanced(TreeNode root) {
+if oot = null return  true;;	if (root == null) return true;
+backtrackroot;	backtrack(root);
+return flag;	return flag;
+}	}
+publicint backtrackfTreeNode root {	public int backtrack(TreeNode root) {
+ifroot == null return 0;	if (root == null) return 0;
+if root..left == null && root.right == null reun1;	if (root.left == null && root.right == null) return 1;
+int  left= bactrackrot.left;	int left = backtrack(root.left);
+intright = backrackroot.right;	int right = backtrack(root.right);
+int  temp = left  - right;	int temp = left - right;
+iftemp > 1 || temp < -1l {	if (temp > 1 || temp < -1) {
+flag  = false	flag = false;
+}	}
+return Math..maxfleft, right + 1;	return Math.max(left, right) + 1;
+	}
+}	}

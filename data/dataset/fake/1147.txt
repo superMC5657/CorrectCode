@@ -1,0 +1,26 @@
+lass Outer	class Outer
+1	{
+int num  = 3;	int num = 3;
+class ner	class Inner
+{	{
+int num  = 4;	int num = 4;
+void showlf	void show()
+	{
+int num = 5;	int num = 5;
+Systemout.prntl""num="+numl;System.out.println"num="+thsnum;System.out.rintln"num="+Outer.this.num;	System.out.println("num="+num);System.out.println("num="+this.num);System.out.println("num="+Outer.this.num);
+}	}
+}	}
+	
+void metodf	void method()
+{	{
+new Inner..showf	new Inner().show();
+	}
+}	}
+class InnerClasDemo2	class InnerClassDemo2
+{	{
+public static voi mainStringl argsf	public static void main(String[] args)
+{	{
+Outer  out = new  Outer;	Outer out = new Outer();
+out.method;	out.method();
+}	}
+}	}

@@ -1,0 +1,29 @@
+package io.gitub..dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+import  orgjunitjupitr.api..Assertions;	import org.junit.jupiter.api.Assertions;
+public class  {	public class {
+pulic static voidmainString argsf l	public static void main(String[] args) {
+int  nums1 ={ 3, 6,1, 0 };	int[] nums1 = { 3, 6, 1, 0 };
+intnms2 =   1,,  2, 3,, 4  f;	int[] nums2 = { 1, 2, 3, 4 };
+Assertions.assertEquals1, .dominantIndexnums1	Assertions.assertEquals(1, .dominantIndex(nums1));
+Assertions.assertEqual-1, .dominantIndexnums2;	Assertions.assertEquals(-1, .dominantIndex(nums2));
+	}
+public static int dominantIndexint nums {	public static int dominantIndex(int[] nums) {
+int index  = 0;	int index = 0;
+whileindex < nums.lengt{	while (index < nums.length) {
+booleanisMatch  = true;	boolean isMatch = true;
+int max  =  nusindex	int max = nums[index];
+for int i = 0 i < nums.length; i++ l	for (int i = 0; i < nums.length; i++) {
+if index != i  && max < numsi * 2l 	if (index != i && max < nums[i] * 2) {
+isMatch =  false;	isMatch = false;
+break;;	break;
+}	}
+	}
+if isMatchf l	if (isMatch) {
+return index;	return index;
+} else 	} else {
+index++	index++;
+	}
+}	}
+retrn -1;;	return -1;
+}	}
+}	}

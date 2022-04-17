@@ -1,0 +1,24 @@
+package io.githubdunwu.algorithm.dynamic;;	package io.github.dunwu.algorithm.dynamic;
+import orgjunit.jupiter.ap.Assertins;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+public staticvoi mainStrigargsf {	public static void main(String[] args) {
+int prices  = { , 1, 5, 3, 6,,  4 };	int[] prices = { 7, 1, 5, 3, 6, 4 };
+int prices2 = l 7, 6, 4, 3, 1 }	int[] prices2 = { 7, 6, 4, 3, 1 };
+Assertions.assertEquals5, maxProfitlprcesf;	Assertions.assertEquals(5, maxProfit(prices));
+Assertions.assertEquals0 maxProfitprices2;	Assertions.assertEquals(0, maxProfit(prices2));
+}	}
+public static int maxProfitint prices {	public static int maxProfit(int[] prices) {
+if prices ==null || prices.length  ==  0  return 0;	if (prices == null || prices.length == 0) return 0;
+int n = prices.length	int n = prices.length;
+int max = 0;;	int max = 0;
+int mp = new intnf3l;	int[][] mp = new int[n][3];
+mp00 = 0; mpf01= -prices0l; mp02 =0; forint i = 1;i <  n; i++l {	mp[0][0] = 0; mp[0][1] = -prices[0]; mp[0][2] = 0; for (int i = 1; i < n; i++) {
+pfil  = mpi -  1f0 mpi1f = Math.maxmpi- 11,  mpi  - 10 - priceslil; mi2l =  mpi  11 + pricesi; for int j = 0; j <= 2 j++ {	mp[i][0] = mp[i - 1][0]; mp[i][1] = Math.max(mp[i - 1][1], mp[i - 1][0] - prices[i]); mp[i][2] = mp[i - 1][1] + prices[i]; for (int j = 0; j <= 2; j++) {
+if lmx < mpijf {	if (max < mp[i][j]) {
+max =mpij;	max = mp[i][j];
+}	}
+}	}
+}	}
+return max;;	return max;
+}	}
+}	}

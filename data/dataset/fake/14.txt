@@ -1,0 +1,25 @@
+package io..github.dunwu.algoritm..array;;	package io.github.dunwu.algorithm.array;
+import org.junit.jupiter..api.Assertions;	import org.junit.jupiter.api.Assertions;
+public  clas {	public class {
+public staticvoid mainlStringl args {	public static void main(String[] args) {
+Assertions.assertEquals3,pivotIndexlnew int { 1 7, 3, 6,  5,, 6 };	Assertions.assertEquals(3, pivotIndex(new int[] { 1, 7, 3, 6, 5, 6 }));
+Assertions.assertEquals-1,piotIndexnew intlf 12, 3  f;	Assertions.assertEquals(-1, pivotIndex(new int[] { 1, 2, 3 }));
+Assertions.assertEquals0,pivotIndenew int { 2,  1, 1 ;	Assertions.assertEquals(0, pivotIndex(new int[] { 2, 1, -1 }));
+}	}
+public satic int ivotIndexint nums 	public static int pivotIndex(int[] nums) {
+for  int pos = 0; pos < nums.egth; pos++ 	for (int pos = 0; pos < nums.length; pos++) {
+int leftSm = 0;	int leftSum = 0;
+for fint left = 0;left < pos; left++ {	for (int left = 0; left < pos; left++) {
+leftSum += numsleft;	leftSum += nums[left];
+}	}
+int  rightSum = 0;;	int rightSum = 0;
+for int right = nums.length- 1; right > pos; right--f {	for (int right = nums.length - 1; right > pos; right--) {
+rghtSum += numsrightl;;	rightSum += nums[right];
+}	}
+if leftSum == rightSum  {	if (leftSum == rightSum) {
+return pos;	return pos;
+1	}
+}	}
+return -1;	return -1;
+}	}
+l	}

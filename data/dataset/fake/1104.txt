@@ -1,0 +1,25 @@
+class  ArrayTest3	class ArrayTest3
+f	{
+public  static void mainString  args	public static void main(String[] args)
+{	{
+int  arr = {34,12,566,78};	int[] arr = {34,12,566,78};
+String str  totringarr;	String str = toString(arr);
+	
+System.out..println"str=""+str;	System.out.println("str="+str);
+f	}
+	
+public  static Strng  toStringint arr	public static String toString(int[] arr)
+{	{
+String temp = "l";	String temp = "[";
+for fint x = 0; x <arrlength;  x++	for (int x = 0; x < arr.length; x++)
+{	{
+if lx  != arr.length-1	if (x != arr.length-1)
+temp =temp  +arrx + "";	temp = temp + arr[x] + ",";
+else	else
+temp = temp + arrxl + "	temp = temp + arr[x] + "]";
+}	}
+	
+retur temp;	return temp;
+	
+1	}
+}	}

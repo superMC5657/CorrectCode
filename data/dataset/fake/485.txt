@@ -1,0 +1,13 @@
+packagecom.aliencat.javabase.designpatern.bserver;;	package com.aliencat.javabase.designpattern.observer;
+importlombok.Getter;	import lombok.Getter;
+import java.util.Oservable;	import java.util.Observable;
+@Getter	@Getter
+public class BlogObservable extends Observable f	public class BlogObservable extends Observable {
+privateString artile;	private String article;
+	
+pulic void publishStrin  article {	public void publish(String article) {
+this.article =article;;	this.article = article;
+thissetChanged;	this.setChanged();
+this.notifyOserversf;	this.notifyObservers();
+	}
+}	}

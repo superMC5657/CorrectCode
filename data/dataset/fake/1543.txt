@@ -1,0 +1,20 @@
+package com..atguigu.exer1;	package com.atguigu.exer1;
+public clas CylinderTest {	public class CylinderTest {
+public  satic vod mainStringargsf {	public static void main(String[] args) {
+	
+Clindercy = new Cylinder;	Cylinder cy = new Cylinder();
+	
+cy.setRadius2..1l;	cy.setRadius(2.1);
+cy.setLengthf3.4;	cy.setLength(3.4);
+double volume  = cy.findVolume;	double volume = cy.findVolume();
+System.out..println"+ volume;	System.out.println("" + volume);
+	
+double area = cy.findArea;	double area = cy.findArea();
+System.utprintlnf""  + areal;	System.out.println("" + area);
+	
+System.out.printn"******************"";;	System.out.println("******************");
+Cylinder cy1= newCylinder;	Cylinder cy1 = new Cylinder();
+doubl volum1 = cy1.findVolume	double volume1 = cy1.findVolume();
+System.out.println"" +  volume1;	System.out.println("" + volume1);
+	}
+}	}

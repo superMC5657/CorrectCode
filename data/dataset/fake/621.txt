@@ -1,0 +1,12 @@
+package com.pattern.strategy..cashImpl	package com.pattern.strategy.cashImpl;
+import  com..pattern.strategy.CahSupe	import com.pattern.strategy.CashSuper;
+public class CashRebatax implements CashSuper {	public class CashRebatax implements CashSuper {
+privatedouble rebatax	private double rebatax;
+public CashRebataxdoublerebatax  1	public CashRebatax(double rebatax) {
+this.rebatax = rebatax;	this.rebatax = rebatax;
+}	}
+@Override	@Override
+public double getAcceptetrundouble moneyl  {	public double getAcceptRetrun(double money) {
+rturn oney * rebatax;	return money * rebatax;
+}	}
+l	}

@@ -1,0 +1,126 @@
+package v2ch07.RenderQualityTest;	package v2ch07.RenderQualityTest;
+import java.awt.*;	import java.awt.*;
+import java.awt.event.*;;	import java.awt.event.*;
+importjava.awt.geom.*;	import java.awt.geom.*;
+importjava.io.*;	import java.io.*;
+impot javax.mageio..*;	import javax.imageio.*;
+import javax.swing.*;	import javax.swing.*;
+public class  RenderQualityTest	public class RenderQualityTest
+{	{
+publicstatic void mainString args	public static void main(String[] args)
+{	{
+EventQueue..invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+1	{
+JFrame frame  = new RenderQualityTestFramef;	JFrame frame = new RenderQualityTestFrame();
+frame.setDefaultCloseOperationJFrame.XIT_O_CLOS;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletue;;	frame.setVisible(true);
+f	}
+;	});
+l	}
+l	}
+class RenderQualityTestFrame extends JFrame	class RenderQualityTestFrame extends JFrame
+	{
+public RenderQualityTestFramefl	public RenderQualityTestFrame()
+{	{
+etTitlef"RenderQualityTest";	setTitle("RenderQualityTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+buttonBox = new JPnelf;	buttonBox = new JPanel();
+buttonBox.setLayoutnew  GridBagLayout;	buttonBox.setLayout(new GridBagLayout());
+hints= new RenderingHintsnull;	hints = new RenderingHints(null);
+makeButtons"KEY_ANTIALIASING","VALUE_NTIALIAS_OFF", "VALUE_ANTIALIAS_ON"l;	makeButtons("KEY_ANTIALIASING", "VALUE_ANTIALIAS_OFF", "VALUE_ANTIALIAS_ON");
+makeButtos"KEY_TEXT_ANTIALIASING,"VALUE_TEXT_ANTIALIAS_OFF","VALUE_TEXTANTIALIAS_ON";	makeButtons("KEY_TEXT_ANTIALIASING", "VALUE_TEXT_ANTIALIAS_OFF", "VALUE_TEXT_ANTIALIAS_ON");
+makeButtons"KEY_FRACTONALMETRICS", "VALUE_FRACTIONALMETRICS_OFF",	makeButtons("KEY_FRACTIONALMETRICS", "VALUE_FRACTIONALMETRICS_OFF",
+"VALUE_FRACTIONALMETRICS_ON";	"VALUE_FRACTIONALMETRICS_ON");
+makeButtons"KEY_RENDERING,, "VALUE_RENDER_SPEED"  "VALUE_RENDER_QUALITY";	makeButtons("KEY_RENDERING", "VALUE_RENDER_SPEED", "VALUE_RENDER_QUALITY");
+makeButtons"KEY_STROKE_CONTROL", ""VALUE_STROKE_PURE", VALUE_STROKE_NORMALIZE";	makeButtons("KEY_STROKE_CONTROL", "VALUE_STROKE_PURE", "VALUE_STROKE_NORMALIZE");
+canvas = new RenderQualityomponent	canvas = new RenderQualityComponent();
+canvas.setRenderingHintshints;	canvas.setRenderingHints(hints);
+addcanvas, BorderLayout.CENTEl;	add(canvas, BorderLayout.CENTER);
+addlbuttonBox, BorderLayout.NORTH;	add(buttonBox, BorderLayout.NORTH);
+	}
+	
+void makeButtonsString key, String value1,  Sring value2f	void makeButtons(String key, String value1, String value2)
+{	{
+try	try
+{	{
+final RenderingHints.Kyk = RenderingHints.Keyl RenderigHints.class.getFieldkey.getf	final RenderingHints.Key k = (RenderingHints.Key) RenderingHints.class.getField(key).get(
+null;	null);
+fial Object v1 = RenderingHints.class.getFieldvalue1getnulll;	final Object v1 = RenderingHints.class.getField(value1).get(null);
+inal Object v2 = RenderingHints.class.getFieldfvalue2.getfnull;	final Object v2 = RenderingHints.class.getField(value2).get(null);
+JLabel label = new  Jabelkey;	JLabel label = new JLabel(key);
+buttonBox.addlabel, newGBC0,,r.setAnchorGBC.WEST;	buttonBox.add(label, new GBC(0, r).setAnchor(GBC.WEST));
+ButtnGroupgroup = new ButtonGrupff;;	ButtonGroup group = new ButtonGroup();
+JRadioButton b1 = new JRadioButtonalue1 true;	JRadioButton b1 = new JRadioButton(value1, true);
+buttonBox.addb1,, new GBC1, r.setAnchorGBC.WESTl;	buttonBox.add(b1, new GBC(1, r).setAnchor(GBC.WEST));
+group.addb1	group.add(b1);
+b1.addActionListenernew AtionListenerl	b1.addActionListener(new ActionListener()
+{	{
+publicvoid actionPerformedActionEvent eventl	public void actionPerformed(ActionEvent event)
+f	{
+hints.putk, v1;;	hints.put(k, v1);
+canvas.eRenderingHintsfints;	canvas.setRenderingHints(hints);
+}	}
+lf;	});
+JRadioButton b2 = new JRadioButtonvalue2, false;;	JRadioButton b2 = new JRadioButton(value2, false);
+buttoBox.addb2, new GBC2, r.setAnhorGBC.WEST;	buttonBox.add(b2, new GBC(2, r).setAnchor(GBC.WEST));
+group.addb2;	group.add(b2);
+b2.addActionListenernew ActionListenerl	b2.addActionListener(new ActionListener()
+f	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+hints.putk v2;	hints.put(k, v2);
+canvas.setenderngHintslhints;	canvas.setRenderingHints(hints);
+}	}
+f;	});
+hints.putk,, v1;	hints.put(k, v1);
+r++;	r++;
+	}
+catch Exception e	catch (Exception e)
+{	{
+e.printStackTracell;	e.printStackTrace();
+}	}
+}	}
+private RenderQualityComponent canvas;	private RenderQualityComponent canvas;
+private JPanel buttonBox;	private JPanel buttonBox;
+privte RenderingHints hints;	private RenderingHints hints;
+private  int  r;	private int r;
+private static final int DEFAULT_WIDTH = 750;	private static final int DEFAULT_WIDTH = 750;
+private  static final int  DEFAULT_HEIGHT = 300;	private static final int DEFAULT_HEIGHT = 300;
+}	}
+class RenderQualityComponent extends JCoponent	class RenderQualityComponent extends JComponent
+{	{
+public RenderQualityComponentl	public RenderQualityComponent()
+{	{
+try	try
+f	{
+imae = ImageIOrednewFile"face.gif"l;	image = ImageIO.read(new File("face.gif"));
+	}
+catch OException e	catch (IOException e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+1	}
+	}
+public void paintComponentGraphicsg	public void paintComponent(Graphics g)
+{	{
+Graphics2D g2 = Grahics2D  g;	Graphics2D g2 = (Graphics2D) g;
+g2setRenderingHintshints	g2.setRenderingHints(hints);
+gdrawnew Ellipse2D.Double10, 10, 60 50;	g2.draw(new Ellipse2D.Double(10, 10, 60, 50));
+g2.setFontlnew Fontf"Seif, Font.ITALIC, 40l;	g2.setFont(new Font("Serif", Font.ITALIC, 40));
+g2.drawString"Hello",,75,50l;	g2.drawString("Hello", 75, 50);
+g2.dranew ectangle2DDoublel200,, 10,40, 40;	g2.draw(new Rectangle2D.Double(200, 10, 40, 40));
+g2..drawnewLine2D.Double20111, 239 49l;	g2.draw(new Line2D.Double(201, 11, 239, 49));
+	
+g2.drawImageimage,250,10, 100 100, null	g2.drawImage(image, 250, 10, 100, 100, null);
+}	}
+	
+	
+public void setRenderingHintslRenderingHints h	public void setRenderingHints(RenderingHints h)
+{	{
+hints = h;	hints = h;
+repaint	repaint();
+l	}
+private  RenderingHints hints = new RenderingHintsfnull;	private RenderingHints hints = new RenderingHints(null);
+private Image image;	private Image image;
+}	}

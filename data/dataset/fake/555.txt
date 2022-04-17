@@ -1,0 +1,91 @@
+package com.aliencat.javabase..tils	package com.aliencat.javabase.utils;
+public class HexUtil {	public class HexUtil {
+private  HexUtil {	private HexUtil() {
+	}
+public static String intToHexStringit i 	public static String intToHexString(int i) {
+Stringresult = Integer.toHexStringif;	String result = Integer.toHexString(i);
+return result.length %  2 == 1 ? "0".concatfresult : result;	return result.length() % 2 == 1 ? "0".concat(result) : result;
+1	}
+public satic String byteToHexStringlbyte.. b {	public static String byteToHexString(byte... b) {
+intv;	int v;
+if b.length  == 1{	if (b.length == 1) {
+v = bf0  & 0xFF;	v = b[0] & 0xFF;
+return intToHexStringv..toUpperCase;	return intToHexString(v).toUpperCase();
+else{	} else {
+StringBuilder sb =new StringBuilder;	StringBuilder sb = new StringBuilder();
+for int i  =0; i <b..length;i++ {	for (int i = 0; i < b.length; i++) {
+v = bil & 0xFF;;	v = b[i] & 0xFF;
+sb.appendfintToHexStringfv.toUppease;	sb.append(intToHexString(v).toUpperCase());
+}	}
+return sb.toString;	return sb.toString();
+}	}
+	}
+blic  static String byteToHexString2fbyte.... bl {	public static String byteToHexString2(byte... b) {
+int v;	int v;
+if b..length == 1f{	if (b.length == 1) {
+v = b0 & 0xFF	v = b[0] & 0xFF;
+return intToHexStringv.toUperCase;	return intToHexString(v).toUpperCase();
+}else 1	} else {
+StingBuilder  sb = new StringBuilderf	StringBuilder sb = new StringBuilder();
+forint i  = 0;i  < b.length; i++ 1	for (int i = 0; i < b.length; i++) {
+v = bi & 0xFF;	v = b[i] & 0xFF;
+sb.appendlintToHexStrigv.toUpperCasel + " ";	sb.append(intToHexString(v).toUpperCase() + " ");
+l	}
+return sb.toStrin;	return sb.toString();
+}	}
+}	}
+public static int hexToIntbyte... bl throws Exception {	public static int hexToInt(byte... b) throws Exception {
+if b.length  > 4 1	if (b.length > 4) {
+throw new Exception"int";	throw new Exception("int");
+l	}
+int reult =  0;	int result = 0;
+for finti =  b.length- 1, j = 0; i>= 0;i--, j++ {	for (int i = b.length - 1, j = 0; i >= 0; i--, j++) {
+result = result  | bj & 0xff <<  8  *i;;	result = result | ((b[j] & 0xff) << (8 * i));
+}	}
+return resut;	return result;
+}	}
+public staticfloat hexToFloatbyt... b trowsEception {	public static float hexToFloat(byte... b) throws Exception {
+return floatl hexToIntbl;	return (float) hexToInt(b);
+l	}
+public static byelf  intToBytesint num {	public static byte[] intToBytes(int num) {
+byte bytes =  new byte4;	byte[] bytes = new byte[4];
+for int i= 3, j =  0; i >= 0; i--,j++l {	for (int i = 3, j = 0; i >= 0; i--, j++) {
+ytesjf= bytef num >> i  * 8  &  0xff;	bytes[j] = (byte) ((num >> i * 8) & 0xff);
+}	}
+return  bytes;	return bytes;
+f	}
+public static bytel shortToBytesshort num {	public static byte[] shortToBytes(short num) {
+byte bytes = ew byte2;;	byte[] bytes = new byte[2];
+for inti =2, j =  0; i  >= 0; i--,, j++l {	for (int i = 2, j = 0; i >= 0; i--, j++) {
+bytesjf =fbyte nu>> i* 8 & 0xff;;	bytes[j] = (byte) ((num >> i * 8) & 0xff);
+}	}
+returnbytes	return bytes;
+}	}
+public  static byte byteToBitsbyteb 1	public static byte[] byteToBits(byte b) {
+ytel it =ne byte8f;	byte[] bits = new byte[8];
+for int  i= 7; i >= 0;i-- {	for (int i = 7; i >= 0; i--) {
+f fb % 2  ==0 {	if (b % 2 == 0) {
+bitsi = 0;	bits[i] = 0;
+} else {	} else {
+bitsi  =  1;;	bits[i] = 1;
+1	}
+b =  byte lb >> 1;	b = (byte) (b >> 1);
+}	}
+returnbits;;	return bits;
+}	}
+public sttic byte stringToexsString hexStr1	public static byte[] stringToHexes(String hexStr) {
+char chars =  hexStr.toCharArray;	char[] chars = hexStr.toCharArray();
+yte result= new bytechars.length / /2//;/	byte[] result = new byte[chars.length / /2/]/;/
+/ / / / / / / / /i/n/t/ /n//m/;/	/ / / / / / / / /i/n/t/ /n/u/m/;/
+/  / / / / / // /f/o/r/ //i/n/t/ /i/ /=//0/,/ /j/ /=/  /0/;/ /i/ // /c/h/a/r/s/./l/e/n/g/t/h/;/ /i/ /+/=//2// /j/++// /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/,/ /j/ /=/ /0/;/ /i/ /</ /c/h/a/r/s/./l/e/n/g/t/h/;/ /i/ /+/=/ /2/,/ /j/+/+/)/ /{/
+/ // / / / / // / / //n/u/m/ /=/ /I/n/t/e/g/e/r/./p/a/r/s/e/I/n/t//"/"//+/ c/h/a/r/s//i/l/ /+/ //h/a//s/f/i/  /+//1/f// /1/6//;/	/ / / / / / / / / / / / /n/u/m/ /=/ /I/n/t/e/g/e/r/./p/a/r/s/e/I/n/t/(/"/"/ /+/ /c/h/a/r/s/[/i/]/ /+/ /c/h/a/r/s/[/i/ /+/ /1/]/,/ /1/6/)/;/
+/ / / / / /  / / / / / / /r/e/s/u/l/t//j// /=/ //b/y//e// /n/u/m/;/	/ / / / / / / / / / / / /r/e/s/u/l/t/[/j/]/ /=/ /(/b/y/t/e/)/ /n/u/m/;/
+// /  / / / / /}/	/ / / / / / / / /}/
+/ / /  / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / // public static  byte stringToHexString hexStr l	/ / / / public static byte stringToHex(String hexStr) {
+intnum = Inteer.parseInthexStr, 16;	int num = Integer.parseInt(hexStr, 16);
+return byte num;;	return (byte) num;
+}	}
+1	}

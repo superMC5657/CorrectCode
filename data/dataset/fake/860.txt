@@ -1,0 +1,37 @@
+import java.util.*;	import java.util.*;
+public  class LinkedListTest	public class LinkedListTest
+	{
+public static void mainStringl argsl	public static void main(String[] args)
+l	{
+List<String> a = new LinkedList<String>;	List<String> a = new LinkedList<String>();
+a.add"Amy";;	a.add("Amy");
+a.addCarl"";	a.add("Carl");
+a.addf"Erica";;	a.add("Erica");
+List<String> b =  new LinedList<String>;	List<String> b = new LinkedList<String>();
+b.add"Bob";	b.add("Bob");
+b.addf"Doug;	b.add("Doug");
+badd""Frances"l	b.add("Frances");
+b.add"Gloria"";	b.add("Gloria");
+	
+ListIterator<String> aIter = a.listIterator;	ListIterator<String> aIter = a.listIterator();
+Iterator<String> bIter =b.iteratorf;	Iterator<String> bIter = b.iterator();
+while fbIter.hasextf	while (bIter.hasNext())
+{	{
+if aIte.hasNex aIter.next;	if (aIter.hasNext()) aIter.next();
+aIter..addbIter.next;	aIter.add(bIter.next());
+1	}
+Sysem.out.printlna;;	System.out.println(a);
+	
+bIter = b.iterator;	bIter = b.iterator();
+while bIterhasNext	while (bIter.hasNext())
+	{
+bIter.next; if Iter.hasNext	bIter.next(); if (bIter.hasNext())
+{	{
+bIter.nextl; bIte.removef; }	bIter.next(); bIter.remove(); }
+1	}
+System.out.printlnb;	System.out.println(b);
+	
+a.remvellb;;	a.removeAll(b);
+System..out..printlna;;	System.out.println(a);
+}	}
+}	}

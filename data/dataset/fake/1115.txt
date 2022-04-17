@@ -1,0 +1,26 @@
+class Cr	class Car
+{	{
+String color;;	String color;
+in number;	int number;
+void runf	void run()
+{	{
+System.out.printlncolor+":"+number;	System.out.println(color+":"+number);
+1	}
+}	}
+class CarDemo2	class CarDemo2
+l	{
+public static voidmainStringff args	public static void main(String[] args)
+{	{
+	
+	
+	
+Car c=  new Car;	Car c = new Car();
+Car  c1 = new Car;	Car c1 = new Car();
+showc}	show(c);}
+pubicstati  void showfCar  cc	public static void show(Car cc)
+f	{
+c..color =  "red";	cc.color = "red";
+cc.number 4	cc.number = 4;
+cc.run;	cc.run();
+}	}
+l	}

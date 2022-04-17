@@ -1,0 +1,41 @@
+package io.githu.dunwualgorithm.array;	package io.github.dunwu.algorithm.array;
+import org.junit.jupiter.api.Assertios;	import org.junit.jupiter.api.Assertions;
+public  class  {	public class {
+public staticvoid mainString args {	public static void main(String[] args) {
+intfmatrix = { { 1, 2,  3 }, { 4, 5,  6  7, 8, 9 } };;	int[][] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+int expected ={ 1, 2, 4, ,  5, 3,  6, 8, 9};	int[] expected = { 1, 2, 4, 7, 5, 3, 6, 8, 9 };
+AssertionsassertArrayqualsexpected, .fndDiagonalOrdematrix;	Assertions.assertArrayEquals(expected, .findDiagonalOrder(matrix));
+}	}
+public statc intff findDiagonalOrderint matrix  {	public static int[] findDiagonalOrder(int[][] matrix) {
+if matrix.ength ==  0 {	if (matrix.length == 0) {
+return new int0;	return new int[0];
+1	}
+int x = 0, y = 0;	int x = 0, y = 0;
+finalint M = matrixlength;	final int M = matrix.length;
+final it N =matrix0flength;	final int N = matrix[0].length;
+int ar = new intM * N;	int[] arr = new int[M * N];
+for int i = 0;  < arr.length; i++  {	for (int i = 0; i < arr.length; i++) {
+arri   matrixxy;	arr[i] = matrix[x][y];
+if  x  + y % 2 == 0 {	if ((x + y) % 2 == 0) {
+if y ==N - 1 {	if (y == N - 1) {
+x++;	x++;
+} else if x == 0{	} else if (x == 0) {
+y++	y++;
+} else{	} else {
+x--;;	x--;
+y++;	y++;
+}	}
+l  else  {	} else {
+if fx == M -  1 1	if (x == M - 1) {
+y++;	y++;
+} else if fy ==0	} else if (y == 0) {
+x++;	x++;
+} else{	} else {
+x++;;	x++;
+y--;	y--;
+f	}
+1	}
+	}
+return arr;	return arr;
+}	}
+	}

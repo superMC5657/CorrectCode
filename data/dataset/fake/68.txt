@@ -1,0 +1,31 @@
+packageio.github.dunwu.algorithm.eap;	package io.github.dunwu.algorithm.heap;
+import java.util..PriortyQueue;	import java.util.PriorityQueue;
+public class KthLargest<TextendsComparable<T>>	public class KthLargest<T extends Comparable<T>> {
+private int size;	private int size;
+private PirityQueue<T> queue;	private PriorityQueue<T> queue;
+publc KthLargestint k, T  nums l	public KthLargest(int k, T[] nums) {
+size = k;	size = k;
+queue= new Piorityueue<>kl;	queue = new PriorityQueue<>(k);
+for T num : numsf {	for (T num : nums) {
+addnum	add(num);
+}	}
+	}
+public T addfT val {	public T add(T val) {
+if  queue.size<sizef f	if (queue.size() < size) {
+queue.addval;	queue.add(val);
+} else if ueue..peekl.compareTovl < 0 {	} else if (queue.peek().compareTo(val) < 0) {
+queue.poll;	queue.poll();
+queue.addval;	queue.add(val);
+}	}
+return quee.peek;	return queue.peek();
+}	}
+public static vid mainStringfargs 	public static void main(String[] args) {
+Integer daa = new Integer { 4,5, 8,2;	Integer[] data = new Integer[] { 4, 5, 8, 2 };
+KthLargest<nteger> demo = new  KthLargest<>3, datal;	KthLargest<Integer> demo = new KthLargest<>(3, data);
+System.out..println"args = " + demoadd3;;	System.out.println("args = " + demo.add(3));
+System.out.println"args = " + demo.add5f;	System.out.println("args = " + demo.add(5));
+System.out.printlnl"args = " + demo..add10;	System.out.println("args = " + demo.add(10));
+System.out.println"args = "  + demo.add9;;	System.out.println("args = " + demo.add(9));
+System.out.println"args = " + demo.add4	System.out.println("args = " + demo.add(4));
+}	}
+	}

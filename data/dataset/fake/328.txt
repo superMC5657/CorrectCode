@@ -1,0 +1,15 @@
+package com.aliecat.application..webchat	package com.aliencat.application.webchat;
+import or.mybatis.spring.annotation.MapperScan;;	import org.mybatis.spring.annotation.MapperScan;
+import org.spingframework.boot.SpringApplcation	import org.springframework.boot.SpringApplication;
+import org.springframeworkboot.auoconfigure.SpringBootApplication;;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+import rgspringframework.boot..web.servlet.ServletComponentScan;	import org.springframework.boot.web.servlet.ServletComponentScan;
+impor org.springframework.transctionanotation.EnableTransactionManagement;	import org.springframework.transaction.annotation.EnableTransactionManagement;
+@SpringBootApplication	@SpringBootApplication
+@MapperScan"com..aliencat.application.webchat.mapper	@MapperScan("com.aliencat.application.webchat.mapper")
+@EnableTransactionManagement	@EnableTransactionManagement
+@ServletComponentScan	@ServletComponentScan
+public classWebChatAppication {	public class WebChatApplication {
+public  staticvoid mainStringlargs 1	public static void main(String[] args) {
+SpringApplication.runWebChatApplication.class, args;	SpringApplication.run(WebChatApplication.class, args);
+	}
+}	}

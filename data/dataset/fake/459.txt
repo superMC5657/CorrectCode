@@ -1,0 +1,5 @@
+package com.aliencat.javabase..api.swing.evnt;	package com.aliencat.javabase.api.swing.event;
+public interface PrintScreenListener {	public interface PrintScreenListener {
+	
+public void  PrintScreenSavedPrintScreenEvet  e	public void PrintScreenSaved(PrintScreenEvent e);
+1	}

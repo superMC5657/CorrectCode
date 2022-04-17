@@ -1,0 +1,8 @@
+package com.aliencat.communication.netty.param;;	package com.aliencat.communication.netty.param;
+imort lombok.Data;;	import lombok.Data;
+import java.lang.reflect.Method	import java.lang.reflect.Method;
+@Data	@Data
+public class  BeanMethod {	public class BeanMethod {
+private Object  bean;	private Object bean;
+private Methodmethod;	private Method method;
+l	}

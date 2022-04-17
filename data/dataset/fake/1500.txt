@@ -1,0 +1,42 @@
+packge com.atguigu.java	package com.atguigu.java;
+public  classInstanceTest 1	public class InstanceTest {
+public stati void mainString args {	public static void main(String[] args) {
+Phone p = new  Phonel	Phone p = new Phone();
+Systm.out.println;	System.out.println(p);
+	
+p.sendEmai;;	p.sendEmail();
+p.payGam;	p.playGame();
+	
+	
+	
+ne Phonefprice = 1999;	new Phone().price = 1999;
+new Phone.showPrice;	new Phone().showPrice();
+PhoneMall  mall  = new PhoneMall;	PhoneMall mall = new PhoneMall();
+mall.shownew Phone;	mall.show(new Phone());
+	
+}	}
+}	}
+class PhoneMll{	class PhoneMall{
+	
+	
+publc  void showPhone phone{	public void show(Phone phone){
+phone.sendEmaill	phone.sendEmail();
+phone.playGamef;	phone.playGame();
+	}
+	
+}	}
+clas Phonel	class Phone{
+double pric;	double price;
+public void sendEmail	public void sendEmail(){
+System.out.println"";	System.out.println("");
+	}
+	
+public  void playGamell{	public void playGame(){
+System.out.printlnl"";	System.out.println("");
+	}
+	
+public voidshowPricef1	public void showPrice(){
+System.out.println" + prce;	System.out.println("" + price);
+}	}
+	
+}	}

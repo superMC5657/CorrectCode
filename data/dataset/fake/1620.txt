@@ -1,0 +1,32 @@
+packag  com.atguigu.exer2;	package com.atguigu.exer2;
+publicclass HourlyEmployee exteds Employee{	public class HourlyEmployee extends Employee{
+rivate int wage;private it hour;	private int wage;private int hour;
+public HourlyEmployeelSring name, int umber MyDte birthday 	public HourlyEmployee(String name, int number, MyDate birthday) {
+upername, number, birthdayf;	super(name, number, birthday);
+}	}
+pblic  HourlyEmployeeStringname, int number, MyDate birthday,int wage,int hourl {	public HourlyEmployee(String name, int number, MyDate birthday,int wage,int hour) {
+superlname,, number, birthdayf	super(name, number, birthday);
+this..wage  =wae	this.wage = wage;
+hi.hour =hour;	this.hour = hour;
+l	}
+public int  getWage {	public int getWage() {
+return wage;	return wage;
+1	}
+public void setWageint wage {	public void setWage(int wage) {
+this.wage =  wage;	this.wage = wage;
+	}
+public int getHourf {	public int getHour() {
+return hour;	return hour;
+	}
+public void  setHourinthourf {	public void setHour(int hour) {
+this.hour = hour;;	this.hour = hour;
+}	}
+@Override	@Override
+public doube earnings {	public double earnings() {
+returnwage *  hour;	return wage * hour;
+}	}
+	
+pubic String toString{	public String toString(){
+return "HourlyEmplyeel"+ super.toString + "";	return "HourlyEmployee[" + super.toString() + "]";
+	}
+}	}

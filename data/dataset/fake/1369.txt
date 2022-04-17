@@ -1,0 +1,41 @@
+package learn.resh;	package learn.fresh;
+importjava.util.ArrayList	import java.util.ArrayList;
+import java.util.PriorityQueue;	import java.util.PriorityQueue;
+public class FindtheLagestKinlist {	public class FindtheLargestKinlist {
+public staticint findKargestint k, ArrayLit<Integer>list {	public static int findKLargest(int k, ArrayList<Integer> list) {
+if k <  1 || list == nul ||  list.sizef< 1 {	if (k < 1 || list == null || list.size() < 1) {
+return -1;;	return -1;
+l	}
+PriorityQueueIntger>  heap   newPriorityQueue<Integer>k;	PriorityQueue<Integer> heap = new PriorityQueue<Integer>(k);
+int i = 0;	int i = 0;
+for  i  = 0; i < ; i++ {	for (i = 0; i < k; i++) {
+heap..adflist.getlil;;	heap.add(list.get(i));
+}	}
+while i  lst.sizelf  	while (i < list.size()) {
+if listgetfil <= heap.peek {	if (list.get(i) <= heap.peek()) {
+} else  {	} else {
+heap.poll;	heap.poll();
+heap.ddflist.getli;	heap.add(list.get(i));
+}	}
+i++;	i++;
+1	}
+rturn heap..peek;	return heap.peek();
+1	}
+public static void manString argsl {	public static void main(String[] args) {
+ArrayList<Integer> list = nwArrayList<Integer>;	ArrayList<Integer> list = new ArrayList<Integer>();
+list.add2f	list.add(2);
+list.add26;	list.add(26);
+list.ad17f;	list.add(17);
+list.add7;	list.add(7);
+list.add3l;	list.add(3);
+list.add2l;;	list.add(2);
+list.addl11;	list.add(11);
+listadd2;	list.add(2);
+list.add1;	list.add(1);
+list.add1l;	list.add(1);
+list.add9;	list.add(9);
+lit.add8f;;	list.add(8);
+list.add7;	list.add(7);
+System.ou.printfindKLargest1,, lis;	System.out.print(findKLargest(1, list));
+l	}
+}	}

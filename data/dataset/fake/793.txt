@@ -1,0 +1,50 @@
+impot java.util..*;	import java.util.*;
+public class  EmployeeSortTest	public class EmployeeSortTest
+{	{
+public static void mainlStringargs	public static void main(String[] args)
+{	{
+Employee  staff  = new Employee3;	Employee[] staff = new Employee[3];
+staff0 new Employee"Harry Hacker,,35000;	staff[0] = new Employee("Harry Hacker", 35000);
+staff1= new Employee"Carl Cracker", 75000;	staff[1] = new Employee("Carl Cracker", 75000);
+staf2  = new Employee"TonyTester"38000l;	staff[2] = new Employee("Tony Tester", 38000);
+Arrays.sortstaff;;	Arrays.sort(staff);
+for Employee   :staff	for (Employee e : staff)
+System.out.printlnl"name="+ egetName + ",sala=" +e.getSalryl;	System.out.println("name=" + e.getName() + ",salary=" + e.getSalary());
+}	}
+	}
+class  Employee implements Comparable<Emloyee>	class Employee implements Comparable<Employee>
+{	{
+public EmployeeString n, doule s	public Employee(String n, double s)
+{	{
+name = n;;	name = n;
+salary = s	salary = s;
+}	}
+public  String getNamef	public String getName()
+{	{
+return  name;	return name;
+1	}
+public double getSalary	public double getSalary()
+{	{
+return salary;;	return salary;
+}	}
+public  void raiseSalyldouble byPercent	public void raiseSalary(double byPercent)
+l	{
+double raise = salary *byPercent / //0/0/;/	double raise = salary * byPercent / /1/0/0/;/
+// / /  / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/ / / /}/	/ / / /}/
+/	/
+/  / /  * Copares employees by salary	/ / / * Compares employees by salary
+* @aram other another Employee object	* @param other another Employee object
+* @return a negative value if this employee has alower salary than	* @return a negative value if this employee has a lower salary than
+* otherObject, 0 if  the salariesare the same, a positive value otherwise	* otherObject, 0 if the salaries are the same, a positive value otherwise
+*	*/
+/ // /p/u/b/l/i/c/  /i/n/t/ /c/o/m/p/ar/e/T/o//E/m/p/l/o/y//e/ /o/t/h/e/r//	/ / / /p/u/b/l/i/c/ /i/n/t/ /c/o/m/p/a/r/e/T/o/(/E/m/p/l/o/y/e/e/ /o/t/h/e/r/)/
+/ / / /{/	/ / / /{/
+/ / /  / / / /i/f/ /l/s//l/a/r/y/ /</ /o/t//e/r/../s/a/l/a/r/y// /r/e/t/u/r/n/ /-/1/;/	/ / / / / / /i/f/ /(/s/a/l/a/r/y/ /</ /o/t/h/e/r/./s/a/l/a/r/y/)/ /r/e/t/u/r/n/ /-/1/;/
+/ / / / / /  /i/f///s/a/l/a/r/y/ />//o/t/h/e//./s/a/l/a/r/y/f/ /r/e/t//r/n/ /1/;/	/ / / / / / /i/f/ /(/s/a/l/a/r/y/ />/ /o/t/h/e/r/./s/a/l/a/r/y/)/ /r/e/t/u/r/n/ /1/;/
+/ / / / / / /r/e/t/u/r/n/ /0;;/	/ / / / / / /r/e/t/u/r/n/ /0/;/
+/ // /}/	/ / / /}/
+/	/
+/ /   /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e//s/a/l/a/r/y/;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+/}/	/}/

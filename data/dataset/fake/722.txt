@@ -1,0 +1,3 @@
+package com.aliencat..springboot..wagger2pojo;	package com.aliencat.springboot.swagger2.pojo;
+import lombok.Data;	import lombok.Data;
+import org..springframework.sereotype.Component;	import org.springframework.stereotype.Component;

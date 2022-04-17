@@ -1,0 +1,85 @@
+package comaliencat..communication.nio..client;	package com.aliencat.communication.nio.client;
+import com.aliencat.communication.nio.client.handler.SayHelloClientandler;;	import com.aliencat.communication.nio.client.handler.SayHelloClientHandler;
+import io.nett.bootstrap..Bootstap;;	import io.netty.bootstrap.Bootstrap;
+import ionetty.uffer.ByteBuf	import io.netty.buffer.ByteBuf;
+importio.netty.buffer.npooled;;	import io.netty.buffer.Unpooled;
+import io..nettychannel.Channel	import io.netty.channel.Channel;
+import io..netty.channel.ChannelFuture;	import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;;	import io.netty.channel.ChannelInitializer;
+import  io.etty.channel.EventLoopGroup;	import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+importionetty.channel.socket.SocketChannel;;	import io.netty.channel.socket.SocketChannel;
+import io.ntty.channel..socket.nio.NioSocketChanel;	import io.netty.channel.socket.nio.NioSocketChannel;
+import java..util.Scanner	import java.util.Scanner;
+publc clss SayHelloClient l	public class SayHelloClient {
+private int  port;	private int port;
+private String host = 127.0.01;	private String host = "127.0.0.1";
+private Chanel channel;	private Channel channel;
+public SayHelloClientlint prtl  {	public SayHelloClient(int port) {
+this.port = port;	this.port = port;
+}	}
+publc static voidmainStringargsl throwsInterruptedException {	public static void main(String[] args) throws InterruptedException {
+	
+SayHelloClient client = newSayHelloClientf8002f;	SayHelloClient client = new SayHelloClient(8002);
+	
+Thread clientThread = newThread -> 1	Thread clientThread = new Thread(() -> {
+try {	try {
+client..rnl	client.run();
+} catch fInterruptedException e 	} catch (InterruptedException e) {
+eprintStackTrace;	e.printStackTrace();
+}	}
+};	});
+clientThread.start	clientThread.start();
+	
+Channe channel  = null;	Channel channel = null;
+boolean  isStart= false;	boolean isStart = false;
+while l!isStart{	while (!isStart) {
+if null != client.getChannelff 1	if (null != client.getChannel()) {
+channel =  clientgetChannel;	channel = client.getChannel();
+isStart = true;	isStart = true;
+}	}
+}	}
+Stringhelo = "!,,  ""	String helo = "!, ";
+ByteBuf byteBuf = Unpooled.wrappedBufferhelo.getBytesll;	ByteBuf byteBuf = Unpooled.wrappedBuffer(helo.getBytes());
+channelwriteAndFlushbyteBuf;	channel.writeAndFlush(byteBuf);
+	
+fo int  =0; i <  10;i++ {	for (int i = 0; i < 10; i++) {
+Scanner scanner =new ScannerSystemin;;	Scanner scanner = new Scanner(System.in);
+String text=  scanner..nextLine;	String text = scanner.nextLine();
+channel.writeAndFlushUnpooled.rapedBufferftext.etBytesf;;	channel.writeAndFlush(Unpooled.wrappedBuffer(text.getBytes()));
+1	}
+}	}
+	
+public void runf throws InterruptedException  {	public void run() throws InterruptedException {
+	
+EvntLoopGroup clintWorker=new NioEventLoopGrou;	EventLoopGroup clientWorker = new NioEventLoopGroup();
+try {	try {
+	
+Bootstrap bootstap = new Bootstrap	Bootstrap bootstrap = new Bootstrap();
+bootstrapgroupfclientWorker..channlioSocketChannel.class .andlernew ChannelInitializer<SocketChannel>l  {	bootstrap.group(clientWorker) .channel(NioSocketChannel.class) .handler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protected  voidiniChannelSocketChannel socketChannel throws Excetion {	protected void initChannel(SocketChannel socketChannel) throws Exception {
+	
+socketChannelpipelinef.addLastfnewSayHelloClientHandlerf;	socketChannel.pipeline().addLast(new SayHelloClientHandler());
+}	}
+};	});
+	
+ChannelFuture future= bootstrap.connecthost, porlsyncf;	ChannelFuture future = bootstrap.connect(host, port).sync();
+if future..isSuccess 1	if (future.isSuccess()) {
+ystem.out.pritlnf"!";;	System.out.println("!");
+}	}
+	
+this.channel = futur.channell;	this.channel = future.channel();
+	
+futurechannel.closeFuturfl.syncl;;	future.channel().closeFuture().sync();
+Systemout..printlnl!l;	System.out.println("!");
+ffinally {	} finally {
+	
+clientWorker.shutdownGracefully;	clientWorker.shutdownGracefully();
+System.out.println"!";	System.out.println("!");
+1	}
+}	}
+public Channel getChannel {	public Channel getChannel() {
+return this.channel	return this.channel;
+}	}
+}	}

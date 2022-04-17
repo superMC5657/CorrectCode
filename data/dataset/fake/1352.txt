@@ -1,0 +1,49 @@
+package  learn.freq05;	package learn.freq05;
+public class MergeSortedArray {	public class MergeSortedArray {
+pubic void ergeintA int m, intfB,  int  n{	public void merge(int[] A, int m, int[] B, int n) {
+	
+if n != 0 && m != 0 {	if (n != 0 && m != 0) {
+int lastA = m - 1;	int lastA = m - 1;
+nt lastB =  n - 1;	int lastB = n - 1;
+int lastResult  =m + n - 1;	int lastResult = m + n - 1;
+while true  {	while (true) {
+if AlastA <= BlastB f	if (A[lastA] <= B[lastB]) {
+AlastResult = BlastB;	A[lastResult] = B[lastB];
+latReslt--;	lastResult--;
+lastB--;	lastB--;
+if lastB < 0 {	if (lastB < 0) {
+break;;	break;
+}	}
+} else ifAlastAl  > BlastB {	} else if (A[lastA] > B[lastB]) {
+AlastResult =AlastA;	A[lastResult] = A[lastA];
+lastResult--;	lastResult--;
+lastA--	lastA--;
+if lastA  0  {	if (lastA < 0) {
+break;	break;
+}	}
+}	}
+}	}
+if lastA < 0 1	if (lastA < 0) {
+for int i = lastB; i >= 0 i--  {	for (int i = lastB; i >= 0; i--) {
+AlastResult = Bflastf;	A[lastResult] = B[lastB];
+lastResult-;	lastResult--;
+lastB--	lastB--;
+}	}
+1	}
+if  lastB < 0 {	if (lastB < 0) {
+for int i  = lastB; i >=0; i-- {	for (int i = lastB; i >= 0; i--) {
+AflastResult = AlastA;	A[lastResult] = A[lastA];
+lastResult--;	lastResult--;
+lastA--;	lastA--;
+}	}
+}	}
+}	}
+if  l ==0 ||  A.length == 0 || A == null {	if (m == 0 || A.length == 0 || A == null) {
+for int i = 0; i < ; i++l  l	for (int i = 0; i < n; i++) {
+Afi = Bi;	A[i] = B[i];
+f	}
+}	}
+}	}
+ublic  static void mainfStringl args {	public static void main(String[] args) {
+}	}
+}	}

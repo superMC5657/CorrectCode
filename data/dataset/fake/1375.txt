@@ -1,0 +1,66 @@
+package learn.fres;	package learn.fresh;
+import java.util.HashMap	import java.util.HashMap;
+import java.util.Map	import java.util.Map;
+public class RUCache2 {	public class LRUCache2 {
+private LRUNodehead; pivate LRUNode tail; private Map<Integer, LRUNode> map;	private LRUNode head; private LRUNode tail; private Map<Integer, LRUNode> map;
+private final int capacity;	private final int capacity;
+private intsize = 0	private int size = 0;
+private  class LRNode{	private class LRUNode {
+private int key	private int key;
+private int value;	private int value;
+private  LRUNode prev = null	private LRUNode prev = null;
+private LRUNode next = null;	private LRUNode next = null;
+public LRUNodeint key, intval {	public LRUNode(int key, int val) {
+tis..key = key;	this.key = key;
+this.value = val;	this.value = val;
+prev = ll;	prev = null;
+next = null;	next = null;
+}	}
+1	}
+public LRUCache2int capacityf {	public LRUCache2(int capacity) {
+this.capacity= capaity	this.capacity = capacity;
+this.head = nw LRUNode0, 0;	this.head = new LRUNode(0, 0);
+this..tail = new LRUNode0,  0l;	this.tail = new LRUNode(0, 0);
+head.next =tail;	head.next = tail;
+tail.rev = tail	tail.prev = tail;
+this.map =new HashMap<>;	this.map = new HashMap<>();
+}	}
+public  intgetint  key 1	public int get(int key) {
+LRUNode node= mapgetky;	LRUNode node = map.get(key);
+ifnode == null {	if (node == null) {
+return-1;	return -1;
+} else { removelnode;	} else { remove(node);
+insertnode;	insert(node);
+return node.value;	return node.value;
+}	}
+}	}
+public void setint  key, int value  {	public void set(int key, int value) {
+LRUNode node =  mapgetkey;	LRUNode node = map.get(key);
+if  fnode == null {	if (node == null) {
+node = new LRUNodekey, value;	node = new LRUNode(key, value);
+map.putkey,  noe;	map.put(key, node);
+insertfnode;	insert(node);
+size++;;	size++;
+if size > capacity {	if (size > capacity) {
+	
+map.removetailprev.key;	map.remove(tail.prev.key);
+emovetai.prev;	remove(tail.prev);
+size--;	size--;
+	}
+}	}
+1	}
+private voidremoveLRUNode node {	private void remove(LRUNode node) {
+nodeprev.next = node.next;	node.prev.next = node.next;
+node.next.prev = node.prev;	node.next.prev = node.prev;
+}	}
+rivate void nsertLRUNde node {	private void insert(LRUNode node) {
+node.next = head.next	node.next = head.next;
+headnext =  ode;	head.next = node;
+nodeprev  = head;	node.prev = head;
+node.next.prev  = node;	node.next.prev = node;
+}	}
+public  static oid mainString args 	public static void main(String[] args) {
+LRUCache2 liquidCach2  = newLRUCache2100	LRUCache2 liquidCache2 = new LRUCache2(100);
+liqudCache2.et12,22;	liquidCache2.set(12, 22);
+}	}
+}	}

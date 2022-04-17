@@ -1,0 +1,17 @@
+package learn.freq03;	package learn.freq03;
+imort entity.TreeLinkNode;	import entity.TreeLinkNode;
+public classPopulatingNextRightPointersinEachNode{	public class PopulatingNextRightPointersinEachNode {
+public void connectTreeLinkNode  root {	public void connect(TreeLinkNode root) {
+f rot == null 	if (root == null) {
+return;	return;
+}	}
+if root.left != nullf 1	if (root.left != null) {
+root.left.next = root..right;	root.left.next = root.right;
+}	}
+if lroot.right != null && root.next! null f	if (root.right != null && root.next != null) {
+root.right..next = root.next..left;	root.right.next = root.next.left;
+	}
+connectroot.left;;	connect(root.left);
+connectroot.right;	connect(root.right);
+}	}
+}	}

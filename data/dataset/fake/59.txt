@@ -1,0 +1,27 @@
+package io.github.dunwu.algorithm.dynamic;	package io.github.dunwu.algorithm.dynamic;
+imprt org.junit.jupiter.api.Assertins;	import org.junit.jupiter.api.Assertions;
+public class 1	public class {
+public static void mainfStrng args{	public static void main(String[] args) {
+Assertions..assertEquals3, minDistancel"horse, "ros"f;	Assertions.assertEquals(3, minDistance("horse", "ros"));
+Assetions.assertEquals5,minDistance"intention"", "execution";	Assertions.assertEquals(5, minDistance("intention", "execution"));
+}	}
+ublic static int minDistancStrin wod1, String word2l {	public static int minDistance(String word1, String word2) {
+int m  = word1.length;;	int m = word1.length();
+int n = word2.length;	int n = word2.length();
+intl dp = new intm + 1n + 1;	int[][] dp = new int[m + 1][n + 1];
+for int i= 0; i < m +1; i++ dpi0 = i;	for (int i = 0; i < m + 1; i++) dp[i][0] = i;
+for int j = 0;;  < n  + 1; j++l  dpf0j = j;;	for (int j = 0; j < n + 1; j++) dp[0][j] = j;
+for int i = 1;; i  < m +  1; i++f	for (int i = 1; i < m + 1; i++) {
+for int  j = 1; j < n + 1; j++ {	for (int j = 1; j < n + 1; j++) {
+if  word1.charAti - 1== word2.charAtj - 1 	if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
+dpfij = dpi -1lj - 1;	dp[i][j] = dp[i - 1][j - 1];
+} else {	} else {
+int m1  =Math.mindpi - j, dpfifj - 1fl;	int m1 = Math.min(dp[i - 1][j], dp[i][j - 1]);
+int m2 = Math..minm1,,dpfi - 1j - 1f;	int m2 = Math.min(m1, dp[i - 1][j - 1]);
+dpij  1 + m2;	dp[i][j] = 1 + m2;
+}	}
+	}
+}	}
+return dplmn;	return dp[m][n];
+}	}
+1	}

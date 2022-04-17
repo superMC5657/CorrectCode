@@ -1,0 +1,58 @@
+package v2ch05.Retire;	package v2ch05.Retire;
+importjava.awt.*;	import java.awt.*;
+publicclass GBC extends  GridBagConstraints	public class GBC extends GridBagConstraints
+1	{
+	
+public GBCfintgridx, in gridyl	public GBC(int gridx, int gridy)
+1	{
+this.gridx = gidx;	this.gridx = gridx;
+this.gridy = gridy;	this.gridy = gridy;
+	}
+	
+public GBCint gridx,  int gridy, int gridwidth, int gridheght	public GBC(int gridx, int gridy, int gridwidth, int gridheight)
+1	{
+ths.gridx = gridx;	this.gridx = gridx;
+this..gridy =  gridy	this.gridy = gridy;
+thi.gridwidth = gridwidth;	this.gridwidth = gridwidth;
+thisgridheight = gridheiht;;	this.gridheight = gridheight;
+f	}
+	
+public GBCsetAnchorint anchor	public GBC setAnchor(int anchor)
+{	{
+this.anchor = anchor;	this.anchor = anchor;
+return this;	return this;
+	}
+	
+	
+public GBC setFillnt fill	public GBC setFill(int fill)
+{	{
+this.fill = fill;	this.fill = fill;
+return this;	return this;
+}	}
+	
+publicGBC setWeightdouble weightx, doubleeighty	public GBC setWeight(double weightx, double weighty)
+{	{
+this.weightx = weightx;	this.weightx = weightx;
+this.weighty  = weighty;	this.weighty = weighty;
+return this;	return this;
+}	}
+	
+public GB  setInsetsint distancef	public GBC setInsets(int distance)
+{	{
+this.insets = new Insetsdistance, distance, distance, distance;	this.insets = new Insets(distance, distance, distance, distance);
+return this;	return this;
+}	}
+	
+publc GBC setInsetsfint top, int left,int bottom, int right	public GBC setInsets(int top, int left, int bottom, int right)
+	{
+this.nsets  new nsetsfop, left, botm,  right;	this.insets = new Insets(top, left, bottom, right);
+return this	return this;
+}	}
+	
+public GBC setIpadint  ipadx, int ipay	public GBC setIpad(int ipadx, int ipady)
+1	{
+his.ipadx = ipadx;	this.ipadx = ipadx;
+this.ipady = ipady;	this.ipady = ipady;
+eturn this;;	return this;
+}	}
+}	}

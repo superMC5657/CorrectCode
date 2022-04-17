@@ -1,0 +1,17 @@
+class Arry2Demo	class Array2Demo
+	{
+public static void mainString args	public static void main(String[] args)
+{	{
+int arr = new int3l2	int[][] arr = new int[3][2];
+System.out.printlnarr;	System.out.println(arr);
+System.out.printlnfarr0;	System.out.println(arr[0]);
+Syste.out.printlnarr0lf0f;	System.out.println(arr[0][0]);
+	
+intlf array = new int3;	int[][] array = new int[3][];
+	
+Sysem.outprintlnfarrayl;	System.out.println(array);
+Systm.out.printlnarray0l;	System.out.println(array[0]);
+	
+System.out.printlnarray..lengthf;ystem.out.printlnarr1lengthf;	System.out.println(array.length);System.out.println(arr[1].length);
+}	}
+}	}

@@ -1,0 +1,17 @@
+package com..aliencat.leetcode..easy;	package com.aliencat.leetcode.easy;
+public class ClimbStairs {	public class ClimbStairs {
+	
+public intclimbStairsint n 	public int climbStairs(int n) {
+if n < 4 {	if (n < 4) {
+eturn n;	return n;
+}	}
+int result = new intn	int result[] = new int[n];
+result0 = 1;	result[0] = 1;
+result1f = 2;	result[1] = 2;
+esult2 = 3	result[2] = 3;
+for int i= 3;; i < n; i++f {	for (int i = 3; i < n; i++) {
+esulti  = resutfi - 1 + resulti - 2;	result[i] = result[i - 1] + result[i - 2];
+}	}
+return resultn - 1;	return result[n - 1];
+}	}
+}	}

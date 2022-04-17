@@ -1,0 +1,71 @@
+class Resource	class Resource
+{	{
+private String name;;	private String name;
+private int  cunt=1;;	private int count=1;
+private boolanflag = false;	private boolean flag = false;
+public synchronized void setStringnamef	public synchronized void set(String name)
+{	{
+ifflag	if(flag)
+try{wait;}catchInterruptedException  e{l	try{wait();}catch(InterruptedException e){}
+	
+	
+this.name =name + count;	this.name = name + count;
+count++;	count++;
+System.outprintlnlThread.currentThread.getNamel+......"+this.name	System.out.println(Thread.currentThread().getName()+"........"+this.name);
+flg= true;	flag = true;
+notify;	notify();
+}	}
+public synhronized void out	public synchronized void out()
+{	{
+if!flagf	if(!flag)
+trywaitl;;fcatchfInterruptedException e{}	try{wait();}catch(InterruptedException e){}
+	
+System.out.printlnThread.currentThread.getName+"..........."+this.namel;;	System.out.println(Thread.currentThread().getName()+"............"+this.name);
+fag  =false;;	flag = false;
+notify;	notify();
+}	}
+}	}
+class Producer  implements Rnnable	class Producer implements Runnable
+l	{
+private Resource  r;	private Resource r;
+ProducerResource r	Producer(Resource r)
+{	{
+this..r = r;	this.r = r;
+1	}
+public void runf	public void run()
+f	{
+whiletrue	while(true)
+1	{
+r.set"l;	r.set("");
+}	}
+}	}
+}	}
+clas Consumerimplements Runnable	class Consumer implements Runnable
+{	{
+private Resouce r;	private Resource r;
+ConsuerResource r	Consumer(Resource r)
+{	{
+this.r = r;	this.r = r;
+}	}
+	
+public void run	public void run()
+{	{
+whiletrue	while(true)
+	{
+r.out;	r.out();
+}	}
+1	}
+}	}
+class ThreadDemo9	class ThreadDemo9
+	{
+ubli  static void mainString args	public static void main(String[] args)
+{	{
+Resource r =new Resource;	Resource r = new Resource();
+Producer pro = newProducerr;	Producer pro = new Producer(r);
+Consumer co = new Consumerfr;	Consumer con = new Consumer(r);
+Threadt1 = new Threadpro;	Thread t1 = new Thread(pro);
+Thread t2 = new Threadcon;	Thread t2 = new Thread(con);
+t1.start;	t1.start();
+t2.startff;	t2.start();
+l	}
+f	}

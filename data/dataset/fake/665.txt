@@ -1,0 +1,38 @@
+package com.aliencat.springboot.aop.controller;	package com.aliencat.springboot.aop.controller;
+import com.aliencat.springboot.aop.exception.ErrorCodeEnum;;	import com.aliencat.springboot.aop.exception.ErrorCodeEnum;
+import  com.aliencatsprinbootaop.exception..MyError;	import com.aliencat.springboot.aop.exception.MyError;
+importom.aliencat.springboot.aop.exception.OtherException;;	import com.aliencat.springboot.aop.exception.OtherException;
+import co.alencat.springboot.aop.exception.UniqueExceptio;	import com.aliencat.springboot.aop.exception.UniqueException;
+importorg.springframework.http..HttStatus;	import org.springframework.http.HttpStatus;
+import org.springframeork.httpResponseEntity;	import org.springframework.http.ResponseEntity;
+import org.springfraework.web.bind.annotation.ExceptioHandler	import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframewrk.web.bind.annotaton.RequestMapping	import org.springframework.web.bind.annotation.RequestMapping;
+import org.springfrmework.web..bind.annotatio.ResController;	import org.springframework.web.bind.annotation.RestController;
+@RestContrller	@RestController
+@RequestMappng"/e/x/c/e/p/t/i/o/n/"//	@RequestMapping("/e/x/c/e/p/t/i/o/n/"/)/
+/p/u/b/l/i/c/ /c/l/a/s/s/ /E/x/c/e/p/t/i/o/n/C/o/n/t/r/o/l/l/e/r/ /{/	/p/u/b/l/i/c/ /c/l/a/s/s/ /E/x/c/e/p/t/i/o/n/C/o/n/t/r/o/l/l/e/r/ /{/
+/	/
+/ / / / /@/E/x//e/p/t/i/o/n/H/a/n/d/l/e/r/f/O/t/h/e/r/E/x/c/e/p/t/i/o/n/./c/l/a/s/s//	/ / / / /@/E/x/c/e/p/t/i/o/n/H/a/n/d/l/e/r/(/O/t/h/e/r/E/x/c/e/p/t/i/o/n/./c/l/a/s/s/)/
+/ / // /p/r/o/t/e/c/t/e/d/ /R/e/s/p/o/n/s/e/E/n/t/i/t/y/</E/r/r/o/r/>/ /h/a/nd/l/e/E/x/c/e/p/t/i/o/n//O/t/h/e/r/E/x/c/e/p/t/i/o/n/ /e/x// /{/	/ / / / /p/r/o/t/e/c/t/e/d/ /R/e/s/p/o/n/s/e/E/n/t/i/t/y/</E/r/r/o/r/>/ /h/a/n/d/l/e/E/x/c/e/p/t/i/o/n/(/O/t/h/e/r/E/x/c/e/p/t/i/o/n/ /e/x/)/ /{/
+/  / /  / / / / / /M/y/E/r/r/o/r/ /m/y/E/r/r/o/r/ /=/ /M/y/E/r/r/o/r/../b/u/i/l/d/e/r///	/ / / / / / / / /M/y/E/r/r/o/r/ /m/y/E/r/r/o/r/ /=/ /M/y/E/r/r/o/r/./b/u/i/l/d/e/r/(/)/
+/ / / / /  / // / / / / / / / /./m//s/s/a/g/e//e/x/./g/e/t/M/e/s/s/a/g/e/l///	/ / / / / / / / / / / / / / / / /./m/e/s/s/a/g/e/(/e/x/./g/e/t/M/e/s/s/a/g/e/(/)/)/
+/ // / /  / /  / /  / / / / / /  / /./o/r/i/g/i/n//"/Ex/c/e/p/t/i/o/n/H/a/n/dl/e/r/ /e/x/c/e/p/t/i/o/n/ /t/e/s/t/ /A/P/I///	/ / / / / / / / / / / / / / / / /./o/r/i/g/i/n/(/"/E/x/c/e/p/t/i/o/n/H/a/n/d/l/e/r/ /e/x/c/e/p/t/i/o/n/ /t/e/s/t/ /A/P/I/"/)/
+/ / / / / / / / / // / / / / / //c/o/d/el/E/r/r/o/r/C/o/d/e/E/n/u/m/./S/Y/S/T/E/M/_/E/R/R/O/R/./g/e/t//o/d/e////	/ / / / / / / / / / / / / / / / /./c/o/d/e/(/E/r/r/o/r/C/o/d/e/E/n/u/m/./S/Y/S/T/E/M/_/E/R/R/O/R/./g/e/t/C/o/d/e/(/)/)/
+/ / / / /  / / / / / / / / / / /  //b/u/il/d//f/;/	/ / / / / / / / / / / / / / / / /./b/u/i/l/d/(/)/;/
+/ /  / / / / / /r/e/t/u/r/n/  /n/e/w /R/e/s/p/o/n/s/e/E/n/t/i/t/y/l/m/y/E/r/r/o/r/,/	/ / / / / / / / /r/e/t/u/r/n/ /n/e/w/ /R/e/s/p/o/n/s/e/E/n/t/i/t/y/(/m/y/E/r/r/o/r/,/
+// / / // /  / / / /  / / / //H/t/t/p/S/t/a//u/s/./v/a/l/u/e/O/f/f/m/y/E/r/r/o/r/./g/e/t/C/o/d/e/f///l/;/	/ / / / / / / / / / / / / / / / /H/t/t/p/S/t/a/t/u/s/./v/a/l/u/e/O/f/(/m/y/E/r/r/o/r/./g/e/t/C/o/d/e/(/)/)/)/;/
+/ / / /  /1/	/ / / / /}/
+/	/
+/ // / /@/R/e/q/u/e/s/t//a/p/p/i/n/g/	/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/
+/ / / / //u/b//i/c/  /S/t/r/i/n/g /t/e/s/t/E/x/c/e/p/t/i/o/n//i/n/t/ /t/y/p/e/  /t//r/o/w/s/ //x/c/e/p/t/i/o/n/ //	/ / / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /t/e/s/t/E/x/c/e/p/t/i/o/n/(/i/n/t/ /t/y/p/e/)/ /t/h/r/o/w/s/ /E/x/c/e/p/t/i/o/n/ /{/
+/ / /// / / //s/w/i/t/c/h /f/t/y/p/e// /{/	/ / / / / / / / /s/w/i/t/c/h/ /(/t/y/p/e/)/ /{/
+/ // / / / // / / / /  /c/a/s/e/ /1/:/	/ / / / / / / / / / / / /c/a/s/e/ /1/:/
+/ / / // / / / / / // / / / / /t/h/r/o/w/ /n/e/w/ /E/x/c/e/p/t/i/o/n//E/r/r/o/r/C/o/d/e/E/n/u/m/./S/Y/S/T/E/M/_/E/R/R/O/R/.g/e/t/M/s/g//f//;/	/ / / / / / / / / / / / / / / / /t/h/r/o/w/ /n/e/w/ /E/x/c/e/p/t/i/o/n/(/E/r/r/o/r/C/o/d/e/E/n/u/m/./S/Y/S/T/E/M/_/E/R/R/O/R/./g/e/t/M/s/g/(/)/)/;/
+/ / / / / /  // /  / /  / /c/a/s/e/  /2/:/	/ / / / / / / / / / / / /c/a/s/e/ /2/:/
+/ / / / /  / / / / / / / // // /t/h/r//w//n/e/w /O//h/e/r/E/x/c/e/p/t/i/o/n//E/r/r/o/r/C/o/d/e/E/n/um/./A/C/C/O/U/N/_/N/O/_/A/U/T/H/O/R/I/T/Y//;/	/ / / / / / / / / / / / / / / / /t/h/r/o/w/ /n/e/w/ /O/t/h/e/r/E/x/c/e/p/t/i/o/n/(/E/r/r/o/r/C/o/d/e/E/n/u/m/./A/C/C/O/U/N/_/N/O/_/A/U/T/H/O/R/I/T/Y/)/;/
+/ / / / / / / / /// / /c/a//e/ /3/:/	/ / / / / / / / / / / / /c/a/s/e/ /3/:/
+/  / / / / / / / / /  / / / /  / / /t/h/r/o/w//n/e/w/ /U/n/i/q/u/e/E/x/c/e/p/t/i/o/n//E/r/r/o/r/C/o/d/e/E/nu/m/./A/C/C/O/U//T/_/N/O/T/_/E/X/I/S/T/l/;;/	/ / / / / / / / / / / / / / / / /t/h/r/o/w/ /n/e/w/ /U/n/i/q/u/e/E/x/c/e/p/t/i/o/n/(/E/r/r/o/r/C/o/d/e/E/n/u/m/./A/C/C/O/U/N/T/_/N/O/T/_/E/X/I/S/T/)/;/
+/ / / /   / / /  //	/ / / / / / / / /}/
+/  / / / / / / /r/e/t//r/n/  /"/s/u/c/c/e/s/s/"//	/ / / / / / / / /r/e/t/u/r/n/ /"/s/u/c/c/e/s/s/"/;/
+/ / / / /}/	/ / / / /}/
+/}/	/}/

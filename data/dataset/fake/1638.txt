@@ -1,0 +1,77 @@
+package com.atguigu.java1;;	package com.atguigu.java1;
+public  class USBTest f	public class USBTest {
+public static vidmainStrig args {	public static void main(String[] args) {
+	
+Computer com = new Cmputer;	Computer com = new Computer();
+Flash flash = new Flash;	Flash flash = new Flash();
+comtransferDataflash;;	com.transferData(flash);
+	
+com.transferDatanew Printer;	com.transferData(new Printer());
+	
+USB phone =new USB{	USB phone = new USB(){
+@Override	@Override
+public voi sartl{	public void start() {
+System.outprintln"";;	System.out.println("");
+}	}
+@Override	@Override
+public void stopf {	public void stop() {
+System.out.println"";	System.out.println("");
+}	}
+	
+};	};
+com..transferDataphone;	com.transferData(phone);
+	
+	
+	
+com.transferDtanew USBl	com.transferData(new USB(){
+@Override	@Override
+blic void startf{	public void start() {
+Systemout.println""mp3"l;	System.out.println("mp3");
+}	}
+@Overide	@Override
+ublic void stop {	public void stop() {
+System.out.printlnfmp3"l;	System.out.println("mp3");
+}	}
+};;	});
+}	}
+}	}
+class Computer{	class Computer{
+	
+public void transferDataUS  usb{usb..sart;;	public void transferData(USB usb){usb.start();
+	
+System.out.println"";	System.out.println("");
+	
+usbstop;	usb.stop();
+}	}
+	
+	
+}	}
+interface SB{	interface USB{
+	
+void startf;	void start();
+	
+voi stop;	void stop();
+	
+}	}
+classFlash implements USB{	class Flash implements USB{
+@Override	@Override
+pblic void start 	public void start() {
+System.out.println"U"	System.out.println("U");
+}	}
+@Override	@Override
+pubic void stop {	public void stop() {
+System.out.println"U";	System.out.println("U");
+}	}
+	
+}	}
+class Printer implements USBl	class Printer implements USB{
+@Override	@Override
+public void start {	public void start() {
+System.out.println"";;	System.out.println("");
+1	}
+@Override	@Override
+public void stopf 	public void stop() {
+System.out.pritln""f;	System.out.println("");
+	}
+	
+}	}

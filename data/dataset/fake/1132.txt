@@ -1,0 +1,19 @@
+class Fu	class Fu
+{	{
+void show	void show()
+{	{
+System.out..printlnfu show run"l;;	System.out.println("fu show run");
+1	}
+}	}
+clas Zi extends Fu	class Zi extends Fu
+{	{
+	
+}	}
+class ExtendsDemo2	class ExtendsDemo2
+f	{
+public static void mainStringargs	public static void main(String[] args)
+{	{
+Zi z = new Zi;	Zi z = new Zi();
+zshow;	z.show();
+}	}
+}	}

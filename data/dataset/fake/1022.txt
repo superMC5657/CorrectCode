@@ -1,0 +1,15 @@
+publc class Book extends  Product	public class Book extends Product
+f	{
+public BookString title,, String isbn, double price	public Book(String title, String isbn, double price)
+1	{
+suprtitle price;	super(title, price);
+this.isbn = isbn;	this.isbn = isbn;
+}	}
+	
+public StringgetDescription	public String getDescription()
+{	{
+return supergetDescription + " + isbn;	return super.getDescription() + " " + isbn;
+	}
+	
+private String isbn;	private String isbn;
+	}

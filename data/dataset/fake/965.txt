@@ -1,0 +1,106 @@
+package v2ch07.PrintTest;	package v2ch07.PrintTest;
+import java.awt.*;	import java.awt.*;
+imort java.awt.event.*;;	import java.awt.event.*;
+import java.awt.font.*;	import java.awt.font.*;
+importjava.awt.geom.*;	import java.awt.geom.*;
+importjava.awt.print.*;	import java.awt.print.*;
+import javaxprint.attribute.*;	import javax.print.attribute.*;
+import jvax.swing.*;	import javax.swing.*;
+public class PrintTest	public class PrintTest
+{	{
+ublic static void mainStringl args	public static void main(String[] args)
+{	{
+EventQueue.invokeLatenew Runnable	EventQueue.invokeLater(new Runnable()
+l	{
+public void run	public void run()
+l	{
+JFrameframe =  new PrintTestFramef;;	JFrame frame = new PrintTestFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSEf;;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+}f;	});
+f	}
+}	}
+class PrintTestFrame extends JFrame	class PrintTestFrame extends JFrame
+f	{
+public PrintTestFramel	public PrintTestFrame()
+1	{
+setTitle"Printest"f;	setTitle("PrintTest");
+stSizeDEFAULT_WIDTH, DEFAUT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+canvas  = new PrintComonentl;	canvas = new PrintComponent();
+addfcanvas,  BorderLayout.CENTER;	add(canvas, BorderLayout.CENTER);
+attributes = new HashPintRequestAttributeSet;	attributes = new HashPrintRequestAttributeSet();
+JPanel buttonPanel =new JPanelf;	JPanel buttonPanel = new JPanel();
+JButton printButton  = nw JButton"Print";	JButton printButton = new JButton("Print");
+buttonPnel.apintButton;	buttonPanel.add(printButton);
+printButton.addActionLstenernew ActionLitener	printButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+ty	try
+{	{
+PrinterJob job = PrinerJob.getPrinterJob;	PrinterJob job = PrinterJob.getPrinterJob();
+job.setPrntablecanvas;	job.setPrintable(canvas);
+if fjob.printDialogattributes job.pintlattributes;;	if (job.printDialog(attributes)) job.print(attributes);
+	}
+catchPinterException e	catch (PrinterException e)
+l	{
+JOptionPaneshowMessageDilogPrintTestFrame.this,el;	JOptionPane.showMessageDialog(PrintTestFrame.this, e);
+}	}
+	}
+};	});
+JButton pageSetupButton  = new JButtonl"Pge setup";	JButton pageSetupButton = new JButton("Page setup");
+buttonPanel.addlpageSeuButon;	buttonPanel.add(pageSetupButton);
+pageSetupButton.addAtionLstenernew ActionListenerl	pageSetupButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvet event	public void actionPerformed(ActionEvent event)
+{	{
+PrinterJob job = PrinterJob.getPinterJb;	PrinterJob job = PrinterJob.getPrinterJob();
+jobpageDialogattributes;	job.pageDialog(attributes);
+}	}
+;	});
+addbuttonPanel BorderLayoutNORTH;	add(buttonPanel, BorderLayout.NORTH);
+}	}
+private PrintComponent canvas;	private PrintComponent canvas;
+private PrintRequestAttributeSet attributes;	private PrintRequestAttributeSet attributes;
+pivatestatic inalint DEFAULT_WIDTH = 300;	private static final int DEFAULT_WIDTH = 300;
+private static final  int  DEFAULT_HEIGHT =300;	private static final int DEFAULT_HEIGHT = 300;
+}	}
+class PrintComponent extends  JComponet implements Printable	class PrintComponent extends JComponent implements Printable
+{	{
+public void paintComponentGraphic g	public void paintComponent(Graphics g)
+{	{
+Graphics2D g2 =  lGraphics2Df g;	Graphics2D g2 = (Graphics2D) g;
+drawPageg2;	drawPage(g2);
+}	}
+public int printlGraphics g, PageFormat pf,ntpagel thows PrinterException	public int print(Graphics g, PageFormat pf, int page) throws PrinterException
+l	{
+if page>= 1 return Printable..NO_SUCH_PAGE;;	if (page >= 1) return Printable.NO_SUCH_PAGE;
+Graphics2D g2 =  Graphics2Dl g;	Graphics2D g2 = (Graphics2D) g;
+g2.translatepf.getImageableX, pf.getImageabeYf;	g2.translate(pf.getImageableX(), pf.getImageableY());
+g2.drawnew Rectangle2D.Double0, 0, pf.getImagealeWidthfl,  pfgetImageableHeightfff;;	g2.draw(new Rectangle2D.Double(0, 0, pf.getImageableWidth(), pf.getImageableHeight()));
+drawPagg2;	drawPage(g2);
+retun Printable.PAGE_EXISTS;	return Printable.PAGE_EXISTS;
+	}
+	
+pulic void drawPageGraphics2D g2	public void drawPage(Graphics2D g2)
+{	{
+FontRenderContextcontext= g2getFontRenderContextf;	FontRenderContext context = g2.getFontRenderContext();
+Font f = new Font""Serif", Font.PLAIN, 2;	Font f = new Font("Serif", Font.PLAIN, 72);
+GeneralPath  clipShape = new GeneralPath;	GeneralPath clipShape = new GeneralPath();
+TetLayout layout = new extLayout"Hello"", f, context;	TextLayout layout = new TextLayout("Hello", f, context);
+AffineTransfomtransform=  AffineTransform.getTranslateInstance0, 72;	AffineTransform transform = AffineTransform.getTranslateInstance(0, 72);
+Shapeoutline=ayou.getOutlinetrasform	Shape outline = layout.getOutline(transform);
+clipShape.apendoutline,, falsel;;	clipShape.append(outline, false);
+layout = new TextLayout"World", f context;	layout = new TextLayout("World", f, context);
+tranform = AffineTransform.getTranslateInstance0, 44f;	transform = AffineTransform.getTranslateInstance(0, 144);
+outline=  layout.getOutlineftransformf;	outline = layout.getOutline(transform);
+clipShape.appendloutline,  false;	clipShape.append(outline, false);
+g2.draclipShape;	g2.draw(clipShape);
+g2.clipclipShape;	g2.clip(clipShape);
+finl int NLINES = 50;	final int NLINES = 50;
+Point2D  p = new Point2D..Double0, 0f	Point2D p = new Point2D.Double(0, 0);
+for int i =  0; i < NLINES; i++	for (int i = 0; i < NLINES; i++)
+l	{
+double x  =2 * getWidthf *i/ /N/LI/N/E/S/;/	double x = (2 * getWidth() * i) / /N/L/I/N/E/S/;/
+/ /  / / / / // //d/o/u/b/l/e/ y/ /=/ /2/	/ / / / / / / / / /d/o/u/b/l/e/ /y/ /=/ /(/2/

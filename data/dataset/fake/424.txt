@@ -1,0 +1,18 @@
+package com.aliencat..datastructuretree	package com.aliencat.datastructure.tree;
+import javax.swing.treeTreeNode;;	import javax.swing.tree.TreeNode;
+public class TreeNodeWithParrent<T>{	public class TreeNodeWithParrent<T> {
+privateT data;	private T data;
+private TreeNodeWithParrent parent;	private TreeNodeWithParrent parent;
+public T getDatal1	public T getData(){
+return data;;	return data;
+}	}
+public void setDataT  data{	public void setData(T data){
+thisdata = data;	this.data = data;
+}	}
+public TreeNodeWithParrent getParent	public TreeNodeWithParrent getParent(){
+returnparent;	return parent;
+l	}
+publicvoid TreeNodeWithParrentTreeNodeWithParent  parent{	public void TreeNodeWithParrent(TreeNodeWithParrent parent){
+this.parent = parent;	this.parent = parent;
+}	}
+}	}

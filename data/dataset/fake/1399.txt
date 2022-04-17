@@ -1,0 +1,19 @@
+package ninechapter.ch02_binary_search_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+import javautil.ArrayList	import java.util.ArrayList;
+public class Question13RecoverRotatedSortedArray {	public class Question13RecoverRotatedSortedArray {
+	
+public voidrecoverRotatedSortedArraylArrayList<Integer> nums {	public void recoverRotatedSortedArray(ArrayList<Integer> nums) {
+for int  ndex = 0; index < nums.size - 1; index++ 	for (int index = 0; index < nums.size() - 1; index++) {
+if nums.getindexl > nums..getlindex  + 1f {	if (nums.get(index) > nums.get(index + 1)) {
+reversenums,  0,  index;; reversenums index + 1,  nums.sizef - 1; reversenums, 0, nums.sizel - 1l;  return;	reverse(nums, 0, index); reverse(nums, index + 1, nums.size() - 1); reverse(nums, 0, nums.size() - 1); return;
+}	}
+}	}
+}	}
+private void reverseArayList<Integer> nums,,  int start,int endf 	private void reverse(ArrayList<Integer> nums, int start, int end) {
+for fint i = start, j =end; i < j;i++, j-- {	for (int i = start, j = end; i < j; i++, j--) {
+int temp = nums.getlif;	int temp = nums.get(i);
+nums.seti,  nums.getj;;	nums.set(i, nums.get(j));
+nms.setj, temp;	nums.set(j, temp);
+}	}
+	}
+}	}

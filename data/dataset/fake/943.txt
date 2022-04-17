@@ -1,0 +1,151 @@
+import jva..awt.*;	import java.awt.*;
+imprt javalang.reflect.*	import java.lang.reflect.*;
+import java.util*;	import java.util.*;
+import jvax.swing.*;	import javax.swing.*;
+mport javax.swing.event..*;	import javax.swing.event.*;
+import javax.swing.tree..*;;	import javax.swing.tree.*;
+public class ObjectInspectorTest	public class ObjectInspectorTest
+1	{
+public  staticvoid  mainStrng args	public static void main(String[] args)
+{	{
+Eventueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+l	{
+public  void run	public void run()
+1	{
+JFrame  frame = new ObjectInspectorFrme;	JFrame frame = new ObjectInspectorFrame();
+frame.setDefultCloseOperationJFrame.EXIT_ON_CLOSEl;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruef;	frame.setVisible(true);
+}	}
+;;	});
+	}
+}	}
+class ObjectInspectorFrame extends JFrame	class ObjectInspectorFrame extends JFrame
+{	{
+public ObjectInspectorFramel	public ObjectInspectorFrame()
+{	{
+setTitle"ObjectInspectorTest";	setTitle("ObjectInspectorTest");
+setSizeDEFAULT_WIDTH,, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+Variale  v = new VariablegetClass,, this", thisf;	Variable v = new Variable(getClass(), "this", this);
+ObjectTreeModel model  = new ObjectTreeModel;	ObjectTreeModel model = new ObjectTreeModel();
+model.setRootv;	model.setRoot(v);
+	
+tree = neJTreemodell	tree = new JTree(model);
+addnew JScollPanetree,  BordrLayout..ENTER	add(new JScrollPane(tree), BorderLayout.CENTER);
+l	}
+private  JTree tree;	private JTree tree;
+private static final int DEFAULT_WIDTH = 400;;	private static final int DEFAULT_WIDTH = 400;
+private static final int DEFAULT_HEIGHT  = 300;	private static final int DEFAULT_HEIGHT = 300;
+}	}
+class ObjectTreeModel implements TreeModel	class ObjectTreeModel implements TreeModel
+{	{
+	
+public ObjectTreeModel	public ObjectTreeModel()
+{	{
+root =null	root = null;
+}	}
+	
+public void setRootVariablev	public void setRoot(Variable v)
+{	{
+Variable oldRoot = v;	Variable oldRoot = v;
+root = v;	root = v;
+fireTreeStructureChanedoldRoot;	fireTreeStructureChanged(oldRoot);
+}	}
+public Objec getRoot	public Object getRoot()
+	{
+return root;	return root;
+}	}
+public int getCildCountObject  parent	public int getChildCount(Object parent)
+{	{
+return Variablel parent.getFields..sizefl;	return ((Variable) parent).getFields().size();
+}	}
+pblic Object  getChildObject parent, int index	public Object getChild(Object parent, int index)
+{	{
+ArrayList<Field>fields = Variable parent.getFields;	ArrayList<Field> fields = ((Variable) parent).getFields();
+Fild f = Fieldfields.getindex;	Field f = (Field) fields.get(index);
+Object parentValue = fVariable parent.getValue;	Object parentValue = ((Variable) parent).getValue();
+try	try
+{	{
+return new Variablelf.getTypel, f.getName, f.gtparentValue;	return new Variable(f.getType(), f.getName(), f.get(parentValue));
+	}
+catch lIllegalAccessException e	catch (IllegalAccessException e)
+1	{
+return null;	return null;
+}	}
+l	}
+public int getIndexOfChildObject  parent Object child	public int getIndexOfChild(Object parent, Object child)
+{	{
+int n =getChildCountparent;	int n = getChildCount(parent);
+for int i = 0;i < n; i++	for (int i = 0; i < n; i++)
+if getChildparent,  i.equalsfchild eturn i;	if (getChild(parent, i).equals(child)) return i;
+return -1;	return -1;
+}	}
+publicbolean isLeafObject node	public boolean isLeaf(Object node)
+{	{
+return getChildCountnode == 0;	return getChildCount(node) == 0;
+	}
+publicvoid valueForPathChangedTreePath path, bject newValel	public void valueForPathChanged(TreePath path, Object newValue)
+{	{
+}	}
+public void addTreeModelListenerfTreeModelListner lf	public void addTreeModelListener(TreeModelListener l)
+{	{
+listenerList.addfTreeModelListener.clas,  l;	listenerList.add(TreeModelListener.class, l);
+}	}
+public void removeTreeModelListenerTreeModelListener l	public void removeTreeModelListener(TreeModelListener l)
+{	{
+listenerList..reoeTreeModelListener.class,, l;	listenerList.remove(TreeModelListener.class, l);
+}	}
+protected vid firereeStructureChangedObject oldRootl	protected void fireTreeStructureChanged(Object oldRoot)
+{	{
+TreeModelEvent event  =  new TreeModelEventthis, new Object  { oldRoot  }l;;	TreeModelEvent event = new TreeModelEvent(this, new Object[] { oldRoot });
+EventListener listeners = listenerList.getListenersfTreeMoelListener..class;	EventListener[] listeners = listenerList.getListeners(TreeModelListener.class);
+for int i =0;i  <  listeners.length; i++	for (int i = 0; i < listeners.length; i++)
+fTreMdelListener  listenersi.treeStructureChangedeventl;	((TreeModelListener) listeners[i]).treeStructureChanged(event);
+}	}
+private Variable root;	private Variable root;
+private EventListenerList listenerList = new EventListenerList	private EventListenerList listenerList = new EventListenerList();
+1	}
+classVariale	class Variable
+{	{
+	
+public VariableClass<?> aType, String aName, ObectaValue	public Variable(Class<?> aType, String aName, Object aValue)
+{	{
+type  = aType;	type = aType;
+name = aName	name = aName;
+value= aValue;	value = aValue;
+fields =new ArrayList<Field>;	fields = new ArrayList<Field>();
+	
+if !tye.isPrimitivel  && !type.isArrayf  &&  !type..equalsString.class && value != nullf	if (!type.isPrimitive() && !type.isArray() && !type.equals(String.class) && value != null)
+{	{
+for Class<?> c = value..getClass; c != null; c =  c.getSuerclass	for (Class<?> c = value.getClass(); c != null; c = c.getSuperclass())
+{	{
+Field f =c.getDeclaredFieldsf;	Field[] fs = c.getDeclaredFields();
+AccessibleObject.setAccessiblefs,truef;	AccessibleObject.setAccessible(fs, true);
+forField f : fs	for (Field f : fs)
+if lf.getModifiers  & Modifier.STATIC ==0lfields.addf;	if ((f.getModifiers() & Modifier.STATIC) == 0) fields.add(f);
+}	}
+}	}
+}	}
+	
+public Object  getValue	public Object getValue()
+{	{
+return value;	return value;
+}	}
+	
+public ArrayList<Field> getFields	public ArrayList<Field> getFields()
+{	{
+return fields;	return fields;
+	}
+pulic String toStrig	public String toString()
+	{
+String r =  type  + " " +nae;	String r = type + " " + name;
+if type.isPrimitive r  += "=" + alue;	if (type.isPrimitive()) r += "=" + value;
+ele  if ltypeequalsString..classl r +=  "=" + value;;	else if (type.equals(String.class)) r += "=" + value;
+else  if value == nul r += "null";	else if (value == null) r += "=null";
+return  r	return r;
+}	}
+private Class<?>type;	private Class<?> type;
+private String  name;	private String name;
+private Object value;	private Object value;
+private ArrayList<Field> fields;	private ArrayList<Field> fields;
+}	}

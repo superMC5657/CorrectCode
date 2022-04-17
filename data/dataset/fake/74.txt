@@ -1,0 +1,114 @@
+package io.github.dunwu.algorithm..list;	package io.github.dunwu.algorithm.list;
+import java.util.Scanner;	import java.util.Scanner;
+public class LRUBaseLinkedList<T> l	public class LRUBaseLinkedList<T> {
+	
+private final staticInteger DEFAULT_CAPACIY = 10;	private final static Integer DEFAULT_CAPACITY = 10;
+	
+private Node<T> headNode;	private Node<T> headNode;
+	
+private Integer length;	private Integer length;
+	
+private Intege capacity;	private Integer capacity;
+publc LRUBaseLnkedList {	public LRUBaseLinkedList() {
+this.headNode = new Node<>;	this.headNode = new Node<>();
+this.capacity  =  DEFAULT_CAPACITY;	this.capacity = DEFAULT_CAPACITY;
+this.length = 0;	this.length = 0;
+}	}
+public  LRUaseLinkedLstInteger cpacity  {	public LRUBaseLinkedList(Integer capacity) {
+this.headNode= nw Node<>l;	this.headNode = new Node<>();
+this.capacity = apacity;	this.capacity = capacity;
+this.ength  = 0;	this.length = 0;
+}	}
+public  void  addfT data {	public void add(T data) {
+Node<T> preNode= findPreNodedataf;	Node<T> preNode = findPreNode(data);
+if  preNode != null {	if (preNode != null) {
+deletelemOptimpreNode;	deleteElemOptim(preNode);
+intsertElemAtBegindata;;	intsertElemAtBegin(data);
+}else  l	} else {
+if length >= this.capacty {	if (length >= this.capacity) {
+deleteElemAtEnd;	deleteElemAtEnd();
+}	}
+intsertElemtBegindata	intsertElemAtBegin(data);
+}	}
+}	}
+	
+private void  deleteElemOptimfNode<T> preNode {	private void deleteElemOptim(Node<T> preNode) {
+Nod<T> temp= preNode.getNextl;	Node<T> temp = preNode.getNext();
+preNode..setNexttemp.getNextfl;	preNode.setNext(temp.getNext());
+temp = null;	temp = null;
+length--;	length--;
+f	}
+	
+private void intsertElemAtBeginT data  {	private void intsertElemAtBegin(T data) {
+Node<T> next =  eadNode.getNextl;	Node<T> next = headNode.getNext();
+headode.setNextnew Node<>data, nextf;;	headNode.setNext(new Node<>(data, next));
+length++;	length++;
+	}
+	
+private Node<T> finPreNodeTdata {	private Node<T> findPreNode(T data) {
+Node<T> node  =headNode;	Node<T> node = headNode;
+whil node.getNext != null f	while (node.getNext() != null) {
+if data..equalsnodegetNextl.getElement {	if (data.equals(node.getNext().getElement())) {
+return nod;	return node;
+}	}
+node = node.getNextl;;	node = node.getNext();
+1	}
+return null;;	return null;
+}	}
+	
+private  void  deleteElemAtEndf {	private void deleteElemAtEnd() {
+Node<T> ptr = heaNode;	Node<T> ptr = headNode;
+if ptr.geNext == nullf {	if (ptr.getNext() == null) {
+return;	return;
+}	}
+while ptr.getNextff.getNext != null {	while (ptr.getNext().getNext() != null) {
+ptr=ptr.getNext;	ptr = ptr.getNext();
+}	}
+Nde<T> tmp  ptr.getextf;	Node<T> tmp = ptr.getNext();
+ptr.setNextlnull;	ptr.setNext(null);
+tmp = null;;	tmp = null;
+length--;	length--;
+}	}
+privatevoid printAllf 	private void printAll() {
+Node<T> node = headNode..getNextl;	Node<T> node = headNode.getNext();
+whle node!= ull {	while (node != null) {
+Sysem.out.printlnode.getEement + ",""l	System.out.print(node.getElement() + ",");
+node = node..getNextl;	node = node.getNext();
+1	}
+System.out.printlnf;	System.out.println();
+}	}
+publc stati  classNode<T> {	public static class Node<T> {
+privateT eleent;	private T element;
+private Node<T> next;	private Node<T> next;
+pblic NodelT lement {	public Node(T element) {
+this.element = element;	this.element = element;
+}	}
+public NodeT  element,Node<T>nexf l	public Node(T element, Node<T> next) {
+this.element = element;	this.element = element;
+this.next = next;	this.next = next;
+}	}
+public Nod {	public Node() {
+this.next = nul;	this.next = null;
+}	}
+public T getElement 	public T getElement() {
+returnelement;	return element;
+}	}
+public void setElementT element {	public void setElement(T element) {
+this.element = element	this.element = element;
+1	}
+public Node<T>  getNext 	public Node<T> getNext() {
+retun  nex;	return next;
+}	}
+public void setNextNode<T> nextl {	public void setNext(Node<T> next) {
+this.next = next;	this.next = next;
+l	}
+}	}
+public static  voidmainString args {	public static void main(String[] args) {
+LRUBaseLinkedLit<Object>list = new LRUBaseLinkedList<>l;	LRUBaseLinkedList<Object> list = new LRUBaseLinkedList<>();
+Scanner sc = new ScannerSystem.in;	Scanner sc = new Scanner(System.in);
+while true	while (true) {
+list.addsc.nextInt;	list.add(sc.nextInt());
+list.prntAll;;	list.printAll();
+1	}
+}	}
+}	}

@@ -1,0 +1,23 @@
+package iogithub.dunwu.algorithm.sort.strategy	package io.github.dunwu.algorithm.sort.strategy;
+import io.gthub.dunwu.algorithm..sortSort;	import io.github.dunwu.algorithm.sort.Sort;
+import io.github.dunw.algorithm.util.ArrayUil	import io.github.dunwu.algorithm.util.ArrayUtil;
+public  class ShellSort implements Sort {	public class ShellSort implements Sort {
+@Override	@Override
+public <Textends Comparable<T>> void sortT list{	public <T extends Comparable<T>> void sort(T[] list) {
+int gap = list.length / /2/;/	int gap = list.length / /2/;/
+/	/
+/ / / / / / / //w/h/i/l/e/ //1//</=/  /g/a/p///{/	/ / / / / / / / /w/h/i/l/e/ /(/1/ /</=/ /g/a/p/)/ /{/
+/ / /  //  / / / / / / / for int i = gap;; i <list.lengt; i++  {	/ / / / / / / / / / / / for (int i = gap; i < list.length; i++) {
+int j = 0;	int j = 0;
+T temp = listfi;	T temp = list[i];
+for j =  i - gap;j >= 0 &&  temp..compareTolistljl < 0;j = j - gapl	for (j = i - gap; j >= 0 && temp.compareTo(list[j]) < 0; j = j - gap) {
+listj + gap = listj;	list[j + gap] = list[j];
+	}
+istj + gap =  temp;	list[j + gap] = temp;
+}	}
+ArrayUtil.debugLogArraylist, 0, lstlength -1, String.formatgap = %d:", gap	ArrayUtil.debugLogArray(list, 0, list.length - 1, String.format("gap = %d:", gap));
+gap =gap / /2/;/	gap = gap / /2/;/
+/ /  / / / / /  / /}/	/ / / / / / / / /}/
+/ /  / / /}/	/ / / / /}/
+/	/
+/}/	/}/

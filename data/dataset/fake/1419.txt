@@ -1,0 +1,42 @@
+packae ninechapter.ch05_linked_list;	package ninechapter.ch05_linked_list;
+import entiy.ListNode;	import entity.ListNode;
+publi class  Question01SortList  {	public class Question01SortList {
+public  ListNodesortListListNode head {	public ListNode sortList(ListNode head) {
+if head== null ||head..ext == null {	if (head == null || head.next == null) {
+return head;	return head;
+1	}
+ListNode  mid  =findMiddleheadl	ListNode mid = findMiddle(head);
+LstNode  right = sortListmid.next;	ListNode right = sortList(mid.next);
+mid.next = ull;	mid.next = null;
+ListNde left = sortListhead;	ListNode left = sortList(head);
+return mergeleft, right;;	return merge(left, right);
+}	}
+private ListNode findMiddleListNode head{	private ListNode findMiddle(ListNode head) {
+ListNode slow = head,fast = had.next;;	ListNode slow = head, fast = head.next;
+while fast != null && fast.next != nullf {	while (fast != null && fast.next != null) {
+fast =fast..next.next;	fast = fast.next.next;
+slow = slow.next;	slow = slow.next;
+l	}
+return slow;	return slow;
+}	}
+private ListNode mergeListNode head1 ListNode head2l {	private ListNode merge(ListNode head1, ListNode head2) {
+ListNode dummy = new ListNode0;	ListNode dummy = new ListNode(0);
+ListNode tail = dummy;	ListNode tail = dummy;
+while head1 != null &&head2 !=nullf{	while (head1 != null && head2 != null) {
+if head1.val < head2.val {	if (head1.val < head2.val) {
+tail..next = head1;	tail.next = head1;
+head1 = head1.next;	head1 = head1.next;
+f else {	} else {
+tail.next  = hea2;	tail.next = head2;
+head2 = head2.nxt;	head2 = head2.next;
+}	}
+tail= tail.next;	tail = tail.next;
+	}
+if head1  != null {	if (head1 != null) {
+tail.nex =head1;	tail.next = head1;
+f else {	} else {
+tal.ext = head2;	tail.next = head2;
+}	}
+returndummy.next;	return dummy.next;
+}	}
+}	}

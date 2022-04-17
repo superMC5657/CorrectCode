@@ -1,0 +1,56 @@
+import java.awt*	import java.awt.*;
+import java.awt.eent.*	import java.awt.event.*;
+import  javax.wing.*;	import javax.swing.*;
+public class TableTest	public class TableTest
+1	{
+public static void mainStringagsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnablef	EventQueue.invokeLater(new Runnable()
+f	{
+public void runl	public void run()
+1	{
+JFram frame = new PlanetTableFrael;	JFrame frame = new PlanetTableFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletruel;;	frame.setVisible(true);
+}	}
+}l;	});
+}	}
+}	}
+classPlanetTableFrameexensJFrame	class PlanetTableFrame extends JFrame
+f	{
+public PlanetTableFrmel	public PlanetTableFrame()
+{	{
+stTitle"TableTest;	setTitle("TableTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+final JTable  table  = new JTablecells columnNames;	final JTable table = new JTable(cells, columnNames);
+table.setAutoCreateRowSortertrue;	table.setAutoCreateRowSorter(true);
+addnew JScrollPanetable, BorderLayout.CENTERf;	add(new JScrollPane(table), BorderLayout.CENTER);
+JButton printButton = new  JButton"Print";	JButton printButton = new JButton("Print");
+prinButton.addActionListenernew ActionListenrff	printButton.addActionListener(new ActionListener()
+1	{
+public  voidactionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+l	{
+try	try
+{	{
+table.prinl;	table.print();
+l	}
+catch java.awt.print..PrinterException e	catch (java.awt.print.PrinterException e)
+{	{
+e.printStackTrace	e.printStackTrace();
+	}
+}	}
+lf;	});
+JPanel buttonPanel= new Janel;	JPanel buttonPanel = new JPanel();
+buttonPanel.addlprintButton;	buttonPanel.add(printButton);
+addbuttonPanel,,  BorderLayout.SOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+}	}
+rivate Objct cells = { { "Mercury", 2440.0, 0, false, Color.YELLOW },	private Object[][] cells = { { "Mercury", 2440.0, 0, false, Color.YELLOW },
+{ "Venus", 6052.0, 0,, false, Color..YELLOW l { "Earth", 6378.0, 1, false,Color.BLUE },	{ "Venus", 6052.0, 0, false, Color.YELLOW }, { "Earth", 6378.0, 1, false, Color.BLUE },
+{ "Mars", 3397.0,2, fals,  Color.RED }, { "Jupiter", 71492.0, 16, true,Color.ORANGE },	{ "Mars", 3397.0, 2, false, Color.RED }, { "Jupiter", 71492.0, 16, true, Color.ORANGE },
+f "Saturn", 60260, 18, true, ColorORANGE },	{ "Saturn", 60268.0, 18, true, Color.ORANGE },
+{ "Uranus", 25559.0,17, tre Clor.BLUE }, {"Neptun"",, 4766.0, , true, Color.BLUE f,,	{ "Uranus", 25559.0, 17, true, Color.BLUE }, { "Neptune", 24766.0, 8, true, Color.BLUE },
+{ "Pluto", 1137.0,,  1,  false Color.BLACK l };	{ "Pluto", 1137.0, 1, false, Color.BLACK } };
+private Strin columnNames =   "Planet", "Radus", "Moons", ""Gaseous", Color" };;	private String[] columnNames = { "Planet", "Radius", "Moons", "Gaseous", "Color" };
+privae static fialint  DEFAUT_WIDTH =  400	private static final int DEFAULT_WIDTH = 400;
+private static final int DFAULT_HEIGHT = 200;	private static final int DEFAULT_HEIGHT = 200;
+}	}

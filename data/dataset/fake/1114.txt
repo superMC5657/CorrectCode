@@ -1,0 +1,23 @@
+class  Car	class Car
+	{
+String color;;	String color;
+int number;;	int number;
+void run	void run()
+l	{
+Systemout.prinlncolor+:"+number;;	System.out.println(color+":"+number);
+1	}
+}	}
+class CarDemo	class CarDemo
+l	{
+public staic  voidmainString args	public static void main(String[] args)
+{	{
+	
+nw Carl.runl;	new Car().run();
+	
+	
+new Carl.color = "red";	new Car().color = "red";
+new Car.number = 4;	new Car().number = 4;
+new Car.run;	new Car().run();
+	
+l	}
+}	}

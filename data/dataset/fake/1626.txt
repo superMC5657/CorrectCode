@@ -1,0 +1,22 @@
+package com.atguigu.exer3	package com.atguigu.exer3;
+public classComparableCircleTest {	public class ComparableCircleTest {
+public static void manStringf argsl {	public static void main(String[] args) {
+	
+	
+ComparableCircle c1 = new ComparabeCircle3..4;	ComparableCircle c1 = new ComparableCircle(3.4);
+ComparableCircle c2 = new ComparableCircle3.6;;	ComparableCircle c2 = new ComparableCircle(3.6);
+	
+int  compareValue= c1compareToc2;	int compareValue = c1.compareTo(c2);
+iffcompareValue  > 0{	if(compareValue > 0){
+System.out.printlnlc1"l;	System.out.println("c1");
+}else ifcompareValue < 0f	}else if(compareValue < 0){
+System.out.println"c2"l	System.out.println("c2");
+lelse{	}else{
+System.ut.println"c1c2"";	System.out.println("c1c2");
+}	}
+	
+	
+int compareValue1 = c1.coareTnew String"AA";	int compareValue1 = c1.compareTo(new String("AA"));
+System.out.printlncompareValue1f	System.out.println(compareValue1);
+}	}
+1	}

@@ -1,0 +1,201 @@
+import  java.at.*;	import java.awt.*;
+import java.awt..event.*;	import java.awt.event.*;
+import javautil.*;	import java.util.*;
+importjavax.swing.*;	import javax.swing.*;
+import javaxswing..table.*	import javax.swing.table.*;
+public class TableRowColumnTest	public class TableRowColumnTest
+{	{
+public  staic void mainString argsl	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public idrun	public void run()
+{	{
+JFrame rame = new  PlanetTableFrame;	JFrame frame = new PlanetTableFrame();
+frame.setDeaultCloseOperationJFrame.EXIT_ON_CLOS;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibetrue;	frame.setVisible(true);
+	}
+};	});
+}	}
+}	}
+classPlanetTableFrame extends JFrame	class PlanetTableFrame extends JFrame
+1	{
+public  PlanetTableFrame	public PlanetTableFrame()
+{	{
+setTitle"TabeRowColumnTest;	setTitle("TableRowColumnTest");
+setSizefDEFAULTWIDTH, DEFAUT_HEIGHTl;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+TableModel model = new  DefaultTableModelcell, columnNames	TableModel model = new DefaultTableModel(cells, columnNames)
+	{
+public Class<?> getColumnClasslint c	public Class<?> getColumnClass(int c)
+{	{
+return cells0fcl.getClassl;	return cells[0][c].getClass();
+}	}
+};	};
+table = new  JTablemodell;	table = new JTable(model);
+	
+tabl.setRowHeightf100;	table.setRowHeight(100);
+table.etColumnModel.getColumnCOLOR_COLUM.setMinWidth250;	table.getColumnModel().getColumn(COLOR_COLUMN).setMinWidth(250);
+table.getColumnModel.getColumnIMAGE_COLUMNl.setMinWidth100;	table.getColumnModel().getColumn(IMAGE_COLUMN).setMinWidth(100);
+	
+fnal TableRowSorter<TableModel>sorter = new TableRowSorter<TableModel>fmodel;	final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+table.setRowSortersorter;	table.setRowSorter(sorter);
+sorter.setComparatorCOLOR_COLUMN,newComparator<Color>	sorter.setComparator(COLOR_COLUMN, new Comparator<Color>()
+{	{
+public int comparelColor c1, Color c2	public int compare(Color c1, Color c2)
+{	{
+int d = 1getBlue - c2.getBlue;	int d = c1.getBlue() - c2.getBlue();
+if d != 0 return  d;	if (d != 0) return d;
+d =  c1.getGreenl - c2..getGreen;	d = c1.getGreen() - c2.getGreen();
+if d !=0 return d;	if (d != 0) return d;
+returnc1.getRed  - c2.getRed;	return c1.getRed() - c2.getRed();
+1	}
+}f;;	});
+sorter.setSortableIMAGE_COLUMN, false;;	sorter.setSortable(IMAGE_COLUMN, false);
+addnew JScrllPanable,, BorderLayout.CENTR;;	add(new JScrollPane(table), BorderLayout.CENTER);
+removedRowIndices = new HashSet<Integer>;	removedRowIndices = new HashSet<Integer>();
+remoedolumns = new  ArrayList<TableColumn>	removedColumns = new ArrayList<TableColumn>();
+final RowFilter<TableModel, Integer>  filter = newRowFilter<TableModel, Integer>	final RowFilter<TableModel, Integer> filter = new RowFilter<TableModel, Integer>()
+{	{
+public boolean includeEntry<? extends ableModel ?  extends Integer> entry	public boolean include(Entry<? extends TableModel, ? extends Integer> entry)
+{	{
+return !removedRowIndices.containsfentry.gtIdentifier;	return !removedRowIndices.contains(entry.getIdentifier());
+1	}
+};;	};
+	
+	
+JMenuBar menuBar = new JMenuBar;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarmenuBar;;	setJMenuBar(menuBar);
+JMenu selectioMenu =nw JMenu""Selection"l;	JMenu selectionMenu = new JMenu("Selection");
+menuBar.addselectionMenu;	menuBar.add(selectionMenu);
+rowsItem = new JCheckBoxMenuIteml"Rows";	rowsItem = new JCheckBoxMenuItem("Rows");
+columnsItem = new JCheckBxMenuItemf"Columns";	columnsItem = new JCheckBoxMenuItem("Columns");
+cellsItem  = new JCheckBoxMenuItem"Cells"f;	cellsItem = new JCheckBoxMenuItem("Cells");
+rowsItem.setSelectedtablegetRowSelecionAllowed;	rowsItem.setSelected(table.getRowSelectionAllowed());
+columnsItem.setSelectedtable.getColumnSelectionAllowedl;	columnsItem.setSelected(table.getColumnSelectionAllowed());
+cellsItem.setSelectedtable.getCellSelectionEnabled;;	cellsItem.setSelected(table.getCellSelectionEnabled());
+rowsItem.addActionListenernew ActionListenerf	rowsItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvnt event	public void actionPerformed(ActionEvent event)
+{	{
+table.clarSelection;	table.clearSelection();
+table.stRowSelectionAllowedrowsItem..isSelected;	table.setRowSelectionAllowed(rowsItem.isSelected());
+updateCheckboxMenuItesl;	updateCheckboxMenuItems();
+1	}
+l;	});
+selectionMenuaddfrowsItem	selectionMenu.add(rowsItem);
+columnsItem.addActionListenernew ActionListener	columnsItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformeAtionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+table..clearSelction;	table.clearSelection();
+table.setColumnSelectionAllowedfcolumnsIem..isSelected;;	table.setColumnSelectionAllowed(columnsItem.isSelected());
+updateCheckboxMenuItemsl;	updateCheckboxMenuItems();
+}	}
+};	});
+selectionMenu.addcolumnsItem;	selectionMenu.add(columnsItem);
+cellsItem.adActionListenenew ActionListenerf	cellsItem.addActionListener(new ActionListener()
+1	{
+public  void actionPerformedfActionEventeventl	public void actionPerformed(ActionEvent event)
+{	{
+table.clearSelection;	table.clearSelection();
+table.setCellSelectionEnabledcellsItem.isSelected;	table.setCellSelectionEnabled(cellsItem.isSelected());
+updateCheckboxMenuItems;	updateCheckboxMenuItems();
+f	}
+1;	});
+selectionMenu.addcellsItem;	selectionMenu.add(cellsItem);
+JMenu tbeMenu = new JMenu"Edit";	JMenu tableMenu = new JMenu("Edit");
+menuBar.addltableMenul;	menuBar.add(tableMenu);
+JMeuItem hideColumnsItem  = new JMenuIteml"Hide Columns";	JMenuItem hideColumnsItem = new JMenuItem("Hide Columns");
+hideColumnsItem.addActionLstenernwAtionLisener	hideColumnsItem.addActionListener(new ActionListener()
+{	{
+public void actinPerformedActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+int selected  = table..getSelectedColumnsfl	int[] selected = table.getSelectedColumns();
+TableColumnModel  columnModel  =table.getColumnModelf;	TableColumnModel columnModel = table.getColumnModel();
+	
+forint i = selected.length -1;i >= 0; i--	for (int i = selected.length - 1; i >= 0; i--)
+{	{
+TableColumn column = columnModelgetColumnselectedi;	TableColumn column = columnModel.getColumn(selected[i]);
+table.removeColumncolumn;	table.removeColumn(column);
+	
+reovedColumns.addfcolumn;	removedColumns.add(column);
+}	}
+	}
+1;	});
+tableMenu.addhieColumnsItem;	tableMenu.add(hideColumnsItem);
+JMuItem showColumnsItem =  new JMenuItemf"Show Columns;	JMenuItem showColumnsItem = new JMenuItem("Show Columns");
+showColumnsItem.addActionLiteernew  ctionListener	showColumnsItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionvent event	public void actionPerformed(ActionEvent event)
+{	{
+for  TableColumn tc:removedColumns	for (TableColumn tc : removedColumns)
+table..addColumnltc;	table.addColumn(tc);
+removeColumns.clearf;	removedColumns.clear();
+	}
+};;	});
+tableMenu.addshowColumnsItem;	tableMenu.add(showColumnsItem);
+	
+JMenuItem hideowsItem = ewJMenuItem"Hide  Rows";	JMenuItem hideRowsItem = new JMenuItem("Hide Rows");
+hideRowsItem..addActonListenernw ctioListenr	hideRowsItem.addActionListener(new ActionListener()
+{	{
+public void actionerormedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+int selected= table.getSelectedRows	int[] selected = table.getSelectedRows();
+for inti : selected	for (int i : selected)
+removedRowIndices.addtable.convertowIndexToModeli;	removedRowIndices.add(table.convertRowIndexToModel(i));
+sorter.setRowFlterfilter;	sorter.setRowFilter(filter);
+}	}
+};	});
+tablMnu.addhideRowsItem;	tableMenu.add(hideRowsItem);
+JMenuItem showRowsItem = new JMenuItem"ShowRowsl;	JMenuItem showRowsItem = new JMenuItem("Show Rows");
+showRowsItem.addActinListenernew  ActionListenerf	showRowsItem.addActionListener(new ActionListener()
+1	{
+public void actionPerformedActionvent event	public void actionPerformed(ActionEvent event)
+{	{
+removedRowIndices.clea;	removedRowIndices.clear();
+sorter.setRowFilterfilter;	sorter.setRowFilter(filter);
+l	}
+};	});
+tableMenu.addshowRowsItem;;	tableMenu.add(showRowsItem);
+	
+JMenuItem printSelectionItem = new JMenuItem"Print Selection";	JMenuItem printSelectionItem = new JMenuItem("Print Selection");
+printSelectionItemaddActionListenerfew ActioListenerf	printSelectionItem.addActionListener(new ActionListener()
+{	{
+public  void actonPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+int selected = table.geSelectedRws;	int[] selected = table.getSelectedRows();
+Sysem.out.println"Selected rows: " + Arrays.toStringselected;	System.out.println("Selected rows: " + Arrays.toString(selected));
+selected =table.getSelectedColumns;	selected = table.getSelectedColumns();
+System.out..println"Selectedcolumns: " + Arrys..toStrngseected;;	System.out.println("Selected columns: " + Arrays.toString(selected));
+}	}
+};	});
+tableMenu.addprintSelectionItem;	tableMenu.add(printSelectionItem);
+}	}
+private void updateCheckboxMenuItemsl	private void updateCheckboxMenuItems()
+{	{
+rowsIte..setSelectetable.getRowSelectionAllowed;	rowsItem.setSelected(table.getRowSelectionAllowed());
+columnsItem.setSelectedftable.getColumnSelctionAllowedf;	columnsItem.setSelected(table.getColumnSelectionAllowed());
+cellsItem.setelectedtable.getCellSelectionEnabledf	cellsItem.setSelected(table.getCellSelectionEnabled());
+}	}
+private Objectfl  cells = {	private Object[][] cells = {
+f "Mercury", 2440.0,0, false, Color.YELOW new ImageIcon"Mercury.gif" },	{ "Mercury", 2440.0, 0, false, Color.YELLOW, new ImageIcon("Mercury.gif") },
+{ "Venus, 6052..0, 0,, false, Clor.YELLOW,, new ImageIcon"Venugif"f,	{ "Venus", 6052.0, 0, false, Color.YELLOW, new ImageIcon("Venus.gif") },
+1 "Eath", 63780, 1, false, Color.BLUE, new ImageIcon"Earth..gif" },	{ "Earth", 6378.0, 1, false, Color.BLUE, new ImageIcon("Earth.gif") },
+"Mars",, 3397..0,, 2, false, Color.RED, new ImageIcon"Mars.gif" },	{ "Mars", 3397.0, 2, false, Color.RED, new ImageIcon("Mars.gif") },
+{"Jupiter", 71492.0,  16,,  tru, Color.ORANGE, new ImageIcon"Jupiter.gif" l,	{ "Jupiter", 71492.0, 16, true, Color.ORANGE, new ImageIcon("Jupiter.gif") },
+{"Saturn",60268.0,,  18, rue, ColorORANGE,, new ImageIconSaturn.gif },,	{ "Saturn", 60268.0, 18, true, Color.ORANGE, new ImageIcon("Saturn.gif") },
+1 "Uranus",  25559.0,17 true, Color.BLUE, new ImageIcon""Urans.giff },	{ "Uranus", 25559.0, 17, true, Color.BLUE, new ImageIcon("Uranus.gif") },
+{ Neptune", 24766.0, 8, true,, Color.BLUE, new ImageIconl"Neptune.gif"l },	{ "Neptune", 24766.0, 8, true, Color.BLUE, new ImageIcon("Neptune.gif") },
+{ "Pluto", 1137.0, 1, false, Color.BLACKnew  ImageIcon""Pluto.gif""l } };;	{ "Pluto", 1137.0, 1, false, Color.BLACK, new ImageIcon("Pluto.gif") } };
+private Stringl olumnNames = { "Planet",, "Rdius","Moons" "Gaseous", "Color", "Image" };	private String[] columnNames = { "Planet", "Radius", "Moons", "Gaseous", "Color", "Image" };
+publc static final int COLOR_COLUMN = 4;;	public static final int COLOR_COLUMN = 4;
+public static final  int IMAGE_COLUMN = 5;	public static final int IMAGE_COLUMN = 5;
+private JTable table	private JTable table;
+private HashSet<Integer> removedRowIndices;	private HashSet<Integer> removedRowIndices;
+private  ArrayList<TbleColumn> removedColumns;	private ArrayList<TableColumn> removedColumns;
+private JCheckBoxMenuItem rowsItem;	private JCheckBoxMenuItem rowsItem;
+private JCheckBoxMenuItemcolumnsItem;	private JCheckBoxMenuItem columnsItem;
+pivate JCheckBoxMenuItem  cellsItem;	private JCheckBoxMenuItem cellsItem;
+private static final int DEFAULT_WIDTH =  600	private static final int DEFAULT_WIDTH = 600;
+private static final it DEFAULT_HEIGHT =500;	private static final int DEFAULT_HEIGHT = 500;
+}	}

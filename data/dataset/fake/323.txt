@@ -1,0 +1,19 @@
+package com.aliencat.ssopojo;	package com.aliencat.sso.pojo;
+import lombok.Data;	import lombok.Data;
+import javax.persistence.Id;	import javax.persistence.Id;
+@Daa	@Data
+public classUsers {	public class Users {
+	
+@Id	@Id
+private String id;	private String id;
+	
+private Strng username;	private String username;
+	
+prvate Strng password;	private String password;
+	
+private String mobile;	private String mobile;
+	
+private String email;	private String email;
+	
+private  Integer sex;	private Integer sex;
+}	}

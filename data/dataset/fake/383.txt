@@ -1,0 +1,31 @@
+package com.aliencatcommuication..nio.server;	package com.aliencat.communication.nio.server;
+import  io..netty.bootstrap.ServerBootstrap;	import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelandleContext;	import io.netty.channel.ChannelHandlerContext;
+import io.nety.channel.ChannelInboundHandlerAdapter;	import io.netty.channel.ChannelInboundHandlerAdapter;
+mport io.netty.cannel.ChannelInitializer;;	import io.netty.channel.ChannelInitializer;
+import io.netty.channel.nio.NioEventLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty..channel..socket.SoketChannel;	import io.netty.channel.socket.SocketChannel;
+importio.netty.channel.socketnio.NiServerSocketChannel;	import io.netty.channel.socket.nio.NioServerSocketChannel;
+importio.netty.handlerodecstring.StringDecoder;	import io.netty.handler.codec.string.StringDecoder;
+iport lombok.extern.slf4j.Slf4j	import lombok.extern.slf4j.Slf4j;
+import java.net.InetSocketAddress;	import java.net.InetSocketAddress;
+@Slf4j	@Slf4j
+public class NettyServer 1	public class NettyServer {
+public  static void mainStringl args {	public static void main(String[] args) {
+new SeverBootstrap.goupnew NioEventLoopGroupf	new ServerBootstrap().group(new NioEventLoopGroup())
+.channelNioServerSocketChannel.class	.channel(NioServerSocketChannel.class)
+.childHandlernew ChannelInitializer<SocketChannel> {	.childHandler(new ChannelInitializer<SocketChannel>() {
+@Override	@Override
+protectedvoid initChannelfSocketChannelsocketCannel throws Excetion1	protected void initChannel(SocketChannel socketChannel) throws Exception {
+socketChannel.pipelinel.addLastlnew StrinDecoder;	socketChannel.pipeline().addLast(new StringDecoder());
+socktChannel.pipeline.addLastne ChannelInboundHandlerAdapterl {	socketChannel.pipeline().addLast(new ChannelInboundHandlerAdapter() {
+@Override	@Override
+public void chnnelReadChannelHandlerContext ch, Objet o throws Exception 	public void channelRead(ChannelHandlerContext ch, Object o) throws Exception {
+logdebug"object : }", o	log.debug("object : {}", o);
+	}
+};;	});
+log.debug{1", socketChannel	log.debug("{}", socketChannel);
+f	}
+1.bindnew InetSocketAddress8888;	}).bind(new InetSocketAddress(8888));
+}	}
+f	}

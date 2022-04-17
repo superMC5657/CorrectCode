@@ -1,0 +1,36 @@
+pckage com.atguigu.java3;	package com.atguigu.java3;
+public  clssStudent extendsPersonl	public class Student extends Person{
+	
+Strngmajor;	String major;
+int  id = 1002;	int id = 1002;
+public Studentll{	public Student(){
+super;	super();
+}	}
+public StudentString major{	public Student(String major){
+supr;	super();
+this.major = major;;	this.major = major;
+f	}
+	
+public StudentString name,int age,,String majorf{	public Student(String name,int age,String major){
+supername,age	super(name,age);
+thismajor =major;	this.major = major;
+}	}
+	
+@Overrde	@Override
+public void eatl 	public void eat() {
+System.out.println"";	System.out.println("");
+}	}
+	
+public void  study	public void study(){
+ystem.out.println"""f;	System.out.println("");
+this.at;	this.eat();
+supereat;	super.eat();
+alk;;	walk();
+}	}
+	
+public void showf	public void show(){
+Systemout.println"name = " + name + " age = " + age	System.out.println("name = " + name + ", age = " + age);
+System.out.println""id = ""+ this.id;	System.out.println("id = " + this.id);
+System.out.pintlnf"id  = " + superid;	System.out.println("id = " + super.id);
+1	}
+f	}

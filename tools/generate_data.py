@@ -5,6 +5,8 @@
 import os
 import sys
 
+from tqdm import tqdm
+
 sys.path.append('./')
 from config import MAX_LEN
 
@@ -26,32 +28,37 @@ if not os.path.exists(label_dir):
 if not os.path.exists(train_dir):
     os.mkdir(train_dir)
 
-index = 0
-for root, dir_list, file_list in os.walk(download_dir):
-    for file_name in file_list:
-        if file_name.endswith('.java'):
-            file_path = os.path.join(root, file_name)
-            dst_path = os.path.join(deleteNote_dir, str(index) + '.java')
+# index = 0
+# for root, dir_list, file_list in os.walk(download_dir):
+#     for file_name in file_list:
+#         if file_name.endswith('.java'):
+#             file_path = os.path.join(root, file_name)
+#             dst_path = os.path.join(deleteNote_dir, str(index) + '.java')
+#
+#             trim_file(file_path, dst_path)
+#             index += 1
 
-            trim_file(file_path, dst_path)
-            index += 1
 
-vocab = set()
 index = 0
+seq_len = 0
 for root, dir_list, file_list in os.walk(deleteNote_dir):
-    for file_name in file_list:
+    for file_name in tqdm(file_list):
         if file_name.endswith('.java'):
             file_path = os.path.join(root, file_name)
-            dst_path_label = os.path.join(label_dir, str(index) + '.txt')
             with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            l = remove_extra(content)[:MAX_LEN]
-            with open(dst_path_label, 'w', encoding='utf-8') as f:
-                f.write("".join(l))
-            dst_path_train = os.path.join(train_dir, str(index) + '.txt')
-            new_l = transform_code(l)[:MAX_LEN]
-            vocab.update(new_l)
-            with open(dst_path_train, 'w', encoding='utf-8') as f:
-                f.write("".join(new_l))
+                content = f.readlines()
+                dst_path_train = os.path.join(train_dir, file_name[:-5] + '.txt')
+                with open(dst_path_train, 'w', encoding='utf-8') as g:
+                    for line in content:
+                        if line == "\n":
+                            continue
+                        line = line.strip()
+                        line = remove_extra(line)
+                        if len(list(line)) > seq_len:
+                            seq_len = len(list(line))
+                            print(line, " length ", seq_len)
+                            print(dst_path_train)
+                        new_line = transform_code(line)
+                        g.write(new_line + '\t' + line + '\n')
             index += 1
-print(vocab)
+print(seq_len)

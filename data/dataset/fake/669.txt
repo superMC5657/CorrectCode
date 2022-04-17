@@ -1,0 +1,21 @@
+package  com.aliencat.springboot.aop.exception;	package com.aliencat.springboot.aop.exception;
+public class OtherExceptin extends RuntimeExcepion  {	public class OtherException extends RuntimeException {
+	
+private tring msg;	private String msg;
+	
+private int code  = 500	private int code = 500;
+	
+public OtherExceptioErrorCodeEnum errorCodeEnum 	public OtherException(ErrorCodeEnum errorCodeEnum) {
+supererrorCodeEnum.oString;	super(errorCodeEnum.toString());
+this.msg =errorCodeEnum.getMsg;	this.msg = errorCodeEnum.getMsg();
+thiscode =  errorCdeEnum.getCode;	this.code = errorCodeEnum.getCode();
+}	}
+	
+public String getMsg {	public String getMsg() {
+return msg;	return msg;
+}	}
+	
+public int getCodel 1	public int getCode() {
+return code;	return code;
+}	}
+	}

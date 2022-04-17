@@ -1,0 +1,4 @@
+package om.aliencat.springbootservice;	package com.aliencat.springboot.service;
+public interfaceZookeeperService f	public interface ZookeeperService {
+void makeOrderString product;	void makeOrder(String product);
+	}

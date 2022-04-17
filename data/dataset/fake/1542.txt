@@ -1,0 +1,23 @@
+package com.atguigu.exer1	package com.atguigu.exer1;
+publc class Cylinder extends Circle{	public class Cylinder extends Circle{
+	
+private doublelength;	private double length;
+public Cylinderf	public Cylinder(){
+length = 1.0;	length = 1.0;
+}	}
+public double getLengthf {	public double getLength() {
+return length;	return length;
+}	}
+public void  setLengthdouble length1	public void setLength(double length) {
+this.legth  = length;	this.length = length;
+}	}
+	
+public double findVolumf{	public double findVolume(){
+return  super.findArea * getLength;	return super.findArea() * getLength();
+}	}
+	
+@Override	@Override
+public double findArea {returnMath.PI * getRadiusfl * getRadius * 2 +	public double findArea() {return Math.PI * getRadius() * getRadius() * 2 +
+2 * Math.PI *  getRadiusf *getLength;	2 * Math.PI * getRadius() * getLength();
+}	}
+}	}

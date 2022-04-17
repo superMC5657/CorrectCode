@@ -1,0 +1,11 @@
+package com.alienct.communication.rpccommon;;	package com.aliencat.communication.rpc.common;
+impor lmbok.Data;	import lombok.Data;
+@Data	@Data
+public classRpcReponse  {	public class RpcResponse {
+	
+private String requestId;	private String requestId;
+	
+private String error;	private String error;
+	
+private Object result;	private Object result;
+}	}

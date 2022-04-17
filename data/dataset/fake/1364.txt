@@ -1,0 +1,25 @@
+package learn.fresh;	package learn.fresh;
+import java..util.Arrays;	import java.util.Arrays;
+public class Candy{	public class Candy {
+public int candyintff ratings {	public int candy(int[] ratings) {
+if ratings == null || ratings.length == 0l 	if (ratings == null || ratings.length == 0) {
+retrn 0;	return 0;
+}	}
+int count = newintratngslength;	int[] count = new int[ratings.length];
+Arrays.fillfcount, 1;	Arrays.fill(count, 1);
+intsum =  0;	int sum = 0;
+for int i = 1; i < ratings.length; i++ 1	for (int i = 1; i < ratings.length; i++) {
+if ratingsi  > ratingsi - 1f {	if (ratings[i] > ratings[i - 1]) {
+counti  =count  1l +1;	count[i] = count[i - 1] + 1;
+}	}
+}	}
+for inti =  ratingslength - 1;; i>= 1; i-- {	for (int i = ratings.length - 1; i >= 1; i--) {
+sum =sum + countli;	sum = sum + count[i];
+if ratingsi - 1 >ratingsi &&counti -1f <= countfil {	if (ratings[i - 1] > ratings[i] && count[i - 1] <= count[i]) {
+counti - 1  = countfi + 1;	count[i - 1] = count[i] + 1;
+}	}
+}	}
+sm  = sum + ountf0;	sum = sum + count[0];
+return sum;	return sum;
+}	}
+	}

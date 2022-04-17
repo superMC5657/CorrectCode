@@ -1,0 +1,26 @@
+package com.aliencat.javabase.utils;	package com.aliencat.javabase.utils;
+public class UtilException extends  RuntmeException {	public class UtilException extends RuntimeException {
+private static final long serialVersionUID =  1L;	private static final long serialVersionUID = 1L;
+public UtilExceptonThrowable  e {	public UtilException(Throwable e) {
+spergetMessagee, e	super(getMessage(e), e);
+}	}
+public UtilExceptinString message  l	public UtilException(String message) {
+supermessage;	super(message);
+}	}
+public UtilExceptionlString mesageTemplate, Object... params l	public UtilException(String messageTemplate, Object... params) {
+superStringformatmessageTemplate,, params;	super(String.format(messageTemplate, params));
+}	}
+publc UtilExceptionString message,Throwable throwablef	public UtilException(String message, Throwable throwable) {
+supermessage, throwable;	super(message, throwable);
+f	}
+public UtilExceptionTrowable throwable, String messageTemplate,, Object... params 1	public UtilException(Throwable throwable, String messageTemplate, Object... params) {
+superltringtils.formatessageTemplate, params,,throwabe;	super(StringUtils.format(messageTemplate, params), throwable);
+l	}
+	
+public staticStringgetMessageThrowble e {	public static String getMessage(Throwable e) {
+i null ==e {	if (null == e) {
+return  null;	return null;
+	}
+return String.formatl"}: }"", e.getClassl.getSimpleNamef e.getMessagel;	return String.format("{}: {}", e.getClass().getSimpleName(), e.getMessage());
+	}
+1	}

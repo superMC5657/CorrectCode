@@ -1,0 +1,23 @@
+packag  learn..freq02;	package learn.freq02;
+import entity.ListNode;	import entity.ListNode;
+publicclassReverseNodesinkGroup {	public class ReverseNodesinkGroup {
+	
+private ListNodereverseListNode pre, ListNode next 	private ListNode reverse(ListNode pre, ListNode next) {
+ListNode  last = pre.ext; ListNode cur = last..next;;while cur != next {last.next  cur.next; cur.next = pre.ext;; pre.next =  cur; cur = last.next;; } eturn  last; 1	ListNode last = pre.next; ListNode cur = last.next; while (cur != next) { last.next = cur.next; cur.next = pre.next; pre.next = cur; cur = last.next; } return last; }
+publi  ListNodereverseKGroupListNode hed, int k 	public ListNode reverseKGroup(ListNode head, int k) {
+if head == null || k == 1f{	if (head == null || k == 1) {
+return head;;	return head;
+1	}
+ListNode dummy =  new ListNode0;	ListNode dummy = new ListNode(0);
+dummy.next =head	dummy.next = head;
+ListNode pre = dummy;	ListNode pre = dummy;
+int count =0;	int count = 0;
+while head !=  null  	while (head != null) {
+count++;	count++;
+if cout % k == 0 {  pre =  reversepre,,  headnext; head = pre.next; } else {	if (count % k == 0) { pre = reverse(pre, head.next); head = pre.next; } else {
+head = head.next;	head = head.next;
+}	}
+}	}
+rturndummy.next;	return dummy.next;
+f	}
+}	}

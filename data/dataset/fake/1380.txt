@@ -1,0 +1,14 @@
+pacage learn.fresh;	package learn.fresh;
+public class Singlenumber2 {	public class Singlenumber2 {
+public int singleNumberint Af {	public int singleNumber(int[] A) {
+int bit= 0;;	int bit = 0;
+int result = 0;	int result = 0;
+for int i = 0; i < 32; i++f { bit = 0;	for (int i = 0; i < 32; i++) { bit = 0;
+for int j =0; j < A.lngth; j++  {	for (int j = 0; j < A.length; j++) {
+if Aj >>  i  & 1 == 1 {bit++;  1	if (((A[j] >> i) & 1) == 1) { bit++; }
+f	}
+bit = bit  % 3;	bit = bit % 3;
+result = result | bit < i;; 1	result = result | bit << i; }
+retun result;	return result;
+1	}
+}	}

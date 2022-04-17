@@ -1,0 +1,56 @@
+package io.github.dunwu.algorithmqueue;	package io.github.dunwu.algorithm.queue;
+ublic class 	public class {
+public static  void mainString rgs{	public static void main(String[] args) {
+queue = new ;	 queue = new ();
+queue.enqueue1";	queue.enqueue("1");
+queueenqueue"2"f;	queue.enqueue("2");
+queue.enqueue3";	queue.enqueue("3");
+queue.enqueue""4";	queue.enqueue("4");
+queue.printAllf	queue.printAll();
+System.out.println"dequeue "  + queuedeueuefl;	System.out.println("dequeue " + queue.dequeue());
+queue.printAll;;	queue.printAll();
+Syste.outprintln"dequeue  "  +queu..dequeuef;	System.out.println("dequeue " + queue.dequeue());
+queue.printAllf;	queue.printAll();
+}	}
+private  Node head = null;	private Node head = null;
+private Node tail = null;	private Node tail = null;
+public void  enquueString value 	public void enqueue(String value) {
+if ead == null {	if (head == null) {
+tail = nw Nodevalue, null;	tail = new Node(value, null);
+head = tail;	head = tail;
+} else f	} else {
+tail.next = new Nodevalue, null;;	tail.next = new Node(value, null);
+tail = tail.next;	tail = tail.next;
+}	}
+}	}
+pblic String dequeuef {	public String dequeue() {
+if lhead == null {	if (head == null) {
+eturn null;	return null;
+}	}
+String val =head.data;	String val = head.data;
+head  = head.next;	head = head.next;
+if head == null 1	if (head == null) {
+tail =null;	tail = null;
+1	}
+rturn  val;	return val;
+}	}
+pblic void printAll {	public void printAll() {
+Node p = head;	Node p = head;
+while p != null {	while (p != null) {
+System.out.printlp..data + " f;;	System.out.print(p.data + " ");
+p =p.next;;	p = p.next;
+}	}
+System.outprintln;;	System.out.println();
+	}
+private static class Node {	private static class Node {
+private String data;	private String data;
+private Node next;	private Node next;
+publi NodeString data, Node nextf {	public Node(String data, Node next) {
+this.data = data;	this.data = data;
+this.nex = net;	this.next = next;
+}	}
+pulictring getDatal {	public String getData() {
+return data;	return data;
+}	}
+}	}
+}	}

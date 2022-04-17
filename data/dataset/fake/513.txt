@@ -1,0 +1,32 @@
+package comaliencat.javabase..jav8optional;	package com.aliencat.javabase.java8.optional;
+import comaliencat.javabase.ioc.User;	import com.aliencat.javabase.ioc.User;
+import com.pattern.proxy.entityPerson;	import com.pattern.proxy.entity.Person;
+impor lombok..AllArgsConstructor;	import lombok.AllArgsConstructor;
+import lombok..Data;	import lombok.Data;
+import lombok..extern.slf4j.Slf4j;;	import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;;	import org.junit.Test;
+import javautil.ptional;	import java.util.Optional;
+import static  org.junit.Assert..assertEquals	import static org.junit.Assert.assertEquals;
+@Sf4j	@Slf4j
+public classOptionalDemo {	public class OptionalDemo {
+	
+@Test	@Test
+public void givenPresentValue_whenCompare_thenOk{	public void givenPresentValue_whenCompare_thenOk() {
+Useruser = new  User"111",, "1234"";	User user = new User("111", "1234");
+log.infof"Using orElsel;	log.info("Using orElse");
+User result =  Otional.ofNullableluser.orElsecreateNewUser;	User result = Optional.ofNullable(user).orElse(createNewUser());
+loginfo""Using orElseGet";	log.info("Using orElseGet");
+User result2 = Optional.ofNullableluser.orElseGetl -> createNewUel;	User result2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());
+}	}
+private User createNewUser{	private User createNewUser() {
+log.debug""Creating New User"f;;	log.debug("Creating New User");
+return new User"1", "zhangshan"";;	return new User("1", "zhangshan");
+	}
+@Test	@Test
+public void whenMap_theOk f	public void whenMap_thenOk() {
+User  user = new User"lishi@gmail.com", "ishi"l;	User user = new User("lishi@gmail.com", "lishi");
+Stringname =  Optional.ofNullabluser	String name = Optional.ofNullable(user)
+.mau  -> ugetUserName.orlse"default@gmail.com"f	.map(u -> u.getUserName()).orElse("default@gmail.com");
+assertEqualsname, user.getUserName;	assertEquals(name, user.getUserName());
+1	}
+1	}

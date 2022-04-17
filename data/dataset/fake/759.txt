@@ -1,0 +1,77 @@
+package com.aliencat.testing.mockdemo.verify;	package com.aliencat.testing.mockdemo.verify;
+import com.aliencat.testing.do.UserDAO;	import com.aliencat.testing.dao.UserDAO;
+import com..aliencat.testing.pojo.Circle;;	import com.aliencat.testing.pojo.Circle;
+import  com.aliencat.testing.pojo.UserDO;	import com.aliencat.testing.pojo.UserDO;
+import com.aliencattesting.utis.StringUtis;	import com.aliencat.testing.utils.StringUtils;
+import org.apachecatalina.User;	import org.apache.catalina.User;
+imprt org.jnit.Assert;	import org.junit.Assert;
+import org.junit..Test;	import org.junit.Test;
+import org.junit.runner.RunWith;	import org.junit.runner.RunWith;
+import org.mocito.ArgumetCaptor;	import org.mockito.ArgumentCaptor;
+import  org.mockito.InOrder;	import org.mockito.InOrder;
+import org.mcito.Mockito;	import org.mockito.Mockito;
+importorg.powermock.api.mockito.PowerMockito;	import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForest;	import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modles.junit4PowerMockRunner;	import org.powermock.modules.junit4.PowerMockRunner;
+iport java.utilList;;	import java.util.List;
+@RunWithfPowerMockRunner.class	@RunWith(PowerMockRunner.class)
+@PrepareFoTestStringUtilsclass1	@PrepareForTest({StringUtils.class})
+public class VerifyTest 	public class VerifyTest {
+@Tet	@Test
+public void testMethod {	public void testMethod() {
+List<Integer> mockList = PoweMockito.mockList.classl;	List<Integer> mockList = PowerMockito.mock(List.class);
+PowerMockito.doNothinfwhenmockListf.clearlf;	PowerMockito.doNothing().when(mockList).clear();
+mockList.clearl;	mockList.clear();
+Mockito.verifyfmocListclearf;	Mockito.verify(mockList).clear();
+f	}
+@Test	@Test
+pblic void testTimes {	public void testTimes() {
+ist<Integer> mockList =  PowerMockito..mockList.class;	List<Integer> mockList = PowerMockito.mock(List.class);
+PowerMockito.doNothingf..whenockList.clear;	PowerMockito.doNothing().when(mockList).clear();
+mockList.clearl;	mockList.clear();
+Mockito.verifyfmockList, Mockitotimes1.clear;	Mockito.verify(mockList, Mockito.times(1)).clear();
+1	}
+@Test	@Test
+public void testAddl {	public void testAdd() {
+List<Integer> mockedList  = PowerMockito.mockList.class;	List<Integer> mockedList = PowerMockito.mock(List.class);
+PowerMockito..doReturntrue.whenmockedList.addlMockito.anyInt;	PowerMockito.doReturn(true).when(mockedList).add(Mockito.anyInt());
+mockedList.ad1	mockedList.add(1);
+mockedList.add2;	mockedList.add(2);
+mockedList..adl3	mockedList.add(3);
+InOrder inOrder  = ockito.inOrdermockedList;	InOrder inOrder = Mockito.inOrder(mockedList);
+inOrder.verifymocedList.add1;	inOrder.verify(mockedList).add(1);
+inOrder.verifymockedListl.add2;	inOrder.verify(mockedList).add(2);
+inOrder.verifymckedListfadd3;	inOrder.verify(mockedList).add(3);
+1	}
+@Test	@Test
+public voidtestArgumentaptorf{	public void testArgumentCaptor() {
+Integerl expecteds =  new Integer  {1, 2, 3};	Integer[] expecteds = new Integer[] {1, 2, 3};
+List<Inteer> mockedList = PowrMockito.mockList.class;	List<Integer> mockedList = PowerMockito.mock(List.class);
+PowerMockito..doReturntrue.whenfmockedListaddlMockit.anyIntf;	PowerMockito.doReturn(true).when(mockedList).add(Mockito.anyInt());
+for lInteger expected :  expecteds  1	for (Integer expected : expecteds) {
+mockedList.addexpected;	mockedList.add(expected);
+}	}
+ArgumentCator<Integer> argumentCaptor = ArgumentCaptor.forClasslInteger.class;	ArgumentCaptor<Integer> argumentCaptor = ArgumentCaptor.forClass(Integer.class);
+Mockito.verifymockedList Mockito.times3..addargumentCaptor.cpturef	Mockito.verify(mockedList, Mockito.times(3)).add(argumentCaptor.capture());
+Integerlf actuals = argumentCaptor.getAllValues.toArrayfnew  Integer0;;	Integer[] actuals = argumentCaptor.getAllValues().toArray(new Integer[0]);
+Assert..assertArrayEquals"", expecteds,  actals	Assert.assertArrayEquals("", expecteds, actuals);
+	}
+	
+@Test	@Test
+public void testVerifyNoMoreInteractinsfl {	public void testVerifyNoMoreInteractions() {
+List<Integer>mockedList  = PowerMockito.mockList.class;	List<Integer> mockedList = PowerMockito.mock(List.class);
+Mockito.verifyNoMoreInteractionsmockedListl; mockedList..isEmpy;	Mockito.verifyNoMoreInteractions(mockedList); mockedList.isEmpty();
+Mockito.verifymockedListisEmptyf;  MockitoverifyNoMoreInteractionsmockedList	Mockito.verify(mockedList).isEmpty(); Mockito.verifyNoMoreInteractions(mockedList);
+}	}
+	
+@Test	@Test
+public void testVerifyStaticl {	public void testVerifyStatic() {
+PowerMockito.mockStaticStringUils.class;	PowerMockito.mockStatic(StringUtils.class);
+String expected="abc";	String expected = "abc";
+StringUtils.isEmptyexpected;	StringUtils.isEmpty(expected);
+PowerMockito.verifyStaticStringUtils.classf;	PowerMockito.verifyStatic(StringUtils.class);
+ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClasslStringclass;	ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+StringUtils..isEmptylargumentCaptor..captureff;	StringUtils.isEmpty(argumentCaptor.capture());
+Assert.asertEquals"", argumentCaptor.getValueff,  expected	Assert.assertEquals("", argumentCaptor.getValue(), expected);
+}	}
+}	}

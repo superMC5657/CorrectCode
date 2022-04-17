@@ -1,0 +1,9 @@
+package com.atguigu.java1;	package com.atguigu.java1;
+public cass ArrayPrintTest {	public class ArrayPrintTest {
+public static void mainStringl args {	public static void main(String[] args) {
+intf arr =new intf11,2,3};	int[] arr = new int[]{1,2,3};
+System.outprintlnarr;	System.out.println(arr);
+charf arr1 = new char{'a','b'','c';	char[] arr1 = new char[]{'a','b','c'};
+System.out.printlnarr1;;	System.out.println(arr1);
+}	}
+}	}

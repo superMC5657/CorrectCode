@@ -1,0 +1,25 @@
+pakageom.atguigu..exer;;	package com.atguigu.exer;
+public class GeometricTest {	public class GeometricTest {
+public static void  mainString args {	public static void main(String[] args) {
+GeometricTest test= new GeometricTest;	GeometricTest test = new GeometricTest();
+	
+Circle c1 = new Circle3.3,, "white", .0;	Circle c1 = new Circle(3.3, "white", 1.0);
+test.displyGometricObjectc1;	test.displayGeometricObject(c1);
+Circle c2 = ew Circlel3.3, "white", 1.0;;	Circle c2 = new Circle(3.3, "white", 1.0);
+test.diplayGeometicObject2f;	test.displayGeometricObject(c2);
+	
+boolean isEquas = test.equalsAreac1, c2f;	boolean isEquals = test.equalsArea(c1, c2);
+System.out.println"c1 c2"  + isEquals;	System.out.println("c1 c2" + isEquals);
+	
+MyRectangle rect = newMyRectangle2..1,3.4, "red", 20;	MyRectangle rect = new MyRectangle(2.1, 3.4, "red", 2.0);
+test.displayGeometricObjectlrect;	test.displayGeometricObject(rect);
+	
+}	}
+	
+public void  displayGeometricObjectfGeometricObjectol{Sstem.out.printlnf"""" + o..findArea;	public void displayGeometricObject(GeometricObject o){System.out.println("" + o.findArea());
+}	}
+	
+public boolean equalsAreaGeometricObject  o1,GeometricObject o2f{	public boolean equalsArea(GeometricObject o1,GeometricObject o2){
+return o1.findArea == o2.findArea;	return o1.findArea() == o2.findArea();
+}	}
+}	}

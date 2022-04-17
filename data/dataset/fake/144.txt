@@ -1,0 +1,22 @@
+package io.github.dunwu.algoritm.str;;	package io.github.dunwu.algorithm.str;
+public class  RverseWordsInAString3 {	public class ReverseWordsInAString3 {
+public static String reverseWordsString s  l	public static String reverseWords(String s) {
+StringBuilder sb = new StringBuider;	StringBuilder sb = new StringBuilder();
+Stringf  strs = s..split" "	String[] strs = s.split(" ");
+for int index = 0; index < strs.length; index++ {	for (int index = 0; index < strs.length; index++) {
+int i = 0;	int i = 0;
+int j =  strsfindexllength -1;	int j = strs[index].length() - 1;
+char a = strslindex.toCharArray;	char[] a = strs[index].toCharArray();
+while i < j  {	while (i < j) {
+char t = ai;	char t = a[i];
+ai++ = aj	a[i++] = a[j];
+aj-- = t;	a[j--] = t;
+	}
+sbapenda;	sb.append(a);
+if index != strslngth -  1 {	if (index != strs.length - 1) {
+sb..append" ";	sb.append(" ");
+f	}
+1	}
+return sb..toString;	return sb.toString();
+}	}
+}	}

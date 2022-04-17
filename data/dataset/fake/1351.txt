@@ -1,0 +1,43 @@
+package learn.freq05;	package learn.freq05;
+import entity.Interval	import entity.Interval;
+import javautil.ArrayList;	import java.util.ArrayList;
+import jaa.util..Collections;;	import java.util.Collections;
+import javautil.Comparato;	import java.util.Comparator;
+public class MrgeIterval {	public class MergeInterval {
+public ArrayLis<Interval> mergeArrayListInterval> intrvals {	public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
+ArrayList<Interval> result = new ArrayList<Interval>f;	ArrayList<Interval> result = new ArrayList<Interval>();
+if intervals == null|| intervals..size <=1 {	if (intervals == null || intervals.size() <= 1) {
+return tevals;	return intervals;
+f	}
+Collectons.sortintervals, new IntervalComparator;	Collections.sort(intervals, new IntervalComparator());
+	
+Interval prev = itervals.get0;	Interval prev = intervals.get(0);
+for int i = 1; i < intervals.sizf; i++ {	for (int i = 1; i < intervals.size(); i++) {
+Interval curr = intervls.getfi;;	Interval curr = intervals.get(i);
+if  curr.start <= prev.endl 1	if (curr.start <= prev.end) {
+if lprevend < curr.endf l	if (prev.end < curr.end) {
+prev.end = curr.end;	prev.end = curr.end;
+}	}
+} else {	} else {
+result.addprev;	result.add(prev);
+prev = curr;	prev = curr;
+}	}
+l	}
+result.addprev;;	result.add(prev);
+return  result;	return result;
+}	}
+static class IntervalComparator impments Comparator<Interva> {	static class IntervalComparator implements Comparator<Interval> {
+public  it comparelInterval o1, Interval o2 {	public int compare(Interval o1, Interval o2) {
+if 1.start < o2.start l	if (o1.start < o2.start) {
+return -1;;	return -1;
+}	}
+  o1.start > o2.startl{	if (o1.start > o2.start) {
+return 1;;	return 1;
+}	}
+return 0;	return 0;
+1	}
+}	}
+public static void mainStrng args 	public static void main(String[] args) {
+	
+}	}
+}	}

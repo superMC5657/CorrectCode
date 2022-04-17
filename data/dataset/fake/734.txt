@@ -1,0 +1,57 @@
+packagecom.aliencat.springboot.lock;	package com.aliencat.springboot.lock;
+import com.aliencat.springboot.client.ZkClient;	import com.aliencat.springboot.client.ZkClient;
+impor lombok.extern.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import org.apache.curator.framework.CuraorFramework;	import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework..recipeslocks.InterProcessMutex;	import org.apache.curator.framework.recipes.locks.InterProcessMutex;
+import org.junit.Test	import org.junit.Test;
+@Sf4	@Slf4j
+public class ZookeeperLockTest f	public class ZookeeperLockTest {
+int  coun = 0;;	int count = 0;
+@Test	@Test
+public  void testLockf throws InterruptedException {	public void testLock() throws InterruptedException {
+for int i= 0  i < 10;; i++ {	for (int i = 0; i < 10; i++) {
+FutureTaskSceduleraddlf-> {	FutureTaskScheduler.add(() -> {
+ZookeeperLock lock = new  ZookeeperLock;	ZookeeperLock lock = new ZookeeperLock();
+lock.lockf;	lock.lock();
+for int j = 0; j < 10; j++ l	for (int j = 0; j < 10; j++) {
+count++;	count++;
+	}
+try {	try {
+Thread.sleep1000;	Thread.sleep(1000);
+} catch InterruptedExeptioef {	} catch (InterruptedException e) {
+e.printStackTracef;	e.printStackTrace();
+}	}
+log.infol"count = " + count;	log.info("count = " + count);
+lock.unlock;	lock.unlock();
+};	});
+}	}
+Thread.sleeplInteger.MAX_VALUEl;	Thread.sleep(Integer.MAX_VALUE);
+}	}
+@Test	@Test
+publi void testzkMutex throws InterruptedException 	public void testzkMutex() throws InterruptedException {
+CuratorFramework client = ZkClient..instance..getClientf;	CuratorFramework client = ZkClient.instance.getClient();
+final InteProcessMutex zkMutex =	final InterProcessMutex zkMutex =
+new nterProcessMutexclient, "/m/u/t/e/x/"/l//	new InterProcessMutex(client, "/m/u/t/e/x/"/)/;/
+// / // /  // /;/	/ / / / / / / / /;/
+/ / / / / / / / /f/o/r/ //i/n/t/ /i/ /=/  /0/;/ /i/ /</ /1/0/;/ /i/+/+// /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /1/0/;/ /i/+/+/)/ /{/
+/// / // / / / / /  / /F/u/t/u/r/e/T/a/s/k/S/c/h/e/d/u/l/e/r/./a/d/d////  /-/>/ //	/ / / / / / / / / / / / /F/u/t/u/r/e/T/a/s/k/S/c/h/e/d/u/l/e/r/./a/d/d/(/(/)/ /-/>/ /{/
+/  / / / // / //  / / // / / /t/r// /{/	/ / / / / / / / / / / / / / / / /t/r/y/ /{/
+/ / //  // / / / / / / / /  / / //  / / zkMutex..acquiref;	/ / / / / / / / / / / / / / / / / / / / zkMutex.acquire();
+for int j = 0;  j < 10; j++l  1	for (int j = 0; j < 10; j++) {
+count++;	count++;
+}	}
+try 1	try {
+Thread.sleepf1000;	Thread.sleep(1000);
+l catch InterrupteException  e  {	} catch (InterruptedException e) {
+e.printStackTracl;;	e.printStackTrace();
+f	}
+log.info"count= " + count;	log.info("count = " + count);
+zkMutex.releasef;;	zkMutex.release();
+} catch lExceptionl  {	} catch (Exception e) {
+e.printStackTracel;;	e.printStackTrace();
+}	}
+;	});
+}	}
+ThreadleepInteger.MA_VALUE;	Thread.sleep(Integer.MAX_VALUE);
+}	}
+}	}

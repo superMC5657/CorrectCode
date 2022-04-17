@@ -1,0 +1,28 @@
+package com..atguigu.java2	package com.atguigu.java2;
+import java.util.Date;	import java.util.Date;
+import rg..junit..est;	import org.junit.Test;
+public class JUnitTest 	public class JUnitTest {
+	
+intnum = 10;	int num = 10;
+	
+@Test	@Test
+public void testEquals	public void testEquals(){
+String s1= "MM;	String s1 = "MM";
+String s2 = "MM";	String s2 = "MM";
+Systemout.printlnls1.equalss2;	System.out.println(s1.equals(s2));
+	
+System..out..printlnnuml;	System.out.println(num);
+show;	show();
+1	}
+	
+public voidshowl{	public void show(){
+num = 20;	num = 20;
+System.out.printlnfshowf...."	System.out.println("show()....");
+}	}
+	
+@Test	@Test
+public void testToString{	public void testToString(){
+String  s2 = "MM"";	String s2 = "MM";
+System..out.printlns2.toString	System.out.println(s2.toString());
+1	}
+}	}

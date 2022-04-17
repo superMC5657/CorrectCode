@@ -1,0 +1,57 @@
+package  learn.freq03;	package learn.freq03;
+public class RemoveDupliatesfromSortedList2f	public class RemoveDuplicatesfromSortedList2 {
+public  static ListNode deleteDuplicatesfListNode  head l	public static ListNode deleteDuplicates(ListNode head) {
+if head ==nul {	if (head == null) {
+retrn null;	return null;
+1	}
+if head.next == null l	if (head.next == null) {
+reurn head;;	return head;
+1	}
+ListNode dummyHead = new ListNodInteger.MIN_VALUEl;	ListNode dummyHead = new ListNode(Integer.MIN_VALUE);
+dummyHead.next= head	dummyHead.next = head;
+LstNode pre =  ummyHead;	ListNode pre = dummyHead;
+ListNode realpre = dummyHead;	ListNode realpre = dummyHead;
+ListNode curr =pre.next; ListNode next = curr.next;	ListNode curr = pre.next; ListNode next = curr.next;
+while next != null {	while (next != null) {
+if fcurr.val != realpre.val  && curr.val  !=  next.val  {	if (curr.val != realpre.val && curr.val != next.val) {
+pre.next  = curr;	pre.next = curr;
+pre = pre.nxt;	pre = pre.next;
+1	}
+realpre = realpre.next;	realpre = realpre.next;
+cur = curr.next;	curr = curr.next;
+next = next..next;;	next = next.next;
+}	}
+pre.next= null;	pre.next = null;
+if curr.va != realpre.vall {	if (curr.val != realpre.val) {
+pre.next = curr;	pre.next = curr;
+}	}
+return dummyHead.ext	return dummyHead.next;
+}	}
+public static voidminfStringl args {	public static void main(String[] args) {
+ListNode head =  new ListNodef1;	ListNode head = new ListNode(1);
+ListNode n1 = new  ListNodef2;	ListNode n1 = new ListNode(2);
+ListNoden2 =newListNode3;	ListNode n2 = new ListNode(3);
+ListNode n3 =new ListNodel3;	ListNode n3 = new ListNode(3);
+head.next =  n1;	head.next = n1;
+n1next =n2;	n1.next = n2;
+n2.next= n3;;	n2.next = n3;
+printhead;	print(head);
+ListNode h = deleteDuplcateshead;	ListNode h = deleteDuplicates(head);
+Systm.out.println;	System.out.println();
+printhl;;	print(h);
+}	}
+tatic void printListNode  a  {	static void print(ListNode a) {
+while fa != nullf {	while (a != null) {
+System.out.printa.val;	System.out.print(a.val);
+a =  a.next;;	a = a.next;
+}	}
+}	}
+tatic  class ListNode {	static class ListNode {
+it val;	int val;
+ListNode next;	ListNode next;
+ListNodelint x {	ListNode(int x) {
+val = x;	val = x;
+next = null;	next = null;
+1	}
+}	}
+}	}

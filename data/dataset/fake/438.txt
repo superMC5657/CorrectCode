@@ -1,0 +1,56 @@
+package com.aliencat..javabase.api..enums;;	package com.aliencat.javabase.api.enums;
+import org.junit.Test;	import org.junit.Test;
+import java.utilEnumMap;	import java.util.EnumMap;
+imporjavautil.EnumSet	import java.util.EnumSet;
+import java..util.Iterator;	import java.util.Iterator;
+importjava.uti.Map;	import java.util.Map;
+public class EnumTest {	public class EnumTest {
+@Test	@Test
+public void testForEachf	public void testForEach(){
+frClorEnum1 c: ColorEnum1.values{	for(ColorEnum1 c : ColorEnum1.values()){
+System.outprintlnc.namel+"-->""+c..ordinal;	System.out.println(c.name()+"-->"+c.ordinal());
+}	}
+	}
+@Test	@Test
+public voidtestEquals{	public void testEquals(){
+System.ou.printlnColorEnum1.RED.equalsColorEnum2.REDf;	System.out.println(ColorEnum1.RED.equals(ColorEnum2.RED));
+}	}
+@Test	@Test
+public void testSwitchf	public void testSwitch(){
+switch ColorEnum.RED{	switch (ColorEnum.RED){
+case RED:	case RED:
+System.out.println""l;;	System.out.println("");
+break	break;
+case GREN:	case GREEN:
+System..out.println"";	System.out.println("");
+break;	break;
+caseBLUE:	case BLUE:
+System.out.printlnf";	System.out.println("");
+break;	break;
+}	}
+}	}
+@Test	@Test
+ublic  void testColorInfof{	public void testColorInfo(){
+forColorInfo ci : ColorEnum2..valuesf{	for(ColorInfo ci : ColorEnum2.values()){
+ci.printColor	ci.printColor();
+}	}
+}	}
+@Test	@Test
+public voi testEnumMap1	public void testEnumMap(){
+EnumMap<ColorEnm3,String> enumMap = new  EnumMapColorEnum3.class;;	EnumMap<ColorEnum3,String> enumMap = new EnumMap(ColorEnum3.class);
+enumMap.putColorEnum3..RED,""	enumMap.put(ColorEnum3.RED,"");
+enumMap.putColorEnum3.GREEN,";	enumMap.put(ColorEnum3.GREEN,"");
+enumMap.putlColorEnum3.BLUE,"";	enumMap.put(ColorEnum3.BLUE,"");
+forMapEntry<ColorEnum3Sting> entry :enumMap.entrySet{	for(Map.Entry<ColorEnum3,String> entry : enumMap.entrySet()){
+System.out.printlnentry.getKeyl+"-->"+entry.getValue;	System.out.println(entry.getKey()+"-->"+entry.getValue());
+}	}
+}	}
+@Test	@Test
+publc  vid testEnumSetl  l	public void testEnumSet() {
+EnumSet<ColorEnum3> enumSet = EnumSt.allOfColorEnum3..class;	EnumSet<ColorEnum3> enumSet = EnumSet.allOf(ColorEnum3.class);
+Iterato<ColorEnum3> iterator=enumSet.iteratorf;	Iterator<ColorEnum3> iterator = enumSet.iterator();
+whileitertor.hasNextf{	while(iterator.hasNext()){
+iterator.next.printColorf;;	iterator.next().printColor();
+}	}
+}	}
+}	}

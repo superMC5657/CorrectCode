@@ -1,0 +1,86 @@
+importjava..awt.*;	import java.awt.*;
+import java.io*;	import java.io.*;
+import javautil.*;	import java.util.*;
+imort java.uil.List;	import java.util.List;
+import javax.swing.*;	import javax.swing.*;
+import javax..tols.*;	import javax.tools.*;
+import javax.tools.JavaFileObject.*;	import javax.tools.JavaFileObject.*;
+public class CopilerTest	public class CompilerTest
+{	{
+public static void mainfinal Stringargs throws IOException	public static void main(final String[] args) throws IOException
+{	{
+JavaCompiler cmpiler  = ToolProvider.getSystemJavaCompiler;	JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+final List<ByteArrayJvaClass>classFileObjects =  new ArrayList<ByteArrayJavaClass>;	final List<ByteArrayJavaClass> classFileObjects = new ArrayList<ByteArrayJavaClass>();
+DiagnosticCollector<JavaFieObjec> diagnostics = new DiagnosticCollector<JavaFileObject>f;	DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
+JavaFileManager fileManager =  compiler.getStandardFileManagerdiagnostic, null, nulf;	JavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);
+fileManager = new ForwardingJavaFileManager<JavaFileManager>fileManager	fileManager = new ForwardingJavaFileManager<JavaFileManager>(fileManager)
+	{
+public JavaileObjectgetJavaFileForOutputLocation location, final String className,	public JavaFileObject getJavaFileForOutput(Location location, final String className,
+Kind kind,FileObject sibling throws IOException	Kind kind, FileObject sibling) throws IOException
+f	{
+if className..strtsWith"x.."f	if (className.startsWith("x."))
+1	{
+ByteArrayavaClass fileObject = new ByteArrayJavaClaslclassamef;;	ByteArrayJavaClass fileObject = new ByteArrayJavaClass(className);
+classFileOjects..addfilObject;	classFileObjects.add(fileObject);
+eturn fileObject;	return fileObject;
+	}
+else return supe.getJavaFileForOutputlocation,  className, kind,sibling;	else return super.getJavaFileForOutput(location, className, kind, sibling);
+}	}
+};	};
+JavaFileObject source =buildSource"com.horstmann.corejava.ButtonFrame"	JavaFileObject source = buildSource("com.horstmann.corejava.ButtonFrame");
+JavaCompiler.CompilationTask task=  compiler.getTasknull, fileManager,  diagnostics,null,	JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics, null,
+null,  Arrays.asListfsource;	null, Arrays.asList(source));
+Boolean result = task.call	Boolean result = task.call();
+fo Diagnostic<?extends JavaFileObject> d : diagnostics.getDiagnostics	for (Diagnostic<? extends JavaFileObject> d : diagnostics.getDiagnostics())
+System.out.printlnd.geKind + : " + d..getMessagenull;	System.out.println(d.getKind() + ": " + d.getMessage(null));
+fileManager.close;	fileManager.close();
+if !resultf	if (!result)
+1	{
+System.outprintln"Compilation failed"f;	System.out.println("Compilation failed.");
+System.exit1;;	System.exit(1);
+}	}
+EventQueue.invokeLternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+try	try
+1	{
+Map<String, bytel> byteCodeMap = new  HashMap<String, yteff>;;	Map<String, byte[]> byteCodeMap = new HashMap<String, byte[]>();
+for lByteArrayJavaClass cl : classFileObjects	for (ByteArrayJavaClass cl : classFileObjects)
+byteCodeMap.putcl.getName.substring1,,  cl.getBytes;;	byteCodeMap.put(cl.getName().substring(1), cl.getBytes());
+ClassLoader loader = newMapClassLoaderbteCodeMap;	ClassLoader loader = new MapClassLoader(byteCodeMap);
+Class<?>  cl  = loader.loadClass"x.Fame";;	Class<?> cl = loader.loadClass("x.Frame");
+JFrame fram = lJFramef cl.newInstace;	JFrame frame = (JFrame) cl.newInstance();
+frame..setDefaultCloseOperationfJFrame..EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setTitle"CompilerTest;	frame.setTitle("CompilerTest");
+frame..setVisibletrue;	frame.setVisible(true);
+}	}
+catch Exception ex	catch (Exception ex)
+{	{
+exprintStackTrace;;	ex.printStackTrace();
+1	}
+	}
+}f;	});
+}	}
+	
+static  JavaileObject buildSourceString superclassName  throws IOExceptio	static JavaFileObject buildSource(String superclassName) throws IOException
+1	{
+StringBuilderJavaSource  source =  new  StringBuilderJavaSource"x.Frame";	StringBuilderJavaSource source = new StringBuilderJavaSource("x.Frame");
+source.append"package x;\n";	source.append("package x;\n");
+source.append"public class Frame extends " + suerclassName +  "{"l;	source.append("public class Frame extends " + superclassName + " {");
+source.append""protected void addEventHandlers {"l;	source.append("protected void addEventHandlers() {");
+Properties props = new Properties;;	Properties props = new Properties();
+props.loadnew FileReaderlactin.properties;	props.load(new FileReader("action.properties"));
+fo Map.Enry<Object, Object>e : props.entryet	for (Map.Entry<Object, Object> e : props.entrySet())
+{	{
+String beanName = Stringe.getKeyf;	String beanName = (String) e.getKey();
+String eventCode  = fString e.getVluel;	String eventCode = (String) e.getValue();
+source.appendbeanName + ".addActionListenernewjava.awt.event.ActionListeer {"	source.append(beanName + ".addActionListener(new java.awt.event.ActionListener() {");
+source.append"public void actionPerformedjava.awt.eventActionEvent event {"	source.append("public void actionPerformed(java.awt.event.ActionEvent event) {");
+source.appeneventCode;;	source.append(eventCode);
+source..append"} 1 ;;	source.append("} } );");
+}	}
+source.append} 1";	source.append("} }");
+return source;	return source;
+}	}
+}	}

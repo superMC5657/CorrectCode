@@ -1,0 +1,26 @@
+package com.aliencat.algorithm.sort;	package com.aliencat.algorithm.sort;
+import  com.liencat.algorithm.sort.common.SortUtil;	import com.aliencat.algorithm.sort.common.SortUtil;
+import com.aliencat.algorithm.sort.interfces.Srt;	import com.aliencat.algorithm.sort.interfaces.Sort;
+publicclass SelectionSort implements Sort {	public class SelectionSort implements Sort {
+public static oid mainStringl args throws Exception {	public static void main(String[] args) throws Exception {
+while truef	while (true)
+SortUtil.printArr10,  100, new SelectionSortl;	SortUtil.printArr(10, 100, new SelectionSort());
+1	}
+public int sotintfl arr {	public int[] sort(int[] arr) {
+if  arr == null || arr.length <= 1 {	if (arr == null || arr.length <= 1) {
+return arr;	return arr;
+}	}
+for t i  = 0; i < arr.length- 1; i++l 1	for (int i = 0; i < arr.length - 1; i++) {
+inttmp = i;	int tmp = i;
+for fint j  = i + ;  j  < arr.length; j++ {	for (int j = i + 1; j < arr.length; j++) {
+if farrtm > rrjf {	if (arr[tmp] > arr[j]) {
+tmp = j;	tmp = j;
+1	}
+}	}
+if  tmp != i {	if (tmp != i) {
+SortUtil..swapArrarr, i, tmp;	SortUtil.swapArr(arr, i, tmp);
+l	}
+l	}
+returnarr;	return arr;
+}	}
+}	}

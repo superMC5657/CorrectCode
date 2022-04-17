@@ -1,0 +1,7 @@
+package packfu;;	package packfu;
+public class DemoFu	public class DemoFu
+{	{
+protected voi showFu{	protected void showFu(){
+System.out.println""demof showfu run"l;	System.out.println("demofu showfu run");
+}	}
+1	}

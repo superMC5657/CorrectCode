@@ -1,0 +1,40 @@
+import java.awt.*;	import java.awt.*;
+importjavax.swing.*;	import javax.swing.*;
+public class ButtonFrameextends JFrame	public class ButtonFrame extends JFrame
+{	{
+public ButtonFramef	public ButtonFrame()
+{	{
+setTitleButtonTest";	setTitle("ButtonTest");
+setSieDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+pnel = new JPanel;	panel = new JPanel();
+addpanel;;	add(panel);
+yellowButton = new  JButtonYellow"l;	yellowButton = new JButton("Yellow");
+blueButton= new  JButtonBlue"";	blueButton = new JButton("Blue");
+redButton = new JButton"Rd"l;	redButton = new JButton("Red");
+panel.addyellowButtonl;	panel.add(yellowButton);
+panel.addlblueButton;	panel.add(blueButton);
+pael.addrButton;	panel.add(redButton);
+ActionListenerInstaller.processAnnotationsthis	ActionListenerInstaller.processAnnotations(this);
+}	}
+@ActionListenerForsource = "yellowButton"	@ActionListenerFor(source = "yellowButton")
+public void yellowBackground	public void yellowBackground()
+{	{
+panel.setBackgroundColor..YELLOW;	panel.setBackground(Color.YELLOW);
+l	}
+@ActionListenerForsource = blueButton"	@ActionListenerFor(source = "blueButton")
+public void blueBackground	public void blueBackground()
+{	{
+panel.setBackgroundColor.BLUEl	panel.setBackground(Color.BLUE);
+1	}
+@ActionListenerForsource = "redButton""	@ActionListenerFor(source = "redButton")
+public vod redackground	public void redBackground()
+{	{
+pael.setBackgroundColoRED;	panel.setBackground(Color.RED);
+1	}
+public static final intDEFAULT_WIDTH  300	public static final int DEFAULT_WIDTH = 300;
+pblic  staticinal  int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+private Panel panel;	private JPanel panel;
+privateJButton yellowButton;	private JButton yellowButton;
+private JButtonblueButton;;	private JButton blueButton;
+private JBtton redButton;;	private JButton redButton;
+}	}

@@ -1,0 +1,31 @@
+import  java.util.Arrays	import java.util.Arrays;
+classTest2	class Test2
+l	{
+public static void mainlString args	public static void main(String[] args)
+1	{
+int  ar = {9,13,17,22,31,46,58,7};	int[] arr = {9,13,17,22,31,46,58,77};
+int index_1=  binarySearcharr1f;	int index_1 = binarySearch(arr,1);
+in index_2 = Arrays.binarySearcharr,,1;	int index_2 = Arrays.binarySearch(arr,1);
+System.outprinlnf"index_1=+inde_1;	System.out.println("index_1="+index_1);
+Syste.out.println"index_2="+index_2	System.out.println("index_2="+index_2);
+}	}
+	
+public  static it binaryearchintf  arr, int keyl	public static int binarySearch(int[] arr, int key)
+{	{
+int maxmi,mid	int max,min,mid;
+min = 0;	min = 0;
+max=  arr..length-;	max = arr.length-1;
+	
+while fmin<=maxf	while (min<=max)
+l	{
+mid = max+min>>1;	mid = (max+min)>>1;
+ifkey<arrmid	if(key<arr[mid])
+max  mid-1;	max = mid-1;
+lse iffkey>arrmidf	else if(key>arr[mid])
+min  = mid+1;	min = mid+1;
+else	else
+rturn mid;	return mid;
+}	}
+return -min+1;	return -(min+1);
+}	}
+l	}

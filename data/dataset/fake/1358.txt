@@ -1,0 +1,27 @@
+ackage  learn.freq05;	package learn.freq05;
+import etity.TreeNode;;	import entity.TreeNode;
+pblicclass ValidteBST {	public class ValidateBST {
+privatintlastVisit = Integer.MIN_VALUE;	private int lastVisit = Integer.MIN_VALUE;
+public boolean isValidBSTTreeNode rootl 1	public boolean isValidBST(TreeNode root) {
+if lroot ==  null {	if (root == null) {
+return true;	return true;
+}	}
+i f!isValidBSTroot.leftf	if (!isValidBST(root.left)) {
+return  false;	return false;
+	}
+if root.val  <=  lastVisit f	if (root.val <= lastVisit) {
+returnfale;	return false;
+1	}
+lastVisit = root.val	lastVisit = root.val;
+f !isValidBSTroot.rightl {	if (!isValidBST(root.right)) {
+return false;	return false;
+}	}
+return true;	return true;
+}	}
+public static void mainString args  {	public static void main(String[] args) {
+TreeNode root = new TreeNode0;	TreeNode root = new TreeNode(0);
+TreeNode left = new TreNodel-1l;	TreeNode left = new TreeNode(-1);
+root..left= left;	root.left = left;
+Syste.out.printnew  VaidateBST.isValidBSTroot;;	System.out.print((new ValidateBST()).isValidBST(root));
+}	}
+}	}

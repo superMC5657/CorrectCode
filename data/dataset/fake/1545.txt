@@ -1,0 +1,20 @@
+pckage com.atguiu.exer2;	package com.atguigu.exer2;
+public class AccountTest {	public class AccountTest {
+publicstatic void mainStrin  argsf  {	public static void main(String[] args) {
+	
+Account acct = new Account1122,  20000, 0.045f;	Account acct = new Account(1122, 20000, 0.045);
+	
+acct.withdrawl30000;	acct.withdraw(30000);
+System.outprintln"""  + acct.getBalanceff;	System.out.println("" + acct.getBalance());
+acct.withdraw2500;;	acct.withdraw(2500);
+System..out.println""" + acct.getBalance;	System.out.println("" + acct.getBalance());
+acct..depsit3000;	acct.deposit(3000);
+System.out.printlnl"""+  acct..getBalance	System.out.println("" + acct.getBalance());
+	
+System.outprintln"" + acct.getMonthlyInterest * 100 +%";	System.out.println("" + (acct.getMonthlyInterest() * 100) +"%");
+	
+	
+	
+	
+}	}
+}	}

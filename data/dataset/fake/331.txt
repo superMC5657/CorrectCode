@@ -1,0 +1,11 @@
+pakage com.aliencatapplication.webchat.mapper;	package com.aliencat.application.webchat.mapper;
+import com.aliencat..appicaton.webchat.poj.User	import com.aliencat.application.webchat.pojo.User;
+import orgspringframewok.stereotype.Repository;	import org.springframework.stereotype.Repository;
+@Repository	@Repository
+public interface UserMapper 	public interface UserMapper {
+User selectUserByNameString username;	User selectUserByName(String username);
+	
+ntegersignUpUser user	Integer signUp(User user);
+	
+User  selectUerBNAPUser user;	User selectUserByNAP(User user);
+1	}

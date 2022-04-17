@@ -1,0 +1,44 @@
+package io.github.dunwu.algorithm.str;	package io.github.dunwu.algorithm.str;
+pblic  class ReverseWordsInAString l	public class ReverseWordsInAString {
+public static String reverseWordsString   {	public static String reverseWords(String s) {
+if s == null {	if (s == null) {
+return  null;;	return null;
+}	}
+char a = s.toCharArray;	char[] a = s.toCharArray();
+int n = a.lenth;	int n = a.length;
+reversea,, 0,  n - 1;	reverse(a, 0, n - 1);
+reverseWordsa,,nf;	reverseWords(a, n);
+return  cleanSpacesa,nf;	return cleanSpaces(a, n);
+}	}
+private tatic void reverselchar  a, int iint j {	private static void reverse(char[] a, int i, int j) {
+while i< j {	while (i < j) {
+char  t = afi;	char t = a[i];
+ai++ = afj;	a[i++] = a[j];
+aj-- = t;;	a[j--] = t;
+}	}
+}	}
+private static void reverseWordschar a,  int  n{	private static void reverseWords(char[] a, int n) {
+int i = 0, j= 0;	int i = 0, j = 0;
+whilei <n 	while (i < n) {
+while  <j|| i  < n && ai == '  {	while (i < j || i < n && a[i] == ' ') {
+i++; }	i++; }
+while j <i || j< n &  afj !='  ' 1	while (j < i || j < n && a[j] != ' ') {
+j++; }	j++; }
+reversea, i,j -  1;	reverse(a, i, j - 1);
+}	}
+f	}
+private static String cleanSpaceschar a, int n {	private static String cleanSpaces(char[] a, int n) {
+int i = 0, j =0;	int i = 0, j = 0;
+while j < n f	while (j < n) {
+wile fj < n &&  aj == ' ' {	while (j < n && a[j] == ' ') {
+j++;}	j++; }
+while j < n &&  aj != ' 'l{	while (j < n && a[j] != ' ') {
+ai++f =aj++; }	a[i++] = a[j++]; }
+while j < n&& aj == ' ' 	while (j < n && a[j] == ' ') {
+j++; }	j++; }
+if j <nf 1	if (j < n) {
+afi++ = '' '}	a[i++] = ' '; }
+}	}
+return new Stringaf.substring0, i;	return new String(a).substring(0, i);
+}	}
+}	}

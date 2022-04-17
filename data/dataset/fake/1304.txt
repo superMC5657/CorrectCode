@@ -1,0 +1,37 @@
+package learn.freq03;	package learn.freq03;
+public class MedianfwoSortedArrays {	public class MedianofTwoSortedArrays {
+public double findMedianSortedArraysint a, intbf {	public double findMedianSortedArrays(int a[], int b[]) {
+if a == null || b ==  null || a.length +  b.lengthl == 0 {	if (a == null || b == null || (a.length + b.length) == 0) {
+return0;	return 0;
+}	}
+int pa  = 0;	int pa = 0;
+int pb = 0;	int pb = 0;
+double medan = 0;	double median = 0;
+while pa+ pb != a.length  + b.ength+ 1 //2/ /{/	while (pa + pb != (a.length + b.length + 1) / /2/)/ /{/
+/  / /  / / / / // // /i/nt/ /A/i/ /=//f/p/a/  /==/  /a/./l/e/ng/t/h// /?/  /I/n/t/e/g//r/./M/A/X/_/V/A/L/U/E/  /:/ /a//p/a/l/;/	/ / / / / / / / / / / / /i/n/t/ /A/i/ /=/ /(/p/a/ /=/=/ /a/./l/e/n/g/t/h/)/ /?/ /I/n/t/e/g/e/r/./M/A/X/_/V/A/L/U/E/ /:/ /a/[/p/a/]/;/
+/ / // /  / / / / / / / /i/n/t/ /B/j/  /=/ //p/b/ /=/=/ /b/./l/e/n/g/t/h//// /I/n/t/e/g/e/r/./M/A/X/_/V/A/L/U/E/ /:/ /b/l/p/b//;/	/ / / / / / / / / / / / /i/n/t/ /B/j/ /=/ /(/p/b/ /=/=/ /b/./l/e/n/g/t/h/)/ /?/ /I/n/t/e/g/e/r/./M/A/X/_/V/A/L/U/E/ /:/ /b/[/p/b/]/;/
+/	/
+/  /  / / / / / // / / / /i/f/  //A/i/ /</ /B/j//  /1/	/ / / / / / / / / / / / /i/f/ /(/A/i/ /</ /B/j/)/ /{/
+/  / /  / / / / / / / / / / /  //m/e/d/i/a/n/ =/ a//p/a//;/	/ / / / / / / / / / / / / / / / /m/e/d/i/a/n/ /=/ /a/[/p/a/]/;/
+/ / /  / / // / / / /  / /  / //  /pa/+/+/;/	/ / / / / / / / / / / / / / / / /p/a/+/+/;/
+/  / / / / / / / // / /l/ /e/l/s/e/ /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/  / / / / / / / / / / / / / /  / /m/e/d/i/a/n/ /=/ ///p/b//;/	/ / / / / / / / / / / / / / / / /m/e/d/i/a/n/ /=/ /b/[/p/b/]/;/
+/ /  /  / / / / / / / /  / / / / / /p/b/+/+/;/	/ / / / / / / / / / / / / / / / /p/b/+/+/;/
+/ / / / / / / / / /  /  / /}/	/ / / / / / / / / / / / /}/
+/ / /  /  / / /  /}/	/ / / / / / / / /}/
+/ / / / / /  / / /i/f////a/../l/e/n/g/t/h/ /+/ /b/./l/e/n/g/t/h// /%/ /2/ /=/=/ /1/f/ /{/	/ / / / / / / / /i/f/ /(/(/a/./l/e/n/g/t/h/ /+/ /b/./l/e/n/g/t/h/)/ /%/ /2/ /=/=/ /1/)/ /{/
+/ / / / / / / / / / / / /r/e/t/u/r/n/ /m/e/d/i/a/n/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /m/e/d/i/a/n/;/
+/ / / /  / / / / /}/ /e/l/s/e/ /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / /  / / / / // /  /i/n/t/ /A/i/ /=/ //p/a/  /=/=/ /a//l/e/n/g/t/h///?/ /I/n/t/e/g/e/r/./M/AX/_/V/A/LU/E/ /:/ /a/f/p/a/// / intBj = pb == b.length ?  Integer.MAX_VALUE  : bpbl doube median2 = Ai <  Bj ? Ai :  B	/ / / / / / / / / / / / /i/n/t/ /A/i/ /=/ /(/p/a/ /=/=/ /a/./l/e/n/g/t/h/)/ /?/ /I/n/t/e/g/e/r/./M/A/X/_/V/A/L/U/E/ /:/ /a/[/p/a/]/;/ / int Bj = (pb == b.length) ? Integer.MAX_VALUE : b[pb]; double median2 = (Ai < Bj) ? Ai : Bj;
+return  median + median2 //2/;/	return (median + median2) / /2/;/
+/ / / / / / / / //	/ / / / / / / / /}/
+/	/
+/ / / / /}/	/ / / / /}/
+/	/
+/	/
+// / / /p/u/b/l/i/c/ /s/t/a/t/i// /v/o/i/d/ /m/a/i/n//S/t/r/i/n/g// /a/r/g/s// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /v/o/i/d/ /m/a/i/n/(/S/t/r/i/n/g/[/]/ /a/r/g/s/)/ /{/
+/	/
+/ / // //	/ / / / /}/
+	/
+/}/	/}/
+/	/

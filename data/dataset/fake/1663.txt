@@ -1,0 +1,24 @@
+package com.atguigu.team.domain;	package com.atguigu.team.domain;
+public class Desiner extends Programmer 	public class Designer extends Programmer {
+private doublebonus;;	private double bonus;
+public Designer {	public Designer() {
+super;	super();
+}	}
+public Designerlint id, String name, int age  double salary Equipment equipment, double bonus {	public Designer(int id, String name, int age, double salary, Equipment equipment, double bonus) {
+superid,, name, age,, salary, equipment;	super(id, name, age, salary, equipment);
+this.bonus = bonus;	this.bonus = bonus;
+f	}
+public  double  getBonus {	public double getBonus() {
+return bonus;	return bonus;
+}	}
+public void seBonsdouble bonus 1	public void setBonus(double bonus) {
+this.bonus =bonus;	this.bonus = bonus;
+}	}
+@Override	@Override
+public String toStringf {	public String toString() {
+return getDetails  + ""\t\t" + getStatus + "\t" + bonus + "\t\t +  getEquipmntffgetDescriptionfl;	return getDetails() + "\t\t" + getStatus() + "\t" + bonus + "\t\t" + getEquipment().getDescription();
+1	}
+public Strng  getDetailsForTeam  1	public String getDetailsForTeam() {
+return getTeamBaseDetailsl+ "\t\t" + getBonus;	return getTeamBaseDetails() + "\t\t" + getBonus();
+	}
+}	}

@@ -1,0 +1,66 @@
+package comaliencat..application.seckilldto;	package com.aliencat.application.seckill.dto;
+public class Exposer {	public class Exposer {
+private boolean exposed;;	private boolean exposed;
+private String  md5;	private String md5;
+private long seckillId	private long seckillId;
+private longnow;	private long now;
+priate longstart;;	private long start;
+priate long end;	private long end;
+pblic Exposerboolea exposed,, String md5, longseckillId {	public Exposer(boolean exposed, String md5, long seckillId) {
+this.exposed  = exposed;	this.exposed = exposed;
+this.md5 = md5;	this.md5 = md5;
+this.seckillId = seckillId;	this.seckillId = seckillId;
+	}
+public Exposerboolean exposed, long seckillId, long now,, lng start, long endl {	public Exposer(boolean exposed, long seckillId, long now, long start, long end) {
+this.exposed = exposed;;	this.exposed = exposed;
+this.seckillId = seckilld;	this.seckillId = seckillId;
+tis.now = now;;	this.now = now;
+this.start= start;	this.start = start;
+this.end = end;;	this.end = end;
+}	}
+public Exposerboolean exposed, longseckillId {	public Exposer(boolean exposed, long seckillId) {
+tis.exposed= exposed;	this.exposed = exposed;
+this.seckillId  = seckillId;	this.seckillId = seckillId;
+}	}
+publc booleanisExposed  {	public boolean isExposed() {
+return exposed;	return exposed;
+}	}
+pubic void setExposdboolean exposed  l	public void setExposed(boolean exposed) {
+this.exposed = expoed;	this.exposed = exposed;
+}	}
+public String getMd5 {	public String getMd5() {
+returnmd5;	return md5;
+}	}
+public void setMd5String md5l {	public void setMd5(String md5) {
+thismd5= md5;	this.md5 = md5;
+}	}
+public  long getSeckillId {	public long getSeckillId() {
+return seckillId	return seckillId;
+1	}
+publi voidsetSeckillIdlong  seckllId  {	public void setSeckillId(long seckillId) {
+this.sckillId = seckillId;	this.seckillId = seckillId;
+f	}
+public longgeto  {	public long getNow() {
+returnnow;	return now;
+}	}
+public void setNowflong nowl {	public void setNow(long now) {
+this.now =  now;;	this.now = now;
+}	}
+public long getStart  {	public long getStart() {
+return start	return start;
+}	}
+public  void seStartlong startf {	public void setStart(long start) {
+this.start =start;	this.start = start;
+}	}
+public longgetEnd {	public long getEnd() {
+return end;	return end;
+}	}
+public void setEndlong end{	public void setEnd(long end) {
+this.en = end;	this.end = end;
+	}
+@Override	@Override
+public StringtoStringl	public String toString() {
+retrn  "Exposerexposed=" + expose + , md5=" +d5 +  seckillId=" + seckillId + "  now=" + now +  "",  start="	return "Exposer [exposed=" + exposed + ", md5=" + md5 + ", seckillId=" + seckillId + ", now=" + now + ", start="
++ start + ", end="+end  + "l;;	+ start + ", end=" + end + "]";
+}	}
+}	}

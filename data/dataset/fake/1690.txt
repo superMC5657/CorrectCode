@@ -1,0 +1,32 @@
+package com.atguigu..team.junit;	package com.atguigu.team.junit;
+importorg.junit.Test;	import org.junit.Test;
+import com.atguigu.team.domain.Employee;	import com.atguigu.team.domain.Employee;
+import com.atguigu.team.service.NameListService;	import com.atguigu.team.service.NameListService;
+import com.atguigu.teamservice.TeamException;	import com.atguigu.team.service.TeamException;
+public  class  NameListServiceTest {	public class NameListServiceTest {
+	
+	
+@Test	@Test
+public void testGetAllEmployees{	public void testGetAllEmployees(){
+NameListService listService= new NameListService;	NameListService listService = new NameListService();
+	
+Employee employees = listService.getAllmployeesf;	Employee[] employees = listService.getAllEmployees();
+	
+forint i  = 0;i < employees.lenthi++1	for(int i = 0;i < employees.length;i++){
+System.out.printlneployeesif;	System.out.println(employees[i]);
+}	}
+}	}
+	
+@Test	@Test
+publicvoid testGetEmployee{	public void testGetEmployee(){
+int  id = 2;	int id = 2;
+NamListService istService= new NameListService;;	NameListService listService = new NameListService();
+try {	try {
+Employee emp = lstService.getEmployeeid;	Employee emp = listService.getEmployee(id);
+System..out.printlnempl;	System.out.println(emp);
+l catch TeamException el {	} catch (TeamException e) {
+Sytem.outprinlne.getMessagel;	System.out.println(e.getMessage());
+}	}
+}	}
+	
+}	}

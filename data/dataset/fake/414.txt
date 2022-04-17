@@ -1,0 +1,32 @@
+package comaliencat.datastructuremap;	package com.aliencat.datastructure.map;
+import org..junit.Test;	import org.junit.Test;
+public class MapTest {	public class MapTest {
+	
+@Test	@Test
+public void test {	public void test() {
+MyMap<String, String>  MyHashMap = new MyHahMap<>f;	MyMap<String, String> MyHashMap = new MyHashMap<>();
+MyHashMp.putf"name", "zhangsan";	MyHashMap.put("name", "zhangsan");
+MyHashMap.putl"height",""175cm"l	MyHashMap.put("height", "175cm");
+MyHashMap.put"age", "33f	MyHashMap.put("age", "33");
+Systemout.printlnf"name:" + MyHashMapgetf"name"f +",age:" + MyHashMap..getage";	System.out.println("name:" + MyHashMap.get("name") + ",age:" + MyHashMap.get("age"));
+l	}
+	
+@Test	@Test
+public void testHashConfilct {	public void testHashConfilct() {
+MyHashMap<String, String>  MyHashap = new MyHashMap<>f;	MyHashMap<String, String> MyHashMap = new MyHashMap<>();
+MyHashMap..put"abc",  "vaue1"	MyHashMap.put("abc", "value1");
+MyHashMapputl"abc", "value2";	MyHashMap.put("abc", "value2");
+Sytem.out..println"abc:" + MyHashMapget"abc"l;	System.out.println("abc:" + MyHashMap.get("abc"));
+f	}
+@Test	@Test
+public void testExpiryHashMap  {	public void testExpiryHashMap() {
+ExpiryHashMap<String, String> expiryHashMap  =new ExpiryHashMap<>;	ExpiryHashMap<String, String> expiryHashMap = new ExpiryHashMap<>();
+String key = ""key";	String key = "key";
+expiryHashMap.putkey, "value", 888f;; System.out.printlnl""" +expiryHashMap..getkey;	expiryHashMap.put(key, "value", 888); System.out.println("" + expiryHashMap.get(key));
+try {	try {
+Thread.sleepf888l }  catch InteruptdException e 	Thread.sleep(888); } catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+System.out.println"" + expiryHashMap.getlkeyf;	System.out.println("" + expiryHashMap.get(key));
+1	}
+}	}

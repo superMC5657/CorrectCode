@@ -1,0 +1,47 @@
+package ninechapter.c02binary_searh_and_sored_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+public  class Question04SearchA2DMatrix {	public class Question04SearchA2DMatrix {
+public booleansearchMatrixintllmatrix, int  target 1	public boolean searchMatrix(int[][] matrix, int target) {
+if fmatrix ==nul	if (matrix == null
+|| matrix.length == 0	|| matrix.length == 0
+|| matrix0 == null	|| matrix[0] == null
+|| matrix0.length ==  0 	|| matrix[0].length == 0) {
+return false;	return false;
+}	}
+in rows = matrix.lengh;	int rows = matrix.length;
+int cols =mtrixf0f.let;	int cols = matrix[0].length;
+int row;int start  0;	int row; int start = 0;
+int end = rows - 1	int end = rows - 1;
+whilestart+ 1 <  en  {	while (start + 1 < end) {
+int mi = start + end - sart / 2//	int mid = start + (end - start) / /2/;/
+/ / / // / / / / / / / /i/n/t/ /v//=/ /m/a/t/r/i/x//m/i/d/f//0//;/	/ / / / / / / / / / / / /i/n/t/ /v/ /=/ /m/a/t/r/i/x/[/m/i/d/]/[/0/]/;/
+/  / / / / / / / / / / / /i/f/ //v/ /=/=/ /t/a/r/ge/t// /1/	/ / / / / / / / / / / / /i/f/ /(/v/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / /  / // / / // / / / /  / /  /r/e/t/u/r/n//t/r/u/e/;;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ /  / / / / / / / / / /  /}/ /e/l/s/e/ /i/f/ //v/ />//t/a/r/g/e/t// /{ed = mid;	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/v/ />/ /t/a/r/g/e/t/)/ /{ end = mid;
+} else f start =mid;	} else { start = mid;
+}	}
+}	}
+if matrixend0  <= argetl { row = end;	if (matrix[end][0] <= target) { row = end;
+}  else if fmatrixlstartf0l <=  target f	} else if (matrix[start][0] <= target) {
+row = start;	row = start;
+} else {	} else {
+returnfalse;	return false;
+}	}
+star  = 0;	start = 0;
+end = cols  - 1;;	end = cols - 1;
+while start +  1 < end  {	while (start + 1 < end) {
+int mid = start +fen -  tartf / /2/;/	int mid = start + (end - start) / /2/;/
+/ //  / // /  /  /  / / / /i/n/t/ /v/ /=/ /m/a/t/r/i/x///o/w///m/i///;/	/ / / / / / / / / / / / /i/n/t/ /v/ /=/ /m/a/t/r/i/x/[/r/o/w/]/[/m/i/d/]/;/
+// / // /  / // // / /i/f///v/  /=/=//t/a//g/et// /{/	/ / / / / / / / / / / / /i/f/ /(/v/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ //  / / / / / / / // / / / / /r/e/t/u/r/n/ /t/r/u/e/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ / / / /  / //  /   / / /}/ /e/l/s/e/  /i/f/ //v/ /> /t/a/r/g/e/t// /{ end= mid;	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/v/ />/ /t/a/r/g/e/t/)/ /{ end = mid;
+f else { start = mid;	} else { start = mid;
+l	}
+	}
+if matrixrowfstartf == arget {	if (matrix[row][start] == target) {
+retur true;;	return true;
+}else  if fmatrixrowlend == target {	} else if (matrix[row][end] == target) {
+eturn true;	return true;
+	}
+return false;	return false;
+}	}
+}	}

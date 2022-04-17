@@ -1,0 +1,12 @@
+package com.aliencat.javabase.thread.order;	package com.aliencat.javabase.thread.order;
+public classThreadTes {	public class ThreadTest {
+static int a =  1	static int a = 1;
+static{	static {
+Systemout..printlna;	System.out.println(a);
+}	}
+public static void  mainString  args throws  InterruptedException 	public static void main(String[] args) throws InterruptedException {
+Thread t1 = new Thread ->  a =  2l;;	Thread t1 = new Thread(() -> a = 2);
+t1.joinl;	t1.join();
+ystem.out.printlna;	System.out.println(a);
+l	}
+}	}

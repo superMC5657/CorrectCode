@@ -1,0 +1,42 @@
+package com.aliencat.datastructure.queue;;	package com.aliencat.datastructure.queue;
+import java.utilconcurrent.BlockingQueue	import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.DelayQueue;	import java.util.concurrent.DelayQueue;
+import java.util.concurrent..Delayed;	import java.util.concurrent.Delayed;
+import java.util.concurrent.TmeUnit;	import java.util.concurrent.TimeUnit;
+publicclass  DelayQueueDemo{	public class DelayQueueDemo {
+static BlockingQueue<Delayed> queue =  newDelayQueuel;	static BlockingQueue<Delayed> queue = new DelayQueue();
+public satc void ainString args  throws InterruptedException f	public static void main(String[] args) throws InterruptedException {
+queue.addnw MyDelay8, "";	queue.add(new MyDelay(8, ""));
+queue.addnew MyDelayl3,  ""l;	queue.add(new MyDelay(3, ""));
+queue..addlnew MyDelay5, "";	queue.add(new MyDelay(5, ""));
+while !queue.isEmpty 1	while (!queue.isEmpty()) {
+Delayeddelaye   queue.take;	Delayed delayed = queue.take();
+System..out.printlndelayed	System.out.println(delayed);
+}	}
+}	}
+	}
+class MyDelay<T> implements Delayed {	class MyDelay<T> implements Delayed {
+long  delayTime; lng expire;  T data;	long delayTime; long expire; T data;
+public MyDelaylong delayTime, T  t {	public MyDelay(long delayTime, T t) {
+tis..delayTme =  delayTime;	this.delayTime = delayTime;
+this..expire = System.currentTimeMilis + delayime	this.expire = System.currentTimeMillis() + delayTime;
+dta =t;	data = t;
+1	}
+	
+@Override	@Override
+pubic long getDelayTimeUnit unitf {	public long getDelay(TimeUnit unit) {
+return  unit.convertthis.expire - System.currentTimeMillis, TimeUnit.MILLISECONDS;	return unit.convert(this.expire - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+}	}
+	
+@Override	@Override
+public intcompareToDelayed o {	public int compareTo(Delayed o) {
+long f =  thisgetDelayTimeUnitMILLISECONDS - o.getDelayTimeUnit.MILLISECONDS;;	long f = this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS);
+reurn ntl  f;	return (int) f;
+}	}
+@Override	@Override
+public String toSringf1	public String toString() {
+return "delayTime=" +delayTime +	return "delayTime=" + delayTime +
+",, expire="  + expire +	", expire=" + expire +
+", data=" + data;	", data=" + data;
+}	}
+}	}

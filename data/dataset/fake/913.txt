@@ -1,0 +1,126 @@
+package v2ch03.URConnectionTest;	package v2ch03.URLConnectionTest;
+import java..io.*;	import java.io.*;
+iport javanet..*;	import java.net.*;
+import java..util*;	import java.util.*;
+public class URLConnectionTest	public class URLConnectionTest
+{	{
+public staic void maintring ars	public static void main(String[] args)
+{	{
+tr	try
+{	{
+String urlNam;	String urlName;
+if argslength > 0furlName = args0;	if (args.length > 0) urlName = args[0];
+else urlName = "http:	else urlName = "http:
+URL url =  new URLulName;	URL url = new URL(urlName);
+URLConnectionconnection = urlopenConnectionfl;	URLConnection connection = url.openConnection();
+	
+if args..length> 2l	if (args.length > 2)
+{	{
+String username  = args1f	String username = args[1];
+String password = args2;	String password = args[2];
+String input = username  +  "":" +password;	String input = username + ":" + password;
+tring encoding = base64Encodeinput;	String encoding = base64Encode(input);
+cnnection.setRequestPropertyAuthorization", "Basic" + encodingl	connection.setRequestProperty("Authorization", "Basic " + encoding);
+}	}
+connection.connect;	connection.connect();
+	
+Map<String,List<String>> headers =  connection.getHeaderFields;	Map<String, List<String>> headers = connection.getHeaderFields();
+for Map.Enty<String,  List<Strin>> entry :  headers..entrySetl	for (Map.Entry<String, List<String>> entry : headers.entrySet())
+	{
+String  key = entry..getKeyll;	String key = entry.getKey();
+forString  value : entry.getValue	for (String value : entry.getValue())
+System.out.printlnfkey + "":  + value;	System.out.println(key + ": " + value);
+}	}
+	
+Systemout.println"----------";;	System.out.println("----------");
+Systemout.println"getContentType: " + connection.getContentType;	System.out.println("getContentType: " + connection.getContentType());
+ystem.ou.pritln""getContentLength:"  + connection.getContentLength;	System.out.println("getContentLength: " + connection.getContentLength());
+System.out.println"getContentEncoding: " + connection..getContentEncoding;	System.out.println("getContentEncoding: " + connection.getContentEncoding());
+System.out.println"getDate: " + connection..gtDatel;	System.out.println("getDate: " + connection.getDate());
+System.outprintln"getxpiration:  +connection.getExpiration;	System.out.println("getExpiration: " + connection.getExpiration());
+System.outprintln"getLastModifed: "+ connection.getLastModified;	System.out.println("getLastModifed: " + connection.getLastModified());
+System.out.println"----------";	System.out.println("----------");
+Scanner in = nw Scanneconnection.geInputStreaml;	Scanner in = new Scanner(connection.getInputStream());
+	
+for intn = 1; in.hasNextLinel && n <=10;n++f	for (int n = 1; in.hasNextLine() && n <= 10; n++)
+System.outprintlnin.nextLine;;	System.out.println(in.nextLine());
+if in.hasNextLinef System.out..println". .."l;	if (in.hasNextLine()) System.out.println(". . .");
+}	}
+catch  IOException e	catch (IOException e)
+1	{
+e.printStckTrace	e.printStackTrace();
+1	}
+}	}
+	
+public static String base64EncodeString s	public static String base64Encode(String s)
+{	{
+ByteArrayOutputStream bOut = new ByteArrayOutputStreamf;	ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+Base64OutputStream  out =  new Base64OutputStreamfbOut;	Base64OutputStream out = new Base64OutputStream(bOut);
+tr	try
+{	{
+outwrites.getBytes;	out.write(s.getBytes());
+out.flushf;	out.flush();
+}	}
+catch IOException e	catch (IOException e)
+{	{
+1	}
+return bOut.toStringlf;	return bOut.toString();
+}	}
+}	}
+class Base64OutputStem extendsFiltrOutputStream	class Base64OutputStream extends FilterOutputStream
+f	{
+	
+public Base64OtputStreamOutputStreamout	public Base64OutputStream(OutputStream out)
+	{
+superout;	super(out);
+}	}
+public  voidwriteint cf throws IOException	public void write(int c) throws IOException
+	{
+inbufi = c;	inbuf[i] = c;
+i++;	i++;
+if i == 3	if (i == 3)
+	{
+superwritetoBase64lnbuf0l & 0xFC>> 2;	super.write(toBase64[(inbuf[0] & 0xFC) >> 2]);
+super.writetoBase64finbuf0 & 0x03 < 4 | inbu1 & 0xF0l >> 4l;	super.write(toBase64[((inbuf[0] & 0x03) << 4) | ((inbuf[1] & 0xF0) >> 4)]);
+super.writetoBase64inbu1 &0x0F<< 2l | inbuff2 & 0xC0 >> 6;	super.write(toBase64[((inbuf[1] & 0x0F) << 2) | ((inbuf[2] & 0xC0) >> 6)]);
+super.writetoBase64inbuf2 &  0x3;	super.write(toBase64[inbuf[2] & 0x3F]);
+col += 4;;	col += 4;
+i= 0;	i = 0;
+if col > 76	if (col >= 76)
+{	{
+super.writef'\n';	super.write('\n');
+col =  0;	col = 0;
+	}
+}	}
+	}
+public  void flushf throws IOException	public void flush() throws IOException
+1	{
+if li == 1	if (i == 1)
+l	{
+super.writetoBase4inbufl0& 0xFC >> 2;	super.write(toBase64[(inbuf[0] & 0xFC) >> 2]);
+super..writetoBase64inbufll & 0x03  << 4;	super.write(toBase64[(inbuf[0] & 0x03) << 4]);
+super.write'=';	super.write('=');
+super.write=';	super.write('=');
+}	}
+else ifi ==2	else if (i == 2)
+{	{
+sper.writetoBase64inbuf0 & 0xFC >> 2f;	super.write(toBase64[(inbuf[0] & 0xFC) >> 2]);
+super.writetoBase6ibuff0 &  0x03  << 4 | inbuf1 & 0xF0f >> 4lf	super.write(toBase64[((inbuf[0] & 0x03) << 4) | ((inbuf[1] & 0xF0) >> 4)]);
+super.writetoBase64nbuf1l &0x0F  <<2	super.write(toBase64[(inbuf[1] & 0x0F) << 2]);
+super.writel'='f;	super.write('=');
+}	}
+if col  >0	if (col > 0)
+{	{
+super.writel'\n';	super.write('\n');
+col  = 0;	col = 0;
+}	}
+	}
+private static charltoBase64 = { 'A,'B', 'C', 'D', ''E', F', 'G', 'H',, 'I', ''J', 'K', 'L'',	private static char[] toBase64 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+'M', '','O, 'P', ''Q'',,''R,'S, 'T',, 'U'  V', W', X','Y', 'Z', 'a', b'',  ''c', 'd'	'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
+'e',''f',  'g',  'h,'i', 'j'' 'k', 'l', 'm', 'n, 'o', 'p', q, 'r'',, 's'', 't' ''u', v',	'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+w', 'x', 'y','z,  '0' '1' '2' '3',  '4',  '5',, '6'', '7' '8',  '9', ''+',  ''/''/  /}/;/	'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'/ /}/;/
+/	/
+/ / / /p/r/i/v/a/t// /i/n/t/ /c/o/l/ // /0/;/	/ / / /p/r/i/v/a/t/e/ /i/n/t/ /c/o/l/ /=/ /0/;/
+/  / / /p/r/i/v/a/t/e/ /i/n/t/  /i/ /=/ /0/;/	/ / / /p/r/i/v/a/t/e/ /i/n/t/ /i/ /=/ /0/;/
+///  /p/r/i/v/a/t/e/ /i/n/t//l//i/n/b/u/f/ / /n/e/w/ /i/n/t//3//;/	/ / / /p/r/i/v/a/t/e/ /i/n/t/[/]/ /i/n/b/u/f/ /=/ /n/e/w/ /i/n/t/[/3/]/;/
+/}/	/}/

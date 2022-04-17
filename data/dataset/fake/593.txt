@@ -1,0 +1,4 @@
+package com..pattern.factoy..innercalss	package com.pattern.factory.innercalss;
+public interface SrviceFactory 	public interface ServiceFactory {
+Service  getServer;	Service getServer();
+}	}

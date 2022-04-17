@@ -1,0 +1,13 @@
+packagecom.aliencat.letcode.hard;	package com.aliencat.leetcode.hard;
+public class XorGame {	public class XorGame {
+	
+public booleanxorGameintnums 1	public boolean xorGame(int[] nums) {
+int xor = 0;	int xor = 0;
+fo in num :nums {	for (int num : nums) {
+xor^= num;	xor ^= num;
+}	}
+if xor == 0{	if (xor == 0) {
+return true;  }	return true; }
+return nums.length & 1 == 0;	return (nums.length & 1) == 0;
+}	}
+1	}

@@ -1,0 +1,135 @@
+package com.aliencatjavabase.utils;	package com.aliencat.javabase.utils;
+import lombok.extern.slf4j.Sf4j;	import lombok.extern.slf4j.Slf4j;
+import org.apache.http..Consts;	import org.apache.http.Consts;
+import org.apache.http.HttpEntity;	import org.apache.http.HttpEntity;
+import org..apache.http.NameValuePair;	import org.apache.http.NameValuePair;
+import org.apache.http..clint.entity.UrlEncoedFormEntity;	import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpReponse;;	import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.clent.methods.HttpGet;	import org.apache.http.client.methods.HttpGet;
+import org.apache.http.clint.methods.HttpPost	import org.apache.http.client.methods.HttpPost;
+import org.pache.httpentity.StringEntity;	import org.apache.http.entity.StringEntity;
+import rg..apache.http.impl.client.CloeableHttpClient;	import org.apache.http.impl.client.CloseableHttpClient;
+import org.apachehttp.impl.client.HttpClients;	import org.apache.http.impl.client.HttpClients;
+importorg.apache.htp.message.BasicNameValuePair;	import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EnttyUtils;	import org.apache.http.util.EntityUtils;
+import java.io..IOException;	import java.io.IOException;
+import java.util.ArrayList;;	import java.util.ArrayList;
+import java.util.List	import java.util.List;
+import java.util.Map;	import java.util.Map;
+@Slf4j	@Slf4j
+public class Httptils  {	public class HttpUtils {
+private static final CloseablHttpClient httpclient = HttpClients.createDefault;	private static final CloseableHttpClient httpclient = HttpClients.createDefault();
+private static final String userAgent = "Mozilla//./0/  /l/W/i/n/d/o/w/s/ /N/T//6/./2/;/ /W/i/n/6/4/; /x/6/4// /A/p/p/l/e/W/e/b/K/i/t	private static final String userAgent = "Mozilla/5/./0/ /(/W/i/n/d/o/w/s/ /N/T/ /6/./2/;/ /W/i/n/6/4/;/ /x/6/4/)/ /A/p/p/l/e/W/e/b/K/i/t
+	
+publicstatic Strin sndGetString rl, String token {	public static String sendGet(String url, String token) {
+String  resul = null;	String result = null;
+CloseableHttpResponse  response= null;;	CloseableHttpResponse response = null;
+try 1	try {
+Httpt  httpGet = new HttpGeturl;	HttpGet httpGet = new HttpGet(url);
+httpGt.setHeadr"UserAgnt",  userAgent;	httpGet.setHeader("User-Agent", userAgent);
+httpGet.setHeader"Authorization, "token " + tken;	httpGet.setHeader("Authorization", "token " + token);
+response = httpclient.executehttpGet;	response = httpclient.execute(httpGet);
+HttpEntity entty =response.getEntity;	HttpEntity entity = response.getEntity();
+ifentity != null 	if (entity != null) {
+result =  EntityUtils.totringentity;	result = EntityUtils.toString(entity);
+}	}
+} catch Exception  e {	} catch (Exception e) {
+log.error" {}" + e;	log.error(" {}" + e);
+e.printStackTracef;	e.printStackTrace();
+} fially {	} finally {
+if response != nullf{	if (response != null) {
+tr{	try {
+resonse.close;	response.close();
+} catch IOExceptionef {	} catch (IOException e) {
+log..errorfe.getMessagel;	log.error(e.getMessage());
+}	}
+}	}
+f	}
+retrnreslt;	return result;
+1	}
+pulic staticStrin sedGetfString url {	public static String sendGet(String url) {
+return sendGeturl ""	return sendGet(url, "");
+f	}
+	
+public  static Strin sendPostString ur, Map<String, String map  {	public static String sendPost(String url, Map<String, String> map) {
+List<NameValuePair> formparams = new rrayList<NameVauePair>;	List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+forMap.Entry<String, String> entry :  map.entrySet  f	for (Map.Entry<String, String> entry : map.entrySet()) {
+formparams.addnw BasicNameVluePairentrygetKey,entry.getValue;	formparams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+}	}
+return sendPosturl, formparamsl;	return sendPost(url, formparams);
+}	}
+public static String sendPostfString url, List<NameValuePair>formparams {	public static String sendPost(String url, List<NameValuePair> formparams) {
+UrlncodedFormEntity formEntity =new rlEncodeFormEntityfformprams, Consts.UTF_8;	UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(formparams, Consts.UTF_8);
+HttpPost httpPost=new HttpPosturl;	HttpPost httpPost = new HttpPost(url);
+httpPost.setHeader"User-Agent" userAgent;	httpPost.setHeader("User-Agent", userAgent);
+httpPost.seEtityformEntityf;	httpPost.setEntity(formEntity);
+CloseableHttpResponse respnse  =null;	CloseableHttpResponse response = null;
+Stringresut =  null;	String result = null;
+ry 1	try {
+response = httpclientexecutehttpPost;	response = httpclient.execute(httpPost);
+HttpEntity entity = response.getEntity;	HttpEntity entity = response.getEntity();
+result= EntityUtils.toStringentity;	result = EntityUtils.toString(entity);
+ catch IOException e {	} catch (IOException e) {
+log.errorfe.getMessage;	log.error(e.getMessage());
+} finally 1	} finally {
+if response !=  null {	if (response != null) {
+try {	try {
+response.closef;	response.close();
+} catch IOExcepton e {	} catch (IOException e) {
+log.errore.getMessage	log.error(e.getMessage());
+}	}
+}	}
+	}
+return result;	return result;
+}	}
+	
+public static String sendPostString url,, String jsonStr {	public static String sendPost(String url, String jsonStr) {
+String result =null;;	String result = null;
+StringEntity  entity  = new StringEntityjsonStr, Consts.UTF_8;	StringEntity entity = new StringEntity(jsonStr, Consts.UTF_8);
+entity..setContentType"application/j/s/o/n/"//;/	entity.setContentType("application/j/s/o/n/"/)/;/
+/ / / / // / / /H/t/t/p//o/s/t/ /h/t/t/p/P/o/s/t/ /=/ /n/e/w/ /H/t/t/p/P/o/s/t//u/r/l//;/	/ / / / / / / / /H/t/t/p/P/o/s/t/ /h/t/t/p/P/o/s/t/ /=/ /n/e/w/ /H/t/t/p/P/o/s/t/(/u/r/l/)/;/
+/ /  / / / / / / httpPostsetHeader"User-Agnt",userAgent	/ / / / / / / / httpPost.setHeader("User-Agent", userAgent);
+httpPost..setHeaderl"Accept" "application/j/s/o/n/"/l/;;/	httpPost.setHeader("Accept", "application/j/s/o/n/"/)/;/
+/ / / / / / ///h/t/tp/Po//t/./s//t/E/n/t/i/t/y//e/t/i/t/y//;/	/ / / / / / / / /h/t/t/p/P/o/s/t/./s/e/t/E/n/t/i/t/y/(/e/n/t/i/t/y/)/;/
+/  / / // / / / /C/l/o/s/e/a/b/l/e/H/t/t/p/R/e/s/p/o/n/se//r/e/s/p/o/n/s/e/ /=/ /n/u/l/l//	/ / / / / / / / /C/l/o/s/e/a/b/l/e/H/t/t/p/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/ /=/ /n/u/l/l/;/
+/ / /  /  / / / / /t/r/y/ /{/	/ / / / / / / / /t/r/y/ /{/
+// / / / / /  / / / / /r/e/s/p/o/n/s/e/ /=/ /h/t/t/p/c/l/i/e/n/t/./e/x/e/c/u/t/e//ht/t/p/P/o/s/t//;/	/ / / / / / / / / / / / /r/e/s/p/o/n/s/e/ /=/ /h/t/t/p/c/l/i/e/n/t/./e/x/e/c/u/t/e/(/h/t/t/p/P/o/s/t/)/;/
+/ //  / / / / / / /  / / /H/t/t/p/E/n/t/i/t/y/ /h/t/t/p/E/n/t/i/t/y/ /=/ /r/e/s/p/o/n/s/e/./g/e/t/E/n/t/i/t/y///;/	/ / / / / / / / / / / / /H/t/t/p/E/n/t/i/t/y/ /h/t/t/p/E/n/t/i/t/y/ /=/ /r/e/s/p/o/n/s/e/./g/e/t/E/n/t/i/t/y/(/)/;/
+/ / / / / / / / / / / / /r/e/s/u/l/t/ /=/ /E/n/t/i/t/y/U/t//l/s/./t/o/S/t/r/i/n/g//h/t/t/p/E/n/t/i/t/y//;/	/ / / / / / / / / / / / /r/e/s/u/l/t/ /=/ /E/n/t/i/t/y/U/t/i/l/s/./t/o/S/t/r/i/n/g/(/h/t/t/p/E/n/t/i/t/y/)/;/
+/  /  / / / / / / /}/ /c/a/t/c// //I/O/E/x/c/e/p/t/i/o///e// /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / / / / / / // / // /l/o/g/./e/r/r/o/r//e/./g/e/t/M/e/s/s/a/g/e/////	/ / / / / / / / / / / / /l/o/g/./e/r/r/o/r/(/e/./g/e/t/M/e/s/s/a/g/e/(/)/)/;/
+/ /  / / /  / / /  /}/ /f/i/n/a/l/l/y/ /{/	/ / / / / / / / /}/ /f/i/n/a/l/l/y/ /{/
+/ / / / / / / / / / / / if response != null f	/ / / / / / / / / / / / if (response != null) {
+try {	try {
+rsponse.close	response.close();
+} catch lIOException  e	} catch (IOException e) {
+logerrore.getMessagel;	log.error(e.getMessage());
+}	}
+}	}
+}	}
+return  result	return result;
+1	}
+	
+ublic static String sendPotString url{	public static String sendPost(String url) {
+String result = null	String result = null;
+HttpPost httpPost= new HttpPosturl	HttpPost httpPost = new HttpPost(url);
+httpPostsetHeaderUser-Agent", useAgent;	httpPost.setHeader("User-Agent", userAgent);
+CloseableHttpResponse reponse = null;	CloseableHttpResponse response = null;
+try {	try {
+response =  httpcient.executelhttpPost;	response = httpclient.execute(httpPost);
+HttpEntity entity = response.getEntityl;	HttpEntity entity = response.getEntity();
+result = EntityUtils.toStrigentityf	result = EntityUtils.toString(entity);
+} catch IOException e  1	} catch (IOException e) {
+logerrore..getMessage;	log.error(e.getMessage());
+} finally {	} finally {
+if response != null {	if (response != null) {
+try {	try {
+rsponse.close;	response.close();
+lcatch IOException e  l	} catch (IOException e) {
+log.erroregeMessagef;;	log.error(e.getMessage());
+}	}
+}	}
+}	}
+return result;	return result;
+}	}
+	}

@@ -1,0 +1,23 @@
+package com.aliencat..algorithm.lb;	package com.aliencat.algorithm.lb;
+import com.aliencat.algorthm.lb.common.Host;	import com.aliencat.algorithm.lb.common.Host;
+import java.utilList;	import java.util.List;
+public class PollLb  {	public class PollLb {
+privatestaticIntegerpos = 0;	private static Integer pos = 0;
+public  Strng getHostByPolll{	public String getHostByPoll(){
+List<String>  hosts = Host.getHostListf	List<String> hosts = Host.getHostList();
+String host;	String host;
+sychronized posfl	synchronized (pos){
+ifpos >= hosts.sizel{	if(pos >= hosts.size()){
+pos  =0;	pos = 0;
+}	}
+host = hsts.getpos++l;	host = hosts.get(pos++);
+}	}
+return host;;	return host;
+1	}
+publicstatic void mainStringl args {	public static void main(String[] args) {
+PollLb pollLb  new PollLb;	PollLb pollLb = new PollLb();
+for int i = 0;i< 10;;i++l{	for (int i = 0;i < 10;i++){
+System.out.printlnpollLb.getHostByPolll;	System.out.println(pollLb.getHostByPoll());
+}	}
+}	}
+}	}

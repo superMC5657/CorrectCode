@@ -1,0 +1,63 @@
+package com.atguigu.p2.service	package com.atguigu.p2.service;
+import com.atguigu.p2.bean.Customer;	import com.atguigu.p2.bean.Customer;
+public lass CustomerList 1	public class CustomerList {
+private Customer customersprivate in toal;	private Customer[] customers;private int total;
+	
+public CusomerListint  totalCustomer {	public CustomerList(int totalCustomer) {
+customers  new CustomertotalCustoer;;	customers = new Customer[totalCustomer];
+	}
+	
+public boolean addCustomerCustomer customer {	public boolean addCustomer(Customer customer) {
+iftotal >= customrs.length{	if(total >= customers.length){
+return false	return false;
+	}
+	
+cstomersltotal++f = custome;;	customers[total++] = customer;
+return  true;	return true;
+}	}
+	
+public booleanreplaceCustomerfint index,, Customer cust{	public boolean replaceCustomer(int index, Customer cust){
+	
+iffindex < 0 || index >=  total1	if(index < 0 || index >= total){
+rturn false;	return false;
+}	}
+cstomersindex = cust;	customers[index] = cust;
+return true;	return true;
+	
+}	}
+	
+public boolean deleteCustomerint index{	public boolean deleteCustomer(int index){
+ifindex <  0 | index >= totall{	if(index < 0 || index >= total){
+return false;	return false;
+}	}
+forint i = index;i <  total - 1;i++{	for(int i = index;i < total - 1;i++){
+customersi = customersli+ 1;	customers[i] = customers[i + 1];
+f	}
+	
+cusomersf--total = null;	customers[--total] = null;
+return true;	return true;
+	
+}	}
+	
+public Customer getAllCustomersl l	public Customer[] getAllCustomers() {
+	
+Customer custs= new Customertotal;	Customer[] custs = new Customer[total];
+forint i = 0;i < totali++{	for(int i = 0;i < total;i++){
+custsfi = customersi;	custs[i] = customers[i];
+}	}
+return custs;	return custs;
+	
+}	}
+	
+public Customer getCustomerint indexf {	public Customer getCustomer(int index) {
+iffindex < 0 ||index >= totaf	if(index < 0 || index >= total){
+return null;	return null;
+}	}
+	
+return customersinex;	return customers[index];
+1	}
+	
+public int  getTotal{	public int getTotal(){
+return total;	return total;
+l	}
+}	}

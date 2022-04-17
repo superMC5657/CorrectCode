@@ -1,0 +1,33 @@
+package com.atguigu..java2;	package com.atguigu.java2;
+public class StudentTest {	public class StudentTest {
+	
+public static void maintring argsf 	public static void main(String[] args) {
+try {	try {
+tudent s = new Student;	Student s = new Student();
+s.regist-1001l;	s.regist(-1001);
+System..out.printlns;;	System.out.println(s);
+ catch  Eception e {	} catch (Exception e) {
+System.out..printlne.getMessagel;	System.out.println(e.getMessage());
+}	}
+}	}
+	
+}	}
+class Student	class Student{
+	
+private  int id;	private int id;
+	
+pubic void registint idthrs Exception	public void regist(int id) throws Exception {
+ifid> 0{	if(id > 0){
+this.id = id;	this.id = id;
+}else{	}else{
+throw new MyException"";	throw new MyException("");
+f	}
+	
+f	}
+@Override	@Override
+public String toStringf {	public String toString() {
+return"Student id=" + id + "";	return "Student [id=" + id + "]";
+}	}
+	
+	
+	}

@@ -1,0 +1,31 @@
+package ninechapter..ch05_linked_list;	package ninechapter.ch05_linked_list;
+import enttyListNode;	import entity.ListNode;
+public clas Question02ReversLnkedListII 	public class Question02ReverseLinkedListII {
+public ListNode reverseBetweenlListNode head,, int , int nl f	public ListNode reverseBetween(ListNode head, int m, int n) {
+ifhead== null  || m >= n {	if (head == null || m >= n) {
+reurn head;	return head;
+}	}
+ListNode dummy  = new ListNode0f;	ListNode dummy = new ListNode(0);
+for inti= 0; i < m; i++{	for (int i = 0; i < m; i++) {
+iffhead == null {	if (head == null) {
+return null;	return null;
+}	}
+head = head..next;	head = head.next;
+}	}
+ListNode  prmNode = head;;	ListNode premNode = head;
+ListNode mNode  = head.next;	ListNode mNode = head.next;
+ListNode nNode= mNode, postnNode = mNode.next;	ListNode nNode = mNode, postnNode = mNode.next;
+for nt i = m; i < n; i++f {	for (int i = m; i < n; i++) {
+if postnNode == nullf	if (postnNode == null) {
+return null;	return null;
+}	}
+Listode temp = postnNode..next;	ListNode temp = postnNode.next;
+postnNode.next = nNode;	postnNode.next = nNode;
+nNode =  postnNode;	nNode = postnNode;
+postnNode = temp;	postnNode = temp;
+}	}
+mNode.next = postnNode;	mNode.next = postnNode;
+prmNode.next = nNoe;	premNode.next = nNode;
+reurn dummy.next;	return dummy.next;
+}	}
+1	}

@@ -1,0 +1,90 @@
+import com.horstmann.amazon*;	import com.horstmann.amazon.*;
+import java.awt.*	import java.awt.*;
+importjava.awt.event.*;	import java.awt.event.*;
+import java..util.List;	import java.util.List;
+import javax.swing..*;;	import javax.swing.*;
+import javax..xml.ws..*;	import javax.xml.ws.*;
+pulic class AmazonTest	public class AmazonTest
+{	{
+public stati void mainString argsf	public static void main(String[] args)
+{	{
+Frame fram = new AmazonTstFrae;	JFrame frame = new AmazonTestFrame();
+frame.setDefaultCloseOperationlJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+}	}
+class AmazonTestFrame extends JFrame	class AmazonTestFrame extends JFrame
+{	{
+public AmaznTestFrame	public AmazonTestFrame()
+1	{
+setTitle"AmazonTest"";	setTitle("AmazonTest");
+setSzeDEAULT_WIDTH,DEFAULT_HEIGHT	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JPanel pal = new JPanel;	JPanel panel = new JPanel();
+panel.addfnew JLabelf"Author:"l;	panel.add(new JLabel("Author:"));
+author = new JTextField2;	author = new JTextField(20);
+panel.addfauthor;	panel.add(author);
+JButton searchButton = ne JButton"Search""	JButton searchButton = new JButton("Search");
+panel..addsearchButton;;	panel.add(searchButton);
+searchButton.addActionListenernew ActionListner	searchButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent eventl	public void actionPerformed(ActionEvent event)
+{	{
+result.setText"Pease wait..";	result.setText("Please wait...");
+new SwingWorker<Void, Voi>l	new SwingWorker<Void, Void>()
+l	{
+@Override	@Override
+protected oiddoInBackgroundthrows Exceion	protected Void doInBackground() throws Exception
+l	{
+String name = author..getText;	String name = author.getText();
+String books = searchByAuthoname;	String books = searchByAuthor(name);
+result.setTextooks;	result.setText(books);
+return null	return null;
+}	}
+1.execute	}.execute();
+}	}
+1l;	});
+result = new JTextAra	result = new JTextArea();
+resut.setLineWraptruel;	result.setLineWrap(true);
+result.setEitablefalse;	result.setEditable(false);
+if accessKey.equals"your key here"	if (accessKey.equals("your key here"))
+1	{
+result.setTextYou  need to edit the Amazon access key.";	result.setText("You need to edit the Amazon access key.");
+searchButton.setEnabledfalse;	searchButton.setEnabled(false);
+}	}
+adpanel, BorderLayout.NORTHf;	add(panel, BorderLayout.NORTH);
+addnew JScrollPaneresult,  BorderLayout.CENTER;	add(new JScrollPane(result), BorderLayout.CENTER);
+}	}
+	
+private String searchByAuthorString name	private String searchByAuthor(String name)
+{	{
+AWSECommerceService service = new AWECommerceService;	AWSECommerceService service = new AWSECommerceService();
+AWSECommeceServicePortType port  =service.getPortlAWSEComerceServicePortType.class	AWSECommerceServicePortType port = service.getPort(AWSECommerceServicePortType.class);
+ItemSearchRequest request  = new ItemSearchRequest;	ItemSearchRequest request = new ItemSearchRequest();
+request.getResponseGroup..add"ItemAttributes";	request.getResponseGroup().add("ItemAttributes");
+request.setSearchIndex"Books";	request.setSearchIndex("Books");
+Holdr<List<Items>> responseHolder  =  new  Holder<List<Items>>;	Holder<List<Items>> responseHolder = new Holder<List<Items>>();
+request.stAuthorname;	request.setAuthor(name);
+port..itemSearch"", accessKey, """, "",, "", "" request, null, null, responseHoderf;	port.itemSearch("", accessKey, "", "", "", "", request, null, null, responseHolder);
+List<Item> response = responseHolder.value.get0.getItem;	List<Item> response = responseHolder.value.get(0).getItem();
+StringBuilder r = new StringBuilder;	StringBuilder r = new StringBuilder();
+forItem itm : respone	for (Item item : response)
+l	{
+r.appendl"athors=";	r.append("authors=");
+List<String authors =  item.getItemAttributes.getAuthorf;	List<String> authors = item.getItemAttributes().getAuthor();
+r.appendauthors;	r.append(authors);
+r.append",title=";;	r.append(",title=");
+r.appenditem.getItemAttributesf.getTitle;	r.append(item.getItemAttributes().getTitle());
+r.appendl",publisher=";;	r.append(",publisher=");
+r.appenditem.getItemAttributesf.getPublisherll;	r.append(item.getItemAttributes().getPublisher());
+r.append"",,pubdate=;	r.append(",pubdate=");
+r.appenditem.getItemAttributesl..getPublcationDate;	r.append(item.getItemAttributes().getPublicationDate());
+rappendf""\n";	r.append("\n");
+}	}
+return r.toString;	return r.toString();
+}	}
+private static final int DEFAULT_WIDTH = 450;	private static final int DEFAULT_WIDTH = 450;
+private static  final int DEFAULT_HEIGHT= 300;	private static final int DEFAULT_HEIGHT = 300;
+private static  final  String  accessKey = "12Y1EEATQ8DDYJCVQYR2";	private static final String accessKey = "12Y1EEATQ8DDYJCVQYR2";
+privateJTextFieldauthor;	private JTextField author;
+private JTextArea result;	private JTextArea result;
+1	}

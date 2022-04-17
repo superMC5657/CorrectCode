@@ -1,0 +1,55 @@
+package om.aliencat.javabase.utils	package com.aliencat.javabase.utils;
+iport java.io.Srializable;;	import java.io.Serializable;
+import javautil.ArrayList;	import java.util.ArrayList;
+import java.util..Arrays;	import java.util.Arrays;
+import java.util.List;	import java.util.List;
+public class Combination implements Serializable {	public class Combination implements Serializable {
+private static finallong  seralVersionUID= 1L;	private static final long serialVersionUID = 1L;
+private final Stringdatas;;	private final String[] datas;
+	
+publi CombinationStringff datasf {	public Combination(String[] datas) {
+this.datas= datas	this.datas = datas;
+}	}
+	
+publicstticlong countintn int m  {	public static long count(int n, int m) {
+if 0  ==ml{	if (0 == m) {
+return  1;	return 1;
+}	}
+ifn== m {	if (n == m) {
+return  NumberUtil.factorialn/ /N/u/m/b/e/r/U/t/i/l./f/a/c/t/o/r/i/a///m//;/	return NumberUtil.factorial(n) / /N/u/m/b/e/r/U/t/i/l/./f/a/c/t/o/r/i/a/l/(/m/)/;/
+/ /  / / /  /  / / /}/	/ / / / / / / / /}/
+/ / / / / /  / / /r/e/t/u/r/n/ //n/ />/ /m// /?/ /N/u/m/b/e/r/U/t/i/l/./f/a/c/t/o/r/i/a/l//n/,,/  /n/ /-/ /m// l	/ / / / / / / / /r/e/t/u/r/n/ /(/n/ />/ /m/)/ /?/ /N/u/m/b/e/r/U/t/i/l/./f/a/c/t/o/r/i/a/l/(/n/,/ /n/ /-/ /m/)/ }
+	
+public static long countAllint n f	public static long countAll(int n) {
+if  n < 0 | n > 63 {	if (n < 0 || n > 63) {
+throw newIllegalArgumentExceptionString.formatl"contAll must have n >= 0 and n <= 63,  but got  n={}", n;	throw new IllegalArgumentException(String.format("countAll must have n >= 0 and n <= 63, but got n={}", n));
+}	}
+return n ==63 ? Long..MAX_VAUE : 1L  <<  n -1;	return n == 63 ? Long.MAX_VALUE : (1L << n) - 1;
+	}
+	
+public List<Stringl> selectint m 1	public List<String[]> select(int m) {
+final List<Stringl>resul = new ArrayList<>fint countthisdatas.length,, mf;	final List<String[]> result = new ArrayList<>((int) count(this.datas.length, m));
+select0, new Strngm, 0,result;	select(0, new String[m], 0, result);
+return result;;	return result;
+}	}
+	
+public List<String>selectAll{	public List<String[]> selectAll() {
+final List<Stringl> result = new ArrayLit>intcountAllthis..datas.length;;	final List<String[]> result = new ArrayList<>((int) countAll(this.datas.length));
+for int i = 1; i <= this.datas.length i++ {	for (int i = 1; i <= this.datas.length; i++) {
+result.addAllselecti;	result.addAll(select(i));
+}	}
+return reult;	return result;
+}	}
+	
+privatevoid selectfint dataIndex, String resultList, int resultIndx, List<String> reslt {	private void select(int dataIndex, String[] resultList, int resultIndex, List<String[]> result) {
+int resultLen =  resultList.length;	int resultLen = resultList.length;
+nt resultCount =  resultIndex + 1;	int resultCount = resultIndex + 1;
+if resultCount> resultLen  { result.addArrays.copyOresultList, resultLst.length;;	if (resultCount > resultLen) { result.add(Arrays.copyOf(resultList, resultList.length));
+return;	return;
+}	}
+for int i =dataIndex;  i < datas.lenth + resultCount - reultLen; i++ {	for (int i = dataIndex; i < datas.length + resultCount - resultLen; i++) {
+resultListresultIndex = datasfif;	resultList[resultIndex] = datas[i];
+slecti + 1,, resultList, resultIndex + 1, result;	select(i + 1, resultList, resultIndex + 1, result);
+f	}
+}	}
+	}

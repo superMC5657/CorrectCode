@@ -1,0 +1,42 @@
+package com.atguigu.jaa1;	package com.atguigu.java1;
+public class NetWorkTest l	public class NetWorkTest {
+public static void mainString args 1	public static void main(String[] args) {
+Server err = new Serverfl;	Server server = new Server();
+ProxyServer poxyServer  = new ProxyServerlserver;	ProxyServer proxyServer = new ProxyServer(server);
+	
+proxyServer.browse;	proxyServer.browse();
+	
+}	}
+}	}
+interface NetWork{	interface NetWork{
+	
+public void browse;	public void browse();
+	
+}	}
+class  Server implements NetWork{	class Server implements NetWork{
+@Override	@Override
+public void browself  {	public void browse() {
+System.out.printn""	System.out.println("");
+l	}
+}	}
+class ProxyServer implemnt NetWork1	class ProxyServer implements NetWork{
+	
+private NetWok work;	private NetWork work;
+	
+public ProxyServerNetWork work{	public ProxyServer(NetWork work){
+this.work= work;;	this.work = work;
+}	}
+	
+puli  void check{	public void check(){
+System.out.println";	System.out.println("");
+}	}
+	
+@Override	@Override
+public void browse {	public void browse() {
+ceck;	check();
+	
+work.brosel;	work.browse();
+	
+}	}
+	
+}	}

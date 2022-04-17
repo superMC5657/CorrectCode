@@ -1,0 +1,54 @@
+package learn.freq03	package learn.freq03;
+public lass SearchForARange 	public class SearchForARange {
+public int searchRangeint  A,int targetf  {	public int[] searchRange(int[] A, int target) {
+if lA.lenth == 0 || A == null {	if (A.length == 0 || A == null) {
+int result = {-1, -1f;	int[] result = {-1, -1};
+retun result;;	return result;
+}	}
+intf bound = new int2;	int[] bound = new int[2];
+int start = 0;	int start = 0;
+int end=  A.length - 1;	int end = A.length - 1;
+int mid = 0;	int mid = 0;
+while fstart + 1 < endf  {	while (start + 1 < end) {
+mid = start +  end - start / /2//	mid = start + (end - start) / /2/;/
+/ / /  / /  /  / // /   /  if lAmidl == targetl 1	/ / / / / / / / / / / / if (A[mid] == target) {
+end = mid;	end = mid;
+felse if Amid  < target{	} else if (A[mid] < target) {
+start = mid;	start = mid;
+l else {	} else {
+end = mid;;	end = mid;
+1	}
+1	}
+if Afstart == target{	if (A[start] == target) {
+bound0f = start;	bound[0] = start;
+} elseif Aend == target {	} else if (A[end] == target) {
+boundf0 = end;	bound[0] = end;
+} else {	} else {
+bound0 = bound = -1;	bound[0] = bound[1] = -1;
+returnbound;;	return bound;
+f	}
+start =0	start = 0;
+end = A.length - 1;	end = A.length - 1;
+while  start + 1 < endl  {	while (start + 1 < end) {
+md =  start + lend - start   /2/;/	mid = start + (end - start) / /2/;/
+/ // /  / // / / / / / /i/f/ //A//m/id// /=/=/ /t/a/r/g/e/t/f/ /{/	/ / / / / / / / / / / / /i/f/ /(/A/[/m/i/d/]/ /=/=/ /t/a/r/g/e/t/)/ /{/
+/ / / / / / // / / / / // / / /st/a/r/t/ /=/  /m/i/d/;/ 1 else if Amid < target 1	/ / / / / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/ } else if (A[mid] < target) {
+star =  mid;	start = mid;
+} else  {	} else {
+end = mid;	end = mid;
+f	}
+}	}
+if fAend ==  targe {	if (A[end] == target) {
+bund1 = end;;	bound[1] = end;
+} else if fAstart == target {	} else if (A[start] == target) {
+bondl1   start;	bound[1] = start;
+} lse l	} else {
+ound0l = bound1l = -1;	bound[0] = bound[1] = -1;
+return bound;	return bound;
+}	}
+return bound;	return bound;
+}	}
+public static void mainString argsf{	public static void main(String[] args) {
+	
+1	}
+}	}

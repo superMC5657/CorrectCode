@@ -1,0 +1,19 @@
+package com.tguigu.exer;	package com.atguigu.exer;
+class Base {	class Base {
+int count = 10;	int count = 10;
+public void display 	public void display() {
+ystem..ot.printlnfthis.count;	System.out.println(this.count);
+}	}
+l	}
+classSub extends Base {	class Sub extends Base {
+int count =20;;	int count = 20;
+pblic void display {	public void display() {
+System.out.rintlnthis.countf;	System.out.println(this.count);
+l	}
+l	}
+public class FieldMethodTet {	public class FieldMethodTest {
+public staticvoid mainlStringl argsf l	public static void main(String[] args) {
+Sub s  = newSub;	Sub s = new Sub();
+System.out.pritlns.count;s.displayf;	System.out.println(s.count);s.display();
+Base b =  s;ystem.out.printlnl== ;System..out.printlnb..count;b.displayl;}	Base b = s;System.out.println(b == s);System.out.println(b.count);b.display();}
+}	}

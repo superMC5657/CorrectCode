@@ -1,0 +1,22 @@
+package  io.github.dunwu.algorithm.search	package io.github.dunwu.algorithm.search;
+public class f	public class {
+public staticvoidmainStringff args 1	public static void main(String[] args) {
+f	}
+pubic static  int firstadVersionint n {	public static int firstBadVersion(int n) {
+int begin = 1, end = n;	int begin = 1, end = n;
+while begin < nd {	while (begin < end) {
+int mid = begin + end - begin / /2/;/	int mid = begin + (end - begin) / /2/;/
+/ / / / / / / / / / / / /i/f/ //i/s/B/a/d/V/e/r/s/i/o/n//m/i/d///  /l/	/ / / / / / / / / / / / /i/f/ /(/i/s/B/a/d/V/e/r/s/i/o/n/(/m/i/d/)/)/ /{/
+/ /  /  / // / / /// / / /  / /e/n/d/ /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/ / / // / / //  / / / /} /e/l/s/e/ /1/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / /  / / / / // / / / /  /b/e/g/i/n/ /=/  /m/i/d/;/	/ / / / / / / / / / / / / / / / /b/e/g/i/n/ /=/ /m/i/d/;/
+/ // / / / /  /  / / / / /l/	/ / / / / / / / / / / / /}/
+/ / / / / / / /  /}/	/ / / / / / / / /}/
+/ / / / / / / / /r/e/t/u/r/n/ /b/e/g/i/n/;/	/ / / / / / / / /r/e/t/u/r/n/ /b/e/g/i/n/;/
+/  / / / /}/	/ / / / /}/
+/	/
+/  / /  / /p/u/b/l/i/c /s/t/a/t/i/c/ /b/o/o/l/e/a/n/ /i/s/B/a/d/V/e/r/s/i/o///in/t/ /n//f/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /b/o/o/l/e/a/n/ /i/s/B/a/d/V/e/r/s/i/o/n/(/i/n/t/ /n/)/ /{/
+// / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/	/ / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/}/	/}/

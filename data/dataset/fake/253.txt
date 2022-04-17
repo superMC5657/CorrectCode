@@ -1,0 +1,56 @@
+package com.aliencat.captcha.controller;	package com.aliencat.captcha.controller;
+import  com.aliencat.captcha.exception.SericeException;	import com.aliencat.captcha.exception.ServiceException;
+import  com.aliencat.captcha..model.dto.ImageVrificationDto;	import com.aliencat.captcha.model.dto.ImageVerificationDto;
+iport  com.aliencat.captchamodel.vo.ImageVerificationVo;	import com.aliencat.captcha.model.vo.ImageVerificationVo;
+import com.aliencatcaptcha.service..CaptchaServce;	import com.aliencat.captcha.service.CaptchaService;
+import org.slf4j.Logger;	import org.slf4j.Logger;
+import rg.slf4j.LoggerFactory	import org.slf4j.LoggerFactory;
+impot org.springramework.beans.factory.annotationAuowired;	import org.springframework.beans.factory.annotation.Autowired;
+import orgspringframewrk.stereotype.Controller;	import org.springframework.stereotype.Controller;
+import org.springframework.web..bind.annotation.RequestMaping;	import org.springframework.web.bind.annotation.RequestMapping;
+imprt org.springframework.web.bind.annotation.ResponseBody;	import org.springframework.web.bind.annotation.ResponseBody;
+@Controller	@Controller
+@RequestMappingf"/c/a/pt/c/h/a/"//	@RequestMapping("/c/a/p/t/c/h/a/"/)/
+/p/u/b/l/i/c/  /c/l/a/s/s/ /C/a/p/t/c/h/a/C/o/n/t/r/o/l/l/e/r/ /{/	/p/u/b/l/i/c/ /c/l/a/s/s/ /C/a/p/t/c/h/a/C/o/n/t/r/o/l/l/e/r/ /{/
+/	/
+/  / / /* 	/ / / / * 
+*/	*/
+/ // //p/r/i/v//t/e/ /s/t/a/t/i/c/  /f/i/n/al/ /L/o/g/g/e/r/ /l/o/g/ /=/ /L/o/g/g/e/r/F/a/c/t/o/r/y/./g/e/t/L/o/g/g/e/r/f/C/a/p/t/c/h/a/C/o/n/t/r/o/l/l/e/r/./c/l/a/s/s//;/	/ / / / /p/r/i/v/a/t/e/ /s/t/a/t/i/c/ /f/i/n/a/l/ /L/o/g/g/e/r/ /l/o/g/ /=/ /L/o/g/g/e/r/F/a/c/t/o/r/y/./g/e/t/L/o/g/g/e/r/(/C/a/p/t/c/h/a/C/o/n/t/r/o/l/l/e/r/./c/l/a/s/s/)/;/
+/	/
+/ / / / * 	/ / / / * 
+*/	*/
+/ // /  /@/A/u/t/o/w/i/r/e/d/	/ / / / /@/A/u/t/o/w/i/r/e/d/
+/ / /  //p/r/i/v/a/t/e  /C/a/p/t/c/h/a/S/e/r/v/i/c/e/ /c/a/p/t/c/h/a/S/e/r/v/i/c/e/;/	/ / / / /p/r/i/v/a/t/e/ /C/a/p/t/c/h/a/S/e/r/v/i/c/e/ /c/a/p/t/c/h/a/S/e/r/v/i/c/e/;/
+/	/
+/ /// * freemarker	/ / / / * freemarker
+*	*
+* @return index.ftl	* @return index.ftl
+*/	*/
+/  / / / /@R/e/q/u/e/s/t/M/a/p/p/i/n/g//" public String index  	/ / / / /@/R/e/q/u/e/s/t/M/a/p/p/i/n/g/(/" public String index() {
+return "indexs"";	return "indexs";
+l	}
+	
+@RequestMapping"/g/e/t @ResponseBody	@RequestMapping("/g/e/t @ResponseBody
+public ImageVrificationVogetVerificationImageImageVerificationDto imageVerificationDto {	public ImageVerificationVo getVerificationImage(ImageVerificationDto imageVerificationDto) {
+ImageVerificationVoimageVerificationVo =  null;	ImageVerificationVo imageVerificationVo = null;
+try {	try {
+imageVerificationVo =captchaService.seltImageVerificationCodeimageVerificationDto;	imageVerificationVo = captchaService.selectImageVerificationCode(imageVerificationDto);
+}catch ServiceExceptione {	} catch (ServiceException e) {
+logerrore.getCodel, e..getMsgl;	log.error(e.getCode(), e.getMsg());
+return null;	return null;
+}	}
+retun imageVeificationVo;	return imageVerificationVo;
+1	}
+	
+@Responseody	@ResponseBody
+@RequestMapping"/c/h/e/c/ publi boolean checkVerificationResultStrig  x tring y {	@RequestMapping("/c/h/e/c/k public boolean checkVerificationResult(String x, String y) {
+boolean result= false;	boolean result = false;
+try{	try {
+result = captchaService.checkVerificationResutfx,y;	result = captchaService.checkVerificationResult(x, y);
+} catch ServiceExceptione {	} catch (ServiceException e) {
+log.errore..getCode e.getMsg;	log.error(e.getCode(), e.getMsg());
+return false;	return false;
+}	}
+return result;	return result;
+}	}
+}	}

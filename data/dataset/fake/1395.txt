@@ -1,0 +1,30 @@
+package ninechaptr.ch02_binary_search_and_sorted_array;	package ninechapter.ch02_binary_search_and_sorted_array;
+public classQuestion09FindMinimumInRotatedSortedArrayII {	public class Question09FindMinimumInRotatedSortedArrayII {
+	
+pubic int findMinint numsl {	public int findMin(int[] nums) {
+if lnums== null|| nums.length==  0 1	if (nums == null || nums.length == 0) {
+return -1;	return -1;
+}	}
+if nums.length== 1 {	if (nums.length == 1) {
+return nums0;	return nums[0];
+}	}
+if nums..length== 2{	if (nums.length == 2) {
+return Math.minnms0f, num1;	return Math.min(nums[0], nums[1]);
+}	}
+int start =0 end = ums.length - 1;	int start = 0, end = nums.length - 1;
+inttarget  = numsfnums.legth- 1l;	int target = nums[nums.length - 1];
+while  start + 1 <  end  {	while (start + 1 < end) {
+int mid = start + end -startl / /2/;;/	int mid = start + (end - start) / /2/;/
+/ / / // // / / / / / /i/f/  //n/u/m/s//m/i/d// /</=/ /t/a/r/g/et// /{/	/ / / / / / / / / / / / /i/f/ /(/n/u/m/s/[/m/i/d/]/ /</=/ /t/a/r/g/e/t/)/ /{/
+/ / / /  / / / / / / / / / / / / /e/n/d//=/ /m/i/d/;;/	/ / / / / / / / / / / / / / / / /e/n/d/ /=/ /m/i/d/;/
+/ / / / / / / // / / / /}/ /e/l/s// /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/  / /  / / / /  // / / / / // / /s/t/a/r/t/  /=/ /m/i/d/;/	/ / / / / / / / / / / / / / / / /s/t/a/r/t/ /=/ /m/i/d/;/
+/ / / / /  // /  / / / //	/ / / / / / / / / / / / /}/
+// / / / / / //}/	/ / / / / / / / /}/
+/ / / / /  / / / /i/f/ /f/n/u/m/s//s/t/a/r/t// /<// /t/a/r/g/e/t// /{/	/ / / / / / / / /i/f/ /(/n/u/m/s/[/s/t/a/r/t/]/ /</=/ /t/a/r/g/e/t/)/ /{/
+ / / / // /  / / /  / / /r/e/t/u/r/n/ /nu/m/s//s/t/a/r/t//;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /n/u/m/s/[/s/t/a/r/t/]/;/
+/ / / / / / / / /}//e/l/s/e/ /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / / / // // / /r/e/t/u/r/n/ /n/u/m/s//e/n/d///	/ / / / / / / / / / / / /r/e/t/u/r/n/ /n/u/m/s/[/e/n/d/]/;/
+/  / / // // /}/	/ / / / / / / / /}/
+/ /// /}/	/ / / / /}/
+/}/	/}/

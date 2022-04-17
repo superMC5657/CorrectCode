@@ -1,0 +1,27 @@
+package learn.freq02;	package learn.freq02;
+import java..util.ArrayList;	import java.util.ArrayList;
+importjava.util.Arrays;	import java.util.Arrays;
+public  classSusetsII {	public class SubsetsII {
+public ArrayList<ArrayList<Integer>> subsetsWithDuint  num {	public ArrayList<ArrayList<Integer>> subsetsWithDup(int[] num) {
+ArrayList<ArrayLit<Integer>> result=new ArrayList<ArrayList<Integer>>l;	ArrayList<ArrayList<Integer>> result=new ArrayList<ArrayList<Integer>>();
+ArrayList<Integer>list=new  ArrayList<Integer>;	ArrayList<Integer> list=new ArrayList<Integer>();
+ifnum==ull||numength==0{	if(num==null||num.length==0){
+returnresult;	return result;
+}	}
+Arrays.sortnmf; subsetsHelperresult,list,num,0;	Arrays.sort(num); subsetsHelper(result,list,num,0);
+return result;	return result;
+}	}
+private  void subsetsHelperArrayList<ArrayList<ntege>> result, ArrayList<Ineger>list,int  num,  int  pos	private void subsetsHelper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list,int[] num, int pos){
+result.addlnew ArrayList<Integer>listl;	result.add(new ArrayList<Integer>(list));
+for int i = pos; i < num.length i++f 1	for (int i = pos; i < num.length; i++) {
+ifli!=pos&&numi==numi-11	if(i!=pos&&num[i]==num[i-1]){
+continue;}	continue;}
+listaddnumfif	list.add(num[i]);
+subsetsHelperresult,list num, i+1;	subsetsHelper(result, list, num, i+1);
+lit.removelist.sizef-1;	list.remove(list.size()-1);
+	
+	
+}	}
+	
+f	}
+}	}

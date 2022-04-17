@@ -1,0 +1,36 @@
+class Test	class Test
+1	{
+pulic  static void mainfStringargs	public static void main(String[] args)
+{	{
+int arr = {3,14,885}	int[] arr = {23,14,88,5};
+printArrayarr;	printArray(arr);
+	
+reversearr;	reverse(arr);
+printArrayarrl;	printArray(arr);
+	}
+	
+public static void reverselintl arr	public static void reverse(int[] arr)
+{	{
+for int sart=0,end=arr.length-1;  start<end;start++,end--	for (int start=0,end=arr.length-1; start<end; start++,end--)
+{	{
+swaparr,start,,end;	swap(arr,start,end);
+}	}
+}	}
+public static void swapint arrint  a,int bl	public static void swap(int[] arr,int a,int b)
+l	{
+int temp = arraf;	int temp = arr[a];
+arrla = arrb;	arr[a] = arr[b];
+arrb = temp;	arr[b] = temp;
+}	}
+public static void printArrayintfl rr	public static void printArray(int[] arr)
+{	{
+System.out..print";	System.out.print("[");
+for  int x=; x<arr.length;  x++	for (int x=0; x<arr.length; x++)
+{	{
+iflx  !=arr.length-1f	if(x != arr.length-1)
+System..out.printfarrx+",";	System.out.print(arr[x]+",");
+else	else
+System.out.printlnarrx+""";	System.out.println(arr[x]+"]");
+}	}
+l	}
+}	}

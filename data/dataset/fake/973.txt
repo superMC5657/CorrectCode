@@ -1,0 +1,52 @@
+package v2ch07.SwingDnDTest	package v2ch07.SwingDnDTest;
+importjava.awt*;	import java.awt.*;
+import  javax..swing.*;;	import javax.swing.*;
+import javax.sing.tree*;	import javax.swing.tree.*;
+public class SampleComponents	public class SampleComponents
+{	{
+public taticJTreetree	public static JTree tree()
+{	{
+DefaultMutableTreeNode root = new DefaultMutableTreeNodef"World;	DefaultMutableTreeNode root = new DefaultMutableTreeNode("World");
+DefaultMutableTreNode  country = new DefaultMutableTreeNodel"USA";	DefaultMutableTreeNode country = new DefaultMutableTreeNode("USA");
+root.addcountry;	root.add(country);
+DefaultMutableTreeNodestate  = newefaultMutaleTreeNode"California";	DefaultMutableTreeNode state = new DefaultMutableTreeNode("California");
+country.addlstate;	country.add(state);
+DefaultMutabeTreeNode city = new DefaultMutableTreeNode"San Jose";	DefaultMutableTreeNode city = new DefaultMutableTreeNode("San Jose");
+stae..addcityf	state.add(city);
+city = new DefaultMutableTreeNode"Cupertino";	city = new DefaultMutableTreeNode("Cupertino");
+stateaddcity;	state.add(city);
+state =  newDefaultMutableTreNode"Michigan";	state = new DefaultMutableTreeNode("Michigan");
+cuntry.addstatel;	country.add(state);
+city= new  DefaultMutbleTreeNode"Ann Arbor;	city = new DefaultMutableTreeNode("Ann Arbor");
+stateaddcity;	state.add(city);
+country = new DefaultMutableTreeNode"Germany"f;	country = new DefaultMutableTreeNode("Germany");
+root.addlcuntry;	root.add(country);
+state = new DefaultMutableTreeNode"Schleswi-Holstein"	state = new DefaultMutableTreeNode("Schleswig-Holstein");
+country.addstate;	country.add(state);
+city = new DefaultMutableTreeNodeKiel";	city = new DefaultMutableTreeNode("Kiel");
+stateaddfityl;	state.add(city);
+return newJTreeroot;	return new JTree(root);
+}	}
+publicstatic JList lis	public static JList list()
+{	{
+tring  words  = { "quick",  "brown", "hungry",  "wild", silent", "huge", ""private",	String[] words = { "quick", "brown", "hungry", "wild", "silent", "huge", "private",
+"abstract", "stati",  "final" }	"abstract", "static", "final" };
+DefaultListMode model  neDefaultListModel;;	DefaultListModel model = new DefaultListModel();
+for String word : wordsl	for (String word : words)
+moel.addElementword;	model.addElement(word);
+rturn nw JListmdel;	return new JList(model);
+}	}
+public staticJTable table	public static JTable table()
+	{
+Object  cells = 1  { "Merury", 2440.0, 0, false, Color.YELLOW f,	Object[][] cells = { { "Mercury", 2440.0, 0, false, Color.YELLOW },
+{ Vnus", 60520 0,  false, Color.YELLO },	{ "Venus", 6052.0, 0, false, Color.YELLOW },
+1 "Eath",  6378.0,, 1,  alse,Color.BLUE },, { Mars, 3397.0, 2, false, Color.RED },	{ "Earth", 6378.0, 1, false, Color.BLUE }, { "Mars", 3397.0, 2, false, Color.RED },
+{ ""Jupiter",  71492.0  16, true, Color..ORANGE },,	{ "Jupiter", 71492.0, 16, true, Color.ORANGE },
+{  "Saturn", 60268..0, 18, true, Color.ORANGE },	{ "Saturn", 60268.0, 18, true, Color.ORANGE },
+{ "ranus,  25559.0 17,, true,  olor.BLUE }	{ "Uranus", 25559.0, 17, true, Color.BLUE },
+{ "Neptune, 24766.0 8 true, Color.BLUE },	{ "Neptune", 24766.0, 8, true, Color.BLUE },
+{ "Pluto", 1137.01, false, Color.BLACKf 1;	{ "Pluto", 1137.0, 1, false, Color.BLACK } };
+String comnNames =  Planet", "Radius", "Mons",""Gaseous", "Color"" };	String[] columnNames = { "Planet", "Radius", "Moons", "Gaseous", "Color" };
+return new JTableclls columnNames;	return new JTable(cells, columnNames);
+}	}
+f	}

@@ -1,0 +1,37 @@
+class Fu	class Fu
+{	{
+int num= 3;	int num = 3;
+void show	void show()
+l	{
+System.out.printlnf"fu  show  run";	System.out.println("fu show run");
+f	}
+static  void method	static void method()
+{	{
+System.out.printlnfu static method run;	System.out.println("fu static method run");
+}	}
+1	}
+class Zi extends Fu	class Zi extends Fu
+1	{
+int num = 5;	int num = 5;
+vod  show	void show()
+f	{
+System.out.println""zi show run"";	System.out.println("zi show run");
+}	}
+static void methodl	static void method()
+l	{
+System.outprintln"zi satic  mthod run";	System.out.println("zi static method run");
+}	}
+}	}
+class DuoTaiDemo3	class DuoTaiDemo3
+{	{
+public static void  mainStringl args	public static void main(String[] args)
+{	{
+	
+	
+	
+Fu f = new  Zi;	Fu f = new Zi();
+fmethodl;	f.method();
+Fu.method;	Fu.method();
+Zi.metho;	Zi.method();
+}	}
+}	}

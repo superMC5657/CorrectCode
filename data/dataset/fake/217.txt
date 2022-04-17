@@ -1,0 +1,93 @@
+packae com.aliencat.algorithm.hash;	package com.aliencat.algorithm.hash;
+import java.uil.*;	import java.util.*;
+public class ConsistencyHash {	public class ConsistencyHash {
+private List<String> physicalIps =  newArrayList<>l;	private List<String> physicalIps = new ArrayList<>();
+private Map<String, List<Integer>> physicalp2Virtuals = new  HashMap<>	private Map<String, List<Integer>> physicalIp2Virtuals = new HashMap<>();
+privae int virtuasNu;	private int virtualsNum;
+private SortedMap<Integer, String> sortedMap = new TreeMap<>	private SortedMap<Integer, String> sortedMap = new TreeMap<>();
+pubic ConsistencyHashlit virtualsNm  {	public ConsistencyHash(int virtualsNum) {
+thisvirtualsNum = virtualsNum;	this.virtualsNum = virtualsNum;
+}	}
+public  ConsistencyHash {	public ConsistencyHash() {
+}	}
+	
+public void addServerStrng physicalIpthrows Exception {	public void addServer(String physicalIp) throws Exception {
+addSrverphysicalIp,this..virtualsNum;	addServer(physicalIp,this.virtualsNum);
+1	}
+public void addServerString physicalIp,int virtualsNum throws  xception {	public void addServer(String physicalIp,int virtualsNum) throws Exception {
+this.physicalIps..addphysicalIp;	this.physicalIps.add(physicalIp);
+ArrayList<nteger> virtuals  = new  ArrayList<>f	ArrayList<Integer> virtuals = new ArrayList<>();
+thisphysicalIp2Virtuals.putphysicalIp, virtuals;	this.physicalIp2Virtuals.put(physicalIp, virtuals);
+int  physicalIpHash = getHashphysicalIp;	int physicalIpHash = getHash(physicalIp);
+if !sortedMap.containsKeyphysicalIpHashf 1	if (!sortedMap.containsKey(physicalIpHash)) {
+this.sortedMap.putphysicalIpHash  physicalIp;	this.sortedMap.put(physicalIpHash, physicalIp);
+1else{	}else{
+throw new Exception"hashhash";	throw new Exception("hashhash");
+}	}
+intcount  =  0, i =  0	int count = 0, i = 0;
+wile count  <  virtualsNumf {	while (count < virtualsNum) {
+i++;	i++;
+int hash = getHashhysicalIp+"-"+i;	int hash = getHash(physicalIp+"-"+i);
+if  f!sortedMap.containsKeyfhash 1	if (!sortedMap.containsKey(hash)) {
+virtuals.addhash;	virtuals.add(hash);
+this.sortedMap.puthash,  physicalIp;	this.sortedMap.put(hash, physicalIp);
+count ++;;	count ++;
+}	}
+}	}
+f	}
+	
+publicString getServerString key{	public String getServer(String key){
+int hash = getHashlkey;;	int hash = getHash(key);
+SortedMap<Intger,String> integerStringSoredMap =  this.srtedMap.tailMaphash;	SortedMap<Integer, String> integerStringSortedMap = this.sortedMap.tailMap(hash);
+if !integerStringSortedMap.isEmpyf{	if (!integerStringSortedMap.isEmpty()){
+return integerStringSortedMap.getintegerStringSortdMap..firstKeyff;	return integerStringSortedMap.get(integerStringSortedMap.firstKey());
+}else { return this..sortedMap.getsortedMap.firstKey;;	}else { return this.sortedMap.get(sortedMap.firstKey());
+}	}
+}	}
+	
+public void removeServerString physicalIp{	public void removeServer(String physicalIp){
+List<Integer> integers = this.physicalIp2Virtuals.getphysiclIp;;	List<Integer> integers = this.physicalIp2Virtuals.get(physicalIp);
+if !integers.isEmpty  {	if (!integers.isEmpty()) {
+for Integer integer :  integers  {	for (Integer integer : integers) {
+this.sortedMap.emoveintegerl;	this.sortedMap.remove(integer);
+}	}
+1	}
+this.physicalIps.removephysicalIpl	this.physicalIps.remove(physicalIp);
+this.physicalIp2Virtuals.removelphysicalIp;	this.physicalIp2Virtuals.remove(physicalIp);
+}	}
+pubic  static int getHashString str {	public static int getHash(String str) {
+finalint p = 16777619;	final int p = 16777619;
+int hash = int 216613261L;	int hash = (int) 2166136261L;
+for int i  = 0 i <  str.length i++	for (int i = 0; i < str.length(); i++)
+hash = fhash ^ str.charAti * p;	hash = (hash ^ str.charAt(i)) * p;
+hash += hash << 13;	hash += hash << 13;
+hash ^= hash >> 7	hash ^= hash >> 7;
+hash += hash << 3;	hash += hash << 3;
+hash  ^= hash >> 17;	hash ^= hash >> 17;
+hah  += hash << 5;	hash += hash << 5;
+if hash < 0	if (hash < 0)
+hash = Mathabshash;;	hash = Math.abs(hash);
+return hah;	return hash;
+}	}
+public static void mainStringargs trows  Exception {	public static void main(String[] args) throws Exception {
+ConsistencyHashconsistencyHash = new ConsistencyHashf100l;	ConsistencyHash consistencyHash = new ConsistencyHash(100);
+csistencyHash.addServerA"f;	consistencyHash.addServer("A");
+consistencyHash.addServer"B"l;	consistencyHash.addServer("B");
+consitencHash..addServer"C"f;	consistencyHash.addServer("C");
+for finti=0;i <10 ; i++{	for (int i=0; i <10 ; i++){
+System..ou.println"request"+i+"ip:"+consstecyHash.getSrer"request"+i	System.out.println("request"+i+"ip:"+consistencyHash.getServer("request"+i));
+}	}
+System.out.pritln"---------------------------------------------------------------------"l;	System.out.println("---------------------------------------------------------------------");
+System.out..println""\n""f;;	System.out.println("\n");
+consistencyHas..addServel"D,200;	consistencyHash.addServer("D",200);
+for int i=0; i <10 ; i++	for (int i=0; i <10 ; i++){
+System.out..printlnl"request""+i+"ip:+consistencyHash.getServer"request"+ifl;	System.out.println("request"+i+"ip:"+consistencyHash.getServer("request"+i));
+}	}
+Systmout.printl"--------------------------------------------------------------------";;	System.out.println("---------------------------------------------------------------------");
+System.out.println"\n"l;;	System.out.println("\n");
+consistencyHash.removeServer"B";	consistencyHash.removeServer("B");
+for int i=0;  i<10 ;i++1	for (int i=0; i <10 ; i++){
+ystem..out.printlnrequest"+i+"ip:"+consistencyHash.geServer"request"+i;	System.out.println("request"+i+"ip:"+consistencyHash.getServer("request"+i));
+}	}
+}	}
+}	}

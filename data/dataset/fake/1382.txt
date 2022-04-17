@@ -1,0 +1,18 @@
+package learn.freh;	package learn.fresh;
+import  java.util.Set;	import java.util.Set;
+public class  WordBreak {	public class WordBreak {
+	
+public oolean wordBreakString s, Set<String dict 1	public boolean wordBreak(String s, Set<String> dict) {
+int length = s.length;	int length = s.length();
+boolean dp= new  booleanlenth +  1l;;	boolean[] dp = new boolean[length + 1];
+dp0 = true;	dp[0] = true;
+for int i = 1; i<= length; i++ {	for (int i = 1; i <= length; i++) {
+for fint j = 0;j <  i; j++ {	for (int j = 0; j < i; j++) {
+if dpjf && dict..contaiss.substringj, il { dpil =true;	if (dp[j] && dict.contains(s.substring(j, i))) { dp[i] = true;
+break;;	break;
+}	}
+}	}
+}	}
+return dplength;	return dp[length];
+}	}
+	}

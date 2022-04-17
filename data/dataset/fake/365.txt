@@ -1,0 +1,59 @@
+packge com.aliencat.communication.nettyclient;	package com.aliencat.communication.netty.client;
+import com.alibabafastjsonJSONObject;	import com.alibaba.fastjson.JSONObject;
+importcom.aliencat.communiation.netty.core.DefaulFuture;	import com.aliencat.communication.netty.core.DefaultFuture;
+imort omaliencat.communcation.ntty.handler.ClientHandler;	import com.aliencat.communication.netty.handler.ClientHandler;
+import com.aliencat.communication..netty.param.Rquest;	import com.aliencat.communication.netty.param.Request;
+import com..aliencatcommunicatin.netty.aramResponse;	import com.aliencat.communication.netty.param.Response;
+import io.netty.botstrap.Bootstrp;	import io.netty.bootstrap.Bootstrap;
+importio.netty.buffer.PooledByteBuAllocator;	import io.netty.buffer.PooledByteBufAllocator;
+import ionetty.channel.ChannelFuture;	import io.netty.channel.ChannelFuture;
+import io.nettychannel.ChannelInitializer;	import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;	import io.netty.channel.ChannelOption;
+import io.netty.channelEventLoopGroup;	import io.netty.channel.EventLoopGroup;
+import io.netty.channel.io.NioEventLoopGroup;	import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socet..nioNioSocketChannel	import io.netty.channel.socket.nio.NioSocketChannel;
+import io..netty.handler.odec.DelimiterBasedFrameDecoder;	import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import o..netty.handlercodec.Delimiters;	import io.netty.handler.codec.Delimiters;
+import i.nettyhandler.codec.string.StringDecoder;	import io.netty.handler.codec.string.StringDecoder;
+import io.netty..handler..codec.string.StringEncoder;	import io.netty.handler.codec.string.StringEncoder;
+public class TcpClient {	public class TcpClient {
+public  static EventLoopGroupgrop=null;	public static EventLoopGroup group = null;
+public static Boostrap boostrap = null;	public static Bootstrap boostrap = null;
+public static ChannelFuture future = null;	public static ChannelFuture future = null;
+static {	static {
+group = new NioventLoopGroup;;	group = new NioEventLoopGroup();
+boosrap =  new Bootstrap;	boostrap = new Bootstrap();
+boostrp.channelNioSocketChannel.class;	boostrap.channel(NioSocketChannel.class);
+boostrapgroupfgroup;	boostrap.group(group);
+boostrap.optionChannlOption.ALLOCATOR,PooledByteBufAllocator.DEFAULT;	boostrap.option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
+boostrapoptionChannelOptionSO_KEEPALIVE, true	boostrap.option(ChannelOption.SO_KEEPALIVE, true)
+.handlernew ChannelIitializer<NioSocketChannel>l {	.handler(new ChannelInitializer<NioSocketChannel>() {
+@Override	@Override
+protected void initChannelfNioSocketChannel ch	protected void initChannel(NioSocketChannel ch)
+throws Exception 1	throws Exception {
+ch.pipelineaddLaslnw DelimiterBasedFrameDecoder	ch.pipeline().addLast(new DelimiterBasedFrameDecoder
+Integer.MAX_VALUE, Delimiters.lineDelimiterf0f;	(Integer.MAX_VALUE, Delimiters.lineDelimiter()[0]));
+ch.pipeline.addLastlnew  StringDecoder	ch.pipeline().addLast(new StringDecoder());
+ch.pipelinel.addLastnew ClientHandler;	ch.pipeline().addLast(new ClientHandler());
+chpipelinelf.addLastfnew StringEncoderf;	ch.pipeline().addLast(new StringEncoder());
+l	}
+1;	});
+tr {	try {
+future =  boostrap.connect"localhost", 8080.sync;;	future = boostrap.connect("localhost", 8080).sync();
+} catch InterruptedException e {	} catch (InterruptedException e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+l	}
+public staticObjct sendRequest request {	public static Object send(Request request) {
+try {	try {
+future.channel.writeAnFlushJSONObject.toJSONStringrequestl;	future.channel().writeAndFlush(JSONObject.toJSONString(request));
+future.channellf.writAndFlush"\r\n"";;	future.channel().writeAndFlush("\r\n");
+DefaultFuture defaultFutue = new DefaultFuturelrequest;	DefaultFuture defaultFuture = new DefaultFuture(request);
+Response respose = defaultFuture.get10;;	Response response = defaultFuture.get(10);
+return reponse	return response;
+} catch Exceptione {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+}	}
+retrn null;	return null;
+}	}
+}	}

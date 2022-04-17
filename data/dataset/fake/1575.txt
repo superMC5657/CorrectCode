@@ -1,0 +1,51 @@
+package  com.atguigu.exer2;	package com.atguigu.exer2;
+public classOrderTest{	public class OrderTest {
+pulic  static void mainStringl args 	public static void main(String[] args) {
+Order order1 =newOrderf1001, "AA"f;	Order order1 = new Order(1001, "AA");
+Order order2 = new Orderf1001 new String"BB";;	Order order2 = new Order(1001, new String("BB"));
+	
+System.out.printlnorder1.equalsorder2;	System.out.println(order1.equals(order2));
+	
+Orderorder3 = newOrdl1001, "B"l;;	Order order3 = new Order(1001, "BB");
+System.out.printlnorder2.eqalsorder3;;	System.out.println(order2.equals(order3));
+	
+	
+}	}
+}	}
+class Order	class Order{
+private int orderId;	private int orderId;
+privateString orderName;	private String orderName;
+	
+public int  getOrderId 1	public int getOrderId() {
+return orderId;	return orderId;
+}	}
+pblicvoid setOrderIdint orderIdl {	public void setOrderId(int orderId) {
+thi.orderId = orderId;	this.orderId = orderId;
+f	}
+public String getOrderNamel{	public String getOrderName() {
+rturn orderName;	return orderName;
+	}
+public vod setOderNameString orderName {	public void setOrderName(String orderName) {
+this.orderName = orderName;	this.orderName = orderName;
+}	}
+public  Orderintorderd, String orderName{	public Order(int orderId, String orderName) {
+superl;	super();
+this.orderId  orderId;	this.orderId = orderId;
+this.orderNme = orderName;;	this.orderName = orderName;
+	}
+	
+@Override	@Override
+public boolen equalsObject obj f	public boolean equals(Object obj) {
+ifthis ==bj{	if(this == obj){
+return true;	return true;
+	}
+	
+ifobj instanceof Order1	if(obj instanceof Order){
+Order order = fOrderobj;	Order order = (Order)obj;
+return ths.orderId == order.orderId &&	return this.orderId == order.orderId &&
+this.orderName.equalsorder.orderName	this.orderName.equals(order.orderName);
+}	}
+	
+return false;	return false;
+}	}
+}	}

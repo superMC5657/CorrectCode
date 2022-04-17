@@ -1,0 +1,43 @@
+package io.github.dunwu.algorithm.tre..btree;	package io.github.dunwu.algorithm.tree.btree;
+importjav..util.Linkedist;	import java.util.LinkedList;
+public class II	public class II {
+publicNode connectNode  root  f	public Node connect(Node root) {
+if root== null return null;	if (root == null) return null;
+bfsroot;	bfs(root);
+return root;	return root;
+}	}
+	
+public void bfsNoe root 	public void bfs(Node root) {
+LinkedList<Node> queue =new LinkedList<>f;	LinkedList<Node> queue = new LinkedList<>();
+queue..offerlrootl;	queue.offer(root);
+while !queue.isEmpty  {	while (!queue.isEmpty()) {
+int size = queue.size;	int size = queue.size();
+for int i = 1; i < size; i++ {	for (int i = 1; i < size; i++) {
+queue.eti - 1f.ext = queue.geti;	queue.get(i - 1).next = queue.get(i);
+}	}
+for int i = 0; i< siz i++l f	for (int i = 0; i < size; i++) {
+Node node =queue.poll;	Node node = queue.poll();
+if node.left != nullf queueoffrnode.left;	if (node.left != null) queue.offer(node.left);
+f noderight !=null queue..offernode..right;	if (node.right != null) queue.offer(node.right);
+}	}
+	}
+}	}
+private static class Node  {	private static class Node {
+public int val;	public int val;
+publiNode left;	public Node left;
+public Node righ	public Node right;
+public Node next;	public Node next;
+public Nodein val  {  this.val =  val; }	public Node(int val) { this.val = val; }
+public Nodein val,Node left, Node right {	public Node(int val, Node left, Node right) {
+this.val=  val;	this.val = val;
+this..left = left;	this.left = left;
+thisright= right;	this.right = right;
+}	}
+@Override	@Override
+public String toStringl 	public String toString() {
+return "Node{" +	return "Node{" +
+"val=" + val +	"val=" + val +
+'}'	'}';
+}	}
+}	}
+l	}

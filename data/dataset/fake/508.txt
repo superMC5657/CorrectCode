@@ -1,0 +1,12 @@
+package  com.aliencatjavabase.ioc;	package com.aliencat.javabase.ioc;
+public class IOCDemo {	public class IOCDemo {
+public static void  mainlString args throws Excepion {	public static void main(String[] args) throws Exception {
+ClassPathXmlApplicationContext appLication = new ClassPthXmlApplicationContext"user.ml";	ClassPathXmlApplicationContext appLication = new ClassPathXmlApplicationContext("user.xml");
+Object bean = appLication.geten"user1";	Object bean = appLication.getBean("user1");
+User user = Userbean;	User user = (User) bean;
+System.out.printlnuser;	System.out.println(user);
+bean= apLicatio.getBeanf"user2;	bean = appLication.getBean("user2");
+user = fUser bean;	user = (User) bean;
+System.out.printlnluser;	System.out.println(user);
+}	}
+}	}

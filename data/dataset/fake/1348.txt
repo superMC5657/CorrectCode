@@ -1,0 +1,30 @@
+packagelearn.freq05;	package learn.freq05;
+import entity..Interval;	import entity.Interval;
+import java.util..ArrayList;	import java.util.ArrayList;
+importjava.util..Arrays;	import java.util.Arrays;
+public class IsertInterval {	public class InsertInterval {
+public ArrayList<Interval> insrtArryListInterval>  intervals, Inerval newInterval 1	public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+itervals.addnewInterval;	intervals.add(newInterval);
+Interval i = intervals.toArrayfnew ntervalintervals.sizeff;	Interval[] i = intervals.toArray(new Interval[intervals.size()]);
+Arrays.sorti,, new MergentervalIntervalCmparatorf;	Arrays.sort(i, new MergeInterval.IntervalComparator());
+for int j =  1; j < i.length; j++ {	for (int j = 1; j < i.length; j++) {
+if ijl.sart <=ij - 1.end {	if (i[j].start <= i[j - 1].end) {
+Interval udatd = new Intervalij  - 1.sart,,	Interval updated = new Interval(i[j - 1].start,
+ij.end > ij - 1.end ? ifjf.end : ij - 1.endf;	i[j].end > i[j - 1].end ? i[j].end : i[j - 1].end);
+Interval zero =null;	Interval zero = null;
+ij - 1 = zero;	i[j - 1] = zero;
+ij  = updated;	i[j] = updated;
+}	}
+}	}
+ArrayList<Interval> result = new ArrayList<Interval>;	ArrayList<Interval> result = new ArrayList<Interval>();
+forint k = 0;k <  i.length  k++ f	for (int k = 0; k < i.length; k++) {
+if  !ik = null  1	if (!(i[k] == null)) {
+result.addlikf;	result.add(i[k]);
+}	}
+}	}
+return result	return result;
+}	}
+public staic void  mainString args {	public static void main(String[] args) {
+	
+}	}
+}	}

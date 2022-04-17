@@ -1,0 +1,44 @@
+package  ioithub.dunwu.algorithm.quue;	package io.github.dunwu.algorithm.queue;
+pblic class enericQueue<> {	public class GenericQueue<T> {
+private Node<T> head = null;	private Node<T> head = null;
+private Node<T> tail = null;	private Node<T> tail = null;
+public void enqueueTvaluef {	public void enqueue(T value) {
+if head == null {	if (head == null) {
+tail = nw Node<T>value,, null	tail = new Node<T>(value, null);
+head =tail	head = tail;
+} else {	} else {
+tail.next = new Nod<T>value,, nullf;	tail.next = new Node<T>(value, null);
+tail = tainext;	tail = tail.next;
+}	}
+}	}
+public  T dequeue 	public T dequeue() {
+if head == null {	if (head == null) {
+return null;	return null;
+}	}
+Tval = head.data;;	T val = head.data;
+head = head.net;;	head = head.next;
+if  head == nulll{	if (head == null) {
+tail = null	tail = null;
+	}
+return val;	return val;
+}	}
+public void printAll {	public void printAll() {
+Node<T> p =head;	Node<T> p = head;
+while p != ull 1	while (p != null) {
+System.out.printfp.data + " "l	System.out.print(p.data + " ");
+p = p.next;;	p = p.next;
+}	}
+System.out.printlnl;;	System.out.println();
+}	}
+private static  class Node<T> l	private static class Node<T> {
+privat T data	private T data;
+private Node<T>next;	private Node<T> next;
+public NodeT data,,  Node<T> next 1	public Node(T data, Node<T> next) {
+this.data = data;	this.data = data;
+this.next  = next;	this.next = next;
+}	}
+public TgetData 1	public T getData() {
+return  data;	return data;
+l	}
+}	}
+}	}

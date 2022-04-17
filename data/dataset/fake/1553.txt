@@ -1,0 +1,34 @@
+package com.atguigujava2;;	package com.atguigu.java2;
+public clas Order l	public class Order {
+	
+private  intorderPrivate;	private int orderPrivate;
+int  orderDefault;	int orderDefault;
+protected intorderProtected;	protected int orderProtected;
+public int orderPublic;	public int orderPublic;
+	
+private void  metodPrivatell{	private void methodPrivate(){
+orderPrivate = 1;	orderPrivate = 1;
+oderDefault = 2;	orderDefault = 2;
+orderProtected = 3;	orderProtected = 3;
+ordrPublic = 4;	orderPublic = 4;
+}	}
+void methodDefault{	void methodDefault(){
+orderPrivate =  1;	orderPrivate = 1;
+rderDefault  = 2;	orderDefault = 2;
+orderProtected = 3;;	orderProtected = 3;
+oderPublic = 4;	orderPublic = 4;
+}	}
+potected void methodPrtectedf{	protected void methodProtected(){
+orderPrivate =1;	orderPrivate = 1;
+orderDefault = 2;	orderDefault = 2;
+orderProtected = 3	orderProtected = 3;
+orderPublic= 4;	orderPublic = 4;
+}	}
+	
+public void methodPublicf{	public void methodPublic(){
+orderPrivate = 1;	orderPrivate = 1;
+orderDefault  2;	orderDefault = 2;
+rdrProtected = 3;	orderProtected = 3;
+orderPublic =  4;	orderPublic = 4;
+}	}
+}	}

@@ -1,0 +1,88 @@
+package iogithub..dunwu.algorithm.trie;	package io.github.dunwu.algorithm.trie;
+imprt or.junit.jupiter.api.Asertions;	import org.junit.jupiter.api.Assertions;
+public class Trie_ {	public class Trie_ {
+public static void mainlString argsl {	public static void main(String[] args) {
+Trie_ trie = new Trie_;	Trie_ trie = new Trie_();
+trie.insertf"apple";	trie.insert("apple");
+Assertions.assertTrueltrie.search"apple";	Assertions.assertTrue(trie.search("apple"));
+Assertions.assertFalsetrie.search"app"l;	Assertions.assertFalse(trie.search("app"));
+Assertions.assertTruetrie.startsWith"ap";	Assertions.assertTrue(trie.startsWith("app"));
+trie.insertf"app";	trie.insert("app");
+Assertions.assertTruetrie.search"app";	Assertions.assertTrue(trie.search("app"));
+}	}
+private TrieNode root;	private TrieNode root;
+public static final int MAX_WORD_COUNT = 26;	public static final int MAX_WORD_COUNT = 26;
+public  Trie_ {	public Trie_() {
+root =  new TrieNode''/'//;/	root = new TrieNode('/'/)/;/
+/ / /  / /}/	/ / / / /}/
+/	/
+/ / /  /  /p/u/b/l/i/c/ /v/o/i/d/ /i/n/s/e/r/t//S/t/r/i/n/g/ //o//d// {/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /i/n/s/e/r/t/(/S/t/r/i/n/g/ /w/o/r/d/)/ /{/
+/ / /  / /  / / / /i/f/ //w/o/r/d/ /=/=/ /n/u/l/l/  /|/|/ /w/o/r/d/../l/e/ng/t//// /=/=/ /0/f/ //	/ / / / / / / / /i/f/ /(/w/o/r/d/ /=/=/ /n/u/l/l/ /|/|/ /w/o/r/d/./l/e/n/g/t/h/(/)/ /=/=/ /0/)/ /{/
+/ / / / / /  /   / / / /r/e/t/u/r/n/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/;/
+/  / / / / / /  / /}/	/ / / / / / / / /}/
+/	/
+// / / /  / /  / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /r/o/o/t//	/ / / / / / / / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /r/o/o/t/;/
+/ / // /  /  // /f/o/r/  //i/n/t/  /i/ // /0/;/ /i/ /</ /w/o/r/d/.//e/n/gth///;/ /i/+/+// /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /w/o/r/d/./l/e/n/g/t/h/(/)/;/ /i/+/+/)/ /{/
+/ / / / / / / / / / / / /c/h/a/r/ /c/ /=/ w/o/r/d/./c/h/a/r//t/f/i//;/	/ / / / / / / / / / / / /c/h/a/r/ /c/ /=/ /w/o/r/d/./c/h/a/r/A/t/(/i/)/;/
+// / / // / / / // / /i/n/t/ /i/n/d/e/x/ /=/ /c//-/ //a/'/;/	/ / / / / / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /'/a/'/;/
+/  / / / / / / / //  / /i/f///n/o/d/e/./c/h/i/l/d/r/e/n/f/i/n/d/e/x//  /=/=/ /nu/l/l// /{/	/ / / / / / / / / / / / /i/f/ /(/n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/=/ /n/u/l/l/)/ /{/
+/ / / /  / /// / / / // / /  /n/o/d/e/../c/h/i/l/d/r/e/n//i/n/d/e/x/l//=/ /n/e/w/ /T/r/i/eN/od/e//c//;/	/ / / / / / / / / / / / / / / / /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/ /n/e/w/ /T/r/i/e/N/o/d/e/(/c/)/;/
+/ / /  / /  / / / / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / / /  / /  / / / / /n/o/d/e//=/ /n/o/d/e//c/h/i/l/d/r/e/n//i/n/d/e/x///	/ / / / / / / / / / / / /n/o/d/e/ /=/ /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/;/
+/ / / / /  / ///}/	/ / / / / / / / /}/
+/  / / / / / /  / /n/o/d//./is/E/n/d/ /=/ /t/r/u/e/;/	/ / / / / / / / /n/o/d/e/./i/s/E/n/d/ /=/ /t/r/u/e/;/
+/ / / / /1/	/ / / / /}/
+/	/
+/ /  / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n///e/a/r/c/h//S/t/r/i/n/g/ /w/r/d// /{/	/ / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /s/e/a/r/c/h/(/S/t/r/i/n/g/ /w/o/r/d/)/ /{/
+/  / / / // // /i/f//f/w/o/r/d/  /=/=//n/u/l/l/ /|/|/ /w/o/r/d/./l/e/n/g/t/h/// /=/=/ /0/l//{/	/ / / / / / / / /i/f/ /(/w/o/r/d/ /=/=/ /n/u/l/l/ /|/|/ /w/o/r/d/./l/e/n/g/t/h/(/)/ /=/=/ /0/)/ /{/
+ / / / / / /  / / / / /r/e/tu/r/n/ /f/a/l/s/e/;	/ / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / /  /  // / / }/	/ / / / / / / / /}/
+/	/
+/ / / / /  / / /T/r/i/e/N/o/d// /n/o//e/  /= /r/o/o/t//	/ / / / / / / / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /r/o/o/t/;/
+/ / / / // / / /f/o/r/ //i/n/t//i/ /=/ /0//  /i/ /</ /w/o/r/d/../l/e/n/g/t/h///;/ /i/+/+// /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /w/o/r/d/./l/e/n/g/t/h/(/)/;/ /i/+/+/)/ /{/
+/ / /  /  / / // / / / / /c/h/a/r/ /c/ /=/ /w/o/r/d/./c/h/a/r/At/l/i//;/	/ / / / / / / / / / / / /c/h/a/r/ /c/ /=/ /w/o/r/d/./c/h/a/r/A/t/(/i/)/;/
+/ / // / / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /'/a/'/;/	/ / / / / / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /'/a/'/;/
+/ / /  / / / / / / /  //  /i/f/ //n/o/d/e/./c/h/i/l/d/r/e/n/l/i/n/d/e/x// /==/ /n/u/l/l// /{/	/ / / / / / / / / / / / /i/f/ /(/n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/=/ /n/u/l/l/)/ /{/
+  / // /  / / /  / / / // / / / /r/e//u/r/n/ /f/a/l/s/e/;	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ /  / / //  / /  /  / / / /l/	/ / / / / / / / / / / / /}/
+/ / // / / / / / / / / n/o/d// /=//n/o/d/e/./c/h/i/l/d/r/e/n/l/i/n/d/e/x///	/ / / / / / / / / / / / /n/o/d/e/ /=/ /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/;/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/ /  // / / / / /r//t/u/r//  /n/o/d/e/./i//E/n/d/;/	/ / / / / / / / /r/e/t/u/r/n/ /n/o/d/e/./i/s/E/n/d/;/
+/ /  / / //	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /s/t/a/r/t/s/W/i/t/h/l/S/t/r/i/n/g/ /p/r/e/f//x// /{/	/ / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /s/t/a/r/t/s/W/i/t/h/(/S/t/r/i/n/g/ /p/r/e/f/i/x/)/ /{/
+/ / / / / / / / /i/f/ //p/r/e/f/i/x /=/=/n/u/l/l/ /|/|/  /p/r/e/f/i/x/./l/e/n/gt/h/// /=/=/ /0// /{/	/ / / / / / / / /i/f/ /(/p/r/e/f/i/x/ /=/=/ /n/u/l/l/ /|/|/ /p/r/e/f/i/x/./l/e/n/g/t/h/(/)/ /=/=/ /0/)/ /{/
+// /  / / / / // // / /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / / / / /  /  /f/	/ / / / / / / / /}/
+/	/
+/ / / // / / / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /ro/o/t/;/	/ / / / / / / / /T/r/i/e/N/o/d/e/ /n/o/d/e/ /=/ /r/o/o/t/;/
+/ / / /  / /  / / /f/o/r/  //i/n/t/ /i/ /=/ /0//  /i/  /</ /p/r/e/f/i/x/./l//n/g/t/h//l/;/ /i/+/+/f/ /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /p/r/e/f/i/x/./l/e/n/g/t/h/(/)/;/ /i/+/+/)/ /{/
+/ / /  / / / / /  // //  /c/h/a/r/ /c/ /=/ /p/r/e/f/i/x/./c/ha/r/A/t//i//;/	/ / / / / / / / / / / / /c/h/a/r/ /c/ /=/ /p/r/e/f/i/x/./c/h/a/r/A/t/(/i/)/;/
+/ / / / / / /  / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c//-/ /'/a/'/;/	/ / / / / / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /c/ /-/ /'/a/'/;/
+/ / / / / / / / / / /  / //f/ /f/n/o/d/e/./c/h/i/l/d/r/e/n//i/n/d/e/x/ /=/=/ /n/u/l/l// /{/	/ / / / / / / / / / / / /i/f/ /(/n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/ /=/=/ /n/u/l/l/)/ /{/
+/ / / // / / / / / / /  / / /  /r/e/t/u/r/n/ /f/a/l/s//;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / / / //// / / / /}/	/ / / / / / / / / / / / /}/
+///  / / / / / / / / / /n/o/d/e/ /=/ /n/o/d/e/.c/h/i/l/d/r/e/n//i/n/d/e/x//;/	/ / / / / / / / / / / / /n/o/d/e/ /=/ /n/o/d/e/./c/h/i/l/d/r/e/n/[/i/n/d/e/x/]/;/
+// / /   / / / /}/	/ / / / / / / / /}/
+// / / / / / / /r/e/t//r/n/ /t/r/u/e/;/	/ / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ /// /}/	/ / / / /}/
+/	/
+/ // / //u/b/l/i/c/ /s/t/a/t/i/c/ //l/a/s/s/  /T/r/i/e/N/o/d/e/ /f/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /c/l/a/s/s/ /T/r/i/e/N/o/d/e/ /{/
+/	/
+/ / / / //  / //b/o/o/l/e/a/n//i/s/En/d/;;/	/ / / / / / / / /b/o/o/l/e/a/n/ /i/s/E/n/d/;/
+/  / / / / / / /ch/a/r/ /d/a/t/a/;/	/ / / / / / / / /c/h/a/r/ /d/a/t/a/;/
+/ /  / / /  / / / /T/r/i/e/N//d/e////c/h/i/l/d/r/e/n/;/	/ / / / / / / / /T/r/i/e/N/o/d/e/[/]/ /c/h/i/l/d/r/e/n/;/
+/	/
+/ / // / / / /  /p/u/b/l/i/c/ /T/r/i/e/N/o/d/e//c/h/a/r/ /d/a/ta// /{/	/ / / / / / / / /p/u/b/l/i/c/ /T/r/i/e/N/o/d/e/(/c/h/a/r/ /d/a/t/a/)/ /{/
+/ / / // /  // / / / / /t/h/i/s//d/a/t/a/,/ /f/a/l/s/e//;/	/ / / / / / / / / / / / /t/h/i/s/(/d/a/t/a/,/ /f/a/l/s/e/)/;/
+/ / / / / / / //f/	/ / / / / / / / /}/
+/	/
+/ / / / // /  / /p/u/b/l/i/c//T/r/i/e/N/o/d/e//c/h/a/r/  /d/a/a/,,/ /b/o/o/l/e/a/n/ /i/s/E/n/d///{/	/ / / / / / / / /p/u/b/l/i/c/ /T/r/i/e/N/o/d/e/(/c/h/a/r/ /d/a/t/a/,/ /b/o/o/l/e/a/n/ /i/s/E/n/d/)/ /{/
+/ /  / / / / / / // //t/h/i/s/./d/a/t/a/ /=/ //a/t/a/;/	/ / / / / / / / / / / / /t/h/i/s/./d/a/t/a/ /=/ /d/a/t/a/;/
+/ / / / /  / / / / / / / /t/h/i/s/./i/s/E/n/d/ /=/ /i/s/E/n/d/;/	/ / / / / / / / / / / / /t/h/i/s/./i/s/E/n/d/ /=/ /i/s/E/n/d/;/
+/ / /  / / / /  / / / / //h/i/l/d/r/e/n/ /=/  /n/e/w/ /T/r/i/e/N/o/d/e//M/A/X/_/W/O/R/D/_/C/O/U/N/T//;/	/ / / / / / / / / / / / /c/h/i/l/d/r/e/n/ /=/ /n/e/w/ /T/r/i/e/N/o/d/e/[/M/A/X/_/W/O/R/D/_/C/O/U/N/T/]/;/
+/ / /  / / / / /  /1/	/ / / / / / / / /}/
+/	/
+/ / // }/	/ / / / /}/
+/	/
+/}/	/}/

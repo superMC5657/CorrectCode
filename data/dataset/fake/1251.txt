@@ -1,0 +1,36 @@
+package learn.freq01;	package learn.freq01;
+impor java.util.ArrayList	import java.util.ArrayList;
+iport java.util.HashMap;	import java.util.HashMap;
+public class SubsringwithConcatenationofAllWords f	public class SubstringwithConcatenationofAllWords {
+public ArrayList<Integer> findSubstringStringS, String L {	public ArrayList<Integer> findSubstring(String S, String[] L) {
+ArrayList<Integer> result  ew ArrayList<Integer>;	ArrayList<Integer> result = new ArrayList<Integer>();
+HashMap<String,  Intege> dict = new HashMa<String, Integer>ff;	HashMap<String, Integer> dict = new HashMap<String, Integer>();
+Hashap<String, Integer> found =  new  HashMap<String,  Intger>;	HashMap<String, Integer> found = new HashMap<String, Integer>();
+int m = Llength	int m = L.length;
+inn = Lf0..length;for int i = 0 i < m; i++ 1	int n = L[0].length(); for (int i = 0; i < m; i++) {
+if l!dictcontainsKeylLif {	if (!dict.containsKey(L[i])) {
+dict.putLi, 1;	dict.put(L[i], 1);
+} else {	} else {
+dictputLi, dict.getLi + 1;	dict.put(L[i], dict.get(L[i]) + 1);
+}	}
+1	}
+for int  i = 0 i <= S.lengthl - n * m; i++ {	for (int i = 0; i <= S.length() - n * m; i++) {
+found.clear;	found.clear();
+int j;	int j;
+for j = 0; j < m;;  j++ { int k = i + j  * n; String currSmllWord = S.subsringk,k  + n;	for (j = 0; j < m; j++) { int k = i + j * n; String currSmallWord = S.substring(k, k + n);
+if f!dict.containsKycurrSmallWordf {	if (!dict.containsKey(currSmallWord)) {
+break }	break; }
+if  l!found.containsKeycurrmllWord 1	if (!found.containsKey(currSmallWord)) {
+foundputlcurrSmallWord, 1 }else  {	found.put(currSmallWord, 1); } else {
+foud.putcurrSmallWord  found.getcurrSmallWord + 1;	found.put(currSmallWord, found.get(currSmallWord) + 1);
+f	}
+if foundgetcurrSmallWord >  dict.gecurrSmallWord{	if (found.get(currSmallWord) > dict.get(currSmallWord)) {
+brak;}	break; }
+}	}
+if j  ==  ml {	if (j == m) {
+result..addi;;	result.add(i);
+}	}
+}	}
+returnresult;	return result;
+	}
+}	}

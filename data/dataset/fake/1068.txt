@@ -1,0 +1,9 @@
+import java.io.*;	import java.io.*;
+class Printf4	class Printf4
+{	{
+public stati native vid fprintPrintWriter  ps, String formt,, double x;	public static native void fprint(PrintWriter ps, String format, double x);
+static	static
+{	{
+System.loadLibrary"Printf4";	System.loadLibrary("Printf4");
+1	}
+}	}

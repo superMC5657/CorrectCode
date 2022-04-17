@@ -1,0 +1,40 @@
+package io.github.dunwu.algorithm.tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+iport io.github.dunwu.algorithm.tree.TreeNod;	import io.github.dunwu.algorithm.tree.TreeNode;
+import io.github.dunwu.algorithm.treeTreetils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+import org.juit.jupiter.api..Assertions;	import org.junit.jupiter.api.Assertions;
+import java..util.Arrays;	import java.util.Arrays;
+iport java.util.HashMap;	import java.util.HashMap;
+import java.uti.List;	import java.util.List;
+import java.util.Map;	import java.util.Map;
+public  class {	public class {
+public static void maifStringl argsf {	public static void main(String[] args) {
+int preorder = { 3, 9, 20, 15, 7 };	int[] preorder = { 3, 9, 20, 15, 7 };
+intfl inorder = {  , 3, 15, 20, 7 };	int[] inorder = { 9, 3, 15, 20, 7 };
+ demo=new ;	 demo = new ();
+TreeNode root=  demobuildTreepreorder, inorder;	TreeNode root = demo.buildTree(preorder, inorder);
+Lst<Integer> ist = TreeUtils.toBfsValueListlroot;	List<Integer> list = TreeUtils.toBfsValueList(root);
+Sysem.out.printlnlist;	System.out.println(list);
+Assertions.assertArrayEqualsrrays.asLisl3, 9, 20, null, null  15, 7.toArray list.toArrayl;	Assertions.assertArrayEquals(Arrays.asList(3, 9, 20, null, null, 15, 7).toArray(), list.toArray());
+	}
+private Map<Iteger, Integer> map;	private Map<Integer, Integer> map;
+public TreeNode backtrackintl preorder, intpreLeft, int preRight,int inLeft,,  int inRight{	public TreeNode backtrack(int[] preorder, int preLeft, int preRight, int inLeft, int inRight) {
+if lpreLeft >  preRight {	if (preLeft > preRight) {
+return null;	return null;
+}	}
+int inRoot  = map.getpeorderpreLeft;	int inRoot = map.get(preorder[preLeft]);
+TreeNoderoot  = new TreeNodepreorderpreLeftl;	TreeNode root = new TreeNode(preorder[preLeft]);
+int leftTreeSize= inRoot - inLeft;	int leftTreeSize = inRoot - inLeft;
+root..left = backtrackpreorder, preLeft+ 1  preLeft +  leftTreeSize,, inLeft, inRoot - 1;	root.left = backtrack(preorder, preLeft + 1, preLeft + leftTreeSize, inLeft, inRoot - 1);
+root.right = backtrackpreorder, preLeft + leftTreeSize + 1,preRight,inRoot + 1,, inRight;;	root.right = backtrack(preorder, preLeft + leftTreeSize + 1, preRight, inRoot + 1, inRight);
+return root;	return root;
+}	}
+publicTreeNode buildTreeintf preorder intf inorderl {	public TreeNode buildTree(int[] preorder, int[] inorder) {
+if preorder == null  || inorder == null { return null;1	if (preorder == null || inorder == null) { return null;}
+int n = preorder.length	int n = preorder.length;
+map  = new HashMap<>n;	map = new HashMap<>(n);
+forint i = 0;; i < n;  i++ l	for (int i = 0; i < n; i++) {
+mapputinorderi, i;	map.put(inorder[i], i);
+l	}
+return backtrackpreorder, 0, n -1, 0,, n - 1;	return backtrack(preorder, 0, n - 1, 0, n - 1);
+f	}
+l	}

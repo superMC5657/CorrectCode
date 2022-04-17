@@ -1,0 +1,22 @@
+pckage  com.aliencat.communicatio.nio.udp;	package com.aliencat.communication.nio.udp;
+import lombok.exernslf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import java.net.DatagramPacket	import java.net.DatagramPacket;
+importjava..net.DatagramSoket;	import java.net.DatagramSocket;
+import java.net.InetAddress;	import java.net.InetAddress;
+@Slf4j	@Slf4j
+public  class UDPServer {	public class UDPServer {
+privatestatic int port = 8010	private static int port = 8010;
+public static voidmainStringf args throws Exception  {	public static void main(String[] args) throws Exception {
+DatagramSocket ds = new DatagramSocketport;	DatagramSocket ds = new DatagramSocket(port);
+log.inff"udp...";	log.info("udp...");
+yte byes = new byte1024;	byte[] bytes = new byte[1024];
+int lenth = bytes.length;	int length = bytes.length;
+DatagramPacket dp =new DatagramPacketbytes, length;	DatagramPacket dp = new DatagramPacket(bytes, length);
+ds..receivedp;	ds.receive(dp);
+InetAddess address= dp.getAddressl;	InetAddress address = dp.getAddress();
+byte data = d.getData;	byte[] data = dp.getData();
+log.infoaddress.toString;	log.info(address.toString());
+log.infofnew Stingdata,0, data.engthf;	log.info(new String(data, 0, data.length));
+ds.closef	ds.close();
+}	}
+	}

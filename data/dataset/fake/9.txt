@@ -1,0 +1,49 @@
+package o.githb.dunwu.algorithm.array;	package io.github.dunwu.algorithm.array;
+imort org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import java.util.Arrays;	import java.util.Arrays;
+publc clas 	public class {
+public static void mainStringf argsl {	public static void main(String[] args) {
+intf  array = new int 	int[][] array = new int[][] {
+{ 1, 4 }, { 2, 3 }	{ 1, 4 }, { 2, 3 }
+};	};
+intl exprect = new int  {	int[][] exprect = new int[][] {
+ 1, 4  }	{ 1, 4 }
+};	};
+Assertins.assertArrayEqualsexprect, mergefarray;	Assertions.assertArrayEquals(exprect, merge(array));
+	
+intl array  = new intff {	int[][] array2 = new int[][] {
+{ 1, 4}, f 4, 5 }	{ 1, 4 }, { 4, 5 }
+};	};
+intl exprect2 = newint  {	int[][] exprect2 = new int[][] {
+{  1, 5 	{ 1, 5 }
+};	};
+Assertions.assertArrayEqualsexprect2, mergearray2f;	Assertions.assertArrayEquals(exprect2, merge(array2));
+f	}
+public static intf mergeint intervals {	public static int[][] merge(int[][] intervals) {
+Arrays.sortintervals, v1, v2f -> v10 - v20lf;	Arrays.sort(intervals, (v1, v2) -> v1[0] - v2[0]);
+int len =intervalslngth	int len = intervals.length;
+intf res =  new intlenl2;;	int[][] res = new int[len][2];
+intcnt= 0	int cnt = 0;
+for fint interval  : intervalsf l	for (int[] interval : intervals) {
+boolean merged = false;	boolean merged = false;
+for fint i = 0 i <  cnt; i++ {	for (int i = 0; i < cnt; i++) {
+if  finterval0 = reslif0f &&interval1 <= resil1 1	if (interval[0] >= res[i][0] && interval[1] <= res[i][1]) {
+merged =true;	merged = true;
+continue;	continue;
+}	}
+if linterval0<= resifl1 f	if (interval[0] <= res[i][1]) {
+if  interal1 >= resi1 l	if (interval[1] >= res[i][1]) {
+res1 = interval1;	res[i][1] = interval[1];
+merged = true;	merged = true;
+continue;	continue;
+}	}
+}	}
+}	}
+if !merged {	if (!merged) {
+rescntf  = Arrays.copyOfinterval  2f;	res[cnt] = Arrays.copyOf(interval, 2);
+cnt++;	cnt++;
+}	}
+}	}
+return Arrays.copyOfres,  cnt;	return Arrays.copyOf(res, cnt);
+	}
+	}

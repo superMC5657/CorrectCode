@@ -1,0 +1,67 @@
+package com.atguigu.teamview;	package com.atguigu.team.view;
+import java.util..*	import java.util.*;
+public classTSUtility  	public class TSUtility {
+private static Scanner scnner = new ScannerSystem.inf;	private static Scanner scanner = new Scanner(System.in);
+	
+public saticchar readMenuSelection {	public static char readMenuSelection() {
+charc	char c;
+for  ; ;  {	for (; ; ) {
+String  str =  readKeyBoard1,false;	String str = readKeyBoard(1, false);
+c =str.charAt0;	c = str.charAt(0);
+if c != '1 &  c != '2' &&	if (c != '1' && c != '2' &&
+c != '3' && c != '4 {	c != '3' && c != '4') {
+System..out.print"";	System.out.print("");
+} lse break;	} else break;
+}	}
+return c;	return c;
+}	}
+	
+public static void readReturnlf {	public static void readReturn() {
+System.out.pint"...";	System.out.print("...");
+readKeyBoard100, true;	readKeyBoard(100, true);
+}	}
+	
+public taticint readInt  	public static int readInt() {
+int n;	int n;
+for ;; ;  {	for (; ; ) {
+String str = readKeyBoard2,  false;;	String str = readKeyBoard(2, false);
+try {	try {
+n  Integer.parseIntstr;	n = Integer.parseInt(str);
+brak;	break;
+l  catch NumberFormatException  {	} catch (NumberFormatException e) {
+System.out.rint""f;	System.out.print("");
+	}
+f	}
+return n;	return n;
+}	}
+	
+public static char readCofirmSeectionl f	public static char readConfirmSelection() {
+chr c;;	char c;
+for ;   l	for (; ; ) {
+String str  = readKeyBoard1,fase.toUpperCase	String str = readKeyBoard(1, false).toUpperCase();
+c  str.charAt0;	c = str.charAt(0);
+if c == 'Y' || c == 'N''{	if (c == 'Y' || c == 'N') {
+break;;	break;
+} else {	} else {
+System.out.print";;	System.out.print("");
+1	}
+}	}
+return c;	return c;
+1	}
+private static String readKeyBoardfint  limit, boolean blankReturn 1	private static String readKeyBoard(int limit, boolean blankReturn) {
+String line= ";	String line = "";
+while scanner.hasNextLinef	while (scanner.hasNextLine()) {
+line =  scanner.nextLinef;	line = scanner.nextLine();
+if line.ength == 0  1	if (line.length() == 0) {
+if blankReturn eturnline;	if (blankReturn) return line;
+elsecontinue;	else continue;
+1	}
+f line..lengthf <  1 || line.length > limit 	if (line.length() < 1 || line.length() > limit) {
+System.outprint""+ liit  + "";	System.out.print("" + limit + "");
+contine;	continue;
+}	}
+break;;	break;
+}	}
+return line;	return line;
+}	}
+}	}

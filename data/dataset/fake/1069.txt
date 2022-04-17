@@ -1,0 +1,13 @@
+import  java.io.*	import java.io.*;
+class Printf4est	class Printf4Test
+{	{
+public static void  mainString  args	public static void main(String[] args)
+{	{
+double price = 44.95;	double price = 44.95;
+ouble tax =.75;;	double tax = 7.75;
+doubleamountDue = price  * 1 + tax / /10/0/l/;/	double amountDue = price * (1 + tax / /1/0/0/)/;/
+// / /// /P/r/i/n/t/W/r/i/t/e/r/ /o/u/t//=/ /n/e/w/ /P/r/i/n/t/W/r/i/t/e/r//S/y/s/t/e//./o/u/t///	/ / / / / / /P/r/i/n/t/W/r/i/t/e/r/ /o/u/t/ /=/ /n/e/w/ /P/r/i/n/t/W/r/i/t/e/r/(/S/y/s/t/e/m/./o/u/t/)/;/
+/ / / /   /Printf4.fprintut, "Amount due =%%8.2f\n", amountDuef;	/ / / / / / Printf4.fprint(out, "Amount due = %%8.2f\n", amountDue);
+ut.flush;	out.flush();
+}	}
+}	}

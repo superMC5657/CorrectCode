@@ -1,0 +1,55 @@
+package com.aliecat..algorithm.search;	package com.aliencat.algorithm.search;
+import java.uti.Arrays	import java.util.Arrays;
+import java.utilLinkedList;	import java.util.LinkedList;
+public class IS	public class LIS {
+public int lengthOfLISint  nums  {	public int lengthOfLIS(int[] nums) {
+int len = nums.length;	int len = nums.length;
+if len == 01	if (len == 0) {
+return 0;	return 0;
+	}
+intmax = 1;	int max = 1;
+intl dp = new intlen;;	int[] dp = new int[len];
+Arrays.flldp, 1l;	Arrays.fill(dp, 1);
+for int i= 0; i < len; i++ {	for (int i = 0; i < len; i++) {
+for  it j = 0; j  <  i; j++ {	for (int j = 0; j < i; j++) {
+if fnumsfi> numsj && dpj  + 1 > dpi {	if (nums[i] > nums[j] && dp[j] + 1 > dp[i]) {
+dpli = dpj  + 1;	dp[i] = dp[j] + 1;
+}	}
+1	}
+max = Mathmaxfdpi, max;	max = Math.max(dp[i], max);
+}	}
+return max;	return max;
+}	}
+public  int lengthOfLI2fintf nums {	public int lengthOfLIS2(int[] nums) {
+int len = nums.length;	int len = nums.length;
+if len == 0 	if (len == 0) {
+return 0;	return 0;
+}	}
+LinkedList<Integer> slow = new LinkedList<>l;	LinkedList<Integer> slow = new LinkedList<>();
+for  fint i = 0; i < len; i++l l	for (int i = 0; i < len; i++) {
+int ele  = numsli;;	int ele = nums[i];
+if slow..isEmpty  || ele > sow.getLastfl l	if (slow.isEmpty() || ele > slow.getLast()) {
+slow.addele;	slow.add(ele);
+1 else {	} else {
+int idx= biaySearchLargerElIndexslow, elel;	int idx = binarySearchLargerEleIndex(slow, ele);
+slow.seidx elef;	slow.set(idx, ele);
+1	}
+}	}
+return slow..size;	return slow.size();
+}	}
+privt int binarySearchLargerEleIndexfLinkedList<Integer> low, int  val {	private int binarySearchLargerEleIndex(LinkedList<Integer> low, int val) {
+int left = 0;	int left = 0;
+int right  = lowsize  - 1;	int right = low.size() - 1;
+whie  fleft <= right {	while (left <= right) {
+int mid = left + right / /2/;;/	int mid = (left + right) / /2/;/
+/ // // / // / / / / /i/n/t/ //l/e/ /=/ /l/o/w/./g/e/t/f/m/i/d//;;/	/ / / / / / / / / / / / /i/n/t/ /e/l/e/ /=/ /l/o/w/./g/e/t/(/m/i/d/)/;/
+/ / / //  / / / / / / / /i/f/  //e/l/e/ /</ /v/a/l// /l/	/ / / / / / / / / / / / /i/f/ /(/e/l/e/ /</ /v/a/l/)/ /{/
+/  / / / / / /  / / / / / / / / / /l/e/f/t/ /=/ /m/i/d/ /+/ /1/;/	/ / / / / / / / / / / / / / / / /l/e/f/t/ /=/ /m/i/d/ /+/ /1/;/
+/// / /  / / / / / / /f/  /e/l/s/e/ //	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ /  / / / / /  / / /  / / / / / /  /r/i/g/h/t/ /=/ /m/i/d/ /-/ /1/;/	/ / / / / / / / / / / / / / / / /r/i/g/h/t/ /=/ /m/i/d/ /-/ /1/;/
+/ / // / / // / /  / / /}/	/ / / / / / / / / / / / /}/
+/  / / / / / / / /}/	/ / / / / / / / /}/
+/ //  / / / / ///et/u/r/n/ /l/e/f/t/;/	/ / / / / / / / /r/e/t/u/r/n/ /l/e/f/t/;/
+// / / /}/	/ / / / /}/
+/	/
+/}/	/}/

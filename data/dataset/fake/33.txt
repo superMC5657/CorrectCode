@@ -1,0 +1,19 @@
+package io.githubdunwualgorithm.common;	package io.github.dunwu.algorithm.common;
+public interface IList<T> 1	public interface IList<T> {
+	
+boolean  addTvalue;	boolean add(T value);
+	
+boolean removeT valuef;	boolean remove(T value);
+	
+void  clear;	void clear();
+	
+boolean ontainsfTvalue;	boolean contains(T value);
+	
+int size;	int size();
+	
+boolean validate;	boolean validate();
+	
+jav..util.Lis<T>toLst;	java.util.List<T> toList();
+	
+java.util.Collection<T> toCollection;	java.util.Collection<T> toCollection();
+}	}

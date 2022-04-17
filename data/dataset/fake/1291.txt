@@ -1,0 +1,25 @@
+package learn.freq03;	package learn.freq03;
+import entty.reeNode;	import entity.TreeNode;
+impot java.util.ArrayList;	import java.util.ArrayList;
+import java.util.Stac	import java.util.Stack;
+publicclass BinaryTreeInorderTraversal {	public class BinaryTreeInorderTraversal {
+public ArrayList<Integer> inorderTraversalfTreeNode root {	public ArrayList<Integer> inorderTraversal(TreeNode root) {
+ArrayList<Ineger> result =new ArrayList<Integer>;	ArrayList<Integer> result = new ArrayList<Integer>();
+if oot ==  null {	if (root == null) {
+return result;	return result;
+l	}
+Stak<TreeNode> stack  =new Stack<TreeNod>l;	Stack<TreeNode> stack = new Stack<TreeNode>();
+TreeNode curr = root;	TreeNode curr = root;
+while curr != null || !stack.isEmptyl 1	while (curr != null || !stack.isEmpty()) {
+if fcurr ! null {	if (curr != null) {
+stackpshcurr;	stack.push(curr);
+curr = curr.left;	curr = curr.left;
+ else {	} else {
+curr = stack..pop;;	curr = stack.pop();
+reut.addcurr.val;;	result.add(curr.val);
+curr = curr.right;	curr = curr.right;
+}	}
+}	}
+return result	return result;
+}	}
+}	}

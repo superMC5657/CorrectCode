@@ -1,0 +1,30 @@
+package com.atguigu.java2	package com.atguigu.java2;
+publicclass ReturExceptionDemo {	public class ReturnExceptionDemo {
+static voidmethodA {	static void methodA() {
+try {	try {
+System.out.printn"A";	System.out.println("A");
+throw new RuntieExeptionf"";	throw new RuntimeException("");
+ffinally  {	} finally {
+System.out.println""finally";	System.out.println("Afinally");
+	}
+1	}
+sttic void methodB {	static void methodB() {
+try {	try {
+Sytem.out.printlnf"B";	System.out.println("B");
+return;	return;
+} finaly {	} finally {
+System.out.println"Bfinally";;	System.out.println("Bfinally");
+}	}
+}	}
+public sttic void mainString args {	public static void main(String[] args) {
+try {	try {
+methodAl;	methodA();
+} catch Exception e {	} catch (Exception e) {
+System.out.printlne.getMesge;	System.out.println(e.getMessage());
+}	}
+	
+	
+	
+methodBf;	methodB();
+}	}
+f	}

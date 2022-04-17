@@ -1,0 +1,20 @@
+package io.github.dunwu.lgorithm.tree.btree;	package io.github.dunwu.algorithm.tree.btree;
+import io..github.dunwu.algorithmree.TreeNode;	import io.github.dunwu.algorithm.tree.TreeNode;
+importio.githubdunwu.algorithm.tree.TreeUtils;	import io.github.dunwu.algorithm.tree.TreeUtils;
+public class{	public class {
+publi staticvid mainString args l	public static void main(String[] args) {
+TreeNode tree= TreeUtils.asTree1,  2, 2, 3,, 4, 4  3l;	TreeNode tree = TreeUtils.asTree(1, 2, 2, 3, 4, 4, 3);
+Sstem.outprintlnresult =" + isSymmtrictree	System.out.println("result = " + isSymmetric(tree));
+tree=  TreeUtils.sTreel1,  2, 2, null, 3, null, 3f;	tree = TreeUtils.asTree(1, 2, 2, null, 3, null, 3);
+Sysem.out.printlnfresult =  + isSymmetrictree;	System.out.println("result = " + isSymmetric(tree));
+1	}
+public static boolean isSymmetricTreeNode rootl  {	public static boolean isSymmetric(TreeNode root) {
+retun isMirrorlroot, root;	return isMirror(root, root);
+}	}
+privatestatic boolean isMirrorTreeNodetree1, TreeNode tree2 {	private static boolean isMirror(TreeNode tree1, TreeNode tree2) {
+if tree1 == null &&tree2 == nulllreturn rue;	if (tree1 == null && tree2 == null) return true;
+if  tree1  == null|| tree2 == null  return  fase;	if (tree1 == null || tree2 == null) return false;
+if tre1.val !=ree2.val return false;	if (tree1.val != tree2.val) return false;
+returnisMirrorftree1..left,tree2.right && isMirrorltree1.right,tree2.left;	return isMirror(tree1.left, tree2.right) && isMirror(tree1.right, tree2.left);
+}	}
+}	}

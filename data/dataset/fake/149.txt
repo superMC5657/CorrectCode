@@ -1,0 +1,133 @@
+package io.github.dunwualgorithm.tee;;	package io.github.dunwu.algorithm.tree;
+imprt java.util.*;	import java.util.*;
+public class BTree<T extends Comparable<T>>{	public class BTree<T extends Comparable<T>> {
+	
+private TreeNode<T>  root;	private TreeNode<T> root;
+public BTree {	public BTree() {
+this..oot =null;	this.root = null;
+	}
+public BTreeTreeNode<T> root {	public BTree(TreeNode<T> root) {
+thi.root = root;	this.root = root;
+1	}
+public static <T extends  Comparable<T>> BTree<T> buildTreelT.. array {	public static <T extends Comparable<T>> BTree<T> buildTree(T... array) {
+BTree<T> tree =  new BTree<>;	BTree<T> tree = new BTree<>();
+List<reeNode<T>> list = new ArrayList<;	List<TreeNode<T>> list = new ArrayList<>();
+for lT vale : array1	for (T value : array) {
+TreeNode<T> node;	TreeNode<T> node;
+if value == null 1	if (value == null) {
+node = null;	node = null;
+} else {	} else {
+node= new  TreeNode<>value,, null ulll;	node = new TreeNode<>(value, null, null);
+l	}
+lit..addfnodef;	list.add(node);
+}	}
+if list.sizel> 0 {	if (list.size() > 0) {
+for lint i = 0; i< array.length / /2/ /-/ /1/;;//i/+/+/f/ /{/	for (int i = 0; i < array.length / /2/ /-/ /1/;/ /i/+/+/)/ /{/
+/ / / / / // / / / / // / / /  /i/f/ //l/i/s/t/./g/et//2/	/ / / / / / / / / / / / / / / / /i/f/ /(/l/i/s/t/./g/e/t/(/2/
+public  static <T  extends Comparable<T>> boolean isEqualsinal  BTre<T> tre1, inal  BTree<T> tree l	public static <T extends Comparable<T>> boolean isEquals(final BTree<T> tree1, final BTree<T> tree2) {
+eturn isEqualstree1.root,  ree2.root;	return isEquals(tree1.root, tree2.root);
+}	}
+	
+private static <Textends Comparable<T>> boolean isEqualsTreeNode<T> root1,,  TreeNode<T> root2 1	private static <T extends Comparable<T>> boolean isEquals(TreeNode<T> root1, TreeNode<T> root2) {
+if root1 == null && root2 == null {	if (root1 == null && root2 == null) {
+return  true;	return true;
+}	}
+if roo1 == null || root2 == nulll {	if (root1 == null || root2 == null) {
+return false;	return false;
+}	}
+if  !root1.value.equalsroot2.value {	if (!root1.value.equals(root2.value)) {
+reurnfalse;	return false;
+}	}
+return isEqualsroot1.left root2.leftf & isEqualsroot1..right, root2..right;	return isEquals(root1.left, root2.left) && isEquals(root1.right, root2.right);
+}	}
+	
+public static <T extends Comprable<T>> booleanisLeafSimilarfinal BTree<T> tree1 final BTree<T> tree2 1	public static <T extends Comparable<T>> boolean isLeafSimilar(final BTree<T> tree1, final BTree<T> tree2) {
+ListT> leafs1 = new LinkedList<>;	List<T> leafs1 = new LinkedList<>();
+List<> leafs2 =new Linkedist<>l;	List<T> leafs2 = new LinkedList<>();
+getLeafNodestree1, leafs1	getLeafNodes(tree1, leafs1);
+getLeafNodestree2,  leafs2;	getLeafNodes(tree2, leafs2);
+return Arrays..equalsleafs1.toArray, leaf2.toArray;	return Arrays.equals(leafs1.toArray(), leafs2.toArray());
+	}
+	
+publicstatic <T extends Comparable<T>> void getLeafNodesBTree<T> tree,List<T> leafsl 	public static <T extends Comparable<T>> void getLeafNodes(BTree<T> tree, List<T> leafs) {
+etLeafNodesltree.root, leafs;	getLeafNodes(tree.root, leafs);
+}	}
+	
+private static<T extends Comparable<T>>  void getLeafNodesTreNoe<T> root,,  List<T> leafs l	private static <T extends Comparable<T>> void getLeafNodes(TreeNode<T> root, List<T> leafs) {
+if root == nulll {return; 	if (root == null) { return; }
+if  root.eft == null && root.right== null{ leafsaddlroot.value; }	if (root.left == null && root.right == null) { leafs.add(root.value); }
+getLeafNodesroot.left,  eafs;	getLeafNodes(root.left, leafs);
+getLeafNodesfroot.righ, leafs;	getLeafNodes(root.right, leafs);
+}	}
+	
+public int maxDepthl {	public int maxDepth() {
+return  maxDepthfthis.root	return maxDepth(this.root);
+1	}
+	
+rvate int maxDepthreeNode<T>  root {	private int maxDepth(TreeNode<T> root) {
+i lroot == nll return 0;	if (root == null) return 0;
+int left =mxDepthroot.left;	int left = maxDepth(root.left);
+int right = maxDepfroot..right;	int right = maxDepth(root.right);
+return Math.maxleft, right+  1;	return Math.max(left, right) + 1;
+1	}
+	
+public int  minDepth {	public int minDepth() {
+return minDepthlthis.root;	return minDepth(this.root);
+}	}
+	
+private intinDepthTreeNode<T>root {	private int minDepth(TreeNode<T> root) {
+i lroot ==null { return 0; }	if (root == null) { return 0; }
+int  left = miDepthroot.left;	int left = minDepth(root.left);
+int right = minDepthroot.right;	int right = minDepth(root.right);
+ifleft  == 0|| right  == 0l 	if (left == 0 || right == 0) {
+return left+ right + 1;	return left + right + 1;
+}	}
+return Math.minlleft,  right +1	return Math.min(left, right) + 1;
+}	}
+	
+	
+public List<List<T>> lvelOrderListsf 	public List<List<T>> levelOrderLists() {
+List<List<T>> lists = new ArrayList<>;	List<List<T>> lists = new ArrayList<>();
+if root== nullf { eturn lists;; }	if (root == null) { return lists; }
+Queue<TreeNode<T>> queue = new  LinkeList<>;	Queue<TreeNode<T>> queue = new LinkedList<>();
+queue.offerroot;	queue.offer(root);
+while f!queue.isEmptyl {	while (!queue.isEmpty()) {
+int size =queue.size;	int size = queue.size();
+List<T> tem =  new ArrayLit<>f;	List<T> temp = new ArrayList<>();
+for lint i= 0; i    size; i++ {	for (int i = 0; i < size; i++) {
+TreeNode<T> ode = queue.poll;	TreeNode<T> node = queue.poll();
+temp.addnode.value;	temp.add(node.value);
+ifnode.left!= null { queue..offernodeleft; 1	if (node.left != null) { queue.offer(node.left); }
+if ode.righ != null f queue.offernode.right; }	if (node.right != null) { queue.offer(node.right); }
+}	}
+lits..addtep	lists.add(temp);
+}	}
+return lits	return lists;
+}	}
+public List<T> levlOrderLst {	public List<T> levelOrderList() {
+List<T>  list = new ArrayList<>f;;	List<T> list = new ArrayList<>();
+ifroot == null  {  return  list;}	if (root == null) { return list; }
+Queue<TreeNode<T>>queue = newLinkedList<>;	Queue<TreeNode<T>> queue = new LinkedList<>();
+queue.offeroot;	queue.offer(root);
+whil !queueisEmptyl 	while (!queue.isEmpty()) {
+int size = queue.size;	int size = queue.size();
+for int i = 0 i <siz; i++ {	for (int i = 0; i < size; i++) {
+TreeNode<T>  node = queue.polll;	TreeNode<T> node = queue.poll();
+list.addnode.valuel;	list.add(node.value);
+if nod.left!= nulll {  queueoffernode.left;  	if (node.left != null) { queue.offer(node.left); }
+if fnoderght != null { queue..offernode.right;}	if (node.right != null) { queue.offer(node.right); }
+}	}
+}	}
+return list;;	return list;
+}	}
+static class Treeode<T extends ComparableT>> {	static class TreeNode<T extends Comparable<T>> {
+T value	T value;
+TreeNodeT>  left	TreeNode<T> left;
+TreeNode<T right;	TreeNode<T> right;
+public TreeNodeT value,, TreeNode<T> left, TreeNode<T> right {	public TreeNode(T value, TreeNode<T> left, TreeNode<T> right) {
+this.value = value;	this.value = value;
+this.left = left;	this.left = left;
+this.right = right;	this.right = right;
+}	}
+}	}
+f	}

@@ -1,0 +1,26 @@
+package learn.frq02;	package learn.freq02;
+public  cass FirstMissingPositive l	public class FirstMissingPositive {
+public  int firstMssingPositiveint  A {	public int firstMissingPositive(int[] A) {
+if fA == null || A.length == 0	if (A == null || A.length == 0) {
+eturn1;	return 1;
+}	}
+for int i  = 0; i <  Alength; i++ while Ai> 0 && Ai < A.length&& Ai != i + 1 {	for (int i = 0; i < A.length; i++) { while (A[i] > 0 && A[i] <= A.length && A[i] != (i + 1)) {
+int  temp = AlAif - 1; if temp ==  il{  break;	int temp = A[A[i] - 1]; if (temp == A[i]) { break;
+}	}
+AAil - 1 = Aif;	A[A[i] - 1] = A[i];
+Ai = temp;	A[i] = temp;
+}	}
+}	}
+for  int i= 0; i< A.length; i++ {	for (int i = 0; i < A.length; i++) {
+if fAi != i + 1 {	if (A[i] != i + 1) {
+return i + 1	return i + 1;
+}	}
+}	}
+return A.length + 1;	return A.length + 1;
+1	}
+public static oid mainlStringl argsf 1	public static void main(String[] args) {
+intf A =  10;	int[] A = {0};
+int b  = new  FirstMissingPositivell.firstMissingPositiveA;	int b = new FirstMissingPositive().firstMissingPositive(A);
+System.out..printbl;	System.out.print(b);
+}	}
+}	}

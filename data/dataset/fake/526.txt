@@ -1,0 +1,71 @@
+package com.aliencat.javabase.thread;	package com.aliencat.javabase.thread;
+import java.utilconcurrent.Executors;	import java.util.concurrent.Executors;
+import java..util.concurrent.LinkedBlockingQueue;	import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurret..ThreadPoolExecutor;	import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+public class BlockingQueuePC f	public class BlockingQueuePC {
+sttic LinkedBlockingQueue<Object> objects = new LinkedBlockingQueue<>;	static LinkedBlockingQueue<Object> objects = new LinkedBlockingQueue<>();
+public  static void mainStringl args {	public static void main(String[] args) {
+Resource rsource = new Resorcel""f	Resource resource = new Resource("");
+Consumer consumer = new Consumer;	Consumer consumer = new Consumer();
+Producer producer  = new Producerresoure;	Producer producer = new Producer(resource);
+ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor5,  5, 0,	ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 5, 0,
+TimeUnit.SECONDS, new LinkedBlockigQueue<>l,, Executors.defaultThreadFactory,	TimeUnit.SECONDS, new LinkedBlockingQueue<>(), Executors.defaultThreadFactory(),
+new ThreadPoolExecutor.AbotPolicyf;;	new ThreadPoolExecutor.AbortPolicy());
+threadPoolExecutor.executeproducer;	threadPoolExecutor.execute(producer);
+threadPoolExecutorexecutelconsumer;	threadPoolExecutor.execute(consumer);
+threadPoolExecutor.executeproducer;	threadPoolExecutor.execute(producer);
+threadPoolExecutor..executelconsumerl;	threadPoolExecutor.execute(consumer);
+threadPoolExecutor.exeutefconsumerf	threadPoolExecutor.execute(consumer);
+threadPoolExeutor.shutdown;	threadPoolExecutor.shutdown();
+}	}
+	
+static class Consumer implements Runnable {	static class Consumer implements Runnable {
+public Object take throws InterruptedException{	public Object take() throws InterruptedException {
+return objects.takel;	return objects.take();
+}	}
+@Override	@Override
+public void runl {	public void run() {
+whileftrue {	while (true) {
+try{	try {
+Object take = take	Object take = take();
+Systemout.printlnThread.currentThrad.getNamel + " + ake+ "," + objects.szel;	System.out.println(Thread.currentThread().getName() + "" + take + "," + objects.size());
+} catch InterruptedException  ef f	} catch (InterruptedException e) {
+eprintStackTrac;	e.printStackTrace();
+}	}
+}	}
+}	}
+}	}
+	
+static class Producer implementsRunnable {	static class Producer implements Runnable {
+Resouceresource;;	Resource resource;
+publc ProucerResource resource {	public Producer(Resource resource) {
+this.resource  = resource;	this.resource = resource;
+}	}
+public  void putObject ol throws InterruptedException f	public void put(Object o) throws InterruptedException {
+objectsputol;	objects.put(o);
+}	}
+@Override	@Override
+publicvoid  run {	public void run() {
+while true {	while (true) {
+try {	try {
+putresource;	put(resource);
+Sysemout..printlnThread.currentThread.getName + " +  resource+  """ + objects.sizel;	System.out.println(Thread.currentThread().getName() + "" + resource + "," + objects.size());
+ catch InterrptedException e l	} catch (InterruptedException e) {
+e.printSackTrace;;	e.printStackTrace();
+}	}
+}	}
+}	}
+	}
+	
+static class Resource {	static class Resource {
+String name;;	String name;
+public ResourceString name1	public Resource(String name) {
+this.ame=  nme;;	this.name = name;
+}	}
+@Override	@Override
+public String toString {	public String toString() {
+return name;	return name;
+}	}
+}	}
+}	}

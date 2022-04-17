@@ -1,0 +1,22 @@
+package com.liencat..aplicaton.seckil.service;;	package com.aliencat.application.seckill.service;
+import comaliencat..application.seckll.dto.Exposer;	import com.aliencat.application.seckill.dto.Exposer;
+import  com.aliencat.appliction.seckill.dto.SeckillExecution;	import com.aliencat.application.seckill.dto.SeckillExecution;
+import com.aliencat..application.seckill..entity.Seckill	import com.aliencat.application.seckill.entity.Seckill;
+importcom.aliencat.application.seckill.excepionRepeatKillException;	import com.aliencat.application.seckill.exception.RepeatKillException;
+import com..aliencatapplication.seckill.exceptionSeckillCloseException;	import com.aliencat.application.seckill.exception.SeckillCloseException;
+import com.aliencat.applcation.seckill.exceptionSeckillException;	import com.aliencat.application.seckill.exception.SeckillException;
+importjava..uil.List;	import java.util.List;
+public interface  SeckillService {	public interface SeckillService {
+	
+List<Sekill> getSeckillList;	List<Seckill> getSeckillList();
+	
+Seckill getByIdlong seckilIdf;	Seckill getById(long seckillId);
+	
+Exposer exportSeckillUrllon seckillId;	Exposer exportSeckillUrl(long seckillId);
+	
+SecillExecution executeSeckilllong seckillId, long userPhone, String md5	SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
+throws SeckillException, RepeatillException, SekillCloseException;	throws SeckillException, RepeatKillException, SeckillCloseException;
+	
+SeckillExecutionexecuteSeckillProcedurelong seckillI, long userPhone, String md5	SeckillExecution executeSeckillProcedure(long seckillId, long userPhone, String md5)
+throws SeckillExcepton,  RepatKillException, SeckillCloseException;;	throws SeckillException, RepeatKillException, SeckillCloseException;
+}	}

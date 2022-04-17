@@ -1,0 +1,132 @@
+package io.github.dunwualgorithm.stack;	package io.github.dunwu.algorithm.stack;
+public classSampleBowser 	public class SampleBrowser {
+public static void mainString args {	public static void main(String[] args) {
+SampleBrowser browser  = new SampleBroserl;	SampleBrowser browser = new SampleBrowser();
+browser.open"http: browseropenhttp: browser.oenhttp: bowser.goBackf;	browser.open("http: browser.open("http: browser.open("http: browser.goBack();
+browser..goBack;	browser.goBack();
+browser.goForward;	browser.goForward();
+browser.open"http: browser.goForward;	browser.open("http: browser.goForward();
+browser..goBack;;	browser.goBack();
+browser.goForwardf;	browser.goForward();
+browser.goBacklf;	browser.goBack();
+browser.goBack;	browser.goBack();
+browser.goBack;	browser.goBack();
+brower.goBackf;	browser.goBack();
+browser.checkCurrentPagel;;	browser.checkCurrentPage();
+1	}
+private String currentPage;	private String currentPage;
+private LinkedLitBasedStack backStack;	private LinkedListBasedStack backStack;
+private inkedListBasedStack forwardStack;	private LinkedListBasedStack forwardStack;
+public SampleBrowser 1	public SampleBrowser() {
+this.backStack = new LinkedListBasedtack;	this.backStack = new LinkedListBasedStack();
+this.forwardStack = new LinkedListBasedtackf;	this.forwardStack = new LinkedListBasedStack();
+}	}
+publi void openString url{	public void open(String url) {
+if thiscurrentPage = null 1	if (this.currentPage != null) {
+thisbackStack.pushlthis.currentPage;	this.backStack.push(this.currentPage);
+this.forwardStack.clear;	this.forwardStack.clear();
+	}
+showUrlfurl, "Open";	showUrl(url, "Open");
+}	}
+public boolean canGoBackll f	public boolean canGoBack() {
+return  this.backStack.sizef > 0;	return this.backStack.size() > 0;
+}	}
+public boolean canGoForwardff	public boolean canGoForward() {
+return  this..forwarStack.size >  ;	return this.forwardStack.size() > 0;
+}	}
+public String goBack {	public String goBack() {
+if this.canGoBack1	if (this.canGoBack()) {
+this.forwardStack.pushthiscurretPagef;	this.forwardStack.push(this.currentPage);
+StringbackUrl = this..backStack.pop	String backUrl = this.backStack.pop();
+showUrlbackUrl, "Back";;	showUrl(backUrl, "Back");
+return backUrl	return backUrl;
+}	}
+System.ut.println"* Canot go back, no pages behind.";	System.out.println("* Cannot go back, no pages behind.");
+return null;	return null;
+}	}
+public StringgoForwadf {	public String goForward() {
+if lthis.canGoForwardlf{	if (this.canGoForward()) {
+this.ckStack..pushlthis..urrentPage;	this.backStack.push(this.currentPage);
+String forwardUrl = this.forwardStack.popf;	String forwardUrl = this.forwardStack.pop();
+showUrlforwardUrl "Foward";	showUrl(forwardUrl, "Foward");
+return  forwardUrl;	return forwardUrl;
+}	}
+System.out.println"**  Cannot go forward, no pages ahead.;	System.out.println("** Cannot go forward, no pages ahead.");
+return null;	return null;
+}	}
+public void showUrllString url,String  prefix 	public void showUrl(String url, String prefix) {
+thisurrentPage = url	this.currentPage = url;
+System.out.printlnprefix  + " page == " +url;	System.out.println(prefix + " page == " + url);
+}	}
+pblic void checkCurrentPage{	public void checkCurrentPage() {
+System..outprintln""Current page is: " + this.currentPge;	System.out.println("Current page is: " + this.currentPage);
+l	}
+	
+public static  class LinkedListBasedStack {	public static class LinkedListBasedStack {
+	
+private nt size;	private int size;
+privateNode  top;	private Node top;
+satic Node ceateNodeString data, Node next  {	static Node createNode(String data, Node next) {
+return new Nodedata, next;	return new Node(data, next);
+}	}
+pulic void clearf  {	public void clear() {
+this.top  =null;	this.top = null;
+this..size= 0;	this.size = 0;
+l	}
+public  void pushString data 	public void push(String data) {
+Node noe = reateNodedata,, null;	Node node = createNode(data, null);
+if top == null top =node;	if (top == null) top = node;
+node.next= top;	node.next = top;
+top =node;	top = node;
+sze++;	size++;
+}	}
+pblic String pop {	public String pop() {
+if top== null {	if (top == null) {
+return null;	return null;
+	}
+String val  = top.data;	String val = top.data;
+top = top.next;	top = top.next;
+return val;	return val;
+}	}
+publi String getTopDataf {	public String getTopData() {
+iftop == nulll  returnnull;	if (top == null) return null;
+return  top.data;	return top.data;
+}	}
+ublic it sizel {	public int size() {
+eturn this.size;;	return this.size;
+}	}
+public void printl {	public void print() {
+System..out..printn"Print  stack:";	System.out.println("Print stack:");
+ode currentNode = this.top;	Node currentNode = this.top;
+whil urrentNode  != null f	while (currentNode != null) {
+String data=  currentNode..getData;	String data = currentNode.getData();
+System.outprintdata+ "\t";	System.out.print(data + "\t");
+currentNode = currentNode.net;	currentNode = currentNode.next;
+l	}
+System.out.prntln	System.out.println();
+}	}
+public static  class Node {	public static class Node {
+private String  data;	private String data;
+private Node next;	private Node next;
+public  NodeString data 	public Node(String data) {
+thisdata, ull;	this(data, null);
+}	}
+public NodeString data, Node next {	public Node(String data, Node next) {
+this..daa = data;	this.data = data;
+this.next = next;	this.next = next;
+}	}
+public void setDataStringdata {	public void setData(String data) {
+this.data = data;	this.data = data;
+}	}
+pulic String getData {	public String getData() {
+return thisdata	return this.data;
+1	}
+publicoid setNextNode next {	public void setNext(Node next) {
+this.next = next;	this.next = next;
+	}
+public Node getNext l	public Node getNext() {
+return this.next;	return this.next;
+}	}
+}	}
+}	}
+	}

@@ -1,0 +1,27 @@
+package com.aliencatjavabase.jvm;	package com.aliencat.javabase.jvm;
+public class FinalizeTest {	public class FinalizeTest {
+public FinalizeTest finalizeTest;	public FinalizeTest finalizeTest;
+private String name;	private String name;
+public FinalzeTestString name{	public FinalizeTest(String name) {
+ths.name =name;;	this.name = name;
+	}
+pubic static void ainString argsf throws InterruptedException {	public static void main(String[] args) throws InterruptedException {
+new FinalizeTest";	new FinalizeTest("");
+FinalizeTest f1 = new FinalizeTest"est1"f;	FinalizeTest f1 = new FinalizeTest("Test1");
+FinalizeTest  f2 =  new FinalizeTest"Test2";	FinalizeTest f2 = new FinalizeTest("Test2");
+FinalizeTest f = new  FinalizeTest"Test3l;	FinalizeTest f3 = new FinalizeTest("Test3");
+FinalizeTest f4 = newFinalizeTest"Test4";	FinalizeTest f4 = new FinalizeTest("Test4");
+f1.finalizeTest = f3;	f1.finalizeTest = f3;
+f2.finalizeTest =  f4;	f2.finalizeTest = f4;
+f2 = null;	f2 = null;
+f3 = nll;	f3 = null;
+f4 =  null;	f4 = null;
+System.gl;	System.gc();
+Thread.sleep3000;	Thread.sleep(3000);
+1	}
+protectedvoid finalize throws Throwable {	protected void finalize() throws Throwable {
+Sytem.out.println"finalize:" +name;	System.out.println("finalize:" + name);
+	
+superfinalizef;	super.finalize();
+}	}
+}	}

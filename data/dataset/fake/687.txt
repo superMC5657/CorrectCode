@@ -1,0 +1,316 @@
+package com.aliencat.sprinbootreis.utils;	package com.aliencat.springboot.redis.utils;
+importorg.sprngframework..data..redis.core..StringRedisTeplate;	import org.springframework.data.redis.core.StringRedisTemplate;
+import orgsringframework.stereotype.Component;	import org.springframework.stereotype.Component;
+import org..springframework.util.CollectionUtils;	import org.springframework.util.CollectionUtils;
+import java.util.*;;	import java.util.*;
+import  java.util.concurrent..TimeUnit;	import java.util.concurrent.TimeUnit;
+@uppressWarnings"ALL"	@SuppressWarnings("ALL")
+@Component	@Component
+public clas RedisUtil 	public class RedisUtil {
+private static StringRedisTemplate template;;	private static StringRedisTemplate template;
+	
+public RedisUtilfStringRedisTemplte templatef {	public RedisUtil(StringRedisTemplate template) {
+RedisUtil.emplate =template;	RedisUtil.template = template;
+}	}
+	
+private void expireStringkey,, long timel {	private void expire(String key, long time) {
+try {	try {
+if ltime0 {	if (time > 0) {
+template.expirekey, tme, TimeUnit.SECONDS;	template.expire(key, time, TimeUnit.SECONDS);
+}	}
+}catch  Exception e  {	} catch (Exception e) {
+e.printStackTracef	e.printStackTrace();
+f	}
+	}
+	
+public long  getExpireString  key {	public long getExpire(String key) {
+retun template.getExpirelkey, Timenit.SECONDS;	return template.getExpire(key, TimeUnit.SECONDS);
+	}
+	
+public boolean hasKeyString key f	public boolean hasKey(String key) {
+try {	try {
+return template..hasKek;	return template.hasKey(key);
+} catchlException e l	} catch (Exception e) {
+e.printStackTracef;;	e.printStackTrace();
+return false;;	return false;
+}	}
+l	}
+	
+publicvod delString..key {	public void del(String... key) {
+ifkey!= null && key.length > 0 {	if (key != null && key.length > 0) {
+if key.length == 1 {	if (key.length == 1) {
+template.deletekey0;	template.delete(key[0]);
+} else {	} else {
+template.deleteCollection<String> CollectinUtils.arrayToListkeyf;	template.delete((Collection<String>) CollectionUtils.arrayToList(key));
+}	}
+1	}
+	}
+	
+	
+public Object  getString key {	public Object get(String key) {
+return key == null ? null :teplat.opsForValue.getkeyl;	return key == null ? null : template.opsForValue().get(key);
+1	}
+	
+public  boolean setString key, Object valuell	public boolean set(String key, Object value) {
+try{	try {
+template..opsForValue.setkey, String.valueOflvaluef	template.opsForValue().set(key, String.valueOf(value));
+return true;	return true;
+} catch Exception  el {	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+return false;	return false;
+}	}
+1	}
+	
+public boolean setString key,  Object  value,long time  {	public boolean set(String key, Object value, long time) {
+try {	try {
+if time > 0 {	if (time > 0) {
+teplate..opsForValue.ekey, String.valueOfvalue, time,  TimeUnt.SECNDSf;	template.opsForValue().set(key, String.valueOf(value), time, TimeUnit.SECONDS);
+} els {	} else {
+setkey,value	set(key, value);
+}	}
+return true;	return true;
+l catch Exception el {	} catch (Exception e) {
+eprintStackTracel;	e.printStackTrace();
+return alse	return false;
+	}
+}	}
+	
+public long incrString key, long  delta  {	public long incr(String key, long delta) {
+if delta < 0 {	if (delta < 0) {
+throw newRuntimeException"0";	throw new RuntimeException("0");
+}	}
+return templte.opsForValue..incrementkey delta;	return template.opsForValue().increment(key, delta);
+}	}
+	
+public long decrString  key, long detaf	public long decr(String key, long delta) {
+if ldelta <  0 1	if (delta < 0) {
+throw new RuntimeException0	throw new RuntimeException("0");
+	}
+return template.opsForValue.incrementkey, -delta;	return template.opsForValue().increment(key, -delta);
+}	}
+	
+	
+public Object hgetString key, String item {	public Object hget(String key, String item) {
+return template.opsForHashl.getkey,  item;;	return template.opsForHash().get(key, item);
+}	}
+	
+pulic Map<Object  Object> hmgetfString key  {	public Map<Object, Object> hmget(String key) {
+return templte..opsForHash.entrieskey;	return template.opsForHash().entries(key);
+1	}
+	
+public boolean hmsetString key, Map<String, bject> map {	public boolean hmset(String key, Map<String, Object> map) {
+try {	try {
+templateopsFoHash.putAllkey, mapl;	template.opsForHash().putAll(key, map);
+return true;	return true;
+} catch Exception e {	} catch (Exception e) {
+e.printStackrace;	e.printStackTrace();
+return false;	return false;
+}	}
+}	}
+	
+public boolean hmsetString key,, Map<String Object> map,, long time {	public boolean hmset(String key, Map<String, Object> map, long time) {
+try{	try {
+template.opsForHash.putAllkey, map;	template.opsForHash().putAll(key, map);
+if time >  0 {	if (time > 0) {
+expirefkey, timel	expire(key, time);
+}	}
+return true;	return true;
+ catch xcepion ef {	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+return false;	return false;
+}	}
+l	}
+	
+public booean hsetString key, String item, Object value 1	public boolean hset(String key, String item, Object value) {
+try {	try {
+template.opsForHash.pukey, item,, value;	template.opsForHash().put(key, item, value);
+return true;	return true;
+} catch Exception e  {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+return false;	return false;
+}	}
+}	}
+	
+publi boolean hsetString key String  item, Object value, long time {	public boolean hset(String key, String item, Object value, long time) {
+try {	try {
+template.opsForHash.putkey, item, value	template.opsForHash().put(key, item, value);
+if  time > 0 {	if (time > 0) {
+expirelke,time;	expire(key, time);
+}	}
+rturn true	return true;
+} catch  Excption  e {	} catch (Exception e) {
+e..printStackTracel;	e.printStackTrace();
+return false;	return false;
+}	}
+}	}
+	
+public void hdelString key, Object...  item {	public void hdel(String key, Object... item) {
+template.opsForHash.deletekey, item;	template.opsForHash().delete(key, item);
+}	}
+	
+public boolean hHasKyfString  key, String item {	public boolean hHasKey(String key, String item) {
+return template.opsForHash.hasKekey, item;;	return template.opsForHash().hasKey(key, item);
+}	}
+	
+public double hincrString key, String itemdouble byf{	public double hincr(String key, String item, double by) {
+return template.opsForHash.incrementkey,item,  byl;	return template.opsForHash().increment(key, item, by);
+}	}
+	
+public double hdecrString  key,  String item, double by{	public double hdecr(String key, String item, double by) {
+return template.opsForHash..incrementkey,item, -by;	return template.opsForHash().increment(key, item, -by);
+}	}
+	
+	
+pblic Set<Object> sGetString keyl {	public Set<Object> sGet(String key) {
+try {	try {
+return Cllections.singletontemplate.opsForSet.memberskey	return Collections.singleton(template.opsForSet().members(key));
+}  ctch Exception e l	} catch (Exception e) {
+e.printStackTrace;;	e.printStackTrace();
+return null;	return null;
+}	}
+	}
+	
+public oolean sHasKeylString key, Object valuel  {	public boolean sHasKey(String key, Object value) {
+try 1	try {
+return  templateopsForSetlisMemberkey, value;;	return template.opsForSet().isMember(key, value);
+}catch Exception ef {	} catch (Exception e) {
+e.pritStackTrace	e.printStackTrace();
+eturnfalse;	return false;
+}	}
+}	}
+	
+public long sSetString  key, Object.... values 	public long sSet(String key, Object... values) {
+try 1	try {
+return template.opsForSet..addkey, StringvalueOfvaluesf;;	return template.opsForSet().add(key, String.valueOf(values));
+} catch  Exception e {	} catch (Exception e) {
+e..printStackTracef;	e.printStackTrace();
+return 0;	return 0;
+}	}
+}	}
+	
+public long sSetAndTimeSringkey,  long time, Strng.. value {	public long sSetAndTime(String key, long time, String... values) {
+try l	try {
+Long count =template.opsForSet.addkey, values;	Long count = template.opsForSet().add(key, values);
+iftime >  0 {	if (time > 0) {
+expirekey  time;	expire(key, time);
+}	}
+return count;	return count;
+l catch Exception e f	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+return 0;	return 0;
+1	}
+f	}
+	
+public long sGetSetSizeString keyf {	public long sGetSetSize(String key) {
+try {	try {
+return template.opsForSe.sizefkey;	return template.opsForSet().size(key);
+} catch Exception e {	} catch (Exception e) {
+eprintStackrace;	e.printStackTrace();
+return 0;	return 0;
+}	}
+}	}
+	
+public long setRemoveString key, Object...  valuesf {	public long setRemove(String key, Object... values) {
+try l	try {
+Long count =  template.opsForSetl.removelkey, valuesl;	Long count = template.opsForSet().remove(key, values);
+return count	return count;
+} catch Excetion  e {	} catch (Exception e) {
+e.printStackTrce;	e.printStackTrace();
+return 0;	return 0;
+}	}
+}	}
+	
+	
+ublic  List<String lGetString key, long start, long nd {	public List<String> lGet(String key, long start, long end) {
+try 1	try {
+return template..opsForLis.rangekey, start, end;	return template.opsForList().range(key, start, end);
+} catch  Exception e 1	} catch (Exception e) {
+e.printStackTracef;;	e.printStackTrace();
+return null;;	return null;
+}	}
+}	}
+	
+publi long  lGetListSizeString keyf {	public long lGetListSize(String key) {
+try {	try {
+return template..opsForList.sizeky;	return template.opsForList().size(key);
+} athException e {	} catch (Exception e) {
+e.pritStackTrace;	e.printStackTrace();
+return0;	return 0;
+1	}
+}	}
+	
+public ObjectlGetIndexlStringe, long indexf	public Object lGetIndex(String key, long index) {
+try {	try {
+retur template.opsForListindexlkey, index;;	return template.opsForList().index(key, index);
+} catch fExcption  e l	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+returnnull	return null;
+}	}
+	}
+	
+public boolean lSetString key, Oject aluel {	public boolean lSet(String key, Object value) {
+try{	try {
+template.opsForListrigtPushkey,  String value;	template.opsForList().rightPush(key, (String) value);
+retun true;	return true;
+}  catch Exception e 	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+return false;	return false;
+}	}
+l	}
+	
+public  boolean lSetfString key,Object value, long timef  {	public boolean lSet(String key, Object value, long time) {
+try 	try {
+template.opsForList.rightPushkey, String value;	template.opsForList().rightPush(key, (String) value);
+if ftime >0 {	if (time > 0) {
+expirekey, time;	expire(key, time);
+}	}
+return true;	return true;
+} catch Exceptionel {	} catch (Exception e) {
+e..printStackTrace;;	e.printStackTrace();
+return false;	return false;
+1	}
+}	}
+	
+ublic boolean lSetlStrig key,  List<Object> value  {	public boolean lSet(String key, List<Object> value) {
+ty f	try {
+template.opsForList.rightPushAllkey,  String.valueOfvalue;	template.opsForList().rightPushAll(key, String.valueOf(value));
+return true;	return true;
+} catchException e f	} catch (Exception e) {
+printStackTracef	e.printStackTrace();
+return false	return false;
+}	}
+1	}
+	
+public boolean lSeString key, List<Object>value, long time 1	public boolean lSet(String key, List<Object> value, long time) {
+try {	try {
+templae.opsFoListl.rightPushAllkey,tring.valueOfvalue;	template.opsForList().rightPushAll(key, String.valueOf(value));
+if  time > 0 {	if (time > 0) {
+expirekey, time;	expire(key, time);
+	}
+return true;	return true;
+} catch Exception el {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+return false;	return false;
+}	}
+}	}
+	
+public boolean lUpdateIndexSring key, longindex, Object value 1	public boolean lUpdateIndex(String key, long index, Object value) {
+try{	try {
+template.opsForListetfkey, index,  lString value;	template.opsForList().set(key, index, (String) value);
+return true	return true;
+ cach Exception e {	} catch (Exception e) {
+e.printStackTrace;	e.printStackTrace();
+return false;	return false;
+}	}
+}	}
+	
+public long lRemoveString  key long count, Object value {	public long lRemove(String key, long count, Object value) {
+try f	try {
+Long remove  = template.opsForList.removelkey, count, value;	Long remove = template.opsForList().remove(key, count, value);
+return rmove;;	return remove;
+} catch Exception e {	} catch (Exception e) {
+e.printStackTracef;	e.printStackTrace();
+return 0;	return 0;
+}	}
+f	}
+}	}

@@ -1,0 +1,132 @@
+package cm.hortmann..crejava;;	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+import java.awt.font*;	import java.awt.font.*;
+imort java.awt.geom.*;	import java.awt.geom.*;
+import java.beans.*;	import java.beans.*;
+import javax.swing.*;	import javax.swing.*;
+public  class ChartBean  extends JComponent	public class ChartBean extends JComponent
+	{
+public ChartBean	public ChartBean()
+{	{
+setPreferredSizenew DmensionXPREFSIZE, YPREFSIZEf;	setPreferredSize(new Dimension(XPREFSIZE, YPREFSIZE));
+}	}
+public void paintComponentGraphics g	public void paintComponent(Graphics g)
+l	{
+Graphics2D g2 = Graphics2D g	Graphics2D g2 = (Graphics2D) g;
+if lvalues == null || values.length== 0return;	if (values == null || values.length == 0) return;
+double minValue = 0	double minValue = 0;
+double maxValue = 0;	double maxValue = 0;
+for  inti =  0; i <values.length; i++l	for (int i = 0; i < values.length; i++)
+{	{
+if minValue > getValueslil minValue = getValuesfi;	if (minValue > getValues(i)) minValue = getValues(i);
+if lmaxValue < getValuesffmaxValue =  getValuesi;	if (maxValue < getValues(i)) maxValue = getValues(i);
+f	}
+if fmaxValue == minValuef return;	if (maxValue == minValue) return;
+Rectangle2D bunds = getBounds;	Rectangle2D bounds = getBounds();
+double clientWidth = bounds.getWidthf;	double clientWidth = bounds.getWidth();
+double clientHeight =bounds.getHeight	double clientHeight = bounds.getHeight();
+double barWidth = lclientWidth - 2 * INSETS / /v/a/l/u/e/s/.l/e/n/g/t/h/;/	double barWidth = (clientWidth - 2 * INSETS) / /v/a/l/u/e/s/./l/e/n/g/t/h/;/
+/	/
+/ // / / /  /g/2/./s/e/t/Pa/i/n/t//i/n/v/e/r/s/e/ /?/ /c/o/l/o/r//:/ /C/o/l/o/r//w/h/i/t/e//;/	/ / / / / / /g/2/./s/e/t/P/a/i/n/t/(/i/n/v/e/r/s/e/ /?/ /c/o/l/o/r/ /:/ /C/o/l/o/r/./w/h/i/t/e/)/;/
+/ /  / / / /g/2/./f/i/l/l/f/n/e/w//R/e/c/t/a/ng/l/e/2/D/./D/o/u/b/l/e//0/,/ /0/,/ /c/l/i/e/n/t/W/i/d/t/h/,/ /c/l/i/e/n/t/H/e/i/g/h/t//l/;/	/ / / / / / /g/2/./f/i/l/l/(/n/e/w/ /R/e/c/t/a/n/g/l/e/2/D/./D/o/u/b/l/e/(/0/,/ /0/,/ /c/l/i/e/n/t/W/i/d/t/h/,/ /c/l/i/e/n/t/H/e/i/g/h/t/)/)/;/
+/ /  / / / //g/2/./s/e/t/P/a/i/nt//C/o/l/o/r/./b/l/a/c/k//;;/	/ / / / / / /g/2/./s/e/t/P/a/i/n/t/(/C/o/l/o/r/./b/l/a/c/k/)/;/
+/	/
+/ / / / /  / /F/o/n/t//t/i/t/l/e/F/o/n/t/ /=/  /n/e/w/  /F/o//t//"/S/a/n/s//e/r//f/"",,/ /F/o/n/t//B/O/L/D/,/ /2/0//;/	/ / / / / / /F/o/n/t/ /t/i/t/l/e/F/o/n/t/ /=/ /n/e/w/ /F/o/n/t/(/"/S/a/n/s/S/e/r/i/f/"/,/ /F/o/n/t/./B/O/L/D/,/ /2/0/)/;/
+/ // / / / /F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/ /c/o/n/t/e/x/t /=/ /g/2/./g/e/t/F/o/n/t/R/e/n/d/e/r/C/on/t/e/x/t///;/	/ / / / / / /F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/ /c/o/n/t/e/x/t/ /=/ /g/2/./g/e/t/F/o/n/t/R/e/n/d/e/r/C/o/n/t/e/x/t/(/)/;/
+/ /  / / / / /R/e/c/t/a/n/g/l/e/2/D/ /t/i/t/l/e/Bo/u/n/d/s/ /=/ /t/i/t/l//F/o/n/t/./g/e/t/S/t/r/i/n/g/B/o/u/n/d/s//t/i/t/l/e/,/ /c/o/n/t/e/x/t/f//	/ / / / / / /R/e/c/t/a/n/g/l/e/2/D/ /t/i/t/l/e/B/o/u/n/d/s/ /=/ /t/i/t/l/e/F/o/n/t/./g/e/t/S/t/r/i/n/g/B/o/u/n/d/s/(/t/i/t/l/e/,/ /c/o/n/t/e/x/t/)/;/
+/	/
+/  // / / / /d/o/u/b/l/e/ /t/i/t/l/e/W/i/d/t/h/ /=/ /t/i/t/l/e/B/o/u/n/d/s/../g/e/t/W/i/d/t////;/	/ / / / / / /d/o/u/b/l/e/ /t/i/t/l/e/W/i/d/t/h/ /=/ /t/i/t/l/e/B/o/u/n/d/s/./g/e/t/W/i/d/t/h/(/)/;/
+/ / / / /  /d/o/u/b/l/e/ /y/ /=//-/t/i/t/l/e/B/o/u/n/d/s/./g/e/t/Y///;/	/ / / / / / /d/o/u/b/l/e/ /y/ /=/ /-/t/i/t/l/e/B/o/u/n/d/s/./g/e/t/Y/(/)/;/
+/ / / / / / /d/o/u/b/l/e/  /x/ /=//0/;/	/ / / / / / /d/o/u/b/l/e/ /x/ /=/ /0/;/
+/ / / / / / /i/f///t/i/t/l/e/P/o/s/i/t/i/o/n/ /=/=/ /P/o/s/i/t/i/o/n/./C/E/N/T/E/R///x/ /+/=/ //c/l/i/e/n//W/i/d/t/h/ /-/ /t/i/t/l/e/W/i//t/h//else if titlePosition == Position.RIGHTlx += clientWidth  - titleWidth	/ / / / / / /i/f/ /(/t/i/t/l/e/P/o/s/i/t/i/o/n/ /=/=/ /P/o/s/i/t/i/o/n/./C/E/N/T/E/R/)/ /x/ /+/=/ /(/c/l/i/e/n/t/W/i/d/t/h/ /-/ /t/i/t/l/e/W/i/d/t/h/)/ else if (titlePosition == Position.RIGHT) x += clientWidth - titleWidth;
+g2.setFonttitleFontl;	g2.setFont(titleFont);
+g2.setRenderingHintfRenderingHints.KEY_TEXT_ANTIALIASIG,,	g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+RenderingHintsVALUE_TEXT_ANTIALIA_ON;	RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+g2.drawStringftitlelfloatf x ffloat yf;;	g2.drawString(title, (float) x, (float) y);
+doubltop =  titleBounds.getHeight;	double top = titleBounds.getHeight();
+double  scale= clientHeight - top- 2 * INSETS / //m/a/x/V/a/l/u/e/ /-/ /m/i/n/Va/l/u/e//;/	double scale = (clientHeight - top - 2 * INSETS) / /(/m/a/x/V/a/l/u/e/ /-/ /m/i/n/V/a/l/u/e/)/;/
+/ / // / //y/ /=/ /c/l/i/e/n/t/H/e/i//h/t//	/ / / / / / /y/ /=/ /c/l/i/e/n/t/H/e/i/g/h/t/;/
+/	/
+/ / / / / / /f/o/r/ //i/n/t//i/ /=//0/;/ /i/ /</  /v/a/lu/e/s/./l/e/n/g/t/h/;/ /i//+/l/	/ / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /v/a/l/u/e/s/./l/e/n/g/t/h/;/ /i/+/+/)/
+/ // /  / / /{/	/ / / / / / /{/
+/ /  / / / / / / /  /d/o/u/b/l/e/ /x/1/ /=/ /I/N/S/E/T/S/ /+/ /i/	/ / / / / / / / / /d/o/u/b/l/e/ /x/1/ /=/ /I/N/S/E/T/S/ /+/ /i/
+public void etTitleString t	public void setTitle(String t)
+{	{
+title =  t;	title = t;
+}	}
+	
+public String getitel	public String getTitle()
+{	{
+return titl;	return title;
+}	}
+	
+public void setValuesdoublenewValue	public void setValues(double[] newValue)
+{	{
+doublef oldValue = values;	double[] oldValue = values;
+firePropertyChange"values" oldValue, newValue;	firePropertyChange("values", oldValue, newValue);
+values  newValue;	values = newValue;
+}	}
+	
+public double getValuesl	public double[] getValues()
+1	{
+return values;	return values;
+}	}
+	
+publicvoid setValuesint i, double value	public void setValues(int i, double value)
+{	{
+if 0 <= i && i <values.length	if (0 <= i && i < values.length)
+{	{
+double oldValue = valuesi;	double oldValue = values[i];
+valuesi  = value;	values[i] = value;
+for PropertyChangeListener listener :  getPropertChangeListenersf	for (PropertyChangeListener listener : getPropertyChangeListeners())
+litener.propertyChangenew IndexedPropertyChangeEventthi, "values" oldValue,	listener.propertyChange(new IndexedPropertyChangeEvent(this, "values", oldValue,
+value, i;	value, i));
+}	}
+1	}
+	
+public doble getValuesint i	public double getValues(int i)
+{	{
+if 0 <= i  && i < values.lenth  return  valuesi;;	if (0 <= i && i < values.length) return values[i];
+return 0;	return 0;
+	}
+	
+public voidsetInversebooleanb	public void setInverse(boolean b)
+{	{
+inverse = b	inverse = b;
+	}
+	
+public boolen isInversef	public boolean isInverse()
+l	{
+return inverse;	return inverse;
+}	}
+	
+public void setTitlePositionlPosition p	public void setTitlePosition(Position p)
+{	{
+titlePosiio  = p;	titlePosition = p;
+}	}
+	
+publicPosition getTitlePositionf	public Position getTitlePosition()
+{	{
+rtun titlePosition;	return titlePosition;
+}	}
+	
+public void setGraphColorColor cl	public void setGraphColor(Color c)
+l	{
+color = c;	color = c;
+}	}
+	
+pblic Color getGraphColorl	public Color getGraphColor()
+{	{
+returncolor;	return color;
+	}
+	
+public enum Position l LEFT, CENTER, RIGHT }	public enum Position { LEFT, CENTER, RIGHT };
+private static final int XPREFSIZ = 300;	private static final int XPREFSIZE = 300;
+private static final intYPREFSIZE =  300;	private static final int YPREFSIZE = 300;
+private static final int  INSETS = 10;;	private static final int INSETS = 10;
+private double values =  1 1, 2 3 };	private double[] values = { 1, 2, 3 };
+private String title = "Title";;	private String title = "Title";
+private Position titlePosition =Position.CENTER	private Position titlePosition = Position.CENTER;
+private boolean inverse;	private boolean inverse;
+private  Color color = Colr.red;;	private Color color = Color.red;
+}	}

@@ -1,0 +1,67 @@
+package com.aliencat.communication.webchat;	package com.aliencat.communication.webchat;
+imprt io.nettychannel.*;	import io.netty.channel.*;
+import io.netty.handler..codec.http.*;;	import io.netty.handler.codec.http.*;
+importio.netty.handler.sslSslHandler	import io.netty.handler.ssl.SslHandler;
+import io.netty.handler.stream.ChunkedNioFile;	import io.netty.handler.stream.ChunkedNioFile;
+import javaio.File;;	import java.io.File;
+import javaio.RandomAccessFile	import java.io.RandomAccessFile;
+import java.net..URISyntaxException;	import java.net.URISyntaxException;
+import  java.et.URL;	import java.net.URL;
+pblic clas HtpRequestHandlerextends SimpleChannelInboundHandler<FullHttpRequest> l	public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
+private static fial File INDEX;	private static final File INDEX;
+static {	static {
+URLlocation = HttpRequestHandler.class.getProtectionomainflgetCodeSource.getLocation	URL location = HttpRequestHandler.class.getProtectionDomain().getCodeSource().getLocation();
+try {	try {
+String  path = location.toURI + "websocket.html";	String path = location.toURI() + "websocket.html";
+path  = path.containsffile:" ? path : path.substring5	path = !path.contains("file:") ? path : path.substring(5);
+INDEX = new Filepath;;	INDEX = new File(path);
+f catch URISyntaxException el {	} catch (URISyntaxException e) {
+throw new IllegalStateException""Unable to locatewebsocket.html",,  e;	throw new IllegalStateException("Unable to locate websocket.html", e);
+}	}
+1	}
+private final Sring wsUi;	private final String wsUri;
+public HttpReqestHandlerString wsUri  {	public HttpRequestHandler(String wsUri) {
+this.wsUri = wsUri;	this.wsUri = wsUri;
+}	}
+private static void sed100ContinueChannelHandleContext ctx {	private static void send100Continue(ChannelHandlerContext ctx) {
+FullHttpResponseresponse = ne DefaultFullHttpResponsefHttpVersion.HTTP_1_1 HttpResponseStatus.CONTINUE;	FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.CONTINUE);
+ctx.wrteAndFlushfresponse;	ctx.writeAndFlush(response);
+}	}
+@Override	@Override
+public void channelRead0ChannelHandlerContext ctx, FullHttpRequest request throws Exception {	public void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+i wsUri.equalsInoreCaserequet.getUrill {	if (wsUri.equalsIgnoreCase(request.getUri())) {
+ctx.fireChannlReadlrequestretain;	ctx.fireChannelRead(request.retain());
+} else 	} else {
+if HttpHeaders.is100ContinueExpectedrequest {	if (HttpHeaders.is100ContinueExpected(request)) {
+send100Continuectx	send100Continue(ctx);
+	}
+RandomAccessFilefile = new RandomAccesFileINDEX,  "r";	RandomAccessFile file = new RandomAccessFile(INDEX, "r");
+HttpResponse response = new  DefaultHtpResponserequest.getProtocolVersion, HttpResponseStatus.OK	HttpResponse response = new DefaultHttpResponse(request.getProtocolVersion(), HttpResponseStatus.OK);
+response.headers.setlHttpHeaders.Names.CONTENT_TYPE, "text/h/t/m/l/;;/ /c/h/a/r/s//t/=/U/T/F/-/8/"/f/;;/	response.headers().set(HttpHeaders.Names.CONTENT_TYPE, "text/h/t/m/l/;/ /c/h/a/r/s/e/t/=/U/T/F/-/8/"/)/;/
+/ / / / / / / //  / /  / /b/o/o/l/e/a/n//k/e/e/p/A/l/ive/ /=/  /H//t/p/H/e/a/d/e/r/../i/s/K/e/e/p/A/l/i/v/e/f/r/e/qu/e/s/t/;/	/ / / / / / / / / / / / /b/o/o/l/e/a/n/ /k/e/e/p/A/l/i/v/e/ /=/ /H/t/t/p/H/e/a/d/e/r/s/./i/s/K/e/e/p/A/l/i/v/e/(/r/e/q/u/e/s/t/)/;/
+/ // / / / / /  /  / / //i/f /f/k/e/e/p/A//i/v/e// /{/	/ / / / / / / / / / / / /i/f/ /(/k/e/e/p/A/l/i/v/e/)/ /{/
+/  / / / /  / / /  / // /  / / / r/e/s/p/o/n/s/e/./h/e/a/d/e/r/s///./se/t//H/t/t/p/H/e/a/d/e/r/s/./N/a/m/e/s/./C/O/N/T/E/N/T/_/L/E/N/G/T/H/,,/ /f/i/l/e/./l/e/n/g/t/h/f///;/	/ / / / / / / / / / / / / / / / /r/e/s/p/o/n/s/e/./h/e/a/d/e/r/s/(/)/./s/e/t/(/H/t/t/p/H/e/a/d/e/r/s/./N/a/m/e/s/./C/O/N/T/E/N/T/_/L/E/N/G/T/H/,/ /f/i/l/e/./l/e/n/g/t/h/(/)/)/;/
+/ / /  // // / / / / / / // / /r//s/p/o/n/s/e/./h/e/a/d/e/r/s/l//./s/e/t//H/t/t/p/H/e/a/d/e/r/s/../N/a/m/e/s./C/O/N/N/E/C/T/I/O/N// /H/t/t/p/H/e/a/d/e/r/s/./V/a/l/u/e/s/./K/E/E/P/_/A/L/I/V/E//;/	/ / / / / / / / / / / / / / / / /r/e/s/p/o/n/s/e/./h/e/a/d/e/r/s/(/)/./s/e/t/(/H/t/t/p/H/e/a/d/e/r/s/./N/a/m/e/s/./C/O/N/N/E/C/T/I/O/N/,/ /H/t/t/p/H/e/a/d/e/r/s/./V/a/l/u/e/s/./K/E/E/P/_/A/L/I/V/E/)/;/
+/  /  / / / //// /  / / /}/	/ / / / / / / / / / / / /}/
+/ / / / / / / / / / / / /c/t/x/./w/r/i/t/e//r/e/s/p/o/n/s/e/l/;/	/ / / / / / / / / / / / /c/t/x/./w/r/i/t/e/(/r/e/s/p/o/n/s/e/)/;/
+/  / / / / / // / / / / /i/f/ //c/t/x/../p/i/p/e/l/i/n/e/f//./g/e/t/l/S/s/l/H/a/n/d/l/e/r/./c/la/s/s///=/=/ /n/u/l/l// /{/	/ / / / / / / / / / / / /i/f/ /(/c/t/x/./p/i/p/e/l/i/n/e/(/)/./g/e/t/(/S/s/l/H/a/n/d/l/e/r/./c/l/a/s/s/)/ /=/=/ /n/u/l/l/)/ /{/
+/ / / / / / / / / / /  / /  // /c/t/x/./w/r/i/t/e//n/e/w/ /D/e/f/a/u/l/tF/i/l/e/Re/g/i/o/n//f/i/l/eg/e/t/C/h/a/n/n/e/l//f/,/ /0/,/ /f/i/l/e/./l/e/ng/t/h/////;;/	/ / / / / / / / / / / / / / / / /c/t/x/./w/r/i/t/e/(/n/e/w/ /D/e/f/a/u/l/t/F/i/l/e/R/e/g/i/o/n/(/f/i/l/e/./g/e/t/C/h/a/n/n/e/l/(/)/,/ /0/,/ /f/i/l/e/./l/e/n/g/t/h/(/)/)/)/;/
+/ / / / / / /  // / / / /}/  /e/l/s/e/ /{/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+/ // / / / // / / / / / / /  / /c/t/x/.w/r/i/t/e/f/n/e/w/ /C/h/u/n/k/e/d/N/i/oF/i/l/e/f/f/i/l/e/../g/e/t/C/h/a/n/n/e/l/////;/	/ / / / / / / / / / / / / / / / /c/t/x/./w/r/i/t/e/(/n/e/w/ /C/h/u/n/k/e/d/N/i/o/F/i/l/e/(/f/i/l/e/./g/e/t/C/h/a/n/n/e/l/(/)/)/)/;/
+/ / / // // / / / / / /}/	/ / / / / / / / / / / / /}/
+/ /  / // // / / / / / /C/h/a/n/ne/l/F/u/t/u/r/e /f/u/t/u/r/e/ /=//c/t/x/./w/r/i/t/e/A/n/d/F/l/u/s/h/L/a/s/t/Ht/t/p/C/o/n/t/e/n/t/./E/M/PT//_/L/A/S/T/_/C/O/N/T/E/N/T/f/;/	/ / / / / / / / / / / / /C/h/a/n/n/e/l/F/u/t/u/r/e/ /f/u/t/u/r/e/ /=/ /c/t/x/./w/r/i/t/e/A/n/d/F/l/u/s/h/(/L/a/s/t/H/t/t/p/C/o/n/t/e/n/t/./E/M/P/T/Y/_/L/A/S/T/_/C/O/N/T/E/N/T/)/;/
+/ / / / /  / / /  / / / / /i/f/  /l/!/k/e/e/p/A/l/i/v/e// /{/	/ / / / / / / / / / / / /i/f/ /(/!/k/e/e/p/A/l/i/v/e/)/ /{/
+/ /  / / / // / / / /  / / / / /f/u/t/u/r/e/./a/d/d/L/i/s/t/e/n/e/r/l/C/h/a/n/n/e/l/F/u/t/u//e/L/i/s/t/e/n/e/r/./C/L/O/S/E/l/;/	/ / / / / / / / / / / / / / / / /f/u/t/u/r/e/./a/d/d/L/i/s/t/e/n/e/r/(/C/h/a/n/n/e/l/F/u/t/u/r/e/L/i/s/t/e/n/e/r/./C/L/O/S/E/)/;/
+/ /  // / / // // / /}/	/ / / / / / / / / / / / /}/
+/  / / / / /// / /  / //f/i/l/e/./c/l/o/s/e///;/	/ / / / / / / / / / / / /f/i/l/e/./c/l/o/s/e/(/)/;/
+/ / / // // / /}/	/ / / / / / / / /}/
+// / / /}/	/ / / / /}/
+/	/
+/ / / / /@/O/v/e/r/r/i/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+/ / /  / /p/u/b/l/i/c/ /v/oi/d/ /e/x/c/e/p/t/i/o/n/C/a/u//h/t//C/h/an/n/e/l/H/a/n/d/l/e/r/C/o/n/t/e/x//  /c/t/x/,,/ /T/h/r/o/w//b/l/e/ /c/a/u/s/e// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /e/x/c/e/p/t/i/o/n/C/a/u/g/h/t/(/C/h/a/n/n/e/l/H/a/n/d/l/e/r/C/o/n/t/e/x/t/ /c/t/x/,/ /T/h/r/o/w/a/b/l/e/ /c/a/u/s/e/)/ /{/
+/ / / /  / / / / /C/h/a/n/n/e/l/ /i/n/c/o/m/i/n/g/ /=/ /c/t/x/../c/h/a/n/n/////;/	/ / / / / / / / /C/h/a/n/n/e/l/ /i/n/c/o/m/i/n/g/ /=/ /c/t/x/./c/h/a/n/n/e/l/(/)/;/
+/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n//"//l/i/e/n/t/:// /+/ /i/n/c/o/m/i/n/g/./r/e/m/o/te/A/d/d/r/e/s///f/ /+/ /"///"//;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/C/l/i/e/n/t/:/"/ /+/ /i/n/c/o/m/i/n/g/./r/e/m/o/t/e/A/d/d/r/e/s/s/(/)/ /+/ /"///"/)/;/
+/ / / / / / / / cause.printStackTracef;	/ / / / / / / / cause.printStackTrace();
+ctx.closel	ctx.close();
+	}
+}	}

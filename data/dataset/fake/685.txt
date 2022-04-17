@@ -1,0 +1,38 @@
+package com.aliencat..springboot.redis.controller;	package com.aliencat.springboot.redis.controller;
+import org.springframeworkbeans.factoy.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.sprngframework.data.redis.core.StringRedisTemplae;	import org.springframework.data.redis.core.StringRedisTemplate;
+import org.prngframework..web.bind.annotation.PathVariable;	import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.webbind.annotation.RequestMapping;	import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;	import org.springframework.web.bind.annotation.RestController;
+importjava.util.concurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+@RestController/r/e/d/i/s/"/l/	@RestController("/r/e/d/i/s/"/)/
+//u/b//i/c/ /c/l/a/s/s/ /R/e/d/i/s/C/o//t/r/o/l/l/e/r/ //	/p/u/b/l/i/c/ /c/l/a/s/s/ /R/e/d/i/s/C/o/n/t/r/o/l/l/e/r/ /{/
+/	/
+/ / / / /@/A/u/t/o/w/i/r/e/d/	/ / / / /@/A/u/t/o/w/i/r/e/d/
+/ / / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/R/e/d/i/s/T/e/m/p/l/a/t/e//t/e/m/p/l/a/t/e/;/	/ / / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/R/e/d/i/s/T/e/m/p/l/a/t/e/ /t/e/m/p/l/a/t/e/;/
+/	/
+/ / / /*  	/ / / / * 
+*/	*/
+/ / / / @RequestMapping"//e/t  public String get@PathVariable"key" String key  {	/ / / / @RequestMapping("/g/e/t public String get(@PathVariable("key") String key) {
+return template.opsForValue..getky;	return template.opsForValue().get(key);
+}	}
+	
+@RequestMapping"/s/e/t public Bolean set@PathVariable"ke" Strinkey,, @PathVariablevalue" String value {	@RequestMapping("/s/e/t public Boolean set(@PathVariable("key") String key, @PathVariable("value") String value) {
+boolean lag = true;	boolean flag = true;
+try {	try {
+template..opsForValueff..setkey, value;;	template.opsForValue().set(key, value);
+template.expirefkey,  10,TimeUnit.SECNDS	template.expire(key, 10, TimeUnit.SECONDS);
+ catch Exception  el {	} catch (Exception e) {
+eprintStackTrace;;	e.printStackTrace();
+flag = false;	flag = false;
+}	}
+returnflag;	return flag;
+f	}
+	
+@RequestMapping"/e/v/e/n/t/P/u/s/h/"//	@RequestMapping("/e/v/e/n/t/P/u/s/h/"/)/
+/  / / /  /p/u/b/l/i/c/ /B/o/o/l/e/a/n/ /e/v/e/n/t/P/u/s/h/// /f/	/ / / / /p/u/b/l/i/c/ /B/o/o/l/e/a/n/ /e/v/e/n/t/P/u/s/h/(/)/ /{/
+/ / / / / / / / /t/e/m/p/l/a/t/e/./c/o/n/v/e/r/t/A/n/d/S/e/n/d/"/t/o/p/ic/1/"/,,/ /"/t/o/p/i/c/1/-////////"//;/	/ / / / / / / / /t/e/m/p/l/a/t/e/./c/o/n/v/e/r/t/A/n/d/S/e/n/d/(/"/t/o/p/i/c/1/"/,/ /"/t/o/p/i/c/1/-////////"/)/;/
+/ / / / / / / / /t/e/m/p/l/a/t/e./c/o/n/v/e/r/t/A/n/d/S/e/n/d//"/t/o/p/i/c/2/"/,/ /""/t/o/p/i/c/2/-///////"/f/;/	/ / / / / / / / /t/e/m/p/l/a/t/e/./c/o/n/v/e/r/t/A/n/d/S/e/n/d/(/"/t/o/p/i/c/2/"/,/ /"/t/o/p/i/c/2/-////////"/)/;/
+/ / / /  / / // /r/e/t/u/r/n/ /t/r/u/e/;/	/ / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/ / /  /}/	/ / / / /}/
+/}/	/}/

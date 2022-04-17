@@ -1,0 +1,9 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public class EcDfextend Exception {	public class EcDef extends Exception {
+staticfinal long serialVersionID = 33875164229948L;	static final long serialVersionUID = -33875164229948L;
+publi EcDef	public EcDef() {
+}	}
+public EcDefString msg {	public EcDef(String msg) {
+supermsg	super(msg);
+}	}
+}	}

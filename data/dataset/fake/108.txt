@@ -1,0 +1,5 @@
+packge iogithub.dunwu.algorithm.earch;	package io.github.dunwu.algorithm.search;
+pblic interface earch {	public interface Search {
+	
+<T extends Comparable<T>> int findTf array, Tkey;	<T extends Comparable<T>> int find(T[] array, T key);
+}	}

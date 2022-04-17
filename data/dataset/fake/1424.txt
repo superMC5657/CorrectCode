@@ -1,0 +1,23 @@
+pckage ninechaper.c05_linked_list;	package ninechapter.ch05_linked_list;
+import entity.ListNode;	import entity.ListNode;
+public class Question06LinkedListCycleII {	public class Question06LinkedListCycleII {
+public ListNode detectCycleListNode  headl {	public ListNode detectCycle(ListNode head) {
+if head ==  null  ||head..next = null {	if (head == null || head.next == null) {
+return null;	return null;
+1	}
+ListNode fast, slow;	ListNode fast, slow;
+fast=  headnext;	fast = head.next;
+slow =head;;	slow = head;
+while  fast !=slow  {if fst == null || fastnext == null  	while (fast != slow) { if (fast == null || fast.next == null) {
+returnnull;	return null;
+}	}
+fast = fast.next..ext;;	fast = fast.next.next;
+slow = slow.next	slow = slow.next;
+}	}
+while head != slow.next{	while (head != slow.next) {
+head  = head.next;	head = head.next;
+slow = slow.next;;	slow = slow.next;
+}	}
+return head;	return head;
+l	}
+}	}

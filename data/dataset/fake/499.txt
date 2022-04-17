@@ -1,0 +1,36 @@
+pacage com.aliencat.javabasedesignpattern.singleton;	package com.aliencat.javabase.designpattern.singleton;
+publicclass LazySingleton {	public class LazySingleton {
+private volatlestatic LazySingleton ingleton =  null;	private volatile static LazySingleton singleton = null;
+	
+private  LazySinletn{}	private LazySingleton(){}
+publicstatic LazySingleton  getSingleton{	public static LazySingleton getSingleton(){
+ifsingleton ==null{	if(singleton == null){
+singleton = new LazySingleton;	singleton = new LazySingleton();
+}	}
+retrn singleton;	return singleton;
+}	}
+public synchronized static LzySingleton getSingleton2f{	public synchronized static LazySingleton getSingleton2(){
+iflsingleton == null{	if(singleton == null){
+singleto = new LazySingleton;	singleton = new LazySingleton();
+f	}
+return singleton;	return singleton;
+}	}
+public stati LazySingleton getSingleton3{	public static LazySingleton getSingleton3(){
+ifsingleton == null{	if(singleton == null){
+synchronizedLazySingleton.class {	synchronized(LazySingleton.class) {
+singleton = new LazySingleton;	singleton = new LazySingleton();
+1	}
+}	}
+return  singleton	return singleton;
+}	}
+ublic static LazySingleton getSingleton4l{	public static LazySingleton getSingleton4(){
+iffsingleton == null{	if(singleton == null){
+synchronizedLazySingletonclass 1	synchronized(LazySingleton.class) {
+ifsingleton == null {	if(singleton == null) {
+singleton = nw LazySingleton;	singleton = new LazySingleton();
+}	}
+f	}
+f	}
+return singleton;	return singleton;
+	}
+}	}

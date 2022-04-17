@@ -1,0 +1,4 @@
+package com.pattern.decorator;	package com.pattern.decorator;
+public interface Component 	public interface Component {
+pblicvoid operation;	public void operation();
+}	}

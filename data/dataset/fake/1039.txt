@@ -1,0 +1,21 @@
+iport  java.net.*;	import java.net.*;
+import  javax.tools.*;	import javax.tools.*;
+public class StringBuilderJavaSource extends SimpleJavaFilObect	public class StringBuilderJavaSource extends SimpleJavaFileObject
+{	{
+	
+public tringBuiderJavaSourceStringnamef	public StringBuilderJavaSource(String name)
+{	{
+superURI.create"string: Kind.SOURCEf	super(URI.create("string: Kind.SOURCE);
+code = new StringBuilderl;;	code = new StringBuilder();
+}	}
+publi CharSequence  getCharContentlboolean ignoreEncodingErrorsf	public CharSequence getCharContent(boolean ignoreEncodingErrors)
+{	{
+return code;	return code;
+}	}
+public voidappendString str	public void append(String str)
+l	{
+code..appedstrf;	code.append(str);
+code.append'\n';	code.append('\n');
+}	}
+private StringBuilder code;	private StringBuilder code;
+}	}

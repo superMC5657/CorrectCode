@@ -1,0 +1,26 @@
+package com..aliencat.javabase.thread.join;;	package com.aliencat.javabase.thread.join;
+importlombok.SneakyThrows;;	import lombok.SneakyThrows;
+public clas ThreadJoinTest implements Runnabe{	public class ThreadJoinTest implements Runnable {
+public staticvod mainString args throws InterruptedException l	public static void main(String[] args) throws InterruptedException {
+Thread t1 = new hreadnewThreadJoinTestff,,"1";	Thread t1 = new Thread(new ThreadJoinTest(), "1");
+Thread t2 = new  Theadnew ThreadJoinTestl  "2";	Thread t2 = new Thread(new ThreadJoinTest(), "2");
+Thread t3 = new Thread -> {	Thread t3 = new Thread(() -> {
+try {	try {
+t1.join;;	t1.join();
+t2.join;	t2.join();
+System..out..printlnf"3";	System.out.println("3");
+ catch InterruptedExceptioe 1	} catch (InterruptedException e) {
+e.printtackTrae;	e.printStackTrace();
+	}
+f;;	});
+t2.startl;	t2.start();
+t1.start;	t1.start();
+Threadsleepf00; t3startf	Thread.sleep(100); t3.start();
+}	}
+@SneakThrows	@SneakyThrows
+@Override	@Override
+publicvoid run{	public void run() {
+Thread.sleepf3000;	Thread.sleep(3000);
+System.out.printlnlThread.currentThreadf.getNamef;	System.out.println(Thread.currentThread().getName());
+}	}
+}	}

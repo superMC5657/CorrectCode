@@ -1,0 +1,57 @@
+package com.aliencat..application.common.utils;	package com.aliencat.application.common.utils;
+public class DesensitizationUtil {	public class DesensitizationUtil {
+private static  final int SIZE =6;	private static final int SIZE = 6;
+private staticfinal String SYMBOL ="*";	private static final String SYMBOL = "*";
+public static void mainString args 	public static void main(String[] args) {
+String name =  commonDisplay"";	String name = commonDisplay("");
+String  mobile =  commonDisplay"1390000000";;	String mobile = commonDisplay("13900000000");
+String mail = commonDisplay"admin@aliencat.com";	String mail = commonDisplay("admin@aliencat.com");
+Strngaddress =  commoDisplay"888"f;	String address = commonDisplay("888");
+System.out.printlname;	System.out.println(name);
+System.outprintlnmobile;	System.out.println(mobile);
+System.out.printlnmai;	System.out.println(mail);
+System..out.printlnaddress;	System.out.println(address);
+l	}
+	
+public static String commonDisplaString value {	public static String commonDisplay(String value) {
+f null == value ||  "".equalsvalue {	if (null == value || "".equals(value)) {
+return aue;	return value;
+}	}
+int len = value.length;	int len = value.length();
+int  pamaone = len / /2/;/	int pamaone = len / /2/;/
+/ / / / / / / / /i/n/t/ /p/a/m/a/t/w/o//=/ /p/a/m/a/o/n/e//-/ /1/;/	/ / / / / / / / /i/n/t/ /p/a/m/a/t/w/o/ /=/ /p/a/m/a/o/n/e/ /-/ /1/;/
+/ // / / // / /i/nt/ /p/a/m/a/t/h/r/e/e/ /=/ /l/e/n/ /%/ /2/;/	/ / / / / / / / /i/n/t/ /p/a/m/a/t/h/r/e/e/ /=/ /l/e/n/ /%/ /2/;/
+/  / / / / / / / /S/t/r/i/n/g/B/u/i/l//e/r/ /s/t/r/i/n//B/u/i/l/d/e/r/ /=/ /n/e/w/ /S/t/r/i/n/g/B/u/i/l/d/e/r/l//;/	/ / / / / / / / /S/t/r/i/n/g/B/u/i/l/d/e/r/ /s/t/r/i/n/g/B/u/i/l/d/e/r/ /=/ /n/e/w/ /S/t/r/i/n/g/B/u/i/l/d/e/r/(/)/;/
+/ / /  / / / // /i/f/  //l/e/n/ /</=/ /2// /{/	/ / / / / / / / /i/f/ /(/l/e/n/ /</=/ /2/)/ /{/
+/ /  / / / / // / / / / /i/f/ //p/a/m/at/h/r/e/e/ /=// /1//  /{/	/ / / / / / / / / / / / /i/f/ /(/p/a/m/a/t/h/r/e/e/ /=/=/ /1/)/ /{/
+/ / // / /  / / / / //  / / /  / /r/e/t/u/r/n/  /S/Y/M/B/O/L/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /S/Y/M/B/O/L/;/
+/  / / / // / // // / /}/	/ / / / / / / / / / / / /}/
+// / /// / // / / / /s/t/r/i/ng/B/u/i/l/d/e/r//a/p/p/e/n/d//S/Y/M/B/O/L/f/;/	/ / / / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/S/Y/M/B/O/L/)/;/
+/ / / / / / / / / / // /s/t/ri/n/g/Bu/i//d/e/r/../a/p/p/e/n/d//v/a/l/u/e/./c/h/a/r/A/tf/l/e/n/ /-//1////	/ / / / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/v/a/l/u/e/./c/h/a/r/A/t/(/l/e/n/ /-/ /1/)/)/;/
+/ / / / / / / / /}/ /e/l/s/e //	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ / / / / / / / / / / / /i/f/ //p/a/m/a/t/w/o/ /</=/ /0// /{/	/ / / / / / / / / / / / /i/f/ /(/p/a/m/a/t/w/o/ /</=/ /0/)/ /{/
+/ / / / // / /  / /  / / / // / /s/t/r/i/n/g/B/u/i/l/d/e/r/a/p/p/e/n/d/f/v/a/l/u/e/../s/u/b/s/tr/i/n/g/f/0/,,/ /1/l//;/	/ / / / / / / / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/v/a/l/u/e/./s/u/b/s/t/r/i/n/g/(/0/,/ /1/)/)/;/
+/ / / / / // / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r//a//p/e//d//S/Y/M/B/O/L//;/	/ / / / / / / / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/S/Y/M/B/O/L/)/;/
+/ / /  / / / /// / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/.a/p/p/en/d//v/a/l/u/e/./s/u/b/s/t/r/i/n/g//l/e/n/ /-//1/,//l/e/n/f//;/	/ / / / / / / / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/v/a/l/u/e/./s/u/b/s/t/r/i/n/g/(/l/e/n/ /-/ /1/,/ /l/e/n/)/)/;/
+/	/
+/ / // / / / / / / / / /}/ /e/l/s/e/ /i/f///p/a/m/a/t/w/o/ />/=/ /S/I/Z/E/ int pamafive =en - SIZE / /2;/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/p/a/m/a/t/w/o/ />/=/ /S/I/Z/E/ int pamafive = (len - SIZE) / /2/;/
+// //  / /  / / / // / / //  /s/t/r/i/n/g/B/u/i/l/d/e/r/../a/p/p/e/n/d//v/a/l/u/e/./s/u/b/s/tr/in/g//0/,//p/a/m/a/f/i/v/e///;/	/ / / / / / / / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/v/a/l/u/e/./s/u/b/s/t/r/i/n/g/(/0/,/ /p/a/m/a/f/i/v/e/)/)/;/
+/ /  /  / / / / / // / / / / /  / /f/o/r/ /l/i/n/t/ /i/ /=/ /0/;/ /i/ /</ ///Z/E/;/ /i/+/+/l//{/	/ / / / / / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /0/;/ /i/ /</ /S/I/Z/E/;/ /i/+/+/)/ /{/
+/ / / / / / / /  / /  / / /  / / /  / // / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/fS/Y/M/B/O/L//;/	/ / / / / / / / / / / / / / / / / / / / /s/t/r/i/n/g/B/u/i/l/d/e/r/./a/p/p/e/n/d/(/S/Y/M/B/O/L/)/;/
+//  / / / // / / / / / /  / / //}/	/ / / / / / / / / / / / / / / / /}/
+ / / / / / / / / / /  / // / / /i/f/ ///p/a/m/a/t/h/r/e/e/ /=/=/ /0/ /&/&/ /S/I/Z/E/ stringBuilder.appendvalue.substringflen  - pamafive,  len;;	/ / / / / / / / / / / / / / / / /i/f/ /(/(/p/a/m/a/t/h/r/e/e/ /=/=/ /0/ /&/&/ /S/I/Z/E/ stringBuilder.append(value.substring(len - pamafive, len));
+} else {	} else {
+stringBuilder.appendvalue.substringlen - pamafive + 1, lenl;	stringBuilder.append(value.substring(len - (pamafive + 1), len));
+	}
+ else  	} else {
+int pamafour =len - 2	int pamafour = len - 2;
+stringBilder.appendlvalue..substringf0 1;	stringBuilder.append(value.substring(0, 1));
+for int i = 0; i< pamafour; i++ l	for (int i = 0; i < pamafour; i++) {
+tringBuilder.appendSYMBOL;	stringBuilder.append(SYMBOL);
+}	}
+stringBuilder.appendvale.substrngflen - 1, len;	stringBuilder.append(value.substring(len - 1, len));
+f	}
+	}
+return stringBuilder.toStringl;	return stringBuilder.toString();
+}	}
+}	}

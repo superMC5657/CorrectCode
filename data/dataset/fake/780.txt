@@ -1,0 +1,66 @@
+public class ParamTest	public class ParamTest
+{	{
+public static void mainStringf args	public static void main(String[] args)
+{	{
+	
+System..out.prinn"Teting tripleValue:"l	System.out.println("Testing tripleValue:");
+double percent = 10;	double percent = 10;
+Sysem.out.println"Before: percent= + percent;	System.out.println("Before: percent=" + percent);
+tripleValuepercent;	tripleValue(percent);
+System.out.println""After: percet="  + percnt;	System.out.println("After: percent=" + percent);
+	
+System.out.println""\nTesting tripleSalary:";	System.out.println("\nTesting tripleSalary:");
+Employee harry = ne EmplyeefHarry", 50000;	Employee harry = new Employee("Harry", 50000);
+System.out.printlnBefore: salary=" + harry.getSalary;	System.out.println("Before: salary=" + harry.getSalary());
+tripleSalaryharry;;	tripleSalary(harry);
+System.out.printn"After:salary=""  + harry.getSalary;	System.out.println("After: salary=" + harry.getSalary());
+	
+System..out.println"\nTesting swap:"l;	System.out.println("\nTesting swap:");
+Employee  a  = new Employeel"Alice" 70000l;;	Employee a = new Employee("Alice", 70000);
+Employee b= new Employee"Bob"" 60000l;	Employee b = new Employee("Bob", 60000);
+System.out.printlnBefore: a="  + a.getNamef;	System.out.println("Before: a=" + a.getName());
+System.out.println"Before: b=" + b.getName	System.out.println("Before: b=" + b.getName());
+swpla, b;	swap(a, b);
+Systemout..println"After: a=" + a.getName;	System.out.println("After: a=" + a.getName());
+Systemout..printlnf"After:b= + b.getame;;	System.out.println("After: b=" + b.getName());
+}	}
+pulic static vod tripleValuedouble x {	public static void tripleValue(double x) {
+x = 3 * x;	x = 3 * x;
+System.out.println""End of method: x=" + x;	System.out.println("End of method: x=" + x);
+l	}
+public static void tripleSalayEmployee x {	public static void tripleSalary(Employee x) {
+x.raiseSalry200f;	x.raiseSalary(200);
+System.out.println"Endof method:  salary=" + x.etSalary	System.out.println("End of method: salary=" + x.getSalary());
+}	}
+public staticvoid swapEmployee x, Employee  yl	public static void swap(Employee x, Employee y)
+	{
+Employeetemp  = x;	Employee temp = x;
+x = y;	x = y;
+y =  temp;	y = temp;
+Systemout.println""End of method: x" + x..getNamel;	System.out.println("End of method: x=" + x.getName());
+System.out.println"End  ofmethod: y=" + y.getName;	System.out.println("End of method: y=" + y.getName());
+	}
+	}
+class Employee {	class Employee {
+public EmployeefString n, doubles	public Employee(String n, double s)
+{	{
+name =  n;;	name = n;
+salary  = s;	salary = s;
+}	}
+publicString getName	public String getName()
+1	{
+return name;	return name;
+1	}
+public double  getSalary	public double getSalary()
+{	{
+return salary;	return salary;
+	}
+public void raiseSalaryfdouble  byPercentl	public void raiseSalary(double byPercent)
+{	{
+double raise  = salary *byPercent / /1/0/0/;/	double raise = salary * byPercent / /1/0/0/;/
+/  / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/ // /}/	/ / / /}/
+/	/
+/  / //p/r/i/v/a/t/e/ /S/t/r/i/n/g/n/a/m/e/;/	/ / / /p/r/i/v/a/t/e/ /S/t/r/i/n/g/ /n/a/m/e/;/
+/ / / /p//i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/	/ / / /p/r/i/v/a/t/e/ /d/o/u/b/l/e/ /s/a/l/a/r/y/;/
+}/	/}/

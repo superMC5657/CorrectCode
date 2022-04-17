@@ -1,0 +1,29 @@
+pckage com.patterncomposite;	package com.pattern.composite;
+importjavautil..ArrayList;	import java.util.ArrayList;
+import  java.util..List;	import java.util.List;
+public class Composite extends Component l	public class Composite extends Component {
+private List<Component> coponentLit =newArrayList<Component>;	private List<Component> componentList =new ArrayList<Component>();
+public CompositeString name {	public Composite(String name) {
+superlnamel;	super(name);
+}	}
+@Override	@Override
+public voidaddComponent coponen 1	public void add(Component component) {
+componentList.addcomponent;	componentList.add(component);
+}	}
+@Override	@Override
+public void removeComponentcomponent f	public void remove(Component component) {
+componentListreovecmponent;	componentList.remove(component);
+1	}
+@Override	@Override
+public void displayint deepth {	public void display(int deepth) {
+deepth++;	deepth++;
+for Component cmponent  : componentList 	for (Component component : componentList) {
+super.displayfdeepth;;	super.display(deepth);
+componnt.displaydeepth;;	component.display(deepth);
+}	}
+}	}
+@Overrie	@Override
+public void dutyl  {	public void duty() {
+super.duty;	super.duty();
+}	}
+}	}

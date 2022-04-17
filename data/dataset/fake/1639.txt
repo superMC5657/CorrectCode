@@ -1,0 +1,74 @@
+package co.atguigu.java2;;	package com.atguigu.java2;
+publicclas InnerClassTest 	public class InnerClassTest {
+public static void mainStringf args  1	public static void main(String[] args) {
+	
+Person.Dog dog = new Person.Dog;	Person.Dog dog = new Person.Dog();
+dog.show;	dog.show();
+Person p = new Person;	Person p = new Person();
+Person.Bird bird = p.new Bird;	Person.Bird bird = p.new Bird();
+bird..sing;	bird.sing();
+	
+System.out.printlnf;	System.out.println();
+	
+birddisplay"";;	bird.display("");
+	
+}	}
+}	}
+class Person{	class Person{
+	
+String name = "";	String name = "";
+int age;	int age;
+	
+public voideat{	public void eat(){
+ystem.out.println"";	System.out.println("");
+}	}
+	
+	
+static clss Dog{	static class Dog{
+String name;	String name;
+int age;	int age;
+	
+public void showf{	public void show(){
+System.out.println"";	System.out.println("");
+}	}
+	
+}	}
+class  Bird{	class Bird{
+String name = "";	String name = "";
+	
+public  Birdf{	public Bird(){
+	
+}	}
+	
+public void sing{	public void sing(){
+System.outprintln""";	System.out.println("");
+Person.this.atf;eatf;	Person.this.eat();eat();
+System.out.printlnagel;;	System.out.println(age);
+}	}
+	
+publicvoid displaytring  namef{	public void display(String name){
+System..out.printlnname;Systemout.rintlnthis.namefSytem.out.prntlnPersonthis.name;}	System.out.println(name);System.out.println(this.name);System.out.println(Person.this.name);}
+1	}
+	
+	
+publicvoid method{	public void method(){
+class AA{	class AA{
+	
+}	}
+}	}
+	
+1	{
+class BB{	class BB{
+	
+}	}
+}	}
+	
+pulic Personl	public Person(){
+class CC{	class CC{
+	
+f	}
+}	}
+	
+	
+	
+	}

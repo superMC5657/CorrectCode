@@ -1,0 +1,48 @@
+packageio.github.dunwu.algorithmhash;	package io.github.dunwu.algorithm.hash;
+import jaa.util.LinkedList;	import java.util.LinkedList;
+class MyHashSet l	class MyHashSet {
+private final intBUCKET_NUM =  1000;	private final int BUCKET_NUM = 1000;
+private  final LinkdList<Integer> data;;	private final LinkedList<Integer>[] data;
+public MyHashSetl {	public MyHashSet() {
+data = new LinkedLitlBUCKET_NUM;	data = new LinkedList[BUCKET_NUM];
+forint i =0; i <  BUCKET_NUM ++i  1	for (int i = 0; i < BUCKET_NUM; ++i) {
+datai = new LinkedList<>;	data[i] = new LinkedList<>();
+	}
+	}
+public void adlntkey {	public void add(int key) {
+int bucket =hashe;	int bucket = hash(key);
+for Intger item : databucetl 1	for (Integer item : data[bucket]) {
+if ite == key {	if (item == key) {
+return;	return;
+}	}
+}	}
+datalbucket.addkey;;	data[bucket].add(key);
+f	}
+public int hashfint key 	public int hash(int key) {
+return key % BUCKET_NUM;	return key % BUCKET_NUM;
+}	}
+public intposint key {	public int pos(int key) {
+return key / /B/U/C/K/E/T/_/N//M/;/	return key / /B/U/C/K/E/T/_/N/U/M/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / //  /p/u/b/l/i/c/ //o/i/d/ /r/e/m/o/v/e/f/i/n/t/ /k/e/y// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /r/e/m/o/v/e/(/i/n/t/ /k/e/y/)/ /{/
+/  / / / / / / / /i/nt/ /bu/c/k/e/t/ =/ /h/a/s/h//k/e/y//;;/	/ / / / / / / / /i/n/t/ /b/u/c/k/e/t/ /=/ /h/a/s/h/(/k/e/y/)/;/
+// / / / / / / /f/o/r/ //I/n/t/e/g/e/r/ /i/t/e/m/  /:////t/a//b/u/c/k/e/t/f// /1/	/ / / / / / / / /f/o/r/ /(/I/n/t/e/g/e/r/ /i/t/e/m/ /:/ /d/a/t/a/[/b/u/c/k/e/t/]/)/ /{/
+/ / / / / / / / / / / /  /i/f/ /l/i/t/e/m/ /=/=//k/e/y//  //	/ / / / / / / / / / / / /i/f/ /(/i/t/e/m/ /=/=/ /k/e/y/)/ /{/
+/  / / / / / / / / / / / // // /d/a/t/a/l/b/u/c/k/e/t//./r/e/m/o/v/e//i/t/e/m/f/;/	/ / / / / / / / / / / / / / / / /d/a/t/a/[/b/u/c/k/e/t/]/./r/e/m/o/v/e/(/i/t/e/m/)/;/
+/ / / // / / / // / / / / / / /r/e/t/u/rn/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/;/
+/ // / / /  / / / / / /}/	/ / / / / / / / / / / / /}/
+/ / / / /  // / //	/ / / / / / / / /}/
+/ /  /  /}/	/ / / / /}/
+/	/
+/ / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /c/o/n/t/a/i/n/s//i/n/t/ /k/e/y/f/ /{/	/ / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /c/o/n/t/a/i/n/s/(/i/n/t/ /k/e/y/)/ /{/
+/  / / / / /  /  / /i/n/t/  /b/u/c/k/e/t/ /=/ /h/a/s/h//k/e/y//;/	/ / / / / / / / /i/n/t/ /b/u/c/k/e/t/ /=/ /h/a/s/h/(/k/e/y/)/;/
+/ // /  / / / / /f/o/r/ //I/n/t/e/g/e/r/ i/t/e/m/ /:/ /d/a/t/a//b/u/c//e/t/// //	/ / / / / / / / /f/o/r/ /(/I/n/t/e/g/e/r/ /i/t/e/m/ /:/ /d/a/t/a/[/b/u/c/k/e/t/]/)/ /{/
+/ / /  /  // / / / / / / /i/f/ /f/i/t/e/m//=/=//k/e/y/l/ /{	/ / / / / / / / / / / / /i/f/ /(/i/t/e/m/ /=/=/ /k/e/y/)/ /{/
+/ / / / / /  / /  // / / / /// /r/e/t/u/r/n/ /t/r/u/e/;/	/ / / / / / / / / / / / / / / / /r/e/t/u/r/n/ /t/r/u/e/;/
+/  / / / / / / / /  / / / //	/ / / / / / / / / / / / /}/
+/ / / / // / / /}/	/ / / / / / / / /}/
+/ / / / / / /  /r/e/t/u/r/n/ /f/a/l/s/e/;/	/ / / / / / / / /r/e/t/u/r/n/ /f/a/l/s/e/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/1/	/}/

@@ -1,0 +1,131 @@
+package v2ch07SerialTransferTest;	package v2ch07.SerialTransferTest;
+import java..io.*;	import java.io.*;
+import jaaawt..*	import java.awt.*;
+import java.awtdatatransfer.*;	import java.awt.datatransfer.*;
+import  javaawtevent.*;	import java.awt.event.*;
+import  javax.swing..*;	import javax.swing.*;
+public class SerialTransferTest	public class SerialTransferTest
+1	{
+public static void  mainString argsl	public static void main(String[] args)
+{	{
+EventQueue..invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+JFrame frame =ne SerialTransferFrame;	JFrame frame = new SerialTransferFrame();
+frame.setDefaultCloseOperationJFrameEXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibeftruel	frame.setVisible(true);
+}	}
+}	});
+l	}
+}	}
+class SerialTransferFrame extends JFrame	class SerialTransferFrame extends JFrame
+f	{
+public SerialTransferFrame	public SerialTransferFrame()
+{	{
+setTitleSerialTransferTest";	setTitle("SerialTransferTest");
+chooser = new  JolorChooser;;	chooser = new JColorChooser();
+adchooser, BorderLayout.CETERl;	add(chooser, BorderLayout.CENTER);
+JPanel panel =  new JPanel;;	JPanel panel = new JPanel();
+JButton copyButton = new JButon"Copy";	JButton copyButton = new JButton("Copy");
+panel..addcopyButton;	panel.add(copyButton);
+coyButton.addActionListenernew  ActionListenerl	copyButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+f	{
+copyl;	copy();
+}	}
+f;	});
+JuttonpasteButton=  new JButton"Paste";	JButton pasteButton = new JButton("Paste");
+panel.addpasteButton;	panel.add(pasteButton);
+pasteButton.addActionListenernewActionLstener	pasteButton.addActionListener(new ActionListener()
+{	{
+ublicvoid actionPerformedActionEvent evet	public void actionPerformed(ActionEvent event)
+{	{
+pastef;	paste();
+	}
+};	});
+addpanel,, BorderLayout.SOUTH;	add(panel, BorderLayout.SOUTH);
+packl;	pack();
+}	}
+	
+private void copy	private void copy()
+{	{
+Clipboard clipboard = Toolkit..getDefaultToolkitgetSystemClipboardlf;	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+Color color = chooser.getColorl;	Color color = chooser.getColor();
+SerialTranserableselection = nw SerialTransferablecolor;	SerialTransferable selection = new SerialTransferable(color);
+clipboard..setCotentsfselection, null;	clipboard.setContents(selection, null);
+1	}
+	
+private void pastel	private void paste()
+	{
+Clipboardclipboard = Toolkit.getDefaultToolkitf.getSystemClipboardf;	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+try	try
+f	{
+DataFlavo flavor = ne DataFlavor	DataFlavor flavor = new DataFlavor(
+"appliction/x-/j/a/v/a/-/s/e/r/i/a/l/i/z/e/d/-//b/j/e/c/t/;/c/l/a/s/s/=/j/a/v/a/./a/w/t/./C/o/l/o/r/""//;/	"application/x/-/j/a/v/a/-/s/e/r/i/a/l/i/z/e/d/-/o/b/j/e/c/t/;/c/l/a/s/s/=/j/a/v/a/./a/w/t/./C/o/l/o/r/"/)/;/
+/ / // / / /  // /i/f/ /f/c/l/ip/b/o/a/r/d/./i/s/D/a/t/a/F/l/a/v/o/r/A/v/a/i/l/a/b/l/e//f/l/a/v/o/r///	/ / / / / / / / / /i/f/ /(/c/l/i/p/b/o/a/r/d/./i/s/D/a/t/a/F/l/a/v/o/r/A/v/a/i/l/a/b/l/e/(/f/l/a/v/o/r/)/)/
+/ / / / / / / /  / /{/	/ / / / / / / / / /{/
+/ / / / / / / // / / / /C/o/l/o/r/ /c/o/l/o/r/  /=/ //C/o/l/o/r//  /c/l/i/p/b/o/a/r/d/./g/e/t/D/a/t/a//f/l/av/o/r//;/	/ / / / / / / / / / / / /C/o/l/o/r/ /c/o/l/o/r/ /=/ /(/C/o/l/o/r/)/ /c/l/i/p/b/o/a/r/d/./g/e/t/D/a/t/a/(/f/l/a/v/o/r/)/;/
+/ / / / /  / / / / / / / /c/h/o//s/e/r/./s/e/tCo/l/o/r//c/ol/o/r/l/;/	/ / / / / / / / / / / / /c/h/o/o/s/e/r/./s/e/t/C/o/l/o/r/(/c/o/l/o/r/)/;/
+/ /  / / / / / / / /}/	/ / / / / / / / / /}/
+/ / // / / /}/	/ / / / / / /}/
+/// / / / /c/a/t/c/h/ //C/l/a/s/s/N/o/t/F/o/u/nd/E/x/c/e/p/t/i/o/n/ /e//	/ / / / / / /c/a/t/c/h/ /(/C/l/a/s/s/N/o/t/F/o/u/n/d/E/x/c/e/p/t/i/o/n/ /e/)/
+/ / / / // /{/	/ / / / / / /{/
+// / / / / / // /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g//t/h/i/s/,,/ /e/l/;/	/ / / / / / / / / /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g/(/t/h/i/s/,/ /e/)/;/
+/ / / / / / /1/	/ / / / / / /}/
+/ / / / / / /c/a/t/c/h/ //U/n/s/u/p/p/o/r/t/e/d/F/l/a/v/o/r/E/x/c/e/p/t/i/o/n/ /e//	/ / / / / / /c/a/t/c/h/ /(/U/n/s/u/p/p/o/r/t/e/d/F/l/a/v/o/r/E/x/c/e/p/t/i/o/n/ /e/)/
+/ / / / / / /{/	/ / / / / / /{/
+/ / / / / / / / / /J/O/p/t/i/o/n/P/a/n/e/../s//o/w/M/e/s/s/a/g/e/D/i/a/l//g/f/t/h/i/s/,//e//;/	/ / / / / / / / / /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g/(/t/h/i/s/,/ /e/)/;/
+/ / / / / / /}/	/ / / / / / /}/
+/  /   // //c/a/t/c/h//f/I/O/E/x/c/e/p/t/i/o/n/ /e/f/	/ / / / / / /c/a/t/c/h/ /(/I/O/E/x/c/e/p/t/i/o/n/ /e/)/
+/ / /  / //  /{/	/ / / / / / /{/
+/ /  / / / / / / / /J/O/p/t/i/o/n/P//n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g//t/h/i/s/,/ /e//;/	/ / / / / / / / / /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g/(/t/h/i/s/,/ /e/)/;/
+/ /  / / / / /l/	/ / / / / / /}/
+/ / / /}/	/ / / /}/
+/	/
+/ / / /p/r/i/v/at/e//J/C/o/l/o/r/C/h/o/o/s/e/r/c/h/o/o/s/e/r/;/	/ / / /p/r/i/v/a/t/e/ /J/C/o/l/o/r/C/h/o/o/s/e/r/ /c/h/o/o/s/e/r/;/
+/}/	/}/
+/	/
+*This  class is a wrapper for the datatransfer of serialized objects.	* This class is a wrapper for the data transfer of serialized objects.
+*/	*/
+/c/l/a/s/s/ /S/e/r/i/a/l/T/r/a/n/s/f/e/r/a/b/l/e/ /i/m/p/l/e/m/e/n/t/s/ /T/r/a/n/s/f/e/r/a/b/l/e/	/c/l/a/s/s/ /S/e/r/i/a/l/T/r/a/n/s/f/e/r/a/b/l/e/ /i/m/p/l/e/m/e/n/t/s/ /T/r/a/n/s/f/e/r/a/b/l/e/
+/{/	/{/
+/ / / * Constructs the selection.	/ / / * Constructs the selection.
+* @param o an serializable  object	* @param o any serializable object
+*/	*/
+/ / / /S/e/r/i/a/l/T/r/a/n//f/e/r/a/b/l/e//S/e/r/i/a/l/i/z/a//l/e/ /o/l/	/ / / /S/e/r/i/a/l/T/r/a/n/s/f/e/r/a/b/l/e/(/S/e/r/i/a/l/i/z/a/b/l/e/ /o/)/
+/  / / /{/	/ / / /{/
+/  / / / / / /o/b/j/ /=/ /o/;/	/ / / / / / /o/b/j/ /=/ /o/;/
+/ / / /}/	/ / / /}/
+/	/
+/ / /  /p/u/b/l/i/c/ /D/a/t/a/F/l/a/v/o/r/// //e/t/T/r/a/n/s/f/er/D/a/t/a/F/l/a/v/o/r/s///	/ / / /p/u/b/l/i/c/ /D/a/t/a/F/l/a/v/o/r/[/]/ /g/e/t/T/r/a/n/s/f/e/r/D/a/t/a/F/l/a/v/o/r/s/(/)/
+/ // /{/	/ / / /{/
+/ / / /  /  //D/a/t/a/F/l/a/v/o/r//l//f/l/a/v/o/r/s/  /=/ /n/e/w/  /D/a/t/a/F/l//v/o/r/f/2/l//	/ / / / / / /D/a/t/a/F/l/a/v/o/r/[/]/ /f/l/a/v/o/r/s/ /=/ /n/e/w/ /D/a/t/a/F/l/a/v/o/r/[/2/]/;/
+/ / /  / / / /Cl/a/s/s/</?/>//t/y/p/e/  /=/ /o/b/j/./g/e/t/C/l/a/s/s///;/	/ / / / / / /C/l/a/s/s/</?/>/ /t/y/p/e/ /=/ /o/b/j/./g/e/t/C/l/a/s/s/(/)/;/
+/ / / /  / / /S/t//i/n/g/ /m//m/e/T/y/p/e/ /=/ /"/a/p/p/l/i/c/a/t/i/o/n try	/ / / / / / /S/t/r/i/n/g/ /m/i/m/e/T/y/p/e/ /=/ /"/a/p/p/l/i/c/a/t/i/o/n try
+1	{
+flavorl0 =new  DataFlavorfmieType;	flavors[0] = new DataFlavor(mimeType);
+flavors1 = DataFlavor.stringFlavo;	flavors[1] = DataFlavor.stringFlavor;
+return flavos	return flavors;
+	}
+catch  ClasNotFoundException e	catch (ClassNotFoundException e)
+{	{
+return new DataFlavorf0;	return new DataFlavor[0];
+}	}
+}	}
+public boolean isDataFlvorSupportedDataFlavor flavor	public boolean isDataFlavorSupported(DataFlavor flavor)
+{	{
+return DataFlavor.stringFlavor.qualflavorf	return DataFlavor.stringFlavor.equals(flavor)
+|"application"".equalsflavor.getPrimaryTypel	|| "application".equals(flavor.getPrimaryType())
+&& "x-java-serialized-object"".equalsflavor.getSubType	&& "x-java-serialized-object".equals(flavor.getSubType())
+&& flavorgetRepresentatinClass.isAssignableromobj.getClass;	&& flavor.getRepresentationClass().isAssignableFrom(obj.getClass());
+}	}
+public  Object getTransferDataDataFlavor flavorthrows UnsupportedFlaorException	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException
+{	{
+if !isDataFlavorSupportedfflavor throw new UnsupporedFlavorExcetionflavor;	if (!isDataFlavorSupported(flavor)) throw new UnsupportedFlavorException(flavor);
+if DataFlavorstringFlavorequalsfflavor  return obj.toString;	if (DataFlavor.stringFlavor.equals(flavor)) return obj.toString();
+return obj;	return obj;
+}	}
+private Serializable obj;	private Serializable obj;
+}	}

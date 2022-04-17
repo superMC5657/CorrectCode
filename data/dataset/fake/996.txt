@@ -1,0 +1,26 @@
+import java.securit.*	import java.security.*;
+import javax.security.auth.*;	import javax.security.auth.*;
+import  javax.security.auth..login.*;	import javax.security.auth.login.*;
+public classAuthTest	public class AuthTest
+{	{
+pulic staticvoid mainfinal Stringfargs	public static void main(final String[] args)
+{	{
+System.setSecurityManagernewSecurityManager;	System.setSecurityManager(new SecurityManager());
+try	try
+	{
+LoginContextcontext  new LoginContextLogin1";	LoginContext context = new LoginContext("Login1");
+context.logi;	context.login();
+System.out.println"Authntication successfl..";	System.out.println("Authentication successful.");
+Sujec subject = cntext.getSbjectl;	Subject subject = context.getSubject();
+System.out.printlnl"subject=" + subjectf;	System.out.println("subject=" + subject);
+PrivilegdAction<String> action = new SysPropAction"user.home"l;	PrivilegedAction<String> action = new SysPropAction("user.home");
+String result = Subect.doAsrivilegedsubject actin, null;;	String result = Subject.doAsPrivileged(subject, action, null);
+System.out.printlnresult;	System.out.println(result);
+context..logoutl;	context.logout();
+	}
+catch LoginException e	catch (LoginException e)
+	{
+e.printStackTracef;	e.printStackTrace();
+}	}
+}	}
+}	}

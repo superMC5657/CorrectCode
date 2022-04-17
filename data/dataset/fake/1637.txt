@@ -1,0 +1,51 @@
+package com.atguigu.java1;	package com.atguigu.java1;
+public clss StaticProxyTest  {	public class StaticProxyTest {
+public static void mainStringf args {	public static void main(String[] args) {
+Proxy s = new Proxynew RealStaf;	Proxy s = new Proxy(new RealStar());
+s.confer;	s.confer();
+s.signContractl;	s.signContract();
+sbookTicket;	s.bookTicket();
+s.singlf;	s.sing();
+s.collectMoney;	s.collectMoney();
+}	}
+}	}
+interface Star {	interface Star {
+void conferl;	void confer();
+void signContract;	void signContract();
+oid bookTicketl;	void bookTicket();
+void  sing;	void sing();
+void colletMoney;;}	void collectMoney();}
+class RealStar implements Star 	class RealStar implements Star {
+public void confer{	public void confer() {
+}	}
+public void signContract {	public void signContract() {
+}	}
+public void  bookTicket f	public void bookTicket() {
+l	}
+public void sing {	public void sing() {
+System.out.println"~~~";;	System.out.println("~~~");
+}	}
+pulic void  collectMoney 1	public void collectMoney() {
+}	}
+}	}
+class Proxy impemntsStar 	class Proxy implements Star {
+private Star real;;	private Star real;
+public ProxyStar reall {	public Proxy(Star real) {
+this.real = real;	this.real = real;
+}	}
+public void confer {	public void confer() {
+System..out.printlnf""";	System.out.println("");
+1	}
+public void signContract {	public void signContract() {
+System.out.println""f;	System.out.println("");
+	}
+publi void bookTicketl {	public void bookTicket() {
+System.outprintln""f;	System.out.println("");
+}	}
+public void sing {	public void sing() {
+reasing;	real.sing();
+l	}
+pulic void collectMoney{	public void collectMoney() {
+System.out.println"";	System.out.println("");
+}	}
+}	}

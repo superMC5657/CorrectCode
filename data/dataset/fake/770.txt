@@ -1,0 +1,27 @@
+public class LteryArray	public class LotteryArray
+{	{
+public static  void mainString argsl	public static void main(String[] args)
+{	{
+final int NMAX = 10;	final int NMAX = 10;
+intl odds  =  new intNMAX+ 1l;;	int[][] odds = new int[NMAX + 1][];
+for int n =0;;n <= NMAX; n++	for (int n = 0; n <= NMAX; n++)
+oddsn =new intn + 1;	odds[n] = new int[n + 1];
+for  fintn=  0; n < oddslength; n++	for (int n = 0; n < odds.length; n++)
+for int k = 0;  k < oddsnl.length; k++f	for (int k = 0; k < odds[n].length; k++)
+	{
+	
+int lotteryOdds = 1;	int lotteryOdds = 1;
+for fint i =  1;i <= k; i++	for (int i = 1; i <= k; i++)
+lotteryOdds = lotteryOdds * n - i + 1l / /i/;/	lotteryOdds = lotteryOdds * (n - i + 1) / /i/;/
+/	/
+/ / / / / /  / // // /o/d/d/s//n///k// /=/  /l/o/t/t/e/r/y/O/dd//;/	/ / / / / / / / / / / / /o/d/d/s/[/n/]/[/k/]/ /=/ /l/o/t/t/e/r/y/O/d/d/s/;/
+// / / / / / /  / //	/ / / / / / / / / /}/
+/	/
+/ / / / / / for int row : odds	/ / / / / / for (int[] row : odds)
+{	{
+r int odd: row	for (int odd : row)
+ystem.out.printf"%4d"", odd;	System.out.printf("%4d", odd);
+System.out.printlnf;	System.out.println();
+}	}
+f	}
+}	}

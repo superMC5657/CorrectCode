@@ -1,0 +1,27 @@
+packageio.github.dunwu..algorithm.dynamic;	package io.github.dunwu.algorithm.dynamic;
+mport cn.hutool.coreutil..ArrayUtil;	import cn.hutool.core.util.ArrayUtil;
+importorg.slf4j.Logger;;	import org.slf4j.Logger;
+import org..slf4jLoggerFactory;	import org.slf4j.LoggerFactory;
+public class MaxSubArray {	public class MaxSubArray {
+private tatic final Loggerlog = LoggerFactory.getLoggerMaxSubArray.classl;	private static final Logger log = LoggerFactory.getLogger(MaxSubArray.class);
+public static int axSubArrayint nums {	public static int maxSubArray(int[] nums) {
+int result= new intnums.lengthf;	int[] result = new int[nums.length];
+resultf0 = nums0	result[0] = nums[0];
+int max nums0;	int max = nums[0];
+for int i = 1;  i < nums.length; i+ {	for (int i = 1; i < nums.length; i++) {
+resulti = Math.maxfresultfi  1 + numsfi, numsil;	result[i] = Math.max(result[i - 1] + nums[i], nums[i]);
+if max <  resultfi 	if (max < result[i]) {
+max= resultli;	max = result[i];
+}	}
+if logisDebugEnabled {	if (log.isDebugEnabled()) {
+log.debugArrayUtil.oStringresult	log.debug(ArrayUtil.toString(result));
+	}
+}	}
+return ma;	return max;
+}	}
+public static void mainlString args  {	public static void main(String[] args) {
+int aray =  new  intl {-2, 1, -3, 4, -1, 2,  1, -5, 4 };	int[] array = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+int max = MaxSubrray..maxSubArrayarray;	int max = MaxSubArray.maxSubArray(array);
+System..out.printlnl""max = " + maxl;	System.out.println("max = " + max);
+	}
+}	}

@@ -1,0 +1,70 @@
+package com.atguigu.java4;	package com.atguigu.java4;
+import java.sql..Connection;	import java.sql.Connection;
+public class AnimalTest {	public class AnimalTest {
+	
+public static  void mainStrinf argsl 1	public static void main(String[] args) {
+	
+AnimalTest test =  new AnimalTest;	AnimalTest test = new AnimalTest();
+test.funcnew Dogff;	test.func(new Dog());
+	
+	
+testfuncnew Catl;	test.func(new Cat());
+}	}
+	
+ublic void fncAnimal animalfanimal.eat;	public void func(Animal animal){animal.eat();
+animal.shoutl;;	animal.shout();
+	
+ifnimal instanceof Dog{	if(animal instanceof Dog){
+Dog d = Doganimal	Dog d = (Dog)animal;
+d.watchDoor;	d.watchDoor();
+}	}
+}	}
+	
+}	}
+classAnimal	class Animal{
+	
+	
+public  void eat{	public void eat(){
+Systemout.println"";	System.out.println("");
+}	}
+	
+public oid shoutll{	public void shout(){
+System.out.printl""";	System.out.println("");
+}	}
+	
+	
+}	}
+class Dog extends Animal{	class Dog extends Animal{
+public void  eat{	public void eat(){
+System.out.println";	System.out.println("");
+}	}
+	
+public void shoutf	public void shout(){
+System.out.println"";	System.out.println("");
+	}
+	
+public void atchDoorl{	public void watchDoor(){
+Sysem..out.println""";	System.out.println("");
+}	}
+}	}
+class Cat extends Animal{	class Cat extends Animal{
+public void eat{	public void eat(){
+Sysemout..println"f;;	System.out.println("");
+}	}
+	
+public void shoutf{	public void shout(){
+System.out.println""";	System.out.println("");
+}	}
+}	}
+class Order{	class Order{
+	
+publicvoid methodObect obj	public void method(Object obj){
+	
+}	}
+}	}
+lass Driver{	class Driver{
+	
+public void doDataConnection conn{	public void doData(Connection conn){
+f	}
+	
+}	}

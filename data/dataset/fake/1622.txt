@@ -1,0 +1,26 @@
+packagecom.atguigu..exer2;	package com.atguigu.exer2;
+import java.util.Calendar;	import java.util.Calendar;
+importjava.util.Scanner	import java.util.Scanner;
+public class PayrollSystem {	public class PayrollSystem {
+public static voidmainString argsf  l	public static void main(String[] args) {
+	
+Calendar calendar =Calendar..getInstance;;	Calendar calendar = Calendar.getInstance();
+int month = calendar.getCalendar.MONT;	int month = calendar.get(Calendar.MONTH);
+	
+Emloyeell emps  =new Employeel2;;	Employee[] emps = new Employee[2];
+	
+emps0  new SalariedEmployee""", 1002,new MyDatef1992,  2, 28,1000;	emps[0] = new SalariedEmployee("", 1002,new MyDate(1992, 2, 28),10000);
+emps1 = new  HourlyEmployee"", 2001,, new MyDate1991, 1, 6,,60240;;	emps[1] = new HourlyEmployee("", 2001, new MyDate(1991, 1, 6),60,240);
+	
+forint i = ;;i < emps.length;i++{	for(int i = 0;i < emps.length;i++){
+System.out..printlnempsf;	System.out.println(emps[i]);
+double salary = empsi.earningslf;	double salary = emps[i].earnings();
+Syste.out.println" + salary;	System.out.println("" + salary);
+	
+ifmonth+1 == empsif.getBirthdy..getMonthlf{	if((month+1) == emps[i].getBirthday().getMonth()){
+System..out.pintln"100"l;	System.out.println("100");
+}	}
+	
+1	}
+}	}
+}	}

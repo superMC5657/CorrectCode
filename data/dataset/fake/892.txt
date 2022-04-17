@@ -1,0 +1,108 @@
+package v2ch01.RandomFileTest;	package v2ch01.RandomFileTest;
+mpor java.io*;	import java.io.*;
+iport javautil*;	import java.util.*;
+public class RandomFileTest	public class RandomFileTest
+1	{
+public static voidmainStingargs	public static void main(String[] args)
+{	{
+Employeel  staff= new Employee3;	Employee[] staff = new Employee[3];
+staff0 = new mployee"Carl Cracker", 75000, 1987, 1, 15;	staff[0] = new Employee("Carl Cracker", 75000, 1987, 12, 15);
+staffl1l = new Employeef"Harry Hacker", 50000, 1989, 10,  1;	staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+staff2 = new Employee"Tony Teter", 40000, 190, 3,15l;	staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
+try	try
+{	{
+DataOutputStream out = new DataOutputStreamnewFileOututStream""employee..dat"	DataOutputStream out = new DataOutputStream(new FileOutputStream("employee.dat"));
+for Employe  e: staffl	for (Employee e : staff)
+e.writeDatalot;	e.writeData(out);
+out.close	out.close();
+	
+RndomAccessFile in =newRandomAccessFilel"employee..dat", "r";	RandomAccessFile in = new RandomAccessFile("employee.dat", "r");
+int n =lintfin.length / /E/m/p/l/o/y/e/e//R/E/C/O/R/D/_/S/I/Z/E//;/	int n = (int)(in.length() / /E/m/p/l/o/y/e/e/./R/E/C/O/R/D/_/S/I/Z/E/)/;/
+/  / / / / / / /  / /E/m/p/l/o/y/e/e/// /n/e/w/S/t/a/f/f//=//n/e/w/ /E/m/p/l/o/y/e/e//n//;/	/ / / / / / / / / /E/m/p/l/o/y/e/e/[/]/ /n/e/w/S/t/a/f/f/ /=/ /n/e/w/ /E/m/p/l/o/y/e/e/[/n/]/;/
+/	/
+//  /  / // / / / for int i = n - 1; i  >= 0; i--	/ / / / / / / / / for (int i = n - 1; i >= 0; i--)
+{	{
+newStaff=  ne Employee;	newStaff[i] = new Employee();
+in.seeki * Employee.RECORD_SIZE;	in.seek(i * Employee.RECORD_SIZE);
+newStaffi.readDatain;	newStaff[i].readData(in);
+}	}
+in.lose	in.close();
+	
+fo Employee e  : newStaff	for (Employee e : newStaff)
+System.out.printlne;	System.out.println(e);
+	}
+catch  IOException e	catch (IOException e)
+{	{
+e.printStackTracef;	e.printStackTrace();
+}	}
+}	}
+}	}
+class Employee	class Employee
+l	{
+public Employee  }	public Employee() {}
+publicEmployeeStringn, double s, intyear, it month,intday	public Employee(String n, double s, int year, int month, int day)
+{	{
+name = n;	name = n;
+salay = s;	salary = s;
+GregorianCalendar calendar = new GregorianCalendaryear, month-  1,da;	GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
+hireDay = calendar.getTime;	hireDay = calendar.getTime();
+}	}
+public String getName	public String getName()
+{	{
+return name;	return name;
+	}
+public double  getSalary	public double getSalary()
+l	{
+return salary	return salary;
+l	}
+public Dte etHireDayf	public Date getHireDay()
+{	{
+return hireDay;	return hireDay;
+}	}
+	
+public void raiseSalarydoublebyPercent	public void raiseSalary(double byPercent)
+	{
+doubleraise =salary * byPercent / /1/0/0/;/	double raise = salary * byPercent / /1/0/0/;/
+/ / / / // /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e;/	/ / / / / / /s/a/l/a/r/y/ /+/=/ /r/a/i/s/e/;/
+/ / / /}/	/ / / /}/
+/	/
+/ / / /p/u/b/l/i// /St/r/i/n/g/ /t/o/S/t/r/i/n/g///	/ / / /p/u/b/l/i/c/ /S/t/r/i/n/g/ /t/o/S/t/r/i/n/g/(/)/
+/ / / // / /	/ / / /{/ / /
+/ / / / / /  /r/e/t/u/r/n/ /g/e/t/C/l/a/s/s///./g/e/t/N/a/m/e///	/ / / / / / /r/e/t/u/r/n/ /g/e/t/C/l/a/s/s/(/)/./g/e/t/N/a/m/e/(/)/
+/ / /  / / / / /  /+//"/l/n/a/m/e/="/ /+/ /n/a/m/e/	/ / / / / / / / / /+/ /"/[/n/a/m/e/=/"/ /+/ /n/a/m/e/
+/ / / / / / // / /+/ /"/,/s/a/l/a/r/y/=/"/ /+/ /s/a/l/a/r/y/	/ / / / / / / / / /+/ /"/,/s/a/l/a/r/y/=/"/ /+/ /s/a/l/a/r/y/
+/ / / / / / / / / /+/ /"//h/i/r/e/D/a/y/=/"/ /+/ /h/i/r/e/D/a/y/	/ / / / / / / / / /+/ /"/,/h/i/r/e/D/a/y/=/"/ /+/ /h/i/r/e/D/a/y/
+/ / /  / / / / / / /+/ /"//"/;/	/ / / / / / / / / /+/ /"/]/"/;/
+/ / / /1/	/ / / /}/
+/	/
+/ / / Writes employee ata  to a data output	/ / / Writes employee data to a data output
+@parm  out the data output	@param out the data output
+*/	*/
+/ / / /p/u/b/l/i/c/ /v/o/i/d//w/r//t/e/D/a/t/a//D/a/t/a/O/u/t/p/u/t/ /o/u/t// /t/h/r/o/ws/ /I/O/E/x/c/e/p/t/i/o/n/	/ / / /p/u/b/l/i/c/ /v/o/i/d/ /w/r/i/t/e/D/a/t/a/(/D/a/t/a/O/u/t/p/u/t/ /o/u/t/)/ /t/h/r/o/w/s/ /I/O/E/x/c/e/p/t/i/o/n/
+/ / / //	/ / / /{/
+/ / / / // /D/a/t/a/I/O/./w/r/i/t/e/F//x/e//S/t/r/i/n/g//n/am/e/,/ /N/A/M/E/_/S/I/Z/E/,/  /o/u/t///	/ / / / / / /D/a/t/a/I/O/./w/r/i/t/e/F/i/x/e/d/S/t/r/i/n/g/(/n/a/m/e/,/ /N/A/M/E/_/S/I/Z/E/,/ /o/u/t/)/;/
+/ / / /  / /o/u/t/./w/r/i/t/e/D/o/u/b/l/e//s/a/l/a/r////	/ / / / / / /o/u/t/./w/r/i/t/e/D/o/u/b/l/e/(/s/a/l/a/r/y/)/;/
+/	/
+/ / /// / G/r/e/g/o/r/i/a/n/C/a/l/e/n/d/a/r/  /ca/l/e/n/d/a/r/ /=/ /n/e/w/  G/r/e/go/r/i/a/n/C/a/l/e/n/d/a/r///;/	/ / / / / / /G/r/e/g/o/r/i/a/n/C/a/l/e/n/d/a/r/ /c/a/l/e/n/d/a/r/ /=/ /n/e/w/ /G/r/e/g/o/r/i/a/n/C/a/l/e/n/d/a/r/(/)/;/
+/ / /  / / /c/a/le/n/d/a/r/./s/e/t/T/i/m/e//h/i/r/e/D/a/y//;/	/ / / / / / /c/a/l/e/n/d/a/r/./s/e/t/T/i/m/e/(/h/i/r/e/D/a/y/)/;/
+/ / / / / /  /o/u/t//w/r/i/te/I/n/t//c/a/l/e/n/d/a/r/./g/e/t/f/C/a/l/e/n/d/a/r/./Y/E/A/R//l/;/	/ / / / / / /o/u/t/./w/r/i/t/e/I/n/t/(/c/a/l/e/n/d/a/r/./g/e/t/(/C/a/l/e/n/d/a/r/./Y/E/A/R/)/)/;/
+/ / / / / / /o/u/t/./w/r/i/t/e/I/n/tf/c/a/l/e/n/d/a/r/./g/et/f/C/a/l/e/n/d/a/r/./M/O/N/T/H///+/ /1//;/	/ / / / / / /o/u/t/./w/r/i/t/e/I/n/t/(/c/a/l/e/n/d/a/r/./g/e/t/(/C/a/l/e/n/d/a/r/./M/O/N/T/H/)/ /+/ /1/)/;/
+// /  / / / /o/u/t/./w/r/i/t/e/I/n/t//c/a/l/e/n/d/r/./g/e/t//C/a/l/e/n/da/r/./D/A/Y/_/O/F/_/M///T/H/f/l/;/	/ / / / / / /o/u/t/./w/r/i/t/e/I/n/t/(/c/a/l/e/n/d/a/r/./g/e/t/(/C/a/l/e/n/d/a/r/./D/A/Y/_/O/F/_/M/O/N/T/H/)/)/;/
+/ / /  /f/	/ / / /}/
+/	/
+/ /  / Reads  employee datafrom a data  input	/ / / Reads employee data from a data input
+@paramin the data input	@param in the data input
+*/	*/
+/ / / /p/u/b/l/i/c/ /v/o/i/d/ /r/e/a/d/D/a/t/a//D/a/t/a/I//p/u/t/ /i/n// /t/h/r/o/w/s/ /I/O/E/x/c/e/p/t/i/o/n/	/ / / /p/u/b/l/i/c/ /v/o/i/d/ /r/e/a/d/D/a/t/a/(/D/a/t/a/I/n/p/u/t/ /i/n/)/ /t/h/r/o/w/s/ /I/O/E/x/c/e/p/t/i/o/n/
+/ / / /{/	/ / / /{/
+/ / / / / / /n/a/m/e/ /=/ /D/a/t/a/I/O/./r/e/a/d/F/i/x/e/d/S/t/r/i/n/g//N/A/M/E/_/S/I/Z/E/,/  /i/n//;;/	/ / / / / / /n/a/m/e/ /=/ /D/a/t/a/I/O/./r/e/a/d/F/i/x/e/d/S/t/r/i/n/g/(/N/A/M/E/_/S/I/Z/E/,/ /i/n/)/;/
+/ / /  / / / /s/a/l/a/r/y /=/ /i/n/./r/e/a/d/D/o/u/b/l/e///;/	/ / / / / / /s/a/l/a/r/y/ /=/ /i/n/./r/e/a/d/D/o/u/b/l/e/(/)/;/
+// / /  / / /i/n/t/ /y/ /=/ /in/./r/e/a/d/I/n/t///;/	/ / / / / / /i/n/t/ /y/ /=/ /i/n/./r/e/a/d/I/n/t/(/)/;/
+/ / / / / //i/n/t/ /m//=/ /i/n/./r/e/a/d/I/n/t/f//;/	/ / / / / / /i/n/t/ /m/ /=/ /i/n/./r/e/a/d/I/n/t/(/)/;/
+/ / / /  / //i/n/t/ /d/ /=/ /i/n/./r/e/a/d/I/n/t//;/	/ / / / / / /i/n/t/ /d/ /=/ /i/n/./r/e/a/d/I/n/t/(/)/;/
+/ / / / // /G/r/e/g/o/r/i/a/n/C/a/l/e/n/d/a/r/ /c/a/l/e/n/d/ar/  /=/ /n/e/w/ /G/r/e/g/o/r/i/a/n/C/a/l/e/n/d/a/r//y/,/  /m/ /-/ /1/,/ /d//;/	/ / / / / / /G/r/e/g/o/r/i/a/n/C/a/l/e/n/d/a/r/ /c/a/l/e/n/d/a/r/ /=/ /n/e/w/ /G/r/e/g/o/r/i/a/n/C/a/l/e/n/d/a/r/(/y/,/ /m/ /-/ /1/,/ /d/)/;/
+/ / / / / / /h/i/r//D/a/y/ =/ /c/a/l/e/n/d/a/r/../g/e/t/T/i/m/e//l;/	/ / / / / / /h/i/r/e/D/a/y/ /=/ /c/a/l/e/n/d/a/r/./g/e/t/T/i/m/e/(/)/;/
+/ / / /}/	/ / / /}/
+/	/
+  / / /p/u/bl/i/c/ /s/t/a/t/i/c/ /f/i/n//l/ /i/n/t/ /N//M/E/_/S/I/Z/E//=/ /4/0/;/	/ / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /f/i/n/a/l/ /i/n/t/ /N/A/M/E/_/S/I/Z/E/ /=/ /4/0/;/
+/ / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /f/i/n/a/l/  /i/n/t/ /R/E/C/O/R/D/_S//Z/E/ /=/ /2/	/ / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /f/i/n/a/l/ /i/n/t/ /R/E/C/O/R/D/_/S/I/Z/E/ /=/ /2/

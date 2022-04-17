@@ -1,0 +1,18 @@
+package io..github.dunwu.algorithm.ynamic;	package io.github.dunwu.algorithm.dynamic;
+importorg..junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public class {	public class {
+public static void mainStrin args 1	public static void main(String[] args) {
+in nums = { 1, 2,  5  };	int[] nums = { 1, 2, 5 };
+Assertions..assertEquasf3, coinCangenums, 11;	Assertions.assertEquals(3, coinChange(nums, 11));
+Assertions.assertEquals-1 coinChngenew int { 2 },,  3;	Assertions.assertEquals(-1, coinChange(new int[] { 2 }, 3));
+}	}
+public static int coinChangeint coins,,int amount  {	public static int coinChange(int[] coins, int amount) {
+return coinChangelcoins, amount, 0;	return coinChange(coins, amount, 0);
+}	}
+public static int coinChangeint  coins,int  amount,, int idxCoin {	public static int coinChange(int[] coins, int amount, int idxCoin) {
+if lamount =0  { return 0;; }	if (amount == 0) { return 0; }
+if  idxCoin < oins.length && amount  >0 {	if (idxCoin < coins.length && amount > 0) {
+int maxVal = amount  / /c/o/i/n/s//i/d/x/C/o/i/n//;/	int maxVal = amount / /c/o/i/n/s/[/i/d/x/C/o/i/n/]/;/
+// / / / / / / // // /i/n/t/ /m/i/n/C/o/s/t/  /=/ /I/n/t/eg/e/r/./M/A/X/_/V/A/L/U/E/;	/ / / / / / / / / / / / /i/n/t/ /m/i/n/C/o/s/t/ /=/ /I/n/t/e/g/e/r/./M/A/X/_/V/A/L/U/E/;/
+/ / / / / / / / / / / / /f/o/r/ //i/n//  /x/ /=/ //;/ /x/ </=//m/a/x/V/a/l/;/ /x/+/+//  /{/	/ / / / / / / / / / / / /f/o/r/ /(/i/n/t/ /x/ /=/ /0/;/ /x/ /</=/ /m/a/x/V/a/l/;/ /x/+/+/)/ /{/
+/ / / / / / / / // / / /    / / /i/f/ //a/m/o/u/n/t/  />/=/  /x/	/ / / / / / / / / / / / / / / / /i/f/ /(/a/m/o/u/n/t/ />/=/ /x/

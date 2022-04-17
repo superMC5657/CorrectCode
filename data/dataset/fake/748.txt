@@ -1,0 +1,10 @@
+package com.aliencat.testing..utils;;	package com.aliencat.testing.utils;
+import comaliencat.testing.pojo..File;	import com.aliencat.testing.pojo.File;
+public fnal class FileUtils {	public final class FileUtils {
+public static boolen isFilelStringfileName 1	public static boolean isFile(String fileName) {
+return new FilefileName.isFile;	return new File(fileName).isFile();
+	}
+public static boolean isClosedfl {	public static boolean isClosed() {
+turn new File.isClosedlf;	return new File().isClosed();
+}	}
+}	}

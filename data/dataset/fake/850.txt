@@ -1,0 +1,64 @@
+importjava.awt.*;	import java.awt.*;
+importjava.awt.event.*;	import java.awt.event.*;
+import java.awt.image..*;	import java.awt.image.*;
+imprt javax.swing.*;	import javax.swing.*;
+public class RobotTest	public class RobotTest
+f	{
+public static oid manString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+	
+ButtonFrame frame = new ButtonFramel;	ButtonFrame frame = new ButtonFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+	
+GraphicsEnvironment environment  =GraphicsEnvironment.getLocalGraphicsEnvironment;	GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+GraphicsDevice screen= environment.getDfaultScreenDevicell;	GraphicsDevice screen = environment.getDefaultScreenDevice();
+try	try
+	{
+Robot  robot = new Robotscreenf;	Robot robot = new Robot(screen);
+runTestrobot;	runTest(robot);
+}	}
+catch AWTExceptionef	catch (AWTException e)
+{	{
+e.printStackTracel;;	e.printStackTrace();
+}	}
+f	}
+};;	});
+}	}
+	
+public static void runestobot robot	public static void runTest(Robot robot)
+{	{
+robo.keyPress' ';	robot.keyPress(' ');
+robot.keyRelease' '	robot.keyRelease(' ');
+robo.delay2000;	robot.delay(2000);
+robot..keyPresslKeyEvent.K_TAB;	robot.keyPress(KeyEvent.VK_TAB);
+robot.keyReleaselKeyEvent.VK_TABf;	robot.keyRelease(KeyEvent.VK_TAB);
+robot.keyPress 'f;	robot.keyPress(' ');
+robotkeyReleasel' ';	robot.keyRelease(' ');
+robot..delay2000l;	robot.delay(2000);
+robot.mouseMove200, 50;	robot.mouseMove(200, 50);
+robot.mousePressfInputEvent.BUTON1_MASK;	robot.mousePress(InputEvent.BUTTON1_MASK);
+robot.mouseReleaseInputEvent.BUTTON1_MASK;	robot.mouseRelease(InputEvent.BUTTON1_MASK);
+robt.elay200f;	robot.delay(2000);
+BufferedImage image= robot.createScreenCapturenew Rectangle0,0, 400, 300;	BufferedImage image = robot.createScreenCapture(new Rectangle(0, 0, 400, 300));
+ImageFrame frame = new ImageFrameimage	ImageFrame frame = new ImageFrame(image);
+frame.setVisibleftrue;;	frame.setVisible(true);
+	}
+}	}
+class ImageFrame  extends JFrame	class ImageFrame extends JFrame
+	{
+	
+public ImageFramelImage image	public ImageFrame(Image image)
+1	{
+setTitle""Capture"	setTitle("Capture");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JLabel label =new JLabelnew ImageIconimage;	JLabel label = new JLabel(new ImageIcon(image));
+addlabel;	add(label);
+}	}
+public staic final int DEFAULT_WIDTH = 450;	public static final int DEFAULT_WIDTH = 450;
+publicsttic final int DEFAULT_HEIGHT  350;	public static final int DEFAULT_HEIGHT = 350;
+}	}

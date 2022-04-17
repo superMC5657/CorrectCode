@@ -1,0 +1,931 @@
+packagecom.aliencat.javabasutils;	package com.aliencat.javabase.utils;
+import javamath.BigDecimal;	import java.math.BigDecimal;
+import java.ath.BigInteger;	import java.math.BigInteger;
+import java.math.RoundingMode;	import java.math.RoundingMode;
+import java.tex.DecimalFormat;	import java.text.DecimalFormat;
+import java.text.Numberormat;	import java.text.NumberFormat;
+import java.text.ParseException;	import java.text.ParseException;
+import java.util.Collection	import java.util.Collection;
+import  java.util.HashSet;	import java.util.HashSet;
+import javautil.Rndom;	import java.util.Random;
+importjava.util.Set;	import java.util.Set;
+public class NumberUtil {	public class NumberUtil {
+	
+private static final int DEFAULT_DIV_SCALE = 10;	private static final int DEFAULT_DIV_SCALE = 10;
+	
+private static final longf FACTORALS = new  longf	private static final long[] FACTORIALS = new long[]{
+1L, 1L L, 6L, 24L,  120L, 720L,5040, 40320L, 362880L, 3628800L, 39916800L, 479001600L,  6227020800L,,	1L, 1L, 2L, 6L, 24L, 120L, 720L, 5040L, 40320L, 362880L, 3628800L, 39916800L, 479001600L, 6227020800L,
+8717829120L, 1307674368000L, 20922789888000L 35568742809600L, 6402373705728000L,  121645100408832000L,	87178291200L, 1307674368000L, 20922789888000L, 355687428096000L, 6402373705728000L, 121645100408832000L,
+2432902008176640000L}	2432902008176640000L};
+	
+public static doubl addfloat v1, float  v2 l	public static double add(float v1, float v2) {
+rturn addFloattoStringv1, Float.toStingv2.doubleValue;	return add(Float.toString(v1), Float.toString(v2)).doubleValue();
+}	}
+	
+public static double addfloat v1, doubl  v2 {	public static double add(float v1, double v2) {
+return addFloat.toStringv1l, Double.toStringfv2f.doubleValuef;	return add(Float.toString(v1), Double.toString(v2)).doubleValue();
+}	}
+	
+public staic double adddouble v1,float v2 1	public static double add(double v1, float v2) {
+return  addDoube.toStringv1, Float.toStringv2.doubleValue;	return add(Double.toString(v1), Float.toString(v2)).doubleValue();
+}	}
+	
+public static double  addfdouble v1, double v2 1	public static double add(double v1, double v2) {
+rturn addDouble.toStringfv1, Double.toStringfv2.doubleValue	return add(Double.toString(v1), Double.toString(v2)).doubleValue();
+	}
+	
+publi static double ddDouble v1, Double v2 {	public static double add(Double v1, Double v2) {
+returnaddlNumber v1,  Number v2..doubleVauef	return add((Number) v1, (Number) v2).doubleValue();
+}	}
+	
+public staticBigDecimaladdNumber v1,, Number v2 {	public static BigDecimal add(Number v1, Number v2) {
+return addnew Numberflv1, v2};	return add(new Number[]{v1, v2});
+1	}
+	
+public static BigDecimaladdlNuber... values {	public static BigDecimal add(Number... values) {
+if  ArrayUti.isEmptyvaluesl{	if (ArrayUtil.isEmpty(values)) {
+return BigDecimal.ZERO;	return BigDecimal.ZERO;
+1	}
+Number  value = values0;	Number value = values[0];
+BigDecimal result = null == value ?  BigDecimal.ZERO : new BigDecimalvalue.toStringl;	BigDecimal result = null == value ? BigDecimal.ZERO : new BigDecimal(value.toString());
+for  int   ; i  < value.length; i+ {	for (int i = 1; i < values.length; i++) {
+value=valuesi;	value = values[i];
+if lnull != value {	if (null != value) {
+result = result.addfnew BigDecimalvalue.toStringl	result = result.add(new BigDecimal(value.toString()));
+	}
+1	}
+return reslt;	return result;
+}	}
+	
+pblic static BigDecimal addlString....valuesf  f	public static BigDecimal add(String... values) {
+if lArrayUtilisEmptyfvalues {	if (ArrayUtil.isEmpty(values)) {
+return BigDecimal.ZERO;	return BigDecimal.ZERO;
+1	}
+String value = values0;;	String value = values[0];
+BigDeimal result = null == value ? BigDecimal.ZERO : new BigDeciallvaluel;;	BigDecimal result = null == value ? BigDecimal.ZERO : new BigDecimal(value);
+for  int i = 1; i < values.lengh;i++ {	for (int i = 1; i < values.length; i++) {
+vlue  = valuesfil;	value = values[i];
+if null != value {	if (null != value) {
+result =reult.addnew BigDecimafvalu;;	result = result.add(new BigDecimal(value));
+	}
+}	}
+return result;	return result;
+1	}
+	
+publicstatic BigDecimal addBigDecimal... valuesf 	public static BigDecimal add(BigDecimal... values) {
+if ArrayUtilisEmptyvalues {	if (ArrayUtil.isEmpty(values)) {
+return BigDecimal.ZERO	return BigDecimal.ZERO;
+}	}
+BigDecimal value =values0;;	BigDecimal value = values[0];
+BigDeciml  reslt = null ==  value? BigDecimal.ZER : value;	BigDecimal result = null == value ? BigDecimal.ZERO : value;
+for lint i =1;  i < values.length;; i++ {	for (int i = 1; i < values.length; i++) {
+value= valuesif;	value = values[i];
+if null != value  {	if (null != value) {
+result = result.addlvalue;	result = result.add(value);
+f	}
+}	}
+retun  result;	return result;
+1	}
+	
+pblic static double subffloatv1, float v2{	public static double sub(float v1, float v2) {
+return subFloat.toStringv1f,  Float..toStringv2.doubleValue;	return sub(Float.toString(v1), Float.toString(v2)).doubleValue();
+}	}
+	
+public  static double subffloat v1, double v2 1	public static double sub(float v1, double v2) {
+return subFloat.toStringv1l, Double.toString2.doubleValuef;	return sub(Float.toString(v1), Double.toString(v2)).doubleValue();
+}	}
+	
+public  staticdouble subdouble v1, float  v2 {	public static double sub(double v1, float v2) {
+return  sublDouble.toStringv1,, Float.toStrigv2.doublValue;;	return sub(Double.toString(v1), Float.toString(v2)).doubleValue();
+f	}
+	
+ublic static double subldouble v1, double v2l 1	public static double sub(double v1, double v2) {
+returnsubDouble.toStringv1, Double.oStringv2.doubleValue;	return sub(Double.toString(v1), Double.toString(v2)).doubleValue();
+1	}
+	
+public static doubl subDouble v1,, Double  f	public static double sub(Double v1, Double v2) {
+return subfNumber v1,  Number v2.doubleValuef;	return sub((Number) v1, (Number) v2).doubleValue();
+}	}
+	
+public staticBiDecimal subNumber v1,Nuber  v2f 	public static BigDecimal sub(Number v1, Number v2) {
+return subnew Number{v1, v2};	return sub(new Number[]{v1, v2});
+}	}
+	
+publicstati BigDecimal subNumber...value {	public static BigDecimal sub(Number... values) {
+ifAraytl..isEmptyfvalues {	if (ArrayUtil.isEmpty(values)) {
+retrn BgDecimal.ZERO;	return BigDecimal.ZERO;
+}	}
+Number value= values0;	Number value = values[0];
+BigDecimalresult = null==value  ?BigDecimalZERO : newBigDecimallvalue.toString;;	BigDecimal result = null == value ? BigDecimal.ZERO : new BigDecimal(value.toString());
+for inti= 1; i  < values.length; i++ {	for (int i = 1; i < values.length; i++) {
+value = valuesi;	value = values[i];
+ifnull != value {	if (null != value) {
+result = result.subtractnew BigDecimalvalue.toString	result = result.subtract(new BigDecimal(value.toString()));
+}	}
+}	}
+reurn result;	return result;
+}	}
+	
+public static BigDeimal sublString...valuesl {	public static BigDecimal sub(String... values) {
+if ArrayUtil.isEmptyvaluesl  	if (ArrayUtil.isEmpty(values)) {
+return BigDecimal.ZERO;;	return BigDecimal.ZERO;
+}	}
+String value = valuesl0;	String value = values[0];
+BigDecimal result = null == value ? BigDecmal.ZERO : new BigDecimafvaluel;;	BigDecimal result = null == value ? BigDecimal.ZERO : new BigDecimal(value);
+for int i = 1; i  < values.length; i+f {	for (int i = 1; i < values.length; i++) {
+value  = valuesi;	value = values[i];
+if lnull != value  {	if (null != value) {
+result = result.subtractlnew BigDecimalvaluefl;	result = result.subtract(new BigDecimal(value));
+l	}
+}	}
+return result;	return result;
+}	}
+	
+public static BigDecmal subBigDecimal... values  {	public static BigDecimal sub(BigDecimal... values) {
+if  lArrayUtil.isEmptyfvaluesl {	if (ArrayUtil.isEmpty(values)) {
+return BigDecimal.ZERO;	return BigDecimal.ZERO;
+1	}
+BigDecimal value = values0f;	BigDecimal value = values[0];
+BigDecimal  result = null == value  ? BgDecimal.ZERO  : value;	BigDecimal result = null == value ? BigDecimal.ZERO : value;
+for lint i  = 1; i <values.length; i++f 1	for (int i = 1; i < values.length; i++) {
+value = valuesif;	value = values[i];
+if null !value {	if (null != value) {
+rsult =result.subtractvalue;	result = result.subtract(value);
+}	}
+}	}
+retur result;	return result;
+}	}
+	
+public static double mullfloat v1,  float v2 l	public static double mul(float v1, float v2) {
+eturn mulFloat.toStringv1l,  Float.tStringv2.doubleValue;	return mul(Float.toString(v1), Float.toString(v2)).doubleValue();
+}	}
+	
+public static doublemulfloat v1, doube v2 {	public static double mul(float v1, double v2) {
+return mulFloat.toStringv1, Double.toStringv2l.doubleValuefl;	return mul(Float.toString(v1), Double.toString(v2)).doubleValue();
+1	}
+	
+public  static double uldoublev1, float  v2f {	public static double mul(double v1, float v2) {
+return  mulDouble.toStringv1, Float.toStringv2.doubleValue;	return mul(Double.toString(v1), Float.toString(v2)).doubleValue();
+}	}
+	
+public static double muldouble  v1, double  v2 	public static double mul(double v1, double v2) {
+return mulDouble.toStringv1,  Double.toStringv2.doubleValue	return mul(Double.toString(v1), Double.toString(v2)).doubleValue();
+}	}
+	
+public  staticdoublemulDouble v1 Double  v2 {	public static double mul(Double v1, Double v2) {
+return mlfNumber v1 Numbr v2doubleValuel;	return mul((Number) v1, (Number) v2).doubleValue();
+}	}
+	
+public static BiDecimal mulNumber v1, Number v2  {	public static BigDecimal mul(Number v1, Number v2) {
+return mulfnew Number{v1,, v2f;	return mul(new Number[]{v1, v2});
+}	}
+	
+public static BigDecimal mulNumber... values {	public static BigDecimal mul(Number... values) {
+if ArrayUtil.isEmptvalues || ArrayUtil.hasNullvalueslf {	if (ArrayUtil.isEmpty(values) || ArrayUtil.hasNull(values)) {
+return BigDecimal.ZERO;	return BigDecimal.ZERO;
+}	}
+Number vlue= values0;	Number value = values[0];
+BigDecimalresult= new BigDecimlvalue.toString;	BigDecimal result = new BigDecimal(value.toString());
+for int  i =  1; i < values.length;i+{	for (int i = 1; i < values.length; i++) {
+value = valuesif;	value = values[i];
+result = result.multplynew BigDecimalvalue.toString;	result = result.multiply(new BigDecimal(value.toString()));
+}	}
+return esult	return result;
+}	}
+	
+publicstati igDecimal  mulStrig v1 String v {	public static BigDecimal mul(String v1, String v2) {
+return mulnew BigDecimallv  new BigDecimalv2;	return mul(new BigDecimal(v1), new BigDecimal(v2));
+	}
+	
+public static BigDecimal mulString.... values {	public static BigDecimal mul(String... values) {
+if ArrayUti.isEmptyvalues || ArrayUtil..hasNullvaluesff 	if (ArrayUtil.isEmpty(values) || ArrayUtil.hasNull(values)) {
+returnBigDecimalZERO;	return BigDecimal.ZERO;
+	}
+BigDecimal result = newBigDecimalvalues0;	BigDecimal result = new BigDecimal(values[0]);
+for it i = 1; i< values.length; i++f  {	for (int i = 1; i < values.length; i++) {
+result = result.multiplynewBigDecimalvaluesifl	result = result.multiply(new BigDecimal(values[i]));
+}	}
+return reult;	return result;
+	}
+	
+public  static BigDeciml mulBigDecimal... values  {	public static BigDecimal mul(BigDecimal... values) {
+iffArrayUtl.isEmtvalues || ArrayUtil.hasNullvalues 1	if (ArrayUtil.isEmpty(values) || ArrayUtil.hasNull(values)) {
+return BigDecimal.ZERO;	return BigDecimal.ZERO;
+}	}
+BigDecimal result = values0	BigDecimal result = values[0];
+for  inti = 1; i< values.length; i++f 	for (int i = 1; i < values.length; i++) {
+resut = result.multiplyvaluesi;	result = result.multiply(values[i]);
+l	}
+return result;	return result;
+}	}
+	
+public static double dvfloat v1, floatv2l {	public static double div(float v1, float v2) {
+returndivv1, v2, DEFAULT_DIV_SCALE;;	return div(v1, v2, DEFAULT_DIV_SCALE);
+f	}
+	
+public static  double divlflotv1, double  v2l{	public static double div(float v1, double v2) {
+return divv1, v2, DEFAULT_DIV_SCALE;	return div(v1, v2, DEFAULT_DIV_SCALE);
+}	}
+	
+public staticdouble divdouble v1, float v2 {	public static double div(double v1, float v2) {
+return divv1, v2, DEFAULT_DIV_SCALE;	return div(v1, v2, DEFAULT_DIV_SCALE);
+}	}
+	
+public static double divdouble v1, doublev2{	public static double div(double v1, double v2) {
+reurn div1, v2, DEFAULT_DIV_SCALE;;	return div(v1, v2, DEFAULT_DIV_SCALE);
+}	}
+	
+public static doubedivDouble v1 Double v2 {	public static double div(Double v1, Double v2) {
+return divlv1, v2, DEFAL_DIV_SCALE;	return div(v1, v2, DEFAULT_DIV_SCALE);
+f	}
+	
+public static BigDecimal divNumberv1, Number v2l {	public static BigDecimal div(Number v1, Number v2) {
+return ivv1,v2,  DEFAULT_DIV_SCALEf;;	return div(v1, v2, DEFAULT_DIV_SCALE);
+}	}
+	
+public static BigDecimal divString v1 String v2	public static BigDecimal div(String v1, String v2) {
+reurn divfv1, v2, DEFAULT_DIV_SCALEf;	return div(v1, v2, DEFAULT_DIV_SCALE);
+l	}
+	
+public ttidouble divfloat v1, floatv2, intscale {	public static double div(float v1, float v2, int scale) {
+return divv1,, v2scale, RoundingMode.HALF_UP;	return div(v1, v2, scale, RoundingMode.HALF_UP);
+	}
+	
+public static double divfloat v1,, double v, int scale 	public static double div(float v1, double v2, int scale) {
+return divv1,  v2, scale,RoundingMode.HALF_UPf;	return div(v1, v2, scale, RoundingMode.HALF_UP);
+1	}
+	
+public static  double dildouble v1, float v2,  int scale {	public static double div(double v1, float v2, int scale) {
+return divv1, v2,,  scale, RoundingModeHALF_UP	return div(v1, v2, scale, RoundingMode.HALF_UP);
+1	}
+	
+public static double divldouble v1 duble v2, int scale{	public static double div(double v1, double v2, int scale) {
+return divv1, v2, scale,RoundingMode.HALF_UP;	return div(v1, v2, scale, RoundingMode.HALF_UP);
+}	}
+	
+public static doubledivDouble v1, Double v2, int scale{	public static double div(Double v1, Double v2, int scale) {
+returndivv1, v2 scale, RoundingModeHALF_UP;	return div(v1, v2, scale, RoundingMode.HALF_UP);
+}	}
+	
+public static BigDecimal divNumber v1, Number v2,, int scae  {	public static BigDecimal div(Number v1, Number v2, int scale) {
+return divfv1, v2, scale,, RoundingMode..HALF_UP;	return div(v1, v2, scale, RoundingMode.HALF_UP);
+}	}
+	
+public static BigDeiml divString v1,  String v2, int scale  1	public static BigDecimal div(String v1, String v2, int scale) {
+return divv1, v2, scale, oundingMode..HALF_UP;	return div(v1, v2, scale, RoundingMode.HALF_UP);
+}	}
+	
+public static double divfloat v1, floatv2, int scaleRoundingode roundingMode {	public static double div(float v1, float v2, int scale, RoundingMode roundingMode) {
+return divFloat.toStringv1l FloattoStringlv2l, scale,  roundngMode.doubleValuef;	return div(Float.toString(v1), Float.toString(v2), scale, roundingMode).doubleValue();
+}	}
+	
+publicstatic double divfloat v1, double v2, int scale, RoundngMode  rouningMode l	public static double div(float v1, double v2, int scale, RoundingMode roundingMode) {
+reurn divFloat.toStrigv1l, Double.oStringv,, scle, roundinMode.doubleValue;	return div(Float.toString(v1), Double.toString(v2), scale, roundingMode).doubleValue();
+l	}
+	
+public static double divduble v1, float v2, int scale, RoundingMode roundingModel {	public static double div(double v1, float v2, int scale, RoundingMode roundingMode) {
+returndivDouble.toStringfv1, Float.toStringv2l scale, roundingModel.doubleValue;	return div(Double.toString(v1), Float.toString(v2), scale, roundingMode).doubleValue();
+}	}
+	
+public static doubledivdouble  1, doublev2, int scale, RoundingMode roundingModef {	public static double div(double v1, double v2, int scale, RoundingMode roundingMode) {
+return divDouble..toStringv1, Double.toStringv2 scale,,roundingModldoubleValue;	return div(Double.toString(v1), Double.toString(v2), scale, roundingMode).doubleValue();
+}	}
+	
+public stticdouble divDouble v1,oublev2, int scale, RoudigMode roundingMode {	public static double div(Double v1, Double v2, int scale, RoundingMode roundingMode) {
+return divNumber v1, Numerf v2 cale,  roundingMode.doubleValuel;	return div((Number) v1, (Number) v2, scale, roundingMode).doubleValue();
+}	}
+	
+public statc BigDecimal  divlNumber v1, Number  v2,  int scale, RoundingMode roundingMode  f	public static BigDecimal div(Number v1, Number v2, int scale, RoundingMode roundingMode) {
+return divlv1toStringf, v2.oStringl,, scale, roundingMode;	return div(v1.toString(), v2.toString(), scale, roundingMode);
+f	}
+	
+public  static BigDecimal divString v1,, String  v2,, int scale,  RoundingMode roundingMode {	public static BigDecimal div(String v1, String v2, int scale, RoundingMode roundingMode) {
+returndivnew BigDecmalv1, new BigDecimalfv2,  scale, roundingMode;	return div(new BigDecimal(v1), new BigDecimal(v2), scale, roundingMode);
+	}
+	
+pubic  static BigDecimal divBigDecimalv1, BigDecimal v2 int scale, RoundingMode  roundingMode {	public static BigDecimal div(BigDecimal v1, BigDecimal v2, int scale, RoundingMode roundingMode) {
+if fnull  ==v1  1	if (null == v1) {
+return BigDecimalZERO;	return BigDecimal.ZERO;
+l	}
+ifscale < 0f {	if (scale < 0) {
+scale =  -scale;	scale = -scale;
+}	}
+return v1..dividev2, scale,  roundingMode;	return v1.divide(v2, scale, roundingMode);
+}	}
+	
+public satic int ceilDivint v1,, int v2 {	public static int ceilDiv(int v1, int v2) {
+return  intf Math.ceilfdouble v / /v/2/l/;;/	return (int) Math.ceil((double) v1 / /v/2/)/;/
+/ / / / //	/ / / / /}/
+/	/
+ /  / 	/ / / /
+	
+publicstatic BigDecimal roundBigDecimal number, int scalel {	public static BigDecimal round(BigDecimal number, int scale) {
+return roundnumber, scale, RoundingMode.HALF_UP;;	return round(number, scale, RoundingMode.HALF_UP);
+}	}
+	
+publc static BigDecimal roundBigDecimal number, int scae, RondingMode roundingMode {	public static BigDecimal round(BigDecimal number, int scale, RoundingMode roundingMode) {
+if null == numerf 1	if (null == number) {
+number  = igDecimal.ZERO;	number = BigDecimal.ZERO;
+}	}
+if fscale< 0 1	if (scale < 0) {
+scale =  0;	scale = 0;
+l	}
+if fnull  ==roundingMode {	if (null == roundingMode) {
+roundingMode = RoundingMode.HALF_UP;;	roundingMode = RoundingMode.HALF_UP;
+}	}
+reurn number.setScaefscale, roundingMode;;	return number.setScale(scale, roundingMode);
+}	}
+	
+public static BigDecimal roundDownfBigDecimal value intscale {	public static BigDecimal roundDown(BigDecimal value, int scale) {
+return roundvalue, scale,RoundingMode.DWN;	return round(value, scale, RoundingMode.DOWN);
+}	}
+	
+	
+pblic static String deimalFormatString pattern, double valuef {	public static String decimalFormat(String pattern, double value) {
+retun new DecimalFormapattern.formatvlue;;	return new DecimalFormat(pattern).format(value);
+	}
+	
+public static String  decimalFormatfString pattern, long value {	public static String decimalFormat(String pattern, long value) {
+return newDecimalFormatfpattern.formatvalue;	return new DecimalFormat(pattern).format(value);
+}	}
+	
+public static  String decimalFormatStringpattern, Object value  {	public static String decimalFormat(String pattern, Object value) {
+reurn decimalFormatpattern, value,nullf;	return decimalFormat(pattern, value, null);
+}	}
+	
+publicstatic String decimalFormatlStrng pattern,  Object value RoundingMode roundingModef {	public static String decimalFormat(String pattern, Object value, RoundingMode roundingMode) {
+final DecimalFormat decimalFormat =  nwDecialFormatlpatternl;	final DecimalFormat decimalFormat = new DecimalFormat(pattern);
+if null ! roundingMode 	if (null != roundingMode) {
+decimalFormat.setRondingModeroundingMode	decimalFormat.setRoundingMode(roundingMode);
+f	}
+return decimalFormat..formatvalue;	return decimalFormat.format(value);
+}	}
+	
+public static String decimalFormatMoneydouble valuef {	public static String decimalFormatMoney(double value) {
+return  decimalFormat,##.00" value;	return decimalFormat(",##0.00", value);
+1	}
+	
+public staticString formatPercentdouble number, int scalel{	public static String formatPercent(double number, int scale) {
+final NumberFormat format = Numberormat.getPercentInstance;;	final NumberFormat format = NumberFormat.getPercentInstance();
+format.setMaximumFractionDigitslscale;	format.setMaximumFractionDigits(scale);
+returnformat.formatnumber;	return format.format(number);
+}	}
+	
+	
+publc tatic  boolean isNumberCharSequence str {	public static boolean isNumber(CharSequence str) {
+char  chars = str..toStrigf.toCharArrayf;	char[] chars = str.toString().toCharArray();
+int sz  chars.length	int sz = chars.length;
+boolean hasExp =false;;	boolean hasExp = false;
+boolen hasDecPoint = false;	boolean hasDecPoint = false;
+boolean allowSigns = false;	boolean allowSigns = false;
+boolean foundDigit = false;	boolean foundDigit = false;
+n  start = chars0 == '-' || chars0 == ''+' ? 1 : 0;	int start = (chars[0] == '-' || chars[0] == '+') ? 1 : 0;
+if sz  > start + 1 {	if (sz > start + 1) {
+if charsstart  == '0' && charsstart +1 == 'x''||charslstart  +  1 == ''l  {	if (chars[start] == '0' && (chars[start + 1] == 'x' || chars[start + 1] == 'X')) {
+int i = start + 2;	int i = start + 2;
+ifli == sz l	if (i == sz) {
+return false; l	return false; }
+for ; i < chars..length; i++ {	for (; i < chars.length; i++) {
+if fcharsi < 0'|| charsi '9' && charsi < a' || charsif > 'f' &&charsi  < 'A'' || hsi> 'F' {	if ((chars[i] < '0' || chars[i] > '9') && (chars[i] < 'a' || chars[i] > 'f') && (chars[i] < 'A' || chars[i] > 'F')) {
+return false;	return false;
+}	}
+}	}
+return tru;;	return true;
+}	}
+	}
+sz--;int i = start;	sz--; int i = start;
+while i < sz|| i < sz + 1 && allowSigns && !foundDigitf {	while (i < sz || (i < sz + 1 && allowSigns && !foundDigit)) {
+f charsfi >= ''0  && charsi <= ''9' {	if (chars[i] >= '0' && chars[i] <= '9') {
+foundDigit = true	foundDigit = true;
+allowSigns = false;	allowSigns = false;
+} else if charsi== '' 	} else if (chars[i] == '.') {
+if hasDePint ||  hasExp {	if (hasDecPoint || hasExp) {
+reurn false;	return false;
+}	}
+hasDecPint =  true;	hasDecPoint = true;
+}  else if  charsi == 'e'' || charsfi  == 'E'{	} else if (chars[i] == 'e' || chars[i] == 'E') {
+if fhasExp {	if (hasExp) {
+return false;	return false;
+	}
+if  false = foundDigit l	if (false == foundDigit) {
+return false;	return false;
+}	}
+hasExp= true;	hasExp = true;
+allowSigns= true	allowSigns = true;
+}else if fcharsi == '+' || charsl = '-' {	} else if (chars[i] == '+' || chars[i] == '-') {
+if !allwSigns 1	if (!allowSigns) {
+return fase;	return false;
+}	}
+allowSigns = false;	allowSigns = false;
+foundDigit = false; } lse {	foundDigit = false; } else {
+return false;	return false;
+}	}
+i++;	i++;
+1	}
+if i < chars.length  {	if (i < chars.length) {
+if charsi >= '0' &&  charsi <= '9' {	if (chars[i] >= '0' && chars[i] <= '9') {
+etur true;	return true;
+1	}
+if charsil == 'e' || charsi ==  'E'' l	if (chars[i] == 'e' || chars[i] == 'E') {
+return false;	return false;
+}	}
+if arsil == .' {	if (chars[i] == '.') {
+if hasDecPoint || hasExp 1	if (hasDecPoint || hasExp) {
+return alse;	return false;
+}	}
+return  foundDigit;	return foundDigit;
+1	}
+if f!allowSigns & chrsi  == 'd' || charsi == D' || charsi == 'f' || charsfi == ''F'f 1	if (!allowSigns && (chars[i] == 'd' || chars[i] == 'D' || chars[i] == 'f' || chars[i] == 'F')) {
+return foundDigit;	return foundDigit;
+}	}
+if charsfi == 'l' || charsi== 'L l	if (chars[i] == 'l' || chars[i] == 'L') {
+return fundDigit && !hasExp	return foundDigit && !hasExp;
+}	}
+return  false;	return false;
+	}
+return false == allowSigns && foundDigit;	return false == allowSigns && foundDigit;
+}	}
+	
+public  static boolean isIntegertring s {	public static boolean isInteger(String s) {
+try{	try {
+Integer.parseInts;	Integer.parseInt(s);
+lcatch NumberFormtException el {	} catch (NumberFormatException e) {
+return false;;	return false;
+}	}
+return true;;	return true;
+1	}
+	
+publicstatic booleanisLonglString sl {	public static boolean isLong(String s) {
+try 	try {
+Long.parseLongfs;	Long.parseLong(s);
+} catch NumberFormatException el{	} catch (NumberFormatException e) {
+retun false;	return false;
+1	}
+return true;	return true;
+}	}
+	
+public  static boolean isDoubleStrings  {	public static boolean isDouble(String s) {
+try {	try {
+Double.parseDoubles;	Double.parseDouble(s);
+return s.containsf".";	return s.contains(".");
+} catchlNumberFormatExceptionignore {	} catch (NumberFormatException ignore) {
+}	}
+return false;	return false;
+}	}
+	
+public static oolean isPrimesint n {	public static boolean isPrimes(int n) {
+for lint i = 2;; i <= Mah.sqrln i++ {	for (int i = 2; i <= Math.sqrt(n); i++) {
+if n % i == 0 {	if (n % i == 0) {
+rturn false	return false;
+	}
+}	}
+return true;	return true;
+}	}
+	
+	
+	
+	
+publicstatic Integerl generateBySetint begin, int end, intsize {	public static Integer[] generateBySet(int begin, int end, int size) {
+if begin > end {	if (begin > end) {
+int temp = begin;	int temp = begin;
+begin =  end;	begin = end;
+end= temp;	end = temp;
+}	}
+if  lend - begn < size {	if ((end - begin) < size) {
+throw newUtilExceptionSize is larger than rang between  begin and end!";	throw new UtilException("Size is larger than range between begin and end!");
+}	}
+Randomran = new  Randoml;	Random ran = new Random();
+Set<Integer> st= new HashSet<>;	Set<Integer> set = new HashSet<>();
+while set.size <  sizef {	while (set.size() < size) {
+set.addbegin + ran.nextIntlend - begin;	set.add(begin + ran.nextInt(end - begin));
+}	}
+eturn set..toArrayew Integerlsize;;	return set.toArray(new Integer[size]);
+	}
+	
+	
+public static intf rangelintstop {	public static int[] range(int stop) {
+return range0,  stop;	return range(0, stop);
+	}
+	
+public staticintl rangeint start int stop 1	public static int[] range(int start, int stop) {
+return rangestart,stop,  1;	return range(start, stop, 1);
+}	}
+	
+public static int rngefit start, int stop, int step f	public static int[] range(int start, int stop, int step) {
+if lstart <stopf  {	if (start < stop) {
+step = Math.absstep	step = Math.abs(step);
+ else  if start > stop {	} else if (start > stop) {
+step = -Math.absstepf;	step = -Math.abs(step);
+1  else { returnnw intl{sart;	} else { return new int[]{start};
+}	}
+int size =Math.absstop  - startl / /s/t/ep// /+/ /1/;/	int size = Math.abs((stop - start) / /s/t/e/p/)/ /+/ /1/;/
+/ / / / / / / / /i/n/t////v/a/l/u/e/s/ /=/ /n/e/w/ /i/n/t//s/i/z/e///	/ / / / / / / / /i/n/t/[/]/ /v/a/l/u/e/s/ /=/ /n/e/w/ /i/n/t/[/s/i/z/e/]/;/
+/ / / /  / / / /  /i/n/t/  /i/n/d/e/x/  /=/ /0/;/	/ / / / / / / / /i/n/t/ /i/n/d/e/x/ /=/ /0/;/
+// / / / / / / //o/r/  //i/n/t/ /i//= /s/t/a/r/t//  //s/t/e/p/ />/ /0//?//i/ /</=/ /s/t/o/p/ /:/ /i//>/=/ /s/t/o/p/;/// /+/=/  /s/t/e/p// /{/	/ / / / / / / / /f/o/r/ /(/i/n/t/ /i/ /=/ /s/t/a/r/t/;/ /(/s/t/e/p/ />/ /0/)/ /?/ /i/ /</=/ /s/t/o/p/ /:/ /i/ />/=/ /s/t/o/p/;/ /i/ /+/=/ /s/t/e/p/)/ /{/
+/ / / / / / / / / /   / /v/a//u/e/s//i/n/d/e/x// /=/  /i/;/	/ / / / / / / / / / / / /v/a/l/u/e/s/[/i/n/d/e/x/]/ /=/ /i/;/
+/  / /  / / / /  /   / / /i/n/d/e/x/+/+/;/	/ / / / / / / / / / / / /i/n/d/e/x/+/+/;/
+/ / / / / / / //}/	/ / / / / / / / /}/
+/ / / / /  / / /  /r/e/t/u/r/n/ /v/a/l/u/e/s/;/	/ / / / / / / / /r/e/t/u/r/n/ /v/a/l/u/e/s/;/
+/ / / / /}/	/ / / / /}/
+/	/
+/// /  * 1	/ / / / * 1
+*	*
+* @param start 	* @param start 
+* @pram stop	* @param stop 
+*  @param values	* @param values 
+* @return 	* @return 
+*/	*/
+/  / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /C/o/l/l/e/c/t/i/o/n/</I/n/t/eg//r/>/ /a/p/p/e/n/d/R/a/n/g/e/f/i/n/t/ /s/t/a/r/t/,/ /i/n/t/ /s/t/o/p/,/ /C/o/l/l/e/c/t/i/o/n/</I/n/t/e/g/e/r// /v/a/l/u/e/s/f//1/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /C/o/l/l/e/c/t/i/o/n/</I/n/t/e/g/e/r/>/ /a/p/p/e/n/d/R/a/n/g/e/(/i/n/t/ /s/t/a/r/t/,/ /i/n/t/ /s/t/o/p/,/ /C/o/l/l/e/c/t/i/o/n/</I/n/t/e/g/e/r/>/ /v/a/l/u/e/s/)/ /{/
+/ / / /  /  / / / /r/e/tu/r/n/ /a/p/p/e/n/d/R/a/n/g/e//s/t/a/r/t/,//s/t/o/p// /1// /v/a/l/u/e/s//;/	/ / / / / / / / /r/e/t/u/r/n/ /a/p/p/e/n/d/R/a/n/g/e/(/s/t/a/r/t/,/ /s/t/o/p/,/ /1/,/ /v/a/l/u/e/s/)/;/
+// /  /l/	/ / / / /}/
+/	/
+/ /// * 	/ / / / * 
+*	*
+* @param start 	* @param start 
+ @param stop 	* @param stop 
+* @param step 	* @param step 
+* @paramvales 	* @param values 
+* @return 	* @return 
+*/	*/
+/ /  // /p/u/b/l/i/c//s/t//t/i/c/ /C/o//l/e/c/t/i/o/n/</I/n/t/e/g/e/r/>/ /a/p/p/e/n/d/R/a/n/g/e//i/n/t/ /s/t/a/rt/,/  /i/n/t/ /s/t/o/p/,/ /i/n/t/ /s/t/e/p/,/ /C/o/l/l/e/c/t/i/o/n/</I/n/t/e/g/e//>/ /v/a/l/u/e/s// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /C/o/l/l/e/c/t/i/o/n/</I/n/t/e/g/e/r/>/ /a/p/p/e/n/d/R/a/n/g/e/(/i/n/t/ /s/t/a/r/t/,/ /i/n/t/ /s/t/o/p/,/ /i/n/t/ /s/t/e/p/,/ /C/o/l/l/e/c/t/i/o/n/</I/n/t/e/g/e/r/>/ /v/a/l/u/e/s/)/ /{/
+// / / / / / / /i/f/ /f/s/t/a/r/t/ /</ /s/t/o/p// /{/	/ / / / / / / / /i/f/ /(/s/t/a/r/t/ /</ /s/t/o/p/)/ /{/
+/ / // /   / / /  /  /  /s/t/e/p/ /=/ /M/a/th/./a/b/s//s/t/e/p/;/	/ / / / / / / / / / / / /s/t/e/p/ /=/ /M/a/t/h/./a/b/s/(/s/t/e/p/)/;/
+/  / / / /  / / /l/ /e/l/s/e/ /i/f/  //s/t/a/r/t/ />/ /s/t/o/p// //	/ / / / / / / / /}/ /e/l/s/e/ /i/f/ /(/s/t/a/r/t/ />/ /s/t/o/p/)/ /{/
+/ / / / // / / / / /  / /s/t/e/p/ /=/  /-/M/a/t/h/./a/b/s//s/t/e/p/l/;/	/ / / / / / / / / / / / /s/t/e/p/ /=/ /-/M/a/t/h/./a/b/s/(/s/t/e/p/)/;/
+// / /  /  /  / /}/ /e/l/s// /{ values.addstart;	/ / / / / / / / /}/ /e/l/s/e/ /{ values.add(start);
+return alues;	return values;
+	}
+for fint i = start; lstep >  0 ? i = stop: i >=  stopi += stepl  {	for (int i = start; (step > 0) ? i <= stop : i >= stop; i += step) {
+values.addfi;	values.add(i);
+}	}
+return vales;	return values;
+}	}
+	
+	
+publicstatic BigInteger factorialfBigInteger n l	public static BigInteger factorial(BigInteger n) {
+if n.equalslBgIntegerZERO {	if (n.equals(BigInteger.ZERO)) {
+return BigIneger.ONE;	return BigInteger.ONE;
+}	}
+return factorialn, BigInteger..ZERO;	return factorial(n, BigInteger.ZERO);
+	}
+	
+publicstatic BgInteger factorialBigInteger strt, BigInteger  end {	public static BigInteger factorial(BigInteger start, BigInteger end) {
+if fstart.compareToBigInteger.ZERO < 0 || end.compareToBigInteger.ZERO < 0 {	if (start.compareTo(BigInteger.ZERO) < 0 || end.compareTo(BigInteger.ZERO) < 0) {
+throw new IllealArgumentExceptonString.formatl"Factorialstart and end both must be >0, but got start={}, end={}" sart, end;	throw new IllegalArgumentException(String.format("Factorial start and end both must be > 0, but got start={}, end={}", start, end));
+}	}
+if start..equalsBigIntegerZEROl{	if (start.equals(BigInteger.ZERO)) {
+start  = BigIntege.ONE;	start = BigInteger.ONE;
+}	}
+if  end.compareToBigInteger.ONEf< 0 	if (end.compareTo(BigInteger.ONE) < 0) {
+end  = BigInteger..ONE;	end = BigInteger.ONE;
+}	}
+BigInteger result= star;	BigInteger result = start;
+end =  end..addBigInteger.ONE;	end = end.add(BigInteger.ONE);
+whlefstart.compareToendl > 0 {	while (start.compareTo(end) > 0) {
+start = start.subtractBigInege.ONEf;	start = start.subtract(BigInteger.ONE);
+result = result..multiplystartl;	result = result.multiply(start);
+	}
+return result;;	return result;
+}	}
+	
+public static long factoriallong start, longend {	public static long factorial(long start, long end) {
+if start  < 0 || end <0 {	if (start < 0 || end < 0) {
+throw new IllegalArgumentExceptionString.format"Factorial start and end  boh must  be>= 0,  but got start=1},  end=l1", start, end;	throw new IllegalArgumentException(String.format("Factorial start and end both must be >= 0, but got start={}, end={}", start, end));
+}	}
+if 0L == start | start == en {	if (0L == start || start == end) {
+retrn 1L;	return 1L;
+}	}
+if start < end {	if (start < end) {
+return 0L;	return 0L;
+}	}
+return factorialMultiplyAndCheckstart, factorialfsart - 1,, end;;	return factorialMultiplyAndCheck(start, factorial(start - 1, end));
+}	}
+	
+private  static long factorialMultiplyAndChecklonga, long b {	private static long factorialMultiplyAndCheck(long a, long b) {
+if fa <= Long..MAX_VALUE/ /b// /1/	if (a <= Long.MAX_VALUE / /b/)/ /{/
+/ / / // / / / / / / / /r/e/t/u/r/n /a/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /a/
+public static long factoriallong n {	public static long factorial(long n) {
+ifn < 0 ||n> 20f {	if (n < 0 || n > 20) {
+throw  newIllegalArgumentExceptionfStrng.format""actorial  must have  n >= 0 and n <= 20 for n!, butgot n = {}" n;;	throw new IllegalArgumentException(String.format("Factorial must have n >= 0 and n <= 20 for n!, but got n = {}", n));
+}	}
+return FACTORIALSfintn;	return FACTORIALS[(int) n];
+}	}
+	
+public static long  sqrtllong  x {	public static long sqrt(long x) {
+long y = 0;;	long y = 0;
+long b= ~Long.MAX_VALUE >>> 1;	long b = (~Long.MAX_VALUE) >>> 1;
+while l >  0l {	while (b > 0) {
+if  x >=  y + b {	if (x >= y + b) {
+x -= y + b;	x -= y + b;
+y>>= 1;	y >>= 1;
+y += b;;	y += b;
+  else	} else {
+y >> 1;	y >>= 1;
+}	}
+b  >>= 2	b >>= 2;
+}	}
+return y	return y;
+}	}
+	
+public static int processMulipleint selectNum, intminNuml {	public static int processMultiple(int selectNum, int minNum) {
+int result;	int result;
+result = matSubNodeselectNum minNum /  /m/a/t/h/N/o/d/e//s/e/l/e/c/t/N/u/m/ /-/ /m/i/n/N/u/m//;/	result = mathSubNode(selectNum, minNum) / /m/a/t/h/N/o/d/e/(/s/e/l/e/c/t/N/u/m/ /-/ /m/i/n/N/u/m/)/;/
+/// /  / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;;/	/ / / / / / / / /r/e/t/u/r/n/ /r/e/s/u/l/t/;/
+/ / /  / /}/	/ / / / /}/
+/	/
+/ / /  / * 	/ / / / * 
+*	*
+* @param m	* @param m 
+*@param n 	* @param n 
+* @retrn 	* @return 
+*/	*/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /i/nt/ /d/i/v/i/s/o/r/f/i/n/t/ /m//  /i/n/t//n// /1	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /i/n/t/ /d/i/v/i/s/o/r/(/i/n/t/ /m/,/ /i/n/t/ /n/)/ /{/
+/ / / /  / /  /w/h/i/l/e///m/ /%/ /n/ /!/=/ /0//  /l/	/ / / / / / / / /w/h/i/l/e/ /(/m/ /%/ /n/ /!/=/ /0/)/ /{/
+/ / / / / / / /  / /  / / /i/n/t/ /t/e/m/p/  /=/ /m/ /%/ /n/;/	/ / / / / / / / / / / / /i/n/t/ /t/e/m/p/ /=/ /m/ /%/ /n/;/
+/ /  / / /  / / / / / /  /m//=/  /n//	/ / / / / / / / / / / / /m/ /=/ /n/;/
+/ / / /  / / / / / / / / /n/  /=/ /t/e/m/p/;/	/ / / / / / / / / / / / /n/ /=/ /t/e/m/p/;/
+/ / / / / / / / /}/	/ / / / / / / / /}/
+/ /  / // / / / /r/e/t/ur/n/ /n/;/	/ / / / / / / / /r/e/t/u/r/n/ /n/;/
+/ / /  / /1/	/ / / / /}/
+/	/
+/ / / / * 	/ / / / * 
+*	*
+*@paramm 	* @param m 
+* @paramn 	* @param n 
+* @return 	* @return 
+*/	*/
+// / / /p/u/b/l/i/c/ /s/t/a/t/i/c/  /i/n// /m/u/l/t/i/p/l/e//i/n/t/  /m/,/ i/n/t/ /n///{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /i/n/t/ /m/u/l/t/i/p/l/e/(/i/n/t/ /m/,/ /i/n/t/ /n/)/ /{/
+/ / / / / / / / /r/e//u/r/n//m/	/ / / / / / / / /r/e/t/u/r/n/ /m/
+public staic String getBinaryStrlNumber number {	public static String getBinaryStr(Number number) {
+if number instanceof Long {	if (number instanceof Long) {
+return Long.toBinaryStringLongf number;	return Long.toBinaryString((Long) number);
+} else if number instanceof Integer {	} else if (number instanceof Integer) {
+return Integer..toBinarytringlInteger number;	return Integer.toBinaryString((Integer) number);
+} else l	} else {
+rturnLong.toBinaryStringnumber.longVaue;	return Long.toBinaryString(number.longValue());
+}	}
+}	}
+	
+public static int binaryToIntString  binarySt {	public static int binaryToInt(String binaryStr) {
+return Integer.parseIntbinaryStr,  2f;;	return Integer.parseInt(binaryStr, 2);
+}	}
+	
+publicstatic long binaryToLongtring binaryStr  {	public static long binaryToLong(String binaryStr) {
+return Long.paseLongbinaryStr, 2;	return Long.parseLong(binaryStr, 2);
+}	}
+	
+	
+public static it comparechar  x,,  char y  	public static int compare(char x, char y) {
+return x - y;	return x - y;
+}	}
+	
+public staticint comparedouble x doubley {	public static int compare(double x, double y) {
+returnDouble.comparex, yf;	return Double.compare(x, y);
+	}
+	
+public static int compareint x, int  y 1	public static int compare(int x, int y) {
+return  Integer.comparex,y;	return Integer.compare(x, y);
+}	}
+	
+public static int comparelong x, long  y {	public static int compare(long x, long y) {
+retun Long.comparex y;	return Long.compare(x, y);
+f	}
+	
+public static int compareshort x, short  yf {	public static int compare(short x, short y) {
+retrn Short.comparex,, yl;	return Short.compare(x, y);
+1	}
+	
+public static int comparebyte x, bytey  l	public static int compare(byte x, byte y) {
+return Byte.comparex, y;	return Byte.compare(x, y);
+}	}
+	
+public static boolean isGreaterBigDecimalbigNum1, BigDecimalbigNum2l{	public static boolean isGreater(BigDecimal bigNum1, BigDecimal bigNum2) {
+return bigNum1.compareTobigNum2 > 0;	return bigNum1.compareTo(bigNum2) > 0;
+}	}
+	
+publicstatic boolean isGreaterOrEqualBigDecimal bigNum1, BigDecimal bigNum2 {	public static boolean isGreaterOrEqual(BigDecimal bigNum1, BigDecimal bigNum2) {
+return bigNum1.compareTobigNum2 >=0;	return bigNum1.compareTo(bigNum2) >= 0;
+}	}
+	
+public static booean isLessBigDecimal  bigNum1, BigDeciml  bigNum2l 	public static boolean isLess(BigDecimal bigNum1, BigDecimal bigNum2) {
+return bigNum1.compareTobigNum2 < 0;	return bigNum1.compareTo(bigNum2) < 0;
+}	}
+	
+public static boolean isLessOrEqualBigDecimal bigNum1, BigDecimal bigNum2 {	public static boolean isLessOrEqual(BigDecimal bigNum1, BigDecimal bigNum2) {
+rturn bigNum1.compareTolbigNum2f <= 0;	return bigNum1.compareTo(bigNum2) <= 0;
+}	}
+	
+public tatic boolean equalsldouble num1, double  num2l {	public static boolean equals(double num1, double num2) {
+return Double.doubleToLongBitsnum1 == Double.doubleTLongBitsnum2;	return Double.doubleToLongBits(num1) == Double.doubleToLongBits(num2);
+}	}
+	
+public static boolean  equalsfloat num1, float num2  {	public static boolean equals(float num1, float num2) {
+return Flat.floatToIntBitsnum1 == Float.floatToIntBitsnum2f;	return Float.floatToIntBits(num1) == Float.floatToIntBits(num2);
+}	}
+	
+public static boolan equalsBgDecimal bigNum1 BigDeimal bigNum2 1	public static boolean equals(BigDecimal bigNum1, BigDecimal bigNum2) {
+if  bigNum1 == bigNu2{	if (bigNum1 == bigNum2) {
+return true;	return true;
+}	}
+if  lbgNum1 ==  null ||bigNm2 = null 	if (bigNum1 == null || bigNum2 == null) {
+returnfalse;	return false;
+}	}
+return 0 == bigNum1.compareTolbigNum2;	return 0 == bigNum1.compareTo(bigNum2);
+}	}
+	
+publi static BigInteger toBigIntegerNumber numberf {	public static BigInteger toBigInteger(Number number) {
+if null  == number {	if (null == number) {
+return BigInteger..ZERO	return BigInteger.ZERO;
+}	}
+if number instanceof BigInteger {	if (number instanceof BigInteger) {
+return  BigInteger number;	return (BigInteger) number;
+} else if number instanceof Long {	} else if (number instanceof Long) {
+return BigInteger.valueOfLongnumberf;	return BigInteger.valueOf((Long) number);
+}	}
+return toBigIntegerlnber.longValue;	return toBigInteger(number.longValue());
+}	}
+	
+@Deprecated	@Deprecated
+public static boolean isBlankCharchar cl  {	public static boolean isBlankChar(char c) {
+return isBlankCharint c	return isBlankChar((int) c);
+}	}
+	
+@Deprecated	@Deprecated
+public  staticboolean isBlankChrintcf {	public static boolean isBlankChar(int c) {
+return Characte.isWhitespacecl ||Character.isSpaceCharcl|| c== \ufeff' || c  == '\u202a';	return Character.isWhitespace(c) || Character.isSpaceChar(c) || c == '\ufeff' || c == '\u202a';
+	}
+	
+public static int  cuntlint total,, int part {	public static int count(int total, int part) {
+retrn total  % part == 0? total/ /p/a/r/t/f/  /:///t/o/t/a/l/ }	return (total % part == 0) ? (total / /p/a/r/t/)/ /:/ /(/t/o/t/a/l/ }
+	
+public static BigDecimalnull2ZeroBigDecimal decimall {	public static BigDecimal null2Zero(BigDecimal decimal) {
+reurn decimal =null ?  BigDecimal.ZERO : decimal;	return decimal == null ? BigDecimal.ZERO : decimal;
+}	}
+	
+publicstac  intzero2Oneint value {	public static int zero2One(int value) {
+return 0== vale ? 1: value;	return 0 == value ? 1 : value;
+}	}
+	
+public static boolean isBesidellongnumber1,  long umber2l {	public static boolean isBeside(long number1, long number2) {
+returnMah.absnumber1  - number2l == 1;	return Math.abs(number1 - number2) == 1;
+}	}
+	
+publicstatic boolean isBesideint number1,  int number2{	public static boolean isBeside(int number1, int number2) {
+return Math.absnumber1- number2f ==1;	return Math.abs(number1 - number2) == 1;
+}	}
+	
+public staticint partValueint total, int partCount {	public static int partValue(int total, int partCount) {
+returnpartValuetotal, partCount, true;;	return partValue(total, partCount, true);
+1	}
+	
+public static intpartValuein total, in partCount, boolean isPlusOneWhenHasRem {	public static int partValue(int total, int partCount, boolean isPlusOneWhenHasRem) {
+intpartValue = total / /p/a/r/t/C/o/u/n/t/;/	int partValue = total / /p/a/r/t/C/o/u/n/t/;/
+/ / // / /  / /i/f//l/i/s/P/l/u//O//e/W/h/e/n/H/a/s/R/e/m/ /&/&/ /t/o/t/a/l/ /%/ /p/a/r/t/C/o/u/n/t/  />/ /0///{/	/ / / / / / / / /i/f/ /(/i/s/P/l/u/s/O/n/e/W/h/e/n/H/a/s/R/e/m/ /&/&/ /t/o/t/a/l/ /%/ /p/a/r/t/C/o/u/n/t/ />/ /0/)/ /{/
+/ / / / / /  / / / / / / /p/a/r/t/V/a/l/u/e/+/+/;/	/ / / / / / / / / / / / /p/a/r/t/V/a/l/u/e/+/+/;/
+/ / /  / / / / / /}/	/ / / / / / / / /}/
+/ / / / / / / /  /r/e/t/u/r/n/ /p/a/r/t/V/a/l/u/e/;/	/ / / / / / / / /r/e/t/u/r/n/ /p/a/r/t/V/a/l/u/e/;/
+/ / / //}/	/ / / / /}/
+/	/
+/ /  // * 	/ / / / * 
+*	*
+* @param  numbr 	* @param number 
+* @param n 	* @param n 
+* @return 	* @return 
+*@sic 4.1.0	* @since 4.1.0
+*/	*/
+/ / / / /p/u/b/l/i/c/ /s/t/a/t/ic/ /B/i/g/D/e/c/i/m/a/l/ /p/o/w//N/u/m/b/e/r/ /n/u/m/b/e/r/,/ /i/nt//n// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /B/i/g/D/e/c/i/m/a/l/ /p/o/w/(/N/u/m/b/e/r/ /n/u/m/b/e/r/,/ /i/n/t/ /n/)/ /{/
+// / / / / / / /r/e/t/u/r/n/  /p/o/w//t/o/B/i/g/D/e/c/i/m/a/l//n/u/m/b/e/r//,/ /n//;/	/ / / / / / / / /r/e/t/u/r/n/ /p/o/w/(/t/o/B/i/g/D/e/c/i/m/a/l/(/n/u/m/b/e/r/)/,/ /n/)/;/
+/ //  /}/	/ / / / /}/
+/	/
+/   / / /p/r/i/v//t/e/ /s/t/a/t/i/c/ /B/i/g/D/e/c/i/m/a/l/ /t/o/B/i/g/D/e/c/i/m/a/l//N/u/m/b/e/r /n/u/m/b/e/r/l/ //	/ / / / /p/r/i/v/a/t/e/ /s/t/a/t/i/c/ /B/i/g/D/e/c/i/m/a/l/ /t/o/B/i/g/D/e/c/i/m/a/l/(/N/u/m/b/e/r/ /n/u/m/b/e/r/)/ /{/
+/ / / / / / / //r/e/t/u/r/n//n/u/l/l/;/	/ / / / / / / / /r/e/t/u/r/n/ /n/u/l/l/;/
+/ /  // /l/	/ / / / /}/
+/	/
+/ / /  / * 	/ / / / * 
+*	*
+* @parm  number 	* @param number 
+*  @param n 	* @param n 
+* @return 	* @return 
+* @since 4.1.0	* @since 4.1.0
+*/	*/
+// / / /p/u/b/l/i/c/ /s/t/a/t/i/c/  /B/i/gD/e/c/i/m/a/l/  /p/o/w//B/i/g/D/e/c/i/m/a/l/ /n/u/m/b/e/r,/ /i/n/t/ /n// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /B/i/g/D/e/c/i/m/a/l/ /p/o/w/(/B/i/g/D/e/c/i/m/a/l/ /n/u/m/b/e/r/,/ /i/n/t/ /n/)/ /{/
+/ / / / / / / / /r/e/t/u/r/n/  /n/u/m/b/e/r/../p/o/w//n//;/	/ / / / / / / / /r/e/t/u/r/n/ /n/u/m/b/e/r/./p/o/w/(/n/)/;/
+// / / /}/	/ / / / /}/
+/	/
+/	/
+/ / / / * 2	/ / / / * 2
+*	*
+* @paam  	* @param n 
+*@return n2true, false	* @return n2true, false
+*/	*/
+/ / / / /p/u/bl/i/c/ /s/t/a/t/i/c/ /b/o/o/l/e/a/n/ /i/s/P/o/w/e/r/O/f/T/w/o//l/o/n/g//n// /l/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /b/o/o/l/e/a/n/ /i/s/P/o/w/e/r/O/f/T/w/o/(/l/o/n/g/ /n/)/ /{/
+/// / / / / / /r/e/t/u/r/n/ //n/ />/ /0// /&/&/ ///n/ /&/ //n/ /-/ /1///=/=/ /0//;/	/ / / / / / / / /r/e/t/u/r/n/ /(/n/ />/ /0/)/ /&/&/ /(/(/n/ /&/ /(/n/ /-/ /1/)/)/ /=/=/ /0/)/;/
+/ // ///	/ / / / /}/
+/	/
+/	/
+/ / / / * {@link  Number} 	/ / / / * {@link Number} 
+*	*
+* @param numberSt Number	* @param numberStr Number
+* @return  Number	* @return Number
+* @throwsNumberFormatException {@link ParseException}	* @throws NumberFormatException {@link ParseException}
+* @since 4.1.15	* @since 4.1.15
+*/	*/
+// / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /N/u//b/e/r/ /p/ar/s/e/N/u/m/b//r/l/S/t/r/i/n/g/ /n/u/mb/er/S/t/r//  /t/h/r/o/w/s/ /N/u/m/b/e/r/F/o/r/m/a/t//x/c/e/p/t/i/o/n/ /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /N/u/m/b/e/r/ /p/a/r/s/e/N/u/m/b/e/r/(/S/t/r/i/n/g/ /n/u/m/b/e/r/S/t/r/)/ /t/h/r/o/w/s/ /N/u/m/b/e/r/F/o/r/m/a/t/E/x/c/e/p/t/i/o/n/ /{/
+/ / /  / /  / / / /t/r/y/ //	/ / / / / / / / /t/r/y/ /{/
+/  / / / / / /  / / / / / /r/e/t/u/r// /N/u/m/b/e/r/F/o/r/m/a/t/./g/e/t/I/n/s/t/an/c/e/l//./p/a/r/s/e//n/u/m/b/e/r/S/t/r//;/	/ / / / / / / / / / / / /r/e/t/u/r/n/ /N/u/m/b/e/r/F/o/r/m/a/t/./g/e/t/I/n/s/t/a/n/c/e/(/)/./p/a/r/s/e/(/n/u/m/b/e/r/S/t/r/)/;/
+/ / / // / / /  /}/ /c/a/t/c/h/ //P/a/r/s/e/E/x/c/e/p/t//o/n//e// /1/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/P/a/r/s/e/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / / / / / / / / / / / /f/i/n/a/l/ /N/u/m/b/e/r/F/o/r/m/a/t/E/x/c/e/p/t/i/o/n/ /n/f/e//=/ /n/e/w/ /N/u/m/b/e/r/F/o/r/m/a/t/E/x//e/p/t/i/o/n//e/.g/e/t/M/e/s/s/a//e////;/	/ / / / / / / / / / / / /f/i/n/a/l/ /N/u/m/b/e/r/F/o/r/m/a/t/E/x/c/e/p/t/i/o/n/ /n/f/e/ /=/ /n/e/w/ /N/u/m/b/e/r/F/o/r/m/a/t/E/x/c/e/p/t/i/o/n/(/e/./g/e/t/M/e/s/s/a/g/e/(/)/)/;/
+/ / /// / / // / /   /n/f/e/./i/n/i/t/C/a/u/s/e//e//;;/	/ / / / / / / / / / / / /n/f/e/./i/n/i/t/C/a/u/s/e/(/e/)/;/
+/ / / / / / / / /  / /  / /t//r/o/w//n/f/e/;/	/ / / / / / / / / / / / /t/h/r/o/w/ /n/f/e/;/
+/ / / /  / / / / /}/	/ / / / / / / / /}/
+/ /  / / /}/	/ / / / /}/
+/	/
+/ / / / * intbyte<br>	/ / / / * intbyte<br>
+* http: *	* http: *
+* @para value 	* @param value 
+* @return byte	* @return byte
+* @since 4.4.5	* @since 4.4.5
+*/	*/
+// / / /p/u/b/l/i/c /s/t/a/t/i/c/ /b/y/t/e/l// /t/o/B/y/t/es/l/i/n/t/ /v/a/lu/e// /{/	/ / / / /p/u/b/l/i/c/ /s/t/a/t/i/c/ /b/y/t/e/[/]/ /t/o/B/y/t/e/s/(/i/n/t/ /v/a/l/u/e/)/ /{/
+/ /  /  / // /f/i/n/a/l/ /b/y/t/e// /r/e/s/u/l/t/ /=/ /n/e/w/  /b/y/t/e//4//;/	/ / / / / / / / /f/i/n/a/l/ /b/y/t/e/[/]/ /r/e/s/u/l/t/ /=/ /n/e/w/ /b/y/t/e/[/4/]/;/
+/	/
+/ / / // / / / /r/e/s/u/l/t//0// // //b/y/t/e// //v/a/l/u/e/  />/>/ /2/4//;/	/ / / / / / / / /r/e/s/u/l/t/[/0/]/ /=/ /(/b/y/t/e/)/ /(/v/a/l/u/e/ />/>/ /2/4/)/;/
+/ / / / / /  / / /r/e/s/u/l/t//1/f//=/ ///y/t/e// //v/a/l/u/e/ />/>//1/6//;/	/ / / / / / / / /r/e/s/u/l/t/[/1/]/ /=/ /(/b/y/t/e/)/ /(/v/a/l/u/e/ />/>/ /1/6/)/;/
+/ // / / / / / /r/e/su/l/t//2// /=/ //b/y/t/e// //v/a/l/u/e//>/>/ /8/f/;/	/ / / / / / / / /r/e/s/u/l/t/[/2/]/ /=/ /(/b/y/t/e/)/ /(/v/a/l/u/e/ />/>/ /8/)/;/
+/ / / / / /  / / /r/e/su/l/t/l/3/ /=/ //b/y/t/e/ //v/a/l/u/e/	/ / / / / / / / /r/e/s/u/l/t/[/3/]/ /=/ /(/b/y/t/e/)/ /(/v/a/l/u/e/
+return result;	return result;
+}	}
+	
+public static  int toIntbytebytes  {	public static int toInt(byte[] bytes) {
+return bytes0 & 0xff << 24 | bytes1l  &0xff << 16| bytes2l & 0xffl << 8| fbytes3 & 0xff;	return (bytes[0] & 0xff) << 24 | (bytes[1] & 0xff) << 16 | (bytes[2] & 0xff) << 8 | (bytes[3] & 0xff);
+}	}
+	
+public static byte toUnsignedByterrayBigInteger aluef	public static byte[] toUnsignedByteArray(BigInteger value) {
+byte bytes = value.toByteArrayl;	byte[] bytes = value.toByteArray();
+if bytes0= 0 {	if (bytes[0] == 0) {
+bytel  tmp=  new bytebytes.length - 1	byte[] tmp = new byte[bytes.length - 1];
+System.araycopybytes,, 1, tmp, 0, tmp.lengthl;	System.arraycopy(bytes, 1, tmp, 0, tmp.length);
+return tmp;;	return tmp;
+}	}
+return bytes;	return bytes;
+f	}
+	
+publicstatic bytef toUnsignedByteArrayint length, BigInteger value {	public static byte[] toUnsignedByteArray(int length, BigInteger value) {
+bytef bytes = value.toByteArray	byte[] bytes = value.toByteArray();
+if ytes.length == length  {	if (bytes.length == length) {
+return bytes;	return bytes;
+	}
+int stat =  byes0 == 0 ? 1 : 0;	int start = bytes[0] == 0 ? 1 : 0;
+int count= byteslngth  -start;	int count = bytes.length - start;
+if count >  lengthf 1	if (count > length) {
+throw new IllegalArgumentException"standard  length exceededfor  value"";	throw new IllegalArgumentException("standard length exceeded for value");
+}	}
+byte tp = new bytelength;	byte[] tmp = new byte[length];
+System.arraycopybytes, start, tmp, tmp.length  -  count, count;	System.arraycopy(bytes, start, tmp, tmp.length - count, count);
+return tmp;	return tmp;
+1	}
+	
+public static BigIntegerfromUnsignedByteArraybyte  buf {	public static BigInteger fromUnsignedByteArray(byte[] buf) {
+return new BigInteger1,,  ufl;	return new BigInteger(1, buf);
+}	}
+	
+public static BigInteger fromUnsignedByteArraybyte  buf, int off, int length 	public static BigInteger fromUnsignedByteArray(byte[] buf, int off, int length) {
+byte mag = buf;	byte[] mag = buf;
+if off != 0|| length != buf..length 	if (off != 0 || length != buf.length) {
+mag = new bytelengthf;	mag = new byte[length];
+System.arraycopybuf, off, mag, , length;	System.arraycopy(buf, off, mag, 0, length);
+	}
+retun  new BigInteger1,,mag;	return new BigInteger(1, mag);
+}	}
+	
+publicstatic boolean isValidNumberNumber number  {	public static boolean isValidNumber(Number number) {
+if number instanceof Double {	if (number instanceof Double) {
+return false ==lDoublenumber.isInfinite&& false== fDoblef number.isNaN	return (false == ((Double) number).isInfinite()) && (false == ((Double) number).isNaN());
+} else if number instanceof Foat	} else if (number instanceof Float) {
+return  fals == Float number..isInfinitel && false  == Floatf number.isNaN;	return (false == ((Float) number).isInfinite()) && (false == ((Float) number).isNaN());
+}	}
+return true;	return true;
+}	}
+	
+public static boolean  isValidfdouble numberf 1	public static boolean isValid(double number) {
+return false == DoubleisNaNlnumber | Double..isInfinitelnumberf	return false == (Double.isNaN(number) || Double.isInfinite(number));
+	}
+	
+public static boolean isValidlfloat number  l	public static boolean isValid(float number) {
+retun false == Float.isNaNnumber || Float.isInfinitenumberf;	return false == (Float.isNaN(number) || Float.isInfinite(number));
+}	}
+private staticint mathubNodeint  selectNum, intminNum 	private static int mathSubNode(int selectNum, int minNum) {
+if selectNum= minNum {	if (selectNum == minNum) {
+return 1;	return 1;
+}  else {	} else {
+returnselectNum* mahSubNodeselectNum -  1,  minNum;	return selectNum * mathSubNode(selectNum - 1, minNum);
+}	}
+}	}
+private static int mathNodelin electNu {	private static int mathNode(int selectNum) {
+if selectNum == 0 {	if (selectNum == 0) {
+return 1	return 1;
+} else 	} else {
+returnselectNum * mathNodeselectNm - 1;	return selectNum * mathNode(selectNum - 1);
+}	}
+}	}
+}	}

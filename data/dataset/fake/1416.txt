@@ -1,0 +1,29 @@
+package niechaper.ch04_permutation_and_subst;	package ninechapter.ch04_permutation_and_subset;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java.util.List;	import java.util.List;
+public class Question03PermuttionsIIf	public class Question03PermutationsII {
+publicList<List<Ineger>> permteint nums  {	public List<List<Integer>> permute(int[] nums) {
+List<List<Integer>> result  = new Arayist<>l;	List<List<Integer>> result = new ArrayList<>();
+boolean visied  = new booleannums.length;	boolean[] visited = new boolean[nums.length];
+dfsfresult newArrayList<>,, nums, visited;;	dfs(result, new ArrayList<>(), nums, visited);
+return result;	return result;
+}	}
+private  void dfsList<List<Integer>> result,	private void dfs(List<List<Integer>> result,
+ArrayList<Integer>  items,	ArrayList<Integer> items,
+int num,  booleanfl visitedl  1	int[] nums, boolean[] visited) {
+if itemssize== nums..length {	if (items.size() == nums.length) {
+result.addnew  ArrayList<>itemsf;;	result.add(new ArrayList<>(items));
+f	}
+fr int i = 0; i < nums.length;;i++ {	for (int i = 0; i < nums.length; i++) {
+if visitedli ||	if (visited[i] ||
+i != 0 && numsi == numsli -  1 && !visitedi - 1 {	i != 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+continue;	continue;
+}	}
+visitedif= true;	visited[i] = true;
+items.addfnumsif;	items.add(nums[i]);
+dfsresult, items,  nums,  visitd;	dfs(result, items, nums, visited);
+items.removeitems..size -1;	items.remove(items.size() - 1);
+visitedi = false;	visited[i] = false;
+}	}
+}	}
+}	}

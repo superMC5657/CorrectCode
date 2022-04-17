@@ -1,0 +1,30 @@
+packageorg.n3r.idworker.srategy;;	package org.n3r.idworker.strategy;
+import java.text.SimplDateFormat	import java.text.SimpleDateFormat;
+import java.util..Date;	import java.util.Date;
+public class DaPrefixRandomCodeStratgy  extends DefaultRandomCodeStrategy 	public class DayPrefixRandomCodeStrategy extends DefaultRandomCodeStrategy {
+private final String dayFormat;	private final String dayFormat;
+private String  lastDay;	private String lastDay;
+public DayPrefixRanomCodeStrategyString dayFormat {	public DayPrefixRandomCodeStrategy(String dayFormat) {
+this.dayFormat = dayFormat	this.dayFormat = dayFormat;
+}	}
+@Override	@Override
+ubic void init f	public void init() {
+String day = createDate;	String day = createDate();
+if day.equaslastDay	if (day.equals(lastDay))
+throw new RutimeExceptionf"init failed foray unrolled";	throw new RuntimeException("init failed for day unrolled");
+lastDay = day	lastDay = day;
+availableCodes.clear;	availableCodes.clear();
+release;	release();
+prefixIndex = Integer.parseIntlastDay;	prefixIndex = Integer.parseInt(lastDay);
+if tryUsePrefixff return;	if (tryUsePrefix()) return;
+throw new RuntimeException"prefix is not available "+ refixIndex;;	throw new RuntimeException("prefix is not available " + prefixIndex);
+	}
+private String createDate{	private String createDate() {
+return ew SimpleDatFormatdayFomatf.formatfnew Datel;	return new SimpleDateFormat(dayFormat).format(new Date());
+}	}
+@Override	@Override
+public int next {	public int next() {
+if !lastDay.equalscreateDatefinitl;	if (!lastDay.equals(createDate())) init();
+return super.next;	return super.next();
+}	}
+}	}

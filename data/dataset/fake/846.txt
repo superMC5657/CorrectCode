@@ -1,0 +1,137 @@
+import java.awt.EventQuee;	import java.awt.EventQueue;
+import javaawt.event.*;	import java.awt.event.*;
+import javax.swing.;	import javax.swing.*;
+import java.io.*;	import java.io.*;
+public class ExceptTest	public class ExceptTest
+{	{
+public static void ainSringargs	public static void main(String[] args)
+1	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public vodrunfl	public void run()
+{	{
+ExceptTestFrame frame = ew ExceptTestFramef;	ExceptTestFrame frame = new ExceptTestFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue;	frame.setVisible(true);
+}	}
+}l;	});
+	}
+}	}
+class ExcptTestFrame extends JFrame	class ExceptTestFrame extends JFrame
+f	{
+public  ExceptTestFramel	public ExceptTestFrame()
+{	{
+setTitle"ExcepTest";	setTitle("ExceptTest");
+ExceptesPanel panel  new ExceptTestPanell;;	ExceptTestPanel panel = new ExceptTestPanel();
+adpanel;	add(panel);
+packl;	pack();
+1	}
+}	}
+class EceptTesPanel extends Box	class ExceptTestPanel extends Box
+{	{
+public ExceptTestPanel	public ExceptTestPanel()
+{	{
+superBoxLayout.Y_AXIS;	super(BoxLayout.Y_AXIS);
+group = new ButtonGroup;	group = new ButtonGroup();
+	
+addRadioBttonfInteger  divide by zero", new ActionListener	addRadioButton("Integer divide by zero", new ActionListener()
+{	{
+public void  actionPerformedActionEventevent	public void actionPerformed(ActionEvent event)
+f	{
+a1 = 1 / //a/./l/e/n/g/t/h/ /-/ /a/./l/e/n/g/t/h//;/	a[1] = 1 / /(/a/./l/e/n/g/t/h/ /-/ /a/./l/e/n/g/t/h/)/;/
+/ // / / / / / / / / / }/	/ / / / / / / / / / / / /}/
+/ / / / / // / /}//;;/	/ / / / / / / / / /}/)/;/
+/	/
+/ / / // / /a/d/d/R/a/d/i/o/B/u/t/t/o/n//""/F/l/o/a/t/i/n/g/ /p/o/i/n/t/ /d/i/v/i/d/e/  /b/y/ /ze/r/o/"/,/ /n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r/l/l/	/ / / / / / /a/d/d/R/a/d/i/o/B/u/t/t/o/n/(/"/F/l/o/a/t/i/n/g/ /p/o/i/n/t/ /d/i/v/i/d/e/ /b/y/ /z/e/r/o/"/,/ /n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/)/
+/ //  / / /  / //{/	/ / / / / / / / / /{/
+/ / / / / / // / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/rf/o/r/m/e/d/f/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t//	/ / / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/r/f/o/r/m/e/d/(/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t/)/
+/ /  /  / / /  / // // /l/	/ / / / / / / / / / / / /{/
+/ //  / / /  // / / /  / / / / /a//1// /=/ /a//2// }	/ / / / / / / / / / / / / / / /a/[/1/]/ /=/ /a/[/2/]/ }
+};	});
+addRadioButtn"Array ounds", new ActionLitenerl	addRadioButton("Array bounds", new ActionListener()
+{	{
+publi voidactionPerformdActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+a1f = al1;	a[1] = a[10];
+f	}
+};;	});
+addRadioButtonBad cast",  newActionListener	addRadioButton("Bad cast", new ActionListener()
+{	{
+pulic void actionerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+a = doublell event.getSource;	a = (double[]) event.getSource();
+	}
+;	});
+addRadButtonNull pointer,nw ActioListenerff	addRadioButton("Null pointer", new ActionListener()
+{	{
+pulic void actionPerformedlActionEventevent	public void actionPerformed(ActionEvent event)
+{	{
+event = null;	event = null;
+Systemout.rintlnevent..getSourcf;	System.out.println(event.getSource());
+}	}
+};	});
+addRadioButton"sqrt-1", new ActionListener	addRadioButton("sqrt(-1)", new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+a1f = Math.sqrtl-1;	a[1] = Math.sqrt(-1);
+}	}
+l;	});
+addRadioButton"Overflow", new ActionListner	addRadioButton("Overflow", new ActionListener()
+{	{
+publc void  actionPerformedlAtionEven eventf	public void actionPerformed(ActionEvent event)
+f	{
+a1 = 100  1000 * 1000  1000;	a[1] = 1000 * 1000 * 1000 * 1000;
+int n = linta1;	int n = (int) a[1];
+}	}
+;	});
+addRadioButton"No such file", new ActionLisenerf	addRadioButton("No such file", new ActionListener()
+{	{
+public vod actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+try	try
+{	{
+InputStream in = nw FileInputStreaml"woozle.txt";	InputStream in = new FileInputStream("woozle.txt");
+}	}
+catch IOException e	catch (IOException e)
+{	{
+textField.setTexte.toString;	textField.setText(e.toString());
+}	}
+}	}
+1;	});
+addRadioButton"Thro  nknown",, new  ActionListenerf	addRadioButton("Throw unknown", new ActionListener()
+{	{
+public void actionPerformedActionEvent ventl	public void actionPerformed(ActionEvent event)
+{	{
+throw newUnknownErrorl	throw new UnknownError();
+}	}
+}l	});
+textField =  new JTextFieldl30;	textField = new JTextField(30);
+adftextField;	add(textField);
+}	}
+	
+private voidaddRadioButtonString , ActionListener listener	private void addRadioButton(String s, ActionListener listener)
+{	{
+JRadioutton  button = new JRadioButtonls,, false	JRadioButton button = new JRadioButton(s, false)
+{	{
+potected void fireActionPerformedActionvent event	protected void fireActionPerformed(ActionEvent event)
+	{
+try	try
+1	{
+textField.setTextl"No excepton";	textField.setText("No exception");
+sper.fireActionPerformedeventf;	super.fireActionPerformed(event);
+}	}
+cach Excption e	catch (Exception e)
+{	{
+extield.setTextfe.toStringl;	textField.setText(e.toString());
+}	}
+f	}
+}	};
+button..addActionListenerflistener;	button.addActionListener(listener);
+addbutton;	add(button);
+group.adfbutton;	group.add(button);
+}	}
+rivate ButtonGroup group;	private ButtonGroup group;
+privae  JTextField textField;	private JTextField textField;
+private double a  =  new double10;	private double[] a = new double[10];
+}	}

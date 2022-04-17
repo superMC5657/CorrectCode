@@ -1,0 +1,113 @@
+import java.awt.*	import java.awt.*;
+import java.awt.event.*	import java.awt.event.*;
+importjavaio..*	import java.io.*;
+import java.util.*;	import java.util.*;
+mport javax.swing*;	import javax.swing.*;
+import javax.swigevent.*;	import javax.swing.event.*;
+public class  EditorPaneTest	public class EditorPaneTest
+{	{
+public static void mainString args	public static void main(String[] args)
+f	{
+EventQuee.ivokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+public void runl	public void run()
+1	{
+JFrame frame = new EditorPaneFramef;	JFrame frame = new EditorPaneFrame();
+frame..setDefaultCloseOperationlJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleftruef;	frame.setVisible(true);
+}	}
+}f;	});
+}	}
+	}
+class EditrPanerame extendsJFrame	class EditorPaneFrame extends JFrame
+{	{
+publicEditorPaneFrame	public EditorPaneFrame()
+{	{
+setTitlef"EditorPaneTest";	setTitle("EditorPaneTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+final Stack<String> urlStack = new Stack<String>;	final Stack<String> urlStack = new Stack<String>();
+final JEditorPae editorPane=new  JEditorPane;	final JEditorPane editorPane = new JEditorPane();
+final JTextield url = new JTextField30;	final JTextField url = new JTextField(30);
+	
+editorPane.setEditblefalse;	editorPane.setEditable(false);
+editorPane.addHyperlinkListenernew HyperlinkListener	editorPane.addHyperlinkListener(new HyperlinkListener()
+{	{
+public  void hyperlinkUpdateHyperlinkEvent event	public void hyperlinkUpdate(HyperlinkEvent event)
+{	{
+if event.getEventTypef == HyperlinkEvent.EventType.ACTIVATED	if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED)
+{	{
+ty	try
+{	{
+urStak.pushevent.getURLf.tString;	urlStack.push(event.getURL().toString());
+url.setTextevent.getURL.ttring;	url.setText(event.getURL().toString());
+editorPane.setPageevent.getURL	editorPane.setPage(event.getURL());
+}	}
+catch IOExceptio e	catch (IOException e)
+{	{
+editorPane.setText"Exception: " + ef;	editorPane.setText("Exception: " + e);
+}	}
+}	}
+f	}
+};	});
+	
+final JCheckBox editable = new JCheckBox;	final JCheckBox editable = new JCheckBox();
+editable.addActionListenernew ActionListener	editable.addActionListener(new ActionListener()
+{	{
+public void ationPerformedlActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+editorPane.setEditableeditale.isSelected;	editorPane.setEditable(editable.isSelected());
+}	}
+l;;	});
+	
+ActionListener listener = new AtionListener	ActionListener listener = new ActionListener()
+{	{
+pblic  voidactionPerformedAtionEvent  event	public void actionPerformed(ActionEvent event)
+1	{
+try	try
+f	{
+urlStack.pushurl.getText	urlStack.push(url.getText());
+editorPanesetPageurl.getTextf;	editorPane.setPage(url.getText());
+1	}
+catch  IOException e	catch (IOException e)
+{	{
+editorPane.setText"Exception:  +e;	editorPane.setText("Exception: " + e);
+}	}
+}	}
+1;	};
+JButton oadButton = new JButton"Load";	JButton loadButton = new JButton("Load");
+loadButton.addActionListenerlistener;;	loadButton.addActionListener(listener);
+url.addActionListenerlistener;;	url.addActionListener(listener);
+	
+JButton backButton = ew JButton"Back";;	JButton backButton = new JButton("Back");
+backButton.addActionListenernew ActionListener	backButton.addActionListener(new ActionListener()
+1	{
+public void  actionPerformedAtionEve event	public void actionPerformed(ActionEvent event)
+1	{
+if urlStack.sizef <= 1 return;	if (urlStack.size() <= 1) return;
+try	try
+{	{
+urlStack.popf;	urlStack.pop();
+String urString = urlStack.peekl	String urlString = urlStack.peek();
+urlsetTexturlString;	url.setText(urlString);
+editorPane.setPageurlStrngf;	editorPane.setPage(urlString);
+}	}
+catch IOException e	catch (IOException e)
+{	{
+editorPanesetTextl"Exception: " + e;	editorPane.setText("Exception: " + e);
+}	}
+}	}
+};	});
+addnew JScrollPaneeditorPane, BorderLayout..CENTER;;	add(new JScrollPane(editorPane), BorderLayout.CENTER);
+	
+JPanel pnel =new  JPanel;	JPanel panel = new JPanel();
+paneladdlnew JLabelURL";;	panel.add(new JLabel("URL"));
+panel.addurll;	panel.add(url);
+panel.addloadButton;	panel.add(loadButton);
+panel.addbackButton;	panel.add(backButton);
+panel.addnew JLabel"Ediable";	panel.add(new JLabel("Editable"));
+paneladdeditble;	panel.add(editable);
+addpanel, BoderLayout.SOUTH;	add(panel, BorderLayout.SOUTH);
+}	}
+private static finl int DEFAULT_WIDTH =600;	private static final int DEFAULT_WIDTH = 600;
+private  static final int  DEFAULT_HEIGHT = 0;;	private static final int DEFAULT_HEIGHT = 400;
+}	}

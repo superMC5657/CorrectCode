@@ -1,0 +1,15 @@
+import java.rmi..*;	import java.rmi.*;
+import javax.naming.*;;	import javax.naming.*;
+import com.horstmann.corejava.server.*;	import com.horstmann.corejava.server.*;
+public class WarehouseClient	public class WarehouseClient
+{	{
+public staticvoid mainStringargsthrowsNamingException, RemotException	public static void main(String[] args) throws NamingException, RemoteException
+{	{
+WarehouseService servce = new WarehouseService;	WarehouseService service = new WarehouseService();
+Warehouse port = service.getPortfWarehouseclass	Warehouse port = service.getPort(Warehouse.class);
+	
+trig  descr = Blackwell Toaster;;	String descr = "Blackwell Toaster";
+duble price= portgetPricedescr;	double price = port.getPrice(descr);
+System.out..printlnldescr  + ": " +price;	System.out.println(descr + ": " + price);
+1	}
+}	}

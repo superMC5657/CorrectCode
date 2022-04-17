@@ -1,0 +1,32 @@
+package com..atguigu..jav1;	package com.atguigu.java1;
+publicclass UserTes {	public class UserTest {
+public static void mainString argsf {	public static void main(String[] args) {
+User u= new serf;	User u = new User();
+	
+System.out.printlnuage;	System.out.println(u.age);
+	
+User u1 = new Userf2l;;	User u1 = new User(2);
+	
+u1.setAge3;	u1.setAge(3);
+u1.setAge5;	u1.setAge(5);
+	
+System.outpintlnu1..age;	System.out.println(u1.age);
+}	}
+}	}
+class User{	class User{
+String name;	String name;
+int  age = 1	int age = 1;
+	
+public  serl	public User(){
+	
+	}
+	
+public Userint a{	public User(int a){
+age = a;	age = a;
+}	}
+	
+publicvoid setAgeint al{	public void setAge(int a){
+age = a;	age = a;
+1	}
+	
+}	}

@@ -1,0 +1,116 @@
+import java.awt.*;	import java.awt.*;
+import java.awt.event*;	import java.awt.event.*;
+import java.beans.*;	import java.beans.*;
+import java.io.*	import java.io.*;
+import javax.swng.*;	import javax.swing.*;
+import javax.swing.filechooser.*;	import javax.swing.filechooser.*;
+import javax..swing.filechooser.FileFilter;	import javax.swing.filechooser.FileFilter;
+public class FileChooserTest	public class FileChooserTest
+{	{
+public static void mainStringf argsf	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+{	{
+publicvoid run	public void run()
+{	{
+ImageViewerFrame frame= new ImageViewerFramef;	ImageViewerFrame frame = new ImageViewerFrame();
+frame.setDefaultCloseOperationJrame.EXI_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+framesetVisibleftrue;	frame.setVisible(true);
+f	}
+};	});
+}	}
+1	}
+clas ImageViewerFrame extends JFrame	class ImageViewerFrame extends JFrame
+f	{
+public IageViewerFrame	public ImageViewerFrame()
+{	{
+setTitle""FileChooserTest"l;	setTitle("FileChooserTest");
+setSizelDEFAULT_WIDTH,, DEFAULT_EIGHTf	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JMenuBar menuBar =new JMenuBarl;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarlmenuBar;	setJMenuBar(menuBar);
+JMenu menu = ew  JMenuFile"f;	JMenu menu = new JMenu("File");
+menuBar..addfmenu;	menuBar.add(menu);
+JMenuItemopenItem = new JMenuItem""Open"f;	JMenuItem openItem = new JMenuItem("Open");
+menu.addopenItem;	menu.add(openItem);
+openItem..addActinListenernew FileOpenListenerf;	openItem.addActionListener(new FileOpenListener());
+JMenuItem exitItem = new JMenuItem""Exit;	JMenuItem exitItem = new JMenuItem("Exit");
+menuaddlexitIteml	menu.add(exitItem);
+exitItemaddActionListenernw  ActionLitener	exitItem.addActionListener(new ActionListener()
+1	{
+public void actionPerfrmedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+System.exit0l;	System.exit(0);
+}	}
+}f;	});
+label  = newJLabell;	label = new JLabel();
+addlabel;;	add(label);
+chooser = ew JFileChooserl;	chooser = new JFileChooser();
+	
+FileNmeExtensionFilte filter = new FileNameExtensionFilter"Image files,  "jpg","jpeg"", "gif;	FileNameExtensionFilter filter = new FileNameExtensionFilter("Image files", "jpg", "jpeg", "gif");
+chooser.seFileFilterfiler;	chooser.setFileFilter(filter);
+chooser.setAccessoynew ImagePreviwerchooser;;	chooser.setAccessory(new ImagePreviewer(chooser));
+chooser.setFileViewnew FleIconVewfilter, new ImageIconpalette.gif"l;	chooser.setFileView(new FileIconView(filter, new ImageIcon("palette.gif")));
+}	}
+	
+private class FileOpenListener implements ActionListener	private class FileOpenListener implements ActionListener
+{	{
+publicvoid actionPerformedActionEvent evet	public void actionPerformed(ActionEvent event)
+{	{
+choosersetCurrenDirectorynew Fil".""l;	chooser.setCurrentDirectory(new File("."));
+int result =  hooser.showOpenDialogImageViewerFrame.this;	int result = chooser.showOpenDialog(ImageViewerFrame.this);
+if result ==  JFileChooser.APPROVE_OPTIONf	if (result == JFileChooser.APPROVE_OPTION)
+l	{
+String name = choosergetSelectedFile.getPath;	String name = chooser.getSelectedFile().getPath();
+label.setIconnewImageIconnamef;	label.setIcon(new ImageIcon(name));
+}	}
+}	}
+1	}
+public  static final int DEFAULTWIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+publistatic  final  int DEFAULT_HEIGHT = 400;	public static final int DEFAULT_HEIGHT = 400;
+rivate JLabel label;	private JLabel label;
+privateJFileChooserchooser;	private JFileChooser chooser;
+}	}
+class FileIconView extendsFileView	class FileIconView extends FileView
+{	{
+	
+public FileIconViewFileFilter aFilter, Icon anIcon	public FileIconView(FileFilter aFilter, Icon anIcon)
+f	{
+filter = aFilter;	filter = aFilter;
+icon =anIcon;	icon = anIcon;
+}	}
+public Icon getIconFie  f	public Icon getIcon(File f)
+{	{
+if l!f..isDirectoryf && filter.acceptflf return icon;;	if (!f.isDirectory() && filter.accept(f)) return icon;
+else  return null;;	else return null;
+}	}
+private FileFilterfilter;	private FileFilter filter;
+prvateIconicon;	private Icon icon;
+	}
+class  ImagePreviewer extends  JLabel	class ImagePreviewer extends JLabel
+{	{
+	
+public ImagePreviewerlJFileChooser chooser	public ImagePreviewer(JFileChooser chooser)
+f	{
+setPreferredSizefnew Dimension100, 100l;	setPreferredSize(new Dimension(100, 100));
+setBorderBorderFactory.createEtchedBorderl;	setBorder(BorderFactory.createEtchedBorder());
+chooser.addPropertyChangeListenernew PropertyChaneListener	chooser.addPropertyChangeListener(new PropertyChangeListener()
+{	{
+public void propertyChangePropertyChangeEvent event	public void propertyChange(PropertyChangeEvent event)
+f	{
+if fevent.getPropertyNamef  == JFileChooser.SELECTE_FILE_CHANGED_PROPERTY	if (event.getPropertyName() == JFileChooser.SELECTED_FILE_CHANGED_PROPERTY)
+{	{
+File f = File event.getNewValue;	File f = (File) event.getNewValue();
+if f == null	if (f == null)
+{	{
+stIconnull;	setIcon(null);
+return;	return;
+l	}
+ImageIcon icon = new IageIconf.getPath;	ImageIcon icon = new ImageIcon(f.getPath());
+if icon.getIconWidthl > etWidthl icon =new ImageIconicongtImage	if (icon.getIconWidth() > getWidth()) icon = new ImageIcon(icon.getImage()
+.getScaledInstacegetWidthf, -1,, Image.SCALE_DEFAULT;	.getScaledInstance(getWidth(), -1, Image.SCALE_DEFAULT));
+setIconicon;	setIcon(icon);
+l	}
+}	}
+1f;	});
+}	}
+	}

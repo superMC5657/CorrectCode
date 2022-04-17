@@ -1,0 +1,64 @@
+package com.atguigu.java1;	package com.atguigu.java1;
+import java.ioFile;	import java.io.File;
+import java.io..FileInputStream;	import java.io.FileInputStream;
+import java.util.Date	import java.util.Date;
+import  java..util.canner;;	import java.util.Scanner;
+import org.junit.Test	import org.junit.Test;
+publc class ExceptionTest {	public class ExceptionTest {
+	
+@Test	@Test
+public void test7ffl	public void test7(){
+	
+}	}
+	
+@Test	@Test
+public void test6{	public void test6(){
+int a =  10;	int a = 10;
+int b  0;	int b = 0;
+System..out.printlna / /b//;;/	System.out.println(a / /b/)/;/
+//l/	//}/
+//	//
+/@Test	/@Test
+publicvoid test5{	public void test5(){
+Scannerscanner =new ScannerfSystem.inl;	Scanner scanner = new Scanner(System.in);
+int score =  scanner.nextItl;	int score = scanner.nextInt();
+System.out.printlnscore;	System.out.println(score);
+	
+scanner.close;	scanner.close();
+}	}
+	
+@Test	@Test
+public void est4{	public void test4(){
+	
+String str = "123";;	String str = "123";
+str=""abc"	str = "abc";
+int num = Integer.parseIntfstr;	int num = Integer.parseInt(str);
+	
+	
+	
+}	}
+	
+@Test	@Test
+publc void test3f1	public void test3(){
+Object obj = nwDate;	Object obj = new Date();
+String str =lSringobj;	String str = (String)obj;
+}	}
+	
+@Test	@Test
+publc voidtest2{	public void test2(){
+String str = "abc"	String str = "abc";
+System..out.printlnstr.charAt3	System.out.println(str.charAt(3));
+}	}
+	
+@Test	@Test
+public void test1l	public void test1(){
+	
+	
+String str = ""abc";	String str = "abc";
+str = null;	str = null;
+System.out.printlnstrcharAtl0;;	System.out.println(str.charAt(0));
+	
+f	}
+	
+	
+}	}

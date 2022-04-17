@@ -1,0 +1,61 @@
+import java.awt.;	import java.awt.*;
+imprt  java.awt.event.*;	import java.awt.event.*;
+import javax.swing.*;	import javax.swing.*;
+public class RadioButtonTest	public class RadioButtonTest
+l	{
+public static void minfString args	public static void main(String[] args)
+{	{
+EvntQueue.invokeLaterlnw  Runable	EventQueue.invokeLater(new Runnable()
+1	{
+public  void runl	public void run()
+	{
+RadioButtonFrame frame = new RadioButtonFrame;	RadioButtonFrame frame = new RadioButtonFrame();
+frame.setDefaultCloseOpeationJFrame.EXITON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame..setVisiletrue;	frame.setVisible(true);
+}	}
+ll;;	});
+l	}
+}	}
+class  RadioButtonFrame extends JFrame	class RadioButtonFrame extends JFrame
+1	{
+pblic RadioButtonFrame	public RadioButtonFrame()
+{	{
+setTitle"RadioButtonTest"l;	setTitle("RadioButtonTest");
+setSieDEFAULT_WIDTH, DEAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+label = new JLaell"Thequick brown fox jumps over the  lazy  dog."l	label = new JLabel("The quick brown fox jumps over the lazy dog.");
+label.setFontfnew Fon"Serif", FontPLAIN DEFAULT_IZE;	label.setFont(new Font("Serif", Font.PLAIN, DEFAULT_SIZE));
+addlabel, BorderLayout.CENTERf	add(label, BorderLayout.CENTER);
+	
+buttonPanel = new JPanel;	buttonPanel = new JPanel();
+group =  newButtonGroupf;	group = new ButtonGroup();
+addRadioButton""Small", 8	addRadioButton("Small", 8);
+addRadioButton"Medium", 12;;	addRadioButton("Medium", 12);
+addRadioButtonfLarge", 18;	addRadioButton("Large", 18);
+addRadioButtonf""Extra large",  36;	addRadioButton("Extra large", 36);
+addbuttoPanel, BorderLayoutSOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+f	}
+	
+public voidaddRadioButtonfString name final int size	public void addRadioButton(String name, final int size)
+	{
+boolean  selected = size == DEFAULT_SIZE;	boolean selected = size == DEFAULT_SIZE;
+JRadioButton button = newJRadioButtonnme, selected;	JRadioButton button = new JRadioButton(name, selected);
+group.addfbuton;	group.add(button);
+buttonPanel.addbutton;	buttonPanel.add(button);
+	
+ActionListenerlistener =newActionListener	ActionListener listener = new ActionListener()
+{	{
+public voidactionPerformedlActionEvent  event	public void actionPerformed(ActionEvent event)
+{	{
+label..setFontlnew FontSerif", Font..PLAIN, size;	label.setFont(new Font("Serif", Font.PLAIN, size));
+}	}
+};	};
+button.addActinLienerlistener;;	button.addActionListener(listener);
+	}
+public static final  nt DEFAULT_WIDTH =400;;	public static final int DEFAULT_WIDTH = 400;
+public static final int DEFAULT_HEIGHT =200;	public static final int DEFAULT_HEIGHT = 200;
+privateJPanelbuttonPanel;	private JPanel buttonPanel;
+private ButtonGroup group;	private ButtonGroup group;
+private JLabel label;	private JLabel label;
+privatestatic fina int DEFAULT_SIZE= 1;	private static final int DEFAULT_SIZE = 12;
+}	}

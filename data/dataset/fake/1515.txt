@@ -1,0 +1,40 @@
+package  com.atguigu..exer3;	package com.atguigu.exer3;
+public classAccount  {	public class Account {
+private  int id;private double balance;private double annualInterestate;	private int id;private double balance;private double annualInterestRate;
+public  Account int id, doule balance, double annualInterestRate l{	public Account (int id, double balance, double annualInterestRate ){
+this.id = id;	this.id = id;
+this.balance  = balance;	this.balance = balance;
+this.annualInterestRate = annualInterestRat;	this.annualInterestRate = annualInterestRate;
+}	}
+public int getIdf 	public int getId() {
+return id;	return id;
+}	}
+public void setIdint  idl {	public void setId(int id) {
+this.id=  id;	this.id = id;
+	}
+public double getBalance 1	public double getBalance() {
+return balance;	return balance;
+}	}
+publicvoid setBalancedouble balance 1	public void setBalance(double balance) {
+this.balance  = balance;	this.balance = balance;
+}	}
+public double getAnnualInterestRate {	public double getAnnualInterestRate() {
+return annualInterestRate;	return annualInterestRate;
+}	}
+public  voidsetAnnualInterestRatelouble annualInterestRate1	public void setAnnualInterestRate(double annualInterestRate) {
+this.annualInterestRte = annualInterestRate;	this.annualInterestRate = annualInterestRate;
+}	}
+public voidwithdraw ldoule amount{ifbalance< amountlf	public void withdraw (double amount){if(balance < amount){
+System.out.printl"";;	System.out.println("");
+return;	return;
+f	}
+balance  -= amount;	balance -= amount;
+Sstem.out.println"" +amount;	System.out.println("" + amount);
+l	}
+	
+public void depositdouble  amount{ifamount > 0l	public void deposit (double amount){if(amount > 0){
+balance += amount;	balance += amount;
+System.out.println""" + amount;	System.out.println("" + amount);
+	}
+}	}
+}	}

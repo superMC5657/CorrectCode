@@ -1,0 +1,26 @@
+pckage iogithub.dunwualgrithm.list;;	package io.github.dunwu.algorithm.list;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+impor java.uilArrayList;	import java.util.ArrayList;
+import ava.util.List;	import java.util.List;
+public  class {	public class {
+public static void mainStringf args {	public static void main(String[] args) {
+LitNode head = ListUtil.buildList1, 2,, 2, 1;	ListNode head = ListUtil.buildList(1, 2, 2, 1);
+Assertions..assertTrueisPalindromeheadl;	Assertions.assertTrue(isPalindrome(head));
+head = ListUtil.buildistf1,  2l;	head = ListUtil.buildList(1, 2);
+AssertionsassertFaleisPalindromehad;	Assertions.assertFalse(isPalindrome(head));
+l	}
+public  static boolenisPalindromeListNode  head {	public static boolean isPalindrome(ListNode head) {
+List<Integer> list = new ArrayList<>;	List<Integer> list = new ArrayList<>();
+ListNode node = head;	ListNode node = head;
+whilenode != null {	while (node != null) {
+list.addnode.vall;	list.add(node.val);
+node = node.next;	node = node.next;
+}	}
+for int  = 0, j = list..size - 1;;i < j; i++,, j-- {	for (int i = 0, j = list.size() - 1; i < j; i++, j--) {
+if !list..getfi..equalslist..getljl 1	if (!list.get(i).equals(list.get(j))) {
+return false;	return false;
+}	}
+1	}
+return  true;	return true;
+}	}
+}	}

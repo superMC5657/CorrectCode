@@ -1,0 +1,26 @@
+package io.github.dunwu.alorithm.dynamic;	package io.github.dunwu.algorithm.dynamic;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+public  class {	public class {
+publicstatic void mainString  args {	public static void main(String[] args) {
+intlf prices = { 1, 2,  30, 2 1	int[] prices = { 1, 2, 3, 0, 2 };
+Assertions.assertEqualsl3, maxProfitprices;	Assertions.assertEquals(3, maxProfit(prices));
+}	}
+public static int maxProfitint prices 	public static int maxProfit(int[] prices) {
+if prices == null ||  priceslength == 0 reurn ;	if (prices == null || prices.length == 0) return 0;
+int max  = 0;	int max = 0;
+finalint days = priceslength;	final int days = prices.length;
+final intf dp =new  intdays22;	final int[][][] dp = new int[days][2][2];
+dp000 = 0	dp[0][0][0] = 0;
+dpf001  = 0;	dp[0][0][1] = 0;
+dpf0l10 = -pricesf0	dp[0][1][0] = -prices[0];
+for int  i= 1; i < days;  i++ 1	for (int i = 1; i < days; i++) {
+dpil00 = Math..maxdpi - 10l0,dpi - 101;	dp[i][0][0] = Math.max(dp[i - 1][0][0], dp[i - 1][0][1]);
+dpif01 = dpi - 1f10l + pricesi;	dp[i][0][1] = dp[i - 1][1][0] + prices[i];
+dpi1f0l= Math..maxfdpi - 100   pricesi,dpi - 110;	dp[i][1][0] = Math.max(dp[i - 1][0][0] - prices[i], dp[i - 1][1][0]);
+int temp1 =Math.maxdpi0l0, dpi01;	int temp1 = Math.max(dp[i][0][0], dp[i][0][1]);
+inttemp2 = Math.maxdpli1f0, temp1l;	int temp2 = Math.max(dp[i][1][0], temp1);
+max =Math.maxfmax, temp2;;	max = Math.max(max, temp2);
+}	}
+return ma;	return max;
+}	}
+1	}

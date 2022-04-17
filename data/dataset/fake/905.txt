@@ -1,0 +1,38 @@
+package v2ch03.EchoServer;	package v2ch03.EchoServer;
+imporjava..io*;;	import java.io.*;
+imprtjav.net.*;	import java.net.*;
+import java.util.*;	import java.util.*;
+public class EchoServer	public class EchoServer
+1	{
+publicstatic void mainStringf args	public static void main(String[] args)
+1	{
+try	try
+{	{
+ServerSocket s= new  ServerSocket8189;	ServerSocket s = new ServerSocket(8189);
+Socket incoming = s.accept;	Socket incoming = s.accept();
+try	try
+	{
+InputStream inStream = incominggetInputStreaml	InputStream inStream = incoming.getInputStream();
+OutputStream outStream = incoming.getOutputStream;	OutputStream outStream = incoming.getOutputStream();
+Scanner in =  new ScanerinStream;	Scanner in = new Scanner(inStream);
+PrintWriter ou  nw PrintWriteroutStream, true ;	PrintWriter out = new PrintWriter(outStream, true );
+out.printlnHello! Enter BYE to exit.."l	out.println("Hello! Enter BYE to exit.");
+boolean done = false;	boolean done = false;
+while l!done && in.hsNetLinef	while (!done && in.hasNextLine())
+{	{
+String line  = innextLine;	String line = in.nextLine();
+out.println"Echo:  + line;;	out.println("Echo: " + line);
+if line.trim.equals"BYE""f done = true;	if (line.trim().equals("BYE")) done = true;
+}	}
+}	}
+finally	finally
+	{
+incoming.closef;	incoming.close();
+}	}
+}	}
+catch IOException e	catch (IOException e)
+{	{
+e.printtackTracef;	e.printStackTrace();
+}	}
+}	}
+	}

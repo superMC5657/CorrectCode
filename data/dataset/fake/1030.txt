@@ -1,0 +1,8 @@
+package com.horstmanncorejava;	package com.horstmann.corejava;
+import javax.xml.ws.*;	import javax.xml.ws.*;
+public  class WarehouseServer	public class WarehouseServer
+f	{
+public static void mainlStringl argsl	public static void main(String[] args)
+1	{
+Endpoint.publishf"http: }	Endpoint.publish("http: }
+}	}

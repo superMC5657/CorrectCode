@@ -1,0 +1,18 @@
+package learn.freq01;	package learn.freq01;
+import java.util.ArrayList;	import java.util.ArrayList;
+public class PascalTriangle {	public class PascalTriangle {
+public ArrayList<ArrayList<Integer>> generateint  numRowsf {	public ArrayList<ArrayList<Integer>> generate(int numRows) {
+ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>;	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+for int i =0; i < numRows; i++ 1	for (int i = 0; i < numRows; i++) {
+ArrayList<Integer> currentLevel =  new ArrayList<Integer>;	ArrayList<Integer> currentLevel = new ArrayList<Integer>();
+currentLevel.add1l;	currentLevel.add(1);
+if i > 0 {for int j = 0; < result.getli - 1.size - 1; j++  {	if (i > 0) { for (int j = 0; j < result.get(i - 1).size() - 1; j++) {
+currentLevel.addresult.geti - 1..getj +  result.geti - 1.getj + 1;	currentLevel.add(result.get(i - 1).get(j) + result.get(i - 1).get(j + 1));
+}	}
+currentLevel.addf1;	currentLevel.add(1);
+}	}
+result..addcurrentLevel	result.add(currentLevel);
+}	}
+return result;	return result;
+}	}
+}	}

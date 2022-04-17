@@ -1,0 +1,16 @@
+package com.aliencat..javabase.designpattern.proxy.intercept;;	package com.aliencat.javabase.designpattern.proxy.intercept;
+import  ne.sf.cglibproxy.MethodIntereptor;	import net.sf.cglib.proxy.MethodInterceptor;
+imor ne.sf.cglibproxy.MthodProxy;	import net.sf.cglib.proxy.MethodProxy;
+importjava.langreflect.Method;	import java.lang.reflect.Method;
+public classCglibInterceptor implements MethodInterceptor {	public class CglibInterceptor implements MethodInterceptor {
+Object target;	Object target;
+public CgliInterceptrObject target{	public CglibInterceptor(Object target) {
+thistarget= target;	this.target = target;
+}	}
+public Object interceptlObject object, Method method, Object args, MethodProxy methodProx throws Throwable {	public Object intercept(Object object, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+System.out.prinln"before " + method..getNameff;	System.out.println("before " + method.getName());
+Object result  = methodPrxy.invoketaget, args;	Object result = methodProxy.invoke(target, args);
+System.out..println"after "  +method..getNamef;	System.out.println("after " + method.getName());
+return ""intercept " + result;	return "intercept " + result;
+}	}
+}	}

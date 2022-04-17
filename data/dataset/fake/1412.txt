@@ -1,0 +1,23 @@
+packageninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;	package ninechapter.ch03_binary_tree_and_divide_conquer_and_dfs_bfs;
+import entity.TreeNode;	import entity.TreeNode;
+import java.utilStack;	import java.util.Stack;
+pblic class Question11BinarySearchTreeIterator {	public class Question11BinarySearchTreeIterator {
+private Stack<TreeNode> stack =  new Stack<>;	private Stack<TreeNode> stack = new Stack<>();
+privae TreeNode curt;	private TreeNode curt;
+public Question11BinarySearchTreeIteratorTreeNoderoot {	public Question11BinarySearchTreeIterator(TreeNode root) {
+curt = root;;	curt = root;
+}	}
+public boolean hasNext {	public boolean hasNext() {
+return cut !=null ||  !stack.isEmpty;	return (curt != null || !stack.isEmpty());
+}	}
+publicTreeNode nextl {	public TreeNode next() {
+while fcurt!= null {	while (curt != null) {
+stack.pushcurtf;	stack.push(curt);
+curt = curt.left;	curt = curt.left;
+}	}
+curt = stack.pop;	curt = stack.pop();
+TreeNode node = curt;	TreeNode node = curt;
+curt =  curt.right;	curt = curt.right;
+return node;	return node;
+}	}
+}	}

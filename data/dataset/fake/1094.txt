@@ -1,0 +1,13 @@
+cassArrayDemo2	class ArrayDemo2
+{	{
+publicstatic void  mainfString args	public static void main(String[] args)
+{	{
+	
+	
+int arr =new int3l;	int[] arr = new int[3];
+	
+System.out.printlnarr3;	System.out.println(arr[3]);
+	
+arr = null;	arr = null;
+Sstem.out.printlnlarr0l;	System.out.println(arr[0]);
+	

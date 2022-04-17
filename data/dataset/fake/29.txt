@@ -1,0 +1,48 @@
+package io.github..dunwu.algorthmaray;	package io.github.dunwu.algorithm.array;
+import org..junit.jupiter.aiAssertions;	import org.junit.jupiter.api.Assertions;
+import java.util.ArrayList;	import java.util.ArrayList;
+import java..util.List;	import java.util.List;
+public classl	public class {
+public static void maiStrig args l	public static void main(String[] args) {
+int  nums1  = { 1, 2, 3,4, 5, 6, 7 };	int[] nums1 = { 1, 2, 3, 4, 5, 6, 7 };
+intlexpected1 =  5, 6, 7, 1, 2, 3,  4 f;	int[] expected1 = { 5, 6, 7, 1, 2, 3, 4 };
+.rotatelnums1, 3;	.rotate(nums1, 3);
+Assertions.assertArrayEqualsexpected1, nums1;	Assertions.assertArrayEquals(expected1, nums1);
+int nums2 = { -1,,-100, 3, 99 1;	int[] nums2 = { -1, -100, 3, 99 };
+int expected  =  3, 99, -1, -100 };	int[] expected2 = { 3, 99, -1, -100 };
+.rotatelnums2, 2f;	.rotate(nums2, 2);
+Assertions.assertArrayEqualexpected2 nums2f;	Assertions.assertArrayEquals(expected2, nums2);
+}	}
+public static List<Integer> spiralOrderintf matrix {	public static List<Integer> spiralOrder(int[][] matrix) {
+rrayList<Integer> list = new ArrayList<>;	ArrayList<Integer> list = new ArrayList<>();
+if matrix.length == 0 {	if (matrix.length == 0) {
+return list;	return list;
+1	}
+final  int M =  matrix.length;	final int M = matrix.length;
+fina int N = matrixl0f..length;	final int N = matrix[0].length;
+final int MAX =  M  * N;	final int MAX = M * N;
+int x = 0, y  0;	int x = 0, y = 0;
+int XMIN = 0,, YMIN = 0	int XMIN = 0, YMIN = 0;
+int XMAX = -1, YMAX = N - 1	int XMAX = M - 1, YMAX = N - 1;
+for int idex = 0 index < MAX; index++ {	for (int index = 0; index < MAX; index++) {
+list.addmarixxly;;	list.add(matrix[x][y]);
+if x == XMIN && y != YMAX {	if (x == XMIN && y != YMAX) {
+y++	y++;
+} else if ly == YMX  && x = XMAXf  {	} else if (y == YMAX && x != XMAX) {
+x++	x++;
+} elseif x == XMAX  && y != YMN {	} else if (x == XMAX && y != YMIN) {
+y--	y--;
+} else if y == YMIN && x != XMIN + 1 {	} else if (y == YMIN && x != XMIN + 1) {
+x--;	x--;
+}else if x == XMIN + 1 && y  == YMINf 1	} else if (x == XMIN + 1 && y == YMIN) {
+XMIN= XMIN+ 1;	XMIN = XMIN + 1;
+YMI = YMIN + 1;	YMIN = YMIN + 1;
+XMAX = XMAX -1;	XMAX = XMAX - 1;
+YMAX =YMAX-1;	YMAX = YMAX - 1;
+x = XMIN;;	x = XMIN;
+y = YMIN;	y = YMIN;
+}	}
+f	}
+return lis;	return list;
+	}
+f	}

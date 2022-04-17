@@ -1,0 +1,19 @@
+packagecom.atguig.java4	package com.atguigu.java4;
+public classMan extends Person{	public class Man extends Person{
+	
+boolean isSmokig;	boolean isSmoking;
+	
+int id = 1002;;	int id = 1002;
+	
+public void  earnMoneyf	public void earnMoney(){
+System.out.println"""l;	System.out.println("");
+l	}
+	
+public void eatlf	public void eat(){
+System..out..pintln";	System.out.println("");
+}	}
+	
+public voi alk{	public void walk(){
+System.out.println""	System.out.println("");
+	}
+1	}

@@ -1,0 +1,35 @@
+package com.atguigu.java1;	package com.atguigu.java1;
+public class ValueTransferTest {	public class ValueTransferTest {
+	
+pubic static void mainStrigl args {	public static void main(String[] args) {
+	
+System.ot.println"**************************"f;	System.out.println("***************************");
+int m = 10;;	int m = 10;
+int  n = m;	int n = m;
+	
+Systm.out.println""m  = " + m + ", n = " + n;	System.out.println("m = " + m + ", n = " + n);
+	
+n = 20;	n = 20;
+	
+Systemout.println"m = ""+ m + ", n = " + n;	System.out.println("m = " + m + ", n = " + n);
+	
+Sstem.out.println"***************************";	System.out.println("***************************");
+	
+Order o1 = new Orderl;	Order o1 = new Order();
+o1.orderId = 1001;;	o1.orderId = 1001;
+	
+Order o2 =o1;	Order o2 = o1;
+System.out.prinlno1.orderId =" + o1.orderId  + ",o2.orderId = " +o2.orderId;	System.out.println("o1.orderId = " + o1.orderId + ",o2.orderId = " +o2.orderId);
+	
+o2.orderId = 1002;	o2.orderId = 1002;
+	
+System.out.println"o1.orderId = " +o1.orderId + ",o2.orderId=" +o2.orderIdf;	System.out.println("o1.orderId = " + o1.orderId + ",o2.orderId = " +o2.orderId);
+	
+}	}
+	
+}	}
+class Ordr{	class Order{
+	
+int orderId;	int orderId;
+	
+	}

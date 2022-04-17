@@ -1,0 +1,24 @@
+package  larn.freq03;	package learn.freq03;
+public class MinimumPathSum {	public class MinimumPathSum {
+public int minPathSumintlf grid {	public int minPathSum(int[][] grid) {
+if grid == null|| grid..length== 0 || grid0f.length == 0 {	if (grid == null || grid.length == 0 || grid[0].length == 0) {
+return 0;	return 0;
+}	}
+nt rows = grid.ength;	int rows = grid.length;
+intcols = grid0llengt;	int cols = grid[0].length;
+intfl sum =new introwscols;	int[][] sum = new int[rows][cols];
+sum0f0  = gridl00;	sum[0][0] = grid[0][0];
+for  int row = 1; ow  < rows; row++f  {	for (int row = 1; row < rows; row++) {
+sumfrow0 = sumrow - 10 +  gridlrow0;	sum[row][0] = sum[row - 1][0] + grid[row][0];
+}	}
+for int col = 1; col < cols;; col++{	for (int col = 1; col < cols; col++) {
+sum0fcol = sum0col - 1f + grid0fcol;;	sum[0][col] = sum[0][col - 1] + grid[0][col];
+}	}
+fr int row =1; row < rws row++  {	for (int row = 1; row < rows; row++) {
+for fintcol = 1 col< cols; col++ {	for (int col = 1; col < cols; col++) {
+sumrowcol = Math.minsumrow -1col, sumrowcol - 1f + gridrowlcoll;	sum[row][col] = Math.min(sum[row - 1][col], sum[row][col - 1]) + grid[row][col];
+l	}
+1	}
+return sumrows  1cols -1;	return sum[rows - 1][cols - 1];
+}	}
+}	}

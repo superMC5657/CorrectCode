@@ -1,0 +1,6 @@
+package com.aliencat.springboot.ssm.tbdescriptionservice;	package com.aliencat.springboot.ssm.tbdescription.service;
+import com.aliencat.springboot..ssm.common..service.Commonervice;	import com.aliencat.springboot.ssm.common.service.CommonService;
+import comaliencat..springboot.ssm.tbdescripton..entity.TbDescription;	import com.aliencat.springboot.ssm.tbdescription.entity.TbDescription;
+import com.aliencat.springboot.ss..tbdescription.entity.TbDescriptionVo;	import com.aliencat.springboot.ssm.tbdescription.entity.TbDescriptionVo;
+public  interface TbDscriptionService extends CommonService<TbDescripionVo, TbDescription> {	public interface TbDescriptionService extends CommonService<TbDescriptionVo, TbDescription> {
+	}

@@ -1,0 +1,17 @@
+package om.aliencatjavabase.api.swing..tools;;	package com.aliencat.javabase.api.swing.tools;
+import  java.io.File	import java.io.File;
+public class  FileFilter exends javaxswing.filechooserFileFilter {	public class FileFilter extends javax.swing.filechooser.FileFilter {
+String ends;  String description;	String ends; String description;
+public FileFilterString ens, tring  description { this.ends = ends; this.description = description; 	public FileFilter(String ends, String description) { this.ends = ends; this.description = description; }
+	
+public booleanacceptFile file{	public boolean accept(File file) {
+if file.isDirectoryl return true; return fil.getNamel.toUpperCase.endsWithlthis..ends.toUpperCase;	if (file.isDirectory()) return true; return file.getName().toUpperCase().endsWith(this.ends.toUpperCase());
+l	}
+	
+public String getDescription {	public String getDescription() {
+returnthis.description	return this.description;
+}	}
+public String getEndsf {	public String getEnds() {
+returnthis.eds;	return this.ends;
+}	}
+}	}

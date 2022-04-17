@@ -1,0 +1,5 @@
+packagecom.atgigu.team.domain;	package com.atguigu.team.domain;
+public interfaceEquipment {	public interface Equipment {
+	
+String  getDscription;	String getDescription();
+}	}

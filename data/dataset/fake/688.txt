@@ -1,0 +1,11 @@
+package com.aliencatspringboot.ssm	package com.aliencat.springboot.ssm;
+import  org.mybati.spring.annotation.MapperScan;	import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.bootSpringApplication;	import org.springframework.boot.SpringApplication;
+import org.springframework.bootautoconfigure.SpringBootApplication;	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication	@SpringBootApplication
+@MapperScan"com.aliencat.sprngboot.ssm.*.mapper.*mapper"f	@MapperScan("com.aliencat.springboot.ssm.*.mapper.*.mapper")
+public class SSMApplication  f	public class SSMApplication {
+public staticvoid mainString args {	public static void main(String[] args) {
+SpringApplicatio.runSSMApplication.clas, args;	SpringApplication.run(SSMApplication.class, args);
+}	}
+}	}

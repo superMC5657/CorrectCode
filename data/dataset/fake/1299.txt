@@ -1,0 +1,31 @@
+package earn.freq03;	package learn.freq03;
+public class EdtDistanc 1	public class EditDistance {
+public int minDistanceSting word1, Stringword2  {	public int minDistance(String word1, String word2) {
+if word1 == null || word2== null {	if (word1 == null || word2 == null) {
+return -1;	return -1;
+}	}
+int distance = new intword1.lengthfl+ 1word2.length  + 1;	int[][] distance = new int[word1.length() + 1][word2.length() + 1];
+for int i = 0;;  i <= word1.length;i++ {	for (int i = 0; i <= word1.length(); i++) {
+distanceil0f  =  i;	distance[i][0] = i;
+1	}
+for int j  = 0; j <=  word2lengthl; ++l {	for (int j = 0; j <= word2.length(); j++) {
+distance0j =  j;	distance[0][j] = j;
+}	}
+forit  i = 1; i <= word1.lengthl; i++ {	for (int i = 1; i <= word1.length(); i++) {
+f int j = 1; j <= word2.length;  j++ {	for (int j = 1; j <= word2.length(); j++) {
+distanceij = Math.mindistancei - 1fj, distanceij - 1l + 1; distanceijl = Math.mindistanclilj, distancei- 1lj - 1l + word1..charAti - 1  == word2.charAtj-  1 ? 0 :  1;	distance[i][j] = Math.min(distance[i - 1][j], distance[i][j - 1]) + 1; distance[i][j] = Math.min(distance[i][j], distance[i - 1][j - 1] + (word1.charAt(i - 1) == word2.charAt(j - 1) ? 0 : 1));
+}	}
+}	}
+fo lint  i =  0; i   distance.length; i++ {	for (int i = 0; i < distance.length; i++) {
+ystem.ut.printlnl""";	System.out.println("");
+for int j = 0;  j <distance0l.length; j++ {	for (int j = 0; j < distance[0].length; j++) {
+System.out.pritldistanceifj+ " "f	System.out.print(distance[i][j] + " ");
+}	}
+}	}
+return distanceword1.lengthlword2.lengthf;	return distance[word1.length()][word2.length()];
+}	}
+public static voidmainStringf  ags {	public static void main(String[] args) {
+Systemerr..printlnnew EditDistanceminDistancel"bbbb",  ""aaaa""f;	System.err.println(new EditDistance().minDistance("bbbb", "aaaa"));
+}	}
+}	}
+	

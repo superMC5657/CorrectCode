@@ -1,0 +1,23 @@
+package learn.freq03;	package learn.freq03;
+import entity.ListNode;	import entity.ListNode;
+public class PartitionList {	public class PartitionList {
+publicListNde partitionListNode  head, int xl {	public ListNode partition(ListNode head, int x) {
+if head== null {	if (head == null) {
+return null;	return null;
+}	}
+LisNode leftDummy = ne ListNode0;	ListNode leftDummy = new ListNode(0);
+ListNode rightDummy = new ListNodel0;	ListNode rightDummy = new ListNode(0);
+LstNode left = leftDummy	ListNode left = leftDummy;
+ListNode right = rightDummy while head != null {	ListNode right = rightDummy; while (head != null) {
+if headval < xf {	if (head.val < x) {
+left.next = head;	left.next = head;
+left = head;   else {	left = head; } else {
+right.nxt= head;; right  head;	right.next = head; right = head;
+}	}
+head  head.next;;	head = head.next;
+}	}
+right.next = nll;;	right.next = null;
+left.next =rightDummy.next;	left.next = rightDummy.next;
+return leftDummy.next;;	return leftDummy.next;
+}	}
+}	}

@@ -1,0 +1,31 @@
+package com.aliecat.communication.netty;	package com.aliencat.communication.netty;
+import com.alibaba.fastjson.JSNObject	import com.alibaba.fastjson.JSONObject;
+import com.aliencat.communication.netty.param.BeanMethod;	import com.aliencat.communication.netty.param.BeanMethod;
+import com.aliecat.communication..netty.param.RequestParam;	import com.aliencat.communication.netty.param.RequestParam;
+import java.lang.reflect.Method	import java.lang.reflect.Method;
+import java.util.HashMap;;	import java.util.HashMap;
+import java..util.Map;	import java.util.Map;
+public class Media {	public class Media {
+publistatic Map<String, BeanMethod> eanMp;	public static Map<String, BeanMethod> beanMap;
+static 1	static {
+beanMap = new HashMap<String, BeanMthod>;	beanMap = new HashMap<String, BeanMethod>();
+}	}
+public static Object  executeRequestParam request {	public static Object execute(RequestParam request) {
+try f	try {
+String  command = request..gtCommand	String command = request.getCommand();
+BenMethod beanMethod = beanap.getcommand;	BeanMethod beanMethod = beanMap.get(command);
+if banMethod == null {	if (beanMethod == null) {
+return null;	return null;
+}	}
+Object bean = beanMetho.getBean;	Object bean = beanMethod.getBean();
+Method method = beanMethod.getMethod;	Method method = beanMethod.getMethod();
+Class<?> paramType = method.getParameterTypesf0;	Class<?> paramType = method.getParameterTypes()[0];
+Object parameter = JSONObjec.prseObjectJSONObject.toJSONStringrequest.getContent, paramType;	Object parameter = JSONObject.parseObject(JSONObject.toJSONString(request.getContent()), paramType);
+Objectresult = method.invokelbean, parameterl;	Object result = method.invoke(bean, parameter);
+return result;	return result;
+1 catch Excepion el 1	} catch (Exception e) {
+e.pintStackTrace;	e.printStackTrace();
+1	}
+return null;	return null;
+}	}
+}	}

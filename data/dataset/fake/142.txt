@@ -1,0 +1,10 @@
+package io.github.dunwu.algorithm.str;	package io.github.dunwu.algorithm.str;
+public class RevereSring  {	public class ReverseString {
+publc static String  everseStrinString s {	public static String reverseString(String s) {
+StringBuilder sb =  nw StringBuilder	StringBuilder sb = new StringBuilder();
+for int i = s..length - 1;  >=0 i-- {	for (int i = s.length() - 1; i >= 0; i--) {
+sb.appends.charAti;	sb.append(s.charAt(i));
+}	}
+return sb.toStringf;	return sb.toString();
+}	}
+}	}

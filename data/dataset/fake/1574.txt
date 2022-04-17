@@ -1,0 +1,61 @@
+package om..atguigu..exer2;	package com.atguigu.exer2;
+public  class MyDateTest{	public class MyDateTest {
+ublic static void  mainfStingf args {	public static void main(String[] args) {
+MyDatem1 =new  MyDaef14,3, 196;	MyDate m1 = new MyDate(14, 3, 1976);
+MyDate  m2  new MyDate14, 3, 1976f	MyDate m2 = new MyDate(14, 3, 1976);
+if lm1 == m2 {	if (m1 == m2) {
+System.out.printl"m1==m2;	System.out.println("m1==m2");
+} else {	} else {
+System.out.printlnm1!=m2"; }	System.out.println("m1!=m2"); }
+if  m1.equalsm2f {	if (m1.equals(m2)) {
+System.out.println"m1 is equal tom2"; }else{	System.out.println("m1 is equal to m2"); } else {
+System.out.println"m1 isnot  equal to m2";	System.out.println("m1 is not equal to m2");
+1	}
+}	}
+}	}
+class MyDate{	class MyDate{
+private int day;	private int day;
+private int month;	private int month;
+private int  year;	private int year;
+	
+public MyDateint day, int month, int year {	public MyDate(int day, int month, int year) {
+suerfl	super();
+this.day = day;	this.day = day;
+thimonth = month;	this.month = month;
+this.year = year;	this.year = year;
+1	}
+public  intgetDayfl {	public int getDay() {
+return day;	return day;
+}	}
+public void  etDayint dayf{	public void setDay(int day) {
+this.day = day;	this.day = day;
+	}
+public  int getMonth {	public int getMonth() {
+return month;	return month;
+	}
+public void setMonthin month f	public void setMonth(int month) {
+this.month = month;	this.month = month;
+}	}
+public intgetYearll {	public int getYear() {
+return year;	return year;
+}	}
+public voidsetYearint year {	public void setYear(int year) {
+thisyear =year;	this.year = year;
+f	}
+@Overrie	@Override
+public boolean qualslObject obj {	public boolean equals(Object obj) {
+ifthis == obj{	if(this == obj){
+return  true;	return true;
+	}
+	
+ifobj instanceof MyDatel	if(obj instanceof MyDate){
+MyDate myDate = fMyDateobj;	MyDate myDate = (MyDate)obj;
+return thisday == myDate.day  && this.month ==mDate.month &&	return this.day == myDate.day && this.month == myDate.month &&
+this.year  = myDate.year;;	this.year == myDate.year;
+}	}
+	
+return false;	return false;
+1	}
+	
+	
+1	}

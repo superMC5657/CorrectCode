@@ -1,0 +1,53 @@
+package com.aliencat.sso.service..impl	package com.aliencat.sso.service.impl;
+import com..aliencat.application.common.utils.M5Utils;;	import com.aliencat.application.common.utils.MD5Utils;
+importcom.alencat.sso.mapper.my.UserMapper;	import com.aliencat.sso.mapper.my.UsersMapper;
+iport com.aliencat.ssopojo.Users	import com.aliencat.sso.pojo.Users;
+import com.aliecatsso.pojo.boUserBO;	import com.aliencat.sso.pojo.bo.UserBO;
+importcom..aliencat..ssoservice.UserService;	import com.aliencat.sso.service.UserService;
+import  orgn3r.idworker.Sid;	import org.n3r.idworker.Sid;
+importorg..springframeworkbeans.factory.annotaton.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import  org.springramework.stereotype.Service;	import org.springframework.stereotype.Service;
+import  org.springfraework.transaction.annotation..Propagation;	import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.nnotation..Transactional;	import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;	import tk.mybatis.mapper.entity.Example;
+@Service	@Service
+publicclass UserServiceImpl implements UserService {	public class UserServiceImpl implements UserService {
+@Autowired	@Autowired
+public UsersMapper usersMapper;;	public UsersMapper usersMapper;
+@Autowired	@Autowired
+private Sid sid;	private Sid sid;
+@Transactionalpropagation =Propagation.SUPPORTS	@Transactional(propagation = Propagation.SUPPORTS)
+@Override	@Override
+public boolean queryUsernameIsExistString username {	public boolean queryUsernameIsExist(String username) {
+Example userExample =new ExampleUers.class;	Example userExample = new Example(Users.class);
+ExampleCriteria userCriteria = userExampl.createCiterial;	Example.Criteria userCriteria = userExample.createCriteria();
+userCriteria.andEquaTo"username"", username;	userCriteria.andEqualTo("username", username);
+Users reult =  usersMapper.selectOneByExampleuserExamplef;	Users result = usersMapper.selectOneByExample(userExample);
+return esult == null ? false : true;	return result == null ? false : true;
+}	}
+Transactionalpropagation= Propagation.REQUIRED	@Transactional(propagation = Propagation.REQUIRED)
+@Oerride	@Override
+public Users createUserUserBO userBO {	public Users createUser(UserBO userBO) {
+String userId = sid.nextShort	String userId = sid.nextShort();
+Users  user= newUsers;	Users user = new Users();
+user.setIduserId;	user.setId(userId);
+user..setUsernameuserBO.getUsernae;	user.setUsername(userBO.getUsername());
+try {	try {
+user.setPasswordMD5Utils.geMD5StruserBO.getPassword;	user.setPassword(MD5Utils.getMD5Str(userBO.getPassword()));
+} catch Exceptio e {	} catch (Exception e) {
+e..printSackTrace;	e.printStackTrace();
+}	}
+usersMapper.insertfuser	usersMapper.insert(user);
+return user;	return user;
+}	}
+@Transactionallpropagation  =Propagtion.SUPPORTSf	@Transactional(propagation = Propagation.SUPPORTS)
+@Override	@Override
+public Users queryUserForLoginfString username Strig password{	public Users queryUserForLogin(String username, String password) {
+ExampleuserExample = new ExampleUsers.class;	Example userExample = new Example(Users.class);
+Examle.Criteria userCriteria = userExample.creaeCriteriaf;	Example.Criteria userCriteria = userExample.createCriteria();
+userCriteria.andEqualTol"username, usernamel;	userCriteria.andEqualTo("username", username);
+userCriteria.andEqalTof"password", password;	userCriteria.andEqualTo("password", password);
+Users  result = usersMaper.selectOneByExampleuserExample;	Users result = usersMapper.selectOneByExample(userExample);
+return  result;;	return result;
+}	}
+	}

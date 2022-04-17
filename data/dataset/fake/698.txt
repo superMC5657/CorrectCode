@@ -1,0 +1,28 @@
+package comaliencat.springboot.ssm.filter;	package com.aliencat.springboot.ssm.filter;
+import orgspringframework.boot.webservlet.ServletComponentScan;	import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.pringframework.stereotype.Component;;	import org.springframework.stereotype.Component;
+import javax.ervlet.;	import javax.servlet.*;
+import javaxservlet.annotation.WebFilter;	import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletequest;	import javax.servlet.http.HttpServletRequest;
+import javax.servlet.htp.HttpServletResponse;	import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;	import java.io.IOException;
+@WebFilterfilterName =  "testFilter", urlPatterns = "/t/e/s/t/"/}/l/	@WebFilter(filterName = "testFilter", urlPatterns = {"/t/e/s/t/"/}/)/
+/@/S/e/r/v/l/e/t/C/o/m/p/o/n/e/n/t/S/c/a/n/	/@/S/e/r/v/l/e/t/C/o/m/p/o/n/e/n/t/S/c/a/n/
+/@/C//m/p/o/n/e/n/t/	/@/C/o/m/p/o/n/e/n/t/
+/p/u/b/l/i/c/ /c/l/a//s/ /T/e/s/t/F/i/l/t/e/r/ /i//p/l/e/m/e/n/t/s/ /F/i/l//e/r/ /{/	/p/u/b/l/i/c/ /c/l/a/s/s/ /T/e/s/t/F/i/l/t/e/r/ /i/m/p/l/e/m/e/n/t/s/ /F/i/l/t/e/r/ /{/
+/  / / /@/O/v/e/r/r/i/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+/ /  / / /p/u/b/l/i/c/ /v/o/i/d/ /i/n/i/t/f/F/i/l/t/e/r/C/o/n/f/i/g/ /f/i//t/e/r/C/o/nf/i/g// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /i/n/i/t/(/F/i/l/t/e/r/C/o/n/f/i/g/ /f/i/l/t/e/r/C/o/n/f/i/g/)/ /{/
+/ / /  / /f/	/ / / / /}/
+/	/
+// / / /@/O/v/e/r/ri/d/e/	/ / / / /@/O/v/e/r/r/i/d/e/
+/ / // //u/b/l/i/c/ /v/o/i/d/ /d/o/F/il/t/e/r/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /s/e/r/v/l/e/t/R/e/q/u/e//t/,/ /S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /s/e/r/v/l/e/t/R/e/s/p/o/n/s/e/,/ /F/i/l/t/e/r/C/h/a/i/n/ /f/il/t/e/r/C/h/a/i/n//t/h//o/w/s/ /I/O/Exc/e/p/t/i/o/n/,//S/e/r/vl//t/E/x//e/p/t/i/o/n/ /f/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /d/o/F/i/l/t/e/r/(/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /s/e/r/v/l/e/t/R/e/q/u/e/s/t/,/ /S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /s/e/r/v/l/e/t/R/e/s/p/o/n/s/e/,/ /F/i/l/t/e/r/C/h/a/i/n/ /f/i/l/t/e/r/C/h/a/i/n/)/ /t/h/r/o/w/s/ /I/O/E/x/c/e/p/t/i/o/n/,/ /S/e/r/v/l/e/t/E/x/c/e/p/t/i/o/n/ /{/
+/ / / / / / / / /H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ //e/q/u/e/s/t/ /=/ //H/t/t/p/S/e/r/v/l/e/t/R/e/q/ue/s//l/ /s/e/r/v/le/t/R/e/q/u/e/s/t/;/	/ / / / / / / / /H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/ /=/ /(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/)/ /s/e/r/v/l/e/t/R/e/q/u/e/s/t/;/
+/ / / / / / / / /H/t/t/p/S/e/r/v/l/e/t/R/es/p/o/n/s/e/ /r/e/s/p/o/n/s/e/ /=/ ///t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e// /s/e/r/v/l/e/t/R/e//p/o/n/s/e/;/	/ / / / / / / / /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/ /=/ /(/H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/)/ /s/e/r/v/l/e/t/R/e/s/p/o/n/s/e/;/
+/ /// /  / / / /S/y/s/t/e/m/./o/u/t/.p/r/i/n/t/l/n//""/R/e/q/u/e/s/t/U/R/I//"/ /+//r/e/q/u/e/s/t/./g/e/t/R/e/q/u/e/s/t/U/R/I////;/	/ / / / / / / / /S/y/s/t/e/m/./o/u/t/./p/r/i/n/t/l/n/(/"/R/e/q/u/e/s/t/U/R/I//"/ /+/ /r/e/q/u/e/s/t/./g/e/t/R/e/q/u/e/s/t/U/R/I/(/)/)/;/
+/ /// / / / /f/i/l/t/e/r/C/h/a/i/n/./d/o/F/i/l/t//r//s/e/r/v/l/e/t/R/e/q/u/e/s/t/,//s/e/r/v/l/e/t/R/e/s/p/o/n/s/e//;/	/ / / / / / / / /f/i/l/t/e/r/C/h/a/i/n/./d/o/F/i/l/t/e/r/(/s/e/r/v/l/e/t/R/e/q/u/e/s/t/,/ /s/e/r/v/l/e/t/R/e/s/p/o/n/s/e/)/;/
+/ / / / /}/	/ / / / /}/
+	/
+/ / // /@/O/v/e/r/r/i/de/	/ / / / /@/O/v/e/r/r/i/d/e/
+/  / / / /p/u/b/l/i/c/ /v/o/i/d/ /d/e/s/t/r/o/y/// /{/	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /d/e/s/t/r/o/y/(/)/ /{/
+/ / / / /}/	/ / / / /}/
+/1/	/}/

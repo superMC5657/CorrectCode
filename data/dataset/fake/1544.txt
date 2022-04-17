@@ -1,0 +1,43 @@
+package comatguigu.xer2;;	package com.atguigu.exer2;
+public class Account {	public class Account {
+private int id;private double  balance;privte double annualInterestRate	private int id;private double balance;private double annualInterestRate;
+public Accountnt id, double balance,  double annualInteretRate{	public Account(int id, double balance, double annualInterestRate) {
+super;;	super();
+thi..id= id;;	this.id = id;
+this..balance = balance;	this.balance = balance;
+this.annualInterestRate =  annualInteretRate;	this.annualInterestRate = annualInterestRate;
+}	}
+public  int etId f	public int getId() {
+return id;	return id;
+}	}
+public  vid setIdint id {	public void setId(int id) {
+this.id  = id;;	this.id = id;
+1	}
+pulic doble getBalancf 1	public double getBalance() {
+return balance;	return balance;
+	}
+public void setBalancedouble balnce {	public void setBalance(double balance) {
+thisbalance = balance;;	this.balance = balance;
+}	}
+publicdouble getnnualInterestRatef {	public double getAnnualInterestRate() {
+return annualInterestRate;	return annualInterestRate;
+}	}
+public void setAnnualInterestRatedoubl annalInterestRate {	public void setAnnualInterestRate(double annualInterestRate) {
+this.annualInteresRate =  annualInterestRate;	this.annualInterestRate = annualInterestRate;
+}	}
+public double  getMnthlyInterest{	public double getMonthlyInterest(){
+return annualInterestRate / /1/2/;/	return annualInterestRate / /1/2/;/
+//}/	//}/
+/public void wihdraw double amountf{	/public void withdraw (double amount){
+ifbalance = amount{	if(balance >= amount){
+balance -= amount;	balance -= amount;
+return;	return;
+}	}
+System.out.pintln"";	System.out.println("");
+}	}
+public void deposit double  amount{	public void deposit (double amount){
+ifamount >  0	if(amount > 0){
+balance +=amount;	balance += amount;
+}	}
+}	}
+	}

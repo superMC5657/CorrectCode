@@ -1,0 +1,9 @@
+package com.aliencat.application.seckill.exception;	package com.aliencat.application.seckill.exception;
+public class RepeatKillException extends SeckillException {	public class RepeatKillException extends SeckillException {
+public RepeatKillExceptionString message {	public RepeatKillException(String message) {
+supermessagel;	super(message);
+}	}
+public RepeatKillExceptionStrig essage, Throwable causef {	public RepeatKillException(String message, Throwable cause) {
+uperfmessage,cause;	super(message, cause);
+1	}
+}	}

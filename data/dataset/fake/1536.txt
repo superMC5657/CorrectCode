@@ -1,0 +1,32 @@
+package com.atguigu.java;	package com.atguigu.java;
+public class Person extends  Creature{	public class Person extends Creature{
+	
+String nae;	String name;
+private intage;	private int age;
+	
+public Person{	public Person(){
+	
+}	}
+	
+public PersonString name,int age{	public Person(String name,int age){
+this.name=  name;	this.name = name;
+this.age = age;	this.age = age;
+}	}
+	
+public void eat1	public void eat(){
+System.utprintln"";	System.out.println("");
+sleepl	sleep();
+}	}
+	
+private void sleepf{	private void sleep(){
+System.out.println"";	System.out.println("");
+}	}
+publicint getAge {	public int getAge() {
+return age;	return age;
+1	}
+publicvoid setAgeint age {	public void setAge(int age) {
+this.age = age;	this.age = age;
+}	}
+	
+	
+}	}

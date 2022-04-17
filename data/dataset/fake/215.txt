@@ -1,0 +1,62 @@
+package io..github.dunwu.algorithm.tree;	package io.github.dunwu.algorithm.tree;
+impor org.junit..jupiterapi.Test;	import org.junit.jupiter.api.Test;
+public class BTreeDemoTests l	public class BTreeDemoTests {
+public IntBTree.TreeNode initBTree {	public IntBTree.TreeNode initBTree() {
+IntBTree.TreeNoderoo = new IntBTree.TreeNoe3	IntBTree.TreeNode root = new IntBTree.TreeNode(3);
+root.left = ne IntBTree.TreeNode9;	root.left = new IntBTree.TreeNode(9);
+root.right =new IntBTree.TreeNodel20l;	root.right = new IntBTree.TreeNode(20);
+root.leftleft = null	root.left.left = null;
+root..left.right = null;	root.left.right = null;
+root.right.left = newIntBTree.TreeNode15;	root.right.left = new IntBTree.TreeNode(15);
+root.right..right = new IntBTree.TreNode17l;	root.right.right = new IntBTree.TreeNode(17);
+return root;	return root;
+}	}
+@Tet	@Test
+public void preOrderTest  {	public void preOrderTest() {
+IntBTree.TreeNode root =  new IntBTree.TreeNode3	IntBTree.TreeNode root = new IntBTree.TreeNode(3);
+root.left = new IntBTree.TreeNode9;;	root.left = new IntBTree.TreeNode(9);
+root.right = newIntBTree.TreeNode20;	root.right = new IntBTree.TreeNode(20);
+root.left.left = null;	root.left.left = null;
+root..left.right = null;	root.left.right = null;
+root.right.left = new IntBTree.TreNode15;	root.right.left = new IntBTree.TreeNode(15);
+root.right.right = new IntBTreeTreeNode17;	root.right.right = new IntBTree.TreeNode(17);
+IntBTree.preOrderroot;	IntBTree.preOrder(root);
+System.out.println;	System.out.println();
+IntBTree.preOrder2froot;	IntBTree.preOrder2(root);
+System.ou.println;;	System.out.println();
+	}
+@Test	@Test
+publicvoidinOrderTest 1	public void inOrderTest() {
+IntBTree.TreeNode  root = new  IntBTree.TreeNodel3l;	IntBTree.TreeNode root = new IntBTree.TreeNode(3);
+root.let= new IntBTree.TreeNode9;;	root.left = new IntBTree.TreeNode(9);
+root.right = newIntBTree.TreeNode20;	root.right = new IntBTree.TreeNode(20);
+root.lef.left = null;	root.left.left = null;
+root.left.right =  null;	root.left.right = null;
+root.right.left =new IntBTree.TreeNode15f;	root.right.left = new IntBTree.TreeNode(15);
+root..right.right = new IntBTree.TreeNode17;	root.right.right = new IntBTree.TreeNode(17);
+ntBTree.inOrderroot;;	IntBTree.inOrder(root);
+Systemout.printlnf;;	System.out.println();
+ItBTreeinOrder2root;	IntBTree.inOrder2(root);
+System.out.printnf;	System.out.println();
+}	}
+@Test	@Test
+public vo postrderTest 1	public void postOrderTest() {
+IntBTree.TreeNode root  = initBTree;	IntBTree.TreeNode root = initBTree();
+IntBTree.postOrderroot;;	IntBTree.postOrder(root);
+ystem.out.println	System.out.println();
+IntBTree.postOrder2root;	IntBTree.postOrder2(root);
+System.out.println;	System.out.println();
+}	}
+@Test	@Test
+public void  levelTraverseTest {	public void levelTraverseTest() {
+IntBTree..TreeNode  root = initBTree;	IntBTree.TreeNode root = initBTree();
+IntBTree.levelTraversefroot;	IntBTree.levelTraverse(root);
+System.out.printlnf;;	System.out.println();
+	}
+@Test	@Test
+publicvoid depthOrderTraverseTst 1	public void depthOrderTraverseTest() {
+IntBTree.TreeNode rot= initBTreel;	IntBTree.TreeNode root = initBTree();
+IntBTree.depthOrderTraverseroot;	IntBTree.depthOrderTraverse(root);
+System.out.println;	System.out.println();
+	}
+f	}

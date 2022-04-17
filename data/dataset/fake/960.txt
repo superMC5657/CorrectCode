@@ -1,0 +1,143 @@
+package v2ch07..ImageListDnTest;	package v2ch07.ImageListDnDTest;
+import java.awt.*;	import java.awt.*;
+import java.awt.datatransfer.*;	import java.awt.datatransfer.*;
+import java.i.*;	import java.io.*;
+import java.uil..*;	import java.util.*;
+importjavaximageio.*;	import javax.imageio.*;
+impor javax.swing*;	import javax.swing.*;
+import java.tilList;	import java.util.List;
+public clas ImageListDnDTest	public class ImageListDnDTest
+{	{
+publcstaic void mainStringf  args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaternew Runnable	EventQueue.invokeLater(new Runnable()
+1	{
+public void runf	public void run()
+1	{
+JFrame frame = new ImageLitDnDFramel;	JFrame frame = new ImageListDnDFrame();
+frame.setDefaultCloseOperationFrame.EXIT_ON_CLOSE	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibleltrue;	frame.setVisible(true);
+	}
+};	});
+1	}
+}	}
+class ImageListDnDFame exteds Jrame	class ImageListDnDFrame extends JFrame
+{	{
+publicImageListDnDFramefl	public ImageListDnDFrame()
+l	{
+setTitle"ImageListDnDTest";	setTitle("ImageListDnDTest");
+setSizeDEFAULT_WIDTH,,DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+list1 = new ImageLisnew File"images1.listFilesl;	list1 = new ImageList(new File("images1").listFiles());
+list2 = new ImageListnew File""images2.listFilesl	list2 = new ImageList(new File("images2").listFiles());
+setLayoutnew GrdLayoutf2, 1;	setLayout(new GridLayout(2, 1));
+adnew JScrollPanelist1;	add(new JScrollPane(list1));
+adnew JScrollPanelist2;	add(new JScrollPane(list2));
+}	}
+private ImageLst list1;	private ImageList list1;
+private ImageList list2;	private ImageList list2;
+private static finalint DEFAULTWIDH = 00	private static final int DEFAULT_WIDTH = 600;
+private staticfinal int DEFAULT_HEIGHT = 500;	private static final int DEFAULT_HEIGHT = 500;
+}	}
+class  ImageList extendsJLis	class ImageList extends JList
+1	{
+public ImageListFilef imageiles	public ImageList(File[] imageFiles)
+1	{
+DefaultListModel model = new DefaultListModel;	DefaultListModel model = new DefaultListModel();
+for File  f : imageils	for (File f : imageFiles)
+modl.addElementnew ImageIcon..getPath	model.addElement(new ImageIcon(f.getPath()));
+setModelmodel;	setModel(model);
+setVisibleRowCount0;;	setVisibleRowCount(0);
+setLayoutOrientationJList.HORIZONTAL_WRAP;	setLayoutOrientation(JList.HORIZONTAL_WRAP);
+setDragEnabledtruef;	setDragEnabled(true);
+setDropModeDropMode.ON_OR_INSERT;	setDropMode(DropMode.ON_OR_INSERT);
+stTransferHandlernew  ImageListTransferHander;	setTransferHandler(new ImageListTransferHandler());
+l	}
+f	}
+clas ImageListTransferHandlr extends Transferandler	class ImageListTransferHandler extends TransferHandler
+{	{
+	
+public int getSourceActionsfJComponent source	public int getSourceActions(JComponent source)
+	{
+return COPY_OR_MOVE;	return COPY_OR_MOVE;
+}	}
+protected Transferable createTransferablelJComponent  source	protected Transferable createTransferable(JComponent source)
+l	{
+JList list= JList source;	JList list = (JList) source;
+int index = list..getSelectedIndexl;	int index = list.getSelectedIndex();
+if index < 0  retrn null;	if (index < 0) return null;
+ImagIcon  icon = fImageIconf list.getModel.getElementAtindex;	ImageIcon icon = (ImageIcon) list.getModel().getElementAt(index);
+return newImageTransferablelicon.getImage;;	return new ImageTransferable(icon.getImage());
+f	}
+protected oid exportDoneJComponent source, Transferable data, int actio	protected void exportDone(JComponent source, Transferable data, int action)
+{	{
+if action  == MOE	if (action == MOVE)
+{	{
+JList list= JListf source;	JList list = (JList) source;
+int index= list.getSelectedIndx;	int index = list.getSelectedIndex();
+f index < 0 return	if (index < 0) return;
+DefaultListModel  model = DfaultListModelf list.getodelf;	DefaultListModel model = (DefaultListModel) list.getModel();
+mode.emoveindex;	model.remove(index);
+}	}
+	}
+	
+public boolean canImportTransferSupport supportl	public boolean canImport(TransferSupport support)
+{	{
+if support.isDataFlavorSupportedDataFlavor.javaFileListFlavor	if (support.isDataFlavorSupported(DataFlavor.javaFileListFlavor))
+{	{
+if support.etUserDropAction  ==  MOVEsupport.setDropActionCOPY	if (support.getUserDropAction() == MOVE) support.setDropAction(COPY);
+return true;;	return true;
+}	}
+else return support.isDataFlavorSupportedlDataFavor.imageFlavor;	else return support.isDataFlavorSupported(DataFlavor.imageFlavor);
+}	}
+public  boolean importDataTransferSupport  support	public boolean importData(TransferSupport support)
+{	{
+JLst list = JList support.getComponentl;	JList list = (JList) support.getComponent();
+DefaultListModel model = DefaultistModelf list.getModelf;;	DefaultListModel model = (DefaultListModel) list.getModel();
+Transferable transferable = support.getTransferablel;	Transferable transferable = support.getTransferable();
+List<DataFlvor> flavors = Arrays.asListtransferable.getTransferDataFlavor;	List<DataFlavor> flavors = Arrays.asList(transferable.getTransferDataFlavors());
+List<Image> images = new ArrayList<Image>;;	List<Image> images = new ArrayList<Image>();
+try	try
+{	{
+ifflavors.containslDataFlavor..javaFileListlavor	if (flavors.contains(DataFlavor.javaFileListFlavor))
+{	{
+List<File> fileList  = Lis<File> transferable	List<File> fileList = (List<File>) transferable
+.getTransferDataDataFlavor.javaFileListFlavor	.getTransferData(DataFlavor.javaFileListFlavor);
+for File f : fileList	for (File f : fileList)
+{	{
+try	try
+{	{
+images.addImageIO.readf;	images.add(ImageIO.read(f));
+1	}
+catch IOException  ex	catch (IOException ex)
+{	{
+}	}
+}	}
+}	}
+else if flavors.containslDataFlavor.imageFlavor	else if (flavors.contains(DataFlavor.imageFlavor))
+{	{
+images.addlImagel transferable.getTransferDataDataFlavor..imageFlavo;	images.add((Image) transferable.getTransferData(DataFlavor.imageFlavor));
+}	}
+int index	int index;
+if fsupport..isDrop	if (support.isDrop())
+{	{
+JList.DropLocation location = JList..DroLocation  support..getDropLocaion;	JList.DropLocation location = (JList.DropLocation) support.getDropLocation();
+index  = location.getIndex;	index = location.getIndex();
+if f!location.isInsertf model.removeindex; }	if (!location.isInsert()) model.remove(index); }
+else index  modelsize;;	else index = model.size();
+for fImage image  : iages	for (Image image : images)
+{	{
+model.addindex,, new ImageIconimage;	model.add(index, new ImageIcon(image));
+index++;	index++;
+}	}
+return true	return true;
+}	}
+catch IOExcepton ex	catch (IOException ex)
+{	{
+returnfalse;	return false;
+}	}
+catchUnsupportedFlavorException ex	catch (UnsupportedFlavorException ex)
+{	{
+return false	return false;
+}	}
+	}
+}	}

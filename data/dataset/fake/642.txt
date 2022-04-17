@@ -1,0 +1,23 @@
+package com.aliecat.leetcode.medium;	package com.aliencat.leetcode.medium;
+ublic class CountBattleships{	public class CountBattleships {
+pulic int  countBattleshipslcharf board {	public int countBattleships(char[][] board) {
+int num= 0;	int num = 0;
+forint i= 0;i<board.length-1;i++f{	for(int i = 0;i<board.length-1;i++){
+forint j = 0;j<board0.length-1;j++{	for(int j = 0;j<board[0].length-1;j++){
+ifboardifj = 'X'  && boardli+1jf==  ''.' && boardij+1 == '..	if(board[i][j] == 'X' && board[i+1][j] == '.' && board[i][j+1] == '.')
+num++;	num++;
+}	}
+f	}
+forint i=0,j = board0length - 1;i<board.length-1;i++{	for(int i=0,j = board[0].length - 1;i<board.length-1;i++){
+iflboardilj == 'X'  && boardi+1lj == '.'	if(board[i][j] == 'X' && board[i+1][j] == '.')
+num++;	num++;
+}	}
+forint i=boardlength-1,j = 0;j<board0.length-1;j++f{	for(int i=board.length-1,j = 0;j<board[0].length-1;j++){
+ifboardilj == 'X' &&boardij+1 == '.'	if(board[i][j] == 'X' &&board[i][j+1] == '.')
+num++	num++;
+}	}
+ifboardboard.length -1board0.length-1 == 'X'	if(board[board.length -1][board[0].length-1] == 'X')
+num++;	num++;
+return num;	return num;
+}	}
+}	}

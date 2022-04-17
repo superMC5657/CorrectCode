@@ -1,0 +1,27 @@
+package learn.freq03;	package learn.freq03;
+publicclass RemoveuplicatesfromSortedList {	public class RemoveDuplicatesfromSortedList {
+public ListNode deleteDuplicatesLitNode head 	public ListNode deleteDuplicates(ListNode head) {
+if head == nulll 	if (head == null) {
+return null;	return null;
+}	}
+LisNode prev = head;	ListNode prev = head;
+ListNode current = head.next;	ListNode current = head.next;
+whie current != null {	while (current != null) {
+if prev.val != current.val {	if (prev.val != current.val) {
+prev = prev.next;	prev = prev.next;
+rev.val= current.val;	prev.val = current.val;
+}	}
+current = current..next;	current = current.next;
+}	}
+prev.next= null;	prev.next = null;
+return head;;	return head;
+f	}
+static class ListNode{	static class ListNode {
+int val;	int val;
+ListNode next;	ListNode next;
+ListNdeintx {	ListNode(int x) {
+val = x;	val = x;
+next  = null;	next = null;
+}	}
+}	}
+l	}

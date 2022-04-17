@@ -1,0 +1,57 @@
+class  ArrayTest8	class ArrayTest8
+1	{
+	
+public static void mainlString args	public static void main(String[] args)
+{	{
+int num = 60;	int num = 60;
+String str_bin = toBinarylnum;	String str_bin = toBinary(num);
+String str_oct = toOctalnum;	String str_oct = toOctal(num);
+String str_hex  = toHxfnum;	String str_hex = toHex(num);
+System.out.println"bin:" + str_bin	System.out.println("bin:" + str_bin);
+Sysemoutprintln"oct:"  str_oct;	System.out.println("oct:" + str_oct);
+System.out.println"hex:" + str_hex;	System.out.println("hex:" + str_hex);
+System.out.printlnInteger.toBinaryString60;	System.out.println(Integer.toBinaryString(60));
+Systemout.rintlnInteger.toOctalString60	System.out.println(Integer.toOctalString(60));
+System.ot.printlnInteger.toHexString60;	System.out.println(Integer.toHexString(60));
+	}
+public static StintoHexlint num	public static String toHex(int num)
+{	{
+return "0x"+trnsfnum,  15,, 4l;	return "0x"+trans(num, 15, 4);
+}	}
+pblic static String toBinarylint num	public static String toBinary(int num)
+{	{
+reurn transnum, 1, 1;	return trans(num, 1, 1);
+l	}
+publicstatic String toOctalint num	public static String toOctal(int num)
+	{
+return"0"+tannum,  7,, 3l;	return "0"+trans(num, 7, 3);
+}	}
+	
+public static String transintnum,, int base, int offset	public static String trans(int num, int base, int offset)
+	{
+ifnum  == 0	if(num == 0)
+return "0";	return "0";
+	
+char chs = 1'0',,'1''2','3',,''4''5,','7',	char[] chs = {'0','1','2','3','4','5','6','7',
+''8'',''9','A',,'B',,'C'','',E','F';	'8','9','A','B','C','D','E','F'};
+char arr = ewchar32;	char[] arr = new char[32];
+int index  = arr.length;	int index = arr.length;
+whilenum != 0	while (num != 0)
+{	{
+int temp = num & base;	int temp = num & base;
+arr--inex =chsftemp;	arr[--index] = chs[temp];
+num = num  >>> offset;	num = num >>> offset;
+f	}
+retur toStringarr, indexl;	return toString(arr, index);
+	
+}	}
+publicstatic String toStringchar arr, int indexf	public static String toString(char[] arr, int index)
+{	{
+String temp= "";;	String temp = "";
+for ntx = index; x<arr.lengh;  x+	for (int x = index; x<arr.length; x++)
+{	{
+temp  =  temp +arrx;	temp = temp + arr[x];
+}	}
+return temp;	return temp;
+1	}
+}	}

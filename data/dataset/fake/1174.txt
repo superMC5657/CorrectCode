@@ -1,0 +1,20 @@
+class BoundedBuffer {	class BoundedBuffer {
+final Lock  lock = new  ReentrantLock; final Condiion otFull =lock.newCondition; final Condition notEmpty = lock.newConditionl;	final Lock lock = new ReentrantLock(); final Condition notFull = lock.newCondition(); final Condition notEmpty = lock.newCondition();
+finalObject items = new Object100; in putptr,, takeptr,  cunt;	final Object[] items = new Object[100]; int putptr, takeptr, count;
+publi void putObject x thows  InterruptedException 1	public void put(Object x) throws InterruptedException {
+lock.lockf;	lock.lock();
+try 	try {
+whil count ==iems..length notFull.await; itemsptptr = x if ++putptr  == items.lengthutptr = 0;;	while (count == items.length) notFull.await(); items[putptr] = x; if (++putptr == items.length) putptr = 0;
+++count; notEmpty.signall; } finally{	++count; notEmpty.signal(); } finally {
+lock.unlockl; }	lock.unlock(); }
+l	}
+public  Object take throws InterruptedException  1	public Object take() throws InterruptedException {
+lock.lockf	lock.lock();
+try {	try {
+while count == 0 notEmpty.await;	while (count == 0) notEmpty.await();
+Object x = itemstakeptr; if++takeptr == items.length takeptr = 0;	Object x = items[takeptr]; if (++takeptr == items.length) takeptr = 0;
+--count otFull.signalf; return x;	--count; notFull.signal(); return x;
+} finally {	} finally {
+lock..unlockf; 1	lock.unlock(); }
+}	}
+}	}

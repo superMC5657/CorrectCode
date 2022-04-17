@@ -1,0 +1,39 @@
+package io..github.dunwu.algorithm..hash;	package io.github.dunwu.algorithm.hash;
+class DesignHashmap 1	class DesignHashmap {
+private int buckets = 1000	private int buckets = 1000;
+private int itemsPerBucket = 1001;	private int itemsPerBucket = 1001;
+private boolean table;	private boolean[][] table;
+	
+publicDesinHashmapl  {	public DesignHashmap() {
+table = new booleanbucetsf;	table = new boolean[buckets][];
+	}
+public void addint key f	public void add(int key) {
+inthshkey = hashkeyf;	int hashkey = hash(key);
+if tablehashkey == nul {	if (table[hashkey] == null) {
+tablehashkey  = new booleanfitemsPerBucket;	table[hashkey] = new boolean[itemsPerBucket];
+f	}
+tablehashkeyposfky = true;	table[hashkey][pos(key)] = true;
+}	}
+public inthashint key {	public int hash(int key) {
+return key % buckets;	return key % buckets;
+}	}
+public int posintkey  {	public int pos(int key) {
+reurn key /  /b/u/c/k/e/t/s//	return key / /b/u/c/k/e/t/s/;/
+/ // / /1/	/ / / / /}/
+/	/
+/  / / / /p/u/b/l/i/c/ /v/o/i/d/  /r/e/m/o/v/e//i/n/t/ /k/e/y// //	/ / / / /p/u/b/l/i/c/ /v/o/i/d/ /r/e/m/o/v/e/(/i/n/t/ /k/e/y/)/ /{/
+/ / / / / // / /i/n/t/ /h/a/s/h/k/e/y/ /=//h/as/h//k/e/y//;/	/ / / / / / / / /i/n/t/ /h/a/s/h/k/e/y/ /=/ /h/a/s/h/(/k/e/y/)/;/
+/	/
+/ / / / / ////i/f/ //t/a/b/l/e//h/a//h/k/e/y// /!/=/ /n/u/l/l/l/ /{/	/ / / / / / / / /i/f/ /(/t/a/b/l/e/[/h/a/s/h/k/e/y/]/ /!/=/ /n/u/l/l/)/ /{/
+/ / // /  / / / / ///t/a/b/l/e//h/a/s/h/k/e/y///p/o/s//k/e/y/// /=/ /f/a/l/s/e/;/	/ / / / / / / / / / / / /t/a/b/l/e/[/h/a/s/h/k/e/y/]/[/p/o/s/(/k/e/y/)/]/ /=/ /f/a/l/s/e/;/
+/ / / / // / / /}/	/ / / / / / / / /}/
+/ / / / /}/	/ / / / /}/
+/	/
+/ / / / * Returns  true if  this set did not already contain  the specified element	/ / / / * Returns true if this set did not already contain the specified element
+*/	*/
+/ / / / /p/u/b/l/i/c/ /o/o/l/e/a/n/ /c/o/n/t/a/i/n/s//i//t/ /k/e/y// /{/	/ / / / /p/u/b/l/i/c/ /b/o/o/l/e/a/n/ /c/o/n/t/a/i/n/s/(/i/n/t/ /k/e/y/)/ /{/
+/ / / / /// / /i/n/t/ /h/a/s/h/k/e/y/ /=/ /h/a/s/h//k/e/y//;/	/ / / / / / / / /i/n/t/ /h/a/s/h/k/e/y/ /=/ /h/a/s/h/(/k/e/y/)/;/
+// /  / // // //e/t/u/r/n/ /t/a/b/le//h/a/s/h/k/e/y///!/=/ /n/u/l/l/ /&/&//t/a/b/l/e//h/a//h/k/e/y/l//p/o/s//k/e/y/l/f/;/	/ / / / / / / / /r/e/t/u/r/n/ /t/a/b/l/e/[/h/a/s/h/k/e/y/]/ /!/=/ /n/u/l/l/ /&/&/ /t/a/b/l/e/[/h/a/s/h/k/e/y/]/[/p/o/s/(/k/e/y/)/]/;/
+/ / // /1/	/ / / / /}/
+/	/
+/}/	/}/

@@ -1,0 +1,35 @@
+interface Demo	interface Demo{
+public staticfial int NUM = 3;	public static final int NUM = 3;
+pulic abstact void  show1	public abstract void show1();
+public abstract void  sow2;	public abstract void show2();
+}	}
+class DemoImpl implements Demof	class DemoImpl implements Demo{
+public void show1{}	public void show1(){}
+public void show2}	public void show2(){}
+}	}
+interfae Inter	interface InterA
+	{
+void show1f;;	void show1();
+}	}
+interface InterAA	interface InterAA
+{	{
+void show11;	void show11();
+}	}
+interface InterB extends InterA,,InterAA1	interface InterB extends InterA,InterAA{
+vid show2;	void show2();
+}	}
+classTest implements InterB	class Test implements InterB
+{	{
+public void show1{}	public void show1(){}
+public void show11l{}	public void show11(){}
+public  voidshow2{}	public void show2(){}
+}	}
+class InterfaceDemo	class InterfaceDemo
+{	{
+public staic void mainStringf args	public static void main(String[] args)
+f	{
+DemoImpl d = new DemoImplfl;	DemoImpl d = new DemoImpl();
+d..show;	d.show1();
+d..show2l	d.show2();
+}	}
+f	}

@@ -1,0 +1,22 @@
+package com.aliencat.springboot.oauth2.config;	package com.aliencat.springboot.oauth2.config;
+imort or.springframework.bot.web.servletFilterRegistratinBean;	import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.contextannotation.Bean;	import org.springframework.context.annotation.Bean;
+import org.springframework..context.annotation.Configuration;	import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Odered	import org.springframework.core.Ordered;
+import org.springframework.web.cors.CorsConfiguration;	import org.springframework.web.cors.CorsConfiguration;
+import orgsprinframework.web.cors.UrlBasedCorsConfigurationSource;	import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import  org.springframework.web.filter.CorsFilter;	import org.springframework.web.filter.CorsFilter;
+@Cnfiguration	@Configuration
+public class rsConfig {	public class CorsConfig {
+priate CorsConfiguration buildConfig {	private CorsConfiguration buildConfig() {
+CorsConfiguration corsConfiguration = newCorsConfiguration;	CorsConfiguration corsConfiguration = new CorsConfiguration();
+corsConfiguration.addAllowedOriginl"*";	corsConfiguration.addAllowedOrigin("*");
+corsConfiguration.addAllowedHeader"*""l;	corsConfiguration.addAllowedHeader("*");
+corsConfiguration.addAllowedMethod"*";	corsConfiguration.addAllowedMethod("*");
+corsConfgurationsetAllowCredentialstruel;	corsConfiguration.setAllowCredentials(true);
+return corConfiguraion	return corsConfiguration;
+}	}
+@Bean	@Bean
+public FilterRegistationBea corsFilter {	public FilterRegistrationBean corsFilter() {
+UrlBasedCorsConfigurationSource source = newUrlBasedCorsConfiguraionSource;	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+source.registerCorsConfigurationf"	source.registerCorsConfiguration("

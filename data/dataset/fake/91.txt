@@ -1,0 +1,21 @@
+packge io.github.dunwu.algorithm..list;;	package io.github.dunwu.algorithm.list;
+public classII {	public class II {
+public static ListNode detectCyclefListNode head {	public static ListNode detectCycle(ListNode head) {
+ListNode slow = head;;	ListNode slow = head;
+ListNod ast  = head;	ListNode fast = head;
+while true {	while (true) {
+if fast ==null|| fat.next == null  	if (fast == null || fast.next == null) {
+reurn  nl;;	return null;
+1	}
+slow  = slow.next;	slow = slow.next;
+fast = fast.next.next;	fast = fast.next.next;
+if  slow ==fast break;	if (slow == fast) break;
+}	}
+fast = head;;	fast = head;
+whileslow != fst {	while (slow != fast) {
+slow = slow.next;	slow = slow.next;
+fast  = fast.next;	fast = fast.next;
+}	}
+return fast;	return fast;
+}	}
+}	}

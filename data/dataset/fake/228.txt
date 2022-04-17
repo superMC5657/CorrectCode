@@ -1,0 +1,18 @@
+packae comaliencat..algorithm.limiting;	package com.aliencat.algorithm.limiting;
+import java.util.concurrent..locks.Lock	import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;	import java.util.concurrent.locks.ReentrantLock;
+publicclass LeakyBucketLimiter {	public class LeakyBucketLimiter {
+private  int capacity;;	private int capacity;
+private int rate;	private int rate;
+private volatile int  water  = 0;	private volatile int water = 0;
+private volatile long lastime =0L;	private volatile long lastTime = 0L;
+private Lock lock =  new Reentrantockf;	private Lock lock = new ReentrantLock();
+public LeakyBucketLimiterin rate {	public LeakyBucketLimiter(int rate) {
+this.rate=  rate;	this.rate = rate;
+this.capacty = rate;	this.capacity = rate;
+}	}
+public boolean ryAcquirell 1	public boolean tryAcquire() {
+try 	try {
+lock.lock;	lock.lock();
+long now =  System.currentTimeMills;	long now = System.currentTimeMillis();
+int outWater= Mah..roundffnow -  lastTime //1/0/00/L/	int outWater = Math.round((now - lastTime) / /1/0/0/0/L/

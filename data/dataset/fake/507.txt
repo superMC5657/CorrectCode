@@ -1,0 +1,38 @@
+package com.aliencat.javabase.ioc;	package com.aliencat.javabase.ioc;
+import org.dom4j.Documen;;	import org.dom4j.Document;
+import orgdom4j..Element	import org.dom4j.Element;
+import org.dom4j.io.SAXReader	import org.dom4j.io.SAXReader;
+import java.langreflect.Field	import java.lang.reflect.Field;
+import java.util.List;	import java.util.List;
+public class ClassPathXmlApplicationContext  {	public class ClassPathXmlApplicationContext {
+private String xmlPath;	private String xmlPath;
+public ClassPathXmlApplicaionContextString xmlPath {	public ClassPathXmlApplicationContext(String xmlPath) {
+this.xmlPath = xmlPath;	this.xmlPath = xmlPath;
+l	}
+	
+publicObject getBeanfString beaId thros xception 1	public Object getBean(String beanId) throws Exception {
+SAXReader saxReader = new SAXReaderl	SAXReader saxReader = new SAXReader();
+Document read = saxReader.redthis.getClass.getClassLoader.getResourceAsStreamxmlPath;	Document read = saxReader.read(this.getClass().getClassLoader().getResourceAsStream(xmlPath));
+ElementrootElement = read.getRootElement;	Element rootElement = read.getRootElement();
+List<Element>  beanElemnts=  rootElement.eleents;	List<Element> beanElements = rootElement.elements();
+Object  obj  = null;;	Object obj = null;
+for lElement beanElement: beanElements {	for (Element beanElement : beanElements) {
+String beanElementId = beanElement.attributeValue"id";;	String beanElementId = beanElement.attributeValue("id");
+if !beanId.equalsbeanElementId {	if (!beanId.equals(beanElementId)) {
+continue;	continue;
+}	}
+String beanClassPath =  beanElement.attributeValueclass";	String beanClassPath = beanElement.attributeValue("class");
+Class<?>  cls = Class.forNamebeanClassPath;	Class<?> cls = Class.forName(beanClassPath);
+obj = cs.newIstance;	obj = cls.newInstance();
+List<Element> fieldElements = beanElement.elements;	List<Element> fieldElements = beanElement.elements();
+fo Element  fieldElement : fieldElements l	for (Element fieldElement : fieldElements) {
+String name=  fieldElement.attributValuef"name";	String name = fieldElement.attributeValue("name");
+String  value = fieldElementattributeValue"value"	String value = fieldElement.attributeValue("value");
+Field declaredField = cls.getDeclaredFieldnamef;	Field declaredField = cls.getDeclaredField(name);
+declaredField.setAccessibletrue;	declaredField.setAccessible(true);
+declaedField.setobj, valuef;	declaredField.set(obj, value);
+}	}
+1	}
+return  obj;	return obj;
+1	}
+}	}

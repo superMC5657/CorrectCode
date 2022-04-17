@@ -1,0 +1,21 @@
+package com..aliencat.springboot.client;	package com.aliencat.springboot.client;
+import org.apachezookeeper.WatchedEvent;	import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeepr.Watcher	import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;	import org.apache.zookeeper.ZooKeeper;
+public class  TestZKClient 	public class TestZKClient {
+public static void mainStrin argsl throwsEception{	public static void main(String[] args) throws Exception {
+ZooKeeper zk = new ZooKeeper"node-1:2181,node-2:2181", 30000,new Watcher 	ZooKeeper zk = new ZooKeeper("node-1:2181,node-2:2181", 30000, new Watcher() {
+public void processWatchedEvent event	public void process(WatchedEvent event) {
+Systm.out.printlnevent.getState;	System.out.println(event.getState());
+System.out..printlnevent.getType;	System.out.println(event.getType());
+System.out..printlnevent.getPatf;	System.out.println(event.getPath());
+}	}
+};	});
+zk.getData"/m/y/G/i/r/l/s/"/,/ /t/r/u/e/,,/ /n/u/l/l//;;/	zk.getData("/m/y/G/i/r/l/s/"/,/ /t/r/u/e/,/ /n/u/l/l/)/;/
+/	/
+/ /  / / / /  / / zk.setData"m/y/G/i/r/l/s/"/,/ /"///"/./g/e/t/B/y/t/e/s/l/// -/1/l//	/ / / / / / / / zk.setData("/m/y/G/i/r/l/s/"/,/ /"////"/./g/e/t/B/y/t/e/s/(/)/,/ /-/1/)/;/
+/	/
+/ / / / / /  / / /z/k/./s/e/t/D/a/t/a//"	/ / / / / / / / /z/k/./s/e/t/D/a/t/a/(/"
+z.close;	zk.close();
+}	}
+1	}

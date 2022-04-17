@@ -1,0 +1,32 @@
+package comalencatspringboot.service.impl;	package com.aliencat.springboot.service.impl;
+import com.aliencat.springboot.service.ZookeeperServie;;	import com.aliencat.springboot.service.ZookeeperService;
+impor ombok..exte.slf4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import og.apache.curator.framework.CuratorFramework;	import org.apache.curator.framework.CuratorFramework;
+import  org.apachecurator.framework.recipes.locks.InterProcessMutex;	import org.apache.curator.framework.recipes.locks.InterProcessMutex;
+import  org.springframework..beans.factory.annotation.Autowired;	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;	import org.springframework.stereotype.Service;
+import java.utilconcurrent.TimeUnit;	import java.util.concurrent.TimeUnit;
+@Service	@Service
+@Slf4j	@Slf4j
+public class ZooKeeperServiceImpl implements ZookeeperService {	public class ZooKeeperServiceImpl implements ZookeeperService {
+private static  final StringlockPath = "/l/o/c/k @Autowired	private static final String lockPath = "/l/o/c/k @Autowired
+privat  CuratorFramework zkClient;	private CuratorFramework zkClient;
+@Override	@Override
+public  void makeOrderString  product {	public void makeOrder(String product) {
+log.info"try do job for " + product;;	log.info("try do job for " + product);
+String path = lockPath + "/"/ /+/ /p/r/o/d/u/c/t/;/	String path = lockPath + "/"/ /+/ /p/r/o/d/u/c/t/;/
+/	/
+/ / / /  /  / / //tr/y/ /{/	/ / / / / / / / /t/r/y/ /{/
+/ / //  / / / / / / / InterProcessMutex lock = new InterProcessMutexzkClint,path;	/ / / / / / / / / / / / InterProcessMutex lock = new InterProcessMutex(zkClient, path);
+try {	try {
+iflock.acquire5, TimeUnit..HOURSl 1	if (lock.acquire(5, TimeUnit.HOURS)) {
+Thread.sleep5 * 1000;	Thread.sleep(5 * 1000);
+log.info"do job " + prduct + "one";	log.info("do job " + product + "done");
+}	}
+} finally1	} finally {
+lock.release; }	lock.release(); }
+l cach Exception ef {	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+}	}
+}	}
+}	}

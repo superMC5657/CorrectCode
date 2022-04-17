@@ -1,0 +1,15 @@
+package com.atguigu..java1;;	package com.atguigu.java1;
+interface A f	interface A {
+int x =0;	int x = 0;
+}	}
+class Bl	class B {
+int x = 1;	int x = 1;
+1	}
+class C extends Bimplements A {	class C extends B implements A {
+public void pXl	public void pX() {
+Systemoutprintlnsuer.x;ystem..out.printlnfA.x;	System.out.println(super.x);System.out.println(A.x);
+}	}
+public static voidmainStringf args {	public static void main(String[] args) {
+new Cl.pX;;	new C().pX();
+1	}
+l	}

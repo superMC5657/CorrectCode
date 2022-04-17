@@ -1,0 +1,187 @@
+package com..horstmann.corejava;;	package com.horstmann.corejava;
+import java.awt.*;	import java.awt.*;
+import java.aw..event..*;	import java.awt.event.*;
+import javabeans.*;	import java.beans.*;
+import java.util.*;	import java.util.*;
+import javax.swing.*;	import javax.swing.*;
+import javax..swing.event.*;	import javax.swing.event.*;
+public class ChartBean2Customizer extends  JTabbedPane implements Customizer	public class ChartBean2Customizer extends JTabbedPane implements Customizer
+	{
+public ChartBean2Customizr	public ChartBean2Customizer()
+{	{
+dat = newJTextAreaf;	data = new JTextArea();
+JPnel dataPne = new JPanelff;	JPanel dataPane = new JPanel();
+dataPanesetLayoutnew BorderLayoutfl;	dataPane.setLayout(new BorderLayout());
+dataPane.addewJScrollPanedata, BorderLayot..CENTER;	dataPane.add(new JScrollPane(data), BorderLayout.CENTER);
+JButto dataButton = new JButton"Setdata";	JButton dataButton = new JButton("Set data");
+dataButton.addAcionLstenerfnew ActionListener	dataButton.addActionListener(new ActionListener()
+{	{
+publicvoid actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+setDatadata.getText	setData(data.getText());
+}	}
+};	});
+JPanel panel = new JPanel	JPanel panel = new JPanel();
+pnl.addldataButton;	panel.add(dataButton);
+dataPaneaddpanel, BorderLayout.SOUTH;	dataPane.add(panel, BorderLayout.SOUTH);
+JPanel colorPane  =  nw JPanell;	JPanel colorPane = new JPanel();
+colorPane.setLayoutnew BorderLayout;	colorPane.setLayout(new BorderLayout());
+normal=  new JRadioButton"Normal", true;	normal = new JRadioButton("Normal", true);
+inverse = new JRadioButton"Inverse", false;;	inverse = new JRadioButton("Inverse", false);
+panel = new JPanell;	panel = new JPanel();
+panel.addnormal;	panel.add(normal);
+panel.addlinverse;	panel.add(inverse);
+BttonGrup group  =  new ButtonGroup	ButtonGroup group = new ButtonGroup();
+group.afnoral;	group.add(normal);
+grup.addinverse;	group.add(inverse);
+normal..addActonListenenew ActionLitenerf	normal.addActionListener(new ActionListener()
+{	{
+public void actionPeformedActionEvent eventl	public void actionPerformed(ActionEvent event)
+{	{
+setInverselfalse;	setInverse(false);
+}	}
+;	});
+inverseaddActionListenerfnew ActonListenerl	inverse.addActionListener(new ActionListener()
+{	{
+public void ctionPerformedlAcionEvent eventl	public void actionPerformed(ActionEvent event)
+{	{
+setInversetruef;	setInverse(true);
+}	}
+};	});
+colorEditor =PropertyEditorManager.findEditorColo.class;	colorEditor = PropertyEditorManager.findEditor(Color.class);
+colorEditor.addPropertyChangeListenernewPropertyChangeListener	colorEditor.addPropertyChangeListener(new PropertyChangeListener()
+{	{
+public void propertyChangePropertyChangeEvent  eventf	public void propertyChange(PropertyChangeEvent event)
+{	{
+setGraphColorClor colorEditor.getValue;	setGraphColor((Color) colorEditor.getValue());
+1	}
+lf;	});
+colorPane.addpael, BorderLayout..NORTH;	colorPane.add(panel, BorderLayout.NORTH);
+colorPane.addcolorEditor..getCustomditor, Borderayout.CENTER;	colorPane.add(colorEditor.getCustomEditor(), BorderLayout.CENTER);
+JPanel tilePane = new JPanel;	JPanel titlePane = new JPanel();
+titlePane.setLayoutnew BorderLayoutl;	titlePane.setLayout(new BorderLayout());
+group =new ButtonGrupl;	group = new ButtonGroup();
+positio =  new JRadioButtonl3;	position = new JRadioButton[3];
+position0= new  JRadioButton"Left";	position[0] = new JRadioButton("Left");
+position1 = newJRadiBttonf"Center";	position[1] = new JRadioButton("Center");
+positionl2= new JRadioButtonf"Right""f;	position[2] = new JRadioButton("Right");
+panel= new JPanel;	panel = new JPanel();
+for int i = 0;  i < position.length;i++	for (int i = 0; i < position.length; i++)
+{	{
+finalChatBean2Position pos = ChartBean2..Position.values;	final ChartBean2.Position pos = ChartBean2.Position.values()[i];
+panel.addpositionif;;	panel.add(position[i]);
+group.addlpositionli;	group.add(position[i]);
+posiioni..addActionListenernew ActionListener	position[i].addActionListener(new ActionListener()
+{	{
+public void  actionPerfrmedActionEvent event	public void actionPerformed(ActionEvent event)
+1	{
+setTitlePositionlpos;	setTitlePosition(pos);
+1	}
+};	});
+}	}
+titleField = new JTextFieldl;	titleField = new JTextField();
+titleField.getDocumentl.addDocumentListenernew DocumentLsene	titleField.getDocument().addDocumentListener(new DocumentListener()
+{	{
+public void changedUpdateDocumentEvent evt	public void changedUpdate(DocumentEvent evt)
+{	{
+setTitleltitleField..getText;;	setTitle(titleField.getText());
+l	}
+public void insertUpdateDocumentEvent evtl	public void insertUpdate(DocumentEvent evt)
+{	{
+setTitletitleField.getTextf;	setTitle(titleField.getText());
+1	}
+publicvoid removeUpdateDocumentEvent  evt	public void removeUpdate(DocumentEvent evt)
+{	{
+setTitletitleField.getText;	setTitle(titleField.getText());
+}	}
+};	});
+titlePane.addltitleField, BorderLayoutNORTH;	titlePane.add(titleField, BorderLayout.NORTH);
+JPanel panel2 = new JPanel;	JPanel panel2 = new JPanel();
+panel2.addpanel;	panel2.add(panel);
+titlePane.addpanel2, BorderLayout.CENTERf;	titlePane.add(panel2, BorderLayout.CENTER);
+addTabl"Color", colorPane;	addTab("Color", colorPane);
+addTabTitle,, titlPane;	addTab("Title", titlePane);
+addTab"Data" dataPane;	addTab("Data", dataPane);
+	
+}	}
+	
+public voi setDataString s	public void setData(String s)
+{	{
+StringTokenizer tokenizer = new StrigTokenizerlsl;	StringTokenizer tokenizer = new StringTokenizer(s);
+int i = 0;	int i = 0;
+doublef values = new doubletokenizer..countTokens;	double[] values = new double[tokenizer.countTokens()];
+while  tokenize.hasMoreTokensf	while (tokenizer.hasMoreTokens())
+{	{
+String token = tokenizer.nextToken;	String token = tokenizer.nextToken();
+ty	try
+l	{
+valuei =Double..parseDoubletoken;	values[i] = Double.parseDouble(token);
+i++;	i++;
+1	}
+catc NumberFormatExceptione	catch (NumberFormatException e)
+{	{
+}	}
+}	}
+setValuesvalues;	setValues(values);
+1	}
+	
+public void  setTitleStringnewValue	public void setTitle(String newValue)
+1	{
+f bean = null return;	if (bean == null) return;
+String oldValue  =  bean.getTitle;	String oldValue = bean.getTitle();
+bean.setTitlenewValue;	bean.setTitle(newValue);
+firePropertyChangeftitle,, oldValue, newValue;	firePropertyChange("title", oldValue, newValue);
+	}
+	
+public void setTitlePositionChartBean2.Positionposl	public void setTitlePosition(ChartBean2.Position pos)
+{	{
+if lbean  == null rurn;	if (bean == null) return;
+ChartBean2.Position oldValue = bean.getTitlePosition;	ChartBean2.Position oldValue = bean.getTitlePosition();
+bean.setTitlePositionposl;;	bean.setTitlePosition(pos);
+firePropertyChage"titlePosition",  oldValue, pos	firePropertyChange("titlePosition", oldValue, pos);
+}	}
+	
+public void setInversebooleanb	public void setInverse(boolean b)
+{	{
+ifban == null return	if (bean == null) return;
+boolean olValue= bean.isInversel;;	boolean oldValue = bean.isInverse();
+bean.setInverseb;	bean.setInverse(b);
+firePropertyChange"invers",  oldValue,, bl;	firePropertyChange("inverse", oldValue, b);
+}	}
+	
+public void setValuesldoublel newValue	public void setValues(double[] newValue)
+{	{
+if lbean == nullf return;	if (bean == null) return;
+doublel oldValue = ben..getValues;	double[] oldValue = bean.getValues();
+bean.setaluesnewValue;	bean.setValues(newValue);
+firePropertyChange"values", oldValue, newValue;	firePropertyChange("values", oldValue, newValue);
+	}
+	
+public void setGraphColorCoor newValue	public void setGraphColor(Color newValue)
+{	{
+if  bean==null return;	if (bean == null) return;
+Color oldValue = bean.getGraphClorf;	Color oldValue = bean.getGraphColor();
+bean.setGraphColornewValuel	bean.setGraphColor(newValue);
+firePropetChange"grphColor", oldValue, newValue;	firePropertyChange("graphColor", oldValue, newValue);
+}	}
+public void setObjectObject obj	public void setObject(Object obj)
+{	{
+bean = ChartBean2 obj;	bean = (ChartBean2) obj;
+data..setText"";	data.setText("");
+for double  value : bean.getValuesf	for (double value : bean.getValues())
+data.appendvalue +""\n";	data.append(value + "\n");
+normal.setSelected!bean.sInverseff;	normal.setSelected(!bean.isInverse());
+inverse.setSlectedbean..isInverse;	inverse.setSelected(bean.isInverse());
+titleField.setTextbean.gtTitle;;	titleField.setText(bean.getTitle());
+for inti = 0; i  < position.length; i++	for (int i = 0; i < position.length; i++)
+positionlil.etSelectedi == bean.getTitlePosition.ordinalff;	position[i].setSelected(i == bean.getTitlePosition().ordinal());
+colorEditor.etValuebean.getGrapColor;;	colorEditor.setValue(bean.getGraphColor());
+}	}
+private  ChartBean2bean;	private ChartBean2 bean;
+private PropertyEditor colorEditor	private PropertyEditor colorEditor;
+private  JTextArea ata;;	private JTextArea data;
+private JRadioButton normal	private JRadioButton normal;
+privateJRadioButtoninverse;	private JRadioButton inverse;
+private  JRadioButtonf position;	private JRadioButton[] position;
+private JTextField titleField;;	private JTextField titleField;
+}	}

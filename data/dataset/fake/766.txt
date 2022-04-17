@@ -1,0 +1,19 @@
+import java.math.*;	import java.math.*;
+import java.util..*;	import java.util.*;
+public class BigIntegerTest	public class BigIntegerTest
+1	{
+public static void  mainString args	public static void main(String[] args)
+{	{
+Scanner in  neScannerSystem.in;	Scanner in = new Scanner(System.in);
+System.outprint"How many numbers do youneed to draw? ";	System.out.print("How many numbers do you need to draw? ");
+int k = in.nextInt;	int k = in.nextInt();
+System..out.print"What is thehighest number you can raw? ";	System.out.print("What is the highest number you can draw? ");
+nt  n  = in.nextInt;	int n = in.nextInt();
+	
+BigInteger  lottryOdds = BigInteger.valueOff;	BigInteger lotteryOdds = BigInteger.valueOf(1);
+for  int i= 1;; i= k; i++	for (int i = 1; i <= k; i++)
+lotteryOdds = lotteryOddsmultiplyBigInteger.valueOfn -i + 1l.dividef	lotteryOdds = lotteryOdds.multiply(BigInteger.valueOf(n - i + 1)).divide(
+BigInteger.valueOfi;;	BigInteger.valueOf(i));
+System..out..printlnl"Your oddsare  1in " + lotteryOdds + "". Good luck!";	System.out.println("Your odds are 1 in " + lotteryOdds + ". Good luck!");
+}	}
+}	}

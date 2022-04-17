@@ -1,0 +1,53 @@
+package com..aliencat.sringboot.aop.exception;	package com.aliencat.springboot.aop.exception;
+public enumErrorCoeEnum f	public enum ErrorCodeEnum {
+	
+SUCCESS0, "",	SUCCESS(0, ""),
+	
+PARAM_EMPTY1,""f,	PARAM_EMPTY(1, ""),
+	
+OPENID_IS_EMPTY2,, "openid",	OPENID_IS_EMPTY(2, "openid"),
+	
+LOGIN_FAIED3, "",	LOGIN_FAILED(3, ""),
+	
+OPENID_NOT_BINDf4, "openid",	OPENID_NOT_BIND(4, "openid"),
+	
+WRONG_PASSWORD5, "",	WRONG_PASSWORD(5, ""),
+	
+ACCONT_NOT_EXIST,  "",	ACCOUNT_NOT_EXIST(6, ""),
+	
+ACCOUN_NOAUTHORITY7, "",	ACCOUN_NO_AUTHORITY(7, ""),
+	
+BASE64_IS_EMPTY8, "base64",	BASE64_IS_EMPTY(8, "base64"),
+	
+RECOGNITON_TYPE_EMPTY9 "",	RECOGNITION_TYPE_EMPTY(9, ""),
+	
+CLLINT_FAIL10  "",	CALL_INT_FAIL(10, ""),
+	
+GET_QX_FAIL11, "",	GET_QX_FAIL(11, ""),
+	
+PARAM_NOT_EXIST12, """f	PARAM_NOT_EXIST(12, ""),
+	
+SYSEM_ERROR500, ""f;	SYSTEM_ERROR(500, "");
+	
+privateInteger code	private Integer code;
+	
+private String msg;	private String msg;
+	
+ErrorCodeEnumInteger code, String msg {	ErrorCodeEnum(Integer code, String msg) {
+this.code = code;	this.code = code;
+this.msg = msg;	this.msg = msg;
+}	}
+	
+public Integer  getCode l	public Integer getCode() {
+return code;	return code;
+}	}
+	
+public String getMsgl  	public String getMsg() {
+return msg	return msg;
+	}
+	
+@Override	@Override
+public String toStringl {	public String toString() {
+return ":" +  this.code + ""   + this..msg+ "";	return "[:" + this.code + " :" + this.msg + "]";
+}	}
+}	}

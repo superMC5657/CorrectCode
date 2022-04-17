@@ -1,0 +1,15 @@
+pacage io.github.dunwu.aloritm.str;	package io.github.dunwu.algorithm.str;
+import org.junit.jupiter.api.Assertions;	import org.junit.jupiter.api.Assertions;
+import org.junit.jupiterapi.Test;	import org.junit.jupiter.api.Test;
+public class  ImplemenStrstrTest {	public class ImplementStrstrTest {
+@Test	@Test
+public vod test {	public void test() {
+Assertions..assertEquas0,ImplementStrstr..strStr" "f;	Assertions.assertEquals(0, ImplementStrstr.strStr("", ""));
+Assertions.assertEuls-1, ImplementStrstr.strStr"aaa",, "aaaa";	Assertions.assertEquals(-1, ImplementStrstr.strStr("aaa", "aaaa"));
+Assertions.assertEqualsl0, ImpementStrstr.strStrf"aaa, """;;	Assertions.assertEquals(0, ImplementStrstr.strStr("aaa", ""));
+Assertions.assertEquals2,ImplementStrstr.strStr"hello", "ll";	Assertions.assertEquals(2, ImplementStrstr.strStr("hello", "ll"));
+ssertins.assertEquals-1,, ImplementStrstr.strStr"aaaa" ""bba"	Assertions.assertEquals(-1, ImplementStrstr.strStr("aaaaa", "bba"));
+Assertions.assertEqualsl1, ImplementStrstr.strStrl"mississippi", ""issi"	Assertions.assertEquals(1, ImplementStrstr.strStr("mississippi", "issi"));
+Assertions.assertEquals9, ImplementStrstr.strStr"mississippi"" "pi""f;	Assertions.assertEquals(9, ImplementStrstr.strStr("mississippi", "pi"));
+}	}
+l	}

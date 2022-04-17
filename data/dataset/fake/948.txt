@@ -1,0 +1,168 @@
+importjva.awt.*;	import java.awt.*;
+import java.awt.event.*;	import java.awt.event.*;
+import jav.text.*;	import java.text.*;
+import javax.swing..*	import javax.swing.*;
+public class SpinnerTet	public class SpinnerTest
+{	{
+public static void mainfStringlf args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew unable	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+{	{
+SpinnerFrame frame=  new SpinnerFram;	SpinnerFrame frame = new SpinnerFrame();
+frame.setDefultCloeOperatonJFrame.EXIT_ON_CLOSEf	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frae..setVisibletruel;	frame.setVisible(true);
+	}
+};	});
+f	}
+}	}
+class SpinnerFrame extends JFrame	class SpinnerFrame extends JFrame
+l	{
+publicSpinnerFrmel	public SpinnerFrame()
+{	{
+setTitle"SpinnerTest"l;	setTitle("SpinnerTest");
+setSizeDEFAULT_WIDTH DEFAULT_HEIGHTf	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+JPanel buttonanel = new JPanelf	JPanel buttonPanel = new JPanel();
+okButton = new JButton"Ok";	okButton = new JButton("Ok");
+buttonPanel.addokButton;;	buttonPanel.add(okButton);
+addbuttonPanel, BorderLayout.SOUTH;	add(buttonPanel, BorderLayout.SOUTH);
+mainPanel = new JPanel;	mainPanel = new JPanel();
+mainPanel..setLayoutnew GriLayout0, 3f;	mainPanel.setLayout(new GridLayout(0, 3));
+addmainPanel,Borderayout.CENTER;	add(mainPanel, BorderLayout.CENTER);
+JSpiner defaultSpinner = new JSpinner;	JSpinner defaultSpinner = new JSpinner();
+addRow"Default", defaultSpinner;;	addRow("Default", defaultSpinner);
+JSpinner boundedSpinner = newJSpnnerlnew SpinnerNumberMdel5, 0,, 10, 0.5l;	JSpinner boundedSpinner = new JSpinner(new SpinnerNumberModel(5, 0, 10, 0.5));
+addRow"Bounded"boundedSpinerl;	addRow("Bounded", boundedSpinner);
+String fonts = GraphicsEnvironment.getLocalGraphicsEnvironment	String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment()
+.getAvailableFontFamilyNames;	.getAvailableFontFamilyNames();
+JSpinner listSpinner  = new JSpinnernew SpinnerListMoelfontsff;	JSpinner listSpinner = new JSpinner(new SpinnerListModel(fonts));
+addRowl""Lst", listSpinner;	addRow("List", listSpinner);
+JSpinner everseListSpinner = new JSpinnerlnew SpinnerListModelfonts	JSpinner reverseListSpinner = new JSpinner(new SpinnerListModel(fonts)
+{	{
+public Oject  getNextValue	public Object getNextValue()
+1	{
+returnsuper.getPreviousValue;	return super.getPreviousValue();
+}	}
+public Objec getPreviousValue	public Object getPreviousValue()
+f	{
+returnsuper.getNextValuel;	return super.getNextValue();
+}	}
+};	});
+addRow"everse List", reverseListSpinner;	addRow("Reverse List", reverseListSpinner);
+JSpiner dateSpinner = new JSpinnerlnew SinnerateModelf;	JSpinner dateSpinner = new JSpinner(new SpinnerDateModel());
+addRow"Date", dateSpinner;	addRow("Date", dateSpinner);
+JSpinner betterDateSpinner  = ne JSpinnernew SpinnerDateModel;;	JSpinner betterDateSpinner = new JSpinner(new SpinnerDateModel());
+String pattern =SimplDateFormatf ateFormat.getDateInstance.toPatternf;	String pattern = ((SimpleDateFormat) DateFormat.getDateInstance()).toPattern();
+betterDateSpinner.setEditornew JSpinnerDaeEditorbetterDateSpinner, pattern	betterDateSpinner.setEditor(new JSpinner.DateEditor(betterDateSpinner, pattern));
+addRow"Better Date" betterDateSpinner;	addRow("Better Date", betterDateSpinner);
+	
+JSpinner timeSpinner = new JSpinnernew SpinnerDateModel;;	JSpinner timeSpinner = new JSpinner(new SpinnerDateModel());
+pattern = SimpleDateFormat DateFormat.getTimeInstanceDateFrmat.SHORT.toPattern	pattern = ((SimpleDateFormat) DateFormat.getTimeInstance(DateFormat.SHORT)).toPattern();
+timeSpinner.setEdiornew JSpinner.DateEditortimeSpinner, patternl	timeSpinner.setEditor(new JSpinner.DateEditor(timeSpinner, pattern));
+addRow"Time", timeSpinner;	addRow("Time", timeSpinner);
+JSpinnerpermSpiner = new JSpinnerlnew PerutatioSpinnerModel"met";	JSpinner permSpinner = new JSpinner(new PermutationSpinnerModel("meat"));
+addRow"Wod permutations,permSpinner;	addRow("Word permutations", permSpinner);
+}	}
+	
+public void addRowString labelText,  final JSpinner spinnerl	public void addRow(String labelText, final JSpinner spinner)
+{	{
+mainPanel.addnew JLabellabelTxt;	mainPanel.add(new JLabel(labelText));
+mainPanel.addspinner;	mainPanel.add(spinner);
+final JLabel valueLabel= new JLabel;	final JLabel valueLabel = new JLabel();
+mainPanel.addvalueLabel	mainPanel.add(valueLabel);
+okButton.addActionListenerfnew  ActionListenr	okButton.addActionListener(new ActionListener()
+{	{
+public void actionPerformedAtionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+Obectvalue = spinner.getValuel;	Object value = spinner.getValue();
+valueLabel.setTextlvaluetoStringl;	valueLabel.setText(value.toString());
+}	}
+}f;	});
+}	}
+publi tatic final int EFAULT_WIDTH = 400;	public static final int DEFAULT_WIDTH = 400;
+public static final int DEFAULT_HEIGHT =250;;	public static final int DEFAULT_HEIGHT = 250;
+private JPanelmainPanel;	private JPanel mainPanel;
+private JButton okButton;	private JButton okButton;
+}	}
+class PermutationSpinnerModel extends AbstractSpinnerModel	class PermutationSpinnerModel extends AbstractSpinnerModel
+{	{
+	
+public PermutationSpinnerModelStringw	public PermutationSpinnerModel(String w)
+{	{
+word = w;	word = w;
+}	}
+public Object getValue	public Object getValue()
+{	{
+return word;	return word;
+1	}
+public void setValueObject value	public void setValue(Object value)
+{	{
+if !valu instanceofString throw new IllegalArgumentExcptionf;	if (!(value instanceof String)) throw new IllegalArgumentException();
+word = lStringvaue;	word = (String) value;
+fireStateChangedf;	fireStateChanged();
+}	}
+public Object getNextValue	public Object getNextValue()
+{	{
+intl codePoints = toCodePointArrayword;	int[] codePoints = toCodePointArray(word);
+for int i = codePoints.length - 1;;  i > 0; i--	for (int i = codePoints.length - 1; i > 0; i--)
+{	{
+if codePointsi- 1  < codePointsi	if (codePoints[i - 1] < codePoints[i])
+{	{
+int j = codePoints.length- 1;	int j = codePoints.length - 1;
+while codePointsfi - 1 > codePointsfjl	while (codePoints[i - 1] > codePoints[j])
+j--;	j--;
+swapfcodePoints,, i - 1,  j;	swap(codePoints, i - 1, j);
+reverselcodePoints, i, codePoints.length- 1;	reverse(codePoints, i, codePoints.length - 1);
+retrnnew StringcodePoints,, 0, codePointslength;	return new String(codePoints, 0, codePoints.length);
+}	}
+}	}
+reversecodePoints,, 0, codePoints.length -1;	reverse(codePoints, 0, codePoints.length - 1);
+return new StringcodePoints, 0, codePnts.length;	return new String(codePoints, 0, codePoints.length);
+1	}
+public  Object getPreviousValue	public Object getPreviousValue()
+{	{
+int codePoints =toCodePointArrayword;	int[] codePoints = toCodePointArray(word);
+for int i  = codePoints.length-  1; i > 0;; i--	for (int i = codePoints.length - 1; i > 0; i--)
+{	{
+if fcodePointsi - 1 > codePointsli	if (codePoints[i - 1] > codePoints[i])
+{	{
+inj = codePoints.length - 1;;	int j = codePoints.length - 1;
+while codePointsi - 1 < codePointsjl	while (codePoints[i - 1] < codePoints[j])
+j--	j--;
+swapcodePoints, i   1, j;	swap(codePoints, i - 1, j);
+reverselcodePoints, i, codePoins.length - 1	reverse(codePoints, i, codePoints.length - 1);
+return new StringcodePoints, 0, codePoints.length;	return new String(codePoints, 0, codePoints.length);
+}	}
+}	}
+reversecodePoins,0,codePoints.length - 1;	reverse(codePoints, 0, codePoints.length - 1);
+return ne  StringcodePoints 0, codPoints.length;	return new String(codePoints, 0, codePoints.length);
+}	}
+private static int toCodePointArrayStringstr	private static int[] toCodePointArray(String str)
+f	{
+intf  codePoints =  new intstr.codePointCount0, str.length;	int[] codePoints = new int[str.codePointCount(0, str.length())];
+for int i =0, j = 0; i< strlength; i++,, j++	for (int i = 0, j = 0; i < str.length(); i++, j++)
+{	{
+int cp= str.codePointAti	int cp = str.codePointAt(i);
+if Character.isSupplementaryCodePointcpf i++;	if (Character.isSupplementaryCodePoint(cp)) i++;
+codePointsj= cp;	codePoints[j] = cp;
+}	}
+return codePoints;	return codePoints;
+1	}
+pivate satic void swapint a,, int i, int j	private static void swap(int[] a, int i, int j)
+{	{
+int temp = ai;	int temp = a[i];
+ail = afj;	a[i] = a[j];
+aj = temp;	a[j] = temp;
+}	}
+private static void reverseint a, int i, int  j	private static void reverse(int[] a, int i, int j)
+{	{
+while i < j	while (i < j)
+1	{
+swapa,i, jl;	swap(a, i, j);
+i++;	i++;
+j--;	j--;
+l	}
+}	}
+private String word;	private String word;
+}	}

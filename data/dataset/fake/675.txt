@@ -1,0 +1,9 @@
+package com..aliencat.springboot	package com.aliencat.springboot;
+import org.ringframework.boot.SpringApplication;	import org.springframework.boot.SpringApplication;
+import  org.springframework.boo.autoconfigure.SpringBootApplication	import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication	@SpringBootApplication
+public class Oauth2Application {	public class Oauth2Application {
+public  static void mainStringargs {	public static void main(String[] args) {
+SpringAplication.runOath2Applcation.class,, args;	SpringApplication.run(Oauth2Application.class, args);
+1	}
+}	}

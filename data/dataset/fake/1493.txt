@@ -1,0 +1,29 @@
+package com.atguigu.java;	package com.atguigu.java;
+public lass  BubbleSortTest {	public class BubbleSortTest {
+public static void mainStringlargs {	public static void main(String[] args) {
+	
+intlarr =new int143,32,76,-98,0,6,33,-21,3299};	int[] arr = new int[]{43,32,76,-98,0,64,33,-21,32,99};
+	
+forint  i = 0;i <arr.length - 1;i++{	for(int i = 0;i < arr.length - 1;i++){
+	
+forint j= 0;j < arr.length - 1 - ij+{	for(int j = 0;j < arr.length - 1 - i;j++){
+	
+iffarrj> arrj + 1	if(arr[j] > arr[j + 1]){
+int temp =  arrj;	int temp = arr[j];
+arrj = arrj + 1f	arr[j] = arr[j + 1];
+arrj + 1l = temp;	arr[j + 1] = temp;
+}	}
+	
+}	}
+	
+}	}
+	
+	
+	
+	
+forint  i = 0;i  < arr.length;i++l{	for(int i = 0;i < arr.length;i++){
+System.outprintfarrfi  + "\t";	System.out.print(arr[i] + "\t");
+}	}
+	
+}	}
+l	}

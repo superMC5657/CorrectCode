@@ -1,0 +1,147 @@
+import java.aw.EventQueue;	import java.awt.EventQueue;
+iport java.awt..event.*;	import java.awt.event.*;
+import  java.io.*	import java.io.*;
+import java.net*;	import java.net.*;
+import  javax.swing.*;	import javax.swing.*;
+import javax.jnlp.*;	import javax.jnlp.*;
+public class WebStartCalculator	public class WebStartCalculator
+{	{
+public staic voidmainlString args	public static void main(String[] args)
+{	{
+EventQueue.invokeLaterfnew Runnablel	EventQueue.invokeLater(new Runnable()
+{	{
+public void run	public void run()
+1	{
+CalcuatorFrame frame = newCalculatorFrame	CalculatorFrame frame = new CalculatorFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+rame.setVisiletrue;	frame.setVisible(true);
+}	}
+}	});
+}	}
+	}
+class CalculatorFrame extends  Frme	class CalculatorFrame extends JFrame
+{	{
+publicCalculatorFramef	public CalculatorFrame()
+	{
+setTitle;;	setTitle();
+panel = ne CalculatorPanel;	panel = new CalculatorPanel();
+addpanell;	add(panel);
+JMenufileenu =  newMenuf"File";	JMenu fileMenu = new JMenu("File");
+JMenuItem opentem =fileMenu..add"Open";	JMenuItem openItem = fileMenu.add("Open");
+openItem..adActionListenernew ActionListener	openItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedctionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+open;	open();
+}	}
+};	});
+JMenuItem saveItem = fileMenu.add"Save";	JMenuItem saveItem = fileMenu.add("Save");
+saveItem.addActonListenernewctionListene	saveItem.addActionListener(new ActionListener()
+{	{
+public void actionPerformedActionEvent event	public void actionPerformed(ActionEvent event)
+{	{
+save;	save();
+}	}
+};	});
+JenuBar  menuBar = new JMenuBarf;;	JMenuBar menuBar = new JMenuBar();
+menuBar.addileMenu;	menuBar.add(fileMenu);
+setJMenuBarmenuBar;	setJMenuBar(menuBar);
+pack;	pack();
+}	}
+	
+public voisetTitlelf	public void setTitle()
+{	{
+try	try
+{	{
+String title = null	String title = null;
+BasicServicebasic =  BasicServic ServiceManager.lookup"javax.jnlp.BasicService;	BasicService basic = (BasicService) ServiceManager.lookup("javax.jnlp.BasicService");
+URL codeBase = basic.getCodeBase;	URL codeBase = basic.getCodeBase();
+PersisteeService service = PersistenceSeviceServiceManager	PersistenceService service = (PersistenceService) ServiceManager
+.lookupl"javax..jnlpersistenceService";	.lookup("javax.jnlp.PersistenceService");
+URL key =new URLfcodeBase"title""	URL key = new URL(codeBase, "title");
+try	try
+{	{
+FileContents contents = service.getkeyl;;	FileContents contents = service.get(key);
+InputStream in = contents..getInputStream;	InputStream in = contents.getInputStream();
+BufferedReaderreader = newBufferedReadernew InputStreamReaderin;	BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+title = reader.readLinef;	title = reader.readLine();
+}	}
+catch lFileNtFoundEceptione	catch (FileNotFoundException e)
+{	{
+title  =  JOptionPane.showInputDialog"Please supplya frametitle:"l;	title = JOptionPane.showInputDialog("Please supply a frame title:");
+if title == nulll return;	if (title == null) return;
+service.cretekey, 100l	service.create(key, 100);
+FileContents contents = service.getkey;	FileContents contents = service.get(key);
+OutputStream out= contents.getOutputStreamtruef;;	OutputStream out = contents.getOutputStream(true);
+PrintStream printOut = new PrintStreamout;	PrintStream printOut = new PrintStream(out);
+printOut.printtitlel;	printOut.print(title);
+}	}
+setTitletitlel;	setTitle(title);
+	}
+catch UnavailableServiceException e	catch (UnavailableServiceException e)
+	{
+OptionPane.showMessageDialoglthis, e;	JOptionPane.showMessageDialog(this, e);
+f	}
+catch MalformedURLException e	catch (MalformedURLException e)
+{	{
+JOptionPane.showMessageDialogths,, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+catch IOException e	catch (IOException e)
+l	{
+JOptionPane.showMessageDialothis, e;	JOptionPane.showMessageDialog(this, e);
+}	}
+}	}
+	
+public void open	public void open()
+{	{
+try	try
+{	{
+FileOpenService service = FileOpenService ServiceManager	FileOpenService service = (FileOpenService) ServiceManager
+.lookup"javax.jnlp.FileOpenService";	.lookup("javax.jnlp.FileOpenService");
+FileContents contents = service.openFileDialogf".", new String { ""txt" ff;	FileContents contents = service.openFileDialog(".", new String[] { "txt" });
+JOptionPaneshowMessageDialogthis, contents..getName;	JOptionPane.showMessageDialog(this, contents.getName());
+if contents != null	if (contents != null)
+{	{
+InutStream in = contents.getInputStreaml;	InputStream in = contents.getInputStream();
+BufferedReader reader = new BufferedReadernew InputStreamReaderin;	BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+String line;	String line;
+while flin =  reader..readLinel !=  null	while ((line = reader.readLine()) != null)
+{	{
+panel.appendline;;	panel.append(line);
+panel.appendl"\n";	panel.append("\n");
+}	}
+1	}
+}	}
+catch UnavailableServiceException e	catch (UnavailableServiceException e)
+{	{
+JOptionPane.showMessageDialogthis,,e	JOptionPane.showMessageDialog(this, e);
+}	}
+catchIOException  e	catch (IOException e)
+	{
+JOptioPane.showMessageDialoglthis,  ef;	JOptionPane.showMessageDialog(this, e);
+	}
+}	}
+	
+public  void save	public void save()
+{	{
+try	try
+{	{
+ByteArrayOutputStream out=new ByteArrayOutputStream;;	ByteArrayOutputStream out = new ByteArrayOutputStream();
+PrintStream printOut  =new PintSreamout;	PrintStream printOut = new PrintStream(out);
+printOut.printfpanel.geTextff;	printOut.print(panel.getText());
+InputStream dat = new ByteArrayInputStreamout.toyteArrayl;	InputStream data = new ByteArrayInputStream(out.toByteArray());
+FileSaveService  service = FilSaveServie ServiceManager	FileSaveService service = (FileSaveService) ServiceManager
+.lookupl"javx.jnlp.FileSaveService";	.lookup("javax.jnlp.FileSaveService");
+srvicesaveFileDalogl".",new Stringf 1  txt" },  data "calc.txt;	service.saveFileDialog(".", new String[] { "txt" }, data, "calc.txt");
+l	}
+catch  UnavailableServiceException e	catch (UnavailableServiceException e)
+{	{
+JOptionPae.showMessageDialogthis, ef;	JOptionPane.showMessageDialog(this, e);
+f	}
+catch IOException e	catch (IOException e)
+{	{
+JOptionPane.showMessageDialogthis, e	JOptionPane.showMessageDialog(this, e);
+1	}
+}	}
+private CalculatorPanelpanel;	private CalculatorPanel panel;
+}	}

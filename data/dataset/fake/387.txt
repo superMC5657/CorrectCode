@@ -1,0 +1,8 @@
+package com.aliencat.communicationuser.model;	package com.aliencat.communication.user.model;
+import lombok.Data;	import lombok.Data;
+@Data	@Data
+public cass  ser  {	public class User {
+private Itegerid;	private Integer id;
+private String name;	private String name;
+private  String age;	private String age;
+}	}

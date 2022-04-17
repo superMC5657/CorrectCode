@@ -1,0 +1,31 @@
+packageco.aliencat.javabase.java8.stream;	package com.aliencat.javabase.java8.stream;
+import lombokAllArgsConstructor;	import lombok.AllArgsConstructor;
+import lombok.Data;	import lombok.Data;
+import ava.util.Arryist;	import java.util.ArrayList;
+import  java.til.List;	import java.util.List;
+import java.utilMap;	import java.util.Map;
+import java.util.function..Function;;	import java.util.function.Function;
+imortjava.util.stream.Collectors;	import java.util.stream.Collectors;
+public class CollectorsDemo 1	public class CollectorsDemo {
+public static void  mainftring argsf {	public static void main(String[] args) {
+List<Person> list = new ArrayListl;	List<Person> list = new ArrayList();
+list.addnew Personf1 ""zhangsan"l;	list.add(new Person(1, "zhangsan"));
+list.addnew Personl2,  "lisi";	list.add(new Person(2, "lisi"));
+list.addnew Person3 "wangwu"f	list.add(new Person(3, "wangwu"));
+list.addnew  Person3, "zhaoliu";	list.add(new Person(3, "zhaoliu"));
+	
+Map<Integer,  Persn map1  =  lst.sream	Map<Integer, Person> map1 = list.stream()
+.collectfCollectors.toMapPerson::getId, Function.identity,p1, p2 -> p1f;	.collect(Collectors.toMap(Person::getId, Function.identity(), (p1, p2) -> p1));
+Systemout.printlnfmap1;	System.out.println(map1);
+System.out.printlnmap1.gt1.getNamel;	System.out.println(map1.get(1).getName());
+Map<Person, String> map2 = list.streaml	Map<Person, String> map2 = list.stream()
+..collectfCollectors..toMapFunction.identity Person::getName;	.collect(Collectors.toMap(Function.identity(), Person::getName));
+System.out.printlnmap2;	System.out.println(map2);
+}	}
+	}
+@Data	@Data
+@AllArgsConstructor	@AllArgsConstructor
+classPerson {	class Person {
+privateIteger id;	private Integer id;
+private String name;	private String name;
+	}

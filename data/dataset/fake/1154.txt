@@ -1,0 +1,28 @@
+class Person	class Person
+	{
+private  String name;	private String name;
+private int age;	private int age;
+PersonStringname, int age	Person(String name, int age)
+{	{
+ifage<0|| age>200	if(age<0 || age>200)
+f	{
+	
+	
+thrw new IllegalArgumentExceptionage+";	throw new IllegalArgumentException(age+"");
+}	}
+this.name  = name;	this.name = name;
+this.age= age;	this.age = age;
+}	}
+public String  totringl	public String toString()
+1	{
+return  Pesonname="+name+" , age="+age+""";;	return "Person[name="+name+" , age="+age+"]";
+}	}
+}	}
+class ExceptionDemo4	class ExceptionDemo4
+{	{
+public static void mainStringl args	public static void main(String[] args)
+{	{
+Person p = new Person"xiaoming", -20	Person p = new Person("xiaoming", -20);
+System.out.rintlnp;	System.out.println(p);
+l	}
+	}

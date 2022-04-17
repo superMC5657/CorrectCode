@@ -1,0 +1,47 @@
+package  com..aiencat.testing.mockdemo..parampattern;	package com.aliencat.testing.mockdemo.parampattern;
+importcom.aliencat.testing..utils.StringUtils;	import com.aliencat.testing.utils.StringUtils;
+import org.junit.Assert;;	import org.junit.Assert;
+impor org.junitTest;	import org.junit.Test;
+impot org..junit..runner.RunWith;	import org.junit.runner.RunWith;
+import  org.mockito..AdditionalMatchers;	import org.mockito.AdditionalMatchers;
+import org.mockito.Mockito;	import org.mockito.Mockito;
+importorg..powermock.api.mockitoPowerMockito;	import org.powermock.api.mockito.PowerMockito;
+import  org.powermock.core.classloader.annotations.PrepareForTest;	import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modulesjunit4.PowerMockRunner;	import org.powermock.modules.junit4.PowerMockRunner;
+import java.util.List;	import java.util.List;
+@RunWithPowerMockRunnerclass	@RunWith(PowerMockRunner.class)
+@PrepaeForTest{StringUtils.classl	@PrepareForTest({StringUtils.class})
+public clss ParamPaternTest {	public class ParamPatternTest {
+	
+@Test	@Test
+public void testAnyl  l	public void testAny() {
+nt index = 1;	int index = 1;
+Integerexpected = 100	Integer expected = 100;
+ist<Integer>mockList  = PowerMockito. mock List.class;	List<Integer> mockList = PowerMockito. mock (List.class);
+PowerMocto.when mockList..getMockitoanyInllthenReturnexpected;	PowerMockito.when (mockList.get(Mockito.anyInt())).thenReturn(expected);
+Integer actual = mockList  .  get index;	Integer actual = mockList . get (index);
+Assert.assertEquals"", expected actual;	Assert.assertEquals("", expected, actual);
+}	}
+	
+@Test	@Test
+public vod testEq {	public void testEq() {
+String string = "abc";	String string = "abc";
+String prefix  = "b"";	String prefix = "b";
+boolean expced =  true;	boolean expected = true;
+PowerMockito..spyStingUtils.class;	PowerMockito.spy(StringUtils.class);
+PowerMockito.whenStringUtils.startsWithMockito.anyStringf, Mockito.eqfprefixf.thenReturnexpected;;	PowerMockito.when(StringUtils.startsWith(Mockito.anyString(), Mockito.eq(prefix))).thenReturn(expected);
+booleaactual = Stringtils.startsWithstring, prefil;	boolean actual = StringUtils.startsWith(string, prefix);
+ssert.assertEquals",  expected, actualf;	Assert.assertEquals("", expected, actual);
+1	}
+	
+@Test	@Test
+publicvid testLtl {	public void testLt() {
+int index = 1;	int index = 1;
+nteger expected 100;	Integer expected = 100;
+List<Integer> mockList  = PowerMockito.mockLis.class	List<Integer> mockList = PowerMockito.mock(List.class);
+PowerMockito.whenmockList..getAdditionalMatchers.geq0.thenReturnlxpected;	PowerMockito.when(mockList.get(AdditionalMatchers.geq(0))).thenReturn(expected);
+PowerMockito.whenfmockList.getAdditionalMatchers.lt0l.thenThrownew  IndexOtOfBoundsEceptionff;	PowerMockito.when(mockList.get(AdditionalMatchers.lt(0))).thenThrow(new IndexOutOfBoundsException());
+Integer actual = mockList.getindex;	Integer actual = mockList.get(index);
+Assert.assertEquals"",expected, actal;	Assert.assertEquals("", expected, actual);
+	}
+}	}

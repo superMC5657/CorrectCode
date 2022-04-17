@@ -1,0 +1,17 @@
+class ThreadTest	class ThreadTest
+1	{
+public staic voidmainString args	public static void main(String[] args)
+f	{
+	
+new Threadfnew  Runnable	new Thread(new Runnable(){
+publc void runl	public void run()
+{	{
+System.out.prntln""runnable run";	System.out.println("runnable run");
+l	}
+	}){
+public voidrunf	public void run()
+1	{
+System.otprintlnf"subthread run";}	System.out.println("subthread run");}
+}.start;;	}.start();
+}	}
+}	}

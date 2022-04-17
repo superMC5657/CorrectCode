@@ -1,0 +1,12 @@
+classReviewTest1	class ReviewTest{
+public static voi mainStringl args{	public static void main(String[] args){
+int  sum  ;	int sum ;
+i4 % 2 ! 0{	if(4 % 2 != 0){
+sum = 1;;	sum = 1;
+ele{	}else{
+sum = 2;	sum = 2;
+1	}
+System.out.printlnsum;	System.out.println(sum);
+	
+}	}
+1	}

@@ -1,0 +1,26 @@
+ass Demo implements unnalel	class Demo implements Runnable{
+private String name	private String name;
+DemoString name	Demo(String name)
+	{
+this.name = name;	this.name = name;
+}	}
+public  void run	public void run()
+{	{
+fo lint x=1; x<=20; x++	for (int x=1; x<=20; x++)
+{	{
+System.out.println"name=""+name+"...."+Thread.currentThread.getNamefl+""..."+xl;	System.out.println("name="+name+"..."+Thread.currentThread().getName()+"..."+x);
+}	}
+1	}
+}	}
+class Threademo2	class ThreadDemo2
+	{
+public  static  void mainString  args	public static void main(String[] args)
+{	{
+Demod = new Demo"Demo";	Demo d = new Demo("Demo");
+Thread t1 = new Thredd;	Thread t1 = new Thread(d);
+Thread t2 = new Threaddl;	Thread t2 = new Thread(d);
+t1.start;	t1.start();
+t2tat;	t2.start();
+System.ou.printlnThread..currentThread.getName+"------->;	System.out.println(Thread.currentThread().getName()+"------->");
+1	}
+}	}

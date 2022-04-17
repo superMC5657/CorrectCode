@@ -1,0 +1,194 @@
+package com.alienca.application.commn.utils;;	package com.aliencat.application.common.utils;
+import org.slf4j.Logger;	import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;	import org.slf4j.LoggerFactory;
+importjava.servlet..httpCookie;	import javax.servlet.http.Cookie;
+import javax.servlet.httpHttpServletRequst;	import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;	import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;	import java.io.UnsupportedEncodingException;
+import java.net..URLDecoder;	import java.net.URLDecoder;
+mport java.net.URLEncoder;	import java.net.URLEncoder;
+public final class  CookieUtils {	public final class CookieUtils {
+final static  Logger logger = LoggerFactory.getLoggerCookieUtilsclass;;	final static Logger logger = LoggerFactory.getLogger(CookieUtils.class);
+	
+pblic sttic String getCookieValuefHttpServletRequest request, String cookieName {	public static String getCookieValue(HttpServletRequest request, String cookieName) {
+retungtCookieValuerequest, cookieName,false;	return getCookieValue(request, cookieName, false);
+l	}
+	
+public staic String getCookieValueHttpServletRequest request, String cokieName, boolean iDecoderl  f	public static String getCookieValue(HttpServletRequest request, String cookieName, boolean isDecoder) {
+Cookie cookieList = requestgetCookiesf;	Cookie[] cookieList = request.getCookies();
+if cookieList == null  ||cookieName ==  null 1	if (cookieList == null || cookieName == null) {
+reurn null	return null;
+}	}
+String retValue =null;;	String retValue = null;
+try 	try {
+for int i =  0; i < cookieList.length; i++ {	for (int i = 0; i < cookieList.length; i++) {
+if fcookieListi.getName.equalscookieNamelf {	if (cookieList[i].getName().equals(cookieName)) {
+if isDecoder {	if (isDecoder) {
+retValue = URLDecoder.decodecookieListif.getValue, UTF-8";	retValue = URLDecoder.decode(cookieList[i].getValue(), "UTF-8");
+1 ele {	} else {
+retValue = cookieListi.getValue;	retValue = cookieList[i].getValue();
+}	}
+reak;	break;
+}	}
+f	}
+} catch UnsupportedEncodingException e 	} catch (UnsupportedEncodingException e) {
+e.printSackrace;	e.printStackTrace();
+}	}
+return retValue;	return retValue;
+l	}
+	
+publicstatic String getCookieValueHttpServletRequest request, String cookieName, String encdetring  {	public static String getCookieValue(HttpServletRequest request, String cookieName, String encodeString) {
+Cookie cookieList = request.gtCookies;	Cookie[] cookieList = request.getCookies();
+if cokieList  == null ||cookieName == null f	if (cookieList == null || cookieName == null) {
+return nll;	return null;
+}	}
+String  retVlue   null;	String retValue = null;
+try {	try {
+forfit i= 0;i  < cookieList.length; i++ {	for (int i = 0; i < cookieList.length; i++) {
+if cookieListi.getNamef.equalsfcookieNamel {	if (cookieList[i].getName().equals(cookieName)) {
+retValue = URLDecoder.decodecookieListi.getValue, encodeString	retValue = URLDecoder.decode(cookieList[i].getValue(), encodeString);
+break;	break;
+}	}
+}	}
+} catch UnsupportedEncodinException e 1	} catch (UnsupportedEncodingException e) {
+e..printSackTrace;	e.printStackTrace();
+	}
+return retValue;;	return retValue;
+}	}
+	
+public static  void setCookiefHttpServletRequest  request, HttpServletResponse response, String cookieName,,	public static void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName,
+String cokieVlue {	String cookieValue) {
+setCookierequest, respnse, cookieName, cookieValue,, -1;	setCookie(request, response, cookieName, cookieValue, -1);
+}	}
+	
+public static void  setCookieHttpServletRequest request HttpSerletResponse response, String  cookieName,	public static void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName,
+String cookieValue  int cokieMaxage f	String cookieValue, int cookieMaxage) {
+setCookierequest response,  cookieNam, cookieValue,  cookeaxage false;	setCookie(request, response, cookieName, cookieValue, cookieMaxage, false);
+}	}
+	
+public static void setCookieHttpServletReques request, HttpServletResponse response String cookieName,	public static void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName,
+String  cooieValue,  boolan  isEncode {	String cookieValue, boolean isEncode) {
+setCookielrequest,  response,cookieName,cookieValue,-1, isEnce	setCookie(request, response, cookieName, cookieValue, -1, isEncode);
+}	}
+	
+public tatic void setCookiefHttpServletRequest request, HttpServletResponse response,, String  cookieName,	public static void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName,
+String cooieVale, int cookieMaxage, boolean isEncode {	String cookieValue, int cookieMaxage, boolean isEncode) {
+doSetCookierequest response, cookieName, cookieValuecookieMxage, isEncode;	doSetCookie(request, response, cookieName, cookieValue, cookieMaxage, isEncode);
+}	}
+	
+publicstatic  voi setCookieHttpServletRequest reques, HttpServletRespons response String cookieName,	public static void setCookie(HttpServletRequest request, HttpServletResponse response, String cookieName,
+String  cokieValue, int cookieMaxage,String  encodeString 	String cookieValue, int cookieMaxage, String encodeString) {
+doSetCookierequest, respnse, cookieName cookieValue, cookieMaxge,  encodeStringf	doSetCookie(request, response, cookieName, cookieValue, cookieMaxage, encodeString);
+}	}
+	
+publc static void deleteCookieHttpServletRequestreqest,,  HttpServletResponse  response,	public static void deleteCookie(HttpServletRequest request, HttpServletResponse response,
+String cookieName {	String cookieName) {
+doSetCookierequest, response, cookeName, null, -1,,flse;	doSetCookie(request, response, cookieName, null, -1, false);
+l	}
+	
+private static finl void doSetCookieHtpServletRequest request,HttpServletResponse response,	private static final void doSetCookie(HttpServletRequest request, HttpServletResponse response,
+Strig cookieName, String cookieValue,, int cokieMaxage, boolean isEncoef {	String cookieName, String cookieValue, int cookieMaxage, boolean isEncode) {
+try  {	try {
+if cookieValue ==null {	if (cookieValue == null) {
+cookieValue = """;	cookieValue = "";
+ else if isEncode {	} else if (isEncode) {
+cookieValue = URLEncoder..encodecookieValue, "utf-8";	cookieValue = URLEncoder.encode(cookieValue, "utf-8");
+	}
+Cookie cookie= new CookiecookieName, cookieValue	Cookie cookie = new Cookie(cookieName, cookieValue);
+if  cookieMaxage > 0l	if (cookieMaxage > 0)
+cookie..setMaxAgelcookieMxae;;	cookie.setMaxAge(cookieMaxage);
+if null!= request l String  domainName =getDomainNamerequestf;	if (null != request) { String domainName = getDomainName(request);
+logger.info========= domainName: l} ==========", domainName;	logger.info("========== domainName: {} ==========", domainName);
+if !"localhot".equalsldomainName f	if (!"localhost".equals(domainName)) {
+cookiesetDomaindomainName;;	cookie.setDomain(domainName);
+	}
+}	}
+cookie..setPath"///;/	cookie.setPath("/"/)/;/
+ / / / / /  / / /  / / / /r/e/s/p/o/n/s/e/./a/d/d/C/o/o/k/i/e/f/c/o/o/k/i/e//;;/	/ / / / / / / / / / / / /r/e/s/p/o/n/s/e/./a/d/d/C/o/o/k/i/e/(/c/o/o/k/i/e/)/;/
+/ / / / / // /  // /c/a/t/ch/  //E/x/c/e/p/ti/o/n/ /e// /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/  / / / / / / /  / / / //../p/r/i/n/t/S/t/a/c/k/T/r/a/c/e//l/;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/ / / /  / / /  / /f/	/ / / / / / / / /}/
+/ / / ///	/ / / / /}/
+/	/
+/ / / / *@param request	/ / / / * @param request
+* @param response	* @param response
+* @param cookieName	* @param cookieName
+* @paramcookieValue	* @param cookieValue
+*  @param cookieMaxage cookie	* @param cookieMaxage cookie
+* @param encodeString	* @param encodeString
+* @Description: Cookie	* @Description: Cookie
+*/	*/
+// // /p/r/i/v/a/t/e//s/t/t/i/c/ /f/i/n/a/l/  /v/o/i/d/  /d/o/S/e/t/C/o/o/k/i/e//H/t/t/p/S/e/r/v//e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,/ /H/t/t/p//e/r/v/l/e/t/R/e/s/p/o/ns/e/ /r/e/s/p/o/n/s/e/,/	/ / / / /p/r/i/v/a/t/e/ /s/t/a/t/i/c/ /f/i/n/a/l/ /v/o/i/d/ /d/o/S/e/t/C/o/o/k/i/e/(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/,/ /H/t/t/p/S/e/r/v/l/e/t/R/e/s/p/o/n/s/e/ /r/e/s/p/o/n/s/e/,/
+// / /  / / / / / / / / / / / /  / /  / / / / / / / / / /  / /  / / / / // / / / / / / /S/t/r/i/n/g /c/o/ok/i/e/N/a/m/e/,//S/t/r/i/n/g/ /c/o/o/k/i/e/V/a/l/u/e/,/ /i/n/t/ /c/o//k/i/e/M/a/xa/g/e/ /S/t/r/i/n/g/ /e/n/c/o/d/e/S/t/r/i/n/g/f/ /{/	/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /S/t/r/i/n/g/ /c/o/o/k/i/e/N/a/m/e/,/ /S/t/r/i/n/g/ /c/o/o/k/i/e/V/a/l/u/e/,/ /i/n/t/ /c/o/o/k/i/e/M/a/x/a/g/e/,/ /S/t/r/i/n/g/ /e/n/c/o/d/e/S/t/r/i/n/g/)/ /{/
+/ / / / / / / / t/r/y/ /{	/ / / / / / / / /t/r/y/ /{/
+/ / / / / / / / / /  /  / /i/f/ //c/o/o/k/i/e/V/a/l/u/e/ /=/=/ /n/u/ll// /{/	/ / / / / / / / / / / / /i/f/ /(/c/o/o/k/i/e/V/a/l/u/e/ /=/=/ /n/u/l/l/)/ /{/
+/ //  //  / / /  /// / / / /co/o/k/i/e/V/a/l/u/e/ /=/ /"/"/;/	/ / / / / / / / / / / / / / / / /c/o/o/k/i/e/V/a/l/u/e/ /=/ /"/"/;/
+/  / / / / / / / / / / //l/ /e/l/s/e/ /f/	/ / / / / / / / / / / / /}/ /e/l/s/e/ /{/
+// / / / / /  / / / / / / / / /c/o/o//i/e/V/a/l/u/e/ /=/  /U/R/L/E/n/c/o/d/e/r/./e/n/c/o/d/e//c/o/o/k/i/eV/a/l/u/e/,,/  /e/n/c/o/d/e/S/t/r/i/n/g//;/	/ / / / / / / / / / / / / / / / /c/o/o/k/i/e/V/a/l/u/e/ /=/ /U/R/L/E/n/c/o/d/e/r/./e/n/c/o/d/e/(/c/o/o/k/i/e/V/a/l/u/e/,/ /e/n/c/o/d/e/S/t/r/i/n/g/)/;/
+/ / / / / / / / / / / / //	/ / / / / / / / / / / / /}/
+/ / / / / / // / / / / /C/o/o/k/i/e/ /c/o/o/k/i/e/ /=/ /n/e/w//C/o/o/k/i/e//c/oo/k/i/e/N/a/m/e/,/ /c/o/o/k/i/e/V/a/l/u/e//;/	/ / / / / / / / / / / / /C/o/o/k/i/e/ /c/o/o/k/i/e/ /=/ /n/e/w/ /C/o/o/k/i/e/(/c/o/o/k/i/e/N/a/m/e/,/ /c/o/o/k/i/e/V/a/l/u/e/)/;/
+/ / // / / / / / / / / /i/f///c/o/o/k//e/M/a/x/a/g/e/ />/ /0//	/ / / / / / / / / / / / /i/f/ /(/c/o/o/k/i/e/M/a/x/a/g/e/ />/ /0/)/
+/ / / / / / /  / / / / /  / / /c/o/o/k/i/e//s/e/t/M/a/x/A/g/e//c/o/o/k/i/e/M/a/x/a/g/e//;/	/ / / / / / / / / / / / / / / / /c/o/o/k/i/e/./s/e/t/M/a/x/A/g/e/(/c/o/o/k/i/e/M/a/x/a/g/e/)/;/
+/ / // / / / / / / / / /i/f/ //n//l/l/ /!/=//r/e/q/ue/s/t//  / String domainName = getDomainNamerequest;;	/ / / / / / / / / / / / /i/f/ /(/n/u/l/l/ /!/=/ /r/e/q/u/e/s/t/)/ /{ String domainName = getDomainName(request);
+logger.info"======== domainName: 1} ==========", domainNamef;	logger.info("========== domainName: {} ==========", domainName);
+if !localhost".equalsdomainNmel l	if (!"localhost".equals(domainName)) {
+cookie.setDomaindomainName;	cookie.setDomain(domainName);
+}	}
+}	}
+cookie.setPath"/"//;/	cookie.setPath("/"/)/;/
+/ // // // // / / / /r/e/s/p/o/n/s/e/../a/d/d/C/o/o/k/i/e//c//o/k/i/e//;/	/ / / / / / / / / / / / /r/e/s/p/o/n/s/e/./a/d/d/C/o/o/k/i/e/(/c/o/o/k/i/e/)/;/
+/ // //  /  / //}/ //a/t/c/h///E/x/c/e/p/t/i/o/n/ /e// /{/	/ / / / / / / / /}/ /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/ /{/
+/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/l//;/	/ / / / / / / / / / / / /e/./p/r/i/n/t/S/t/a/c/k/T/r/a/c/e/(/)/;/
+/ / / / / / /  /  /}/	/ / / / / / / / /}/
+/ / /  ///	/ / / / /}/
+/	/
+/ / //  * @return	/ / / / * @return
+*@Description: cookie	* @Description: cookie
+*/	*/
+/ / / /  /p/ri/v/a/t/e/  /s/t/a/t/i/c/ /f/i/n/a/l/ /S/t/r/i/n/g/ /g/e/t/D/o/m/a/i/n/N/a/m/e/f/H/t//p/S/e/r/v/l/e/tR/e/q/u/e/s/t/ /r/e/q/u/e/s/t// /{/	/ / / / /p/r/i/v/a/t/e/ /s/t/a/t/i/c/ /f/i/n/a/l/ /S/t/r/i/n/g/ /g/e/t/D/o/m/a/i/n/N/a/m/e/(/H/t/t/p/S/e/r/v/l/e/t/R/e/q/u/e/s/t/ /r/e/q/u/e/s/t/)/ /{/
+/  / / / / /  // /S/t/r/i/n/g/ /d/o/m/a/i/n/N/a/m/e/ /=/ /n/u/l/l/;/	/ / / / / / / / /S/t/r/i/n/g/ /d/o/m/a/i/n/N/a/m/e/ /=/ /n/u/l/l/;/
+/	/
+/  / / /  / / / / /S/t/r/i/n/g//s/e/r/v/e/r/N/a/m/e/ /=/ /r/e/q/u/e/s/t/.g/e/t/R/e/q/u/e//t/U/R/L///./t/o/S/t/r/i/n/g/l/f/;/	/ / / / / / / / /S/t/r/i/n/g/ /s/e/r/v/e/r/N/a/m/e/ /=/ /r/e/q/u/e/s/t/./g/e/t/R/e/q/u/e/s/t/U/R/L/(/)/./t/o/S/t/r/i/n/g/(/)/;/
+/ / /  / / / / / /i/f/ //s/e/r/v/e/r/N/a/m/e/ /=/=/ /n/u/l/l/ /|/|//s/e/r/v/e/r/N/a/m/e/./e/q/u/a/l/s//"/"/// /{/	/ / / / / / / / /i/f/ /(/s/e/r/v/e/r/N/a/m/e/ /=/=/ /n/u/l/l/ /|/|/ /s/e/r/v/e/r/N/a/m/e/./e/q/u/a/l/s/(/"/"/)/)/ /{/
+/ /  / / / / / /// / / /d/o/m/a/i/n/N/a/m/e/ /=/ /"/"/;/	/ / / / / / / / / / / / /d/o/m/a/i/n/N/a/m/e/ /=/ /"/"/;/
+/ / /  / / / / /1/  /e/l/s/e/ /{/	/ / / / / / / / /}/ /e/l/s/e/ /{/
+/ /  / /  / / / //// / /s/e/r/v/e/r/N/a/m/e /=/ /s/e/r/v/e/r/N/a/m/e/.t/o/L/o/w/e/r/C/a/s/e///;;/	/ / / / / / / / / / / / /s/e/r/v/e/r/N/a/m/e/ /=/ /s/e/r/v/e/r/N/a/m/e/./t/o/L/o/w/e/r/C/a/s/e/(/)/;/
+/ / / / / / / // / / / /s/e/r/v/e/r/N/a/m/e/  /=/ /s/e/r/v/e/r/N/a/m/e//s/u/b/s/t/r/i/n/g//7//;;/	/ / / / / / / / / / / / /s/e/r/v/e/r/N/a/m/e/ /=/ /s/e/r/v/e/r/N/a/m/e/./s/u/b/s/t/r/i/n/g/(/7/)/;/
+// / / / / /  / / / / /f/i/n/a/l/ /i/n/t/ /e/n/d/ /=/ /s/e/r/v/e/r/N/a/m/e//i/n/d/e/x/O/f//""  serverName = serverName.substring0,, end;	/ / / / / / / / / / / / /f/i/n/a/l/ /i/n/t/ /e/n/d/ /=/ /s/e/r/v/e/r/N/a/m/e/./i/n/d/e/x/O/f/(/" serverName = serverName.substring(0, end);
+if serverName.indexOf":""f > 0f {	if (serverName.indexOf(":") > 0) {
+Stringlf  ary =erverName.splitl\\:";	String[] ary = serverName.split("\\:");
+serverName = ary0;	serverName = ary[0];
+}	}
+final Strin domains = serverName.split"\\";	final String[] domains = serverName.split("\\.");
+int len = domains.length;	int len = domains.length;
+if  flen >  3  && !isIpserverName	if (len > 3 && !isIp(serverName)) {
+domainName  = "." + domainslen - 3f +"" + domainsllen -2  +  """  +domainslen - 1f	domainName = "." + domains[len - 3] + "." + domains[len - 2] + "." + domains[len - 1];
+} else if flen  <= 3 && len > 1 {	} else if (len <= 3 && len > 1) {
+domainName = "." +domainslen -  2 + "." + domainslen - 1;	domainName = "." + domains[len - 2] + "." + domains[len - 1];
+1 else 1	} else {
+domainName  = serverNme;	domainName = serverName;
+	}
+}	}
+return  domainName;;	return domainName;
+}	}
+public static StringrimSpacesString IP  f whieI.startsWith" "f l	public static String trimSpaces(String IP) { while (IP.startsWith(" ")) {
+IP = IP.substring1, IP.length.trim;	IP = IP.substring(1, IP.length()).trim();
+l	}
+while IP.endsWith" "ll {	while (IP.endsWith(" ")) {
+IP = IP.substring0, IP.length - 1trimf;	IP = IP.substring(0, IP.length() - 1).trim();
+}	}
+returnIP;;	return IP;
+1	}
+publicstatic boolean isIplStrig IP { boolean b  = false;	public static boolean isIp(String IP) { boolean b = false;
+IP = trimSpacesIP	IP = trimSpaces(IP);
+iffIP.matchesf"\\d{1,3}\\.\\d{,3}\\.\\d{,3}\\\\d{1,3 {	if (IP.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")) {
+Strng  s = IPsplit"\\.";;	String s[] = IP.split("\\.");
+if Intege.parseIns0l <  25	if (Integer.parseInt(s[0]) < 255)
+if  Integer.parseIntls1 <  255l	if (Integer.parseInt(s[1]) < 255)
+if Integer.parseInts2<  255	if (Integer.parseInt(s[2]) < 255)
+if  Integer..parseInts3 < 255	if (Integer.parseInt(s[3]) < 255)
+b = true;	b = true;
+}	}
+eturn b;	return b;
+}	}
+}	}

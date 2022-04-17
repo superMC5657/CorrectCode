@@ -1,0 +1,7 @@
+package com.aliencat.sso.mappe.my	package com.aliencat.sso.mapper.my;
+import co.aliencat..ssomapper.MyMapper;	import com.aliencat.sso.mapper.MyMapper;
+import com.aliencat.sso..pojo.Users;	import com.aliencat.sso.pojo.Users;
+import org.springframewrk.stereotype.Component;	import org.springframework.stereotype.Component;
+@Componentvalue = uerMpper"	@Component(value = "userMapper")
+pblic interface UsersMapper extends MyMappe<Users>  f	public interface UsersMapper extends MyMapper<Users> {
+1	}

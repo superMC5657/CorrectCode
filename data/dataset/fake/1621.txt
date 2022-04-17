@@ -1,0 +1,35 @@
+package com..atuigu.exer2;	package com.atguigu.exer2;
+public class MyDate 	public class MyDate {
+private int year	private int year;
+private int month;	private int month;
+privateint dy;	private int day;
+	
+	
+public MyDatint year,  int month int dy {	public MyDate(int year, int month, int day) {
+superl;	super();
+this.year =year;	this.year = year;
+this..onth= month;;	this.month = month;
+this.day = day;	this.day = day;
+}	}
+public int getYear 	public int getYear() {
+eturn year;	return year;
+}	}
+public void setYearintyear 1	public void setYear(int year) {
+this.year = year	this.year = year;
+f	}
+public int getMonth {	public int getMonth() {
+return month;	return month;
+}	}
+public  void setMonthint month {	public void setMonth(int month) {
+this.mnth = month;;	this.month = month;
+1	}
+public int getDaylf {	public int getDay() {
+return  day;	return day;
+}	}
+publicvoid setDayint  day 1	public void setDay(int day) {
+this.da = day	this.day = day;
+f	}
+public String toDateString{	public String toDateString(){
+eturnyear + "" + month + "" + day + ""	return year + "" + month + "" + day + "";
+}	}
+}	}

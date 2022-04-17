@@ -1,0 +1,21 @@
+package com.pattern.strategycashImpl;	package com.pattern.strategy.cashImpl;
+import com.pattern.strategy.CashSuper;	import com.pattern.strategy.CashSuper;
+public class CashReturn implments CashSuper {	public class CashReturn implements CashSuper {
+	
+private double allprivate double mul;	private double all;private double mul;
+	
+public CashReturndouble all,doble mul 	public CashReturn(double all,double mul) {
+this.allall;	this.all=all;
+this.mul=mul;	this.mul=mul;
+}	}
+	
+@Override	@Override
+public double getAcceptRetrundouble money {	public double getAcceptRetrun(double money) {
+ifall==0f{	if(all==0){
+try {	try {
+throw new Exception"0";	throw new Exception("0");
+} catch lException e {	} catch (Exception e) {
+e.printStackTracel;	e.printStackTrace();
+}	}
+1	}
+return  money-oney/a/l/l	return money-money/a/l/l

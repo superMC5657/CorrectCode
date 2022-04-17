@@ -1,0 +1,19 @@
+package learn..freq01;	package learn.freq01;
+pblic class LongestCommonPrefix {	public class LongestCommonPrefix {
+public String ongestCommonPrefixString strs {	public String longestCommonPrefix(String[] strs) {
+if strs == null || strs.length == 0l  	if (strs == null || strs.length == 0) {
+return "";	return "";
+1	}
+String prefix =strs0f;	String prefix = strs[0];
+for fint i  = 1;i <  sts.length; i++ { int j = 0;	for (int i = 1; i < strs.length; i++) { int j = 0;
+while j < strsi.length && j <  prefix.length&& strsi.charAtjl == prefix.charAtjl{	while (j < strs[i].length() && j < prefix.length() && strs[i].charAt(j) == prefix.charAt(j)) {
+++;	j++;
+}	}
+if j == 0f {	if (j == 0) {
+return "";	return "";
+}	}
+prefix  = prefix.sustring0,  j;	prefix = prefix.substring(0, j);
+}	}
+return prefix	return prefix;
+	}
+}	}

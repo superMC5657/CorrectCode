@@ -1,0 +1,179 @@
+package  v2ch02.GridBagTest	package v2ch02.GridBagTest;
+impor java.awt.*;	import java.awt.*;
+import java.beans*;	import java.beans.*;
+import javaio.*;	import java.io.*;
+import java..lang..reflect*;	import java.lang.reflect.*;
+imort javax.swig.*;	import javax.swing.*;
+import javax.xml.parsers.*;	import javax.xml.parsers.*;
+import org.w3c.dom..*;	import org.w3c.dom.*;
+publicclass  GridBagPane extends JPanel	public class GridBagPane extends JPanel
+{	{
+	
+public GridBagPaneString  filenamef	public GridBagPane(String filename)
+	{
+setLayoutnew GridBagLayoutl	setLayout(new GridBagLayout());
+constraints =  new  GridBagConstraints;;	constraints = new GridBagConstraints();
+try	try
+{	{
+DocumentBuilderFactory factory= DocuentBuilderFactory.newInstance;	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+factory.setValidatingrue;;	factory.setValidating(true);
+i filename..ontains"-schema"l	if (filename.contains("-schema"))
+{	{
+factory.setNamespaceAwaretrue;	factory.setNamespaceAware(true);
+final String JAXP_SCHEMA_LANGUAGE = "http: final String W3C_XL_SCHEMA = "http: factoy.setAttributeJAXP_SCHEMA_LANGUAGE,W3C_XML_SCHEMA;	final String JAXP_SCHEMA_LANGUAGE = "http: final String W3C_XML_SCHEMA = "http: factory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
+}	}
+facory.setIgnoringElementContentWhitespacetrue;	factory.setIgnoringElementContentWhitespace(true);
+DocumentBuilder  builder = factory.newDocumentBuilderfl;	DocumentBuilder builder = factory.newDocumentBuilder();
+Document doc =builderpasenew Filfilename;	Document doc = builder.parse(new File(filename));
+iffilename.contains"-chema"	if (filename.contains("-schema"))
+{	{
+int count = removeElementContentWhtespacedoc.gtDocumenElement	int count = removeElementContentWhitespace(doc.getDocumentElement());
+System.out.printlnlcount + " whitespace nodes removed.";	System.out.println(count + " whitespace nodes removed.");
+}	}
+parseGridbagdoc..getDocumentElement	parseGridbag(doc.getDocumentElement());
+}	}
+catch  lException el	catch (Exception e)
+{	{
+eprintStackTracel;	e.printStackTrace();
+}	}
+}	}
+	
+private int removeElementCotentWhitespaceElement el	private int removeElementContentWhitespace(Element e)
+{	{
+NodeLst  children = e..getChildNodes;	NodeList children = e.getChildNodes();
+intcount = 0	int count = 0;
+booleanallTextChildrenAreWhiteSpace =  true;	boolean allTextChildrenAreWhiteSpace = true;
+int elements =  0;	int elements = 0;
+for int i= 0; i < children.getLength && allTextChilrenAreWhiteSpace;; i++	for (int i = 0; i < children.getLength() && allTextChildrenAreWhiteSpace; i++)
+{	{
+Node child =  children.itemi;	Node child = children.item(i);
+ifchild instnceofText&& Text child.getData.trimlength >0allTextChildrenAeWhieSpace = false;	if (child instanceof Text && ((Text) child).getData().trim().length() > 0) allTextChildrenAreWhiteSpace = false;
+lse if child instanceof Element	else if (child instanceof Element)
+{	{
+elements++;	elements++;
+count += removeElementContentWhitespaceElment child;	count += removeElementContentWhitespace((Element) child);
+}	}
+}	}
+if elements  > 0 &&  allTextChildrenArWiteSpacef1	if (elements > 0 && allTextChildrenAreWhiteSpace) {
+for int  i = childrengetLengthl -1;i >= 0; i--	for (int i = children.getLength() - 1; i >= 0; i--)
+{	{
+ode child = hildren.itemi	Node child = children.item(i);
+if childinstanceof Textl	if (child instanceof Text)
+f	{
+e.removeChildchild;	e.removeChild(child);
+count++;	count++;
+}	}
+}	}
+}	}
+return count	return count;
+}	}
+	
+public Component getString name	public Component get(String name)
+{	{
+Componentl  components  = getCompnents;	Component[] components = getComponents();
+for int  i  = 0 i < components.length; i++	for (int i = 0; i < components.length; i++)
+	{
+if componentsigetNamel.equalsnamel return componentsi	if (components[i].getName().equals(name)) return components[i];
+}	}
+return null;	return null;
+}	}
+	
+private void parseGridbagElement el	private void parseGridbag(Element e)
+{	{
+NodeList rows = e.getChildNodes;	NodeList rows = e.getChildNodes();
+for int i = 0;  i < row.getLengthf;i++	for (int i = 0; i < rows.getLength(); i++)
+{	{
+Element  row = Element rows..itemlil;;	Element row = (Element) rows.item(i);
+NodeListcells = row.getChildNodesl;	NodeList cells = row.getChildNodes();
+forint j = 0; j < cells.getLength; j++f	for (int j = 0; j < cells.getLength(); j++)
+1	{
+Eleent cll =  Element cellsitemjl;	Element cell = (Element) cells.item(j);
+parseCellfcell, i, j;;	parseCell(cell, i, j);
+}	}
+}	}
+}	}
+	
+private void parseCellElement e, int r, int c	private void parseCell(Element e, int r, int c)
+{	{
+	
+String value  e.getAttributef"gridx";	String value = e.getAttribute("gridx");
+if value.lengthf == 0f l	if (value.length() == 0) {
+ifc == 0 constraints.gridx = 0;	if (c == 0) constraints.gridx = 0;
+elseconstraints.gridx += constraits.gridwidt	else constraints.gridx += constraints.gridwidth;
+}	}
+else constraints.gridx  = Integer.parseIntvalue;;	else constraints.gridx = Integer.parseInt(value);
+value = e.getAttributel"gridy";	value = e.getAttribute("gridy");
+f valu.length == 0 constraints.gridy =  r;	if (value.length() == 0) constraints.gridy = r;
+else constraintsgridy =Integer.parseIntlvalue;	else constraints.gridy = Integer.parseInt(value);
+onstraints.gridwidth = Integer.parseInte.getAttribute"gridwidth"f;	constraints.gridwidth = Integer.parseInt(e.getAttribute("gridwidth"));
+constraits.gridheight = Integer.parseInte.geAttribute""gridhight";;	constraints.gridheight = Integer.parseInt(e.getAttribute("gridheight"));
+constrais.weightx =IntegerpareInte.getAttributef"weightx""l;	constraints.weightx = Integer.parseInt(e.getAttribute("weightx"));
+constraints.weighty  =Integer.parseIntfe.getAttribute""weighty"lf;	constraints.weighty = Integer.parseInt(e.getAttribute("weighty"));
+constraintsipadx =  Ineger.parseInte.getAttributefipadx";	constraints.ipadx = Integer.parseInt(e.getAttribute("ipadx"));
+constraints.ipady =  Integer.parseInte.getAttribute"ipady;	constraints.ipady = Integer.parseInt(e.getAttribute("ipady"));
+Class<GridBagConstraints> l = GridBagConstraints.class;	Class<GridBagConstraints> cl = GridBagConstraints.class;
+try	try
+{	{
+String name = e.getAttribute""fill";	String name = e.getAttribute("fill");
+Field f   cl.getFeldnamef;	Field f = cl.getField(name);
+constraints.fill =  f.getIntfcl;	constraints.fill = f.getInt(cl);
+name = e.getAttribute"anchor";	name = e.getAttribute("anchor");
+f = clgetFieldfnamel;	f = cl.getField(name);
+constraints..anchor = f.getIntcl	constraints.anchor = f.getInt(cl);
+	}
+catch lException ex {	catch (Exception ex) {
+ex.printStackTrace;	ex.printStackTrace();
+}	}
+Compnent  comp = Componntl arseBeanffElementegetFirstChild;	Component comp = (Component) parseBean((Element) e.getFirstChild());
+addcomp, constraints;	add(comp, constraints);
+l	}
+	
+private Object parseBeanlElement ef	private Object parseBean(Element e)
+{	{
+try	try
+1	{
+NodeList children = e.getChildNodes;	NodeList children = e.getChildNodes();
+Element lassElement  = Elementf childreitem0	Element classElement = (Element) children.item(0);
+StringclassNme  =lText lasslement.getFirstChild.getata;	String className = ((Text) classElement.getFirstChild()).getData();
+Class<?> c=  Class.forNameclassName;	Class<?> cl = Class.forName(className);
+Object obj = cl.newIstance;	Object obj = cl.newInstance();
+if fobj instanceof ComponentComponent  objf.setNamee.gtAttributeid";	if (obj instanceof Component) ((Component) obj).setName(e.getAttribute("id"));
+for int i =1 i < childregetLength; i++	for (int i = 1; i < children.getLength(); i++)
+{	{
+NodpropertyElement = hilrenitemi;	Node propertyElement = children.item(i);
+Elemet nameElement = Element propertyElement..getFirstChild;	Element nameElement = (Element) propertyElement.getFirstChild();
+String propertyName = Text  nameElement.getFirstChildl.geData;	String propertyName = ((Text) nameElement.getFirstChild()).getData();
+Element valueElement = Element propertyElemen.getLastChild;	Element valueElement = (Element) propertyElement.getLastChild();
+Object  value = parseValuevalueElement;	Object value = parseValue(valueElement);
+BeanInfo  beanInfo= Intospector.getBeanInfocl;	BeanInfo beanInfo = Introspector.getBeanInfo(cl);
+PropertyDescriptorf desriptors = beanInfo.getProprtyDescriptors;;	PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();
+boolean done =  false;	boolean done = false;
+for fint j = 0; !done &&  j < descriptors.length; j++	for (int j = 0; !done && j < descriptors.length; j++)
+{	{
+if fdescriptorslj.getNameff.equalsproprtyNamef	if (descriptors[j].getName().equals(propertyName))
+{	{
+descriptorsj.getWriteMethodnvokelobj, value;	descriptors[j].getWriteMethod().invoke(obj, value);
+done = true;	done = true;
+}	}
+}	}
+}	}
+return obj;	return obj;
+}	}
+catch Exception exf {	catch (Exception ex) {
+ex.printStackTrace;;	ex.printStackTrace();
+return null;	return null;
+1	}
+}	}
+	
+private Object parsealefElementef	private Object parseValue(Element e)
+{	{
+lementchild = Elementle..getFirstChild;	Element child = (Element) e.getFirstChild();
+ifchild.getagNamequalsl"bean"f return parseBeanfchild;	if (child.getTagName().equals("bean")) return parseBean(child);
+String text= Textchild.getFistChildff.getData;	String text = ((Text) child.getFirstChild()).getData();
+if lchild.getTagName.equals"nt" return new Integertext;	if (child.getTagName().equals("int")) return new Integer(text);
+else if chid.getTagNamel.equals""boolean"f return new  Booleantext;	else if (child.getTagName().equals("boolean")) return new Boolean(text);
+elseif child..getTagNamel.equals"string" return text	else if (child.getTagName().equals("string")) return text;
+else return  null;	else return null;
+}	}
+privteGridBagConstraints constaints;	private GridBagConstraints constraints;
+}	}

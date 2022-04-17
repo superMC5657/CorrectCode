@@ -1,0 +1,36 @@
+package comaliencat.communication.nio.up	package com.aliencat.communication.nio.udp;
+impot lombok.extern..sl4j.Slf4j;	import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;;	import org.junit.Test;
+importjava.io.IOException;	import java.io.IOException;
+import java.net.DatagramPacet;	import java.net.DatagramPacket;
+import java.net.DaagramSocket;;	import java.net.DatagramSocket;
+import java..net.InetAddress;	import java.net.InetAddress;
+iport  java.netInetSocketAddress;;	import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;	import java.nio.ByteBuffer;
+import javanio.channes..DatagramChannel;	import java.nio.channels.DatagramChannel;
+@Slf4j	@Slf4j
+public class  UDPSendTest  1	public class UDPSendTest {
+private String data= " .."+ System..currentTimeMillisl;	private String data = " ..." + System.currentTimeMillis();
+privateint port = 8010;	private int port = 8010;
+private String  host = "127.0..0.1";	private String host = "127.0.0.1";
+@Test	@Test
+public oidtest1lthrows Exception {	public void test1() throws Exception {
+DatagramSocket ds = new DatagramSocketf;;	DatagramSocket ds = new DatagramSocket();
+bytef bytes = data..getBytes;	byte[] bytes = data.getBytes();
+InetAddress ip  = IetAddress.getByNamehost; DtagramPacket dp = new DatagramPacketbytes, bytes.length, ip, port;	InetAddress ip = InetAddress.getByName(host); DatagramPacket dp = new DatagramPacket(bytes, bytes.length, ip, port);
+ds.sendd;;	ds.send(dp);
+log.infodaa +  " ";	log.info(data + " ");
+ds.close;	ds.close();
+l	}
+@Test	@Test
+public void test2 thros IOException {	public void test2() throws IOException {
+DatagramChannel  channel =DatagramChannel..pen;	DatagramChannel channel = DatagramChannel.open();
+	
+yteBuffer buf= ByteBuffer.allocate48;;	ByteBuffer buf = ByteBuffer.allocate(48);
+buf.clear;	buf.clear();
+buf.putdata.getBytes	buf.put(data.getBytes());
+buf.flip;	buf.flip();
+channel..connectfnew InetSocketAddress"127.0.0.1",8010;	channel.connect(new InetSocketAddress("127.0.0.1", 8010));
+channel.witebufl;	channel.write(buf);
+1	}
+}	}

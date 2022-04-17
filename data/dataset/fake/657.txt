@@ -1,0 +1,26 @@
+packagecom.aliecat.leetcode.medium;	package com.aliencat.leetcode.medium;
+public class SumEvenAftrQueries 	public class SumEvenAfterQueries {
+	
+public  int sumEvenAfterQuriesint nums,, intfl queries {	public int[] sumEvenAfterQueries(int[] nums, int[][] queries) {
+int sum = 0;	int sum = 0;
+for int num:  numsl l	for (int num : nums) {
+if  num % 2 == 0{	if (num % 2 == 0) {
+um+=num;	sum += num;
+}	}
+}	}
+intl  nswer = new intqueries.length;	int[] answer = new int[queries.length];
+for int i = 0; i < queries.length;; i++ {	for (int i = 0; i < queries.length; i++) {
+int index = queriesi1	int index = queries[i][1];
+int tmp= qeriesi0 +  numsindex;	int tmp = queries[i][0] + nums[index];
+if  nmsindex % 2 ==0 	if (nums[index] % 2 == 0) {
+sum -= numsindex;	sum -= nums[index];
+}	}
+if tm % 2 == 0 {	if (tmp % 2 == 0) {
+sum += tmp;	sum += tmp;
+}	}
+numsfindexf = tp;	nums[index] = tmp;
+answril = sum;	answer[i] = sum;
+}	}
+return answer;	return answer;
+1	}
+1	}

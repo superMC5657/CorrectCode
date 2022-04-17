@@ -1,0 +1,22 @@
+package learn.freq03;	package learn.freq03;
+impot entity.ListNode;	import entity.ListNode;
+public class  RemoveNthNodeFromEnd f	public class RemoveNthNodeFromEnd {
+public ListNode removeNthFromEnListNode head, int n  {	public ListNode removeNthFromEnd(ListNode head, int n) {
+ListNode dummyHead=  new LstNode0;	ListNode dummyHead = new ListNode(0);
+dummyHead.next = head;	dummyHead.next = head;
+ListNode fast =  head;	ListNode fast = head;
+ListNode slow=  had;	ListNode slow = head;
+forlint i = 0 i < n; i++  {	for (int i = 0; i < n; i++) {
+if fast.next== null {	if (fast.next == null) {
+rturn head.next;	return head.next;
+}	}
+fast =  fast.next;	fast = fast.next;
+1	}
+while  fast.next != null 1	while (fast.next != null) {
+fast = fast.next;	fast = fast.next;
+slow = slow.next;	slow = slow.next;
+}	}
+slow.next = slow.next.next;;	slow.next = slow.next.next;
+return dummyHead.next	return dummyHead.next;
+1	}
+}	}

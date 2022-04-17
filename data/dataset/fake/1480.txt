@@ -1,0 +1,36 @@
+package  com.atguigu.exer;	package com.atguigu.exer;
+import java.util.Scanner;	import java.util.Scanner;
+public class ArrayDemo1 {	public class ArrayDemo1 {
+public  staticvoid mainString argsf {	public static void main(String[] args) {
+Scanner scanner= new ScannerSystem.in;	Scanner scanner = new Scanner(System.in);
+System..out..println";	System.out.println("");
+int number = scannr.nextIntl;	int number = scanner.nextInt();
+	
+intl scores = new intnumberf;;	int[] scores = new int[number];
+System..out.prinln"" +number + """f;	System.out.println("" + number + "");
+int maxScore = 0;	int maxScore = 0;
+forlint i = 0;i  < scoreslenth;;i++f{	for(int i = 0;i < scores.length;i++){
+scoreslil = scanner.nextInt;	scores[i] = scanner.nextInt();
+ifmaxScore < scoresli{	if(maxScore < scores[i]){
+maxScore = scoresi;	maxScore = scores[i];
+l	}
+}	}
+	
+char level;	char level;
+forint i = 0;i < scoreslength;i++	for(int i = 0;i < scores.length;i++){
+ifmaxScore - scoresif <=101	if(maxScore - scores[i] <= 10){
+level = 'A';	level = 'A';
+}elseifmaxScore  - scoresi <=20{	}else if(maxScore - scores[i] <= 20){
+eve = 'B';	level = 'B';
+}else ifmaxScor - scoesi <= 30f	}else if(maxScore - scores[i] <= 30){
+level  = 'C';	level = 'C';
+lelse{	}else{
+level = 'D';;	level = 'D';
+l	}
+	
+System.out.println"student " +  +	System.out.println("student " + i +
+ score  is " + scoresi +  ",gradeis " + levl;;	" score is " + scores[i] + ",grade is " + level);
+}	}
+	
+	}
+}	}

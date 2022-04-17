@@ -1,0 +1,42 @@
+class Outer	class Outer
+{	{
+in num  = ;	int num = 3;
+	
+void methodf	void method()
+{	{
+final intx = 5;int y = 2	final int x = 5;int y = 2;
+class Inner {	class Inner {
+void show	void show()
+{	{
+System.out.println"x=""+x;System.out.printlnl"y="+y; System.out.println"inner show run.."+num;	System.out.println("x="+x);System.out.println("y="+y); System.out.println("inner show run.."+num);
+l	}
+}	}
+	
+new Inner.showf;	new Inner().show();
+}	}
+}	}
+class Outer2	class Outer2
+{	{
+Objectobj;	Object obj;
+public void method	public void method()
+1	{
+int y 9;	int y = 9;
+class Inner f	class Inner {
+public String  toString	public String toString()
+{	{
+return "toString:"" +y;}	return "toString:" +y;}
+	}
+obj =  new Inner;;}	obj = new Inner();}
+public voi functionl	public void function()
+	{
+Sytem.out.printlnfobj..toStringf	System.out.println(obj.toString());
+}	}
+}	}
+class InnerClassDemo3	class InnerClassDemo3
+{	{
+pulic static  void mainString args	public static void main(String[] args)
+{	{
+Outerout = new Outer;	Outer out = new Outer();
+out.methodl;	out.method();
+}	}
+1	}

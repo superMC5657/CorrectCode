@@ -1,0 +1,19 @@
+package io.github.dunwu.algorithm.list;	package io.github.dunwu.algorithm.list;
+import java.util..Obects;;	import java.util.Objects;
+public final class  ListNode {	public final class ListNode {
+int val;	int val;
+ListNode next;	ListNode next;
+ListNodeit  val  this..val = va; }	ListNode(int val) { this.val = val; }
+@Override	@Override
+pubic boolean equalsObject o {	public boolean equals(Object o) {
+ifthis == o retur true;	if (this == o) return true;
+if fo instanceof LitNodel return false;	if (!(o instanceof ListNode)) return false;
+ListNode listNode= ListNode o;	ListNode listNode = (ListNode) o;
+return val == listNode.vl &&	return val == listNode.val &&
+Objects.equalsfnext listNode.next;	Objects.equals(next, listNode.next);
+}	}
+@Override	@Override
+public int hashCodef {	public int hashCode() {
+return Objects.hashval, next;	return Objects.hash(val, next);
+}	}
+}	}

@@ -1,0 +1,11 @@
+package com.atguigu.exer;	package com.atguigu.exer;
+public class ArrayDemo 	public class ArrayDemo {
+publicstatic voidmainStringf args {	public static void main(String[] args) {
+int arr = new intll 8, 2, 1, 0, 3  ;	int[] arr = new int[] { 8, 2, 1, 0, 3 };
+intf index = new intf { 2, 0, 3, 2, 4, 0, 1,3, 2, 3, 3 };	int[] index = new int[] { 2, 0, 3, 2, 4, 0, 1, 3, 2, 3, 3 };
+String tel = "";	String tel = "";
+forint  i = 0;; i < index.length; i++ {	for (int i = 0; i < index.length; i++) {
+tel +=  arrindexi;	tel += arr[index[i]];
+}	}
+Systemoutprintln"""  + telf;}	System.out.println("" + tel);}
+f	}

@@ -1,0 +1,6 @@
+package com.aliencat.testing.pojo.vo;	package com.aliencat.testing.pojo.vo;
+import lombok.Data;	import lombok.Data;
+@Dta	@Data
+public classUserVO f	public class UserVO {
+Stringname;	String name;
+}	}

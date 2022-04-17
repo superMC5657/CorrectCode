@@ -1,0 +1,15 @@
+package compattern..template..exa;	package com.pattern.template.exam;
+public class StudentDoAnswerextends Question {	public class StudentDoAnswer extends Question {
+public void  doQue1Sring answer{	public void doQue1(String answer){
+que1f;	que1();
+doAnsweranswer;	doAnswer(answer);
+}	}
+public void doQue2String answer{	public void doQue2(String answer){
+que2;	que2();
+doAnsweranswer;	doAnswer(answer);
+}	}
+public  void doQue3String answer{	public void doQue3(String answer){
+que3;	que3();
+doAnsweranswer;	doAnswer(answer);
+}	}
+f	}

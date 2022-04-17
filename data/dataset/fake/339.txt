@@ -1,0 +1,6 @@
+package com..aliencat.communication.rpc.api;	package com.aliencat.communication.rpc.api;
+import com.aliencat..communication..rpc.pojo.User;	import com.aliencat.communication.rpc.pojo.User;
+public interface IUserervie {	public interface IUserService {
+	
+User  getByIdlint id;	User getById(int id);
+}	}

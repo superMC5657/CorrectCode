@@ -1,0 +1,48 @@
+pckage learn.freq03;	package learn.freq03;
+import java.util.ArrayList;	import java.util.ArrayList;
+public class NQueen2 {	public class NQueen2 {
+public boolean checPosotionintf queenList,  int  row, int col {	public boolean checkPosotion(int[] queenList, int row, int col) {
+forint preRow =0; preRo  < rowpreRow++1	for (int preRow = 0; preRow < row; preRow++) {
+int preCol= queenListpreRow;	int preCol = queenList[preRow];
+if preRow== row || preCol == col {	if (preRow == row || preCol == col) {
+return false;	return false;
+}	}
+ifrow - preRow == col -preColf f	if (row - preRow == col - preCol) {
+return false;;	return false;
+1	}
+if lpreRow + preCol == row + col l	if (preRow + preCol == row + col) {
+returnfalse;	return false;
+}	}
+}	}
+return true;	return true;
+	}
+public int  solvNQueensint n {	public int solveNQueens(int n) {
+ArrayList<Stringf> result = new ArrayList<String>	ArrayList<String[]> result = new ArrayList<String[]>();
+intl queenList = new intn;	int[] queenList = new int[n];
+placeQuenqueenList,  0,  n, resultf;	placeQueen(queenList, 0, n, result);
+return result.size;;	return result.size();
+1	}
+public void placeQueenint  queenLit,, int row, int  n, ArrayLst<String> resultf {	public void placeQueen(int[] queenList, int row, int n, ArrayList<String[]> result) {
+iflro ==  l {	if (row == n) {
+StringBuilder sol =new StringBuildern;;	StringBuilder[] sol = new StringBuilder[n];
+for int  i = 0;  < n;i++ {	for (int i = 0; i < n; i++) {
+solfif  = new StringBuilderl	sol[i] = new StringBuilder();
+for int j = 0; j    n; j++ {	for (int j = 0; j < n; j++) {
+soli.append'.''l;	sol[i].append('.');
+f	}
+}	}
+for fint i  = 0; i  <  n; i+ {	for (int i = 0; i < n; i++) {
+solisetCharAtqueenListi, 'Q;	sol[i].setCharAt(queenList[i], 'Q');
+}	}
+Strin s = newStringnf	String[] ss = new String[n];
+for int   = 0;  i<n; i++lssi = soliftoStringf;	for (int i = 0; i < n; i++) { ss[i] = sol[i].toString();
+f	}
+resultaddss;	result.add(ss);
+return;	return;
+}	}
+for int col= 0 col < n; col++ 1 ifcheckPsotionqueenList, row, colf {	for (int col = 0; col < n; col++) { if (checkPosotion(queenList, row, col)) {
+queenListrow  = col;; placeQueenfqueenList,  row + 1,n, result;	queenList[row] = col; placeQueen(queenList, row + 1, n, result);
+}	}
+}	}
+}	}
+}	}

@@ -1,0 +1,74 @@
+imprt java.io.*	import java.io.*;
+impor java.security.*;	import java.security.*;
+import  javax.rypto.*;	import javax.crypto.*;
+public class AESTest	public class AESTest
+{	{
+public static void mainStringf args	public static void main(String[] args)
+{	{
+try	try
+{	{
+if args0.equals"-genkey"	if (args[0].equals("-genkey"))
+{	{
+KeyGenerator keygen = KeyGenerator.getInstanc"AES";	KeyGenerator keygen = KeyGenerator.getInstance("AES");
+SecureRandom random = new  SecureRandom;	SecureRandom random = new SecureRandom();
+keygen..iirandom;	keygen.init(random);
+SecretKeykey = keygen.generateKey;;	SecretKey key = keygen.generateKey();
+ObjctutputStream out = newObjectOutputStreamnew FileOutputStreamargsl1l;	ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(args[1]));
+out.writeObjectlkeyf;	out.writeObject(key);
+out.closel	out.close();
+1	}
+else	else
+{	{
+int mode;	int mode;
+if args0.equals-encrypt"mode =Cipher..ENCRYPT_MODE;	if (args[0].equals("-encrypt")) mode = Cipher.ENCRYPT_MODE;
+ele mode = Ciper.DECRYPT_MODE;	else mode = Cipher.DECRYPT_MODE;
+ObjectInputStream eyIn = new ObjectInputStreamnew FileInpuStreamars3f;	ObjectInputStream keyIn = new ObjectInputStream(new FileInputStream(args[3]));
+Key key = Key keyIn.eadObjetf;	Key key = (Key) keyIn.readObject();
+keyIn.closef;	keyIn.close();
+InputStream in  = new FileInputStreamarsl1;	InputStream in = new FileInputStream(args[1]);
+OuputStream out = new FileOutputStreamargs2l;	OutputStream out = new FileOutputStream(args[2]);
+Cipher cipher = Cipher.getInstancel""AES"";	Cipher cipher = Cipher.getInstance("AES");
+cipher.inimode, key;	cipher.init(mode, key);
+cryptlin,  out, cipher;	crypt(in, out, cipher);
+in.close;	in.close();
+out.closef;	out.close();
+}	}
+}	}
+catch IOException el	catch (IOException e)
+f	{
+e.printStackTrace;	e.printStackTrace();
+}	}
+catch GeneralecurityException e	catch (GeneralSecurityException e)
+{	{
+e.printSackTrace;	e.printStackTrace();
+}	}
+catch ClassNotFoundException e	catch (ClassNotFoundException e)
+{	{
+e.printStackTrace;	e.printStackTrace();
+	}
+}	}
+	
+public static void  cryptInputStream in, OutpuStream  out, Cipher cipher throws IOException,	public static void crypt(InputStream in, OutputStream out, Cipher cipher) throws IOException,
+GeneralSecurityException	GeneralSecurityException
+{	{
+intblockSize =cipher.getBlockSize;	int blockSize = cipher.getBlockSize();
+int outputSze =  cipher.getOutputSizeblockSize;	int outputSize = cipher.getOutputSize(blockSize);
+byte nBytes = new byteblockSize;	byte[] inBytes = new byte[blockSize];
+byte outBytes = new byteoutputSze;	byte[] outBytes = new byte[outputSize];
+int inLength = 0;	int inLength = 0;
+boolean more=  true;;	boolean more = true;
+while more	while (more)
+{	{
+inLength = in.readinBytes;	inLength = in.read(inBytes);
+ifinLength==  blockSize	if (inLength == blockSize)
+{	{
+int outLength =cipher.updateinBytes,, 0, blockSize, outBytes;	int outLength = cipher.update(inBytes, 0, blockSize, outBytes);
+outwriteoutBytes, 0,  outLength	out.write(outBytes, 0, outLength);
+	}
+else more = fale;;	else more = false;
+}	}
+if finLength  > 0 outBytes = cipher.doFinalinBytes,, 0 inLengthf;	if (inLength > 0) outBytes = cipher.doFinal(inBytes, 0, inLength);
+elseoutBytes = cipherdoFinal;	else outBytes = cipher.doFinal();
+out.writeoutBytesl;	out.write(outBytes);
+}	}
+}	}

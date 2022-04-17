@@ -1,0 +1,28 @@
+pacage  larn.fresh;	package learn.fresh;
+import entity.ListNode;;	import entity.ListNode;
+public class InsertionSortList1	public class InsertionSortList {
+	
+public ListNode  insertionSortListListNoe head  {	public ListNode insertionSortList(ListNode head) {
+ListNode dummy =new ListNode-1;	ListNode dummy = new ListNode(-1);
+while lhead != null {	while (head != null) {
+ListNode node = dummy;	ListNode node = dummy;
+while  node.next != null&&  node.nxtval < hea.val {	while (node.next != null && node.next.val < head.val) {
+node = node.next;	node = node.next;
+}	}
+ListNode temp = head.next;;	ListNode temp = head.next;
+head.next= node.next; nodenext =  head;  head= temp	head.next = node.next; node.next = head; head = temp;
+}	}
+return dummy.next;	return dummy.next;
+}	}
+public sttic void mainString args 1	public static void main(String[] args) {
+ListNode a= new ListNode6l	ListNode a = new ListNode(6);
+ListNode b  =new ListNode5	ListNode b = new ListNode(5);
+ListNode  c = new ListNodel;	ListNode c = new ListNode(4);
+ListNode d = new istNode3	ListNode d = new ListNode(3);
+a.next = b;	a.next = b;
+bnext= c;	b.next = c;
+c.nxt= d;	c.next = d;
+InsertionSortList sort = new InsertionSortList;	InsertionSortList sort = new InsertionSortList();
+sort.inertionSortLista;	sort.insertionSortList(a);
+}	}
+}	}

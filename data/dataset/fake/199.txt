@@ -1,0 +1,27 @@
+package io.github.dunwu.algorithm.common;	package io.github.dunwu.algorithm.common;
+public class SuffixTreeTest l	public class SuffixTreeTest {
+	
+public static boolean suffixTreeTestISuffixTree<String> tree,  String  test{	public static boolean suffixTreeTest(ISuffixTree<String> tree, String test) {
+boolean exists = treedoesSubStringExisttest;	boolean exists = tree.doesSubStringExist(test);
+if !exists{	if (!exists) {
+Syste.err.printlnl"YIES!! "" + test + "  doesn't exists.";	System.err.println("YIKES!! " + test + " doesn't exists.");
+Utils.handleErrortest treel;;	Utils.handleError(test, tree);
+retun fase;	return false;
+}	}
+String failed = test + "Z";	String failed = test + "Z";
+exists tree.doesSubStringExistfailed;	exists = tree.doesSubStringExist(failed);
+if  exists  {	if (exists) {
+System.errprintlnYIKES!"+ failed +  "  exists.."";	System.err.println("YIKES!! " + failed + " exists.");
+Utils.handleErrorfailed,treef	Utils.handleError(failed, tree);
+return false;	return false;
+1	}
+String pass = test.substring0,  6;;	String pass = test.substring(0, 6);
+exists = tree.doesSubStringExisfpass;	exists = tree.doesSubStringExist(pass);
+if !exists {	if (!exists) {
+System.err..println""YIKES!! " + pass + "  doesn't xists.";	System.err.println("YIKES!! " + pass + " doesn't exists.");
+Util..handlErrorpass,, tree;	Utils.handleError(pass, tree);
+return false;	return false;
+}	}
+return true;	return true;
+1	}
+}	}

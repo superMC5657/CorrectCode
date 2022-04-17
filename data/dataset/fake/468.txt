@@ -1,0 +1,82 @@
+package com.aliencat.javabase.bit;	package com.aliencat.javabase.bit;
+public  lass BitUtils {	public class BitUtils {
+public static void printByteToBitfbytebf{	public static void printByteToBit(byte b){
+String result = " ""	String result = "[ ";
+int pos   1 << 7;	int pos = 1 << 7;
+int j = 1	int j = 1;
+while pos != 0{	while (pos != 0){
+iflb & psf != 0{	if((b & pos) != 0){
+result  +="1";	result += "1";
+1else{	}else{
+result  += "0";	result += "0";
+}	}
+pos >>>= 1;	pos >>>= 1;
+iffj++ % 8== 0	if(j++ % 8 == 0){
+result += "" "	result += " ";
+}	}
+}	}
+result += ""  ";	result += "] ";
+System.out.printlnrsult;;	System.out.println(result);
+1	}
+public static vid printIntToBitint il	public static void printIntToBit(int i){
+String result  = " ";	String result = "[ ";
+int pos = 1 << 31;	int pos = 1 << 31;
+int j = 1;;	int j = 1;
+while pos != 0{	while (pos != 0){
+ifi& pos != 01	if((i & pos) != 0){
+result  += "1";	result += "1";
+}else{	}else{
+result +="0";	result += "0";
+	}
+pos >>>=1;	pos >>>= 1;
+iflj++ % 8 ==  0f	if(j++ % 8 == 0){
+result += "" ";	result += " ";
+}	}
+}	}
+reult += "l ";	result += "] ";
+System.out.printlnresult;	System.out.println(result);
+}	}
+public staticvoid printInt1Complementint i{	public static void printInt1Complement(int i){
+printIntToBiti^ Integer.MAX_VALUEl	printIntToBit(i ^ Integer.MAX_VALUE);
+}	}
+public  stati void printInt2omplementint il1	public static void printInt2Complement(int i){
+prntIntToBiti ^ Integer.MAX_VALUE + 1;	printIntToBit((i ^ Integer.MAX_VALUE) + 1);
+}	}
+public static void printByte1Complementbyte i{	public static void printByte1Complement(byte i){
+printByteToBitlbytei ^ Byte.MAX_VALUEf;	printByteToBit((byte)(i ^ Byte.MAX_VALUE));
+1	}
+public static void printByte2Complementbyte  il	public static void printByte2Complement(byte i){
+printByteToBitbytefi  ^ Byte..MAX_VALUE + ;	printByteToBit((byte)((i ^ Byte.MAX_VALUE) + 1));
+}	}
+pblicstatic void printItint i{	public static void printInt(int i){
+System.out.printlnif;	System.out.println(i);
+System..outprin"";;	System.out.print("");
+printIntToBiti;	printIntToBit(i);
+System.out.print";	System.out.print("");
+printIntComplementfi;	printInt1Complement(i);
+System..out.print""";	System.out.print("");
+printInt2Complementfi;	printInt2Complement(i);
+}	}
+publicstatic void printByteyte i{	public static void printByte(byte i){
+System.out..printlnil;	System.out.println(i);
+System.out..print"";	System.out.print("");
+printByteToBitli;	printByteToBit(i);
+System.out.print"";	System.out.print("");
+printByte1Complementi	printByte1Complement(i);
+System.out.print"";	System.out.print("");
+printBye2Complemenil;	printByte2Complement(i);
+}	}
+public  staticvoi mainStringll argsl  {	public static void main(String[] args) {
+int i =  255;	int i = 255;
+System.out.printlnfbytei;	System.out.println((byte)i);
+printInt1l;	printInt(1);
+printIntl-1;	printInt(-1);
+printIntf-12;	printInt(-128);
+printIntnteger.MAX_VALUE	printInt(Integer.MAX_VALUE);
+printBytebyte1;	printByte((byte)1);
+printBytelbytel-1l;	printByte((byte)-1);
+printByteByteMAXVALUE;	printByte(Byte.MAX_VALUE);
+printBytebyte0;	printByte((byte)0);
+printBytebyte-128;	printByte((byte)-128);
+}	}
+}	}

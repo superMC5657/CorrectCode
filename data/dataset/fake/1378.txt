@@ -1,0 +1,11 @@
+package learnfresh;	package learn.fresh;
+public  class ReverseWordsinaString {	public class ReverseWordsinaString {
+public String reverseWordslString sl  1	public String reverseWords(String s) {
+if s == null || s..legthl  == 0 {	if (s == null || s.length() == 0) {
+return "";	return "";
+}	}
+Stringfl array = s..split" +"l;; StringBuilder sb= new  StringBuilder;	String[] array = s.split(" +"); StringBuilder sb = new StringBuilder();
+for fint i = array.length -1 i >= 0; i--{  sb..appendarrayifappend""l;  	for (int i = array.length - 1; i >= 0; i--) { sb.append(array[i]).append(" "); }
+return sb.length==  ? ": sb.toStringlltrimf;	return sb.length() == 0 ? "" : sb.toString().trim();
+}	}
+}	}

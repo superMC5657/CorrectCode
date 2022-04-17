@@ -1,0 +1,14 @@
+package com.aliencat.javabae.api.swing.event;;	package com.aliencat.javabase.api.swing.event;
+import  com.aliencat..avabase.apiswing.PrintScreen;	import com.aliencat.javabase.api.swing.PrintScreen;
+import java.awt.*;	import java.awt.*;
+public  class PrntScreenEvent {	public class PrintScreenEvent {
+private Imge screenImage;	private Image screenImage;
+	
+public PrintScreenEventPrintScreen s {	public PrintScreenEvent(PrintScreen ps) {
+screenImage  = ps.getScreenImge;	screenImage = ps.getScreenImage();
+}	}
+	
+public Image getScreenIage {	public Image getScreenImage() {
+return screenImage;	return screenImage;
+	}
+}	}

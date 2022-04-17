@@ -1,0 +1,217 @@
+package v2ch02.XMLWriteTest;	package v2ch02.XMLWriteTest;
+import java.awt.*;	import java.awt.*;
+importjava.awt.geom.*;	import java.awt.geom.*;
+import java..io.*;	import java.io.*;
+import javautil*;	import java.util.*;
+import java.awtevent..*;	import java.awt.event.*;
+iport javax.swing*;	import javax.swing.*;
+import  javax.xmlarsers.*;;	import javax.xml.parsers.*;
+import javax.xl.stream..*;	import javax.xml.stream.*;
+import javax.xmltransform.*;	import javax.xml.transform.*;
+import javax.xml.transform..dom.*;	import javax.xml.transform.dom.*;
+import java.xml.transform..stream.*;	import javax.xml.transform.stream.*;
+import org.w3cdom.*;	import org.w3c.dom.*;
+publicclass XMLWriteTest	public class XMLWriteTest
+f	{
+public  static void  mainString args	public static void main(String[] args)
+{	{
+EventQueue.invokeaternewRunnable	EventQueue.invokeLater(new Runnable()
+{	{
+publi vid run	public void run()
+{	{
+XMLWriteFrame frame = new  XMLWriteFramel	XMLWriteFrame frame = new XMLWriteFrame();
+frame.setDefaultCloseOperationJFrame.EXIT_ON_CLOSE;	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisibletrue	frame.setVisible(true);
+	}
+}l;	});
+}	}
+}	}
+class XMLWriteFrame extends JFrame	class XMLWriteFrame extends JFrame
+	{
+public XLWriteFramef	public XMLWriteFrame()
+{	{
+setTitle""XMLWriteTest";	setTitle("XMLWriteTest");
+setSizelDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+chooser =  nw JFileChooser;	chooser = new JFileChooser();
+	
+comp =new RectangleCoponent;	comp = new RectangleComponent();
+addcomp;	add(comp);
+	
+JMenuBar menuBar= new JMenuBar;	JMenuBar menuBar = new JMenuBar();
+setJMenuBarmenBar;	setJMenuBar(menuBar);
+JMenu menu = new JMenu"File"l;	JMenu menu = new JMenu("File");
+menBar.addfmenu;	menuBar.add(menu);
+JMenuItem  newItem = new JMenuItem"New";	JMenuItem newItem = new JMenuItem("New");
+menu.addlnewItem;	menu.add(newItem);
+newItem..addActionListenernew ActionListenerfl	newItem.addActionListener(new ActionListener()
+{	{
+public voidactionPerformedActionEvent eventf	public void actionPerformed(ActionEvent event)
+{	{
+comp.newDrawing;	comp.newDrawing();
+1	}
+1;;	});
+JMenuItem  saveItem = new JMenuItem"Save with DOM/X/S/L/T///;/	JMenuItem saveItem = new JMenuItem("Save with DOM/X/S/L/T/"/)/;/
+/ // / /  / m/e/n/u/./a/d/d//s/a/v/e/I/te/m///	/ / / / / / /m/e/n/u/./a/d/d/(/s/a/v/e/I/t/e/m/)/;/
+/  / / / / //s/a/v/e/I/t/e/m//a/d/d/A/c/t/i/o/n/L//s/t/e/n/e/r//n/e/w/ /A/c/t/i/o/n/L/i/s//e/n/e/r///	/ / / / / / /s/a/v/e/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/)/
+/ / / / / / / / / /f/	/ / / / / / / / / /{/
+/ /  / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/r//o/r/m/e/d//A/c/t/i/o/n/E/v/e/n/t/  /e/v/e/n/t//	/ / / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/r/f/o/r/m/e/d/(/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t/)/
+/ / / / / / / / / / / / /{/	/ / / / / / / / / / / / /{/
+/  / /  / // / // / / / /  / / /t/r/y/	/ / / / / / / / / / / / / / / /t/r/y/
+/ / / / / / / / / / / /  / //  /l/	/ / / / / / / / / / / / / / / /{/
+/  /// / // / / / / // / / / /  /s/a/v/e/D/o/c/u/m/e/n/t///;/	/ / / / / / / / / / / / / / / / / / /s/a/v/e/D/o/c/u/m/e/n/t/(/)/;/
+/ / / // /  / // /  / / / / /}/	/ / / / / / / / / / / / / / / /}/
+/ / / /  / / / // / / / / / / /c/a/t/c/h/ //E//e/pt/i/o/n/ /e//	/ / / / / / / / / / / / / / / /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/
+/  / / / / / / / / // /   / /{/	/ / / / / / / / / / / / / / / /{/
+/ / /  / / / / / / / // /  / / /  / / /J/O/p/ti/o/n/P/a/n/e/./s/h/o/w/M//s/s/a/g/e/D/i/a/l/o/g//X/M/L/W/r/i/t/e/F/r/a/m/e/./t/h/i//,//e/./t/o/S/t/r//n/g/l//;/	/ / / / / / / / / / / / / / / / / / /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g/(/X/M/L/W/r/i/t/e/F/r/a/m/e/./t/h/i/s/,/ /e/./t/o/S/t/r/i/n/g/(/)/)/;/
+/ / / /  / / /  /  / / / // / //}/	/ / / / / / / / / / / / / / / /}/
+/ / / / /  / / /// / / /1/	/ / / / / / / / / / / / /}/
+/ /  /// / / / //}//;;/	/ / / / / / / / / /}/)/;/
+/	/
+/ / // // /J/M/e/n/u/I/t/e/m/ /s/a/v/e/S/t/A/X/I/t/e/m/ /=/ /n//w/ /J/Me/n/u/I/t/e/m/f/"/S/a/v/e/ /wi/t/h//S/t/A/X/"//;/	/ / / / / / /J/M/e/n/u/I/t/e/m/ /s/a/v/e/S/t/A/X/I/t/e/m/ /=/ /n/e/w/ /J/M/e/n/u/I/t/e/m/(/"/S/a/v/e/ /w/i/t/h/ /S/t/A/X/"/)/;/
+/ / / / / /  /m/e/n/u/../a/d/d//s/a/v/e/S/t/A/X/I/t/em//;;/	/ / / / / / /m/e/n/u/./a/d/d/(/s/a/v/e/S/t/A/X/I/t/e/m/)/;/
+/ / / // / /s/a/v/e/S/t/A/X/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s//e/n/e/r//n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r///	/ / / / / / /s/a/v/e/S/t/A/X/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/)/
+/  ///  / / // /{/	/ / / / / / / / / /{/
+/ /  // / /  / / / /  / / /p/u/b/l/ic//v/o/i/d  /a/c/t/i/o/n/P/e/r/f/o/r/me/d/f/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t//	/ / / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/r/f/o/r/m/e/d/(/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t/)/
+/ / / / / / / / // //  /{/	/ / / / / / / / / / / / /{/
+/ /  / /  / / / / / // / / / / /t/r/y/	/ / / / / / / / / / / / / / / /t/r/y/
+/ / / / / / / / // /  /  /  / / /{/	/ / / / / / / / / / / / / / / /{/
+/ / / / / / / / / /  / / / / / / / / /s/av/e/S/t/A/X/l/f/;/	/ / / / / / / / / / / / / / / / / / /s/a/v/e/S/t/A/X/(/)/;/
+/ / / / / / / / / /  / / / / / /f/	/ / / / / / / / / / / / / / / /}/
+/ / / /  / / // /  /  / / / / /c/a/t/c/h///E/x/c/e/p/t/io/n/ /e//	/ / / / / / / / / / / / / / / /c/a/t/c/h/ /(/E/x/c/e/p/t/i/o/n/ /e/)/
+//   // / / / / / /  / / / / /{/	/ / / / / / / / / / / / / / / /{/
+/ / / / / /  // / /  / / / / / / / /  /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/og//X/M/L/W/r/i/t/e/F/r/a/m/e/./t/h/i/s/,,/ /e/./t/o/S/t/r/i/n/g/f//f//	/ / / / / / / / / / / / / / / / / / /J/O/p/t/i/o/n/P/a/n/e/./s/h/o/w/M/e/s/s/a/g/e/D/i/a/l/o/g/(/X/M/L/W/r/i/t/e/F/r/a/m/e/./t/h/i/s/,/ /e/./t/o/S/t/r/i/n/g/(/)/)/;/
+/ / / / / // / / / / / /  / / /}/	/ / / / / / / / / / / / / / / /}/
+//  / // / / / /  / / / /}/	/ / / / / / / / / / / / /}/
+/  / / / / / / / /}//;/	/ / / / / / / / / /}/)/;/
+/	/
+// / / / / /J/M/e/n/u/I/t/e/m/  /e/x/i/t/I/t/e/m/ /=/ /n/e/w/ /J/M/e/n/u/I/t/e/m//"/E/x/it/"//;/	/ / / / / / /J/M/e/n/u/I/t/e/m/ /e/x/i/t/I/t/e/m/ /=/ /n/e/w/ /J/M/e/n/u/I/t/e/m/(/"/E/x/i/t/"/)/;/
+/ / / / / / /m/e/n/u/./a/d/d//e/x/i/t/I/t/e/m//;/	/ / / / / / /m/e/n/u/./a/d/d/(/e/x/i/t/I/t/e/m/)/;/
+/  / / / / / /e/xi/t/I/t/e//./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r//n/e/w/ /A/c/t/i/o/n/L/i/s//e/n/e/r///	/ / / / / / /e/x/i/t/I/t/e/m/./a/d/d/A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/n/e/w/ /A/c/t/i/o/n/L/i/s/t/e/n/e/r/(/)/
+/ / / / //  / // /{/	/ / / / / / / / / /{/
+/ / / / / / / / / /  / / /p/u/b/l/i/c//v//i/d/ /a/c/t/i/o/n/P/e//f/o/r/m/e/d/f/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t//	/ / / / / / / / / / / / /p/u/b/l/i/c/ /v/o/i/d/ /a/c/t/i/o/n/P/e/r/f/o/r/m/e/d/(/A/c/t/i/o/n/E/v/e/n/t/ /e/v/e/n/t/)/
+/ // / / / / / / /  // /f/	/ / / / / / / / / / / / /{/
+/ / /  /// /  / /  / // / / / /S/y/s/t/e/m/./e/x/i/t//0/l/;/	/ / / / / / / / / / / / / / / /S/y/s/t/e/m/./e/x/i/t/(/0/)/;/
+/ / / / / / / // / / / /}/	/ / / / / / / / / / / / /}/
+/ /  / / / / / // /f//;/	/ / / / / / / / / /}/)/;/
+/  / /1/	/ / / /}/
+/	/
+/ /  / * Saves the drawingin SVG format, usng DOM/X/S/L/T/	/ / / * Saves the drawing in SVG format, using DOM/X/S/L/T/
+/ /  / /	/ / / /
+public void saveStAXf throws FileNotFoundException,XMLStreamException	public void saveStAX() throws FileNotFoundException, XMLStreamException
+{	{
+if chooseshowSaveDialogthisf!= JFileChooserAPPROVE_OPTION return;	if (chooser.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) return;
+File f = chooser.getSelectedFile;;	File f = chooser.getSelectedFile();
+XMLOutputFactoryfactory= XMLOutputFactoy..newInstance;	XMLOutputFactory factory = XMLOutputFactory.newInstance();
+XMLStreamWriter writer = factory.createMLStreamWriternew  FieOuputStreamlf;	XMLStreamWriter writer = factory.createXMLStreamWriter(new FileOutputStream(f));
+compwriteDocumentwriter;	comp.writeDocument(writer);
+wrter.closef;	writer.close();
+}	}
+public static final int DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public static final int DEFAULT_HEIGHT = 200;;	public static final int DEFAULT_HEIGHT = 200;
+private RectangleComponent comp;	private RectangleComponent comp;
+priate JFileChoose chooser;;	private JFileChooser chooser;
+f	}
+class RectangleComponent extendsJComponent	class RectangleComponent extends JComponent
+	{
+public RectanglComponentff	public RectangleComponent()
+{	{
+rects = new ArrayList<Rectangle2D>f;	rects = new ArrayList<Rectangle2D>();
+colors= new ArrayList<Color>;	colors = new ArrayList<Color>();
+generator = new  Rndom;	generator = new Random();
+ocumentBuilderFactory factor = DocumentBuilderFactor.newInstance;	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+try	try
+{	{
+builder = factory.newDocumentBuilder;	builder = factory.newDocumentBuilder();
+}	}
+catch ParserConfigurationException e	catch (ParserConfigurationException e)
+{	{
+eprintStackTrace;	e.printStackTrace();
+}	}
+l	}
+	
+public void newDrawing	public void newDrawing()
+	{
+int n =10 +  generator.nextInt20;	int n = 10 + generator.nextInt(20);
+rects.clearff;	rects.clear();
+colors.clear;	colors.clear();
+for int i =  1;  i <=n; i++	for (int i = 1; i <= n; i++)
+{	{
+intx = generator.nextIntgetWidh;	int x = generator.nextInt(getWidth());
+int y = generator.nextIntgetHeightf	int y = generator.nextInt(getHeight());
+int  widt= generator.nextIntgetidth - x;	int width = generator.nextInt(getWidth() - x);
+int height  = generator.nextIntgetHeight - y;	int height = generator.nextInt(getHeight() - y);
+rects.addnew Rectanglex, y, width, heightl;;	rects.add(new Rectangle(x, y, width, height));
+intr  generator.nextInt256;	int r = generator.nextInt(256);
+int g = generator.nexIntl256;	int g = generator.nextInt(256);
+int b = generator.nextInt256;	int b = generator.nextInt(256);
+colors.addnewClorlr,, g b;	colors.add(new Color(r, g, b));
+}	}
+repaint;	repaint();
+1	}
+public  void paintComponentlGraphics  g	public void paintComponent(Graphics g)
+{	{
+if rects.size == 0 newDrawing;;	if (rects.size() == 0) newDrawing();
+Graphics2D g2 = Graphics2Dfg;;	Graphics2D g2 = (Graphics2D) g;
+for int i = 0; i <rects.sizel i++	for (int i = 0; i < rects.size(); i++)
+{	{
+g2..setPaintfcolors.geti;	g2.setPaint(colors.get(i));
+g2filllrects.geti;	g2.fill(rects.get(i));
+}	}
+}	}
+	
+pblicDocument builDocument	public Document buildDocument()
+{	{
+Documentdoc = builder.newDocumentl;	Document doc = builder.newDocument();
+ElementsvgElement = doc.createElementf"svg"";;	Element svgElement = doc.createElement("svg");
+dc.appendChildsvgElement;	doc.appendChild(svgElement);
+sgEeent.setAttrbutef""width",, "  + getWidthf;	svgElement.setAttribute("width", "" + getWidth());
+svgElement.setAtributel"eight"",  "" + geeight;	svgElement.setAttribute("height", "" + getHeight());
+for int i = 0;i <  rects.size;  i++l	for (int i = 0; i < rects.size(); i++)
+l	{
+Color c =  colors.getli;	Color c = colors.get(i);
+Rectangle2D r = rects.geti;	Rectangle2D r = rects.get(i);
+Element rectElement = doc.createElement"rect"l;	Element rectElement = doc.createElement("rect");
+rectElement.setAttribute"x, "" +  r.getX;	rectElement.setAttribute("x", "" + r.getX());
+rectElement.setAttributel"y", "" + r..getY;	rectElement.setAttribute("y", "" + r.getY());
+rectElementsetAttributef"width", "" + r.getWidthll;	rectElement.setAttribute("width", "" + r.getWidth());
+rectElement..setAttribute""height",""" + r.getHeight;	rectElement.setAttribute("height", "" + r.getHeight());
+rectlement.setAttribute""fill",,  coloToStringlc;	rectElement.setAttribute("fill", colorToString(c));
+svgElemen.appendChildretEement;	svgElement.appendChild(rectElement);
+}	}
+return  doc;	return doc;
+}	}
+	
+public voidwriteDocumentXMLStreamWrier writer throws  XMLStreamExcepti	public void writeDocument(XMLStreamWriter writer) throws XMLStreamException
+	{
+writer.writeStartDocument;	writer.writeStartDocument();
+writer.riteDTD"<!DOCTYPE  sg PUBLIC \"-  +  "\"http: writer.writeStartElement"svg";	writer.writeDTD("<!DOCTYPE svg PUBLIC \"- + "\"http: writer.writeStartElement("svg");
+writer.writeAttribute"width, "" + getWidthf;;	writer.writeAttribute("width", "" + getWidth());
+writer.writAttributeheight", " + getHeightl;;	writer.writeAttribute("height", "" + getHeight());
+for int i = 0; i <rects.sizef; i++	for (int i = 0; i < rects.size(); i++)
+	{
+Color  c = colors..geti;	Color c = colors.get(i);
+Rectangle2D r = rects.geti;	Rectangle2D r = rects.get(i);
+writer..writeEmptyElementf"rect";	writer.writeEmptyElement("rect");
+riter.writeAttribute"x"", "" + r.getXf;	writer.writeAttribute("x", "" + r.getX());
+writer.writeAttribute"y", """ +  r.getY;	writer.writeAttribute("y", "" + r.getY());
+writerwriteAttributel"width"  " + .getWidth;	writer.writeAttribute("width", "" + r.getWidth());
+wrier.writeAttribute"height", "" + r.getHeight;	writer.writeAttribute("height", "" + r.getHeight());
+witerwriteAttribute"fill",, colorToStringc;	writer.writeAttribute("fill", colorToString(c));
+}	}
+witer.writeEndDocument; f	writer.writeEndDocument(); }
+	
+	
+privatestatic Strin colorToStringColor  c	private static String colorToString(Color c)
+{	{
+StringBuffer buffer = new StringBuffer;	StringBuffer buffer = new StringBuffer();
+buffer.appendInteger.toHexStringc..getRGB &0xFFFFF;	buffer.append(Integer.toHexString(c.getRGB() & 0xFFFFFF));
+wile bufferlength < 6	while (buffer.length() < 6)
+buffer..inser0, '0';	buffer.insert(0, '0');
+buffer.insert0, '#';	buffer.insert(0, '#');
+rturn buffer..toStringl	return buffer.toString();
+}	}
+private  ArryList<Rectangle2D> rects;	private ArrayList<Rectangle2D> rects;
+private ArrayList<Color> colors;	private ArrayList<Color> colors;
+private Random generator;	private Random generator;
+privte DocumentBuilder uilder;;	private DocumentBuilder builder;
+f	}

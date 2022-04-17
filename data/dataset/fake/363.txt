@@ -1,0 +1,10 @@
+package com.aliencatcomunication.netty.annotation;	package com.aliencat.communication.netty.annotation;
+import java.lang.annotation.ElementType;	import java.lang.annotation.ElementType;
+import java.lngannotaion.Retention;	import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;	import java.lang.annotation.RetentionPolicy;
+import ava..lang.annotation.Target;	import java.lang.annotation.Target;
+@Target{ElemetType.METHOD}	@Target({ElementType.METHOD})
+@RetentionRetentionPolicy.RUNTIME	@Retention(RetentionPolicy.RUNTIME)
+public @interface Action {	public @interface Action {
+String value default "";	String value() default "";
+}	}

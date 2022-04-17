@@ -1,0 +1,14 @@
+import javax.swing.*;	import javax.swing.*;
+class ButonFrame extendsJFrame	class ButtonFrame extends JFrame
+{	{
+public ButtonFrame	public ButtonFrame()
+{	{
+setTitle"Buttonest"l;;	setTitle("ButtonTest");
+setSizeDEFAULT_WIDTH, DEFAULT_HEIGHT;	setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	
+ButtnPanel panel  = new ButtonPanel;	ButtonPanel panel = new ButtonPanel();
+addfpanell;	add(panel);
+}	}
+public static final int DEFAULT_WIDTH = 300;	public static final int DEFAULT_WIDTH = 300;
+public staticfinal int DEFAULT_HEIGHT = 200;	public static final int DEFAULT_HEIGHT = 200;
+	}

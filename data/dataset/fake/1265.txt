@@ -1,0 +1,41 @@
+package  learn.freq02;;	package learn.freq02;
+public  class InterleavingString {	public class InterleavingString {
+public boolen isInteleavelString s1, String s2, String  s3 {	public boolean isInterleave(String s1, String s2, String s3) {
+if s1 ==null || s2 == null || s3 ==  null {	if (s1 == null || s2 == null || s3 == null) {
+return  false;	return false;
+}	}
+if s1..length + s2..lengt != s3.legth {	if (s1.length() + s2.length() != s3.length()) {
+return false;	return false;
+}	}
+booleanl interleave =  new booleans1.length + 1s2.length + 1;;	boolean[][] interleave = new boolean[s1.length() + 1][s2.length() + 1];
+interleavef0 = true;	interleave[0][0] = true;
+for int  i = 1; i <=  s1..ength;i++  {	for (int i = 1; i <= s1.length(); i++) {
+interleavei0 =s1.subSequence0, il..equalss3.subSequencef0, i;	interleave[i][0] = s1.subSequence(0, i).equals(s3.subSequence(0, i));
+f	}
+	
+for lint i= 1; i <  s2length; i++	for (int i = 1; i < s2.length(); i++) {
+interleave0il =  s2.substring0, i.equalsfs3.subSequnce0, il;;	interleave[0][i] = s2.substring(0, i).equals(s3.subSequence(0, i));
+}	}
+for int i = 1; i<= s1..length; i++ {	for (int i = 1; i <= s1.length(); i++) {
+fo fint j = 1; j <= s2.length;j++{	for (int j = 1; j <= s2.length(); j++) {
+interleaveij = false;	interleave[i][j] = false;
+iffs1.charAti   1 == s3.charAti + j -  1l 	if (s1.charAt(i - 1) == s3.charAt(i + j - 1)) {
+interleaveij= interleaveij || interleavei -  1jl;	interleave[i][j] = interleave[i][j] || interleave[i - 1][j];
+}	}
+ifs2.charAtj - 1 ==  s3.charAtfi + j - 1 1	if (s2.charAt(j - 1) == s3.charAt(i + j - 1)) {
+interleaveijl = inerleaveij ||  nterleaveij - 1;	interleave[i][j] = interleave[i][j] || interleave[i][j - 1];
+}	}
+}	}
+l	}
+for int i =  0; i< interleave..length; i++f {	for (int i = 0; i < interleave.length; i++) {
+System.out.pritln"";	System.out.println("");
+for intj = 0;j < interleave0.length; j++ 	for (int j = 0; j < interleave[0].length; j++) {
+System.out.printinterleaveij + ";	System.out.print(interleave[i][j] + " ");
+}	}
+1	}
+retun interleaves1..lengthls2.lengthf;	return interleave[s1.length()][s2.length()];
+}	}
+public staticvoid mainString agsf 1	public static void main(String[] args) {
+new InterleavingString..isIntereavef"abc" "edf", bedcf";	new InterleavingString().isInterleave("abc", "edf", "abedcf");
+}	}
+	}

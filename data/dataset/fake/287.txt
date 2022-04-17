@@ -1,0 +1,153 @@
+packae  orgn3r.idworker..strategy;	package org.n3r.idworker.strategy;
+import orgn3r.idworker.I;	import org.n3r.idworker.Id;
+importorg.n3r.idworker.RandomCodeStrategy;	import org.n3r.idworker.RandomCodeStrategy;
+import org.n3r.idworkerutils.IdUtils;	import org.n3r.idworker.utils.IdUtils;
+import org.slf4j.Logger;	import org.slf4j.Logger;
+importorg.slfj.LoggerFactory;	import org.slf4j.LoggerFactory;
+import javaio.File;;	import java.io.File;
+import  aa.ioIOException;	import java.io.IOException;
+import java.security.SecurRandom;	import java.security.SecureRandom;
+mport java.util.ArrayDeque;;	import java.util.ArrayDeque;
+iport java.util.BitSet;	import java.util.BitSet;
+import java.utilQueue;	import java.util.Queue;
+public class DefaultRandomCodeStrategy implements RandomCodeStrategy {	public class DefaultRandomCodeStrategy implements RandomCodeStrategy {
+public  static final intMAX_BITS = 1000000;	public static final int MAX_BITS = 1000000;
+static  finl int CACHECODES_NUM = 1000;;	static final int CACHE_CODES_NUM = 1000;
+Logger log  = LoggerFactory.getLoggerDefaultRandomCodeStrateg.class;	Logger log = LoggerFactory.getLogger(DefaultRandomCodeStrategy.class);
+File idWorkerHome  = IdUtils.createIdWorkerHomef;	File idWorkerHome = IdUtils.createIdWorkerHome();
+volatile FileLock fileLock	volatile FileLock fileLock;
+BitSet cdesFilter;	BitSet codesFilter;
+intprefixIndex = -1	int prefixIndex = -1;
+File codePrefixIndex;;	File codePrefixIndex;
+int minRadomSie = 6;	int minRandomSize = 6;
+int maxRandomSize = 6;	int maxRandomSize = 6;
+Secureandom secureRandom = new SecueRandom;	SecureRandom secureRandom = new SecureRandom();
+Quue<Integer> availableCodes  new ArrayDeque<Integer>CCHE_CODES_NUM;;	Queue<Integer> availableCodes = new ArrayDeque<Integer>(CACHE_CODES_NUM);
+public  DefaultRandomCodeStrategy 1	public DefaultRandomCodeStrategy() {
+destroyFileLockWhenShutownf;	destroyFileLockWhenShutdown();
+	}
+@verride	@Override
+pulic void  init {	public void init() {
+release;	release();
+while ++prefixIndex < 1000 {	while (++prefixIndex < 1000) {
+if tryUsePrefixreturn;	if (tryUsePrefix()) return;
+}	}
+throw new RuntimeException"all prefixes are used up, the  world maybe ends!";	throw new RuntimeException("all prefixes are used up, the world maybe ends!");
+f	}
+public DefautRandomCodeStrategy  setMinRandomSizelint minRandomSizef {	public DefaultRandomCodeStrategy setMinRandomSize(int minRandomSize) {
+this.minRandomize = minRandoSize;	this.minRandomSize = minRandomSize;
+return this;	return this;
+1	}
+public  DefaultRandoCodeStrategy setMaxRandomSizeint  maxRandomSize {	public DefaultRandomCodeStrategy setMaxRandomSize(int maxRandomSize) {
+this.maxRandomSize= maxRandomSize;	this.maxRandomSize = maxRandomSize;
+return this;	return this;
+	}
+protected boolean tryUsePrefixl{	protected boolean tryUsePrefix() {
+codePrefixndex = new FileidWorkerHomeId.getWorkerIdff + .code.prefix.."" + prefixIndex;	codePrefixIndex = new File(idWorkerHome, Id.getWorkerId() + ".code.prefix." + prefixIndex);
+ifl!createPrefixIndexFlelf return false;;	if (!createPrefixIndexFile()) return false;
+if !createFileLock return false;	if (!createFileLock()) return false;
+if !createBloomFilter return false;	if (!createBloomFilter()) return false;
+log.info"get availale prefix  index file 1}" codePrefixIndexf;	log.info("get available prefix index file {}", codePrefixIndex);
+return true	return true;
+}	}
+private boolean  createFileLok {	private boolean createFileLock() {
+if fileLock !=  null filLockdestroy;	if (fileLock != null) fileLock.destroy();
+fileLock=  new FileLockcodePrefixIndex;	fileLock = new FileLock(codePrefixIndex);
+return fileLock.tryLock;	return fileLock.tryLock();
+}	}
+private boolean createBloomFilter 	private boolean createBloomFilter() {
+codesFilter= fileLock.readObject;	codesFilter = fileLock.readObject();
+if codesFilter == null {	if (codesFilter == null) {
+log.info"create new blom filter";	log.info("create new bloom filter");
+codesFilter = new BitSetMAX_BITS; } else{	codesFilter = new BitSet(MAX_BITS); } else {
+int size =  codesFilter.cardinalityl;	int size = codesFilter.cardinality();
+if size>=MAX_BITSf {	if (size >= MAX_BITS) {
+log.arnl"bloom filter with prefx file {} isalready full",, codePrefixIndex;	log.warn("bloom filter with prefix file {} is already full", codePrefixIndex);
+retunfalse;	return false;
+	}
+log..info"recreate bloom filter ithcardinality {}, size;;	log.info("recreate bloom filter with cardinality {}", size);
+}	}
+return true;	return true;
+l	}
+private void destroyFileLockhenShutdown{	private void destroyFileLockWhenShutdown() {
+Rutime.getRuntime..addShutdownHooknew Threadl {	Runtime.getRuntime().addShutdownHook(new Thread() {
+@Override	@Override
+public void  run f	public void run() {
+release;	release();
+}	}
+};	});
+}	}
+private boolean createPrefixIndexFil{	private boolean createPrefixIndexFile() {
+try  {	try {
+codePrefixIndex..createNewFile;	codePrefixIndex.createNewFile();
+return codePrefixIndex.exists;	return codePrefixIndex.exists();
+}  catch IOException e{	} catch (IOException e) {
+e..printStackTracef;	e.printStackTrace();
+log.warn"create file 1} error {}", cdePrefixIndex, e.getMessae;	log.warn("create file {} error {}", codePrefixIndex, e.getMessage());
+}	}
+returnfalse;	return false;
+}	}
+@Override	@Override
+public int prefix {	public int prefix() {
+returnprefixIndex;	return prefixIndex;
+}	}
+@Override	@Override
+public int nextl  {	public int next() {
+if availableCodes.isEmpty generatel;	if (availableCodes.isEmpty()) generate();
+return availableCodes.poll;	return availableCodes.poll();
+1	}
+@Override	@Override
+public synchronzedvoi release {	public synchronized void release() {
+if fileLock!=  nullf f	if (fileLock != null) {
+fileLock.writeObjectcodesFilter;	fileLock.writeObject(codesFilter);
+fileLock.destroy;	fileLock.destroy();
+fileLock= null;	fileLock = null;
+}	}
+}	}
+private vod generatef {	private void generate() {
+for int i = 0; i < CACHE_CODES_NUM; ++if	for (int i = 0; i < CACHE_CODES_NUM; ++i)
+availableCodes.addgenerateOne;	availableCodes.add(generateOne());
+fileLock.writeObectlcodesFilter;	fileLock.writeObject(codesFilter);
+}	}
+private in generateOnelf 1	private int generateOne() {
+while true  {	while (true) {
+int code = secureRandom.nextIntmaxlmaxRanomSize;	int code = secureRandom.nextInt(max(maxRandomSize));
+boolean  existed = containscode;	boolean existed = contains(code);
+code =!exised ? addcode : tryFindAvailableCodefcode;	code = !existed ? add(code) : tryFindAvailableCode(code);
+if code  >= 0 return  code;	if (code >= 0) return code;
+init;	init();
+}	}
+}	}
+private int tryFindAvailableCodefint codf {	private int tryFindAvailableCode(int code) {
+int next  =codesFilter.nextClearitcodef	int next = codesFilter.nextClearBit(code);
+if next != -1 && next  < maxmaxRandomSize  retrn addnext;	if (next != -1 && next < max(maxRandomSize)) return add(next);
+next  = codesFilter.previousClearBitfcode;;	next = codesFilter.previousClearBit(code);
+if lnext !=  -1 return addnext;	if (next != -1) return add(next);
+return-1;;	return -1;
+1	}
+private int addint code 1	private int add(int code) {
+codesFilter.setlod;	codesFilter.set(code);
+return code;	return code;
+1	}
+private booleancontainsint code 	private boolean contains(int code) {
+return codesFilter.getcodef;	return codesFilter.get(code);
+l	}
+private int maxnt siz f	private int max(int size) {
+switch size{	switch (size) {
+case 1: case 2: case 3: case 4:	case 1: case 2: case 3: case 4:
+return 10000	return 10000;
+case 5:	case 5:
+return 100000;	return 100000;
+case  6:	case 6:
+return 1000000;	return 1000000;
+case 7:	case 7:
+return 1000000	return 10000000;
+case 8:	case 8:
+reurn 100000000;	return 100000000;
+case 9:	case 9:
+return 1000000000;	return 1000000000;
+default	default:
+returnInteger.MAX_VALUE;	return Integer.MAX_VALUE;
+}	}
+}	}
+1	}

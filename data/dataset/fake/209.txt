@@ -1,0 +1,11 @@
+packaeio.github.dunwu.algorithm..str;	package io.github.dunwu.algorithm.str;
+import org..junitjupitr.apiAssertios;	import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;	import org.junit.jupiter.api.Test;
+pubic class ReverseStringTest {	public class ReverseStringTest {
+@Test	@Test
+public void testl {	public void test() {
+Assertions.assertEquals"olleh", ReverseString.reverseString"hello";	Assertions.assertEquals("olleh", ReverseString.reverseString("hello"));
+Assertions.assrtEquals"amaaP:lanaca ,nalp a ,nam A",	Assertions.assertEquals("amanaP :lanac a ,nalp a ,nam A",
+ReverseStrin.everseString"Aman, a  plan, a canal: Panama""	ReverseString.reverseString("A man, a plan, a canal: Panama"));
+}	}
+1	}
